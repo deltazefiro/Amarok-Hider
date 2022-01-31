@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="42dp"
+            android:layout_marginTop="42dp"
+            android:text="@string/app_name"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+            android:textSize="40sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="0dp"
+            android:layout_marginStart="44dp"
+            android:text="Hunting alone in the starless night." />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+
+                    android:id="@+id/main_card_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="34dp"
+                    android:layout_marginTop="26dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/main_tv_status"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="28dp"
+                            android:text="@string/day_status"
+                            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                            android:textSize="22sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/main_tv_statusinfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/day_info"
+                            android:textSize="12sp"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/main_tv_status" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/main_bt_primary"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="28dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="24dp"
+                            android:onClick="buttonDusk"
+                            android:text="@string/dusk"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/main_tv_statusinfo" />
+                        <!--                        app:strokeColor="@color/grey" -->
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/main_bt_secondary"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="24dp"
+                            android:onClick="buttonDawn"
+                            android:text="@string/dawn"
+                            android:textSize="12sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintLeft_toRightOf="@id/main_bt_primary"
+                            app:layout_constraintTop_toBottomOf="@+id/main_tv_statusinfo" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="42sp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="start|center_vertical"
+                    android:onClick="buttonEncodeFile"
+                    android:text="ENCODE FILE "
+                    app:icon="@drawable/ic_folder"
+                    app:iconPadding="15dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="42sp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|center_vertical"
+                    android:onClick="buttonApps"
+                    android:text="HIDE APPS"
+                    app:icon="@drawable/ic_hideapp"
+                    app:iconPadding="15dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_marginHorizontal="42sp"
+                    android:layout_marginTop="5dp"
+                    android:gravity="start|center_vertical"
+                    android:onClick="buttonAbout"
+                    android:text="ABOUT"
+                    app:icon="@drawable/ic_about"
+                    app:iconPadding="15dp" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Amarok beta version"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        android:layout_marginBottom="15dp"-->
+<!--        android:textSize="10dp"-->
+<!--        android:gravity="center"/>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
