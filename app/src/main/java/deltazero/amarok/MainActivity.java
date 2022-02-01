@@ -1,6 +1,5 @@
 package deltazero.amarok;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -19,18 +18,21 @@ import androidx.core.app.ActivityCompat;
 import com.catchingnow.icebox.sdk_client.IceBox;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
 import java.io.File;
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+
+import static deltazero.amarok.Utils.getIceboxAvailability;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static String TAG = "Main";
-    private static final int PICK_PATH_RESULT_CODE = 1;
+    final static int PICK_PATH_RESULT_CODE = 501;
     public Hider hider;
     private MaterialButton btPrimary, btSecondary;
     private TextView tvStatusInfo, tvStatus;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         hider = new Hider(this);
+
         if (hider.getIsNight()) {
             this.setTheme(R.style.Theme_Amarok_night);
         } else {
@@ -66,19 +69,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Check Permissions
-        List<String> listPermissionsNeeded = new ArrayList<>();
-        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "No WRITE_EXTERNAL_STORAGE permission. Requesting...");
-            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        XXPermissions.with(this)
+                .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                .request((permissions, all) -> {
+                });
+        if (getIceboxAvailability(this) != IceBox.SilentInstallSupport.NOT_INSTALLED) {
+            ActivityCompat.requestPermissions(this, new String[]{IceBox.SDK_PERMISSION}, 100);
         }
-        if (checkSelfPermission(IceBox.SDK_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "No IceBox permission. Requesting...");
-            listPermissionsNeeded.add(IceBox.SDK_PERMISSION);
-        }
-
-        if (!listPermissionsNeeded.isEmpty())
-            ActivityCompat.requestPermissions(this,
-                    listPermissionsNeeded.toArray(new String[0]), 100);
     }
 
     @Override
@@ -115,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Check Icebox availability
-        switch (IceBox.querySupportSilentInstall(this)) {
+        switch (getIceboxAvailability(this)) {
             case SUPPORTED:
                 break;
             case NOT_INSTALLED:
@@ -151,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     public void buttonShowAbout(View view) {
 
         String iceboxAvailability;
-        switch (IceBox.querySupportSilentInstall(this)) {
+        switch (getIceboxAvailability(this)) {
             case SUPPORTED:
                 iceboxAvailability = getString(R.string.icebox_available);
                 break;

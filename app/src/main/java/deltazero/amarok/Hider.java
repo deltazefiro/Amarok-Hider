@@ -10,24 +10,27 @@ import android.widget.Toast;
 
 import com.catchingnow.icebox.sdk_client.IceBox;
 
+import java.io.Serializable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.catchingnow.icebox.sdk_client.IceBox.SilentInstallSupport.SUPPORTED;
+import static deltazero.amarok.Utils.getIceboxAvailability;
 
 public class Hider {
 
     public static final String TAG = "Hider";
 
-    private final Context context;
+    public Context context;
     private final Handler mBackgroundHandler;
     private final SharedPreferences mPrefs;
     private final SharedPreferences.Editor mPrefEditor;
 
     public Path encodePath;
     public String[] hidePkgNames;
+
 
     @SuppressLint("CommitPrefEdits")
     public Hider(Context context) {
@@ -49,7 +52,7 @@ public class Hider {
         }
 
         Set<String> hidePkgNamesArr = getHidePkgNames();
-        if (IceBox.querySupportSilentInstall(context) == SUPPORTED && hidePkgNamesArr != null) {
+        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
             hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
             mBackgroundHandler.post(() -> {
                 IceBox.setAppEnabledSettings(context, false, hidePkgNames);
@@ -70,7 +73,7 @@ public class Hider {
         }
 
         Set<String> hidePkgNamesArr = getHidePkgNames();
-        if (IceBox.querySupportSilentInstall(context) == SUPPORTED && hidePkgNamesArr != null){
+        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null){
             hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
             mBackgroundHandler.post(() -> {
                 IceBox.setAppEnabledSettings(context, true, hidePkgNames);
