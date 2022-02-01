@@ -24,7 +24,7 @@ Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护�
 安装
 
 1. 下载 [冰箱icebox](https://coolapk.com/apk/com.catchingnow.icebox)，并根据[指引](http://iceboxdoc.catchingnow.com/)激活冰箱
-2. 下载 Amarok 并安装**（为了隐私保护，安装后 Amarok 不会在应用启动器 (桌面) 中出现）**
+2. [从GithubRelease下载Amarok](https://github.com/233a344a455/Amarok-Hider/releases) 并安装**（为了隐私保护，安装后 Amarok 不会在应用启动器 (桌面) 中出现）**
 3. 打开 控制中心 (QuickSettingsPanel，一般通过从屏幕顶部下滑打开)
 4. 编辑控制中心中的开关，将 Amarok 添加到控制中心
 5. 长按控制中心中 Amarok 开关，跳转进入 Amarok 主界面
