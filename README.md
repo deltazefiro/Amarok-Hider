@@ -1,6 +1,5 @@
 # Amarok-Hider
 Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护的Android应用程序。  
-
 **<u>请注意：Amaork 并非加密程序，而只是隐藏程序！请勿使用 Amaork 保护重要文件！</u>**
 
 
@@ -36,7 +35,6 @@ Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护�
 配置
 
 - 点击 `ENCODE FILE`  设置加密文件夹位置
-
 - 点击 `HIDE APP` 输入需要隐藏的App包名称
 
 
@@ -59,7 +57,6 @@ Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护�
 ### 感谢
 
 - [heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License
-
 - [Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE)
 
 
@@ -67,6 +64,5 @@ Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护�
 ### 免责声明
 
 <u>**Amaork 目前处于早期开发阶段，切勿用于重要文件或应用的隐藏。**</u>  
-
 <u>**您使用 Amaork 引起的一切损失和后果均由您自行承担。**</u>
 
