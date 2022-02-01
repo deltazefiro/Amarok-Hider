@@ -113,6 +113,21 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
+        // Check Icebox availability
+        switch (IceBox.querySupportSilentInstall(this)) {
+            case SUPPORTED:
+                break;
+            case NOT_INSTALLED:
+                Toast.makeText(this, R.string.icebox_not_installed, Toast.LENGTH_LONG).show();
+                return;
+            case NOT_DEVICE_OWNER:
+                Toast.makeText(this, R.string.icebox_not_active, Toast.LENGTH_LONG).show();
+                return;
+            default:
+                Toast.makeText(this, R.string.icebox_not_supported, Toast.LENGTH_LONG).show();
+                return;
+        }
+
         // Set up the etInput
         final EditText etInput = new EditText(this);
         etInput.setText(String.join("\n", hider.getHidePkgNames()));
@@ -133,9 +148,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonAbout(View view) {
+
+        String iceboxAvailability;
+        switch (IceBox.querySupportSilentInstall(this)) {
+            case SUPPORTED:
+                iceboxAvailability = getString(R.string.icebox_available);
+                break;
+            case NOT_INSTALLED:
+                iceboxAvailability = getString(R.string.icebox_not_installed);
+                break;
+            case NOT_DEVICE_OWNER:
+                iceboxAvailability = getString(R.string.icebox_available);
+                break;
+            default:
+                iceboxAvailability = getString(R.string.icebox_not_supported);
+        }
+
         new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.about))
-                .setMessage(String.format(getString(R.string.app_about), appVersionName))
+                .setMessage(String.format(getString(R.string.app_about), appVersionName, iceboxAvailability))
                 .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }

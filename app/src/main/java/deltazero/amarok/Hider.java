@@ -12,10 +12,10 @@ import com.catchingnow.icebox.sdk_client.IceBox;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.HashSet;
 import java.util.Set;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.catchingnow.icebox.sdk_client.IceBox.SilentInstallSupport.SUPPORTED;
 
 public class Hider {
 
@@ -49,7 +49,7 @@ public class Hider {
         }
 
         Set<String> hidePkgNamesArr = getHidePkgNames();
-        if (hidePkgNamesArr != null) {
+        if (IceBox.querySupportSilentInstall(context) == SUPPORTED && hidePkgNamesArr != null) {
             hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
             mBackgroundHandler.post(() -> {
                 IceBox.setAppEnabledSettings(context, false, hidePkgNames);
@@ -70,7 +70,7 @@ public class Hider {
         }
 
         Set<String> hidePkgNamesArr = getHidePkgNames();
-        if (hidePkgNamesArr != null) {
+        if (IceBox.querySupportSilentInstall(context) == SUPPORTED && hidePkgNamesArr != null){
             hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
             mBackgroundHandler.post(() -> {
                 IceBox.setAppEnabledSettings(context, true, hidePkgNames);
@@ -98,7 +98,7 @@ public class Hider {
     }
 
     public Set<String> getHidePkgNames() {
-        return mPrefs.getStringSet("hidePkgNames", new HashSet<String>());
+        return mPrefs.getStringSet("hidePkgNames", null);
     }
 
     public void setHidePkgNames(Set<String> pkgNames) {
