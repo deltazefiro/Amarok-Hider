@@ -221,7 +221,7 @@ import static java.nio.charset.StandardCharsets.US_ASCII;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 /**
- * Base85 encoder&decoder from https://github.com/Sheep-y/Base85/blob/master/LICENSE
+ * Base85 encoder&decoder from https://github.com/Sheep-y/Base85/
  * (f14b0e9 on 17 Jan 2019)
  *
  * Example: <br>
