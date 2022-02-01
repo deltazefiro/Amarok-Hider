@@ -107,6 +107,8 @@ public class Hider {
             mPrefEditor.commit();
         } else {
             mPrefEditor.putStringSet("hidePkgNames", pkgNames);
+            mPrefEditor.commit();
+            Log.i(TAG, "Set Hide App: " + pkgNames.toString());
         }
     }
 

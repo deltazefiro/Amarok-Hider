@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -106,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
         updateUi(false);
     }
 
-    public void buttonApps(View view) {
+    public void buttonSetHideApps(View view) {
 
         if (!hider.getIsNight()) {
             Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
@@ -130,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up the etInput
         final EditText etInput = new EditText(this);
-        etInput.setText(String.join("\n", hider.getHidePkgNames()));
+        Set<String> originalPkgNames = hider.getHidePkgNames();
+        etInput.setText(String.join("\n", (originalPkgNames != null ? originalPkgNames : new HashSet<String>())));
         etInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.get_app_names_title))
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void buttonAbout(View view) {
+    public void buttonShowAbout(View view) {
 
         String iceboxAvailability;
         switch (IceBox.querySupportSilentInstall(this)) {
@@ -158,7 +159,7 @@ public class MainActivity extends AppCompatActivity {
                 iceboxAvailability = getString(R.string.icebox_not_installed);
                 break;
             case NOT_DEVICE_OWNER:
-                iceboxAvailability = getString(R.string.icebox_available);
+                iceboxAvailability = getString(R.string.icebox_not_active);
                 break;
             default:
                 iceboxAvailability = getString(R.string.icebox_not_supported);
@@ -171,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void buttonEncodeFile(View view) {
+    public void buttonSetEncodeFile(View view) {
 
         if (!hider.getIsNight()) {
             Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
