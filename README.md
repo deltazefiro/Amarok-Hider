@@ -1,5 +1,5 @@
 # Amarok-Hider
-Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护的Android应用程序。  
+Amaork 是一个通过 加密文件**名**、隐藏指定App 以用于隐私保护的Android应用程序。  
 **<u>请注意：Amaork 并非加密程序，而只是隐藏程序！请勿使用 Amaork 保护重要文件！</u>**
 
 
@@ -24,18 +24,18 @@ Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护�
 安装
 
 1. 下载 [冰箱icebox](https://coolapk.com/apk/com.catchingnow.icebox)，并根据[指引](http://iceboxdoc.catchingnow.com/)激活冰箱
-2. [从GithubRelease下载Amarok](https://github.com/233a344a455/Amarok-Hider/releases) 并安装**（为了隐私保护，安装后 Amarok 不会在应用启动器 (桌面) 中出现）**
+2. [从GithubRelease下载Amarok](https://github.com/233a344a455/Amarok-Hider/releases) 并安装 **（安装后 Amarok 不会在应用启动器，即桌面，中显示）**
 3. 打开 控制中心 (QuickSettingsPanel，一般通过从屏幕顶部下滑打开)
 4. 编辑控制中心中的开关，将 Amarok 添加到控制中心
 5. 长按控制中心中 Amarok 开关，跳转进入 Amarok 主界面
-6. 授予 `Amarok 储存` 和 `冰箱Icebox` 权限
+6. 授予 Amarok `写入内部储存` 和 `冰箱Icebox` 权限
 
 
 
 配置
 
-- 点击 `ENCODE FILE`  设置加密文件夹位置
-- 点击 `HIDE APP` 输入需要隐藏的App包名称
+- 点击 `SET ENCODE FILE`  设置加密文件夹位置
+- 点击 `SET HIDE APP` 输入需要隐藏的App包名称 **需要安装 Icebox冰箱**
 
 
 
@@ -57,7 +57,7 @@ Amaork 是一个通过 加密文件名、隐藏指定App 以用于隐私保护�
 ### 感谢
 
 - [heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License
-- [Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE)
+- [Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License
 
 
 
