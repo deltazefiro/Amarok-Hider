@@ -116,8 +116,8 @@
                     android:layout_marginHorizontal="42sp"
                     android:layout_marginTop="20dp"
                     android:gravity="start|center_vertical"
-                    android:onClick="buttonEncodeFile"
-                    android:text="ENCODE FILE "
+                    android:onClick="buttonSetEncodeFile"
+                    android:text="SET ENCODE FILES "
                     app:icon="@drawable/ic_folder"
                     app:iconPadding="15dp" />
 
@@ -128,8 +128,8 @@
                     android:layout_marginHorizontal="42sp"
                     android:layout_marginTop="5dp"
                     android:gravity="start|center_vertical"
-                    android:onClick="buttonApps"
-                    android:text="HIDE APPS"
+                    android:onClick="buttonSetHideApps"
+                    android:text="SET HIDE APPS"
                     app:icon="@drawable/ic_hideapp"
                     app:iconPadding="15dp" />
 
@@ -140,8 +140,8 @@
                     android:layout_marginHorizontal="42sp"
                     android:layout_marginTop="5dp"
                     android:gravity="start|center_vertical"
-                    android:onClick="buttonAbout"
-                    android:text="ABOUT"
+                    android:onClick="buttonShowAbout"
+                    android:text="SHOW ABOUT"
                     app:icon="@drawable/ic_about"
                     app:iconPadding="15dp" />
 

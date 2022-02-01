@@ -6,7 +6,7 @@
     <string name="night_status">Night</string>
     <string name="day_info">Secrets never emerge under the sun.</string>
     <string name="night_info">The veil of night has fallen.</string>
-    <string name="app_about">\nAmarok (deltazero.amarok) by @DeltaZero\n\n
+    <string name="app_about">\nAmarok by @DeltaZero\n\n
         [AppVersion] %s\n\n
         [Availability] %s\n\n
         [Info] Amarok: A simple android app for private file and app hiding.\n\n
