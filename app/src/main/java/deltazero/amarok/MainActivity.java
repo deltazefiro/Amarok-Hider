@@ -27,6 +27,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import static deltazero.amarok.Utils.getIceboxAvailability;
+
 public class MainActivity extends AppCompatActivity {
 
     public final static String TAG = "Main";
@@ -115,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Check Icebox availability
-        switch (IceBox.querySupportSilentInstall(this)) {
+        switch (getIceboxAvailability(this)) {
             case SUPPORTED:
                 break;
             case NOT_INSTALLED:
@@ -151,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     public void buttonShowAbout(View view) {
 
         String iceboxAvailability;
-        switch (IceBox.querySupportSilentInstall(this)) {
+        switch (getIceboxAvailability(this)) {
             case SUPPORTED:
                 iceboxAvailability = getString(R.string.icebox_available);
                 break;
