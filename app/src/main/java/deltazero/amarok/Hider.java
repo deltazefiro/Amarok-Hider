@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import com.catchingnow.icebox.sdk_client.IceBox;
 
-import java.io.Serializable;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
@@ -22,12 +21,10 @@ import static deltazero.amarok.Utils.getIceboxAvailability;
 public class Hider {
 
     public static final String TAG = "Hider";
-
-    public Context context;
     private final Handler mBackgroundHandler;
     private final SharedPreferences mPrefs;
     private final SharedPreferences.Editor mPrefEditor;
-
+    public Context context;
     public Path encodePath;
     public String[] hidePkgNames;
 
@@ -54,9 +51,7 @@ public class Hider {
         Set<String> hidePkgNamesArr = getHidePkgNames();
         if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
             hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
-            mBackgroundHandler.post(() -> {
-                IceBox.setAppEnabledSettings(context, false, hidePkgNames);
-            });
+            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, false, hidePkgNames));
         }
 
         setIsNight(false);
@@ -73,11 +68,9 @@ public class Hider {
         }
 
         Set<String> hidePkgNamesArr = getHidePkgNames();
-        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null){
+        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
             hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
-            mBackgroundHandler.post(() -> {
-                IceBox.setAppEnabledSettings(context, true, hidePkgNames);
-            });
+            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, true, hidePkgNames));
         }
 
         setIsNight(true);
