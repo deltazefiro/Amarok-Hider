@@ -275,19 +275,17 @@ public class Base85 {
     }
 
     public static void main(String[] args) {
-      /*
-      System.out.println( e.encode( "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstu" ) );
-      System.out.println( e.encode( "測試中" ) );
-      System.out.println( e.encode( "اختبارات" ) );
-      System.out.println( e.encode( "A" ) );
-      System.out.println( e.encode( "AB" ) );
-      System.out.println( e.encode( "ABC" ) );
-      System.out.println( e.encode( "ABCD" ) );
-      System.out.println( e.encode( "ABCDE" ) );
-      System.out.println( e.encode( "ABCDEF" ) );
-      System.out.println( e.encode( "ABCDEFG" ) );
-      System.out.println( e.encode( "ABCDEFGH" ) );
-      */
+//      System.out.println( e.encode( "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstu" ) );
+//      System.out.println( e.encode( "測試中" ) );
+//      System.out.println( e.encode( "اختبارات" ) );
+//      System.out.println( e.encode( "A" ) );
+//      System.out.println( e.encode( "AB" ) );
+//      System.out.println( e.encode( "ABC" ) );
+//      System.out.println( e.encode( "ABCD" ) );
+//      System.out.println( e.encode( "ABCDE" ) );
+//      System.out.println( e.encode( "ABCDEF" ) );
+//      System.out.println( e.encode( "ABCDEFG" ) );
+//      System.out.println( e.encode( "ABCDEFGH" ) );
     }
 
     /**

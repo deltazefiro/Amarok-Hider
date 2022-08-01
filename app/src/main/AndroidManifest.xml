@@ -17,8 +17,11 @@
     <uses-feature
         android:name="android.software.leanback"
         android:required="true" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
 
-    <uses-permission android:name="com.catchingnow.icebox.SDK" />
+<!--    <uses-permission android:name="com.catchingnow.icebox.SDK" />-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,11 +31,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amarok.night"
         tools:ignore="AllowBackup,MissingTvBanner">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
-                <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+                <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
         </activity>
@@ -41,18 +45,20 @@
             android:name=".QuickSettingService"
             android:icon="@drawable/ic_tile"
             android:label="@string/app_name"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:exported="true">
 
-            <intent-filter>
+            <intent-filter
+                android:exported="true">
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
 
     </application>
 
-    <queries>
-        <!-- For Android 11 -->
-        <package android:name="com.catchingnow.icebox"/>
-    </queries>
+<!--    <queries>-->
+<!--        &lt;!&ndash; For Android 11 &ndash;&gt;-->
+<!--        <package android:name="com.catchingnow.icebox" />-->
+<!--    </queries>-->
 
 </manifest>

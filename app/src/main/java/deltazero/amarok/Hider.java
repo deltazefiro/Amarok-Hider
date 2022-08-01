@@ -1,27 +1,23 @@
 package deltazero.amarok;
 
-import android.annotation.SuppressLint;
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Handler;
-import android.os.HandlerThread;
+import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.catchingnow.icebox.sdk_client.IceBox;
+import androidx.documentfile.provider.DocumentFile;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Set;
-
-import static android.content.Context.MODE_PRIVATE;
-import static com.catchingnow.icebox.sdk_client.IceBox.SilentInstallSupport.SUPPORTED;
-import static deltazero.amarok.Utils.getIceboxAvailability;
+//import static deltazero.amarok.Utils.getIceboxAvailability;
 
 public class Hider {
 
     public static final String TAG = "Hider";
-    private final Handler mBackgroundHandler;
+    //    private final Handler mBackgroundHandler;
     private final SharedPreferences mPrefs;
     private final SharedPreferences.Editor mPrefEditor;
     public Context context;
@@ -29,67 +25,79 @@ public class Hider {
     public String[] hidePkgNames;
 
 
-    @SuppressLint("CommitPrefEdits")
     public Hider(Context context) {
         this.context = context;
-        HandlerThread backgroundThread = new HandlerThread("BACKGROUND_THREAD");
-        backgroundThread.start();
-        mBackgroundHandler = new Handler(backgroundThread.getLooper());
+//        HandlerThread backgroundThread = new HandlerThread("BACKGROUND_THREAD");
+//        backgroundThread.start();
+//        mBackgroundHandler = new Handler(backgroundThread.getLooper());
 
         mPrefs = context.getSharedPreferences("deltazero.amarok.prefs", MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
     }
 
-    public void dawn() {
+    @SuppressWarnings("ConstantConditions")
+    public void hide() {
 
+        // Encode files
         String encodePathStr = mPrefs.getString("encodePath", null);
         if (encodePathStr != null) {
-            encodePath = Paths.get(encodePathStr);
-            FileProcessor.process(encodePath, FileProcessor.ProcessMethod.ENCODE);
+            FileEncoder.processFileTree(DocumentFile.fromTreeUri(context, Uri.parse(encodePathStr)),
+                    FileEncoder.ProcessMode.ENCODE, true);
+        } else {
+            Log.d(TAG, "No encode path, skipped file encoding.");
         }
 
-        Set<String> hidePkgNamesArr = getHidePkgNames();
-        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
-            hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
-            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, false, hidePkgNames));
-        }
+//        // Disable apps
+//        Set<String> hidePkgNamesArr = getHidePkgNames();
+//        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
+//            hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
+//            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, false, hidePkgNames));
+//        }
 
-        setIsNight(false);
+        setIsHidden(false);
 
         Log.i(TAG, "Dusk to Dawn! Goodmorning ~");
         Toast.makeText(context, "Cock-a-doodle-do~ Morning!", Toast.LENGTH_SHORT).show();
     }
 
-    public void dusk() {
+    @SuppressWarnings("ConstantConditions")
+    public void unhide() {
+
+        // Decode files
         String encodePathStr = mPrefs.getString("encodePath", null);
         if (encodePathStr != null) {
-            encodePath = Paths.get(encodePathStr);
-            FileProcessor.process(encodePath, FileProcessor.ProcessMethod.DECODE);
+            FileEncoder.processFileTree(DocumentFile.fromTreeUri(context, Uri.parse(encodePathStr)),
+                    FileEncoder.ProcessMode.DECODE, true);
+        } else {
+            Log.d(TAG, "No encode path, skipped file encoding.");
         }
 
-        Set<String> hidePkgNamesArr = getHidePkgNames();
-        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
-            hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
-            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, true, hidePkgNames));
-        }
+//        // Enable apps
+//        Set<String> hidePkgNamesArr = getHidePkgNames();
+//        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
+//            hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
+//            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, true, hidePkgNames));
+//        }
 
-        setIsNight(true);
+        setIsHidden(true);
 
         Log.i(TAG, "Dusk to Dusk! Night has come!");
         Toast.makeText(context, "Hoooooooooo! Night falls!", Toast.LENGTH_SHORT).show();
     }
 
-    public void setEncodePath(String path) {
-        mPrefEditor.putString("encodePath", path);
+    // Configure
+
+    public void setEncodePath(Uri uri) {
+        mPrefEditor.putString("encodePath", uri.toString());
         mPrefEditor.commit();
     }
 
-    public boolean getIsNight() {
-        return mPrefs.getBoolean("isNight", true);
+    public boolean getIsHidden() {
+        return mPrefs.getBoolean("isHidden", true);
     }
 
-    public void setIsNight(boolean isNight) {
-        mPrefEditor.putBoolean("isNight", isNight);
+    public void setIsHidden(boolean isHidden) {
+        mPrefEditor.putBoolean("isHidden", isHidden);
         mPrefEditor.commit();
     }
 
