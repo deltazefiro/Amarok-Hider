@@ -1,11 +1,10 @@
 package deltazero.amarok;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -13,36 +12,38 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.catchingnow.icebox.sdk_client.IceBox;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import static deltazero.amarok.Utils.getIceboxAvailability;
+//import static deltazero.amarok.Utils.getIceboxAvailability;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static String TAG = "Main";
-    private static final int PICK_PATH_RESULT_CODE = 1;
+
     public Hider hider;
     private MaterialButton btPrimary, btSecondary;
     private TextView tvStatusInfo, tvStatus;
     private String appVersionName;
 
+    private ActivityResultLauncher<Uri> mDirRequest;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         hider = new Hider(this);
-        if (hider.getIsNight()) {
+        if (hider.getIsHidden()) {
             this.setTheme(R.style.Theme_Amarok_night);
         } else {
             this.setTheme(R.style.Theme_Amarok_day);
@@ -63,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             appVersionName = this.getPackageManager()
                     .getPackageInfo(this.getPackageName(), PackageManager.GET_ACTIVITIES).versionName;
         } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
             // Make compiler happy
         }
 
@@ -73,63 +73,66 @@ public class MainActivity extends AppCompatActivity {
             Log.w(TAG, "No WRITE_EXTERNAL_STORAGE permission. Requesting...");
             listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
-        if (checkSelfPermission(IceBox.SDK_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "No IceBox permission. Requesting...");
-            listPermissionsNeeded.add(IceBox.SDK_PERMISSION);
-        }
+//        if (checkSelfPermission(IceBox.SDK_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
+//            Log.w(TAG, "No IceBox permission. Requesting...");
+//            listPermissionsNeeded.add(IceBox.SDK_PERMISSION);
+//        }
 
         if (!listPermissionsNeeded.isEmpty())
             ActivityCompat.requestPermissions(this,
                     listPermissionsNeeded.toArray(new String[0]), 100);
-    }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent resultData) {
-        super.onActivityResult(requestCode, resultCode, resultData);
-        switch (requestCode) {
-            case PICK_PATH_RESULT_CODE:
-                if (resultCode == Activity.RESULT_OK && resultData != null) {
-                    File file = new File(resultData.getData().getPath());
-                    String path = Environment.getExternalStorageDirectory() + "/" + file.getPath().split(":")[1];
-                    hider.setEncodePath(path);
-                    Log.i(TAG, "Set encode path: " + path);
-                    Toast.makeText(this, "Set encode path: " + path, Toast.LENGTH_SHORT).show();
+        // Register file-picker result handler
+        mDirRequest = registerForActivityResult(
+                new ActivityResultContracts.OpenDocumentTree(),
+                uri -> {
+                    if (uri != null) {
+                        // call this to persist permission across device reboots
+                        getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+
+                        // set hide path
+                        hider.setEncodePath(uri);
+                        Log.i(TAG, "Set encode path: " + uri.toString());
+                        Toast.makeText(this, "Set encode path: " + uri.toString(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        // request denied by user
+                        Log.i(TAG, "Set encode path cancelled");
+                    }
                 }
-                break;
-        }
+        );
     }
 
     public void buttonDusk(View view) {
-        hider.dusk();
+        hider.unhide();
         updateUi(false);
     }
 
     public void buttonDawn(View view) {
-        hider.dawn();
+        hider.hide();
         updateUi(false);
     }
 
     public void buttonSetHideApps(View view) {
 
-        if (!hider.getIsNight()) {
+        if (!hider.getIsHidden()) {
             Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Check Icebox availability
-        switch (getIceboxAvailability(this)) {
-            case SUPPORTED:
-                break;
-            case NOT_INSTALLED:
-                Toast.makeText(this, R.string.icebox_not_installed, Toast.LENGTH_LONG).show();
-                return;
-            case NOT_DEVICE_OWNER:
-                Toast.makeText(this, R.string.icebox_not_active, Toast.LENGTH_LONG).show();
-                return;
-            default:
-                Toast.makeText(this, R.string.icebox_not_supported, Toast.LENGTH_LONG).show();
-                return;
-        }
+//        // Check Icebox availability
+//        switch (getIceboxAvailability(this)) {
+//            case SUPPORTED:
+//                break;
+//            case NOT_INSTALLED:
+//                Toast.makeText(this, R.string.icebox_not_installed, Toast.LENGTH_LONG).show();
+//                return;
+//            case NOT_DEVICE_OWNER:
+//                Toast.makeText(this, R.string.icebox_not_active, Toast.LENGTH_LONG).show();
+//                return;
+//            default:
+//                Toast.makeText(this, R.string.icebox_not_supported, Toast.LENGTH_LONG).show();
+//                return;
+//        }
 
         // Set up the etInput
         final EditText etInput = new EditText(this);
@@ -153,19 +156,21 @@ public class MainActivity extends AppCompatActivity {
     public void buttonShowAbout(View view) {
 
         String iceboxAvailability;
-        switch (getIceboxAvailability(this)) {
-            case SUPPORTED:
-                iceboxAvailability = getString(R.string.icebox_available);
-                break;
-            case NOT_INSTALLED:
-                iceboxAvailability = getString(R.string.icebox_not_installed);
-                break;
-            case NOT_DEVICE_OWNER:
-                iceboxAvailability = getString(R.string.icebox_not_active);
-                break;
-            default:
-                iceboxAvailability = getString(R.string.icebox_not_supported);
-        }
+        iceboxAvailability = getString(R.string.icebox_not_supported);
+
+//        switch (getIceboxAvailability(this)) {
+//            case SUPPORTED:
+//                iceboxAvailability = getString(R.string.icebox_available);
+//                break;
+//            case NOT_INSTALLED:
+//                iceboxAvailability = getString(R.string.icebox_not_installed);
+//                break;
+//            case NOT_DEVICE_OWNER:
+//                iceboxAvailability = getString(R.string.icebox_not_active);
+//                break;
+//            default:
+//                iceboxAvailability = getString(R.string.icebox_not_supported);
+//        }
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.about))
@@ -176,13 +181,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonSetEncodeFile(View view) {
 
-        if (!hider.getIsNight()) {
+        if (!hider.getIsHidden()) {
             Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
             return;
         }
-
-        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT_TREE);
-        startActivityForResult(intent, PICK_PATH_RESULT_CODE);
+        mDirRequest.launch(null);
     }
 
 
@@ -190,14 +193,14 @@ public class MainActivity extends AppCompatActivity {
 
         if (!isInitializing) {
             boolean uiIsNight = (tvStatus.getText() == getText(R.string.night_status));
-            if (hider.getIsNight() != uiIsNight) {
+            if (hider.getIsHidden() != uiIsNight) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         }
 
-        if (hider.getIsNight()) {
+        if (hider.getIsHidden()) {
             // Night
 
             btPrimary.setText(getText(R.string.dawn));
@@ -209,7 +212,7 @@ public class MainActivity extends AppCompatActivity {
             tvStatusInfo.setText(getText(R.string.night_info));
         }
 
-        if (!hider.getIsNight()) {
+        if (!hider.getIsHidden()) {
             // Day
 
             btPrimary.setText(getText(R.string.dusk));

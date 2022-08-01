@@ -14,7 +14,7 @@ public class QuickSettingService extends TileService {
     public void onStartListening() {
         tile = getQsTile();
         hider = new Hider(this);
-        if (hider.getIsNight()) {
+        if (hider.getIsHidden()) {
             tile.setState(Tile.STATE_ACTIVE);
         } else {
             tile.setState(Tile.STATE_INACTIVE);
@@ -26,10 +26,10 @@ public class QuickSettingService extends TileService {
     public void onClick() {
         Log.d(TAG, "QS tile is clicked!");
         if (tile.getState() == Tile.STATE_ACTIVE) {
-            hider.dawn();
+            hider.hide();
             tile.setState(Tile.STATE_INACTIVE);
         } else {
-            hider.dusk();
+            hider.unhide();
             tile.setState(Tile.STATE_ACTIVE);
         }
         tile.updateTile();
