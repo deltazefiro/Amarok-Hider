@@ -4,13 +4,11 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
-import androidx.documentfile.provider.DocumentFile;
-
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Set;
 //import static deltazero.amarok.Utils.getIceboxAvailability;
 
@@ -41,8 +39,8 @@ public class Hider {
         // Encode files
         String encodePathStr = mPrefs.getString("encodePath", null);
         if (encodePathStr != null) {
-            FileEncoder.processFileTree(DocumentFile.fromTreeUri(context, Uri.parse(encodePathStr)),
-                    FileEncoder.ProcessMode.ENCODE, true);
+            encodePath = Paths.get(encodePathStr);
+            FilenameEncoder.process(encodePath, FilenameEncoder.ProcessMethod.ENCODE);
         } else {
             Log.d(TAG, "No encode path, skipped file encoding.");
         }
@@ -66,10 +64,10 @@ public class Hider {
         // Decode files
         String encodePathStr = mPrefs.getString("encodePath", null);
         if (encodePathStr != null) {
-            FileEncoder.processFileTree(DocumentFile.fromTreeUri(context, Uri.parse(encodePathStr)),
-                    FileEncoder.ProcessMode.DECODE, true);
+            encodePath = Paths.get(encodePathStr);
+            FilenameEncoder.process(encodePath, FilenameEncoder.ProcessMethod.DECODE);
         } else {
-            Log.d(TAG, "No encode path, skipped file encoding.");
+            Log.d(TAG, "No encode path, skipped file decoding.");
         }
 
 //        // Enable apps
@@ -85,10 +83,8 @@ public class Hider {
         Toast.makeText(context, "Hoooooooooo! Night falls!", Toast.LENGTH_SHORT).show();
     }
 
-    // Configure
-
-    public void setEncodePath(Uri uri) {
-        mPrefEditor.putString("encodePath", uri.toString());
+    public void setEncodePath(String path) {
+        mPrefEditor.putString("encodePath", path);
         mPrefEditor.commit();
     }
 

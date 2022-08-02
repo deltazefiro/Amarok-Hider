@@ -1,10 +1,11 @@
-package deltazero.amarok;
+package deltazero.amarok.ui;
 
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,9 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import deltazero.amarok.Hider;
+import deltazero.amarok.R;
 
 //import static deltazero.amarok.Utils.getIceboxAvailability;
 
@@ -69,9 +73,9 @@ public class MainActivity extends AppCompatActivity {
 
         // Check Permissions
         List<String> listPermissionsNeeded = new ArrayList<>();
-        if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "No WRITE_EXTERNAL_STORAGE permission. Requesting...");
-            listPermissionsNeeded.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (checkSelfPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            Log.w(TAG, "No MANAGE_EXTERNAL_STORAGE permission. Requesting...");
+            listPermissionsNeeded.add(Manifest.permission.MANAGE_EXTERNAL_STORAGE);
         }
 //        if (checkSelfPermission(IceBox.SDK_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
 //            Log.w(TAG, "No IceBox permission. Requesting...");
@@ -88,12 +92,15 @@ public class MainActivity extends AppCompatActivity {
                 uri -> {
                     if (uri != null) {
                         // call this to persist permission across device reboots
-                        getContentResolver().takePersistableUriPermission(uri, Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+                        getContentResolver().takePersistableUriPermission(uri,
+                                Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
                         // set hide path
-                        hider.setEncodePath(uri);
-                        Log.i(TAG, "Set encode path: " + uri.toString());
-                        Toast.makeText(this, "Set encode path: " + uri.toString(), Toast.LENGTH_SHORT).show();
+                        String path = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
+                        hider.setEncodePath(path);
+                        Log.i(TAG, "Set encode path: " + path);
+                        Toast.makeText(this, "Set encode path: " + path, Toast.LENGTH_SHORT).show();
+
                     } else {
                         // request denied by user
                         Log.i(TAG, "Set encode path cancelled");
