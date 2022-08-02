@@ -10,7 +10,7 @@
         [AppVersion] %s\n\n
         [Availability] %s\n\n
         [Info] Amarok: A simple android app for private file and app hiding.\n\n
-        [Repo] https://github.com/233a344a455/Amarok-Hider\n\n
+        [Repo] https://github.com/deltazefiro/Amarok-Hider\n\n
         Copyright 2022 DeltaZero, Licensed under Apache-2.0\n</string>
     <string name="ok">OK</string>
     <string name="about">About</string>
@@ -21,5 +21,8 @@
     <string name="icebox_not_installed">HideApp not available: Icebox not installed</string>
     <string name="icebox_not_active">HideApp not available: Icebox inactive</string>
     <string name="icebox_not_supported">HideApp not available: Icebox not supported</string>
-    <string name="icebox_available">HideApp availble</string>
+    <string name="icebox_available">HideApp available</string>
+    <string name="storage_permission_request_title">Storage permission required</string>
+    <string name="storage_permission_request_message">Amarok needs external storage access to hide your files.</string>
+    <string name="storage_permission_denied">Storage permission denied. File hiding is unavailable</string>
 </resources>

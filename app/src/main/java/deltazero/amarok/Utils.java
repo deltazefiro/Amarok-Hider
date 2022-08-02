@@ -1,23 +1,51 @@
 package deltazero.amarok;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.os.Build.VERSION.SDK_INT;
-
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.provider.Settings;
+import android.util.Log;
+import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
+
+import java.util.List;
 
 //import com.catchingnow.icebox.sdk_client.IceBox;
 
 public class Utils {
+    public static void requestStoragePermission(Context context) {
+        if (XXPermissions.isGranted(context, Permission.MANAGE_EXTERNAL_STORAGE))
+            return;
+
+        new MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.storage_permission_request_title)
+                .setMessage(R.string.storage_permission_request_message)
+                .setPositiveButton("OK", (dialog, which) -> {
+
+                    // Request permissions
+                    XXPermissions.with(context)
+                            .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                            .request(new OnPermissionCallback() {
+                                @Override
+                                public void onGranted(List<String> permissions, boolean all) {
+                                    Log.d("Permission", "Granted: MANAGE_EXTERNAL_STORAGE");
+                                }
+
+                                @Override
+                                public void onDenied(List<String> permissions, boolean never) {
+                                    Log.w("Permission", "User denied: MANAGE_EXTERNAL_STORAGE");
+                                    Toast.makeText(context, R.string.storage_permission_denied, Toast.LENGTH_LONG).show();
+                                }
+                            });
+
+                })
+                .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel())
+                .show();
+
+
+    }
+
 //
 //    private static int PERMISSION_REQUEST_CODE = 100;
 //

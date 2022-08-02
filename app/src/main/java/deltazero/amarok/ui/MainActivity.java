@@ -1,6 +1,5 @@
 package deltazero.amarok.ui;
 
-import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -16,21 +15,21 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.hjq.permissions.Permission;
+import com.hjq.permissions.XXPermissions;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import deltazero.amarok.Hider;
 import deltazero.amarok.R;
+import deltazero.amarok.Utils;
 
-//import static deltazero.amarok.Utils.getIceboxAvailability;
+// import static deltazero.amarok.Utils.getIceboxAvailability;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,20 +70,8 @@ public class MainActivity extends AppCompatActivity {
             // Make compiler happy
         }
 
-        // Check Permissions
-        List<String> listPermissionsNeeded = new ArrayList<>();
-        if (checkSelfPermission(Manifest.permission.MANAGE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            Log.w(TAG, "No MANAGE_EXTERNAL_STORAGE permission. Requesting...");
-            listPermissionsNeeded.add(Manifest.permission.MANAGE_EXTERNAL_STORAGE);
-        }
-//        if (checkSelfPermission(IceBox.SDK_PERMISSION) != PackageManager.PERMISSION_GRANTED) {
-//            Log.w(TAG, "No IceBox permission. Requesting...");
-//            listPermissionsNeeded.add(IceBox.SDK_PERMISSION);
-//        }
-
-        if (!listPermissionsNeeded.isEmpty())
-            ActivityCompat.requestPermissions(this,
-                    listPermissionsNeeded.toArray(new String[0]), 100);
+        // Process Permissions
+        Utils.requestStoragePermission(this);
 
         // Register file-picker result handler
         mDirRequest = registerForActivityResult(
@@ -107,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
     }
 
     public void buttonDusk(View view) {
@@ -187,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void buttonSetEncodeFile(View view) {
+
+        if (!XXPermissions.isGranted(this, Permission.MANAGE_EXTERNAL_STORAGE)) {
+            Toast.makeText(this, R.string.storage_permission_denied, Toast.LENGTH_LONG).show();
+            return;
+        }
 
         if (!hider.getIsHidden()) {
             Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();

@@ -13,8 +13,8 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
-public class FilenameEncoder {
-    private final static String TAG = "NameEncoder";
+public class FileHider {
+    private final static String TAG = "FileHider";
     private final static String ENCODED_TAG = "[AMAROK]";
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
 
@@ -62,6 +62,12 @@ public class FilenameEncoder {
     }
 
     public static void process(Path targetDir, ProcessMethod processMethod) {
+        /*
+        Use Base64 to encode the filename, making filename unreadable.
+        TODO: 1.Handle long filename that invalid to android after Base64 encode
+              2.Insert random binary to the head of files to make them unreadable
+         */
+
         Log.d(TAG, "Applying hider to: " + targetDir);
 
         try {
