@@ -40,7 +40,7 @@ public class Hider {
         String encodePathStr = mPrefs.getString("encodePath", null);
         if (encodePathStr != null) {
             encodePath = Paths.get(encodePathStr);
-            FilenameEncoder.process(encodePath, FilenameEncoder.ProcessMethod.ENCODE);
+            FileHider.process(encodePath, FileHider.ProcessMethod.ENCODE);
         } else {
             Log.d(TAG, "No encode path, skipped file encoding.");
         }
@@ -65,7 +65,7 @@ public class Hider {
         String encodePathStr = mPrefs.getString("encodePath", null);
         if (encodePathStr != null) {
             encodePath = Paths.get(encodePathStr);
-            FilenameEncoder.process(encodePath, FilenameEncoder.ProcessMethod.DECODE);
+            FileHider.process(encodePath, FileHider.ProcessMethod.DECODE);
         } else {
             Log.d(TAG, "No encode path, skipped file decoding.");
         }
