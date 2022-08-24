@@ -10,7 +10,6 @@ import android.widget.Toast;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Set;
-//import static deltazero.amarok.Utils.getIceboxAvailability;
 
 public class Hider {
 
@@ -18,6 +17,7 @@ public class Hider {
     //    private final Handler mBackgroundHandler;
     private final SharedPreferences mPrefs;
     private final SharedPreferences.Editor mPrefEditor;
+    public AppHider appHider;
     public Context context;
     public Path encodePath;
     public String[] hidePkgNames;
@@ -31,9 +31,9 @@ public class Hider {
 
         mPrefs = context.getSharedPreferences("deltazero.amarok.prefs", MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
+        appHider = new AppHider(new AppHider.RootMode());
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void hide() {
 
         // Encode files
@@ -45,12 +45,15 @@ public class Hider {
             Log.d(TAG, "No encode path, skipped file encoding.");
         }
 
-//        // Disable apps
-//        Set<String> hidePkgNamesArr = getHidePkgNames();
-//        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
-//            hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
-//            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, false, hidePkgNames));
-//        }
+        // Hide apps
+        Set<String> pkgNames = getHidePkgNames();
+        if (pkgNames != null) {
+            if (appHider.isAvailable) {
+                appHider.hide(pkgNames);
+            } else {
+                Toast.makeText(context, "App hide not available", Toast.LENGTH_SHORT).show();
+            }
+        }
 
         setIsHidden(false);
 
@@ -58,7 +61,6 @@ public class Hider {
         Toast.makeText(context, "Cock-a-doodle-do~ Morning!", Toast.LENGTH_SHORT).show();
     }
 
-    @SuppressWarnings("ConstantConditions")
     public void unhide() {
 
         // Decode files
@@ -70,12 +72,15 @@ public class Hider {
             Log.d(TAG, "No encode path, skipped file decoding.");
         }
 
-//        // Enable apps
-//        Set<String> hidePkgNamesArr = getHidePkgNames();
-//        if (getIceboxAvailability(context) == SUPPORTED && hidePkgNamesArr != null) {
-//            hidePkgNames = hidePkgNamesArr.toArray(new String[0]);
-//            mBackgroundHandler.post(() -> IceBox.setAppEnabledSettings(context, true, hidePkgNames));
-//        }
+        // Enable apps
+        Set<String> pkgNames = getHidePkgNames();
+        if (pkgNames != null) {
+            if (appHider.isAvailable) {
+                appHider.unhide(pkgNames);
+            } else {
+                Toast.makeText(context, "App hide not available", Toast.LENGTH_SHORT).show();
+            }
+        }
 
         setIsHidden(true);
 

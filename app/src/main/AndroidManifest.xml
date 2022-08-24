@@ -29,7 +29,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amarok.night"
         tools:ignore="AllowBackup,MissingTvBanner">
-        <activity android:name=".ui.MainActivity"
+        <activity android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

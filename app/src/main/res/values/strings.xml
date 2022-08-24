@@ -6,9 +6,9 @@
     <string name="night_status">Night</string>
     <string name="day_info">Secrets never emerge under the sun.</string>
     <string name="night_info">The veil of night has fallen.</string>
-    <string name="app_about">\nAmarok by @DeltaZero\n\n
+    <string name="app_about">\nAmarok by @deltazefiro\n\n
         [AppVersion] %s\n\n
-        [Availability] %s\n\n
+        [HideAppAva.] %s\n\n
         [Info] Amarok: A simple android app for private file and app hiding.\n\n
         [Repo] https://github.com/deltazefiro/Amarok-Hider\n\n
         Copyright 2022 DeltaZero, Licensed under Apache-2.0\n</string>
