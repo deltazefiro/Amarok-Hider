@@ -1,4 +1,4 @@
-package deltazero.amarok;
+package deltazero.amarok.utils;
 
 import android.content.Context;
 import android.util.Log;
@@ -11,11 +11,12 @@ import com.hjq.permissions.XXPermissions;
 
 import java.util.List;
 
-//import com.catchingnow.icebox.sdk_client.IceBox;
+import deltazero.amarok.R;
 
-public class Utils {
+
+public class PermissionUtil {
     public static void requestStoragePermission(Context context) {
-        if (XXPermissions.isGranted(context, Permission.MANAGE_EXTERNAL_STORAGE))
+        if (XXPermissions.isGranted(context, com.hjq.permissions.Permission.MANAGE_EXTERNAL_STORAGE))
             return;
 
         new MaterialAlertDialogBuilder(context)
@@ -25,7 +26,7 @@ public class Utils {
 
                     // Request permissions
                     XXPermissions.with(context)
-                            .permission(Permission.MANAGE_EXTERNAL_STORAGE)
+                            .permission(com.hjq.permissions.Permission.MANAGE_EXTERNAL_STORAGE)
                             .request(new OnPermissionCallback() {
                                 @Override
                                 public void onGranted(List<String> permissions, boolean all) {

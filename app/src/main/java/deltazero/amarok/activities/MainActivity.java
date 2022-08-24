@@ -1,4 +1,4 @@
-package deltazero.amarok.ui;
+package deltazero.amarok.activities;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -18,7 +18,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 
 import java.util.Arrays;
@@ -27,7 +26,7 @@ import java.util.Set;
 
 import deltazero.amarok.Hider;
 import deltazero.amarok.R;
-import deltazero.amarok.Utils;
+import deltazero.amarok.utils.PermissionUtil;
 
 // import static deltazero.amarok.Utils.getIceboxAvailability;
 
@@ -71,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // Process Permissions
-        Utils.requestStoragePermission(this);
+        PermissionUtil.requestStoragePermission(this);
 
         // Register file-picker result handler
         mDirRequest = registerForActivityResult(
@@ -114,20 +113,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-//        // Check Icebox availability
-//        switch (getIceboxAvailability(this)) {
-//            case SUPPORTED:
-//                break;
-//            case NOT_INSTALLED:
-//                Toast.makeText(this, R.string.icebox_not_installed, Toast.LENGTH_LONG).show();
-//                return;
-//            case NOT_DEVICE_OWNER:
-//                Toast.makeText(this, R.string.icebox_not_active, Toast.LENGTH_LONG).show();
-//                return;
-//            default:
-//                Toast.makeText(this, R.string.icebox_not_supported, Toast.LENGTH_LONG).show();
-//                return;
-//        }
+        if (hider.appHider.checkAvailability()) {
+            Toast.makeText(this, "Available!", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "AppHider available");
+        } else {
+            Toast.makeText(this, "Not available!", Toast.LENGTH_LONG).show();
+            Log.i(TAG, "AppHider not available");
+        }
 
         // Set up the etInput
         final EditText etInput = new EditText(this);
@@ -150,33 +142,18 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonShowAbout(View view) {
 
-        String iceboxAvailability;
-        iceboxAvailability = getString(R.string.icebox_not_supported);
-
-//        switch (getIceboxAvailability(this)) {
-//            case SUPPORTED:
-//                iceboxAvailability = getString(R.string.icebox_available);
-//                break;
-//            case NOT_INSTALLED:
-//                iceboxAvailability = getString(R.string.icebox_not_installed);
-//                break;
-//            case NOT_DEVICE_OWNER:
-//                iceboxAvailability = getString(R.string.icebox_not_active);
-//                break;
-//            default:
-//                iceboxAvailability = getString(R.string.icebox_not_supported);
-//        }
+        String hideAppAva = hider.appHider.isAvailable ? "Available" : "Unavailable";
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.about))
-                .setMessage(String.format(getString(R.string.app_about), appVersionName, iceboxAvailability))
+                .setMessage(String.format(getString(R.string.app_about), appVersionName, hideAppAva))
                 .setPositiveButton(getString(R.string.ok), null)
                 .show();
     }
 
     public void buttonSetEncodeFile(View view) {
 
-        if (!XXPermissions.isGranted(this, Permission.MANAGE_EXTERNAL_STORAGE)) {
+        if (!XXPermissions.isGranted(this, com.hjq.permissions.Permission.MANAGE_EXTERNAL_STORAGE)) {
             Toast.makeText(this, R.string.storage_permission_denied, Toast.LENGTH_LONG).show();
             return;
         }
