@@ -1,20 +1,21 @@
 # Amarok-Hider
-Amaork 是一个通过 加密文件**名**、隐藏指定App 以用于隐私保护的Android应用程序。  
-**<u>请注意：Amaork 并非加密程序，而只是隐藏程序！请勿使用 Amaork 保护重要文件！</u>**
+Amarok 是一个通过 加密文件**名**、隐藏指定App 以用于隐私保护的Android应用程序。  
+**<u>请注意：Amarok 并非加密程序，而只是隐藏程序！请勿使用 Amarok 保护重要文件！</u>**
 
 
 
 ### 功能列表
 
-- 通过加密文件**名**使文件得以隐藏 (不加密内容)
-- 使用 [Icebox-SDK](https://github.com/heruoxin/IceBox-SDK) 隐藏指定程序
+- 混淆文件名隐藏文件
+- ~~使用 [Icebox-SDK](https://github.com/heruoxin/IceBox-SDK) 隐藏指定程序~~ **Android 11+ 不可用**
+- 使用 Root 隐藏应用程序
 - ...
 
 
 
 ### 截图
 
-![Screenshot](https://raw.githubusercontent.com/233a344a455/ImageHost/master/AmarokScreenshot.png)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/AmarokScreenshot.png)
 
 
 
@@ -28,7 +29,7 @@ Amaork 是一个通过 加密文件**名**、隐藏指定App 以用于隐私保�
 3. 打开 控制中心 (QuickSettingsPanel，一般通过从屏幕顶部下滑打开)
 4. 编辑控制中心中的开关，将 Amarok 添加到控制中心
 5. 长按控制中心中 Amarok 开关，跳转进入 Amarok 主界面
-6. 授予 Amarok `写入内部储存` 和 `冰箱Icebox` 权限
+6. 授予 Amarok `写入内部储存` 权限
 
 
 

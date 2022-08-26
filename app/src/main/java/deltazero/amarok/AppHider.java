@@ -16,12 +16,12 @@ public class AppHider {
         isAvailable = checkAvailability();
     }
 
-    public void hide(Set<String> pkgNames) {
-        activeMode.hide(pkgNames);
+    public void hide(String pkgName) {
+        activeMode.hide(pkgName);
     }
 
-    public void unhide(Set<String> pkgNames) {
-        activeMode.unhide(pkgNames);
+    public void unhide(String pkgName) {
+        activeMode.unhide(pkgName);
     }
 
     public boolean checkAvailability() {
@@ -29,8 +29,8 @@ public class AppHider {
     }
 
     interface AppHiderMode {
-        void hide(Set<String> pkgNames);
-        void unhide(Set<String> pkgNames);
+        void hide(String pkgName);
+        void unhide(String pkgName);
         boolean checkAvailability();
     }
 
@@ -39,12 +39,12 @@ public class AppHider {
         // Not available on Android 11+
 
         @Override
-        public void hide(Set<String> pkgNames) {
+        public void hide(String pkgName) {
             throw new UnsupportedOperationException();
         }
 
         @Override
-        public void unhide(Set<String> pkgNames) {
+        public void unhide(String pkgName) {
             throw new UnsupportedOperationException();
         }
 
@@ -58,17 +58,13 @@ public class AppHider {
 
 
         @Override
-        public void hide(Set<String> pkgNames) {
-            for (String n: pkgNames) {
-                ShellUtil.exec("su -c pm disable-user " + n);
-            }
+        public void hide(String pkgName) {
+            ShellUtil.exec("su -c pm disable-user " + pkgName);
         }
 
         @Override
-        public void unhide(Set<String> pkgNames) {
-            for (String n: pkgNames) {
-                ShellUtil.exec("su -c pm enable " + n);
-            }
+        public void unhide(String pkgName) {
+            ShellUtil.exec("su -c pm enable " + pkgName);
         }
 
         @Override

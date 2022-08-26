@@ -4,9 +4,11 @@
     package="deltazero.amarok">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="29" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
     <uses-permission
         android:name="android.permission.BIND_QUICK_SETTINGS_TILE"
@@ -19,7 +21,6 @@
         android:name="android.hardware.touchscreen"
         android:required="false" />
 
-<!--    <uses-permission android:name="com.catchingnow.icebox.SDK" />-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -29,11 +30,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Amarok.night"
         tools:ignore="AllowBackup,MissingTvBanner">
-        <activity android:name=".activities.MainActivity"
+        <activity
+            android:name=".ui.SelectHideAppActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
                 <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
             </intent-filter>
@@ -41,22 +47,14 @@
 
         <service
             android:name=".QuickSettingService"
+            android:exported="true"
             android:icon="@drawable/ic_tile"
             android:label="@string/app_name"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
-            android:exported="true">
-
-            <intent-filter
-                android:exported="true">
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter android:exported="true">
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
-
     </application>
-
-<!--    <queries>-->
-<!--        &lt;!&ndash; For Android 11 &ndash;&gt;-->
-<!--        <package android:name="com.catchingnow.icebox" />-->
-<!--    </queries>-->
 
 </manifest>

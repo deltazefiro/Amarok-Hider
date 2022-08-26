@@ -1,4 +1,4 @@
-package deltazero.amarok.activities;
+package deltazero.amarok.ui;
 
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -25,16 +25,16 @@ import java.util.HashSet;
 import java.util.Set;
 
 import deltazero.amarok.Hider;
+import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.PermissionUtil;
-
-// import static deltazero.amarok.Utils.getIceboxAvailability;
 
 public class MainActivity extends AppCompatActivity {
 
     public final static String TAG = "Main";
 
-    public Hider hider;
+    private Hider hider;
+    private PrefMgr prefMgr;
     private MaterialButton btPrimary, btSecondary;
     private TextView tvStatusInfo, tvStatus;
     private String appVersionName;
@@ -45,10 +45,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         hider = new Hider(this);
-        if (hider.getIsHidden()) {
-            this.setTheme(R.style.Theme_Amarok_night);
-        } else {
+        prefMgr = new PrefMgr(this);
+
+        if (prefMgr.getIsHidden()) {
             this.setTheme(R.style.Theme_Amarok_day);
+        } else {
+            this.setTheme(R.style.Theme_Amarok_night);
         }
 
         super.onCreate(savedInstanceState);
@@ -83,7 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
                         // set hide path
                         String path = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
-                        hider.setEncodePath(path);
+
+                        Set<String> hideFilePath =  new HashSet<String>(); // TODO: Support multiple path
+                        hideFilePath.add(path);
+                        prefMgr.setHideFilePath(hideFilePath);
+
                         Log.i(TAG, "Set encode path: " + path);
                         Toast.makeText(this, "Set encode path: " + path, Toast.LENGTH_SHORT).show();
 
@@ -108,12 +114,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonSetHideApps(View view) {
 
-        if (!hider.getIsHidden()) {
+        if (prefMgr.getIsHidden()) {
             Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (hider.appHider.checkAvailability()) {
+        if (hider.appHider.isAvailable) {
             Toast.makeText(this, "Available!", Toast.LENGTH_SHORT).show();
             Log.i(TAG, "AppHider available");
         } else {
@@ -123,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Set up the etInput
         final EditText etInput = new EditText(this);
-        Set<String> originalPkgNames = hider.getHidePkgNames();
+        Set<String> originalPkgNames = prefMgr.getHideApps();
         etInput.setText(String.join("\n", (originalPkgNames != null ? originalPkgNames : new HashSet<String>())));
         etInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
 
@@ -133,7 +139,8 @@ public class MainActivity extends AppCompatActivity {
                 .setView(etInput)
                 .setPositiveButton("OK", (dialog, which) -> {
                     String input = etInput.getText().toString();
-                    hider.setHidePkgNames(new HashSet<>(Arrays.asList(input.split("\n", -1))));
+                    prefMgr.setHideApps(new HashSet<>(Arrays.asList(input.split("\n", -1))));
+                    Log.i(TAG, "Hide App set: " + input);
                     Toast.makeText(this, "Hide App set: " + input, Toast.LENGTH_SHORT).show();
                 })
                 .setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.cancel())
@@ -158,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (!hider.getIsHidden()) {
+        if (prefMgr.getIsHidden()) {
             Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -169,17 +176,16 @@ public class MainActivity extends AppCompatActivity {
     public void updateUi(boolean isInitializing) {
 
         if (!isInitializing) {
-            boolean uiIsNight = (tvStatus.getText() == getText(R.string.night_status));
-            if (hider.getIsHidden() != uiIsNight) {
+            boolean uiIsHidden = (tvStatus.getText() == getText(R.string.day_status));
+            if (prefMgr.getIsHidden() != uiIsHidden) {
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         }
 
-        if (hider.getIsHidden()) {
+        if (!prefMgr.getIsHidden()) {
             // Night
-
             btPrimary.setText(getText(R.string.dawn));
             btPrimary.setOnClickListener(this::buttonDawn);
             btSecondary.setText(getText(R.string.dusk));
@@ -187,11 +193,8 @@ public class MainActivity extends AppCompatActivity {
 
             tvStatus.setText(getText(R.string.night_status));
             tvStatusInfo.setText(getText(R.string.night_info));
-        }
-
-        if (!hider.getIsHidden()) {
+        } else {
             // Day
-
             btPrimary.setText(getText(R.string.dusk));
             btPrimary.setOnClickListener(this::buttonDusk);
             btSecondary.setText(getText(R.string.dawn));
