@@ -1,6 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Daytime theme. -->
-    <style name="Theme.Amarok.day" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.Amarok" parent="Theme.MaterialComponents.Light.NoActionBar">
+
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -9,43 +10,13 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
 
-        <item name="android:statusBarColor" tools:targetApi="l">@color/white</item>
+        <item name="android:statusBarColor" >@color/white</item>
         <item name="android:navigationBarColor">@color/white</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="colorSurface">@color/white</item>
 
         <item name="android:textColorPrimary">@color/black</item>
         <item name="android:textColorSecondary">@color/grey</item>
-
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
     </style>
 
-    <!-- Night theme. -->
-    <style name="Theme.Amarok.night" parent="Theme.MaterialComponents.NoActionBar">
-
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
-
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
-        <item name="colorOnSecondary">@color/black</item>
-
-        <item name="android:statusBarColor" tools:targetApi="l">@color/dark_grey</item>
-        <item name="android:navigationBarColor">@color/dark_grey</item>
-        <item name="android:colorBackground">@color/dark_grey</item>
-        <item name="colorSurface">@color/grey</item>
-
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/grey</item>
-
-        <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
-
-    <style name="WindowAnimationTransition">
-        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
-        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
-    </style>
 </resources>
