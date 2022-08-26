@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Amarok</string>
+    <string name="unhide">取消隐藏</string>
+    <string name="hide">隐藏</string>
+    <string name="visible_status">未隐藏</string>
+    <string name="hidden_status">已隐藏</string>
+    <string name="ok">确认</string>
+    <string name="about">关于</string>
+    <string name="cancel">取消</string>
+    <string name="set_hide_apps">设置隐藏应用</string>
+    <string name="setting_not_ava_when_hidden">请先取消隐藏</string>
+    <string name="storage_permission_request_title">请求储存权限</string>
+    <string name="storage_permission_request_message">Amarok 需要外部存储的读写权限来隐藏您的文件。</string>
+    <string name="storage_permission_denied">无储存权限。文件隐藏不可用。</string>
+    <string name="apphider_not_ava">应用隐藏不可用。</string>
+    <string name="set_encode_files">设置隐藏文件</string>
+    <string name="show_about">显示关于</string>
+</resources>

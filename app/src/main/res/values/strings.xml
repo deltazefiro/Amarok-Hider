@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Amarok</string>
+    <string name="app_name" translatable="false">Amarok</string>
     <string name="unhide">Unhide</string>
     <string name="hide">Hide</string>
     <string name="visible_status">Visible</string>
@@ -21,4 +21,6 @@
     <string name="storage_permission_request_message">Amarok needs external storage access to hide your files.</string>
     <string name="storage_permission_denied">Storage permission denied. File hiding is unavailable</string>
     <string name="apphider_not_ava">App hider is not available!</string>
+    <string name="set_encode_files">SET ENCODE FILES</string>
+    <string name="show_about">SHOW ABOUT</string>
 </resources>
