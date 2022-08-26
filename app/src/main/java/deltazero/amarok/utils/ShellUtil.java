@@ -20,7 +20,7 @@ public class ShellUtil {
             String stdoutString = convertInputStreamToString(p.getInputStream());
             String stderrString = convertInputStreamToString(p.getErrorStream());
             Log.d("ShellOut", stdoutString);
-            Log.d("ShellErr", stderrString);
+            Log.w("ShellErr", stderrString);
             return new String[]{stdoutString, stderrString};
         } catch (IOException e) {
             Log.w("ShellErr", e.toString());

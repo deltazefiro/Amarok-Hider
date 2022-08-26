@@ -69,7 +69,7 @@ public class AppHider {
 
         @Override
         public boolean checkAvailability() {
-            String[] output = ShellUtil.exec("su -h");
+            String[] output = ShellUtil.exec("su -c echo \"Amarok-root-test\"");
             return output != null && output[1].length() == 0;
         }
     }
