@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         hider = new Hider(this);
-        prefMgr = new PrefMgr(this);
+        prefMgr = hider.prefMgr;
 
         if (prefMgr.getIsHidden()) {
             this.setTheme(R.style.Theme_Amarok_day);
