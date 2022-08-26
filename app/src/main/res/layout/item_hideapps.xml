@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:orientation="vertical"
-        android:layout_marginLeft="16dp">
+        android:layout_marginStart="16dp">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/hideapp_tv_appname"

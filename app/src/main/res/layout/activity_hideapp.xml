@@ -16,11 +16,11 @@
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/hideapp_ab_appbar"
-            style="@style/Widget.MaterialComponents.Toolbar.Primary"
+            style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_folder"
-            app:title="Test" />
+            app:title="@string/set_hide_apps" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

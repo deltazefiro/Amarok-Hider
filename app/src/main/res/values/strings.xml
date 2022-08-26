@@ -1,11 +1,11 @@
 <resources>
     <string name="app_name">Amarok</string>
-    <string name="dusk">DUSK</string>
-    <string name="dawn">DAWN</string>
-    <string name="day_status">Daytime</string>
-    <string name="night_status">Night</string>
-    <string name="day_info">Secrets never emerge under the sun.</string>
-    <string name="night_info">The veil of night has fallen.</string>
+    <string name="unhide">Unhide</string>
+    <string name="hide">Hide</string>
+    <string name="visible_status">Visible</string>
+    <string name="hidden_status">Hidden</string>
+    <string name="visible_moto">The veil of night has fallen.</string>
+    <string name="hidden_moto">Secrets never emerge under the sun.</string>
     <string name="app_about">\nAmarok by @deltazefiro\n\n
         [AppVersion] %s\n\n
         [HideAppAva.] %s\n\n
@@ -15,14 +15,10 @@
     <string name="ok">OK</string>
     <string name="about">About</string>
     <string name="cancel">Cancel</string>
-    <string name="get_app_names_title">Set Hide Apps</string>
-    <string name="get_app_names_info">Please input the package name of apps. One package name each line.</string>
-    <string name="ava_at_night">Setting is only available in NightMode</string>
-    <string name="icebox_not_installed">HideApp not available: Icebox not installed</string>
-    <string name="icebox_not_active">HideApp not available: Icebox inactive</string>
-    <string name="icebox_not_supported">HideApp not available: Icebox not supported</string>
-    <string name="icebox_available">HideApp available</string>
+    <string name="set_hide_apps">Set Hide Apps</string>
+    <string name="setting_not_ava_when_hidden">Setting is only available after unhide</string>
     <string name="storage_permission_request_title">Storage permission required</string>
     <string name="storage_permission_request_message">Amarok needs external storage access to hide your files.</string>
     <string name="storage_permission_denied">Storage permission denied. File hiding is unavailable</string>
+    <string name="apphider_not_ava">App hider is not available!</string>
 </resources>
