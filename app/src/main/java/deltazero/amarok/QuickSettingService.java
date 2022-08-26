@@ -14,7 +14,10 @@ public class QuickSettingService extends TileService {
     @Override
     public void onStartListening() {
         tile = getQsTile();
+
         hider = new Hider(this);
+        prefMgr = new PrefMgr(this);
+
         if (prefMgr.getIsHidden()) {
             tile.setState(Tile.STATE_INACTIVE);
         } else {
