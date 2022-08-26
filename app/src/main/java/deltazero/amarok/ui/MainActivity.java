@@ -47,12 +47,6 @@ public class MainActivity extends AppCompatActivity {
         hider = new Hider(this);
         prefMgr = hider.prefMgr;
 
-        if (prefMgr.getIsHidden()) {
-            this.setTheme(R.style.Theme_Amarok_day);
-        } else {
-            this.setTheme(R.style.Theme_Amarok_night);
-        }
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -61,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btSecondary = findViewById(R.id.main_bt_secondary);
         tvStatus = findViewById(R.id.main_tv_status);
         tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
-        updateUi(true);
+        updateUi();
 
         // Get app version
         try {
@@ -104,12 +98,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void buttonDusk(View view) {
         hider.unhide();
-        updateUi(false);
+        updateUi();
     }
 
     public void buttonDawn(View view) {
         hider.hide();
-        updateUi(false);
+        updateUi();
     }
 
     public void buttonSetHideApps(View view) {
@@ -129,25 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
         startActivity(new Intent(this, SelectHideAppActivity.class));
 
-
-        // // Set up the etInput
-        // final EditText etInput = new EditText(this);
-        // Set<String> originalPkgNames = prefMgr.getHideApps();
-        // etInput.setText(String.join("\n", (originalPkgNames != null ? originalPkgNames : new HashSet<String>())));
-        // etInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
-        //
-        // new MaterialAlertDialogBuilder(this)
-        //         .setTitle(getString(R.string.get_app_names_title))
-        //         .setMessage(R.string.get_app_names_info)
-        //         .setView(etInput)
-        //         .setPositiveButton("OK", (dialog, which) -> {
-        //             String input = etInput.getText().toString();
-        //             prefMgr.setHideApps(new HashSet<>(Arrays.asList(input.split("\n", -1))));
-        //             Log.i(TAG, "Hide App set: " + input);
-        //             Toast.makeText(this, "Hide App set: " + input, Toast.LENGTH_SHORT).show();
-        //         })
-        //         .setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.cancel())
-        //         .show();
     }
 
     public void buttonShowAbout(View view) {
@@ -176,16 +151,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void updateUi(boolean isInitializing) {
-
-        if (!isInitializing) {
-            boolean uiIsHidden = (tvStatus.getText() == getText(R.string.day_status));
-            if (prefMgr.getIsHidden() != uiIsHidden) {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }
+    public void updateUi() {
 
         if (!prefMgr.getIsHidden()) {
             // Night
@@ -211,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        updateUi(false);
+        updateUi();
         super.onResume();
     }
 
