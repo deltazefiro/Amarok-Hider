@@ -9,15 +9,16 @@ public class QuickSettingService extends TileService {
     private static final String TAG = "MyTileService";
     Tile tile;
     Hider hider;
+    PrefMgr prefMgr;
 
     @Override
     public void onStartListening() {
         tile = getQsTile();
         hider = new Hider(this);
-        if (hider.getIsHidden()) {
-            tile.setState(Tile.STATE_ACTIVE);
-        } else {
+        if (prefMgr.getIsHidden()) {
             tile.setState(Tile.STATE_INACTIVE);
+        } else {
+            tile.setState(Tile.STATE_ACTIVE);
         }
         super.onStartListening();
     }
@@ -25,12 +26,12 @@ public class QuickSettingService extends TileService {
     @Override
     public void onClick() {
         Log.d(TAG, "QS tile is clicked!");
-        if (tile.getState() == Tile.STATE_ACTIVE) {
-            hider.hide();
-            tile.setState(Tile.STATE_INACTIVE);
-        } else {
+        if (prefMgr.getIsHidden()) {
             hider.unhide();
             tile.setState(Tile.STATE_ACTIVE);
+        } else {
+            hider.hide();
+            tile.setState(Tile.STATE_INACTIVE);
         }
         tile.updateTile();
     }
