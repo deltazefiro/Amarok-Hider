@@ -41,69 +41,99 @@
                     android:id="@+id/main_card_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="34dp"
+                    android:layout_marginHorizontal="40dp"
                     android:layout_marginTop="26dp"
                     app:cardElevation="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:onClick="onCardClick"
+                    app:cardCornerRadius="30dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
+                        <ImageView
+                            android:id="@+id/main_iv_status"
+                            android:layout_width="180dp"
+                            android:layout_height="180dp"
+                            android:layout_marginTop="60dp"
+                            android:src="@drawable/img_status_visible"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <TextView
                             android:id="@+id/main_tv_status"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginTop="28dp"
+                            android:layout_marginTop="30dp"
                             android:text="@string/visible_status"
                             android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                             android:textSize="22sp"
                             app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintRight_toRightOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/main_iv_status" />
 
                         <TextView
                             android:id="@+id/main_tv_statusinfo"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="30dp"
                             android:layout_marginTop="2dp"
+                            android:layout_marginBottom="16dp"
                             android:text="@string/visible_moto"
                             android:textSize="12sp"
                             app:layout_constraintLeft_toLeftOf="parent"
+                            app:layout_constraintRight_toRightOf="parent"
                             app:layout_constraintTop_toBottomOf="@id/main_tv_status" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/main_bt_primary"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        <TextView
+                            android:id="@+id/main_tv_instruction"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="28dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="24dp"
-                            android:onClick="buttonUnhide"
-                            android:text="@string/unhide"
-                            android:textSize="12sp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toLeftOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/main_tv_statusinfo" />
-                        <!--                        app:strokeColor="@color/grey" -->
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/main_tv_statusinfo"
+                            android:text="@string/click_to_hide"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginBottom="30dp"
+                            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                            android:textStyle="italic"
+                            android:textSize="10sp"
+                            />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/main_bt_secondary"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="5dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginBottom="24dp"
-                            android:onClick="buttonHide"
-                            android:text="@string/hide"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/main_bt_primary"
-                            app:layout_constraintTop_toBottomOf="@+id/main_tv_statusinfo" />
+                        <!--                        <com.google.android.material.button.MaterialButton-->
+                        <!--                            android:id="@+id/main_bt_primary"-->
+                        <!--                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginStart="28dp"-->
+                        <!--                            android:layout_marginTop="20dp"-->
+                        <!--                            android:layout_marginBottom="24dp"-->
+                        <!--                            android:onClick="buttonUnhide"-->
+                        <!--                            android:text="@string/unhide"-->
+                        <!--                            android:textSize="12sp"-->
+                        <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+                        <!--                            app:layout_constraintLeft_toLeftOf="parent"-->
+                        <!--                            app:layout_constraintRight_toRightOf="parent"-->
+                        <!--                            app:layout_constraintTop_toBottomOf="@id/main_tv_statusinfo" />-->
+                        <!--                        &lt;!&ndash;                        app:strokeColor="@color/grey" &ndash;&gt;-->
+
+                        <!--                        <com.google.android.material.button.MaterialButton-->
+                        <!--                            android:id="@+id/main_bt_secondary"-->
+                        <!--                            style="@style/Widget.MaterialComponents.Button.TextButton"-->
+                        <!--                            android:layout_width="wrap_content"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_marginStart="5dp"-->
+                        <!--                            android:layout_marginTop="20dp"-->
+                        <!--                            android:layout_marginBottom="24dp"-->
+                        <!--                            android:onClick="buttonHide"-->
+                        <!--                            android:text="@string/hide"-->
+                        <!--                            android:textSize="12sp"-->
+                        <!--                            app:layout_constraintBottom_toBottomOf="parent"-->
+                        <!--                            app:layout_constraintLeft_toRightOf="@id/main_bt_primary"-->
+                        <!--                            app:layout_constraintTop_toBottomOf="@+id/main_tv_statusinfo" />-->
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -113,7 +143,7 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="42sp"
+                    android:layout_marginHorizontal="50dp"
                     android:layout_marginTop="20dp"
                     android:gravity="start|center_vertical"
                     android:onClick="buttonSetHideFile"
@@ -125,19 +155,19 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="42sp"
+                    android:layout_marginHorizontal="50dp"
                     android:layout_marginTop="5dp"
                     android:gravity="start|center_vertical"
                     android:onClick="buttonSetHideApps"
                     android:text="@string/set_hide_apps"
-                    app:icon="@drawable/ic_hideapp"
+                    app:icon="@drawable/ic_app"
                     app:iconPadding="15dp" />
 
                 <com.google.android.material.button.MaterialButton
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:layout_marginHorizontal="42sp"
+                    android:layout_marginHorizontal="50dp"
                     android:layout_marginTop="5dp"
                     android:gravity="start|center_vertical"
                     android:onClick="buttonShowAbout"
@@ -151,14 +181,14 @@
 
     </LinearLayout>
 
-<!--    <TextView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:text="Amarok beta version"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        android:layout_marginBottom="15dp"-->
-<!--        android:textSize="10dp"-->
-<!--        android:gravity="center"/>-->
+    <!--    <TextView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Amarok beta version"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        android:layout_marginBottom="15dp"-->
+    <!--        android:textSize="10dp"-->
+    <!--        android:gravity="center"/>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

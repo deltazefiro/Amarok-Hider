@@ -1,6 +1,7 @@
 package deltazero.amarok.ui;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -25,6 +26,10 @@ public class SelectHideAppActivity extends AppCompatActivity {
         rvAppList.setAdapter(adapter);
         rvAppList.setLayoutManager(new LinearLayoutManager(this));
 
+    }
+
+    public void onBackButtonClicked(View view) {
+        finish();
     }
 
 }

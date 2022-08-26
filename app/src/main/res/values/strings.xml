@@ -23,4 +23,5 @@
     <string name="apphider_not_ava">App hider is not available!</string>
     <string name="set_encode_files">SET ENCODE FILES</string>
     <string name="show_about">SHOW ABOUT</string>
+    <string name="click_to_hide">Click to Hide your privacy.</string>
 </resources>
