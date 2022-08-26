@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,8 +49,11 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
     @Override
     public void onBindViewHolder(@NonNull AppListAdapter.AppListHolder holder, int position) {
         // Get current item
-        holder.tvAppName.setText(pkgMgr.getApplicationLabel(lsAppInfo.get(position)));
-        holder.cbIsHidden.setChecked(prefMgr.getHideApps().contains(lsAppInfo.get(position).packageName));
+        ApplicationInfo currAppInfo = lsAppInfo.get(position);
+        holder.tvAppName.setText(pkgMgr.getApplicationLabel(currAppInfo));
+        holder.cbIsHidden.setChecked(prefMgr.getHideApps().contains(currAppInfo.packageName));
+        holder.tvPkgName.setText(currAppInfo.packageName);
+        holder.ivAppIcon.setImageDrawable(pkgMgr.getApplicationIcon(currAppInfo));
     }
 
     @Override
@@ -62,7 +66,9 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
         // For every single item in the list
 
         public TextView tvAppName;
+        public TextView tvPkgName;
         public MaterialCheckBox cbIsHidden;
+        public ImageView ivAppIcon;
         AppListAdapter adapter;
 
         public AppListHolder(View view, AppListAdapter adapter) {
@@ -71,7 +77,9 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
 
             // Init for adapter.onBindViewHolder
             tvAppName = view.findViewById(R.id.hideapp_tv_appname);
+            tvPkgName = view.findViewById(R.id.hideapp_tv_pkgname);
             cbIsHidden = view.findViewById(R.id.hideapp_cb_ishidden);
+            ivAppIcon = view.findViewById(R.id.hideapp_iv_appicon);
 
             cbIsHidden.setOnCheckedChangeListener(this);
         }
