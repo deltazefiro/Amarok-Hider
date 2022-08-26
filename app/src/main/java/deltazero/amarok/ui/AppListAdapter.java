@@ -1,9 +1,12 @@
 package deltazero.amarok.ui;
 
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,20 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.checkbox.MaterialCheckBox;
 
 import java.util.List;
+import java.util.Set;
 
+import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
 public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListHolder> {
 
-    private final List<String> appNames;
-    private final List<Boolean> isHidden;
+    private final List<ApplicationInfo> lsAppInfo;
+    private final PackageManager pkgMgr;
+    private final PrefMgr prefMgr;
 
     private final LayoutInflater inflater;
 
-    public AppListAdapter(Context context, List<String> appNames, List<Boolean> isHidden) {
+    public AppListAdapter(Context context) {
         inflater = LayoutInflater.from(context);
-        this.appNames = appNames;
-        this.isHidden = isHidden;
+
+        pkgMgr = context.getPackageManager();
+        prefMgr = new PrefMgr(context);
+        lsAppInfo = pkgMgr.getInstalledApplications(PackageManager.GET_META_DATA);
+
     }
 
 
@@ -39,16 +48,16 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
     @Override
     public void onBindViewHolder(@NonNull AppListAdapter.AppListHolder holder, int position) {
         // Get current item
-        holder.tvAppName.setText(appNames.get(position));
-        holder.cbIsHidden.setChecked(isHidden.get(position));
+        holder.tvAppName.setText(pkgMgr.getApplicationLabel(lsAppInfo.get(position)));
+        holder.cbIsHidden.setChecked(prefMgr.getHideApps().contains(lsAppInfo.get(position).packageName));
     }
 
     @Override
     public int getItemCount() {
-        return appNames.size();
+        return lsAppInfo.size();
     }
 
-    public class AppListHolder extends RecyclerView.ViewHolder {
+    public class AppListHolder extends RecyclerView.ViewHolder implements MaterialCheckBox.OnCheckedChangeListener {
 
         // For every single item in the list
 
@@ -63,6 +72,21 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
             // Init for adapter.onBindViewHolder
             tvAppName = view.findViewById(R.id.hideapp_tv_appname);
             cbIsHidden = view.findViewById(R.id.hideapp_cb_ishidden);
+
+            cbIsHidden.setOnCheckedChangeListener(this);
+        }
+
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            String appPkgName = lsAppInfo.get(getLayoutPosition()).packageName;
+            Set<String> hideApps = prefMgr.getHideApps();
+
+            if (buttonView.isChecked()) {
+                hideApps.add(appPkgName);
+            } else {
+                hideApps.remove(appPkgName);
+            }
+            prefMgr.setHideApps(hideApps);
         }
     }
 }
