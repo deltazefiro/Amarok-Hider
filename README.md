@@ -59,7 +59,7 @@ Amarok 是一个通过 加密文件**名**、隐藏指定App 以用于隐私保�
 
 - [heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License
 - [Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License
-
+- [Icongeek26](https://www.flaticon.com/authors/icongeek26) & [Freepik](), For the icons
 
 
 ### 免责声明

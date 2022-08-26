@@ -18,8 +18,8 @@
             android:id="@+id/hideapp_ab_appbar"
             style="@style/Widget.MaterialComponents.Toolbar.Surface"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_folder"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/ic_back"
             app:title="@string/set_hide_apps" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -28,7 +28,7 @@
         android:id="@+id/hideapp_rv_applist"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_margin="10sp"
+        android:layout_marginHorizontal="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

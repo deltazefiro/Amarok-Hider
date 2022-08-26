@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Hider hider;
     private PrefMgr prefMgr;
-    private MaterialButton btPrimary, btSecondary;
+
+    private ImageView ivStatusImg;
     private TextView tvStatusInfo, tvStatus;
     private String appVersionName;
 
@@ -48,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Init UI
-        btPrimary = findViewById(R.id.main_bt_primary);
-        btSecondary = findViewById(R.id.main_bt_secondary);
+        ivStatusImg = findViewById(R.id.main_iv_status);
         tvStatus = findViewById(R.id.main_tv_status);
         tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
         updateUi();
@@ -92,13 +93,12 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void buttonUnhide(View view) {
-        hider.unhide();
-        updateUi();
-    }
-
-    public void buttonHide(View view) {
-        hider.hide();
+    public void onCardClick(View view) {
+        if (prefMgr.getIsHidden()) {
+            hider.unhide();
+        } else {
+            hider.hide();
+        }
         updateUi();
     }
 
@@ -148,19 +148,13 @@ public class MainActivity extends AppCompatActivity {
 
         if (!prefMgr.getIsHidden()) {
             // Visible
-            btPrimary.setText(getText(R.string.hide));
-            btPrimary.setOnClickListener(this::buttonHide);
-            btSecondary.setText(getText(R.string.unhide));
-            btSecondary.setOnClickListener(this::buttonUnhide);
+            ivStatusImg.setImageResource(R.drawable.img_status_visible);
 
             tvStatus.setText(getText(R.string.visible_status));
             tvStatusInfo.setText(getText(R.string.visible_moto));
         } else {
             // Hidden
-            btPrimary.setText(getText(R.string.unhide));
-            btPrimary.setOnClickListener(this::buttonUnhide);
-            btSecondary.setText(getText(R.string.hide));
-            btSecondary.setOnClickListener(this::buttonHide);
+            ivStatusImg.setImageResource(R.drawable.img_status_hidden);
 
             tvStatus.setText(getText(R.string.hidden_status));
             tvStatusInfo.setText(getText(R.string.hidden_moto));
