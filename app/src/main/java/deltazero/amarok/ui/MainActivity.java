@@ -5,10 +5,8 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.InputType;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +18,6 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.hjq.permissions.XXPermissions;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -84,24 +81,23 @@ public class MainActivity extends AppCompatActivity {
                         hideFilePath.add(path);
                         prefMgr.setHideFilePath(hideFilePath);
 
-                        Log.i(TAG, "Set encode path: " + path);
-                        Toast.makeText(this, "Set encode path: " + path, Toast.LENGTH_SHORT).show();
+                        Log.i(TAG, "Set file hide path: " + path);
 
                     } else {
                         // request denied by user
-                        Log.i(TAG, "Set encode path cancelled");
+                        Log.i(TAG, "Set file hide path cancelled");
                     }
                 }
         );
 
     }
 
-    public void buttonDusk(View view) {
+    public void buttonUnhide(View view) {
         hider.unhide();
         updateUi();
     }
 
-    public void buttonDawn(View view) {
+    public void buttonHide(View view) {
         hider.hide();
         updateUi();
     }
@@ -109,15 +105,12 @@ public class MainActivity extends AppCompatActivity {
     public void buttonSetHideApps(View view) {
 
         if (prefMgr.getIsHidden()) {
-            Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (hider.appHider.isAvailable) {
-            Toast.makeText(this, "Available!", Toast.LENGTH_SHORT).show();
-            Log.i(TAG, "AppHider available");
-        } else {
-            Toast.makeText(this, "Not available!", Toast.LENGTH_LONG).show();
+        if (!hider.appHider.isAvailable) {
+            Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
             Log.i(TAG, "AppHider not available");
         }
 
@@ -136,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void buttonSetEncodeFile(View view) {
+    public void buttonSetHideFile(View view) {
 
         if (!XXPermissions.isGranted(this, com.hjq.permissions.Permission.MANAGE_EXTERNAL_STORAGE)) {
             Toast.makeText(this, R.string.storage_permission_denied, Toast.LENGTH_LONG).show();
@@ -144,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (prefMgr.getIsHidden()) {
-            Toast.makeText(this, R.string.ava_at_night, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
         mDirRequest.launch(null);
@@ -154,23 +147,23 @@ public class MainActivity extends AppCompatActivity {
     public void updateUi() {
 
         if (!prefMgr.getIsHidden()) {
-            // Night
-            btPrimary.setText(getText(R.string.dawn));
-            btPrimary.setOnClickListener(this::buttonDawn);
-            btSecondary.setText(getText(R.string.dusk));
-            btSecondary.setOnClickListener(this::buttonDusk);
+            // Visible
+            btPrimary.setText(getText(R.string.hide));
+            btPrimary.setOnClickListener(this::buttonHide);
+            btSecondary.setText(getText(R.string.unhide));
+            btSecondary.setOnClickListener(this::buttonUnhide);
 
-            tvStatus.setText(getText(R.string.night_status));
-            tvStatusInfo.setText(getText(R.string.night_info));
+            tvStatus.setText(getText(R.string.visible_status));
+            tvStatusInfo.setText(getText(R.string.visible_moto));
         } else {
-            // Day
-            btPrimary.setText(getText(R.string.dusk));
-            btPrimary.setOnClickListener(this::buttonDusk);
-            btSecondary.setText(getText(R.string.dawn));
-            btSecondary.setOnClickListener(this::buttonDawn);
+            // Hidden
+            btPrimary.setText(getText(R.string.unhide));
+            btPrimary.setOnClickListener(this::buttonUnhide);
+            btSecondary.setText(getText(R.string.hide));
+            btSecondary.setOnClickListener(this::buttonHide);
 
-            tvStatus.setText(getText(R.string.day_status));
-            tvStatusInfo.setText(getText(R.string.day_info));
+            tvStatus.setText(getText(R.string.hidden_status));
+            tvStatusInfo.setText(getText(R.string.hidden_moto));
         }
     }
 
