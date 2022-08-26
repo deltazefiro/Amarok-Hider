@@ -127,24 +127,27 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, "AppHider not available");
         }
 
-        // Set up the etInput
-        final EditText etInput = new EditText(this);
-        Set<String> originalPkgNames = prefMgr.getHideApps();
-        etInput.setText(String.join("\n", (originalPkgNames != null ? originalPkgNames : new HashSet<String>())));
-        etInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        startActivity(new Intent(this, SelectHideAppActivity.class));
 
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.get_app_names_title))
-                .setMessage(R.string.get_app_names_info)
-                .setView(etInput)
-                .setPositiveButton("OK", (dialog, which) -> {
-                    String input = etInput.getText().toString();
-                    prefMgr.setHideApps(new HashSet<>(Arrays.asList(input.split("\n", -1))));
-                    Log.i(TAG, "Hide App set: " + input);
-                    Toast.makeText(this, "Hide App set: " + input, Toast.LENGTH_SHORT).show();
-                })
-                .setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.cancel())
-                .show();
+
+        // // Set up the etInput
+        // final EditText etInput = new EditText(this);
+        // Set<String> originalPkgNames = prefMgr.getHideApps();
+        // etInput.setText(String.join("\n", (originalPkgNames != null ? originalPkgNames : new HashSet<String>())));
+        // etInput.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        //
+        // new MaterialAlertDialogBuilder(this)
+        //         .setTitle(getString(R.string.get_app_names_title))
+        //         .setMessage(R.string.get_app_names_info)
+        //         .setView(etInput)
+        //         .setPositiveButton("OK", (dialog, which) -> {
+        //             String input = etInput.getText().toString();
+        //             prefMgr.setHideApps(new HashSet<>(Arrays.asList(input.split("\n", -1))));
+        //             Log.i(TAG, "Hide App set: " + input);
+        //             Toast.makeText(this, "Hide App set: " + input, Toast.LENGTH_SHORT).show();
+        //         })
+        //         .setNegativeButton(getString(R.string.cancel), (dialog, which) -> dialog.cancel())
+        //         .show();
     }
 
     public void buttonShowAbout(View view) {

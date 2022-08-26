@@ -11,16 +11,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.checkbox.MaterialCheckBox;
 
+import java.util.List;
+
 import deltazero.amarok.R;
 
 public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListHolder> {
 
-    private final String[] appNames;
-    private final boolean[] isHidden;
+    private final List<String> appNames;
+    private final List<Boolean> isHidden;
 
     private final LayoutInflater inflater;
 
-    public AppListAdapter(Context context, String[] appNames, boolean[] isHidden) {
+    public AppListAdapter(Context context, List<String> appNames, List<Boolean> isHidden) {
         inflater = LayoutInflater.from(context);
         this.appNames = appNames;
         this.isHidden = isHidden;
@@ -37,13 +39,13 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
     @Override
     public void onBindViewHolder(@NonNull AppListAdapter.AppListHolder holder, int position) {
         // Get current item
-        holder.tvAppName.setText(appNames[position]);
-        holder.cbIsHidden.setEnabled(isHidden[position]);
+        holder.tvAppName.setText(appNames.get(position));
+        holder.cbIsHidden.setChecked(isHidden.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return appNames.length;
+        return appNames.size();
     }
 
     public class AppListHolder extends RecyclerView.ViewHolder {
