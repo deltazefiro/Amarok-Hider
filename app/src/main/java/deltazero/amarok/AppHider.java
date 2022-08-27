@@ -7,13 +7,10 @@ import deltazero.amarok.utils.ShellUtil;
 
 public class AppHider {
 
-    public boolean isAvailable;
-
     public AppHiderMode activeMode;
 
     public AppHider(AppHiderMode mode) {
         activeMode = mode;
-        isAvailable = checkAvailability();
     }
 
     public void hide(String pkgName) {

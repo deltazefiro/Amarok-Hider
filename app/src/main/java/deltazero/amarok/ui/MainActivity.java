@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (!hider.appHider.isAvailable) {
+        if (!hider.appHider.checkAvailability()) {
             Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
             Log.i(TAG, "AppHider not available");
         }
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void showAbout(View view) {
 
-        String hideAppAva = hider.appHider.isAvailable ? "Available" : "Unavailable";
+        String hideAppAva = hider.appHider.checkAvailability() ? "Available" : "Unavailable";
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.about))
