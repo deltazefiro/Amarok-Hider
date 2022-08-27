@@ -14,7 +14,7 @@
     <string name="storage_permission_request_message">Amarok 需要外部存储的读写权限来隐藏您的文件。</string>
     <string name="storage_permission_denied">无储存权限。文件隐藏不可用。</string>
     <string name="apphider_not_ava">应用隐藏不可用。</string>
-    <string name="set_encode_files">设置隐藏文件</string>
+    <string name="set_hide_files">设置隐藏文件</string>
     <string name="show_about">显示关于</string>
     <string name="click_to_hide">Click to Hide your privacy.</string>
 </resources>
