@@ -135,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         if (!hider.appHider.checkAvailability()) {
             Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
             Log.i(TAG, "AppHider not available");
+            return;
         }
 
         startActivity(new Intent(this, SelectHideAppActivity.class));
