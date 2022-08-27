@@ -30,10 +30,10 @@ public class QuickSettingService extends TileService {
     public void onClick() {
         Log.d(TAG, "QS tile is clicked!");
         if (prefMgr.getIsHidden()) {
-            hider.unhide();
+            hider.syncUnhide();
             tile.setState(Tile.STATE_ACTIVE);
         } else {
-            hider.hide();
+            hider.syncHide();
             tile.setState(Tile.STATE_INACTIVE);
         }
         tile.updateTile();

@@ -1,27 +1,61 @@
 package deltazero.amarok;
 
 import android.content.Context;
+import android.os.Handler;
+import android.os.HandlerThread;
 import android.util.Log;
 import android.widget.Toast;
 
 import java.nio.file.Paths;
 import java.util.Set;
 
+
+
 public class Hider {
 
-    public static final String TAG = "Hider";
+    private static final String TAG = "Hider";
+    private final Context context;
+    private final Handler backgroundHandler;
     public AppHider appHider;
-    public Context context;
     public PrefMgr prefMgr;
 
+    public interface HiderCallback {
+        void onComplete();
+    }
 
     public Hider(Context context) {
         this.context = context;
         prefMgr = new PrefMgr(context);
         appHider = new AppHider(new AppHider.RootMode());
+
+        // Init Background Handler
+        HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
+        backgroundThread.start();
+        backgroundHandler = new Handler(backgroundThread.getLooper());
+
     }
 
-    public void hide() {
+    public void Hide(HiderCallback callback) {
+        backgroundHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                syncHide();
+                callback.onComplete();
+            }
+        });
+    }
+
+    public void Unhide(HiderCallback callback) {
+        backgroundHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                syncUnhide();
+                callback.onComplete();
+            }
+        });
+    }
+
+    public void syncHide() {
 
         // Hide files
         Set<String> hideFilePath = prefMgr.getHideFilePath();
@@ -56,7 +90,7 @@ public class Hider {
         Toast.makeText(context, "Cock-a-doodle-do~ Morning!", Toast.LENGTH_SHORT).show();
     }
 
-    public void unhide() {
+    public void syncUnhide() {
 
         // Unhide files
         Set<String> hideFilePath = prefMgr.getHideFilePath();
