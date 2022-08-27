@@ -15,7 +15,7 @@ Amarok 是一个通过 加密文件**名**、隐藏指定App 以用于隐私保�
 
 ### 截图
 
-![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/AmarokScreenshot.png)
+![New UI](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/Amarok-screenshot.jpg)
 
 
 
