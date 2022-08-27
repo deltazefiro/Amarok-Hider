@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="0dp"
             android:layout_marginStart="44dp"
-            android:text="Hunting alone in the starless night." />
+            android:text="@string/moto" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -79,15 +79,33 @@
                                 android:text="@string/visible_moto"
                                 android:textSize="11sp" />
 
-                            <com.google.android.material.button.MaterialButton
-                                android:id="@+id/main_bt_change_status"
-                                style="@style/Widget.Material3.Button.Icon"
+                            <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="45dp"
-                                android:text="@string/hide"
-                                android:onClick="changeStatus"
-                                app:icon="@drawable/ic_button_hide" />
+                                android:orientation="horizontal"
+                                android:layout_marginTop="45dp">
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/main_bt_change_status"
+                                    style="@style/Widget.Material3.Button.Icon"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/hide"
+                                    android:onClick="changeStatus"
+                                    app:icon="@drawable/ic_button_hide"/>
+
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="12dp"
+                                    app:indicatorSize="20dp"
+                                    android:id="@+id/main_pi_process_status"
+                                    android:layout_gravity="center"
+                                    android:indeterminate="true"
+                                    android:visibility="gone"/>
+
+                            </LinearLayout>
+
 
 
                         </LinearLayout>

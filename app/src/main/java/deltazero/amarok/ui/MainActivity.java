@@ -17,6 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
 
 import java.util.HashSet;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvStatusInfo, tvStatus;
     private String appVersionName;
     private MaterialButton btChangeStatus;
+    private CircularProgressIndicator piProcessStatus;
 
     private ActivityResultLauncher<Uri> mDirRequest;
 
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         tvStatus = findViewById(R.id.main_tv_status);
         tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
         btChangeStatus = findViewById(R.id.main_bt_change_status);
+        piProcessStatus = findViewById(R.id.main_pi_process_status);
         updateUi();
 
         // Get app version
@@ -95,11 +98,28 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private class onHiderCallback implements Hider.HiderCallback {
+        // For background thread call back
+        @Override
+        public void onComplete() {
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    piProcessStatus.hide();
+                    btChangeStatus.setEnabled(true);
+                    updateUi();
+                }
+            });
+        }
+    }
+
     public void changeStatus(View view) {
+        piProcessStatus.show();
+        btChangeStatus.setEnabled(false);
         if (prefMgr.getIsHidden()) {
-            hider.unhide();
+            hider.Unhide(new onHiderCallback());
         } else {
-            hider.hide();
+            hider.Hide(new onHiderCallback());
         }
         updateUi();
     }
