@@ -6,11 +6,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Set;
 
 public class PrefMgr {
 
-    public static final String TAG = "Hider";
     private final SharedPreferences mPrefs;
     private final SharedPreferences.Editor mPrefEditor;
     public AppHider appHider;
@@ -31,7 +31,7 @@ public class PrefMgr {
     }
 
     public Set<String> getHideFilePath() {
-        return mPrefs.getStringSet("hideFilePath", Collections.emptySet());
+        return mPrefs.getStringSet("hideFilePath", new HashSet<>());
     }
 
     public boolean getIsHidden() {
@@ -44,7 +44,7 @@ public class PrefMgr {
     }
 
     public Set<String> getHideApps() {
-        return mPrefs.getStringSet("hidePkgNames", Collections.emptySet());
+        return mPrefs.getStringSet("hidePkgNames", new HashSet<>());
     }
 
     public void setHideApps(Set<String> pkgNames) {
