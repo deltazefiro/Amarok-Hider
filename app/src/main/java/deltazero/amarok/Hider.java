@@ -38,7 +38,7 @@ public class Hider {
         // Hide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            if (appHider.isAvailable) {
+            if (appHider.checkAvailability()) {
                 for (String a : hideApps) {
                     appHider.hide(a);
                 }
@@ -73,7 +73,7 @@ public class Hider {
         // Unhide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            if (appHider.isAvailable) {
+            if (appHider.checkAvailability()) {
                 for (String a : hideApps) {
                     appHider.unhide(a);
                 }
