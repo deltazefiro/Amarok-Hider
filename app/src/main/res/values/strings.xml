@@ -4,8 +4,8 @@
     <string name="hide">Hide</string>
     <string name="visible_status">Visible</string>
     <string name="hidden_status">Hidden</string>
-    <string name="visible_moto">The veil of night has fallen.</string>
-    <string name="hidden_moto">Secrets never emerge under the sun.</string>
+    <string name="visible_moto" translatable="false">\u0022Night has fallen. Be careful.\u0022</string>
+    <string name="hidden_moto" translatable="false">\u0022Secrets never emerge under the sun.\u0022</string>
     <string name="app_about">\nAmarok by @deltazefiro\n\n
         [AppVersion] %s\n\n
         [HideAppAva.] %s\n\n

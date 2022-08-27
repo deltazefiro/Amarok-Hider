@@ -17,4 +17,10 @@
     <string name="set_hide_files">设置隐藏文件</string>
     <string name="show_about">显示关于</string>
     <string name="click_to_hide">Click to Hide your privacy.</string>
+    <string name="app_about">\nAmarok by @deltazefiro\n\n
+        [版本] %s\n\n
+        [APP隐藏可用性] %s\n\n
+        [简介] Amarok: 隐藏程序与文件，社会性死亡防护器。\n\n
+        [Github] https://github.com/deltazefiro/Amarok-Hider\n\n
+        Copyright 2022 DeltaZero, Licensed under Apache-2.0\n</string>
 </resources>
