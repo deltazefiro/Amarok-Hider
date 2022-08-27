@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ivStatusImg;
     private TextView tvStatusInfo, tvStatus;
     private String appVersionName;
+    private MaterialButton btChangeStatus;
 
     private ActivityResultLauncher<Uri> mDirRequest;
 
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         ivStatusImg = findViewById(R.id.main_iv_status);
         tvStatus = findViewById(R.id.main_tv_status);
         tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
+        btChangeStatus = findViewById(R.id.main_bt_change_status);
         updateUi();
 
         // Get app version
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onCardClick(View view) {
+    public void changeStatus(View view) {
         if (prefMgr.getIsHidden()) {
             hider.unhide();
         } else {
@@ -102,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         updateUi();
     }
 
-    public void buttonSetHideApps(View view) {
+    public void setHideApps(View view) {
 
         if (prefMgr.getIsHidden()) {
             Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
@@ -118,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void buttonShowAbout(View view) {
+    public void showAbout(View view) {
 
         String hideAppAva = hider.appHider.isAvailable ? "Available" : "Unavailable";
 
@@ -129,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
                 .show();
     }
 
-    public void buttonSetHideFile(View view) {
+    public void setHideFile(View view) {
 
         if (!XXPermissions.isGranted(this, com.hjq.permissions.Permission.MANAGE_EXTERNAL_STORAGE)) {
             Toast.makeText(this, R.string.storage_permission_denied, Toast.LENGTH_LONG).show();
@@ -149,13 +151,15 @@ public class MainActivity extends AppCompatActivity {
         if (!prefMgr.getIsHidden()) {
             // Visible
             ivStatusImg.setImageResource(R.drawable.img_status_visible);
-
+            btChangeStatus.setText(R.string.hide);
+            btChangeStatus.setIconResource(R.drawable.ic_button_hide);
             tvStatus.setText(getText(R.string.visible_status));
             tvStatusInfo.setText(getText(R.string.visible_moto));
         } else {
             // Hidden
             ivStatusImg.setImageResource(R.drawable.img_status_hidden);
-
+            btChangeStatus.setText(R.string.unhide);
+            btChangeStatus.setIconResource(R.drawable.ic_button_unhide);
             tvStatus.setText(getText(R.string.hidden_status));
             tvStatusInfo.setText(getText(R.string.hidden_moto));
         }
