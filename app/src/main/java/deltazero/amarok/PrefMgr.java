@@ -35,7 +35,7 @@ public class PrefMgr {
     }
 
     public boolean getIsHidden() {
-        return mPrefs.getBoolean("isHidden", true);
+        return mPrefs.getBoolean("isHidden", false);
     }
 
     public void setIsHidden(boolean isHidden) {
