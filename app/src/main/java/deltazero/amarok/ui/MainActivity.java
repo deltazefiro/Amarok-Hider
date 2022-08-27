@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView ivStatusImg;
     private TextView tvStatusInfo, tvStatus;
     private String appVersionName;
-    private MaterialButton btChangeStatus;
+    private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
 
     private ActivityResultLauncher<Uri> mDirRequest;
@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         tvStatus = findViewById(R.id.main_tv_status);
         tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
         btChangeStatus = findViewById(R.id.main_bt_change_status);
+        btSetHideApps = findViewById(R.id.main_bt_set_hide_apps);
+        btSetHideFiles = findViewById(R.id.main_bt_set_hide_files);
         piProcessStatus = findViewById(R.id.main_pi_process_status);
         updateUi();
 
@@ -121,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             hider.Hide(new onHiderCallback());
         }
-        updateUi();
     }
 
     public void setHideApps(View view) {
@@ -173,6 +174,8 @@ public class MainActivity extends AppCompatActivity {
             ivStatusImg.setImageResource(R.drawable.img_status_visible);
             btChangeStatus.setText(R.string.hide);
             btChangeStatus.setIconResource(R.drawable.ic_button_hide);
+            btSetHideFiles.setEnabled(true);
+            btSetHideApps.setEnabled(true);
             tvStatus.setText(getText(R.string.visible_status));
             tvStatusInfo.setText(getText(R.string.visible_moto));
         } else {
@@ -180,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
             ivStatusImg.setImageResource(R.drawable.img_status_hidden);
             btChangeStatus.setText(R.string.unhide);
             btChangeStatus.setIconResource(R.drawable.ic_button_unhide);
+            btSetHideFiles.setEnabled(false);
+            btSetHideApps.setEnabled(false);
             tvStatus.setText(getText(R.string.hidden_status));
             tvStatusInfo.setText(getText(R.string.hidden_moto));
         }

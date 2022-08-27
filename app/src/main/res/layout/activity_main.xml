@@ -124,7 +124,7 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.Material3.Button.TextButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -132,28 +132,34 @@
                     android:layout_marginTop="35dp"
                     android:gravity="start|center_vertical"
                     android:onClick="setHideFile"
+                    android:id="@+id/main_bt_set_hide_files"
                     android:text="@string/set_hide_files"
                     app:icon="@drawable/ic_folder"
-                    app:iconPadding="15dp" />
+                    app:iconPadding="15dp"
+                    android:allowClickWhenDisabled="true"
+                    tools:targetApi="s" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.Material3.Button.TextButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="50dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="start|center_vertical"
                     android:onClick="setHideApps"
                     android:text="@string/set_hide_apps"
                     app:icon="@drawable/ic_app"
-                    app:iconPadding="15dp" />
+                    app:iconPadding="15dp"
+                    android:id="@+id/main_bt_set_hide_apps"
+                    android:allowClickWhenDisabled="true"
+                    tools:targetApi="s" />
 
-                <Button
+                <com.google.android.material.button.MaterialButton
                     style="@style/Widget.Material3.Button.TextButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginHorizontal="50dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="start|center_vertical"
                     android:onClick="showAbout"
                     android:text="@string/show_about"
