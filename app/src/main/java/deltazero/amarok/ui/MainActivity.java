@@ -19,6 +19,9 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -46,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        // Start app-center static
+        AppCenter.start(getApplication(), "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12",
+                Analytics.class, Crashes.class);
+
+
+        // Init
         hider = new Hider(this);
         prefMgr = hider.prefMgr;
 
