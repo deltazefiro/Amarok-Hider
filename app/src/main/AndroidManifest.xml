@@ -62,6 +62,22 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
         </service>
+
+        <receiver
+            android:name="AdminReceiver"
+            android:permission="android.permission.BIND_DEVICE_ADMIN"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <action android:name="android.app.develop.action.DEVICE_DELEGATION" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.app.develop.delegation"
+                android:resource="@xml/app_delegation" />
+        </receiver>
+
     </application>
+
 
 </manifest>
