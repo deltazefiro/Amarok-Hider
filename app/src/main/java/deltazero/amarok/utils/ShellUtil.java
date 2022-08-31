@@ -19,8 +19,10 @@ public class ShellUtil {
             Process p = Runtime.getRuntime().exec(cmd);
             String stdoutString = convertInputStreamToString(p.getInputStream());
             String stderrString = convertInputStreamToString(p.getErrorStream());
-            Log.d("ShellOut", stdoutString);
-            Log.w("ShellErr", stderrString);
+            if (stdoutString.length() > 0)
+                Log.d("ShellOut", stdoutString);
+            if (stderrString.length() > 0)
+                Log.i("ShellErr", stderrString);
             return new String[]{stdoutString, stderrString};
         } catch (IOException e) {
             Log.w("ShellErr", e.toString());
