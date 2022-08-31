@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Amarok</string>
     <string name="unhide">取消隐藏</string>
     <string name="hide">隐藏</string>
     <string name="visible_status">未隐藏</string>
@@ -16,11 +15,14 @@
     <string name="apphider_not_ava">应用隐藏不可用。</string>
     <string name="set_hide_files">设置隐藏文件</string>
     <string name="show_about">显示关于</string>
-    <string name="click_to_hide">Click to Hide your privacy.</string>
-    <string name="app_about">\nAmarok by @deltazefiro\n\n
-        [版本] %s\n\n
-        [APP隐藏可用性] %s\n\n
-        [简介] Amarok: 隐藏程序与文件，社会性死亡防护器。\n\n
-        [Github] https://github.com/deltazefiro/Amarok-Hider\n\n
-        Copyright 2022 DeltaZero, Licensed under Apache-2.0\n</string>
+    <string name="analytics_description">允许 Amarok 发送错误记录以供分析。</string>
+    <string name="enable_analytics">启用分析</string>
+    <string name="usage">Usage</string>
+    <string name="more_settings">更多设置</string>
+    <string name="about_description">显示关于</string>
+    <string name="usage_description">打开帮助文档</string>
+    <string name="switch_app_mode_description">切换APP隐藏模式</string>
+    <string name="switch_file_mode_description">切换文件隐藏模式</string>
+    <string name="switch_app_mode">应用隐藏模式</string>
+    <string name="switch_file_mode">文件隐藏模式</string>
 </resources>

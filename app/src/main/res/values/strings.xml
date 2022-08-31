@@ -6,9 +6,8 @@
     <string name="hidden_status">Hidden</string>
     <string name="visible_moto" translatable="false">"\"Night has fallen. Be careful.\" "</string>
     <string name="hidden_moto" translatable="false">"\"Secrets never emerge under the sun.\" "</string>
-    <string name="app_about">\nAmarok by @deltazefiro\n\n
-        [AppVersion] %s\n\n
-        [HideAppAva.] %s\n\n
+    <string name="app_about">\nAmarok %s\n\n
+        [Developer] @Deltazefiro\n\n
         [Info] Amarok: A simple android app for private file and app hiding.\n\n
         [Repo] https://github.com/deltazefiro/Amarok-Hider\n\n
         Copyright 2022 DeltaZero, Licensed under Apache-2.0\n</string>
@@ -23,6 +22,15 @@
     <string name="apphider_not_ava">App hider is not available!</string>
     <string name="set_hide_files">Set Hide Files</string>
     <string name="show_about">Show About</string>
-    <string name="click_to_hide">Click to Hide your privacy.</string>
-    <string name="moto">Hunting alone in the starless night.</string>
+    <string name="moto" translatable="false">Hunting alone in the starless night.</string>
+    <string name="enable_analytics">Enable Analytics</string>
+    <string name="analytics_description">Allow Amarok to send logs for analytics.</string>
+    <string name="about_description">Show about.</string>
+    <string name="usage">Usage</string>
+    <string name="usage_description">Open usage.</string>
+    <string name="switch_app_mode">AppHider Workmode</string>
+    <string name="switch_app_mode_description">Switch workmode for app hiding.</string>
+    <string name="more_settings">More Settings</string>
+    <string name="switch_file_mode_description">Switch workmode for file hiding.</string>
+    <string name="switch_file_mode">FileHider Workmode</string>
 </resources>
