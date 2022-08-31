@@ -3,6 +3,7 @@ package deltazero.amarok.ui;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.checkbox.MaterialCheckBox;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
@@ -36,6 +39,17 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
         prefMgr = new PrefMgr(context);
         lsAppInfo = pkgMgr.getInstalledApplications(PackageManager.GET_META_DATA);
 
+        // Remove system apps
+        lsAppInfo.removeIf(a -> (a.flags & ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM);
+        // Remove Amarok
+        lsAppInfo.removeIf(a -> (Objects.equals(a.packageName, "deltazero.amarok")));
+        // Sort with name
+        lsAppInfo.sort(new Comparator<ApplicationInfo>() {
+            @Override
+            public int compare(ApplicationInfo o1, ApplicationInfo o2) {
+                return pkgMgr.getApplicationLabel(o1).toString().compareTo(pkgMgr.getApplicationLabel(o2).toString());
+            }
+        });
     }
 
 
@@ -53,7 +67,7 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
         holder.tvAppName.setText(pkgMgr.getApplicationLabel(currAppInfo));
         holder.cbIsHidden.setChecked(prefMgr.getHideApps().contains(currAppInfo.packageName));
         holder.tvPkgName.setText(currAppInfo.packageName);
-        holder.ivAppIcon.setImageDrawable(pkgMgr.getApplicationIcon(currAppInfo));
+        holder.ivAppIcon.setImageDrawable(pkgMgr.getApplicationIcon(currAppInfo)); // FIXME: Generate app icon realtime is slow, pre-generate it.
     }
 
     @Override
