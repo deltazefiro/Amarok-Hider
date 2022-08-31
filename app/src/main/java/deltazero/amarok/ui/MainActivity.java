@@ -1,7 +1,6 @@
 package deltazero.amarok.ui;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -16,7 +15,6 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
 import com.microsoft.appcenter.AppCenter;
@@ -40,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView ivStatusImg;
     private TextView tvStatusInfo, tvStatus;
-    private String appVersionName;
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
 
@@ -72,14 +69,6 @@ public class MainActivity extends AppCompatActivity {
         piProcessStatus = findViewById(R.id.main_pi_process_status);
         updateUi();
 
-        // Get app version
-        try {
-            appVersionName = this.getPackageManager()
-                    .getPackageInfo(this.getPackageName(), PackageManager.GET_ACTIVITIES).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            // Make compiler happy
-        }
-
         // Process Permissions
         PermissionUtil.requestStoragePermission(this);
 
@@ -95,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                         // set hide path
                         String path = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
 
-                        Set<String> hideFilePath =  new HashSet<String>(); // TODO: Support multiple path
+                        Set<String> hideFilePath = new HashSet<String>(); // TODO: Support multiple path
                         hideFilePath.add(path);
                         prefMgr.setHideFilePath(hideFilePath);
 
@@ -152,15 +141,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void showAbout(View view) {
+    public void showMoreSettings(View view) {
 
-        String hideAppAva = hider.appHider.checkAvailability() ? "Available" : "Unavailable";
+        startActivity(new Intent(this, SettingsActivity.class));
 
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.about))
-                .setMessage(String.format(getString(R.string.app_about), appVersionName, hideAppAva))
-                .setPositiveButton(getString(R.string.ok), null)
-                .show();
     }
 
     public void setHideFile(View view) {

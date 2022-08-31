@@ -161,9 +161,9 @@
                     android:layout_marginHorizontal="50dp"
                     android:layout_marginTop="8dp"
                     android:gravity="start|center_vertical"
-                    android:onClick="showAbout"
-                    android:text="@string/show_about"
-                    app:icon="@drawable/ic_about"
+                    android:onClick="showMoreSettings"
+                    android:text="@string/more_settings"
+                    app:icon="@drawable/ic_settings"
                     app:iconPadding="15dp" />
 
             </LinearLayout>

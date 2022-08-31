@@ -40,11 +40,11 @@
         android:theme="@style/Theme.Amarok"
         tools:ignore="AllowBackup,MissingTvBanner">
         <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
+            android:name=".ui.SettingsActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.SelectHideAppActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">
