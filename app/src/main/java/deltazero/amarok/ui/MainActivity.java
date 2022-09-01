@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         // Start App-center Analytics
-        AppCenter.setLogLevel(Log.INFO);
         AppCenter.start(getApplication(), "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12",
                 Analytics.class, Crashes.class);
 

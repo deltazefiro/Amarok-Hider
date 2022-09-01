@@ -5,6 +5,8 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import android.util.Base64;
 import android.util.Log;
 
+import com.microsoft.appcenter.crashes.Crashes;
+
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
@@ -18,7 +20,7 @@ public class FileHider {
     private final static String ENCODED_TAG = "[AMAROK]";
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
 
-    private static void processFilename(Path path, ProcessMethod processMethod) throws IOException {
+    private static void processFilename(Path path, ProcessMethod processMethod) {
         String filename = path.getFileName().toString();
         Path newPath = null;
 
@@ -57,7 +59,15 @@ public class FileHider {
 
         }
 
-        Files.move(path, newPath);
+        try {
+            Files.move(path, newPath);
+        } catch (IOException e) {
+            // If the file name is too long that can not used as a filename after Base64,
+            // The exception will be triggered. AppCenter-Crashes is used to analytics
+            // the number of this error.
+            Log.w(TAG, String.format("While processing '%s' -> '%s': %s", path, newPath, e));
+            Crashes.trackError(e);
+        };
 
     }
 
@@ -71,28 +81,28 @@ public class FileHider {
         Log.d(TAG, "Applying hider to: " + targetDir);
 
         try {
+
             Files.walkFileTree(targetDir, new SimpleFileVisitor<Path>() {
 
                 @Override
-                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
-                        throws IOException {
+                public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
                     processFilename(file, processMethod);
                     return FileVisitResult.CONTINUE;
                 }
 
                 @Override
-                public FileVisitResult postVisitDirectory(Path dir, IOException e)
-                        throws IOException {
+                public FileVisitResult postVisitDirectory(Path dir, IOException e) {
                     if (dir != targetDir)
                         processFilename(dir, processMethod);
                     return FileVisitResult.CONTINUE;
                 }
 
             });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
+        } catch (IOException e) {
+            Log.w(TAG, String.format("While processing '%s': %s", targetDir.getFileName(), e));
+            Crashes.trackError(e);
+        }
     }
 
     public enum ProcessMethod {
