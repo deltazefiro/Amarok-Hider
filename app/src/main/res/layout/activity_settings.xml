@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_back"
-            app:title="Settings" />
+            app:title="Settings"
+            app:navigationIconTint="?attr/colorOnSurface"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -41,7 +42,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_app" />
+                    android:src="@drawable/ic_app"
+                    app:tint="?attr/colorOnSurface"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -81,7 +83,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_folder" />
+                    android:src="@drawable/ic_folder"
+                    app:tint="?attr/colorOnSurface"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -128,7 +131,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_null" />
+                    android:src="@drawable/ic_null"
+                    app:tint="?attr/colorOnSurface"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -155,14 +159,14 @@
 
                 </LinearLayout>
 
-                <com.google.android.material.switchmaterial.SwitchMaterial
+                <com.google.android.material.materialswitch.MaterialSwitch
                     android:id="@+id/settings_sw_analytics"
-                    style="@style/Widget.Material3.CompoundButton.Switch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="24dp" />
+                    android:layout_marginEnd="24dp"
+                    android:checked="true" />
 
             </RelativeLayout>
 
@@ -177,7 +181,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_usage" />
+                    android:src="@drawable/ic_usage"
+                    app:tint="?attr/colorOnSurface"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -218,7 +223,8 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_info" />
+                    android:src="@drawable/ic_info"
+                    app:tint="?attr/colorOnSurface" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

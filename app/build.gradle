@@ -3,14 +3,13 @@ plugins {
 }
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "deltazero.amarok"
         minSdkVersion 26
-        //noinspection OldTargetApi
-        targetSdkVersion 31
+        targetSdkVersion 32
         versionCode 11
         versionName "0.7.3a"
 
@@ -38,8 +37,8 @@ dependencies {
     implementation "com.microsoft.appcenter:appcenter-analytics:4.3.1"
     implementation "com.microsoft.appcenter:appcenter-crashes:4.3.1"
     implementation 'com.github.getActivity:XXPermissions:13.2'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
-    implementation 'com.google.android.material:material:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.5.0'
+    implementation 'com.google.android.material:material:1.7.0-rc01'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

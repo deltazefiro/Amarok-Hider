@@ -46,18 +46,21 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        // Start app-center static
+        // Start App-center Analytics
         AppCenter.setLogLevel(Log.INFO);
         AppCenter.start(getApplication(), "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12",
                 Analytics.class, Crashes.class);
 
-
         // Init
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
         hider = new Hider(this);
         prefMgr = hider.prefMgr;
 
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        // Apply Analytics Switch
+        AppCenter.setEnabled(prefMgr.getEnableAnalytics());
+
 
         // Init UI
         ivStatusImg = findViewById(R.id.main_iv_status);
