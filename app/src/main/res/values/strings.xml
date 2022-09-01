@@ -33,4 +33,5 @@
     <string name="more_settings">More Settings</string>
     <string name="switch_file_mode_description">Switch workmode for file hiding.</string>
     <string name="switch_file_mode">FileHider Workmode</string>
+    <string name="apply_on_restart">Changes will be applied on next restart.</string>
 </resources>

@@ -51,4 +51,13 @@ public class PrefMgr {
         mPrefEditor.putStringSet("hidePkgNames", pkgNames);
         mPrefEditor.commit();
     }
+
+    public boolean getEnableAnalytics() {
+        return mPrefs.getBoolean("isEnableAnalytics", true);
+    }
+
+    public void setEnableAnalytics(boolean isEnable) {
+        mPrefEditor.putBoolean("isEnableAnalytics", isEnable);
+        mPrefEditor.commit();
+    }
 }
