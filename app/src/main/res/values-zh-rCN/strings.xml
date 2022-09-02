@@ -26,4 +26,6 @@
     <string name="switch_app_hider">应用隐藏模式</string>
     <string name="switch_file_hider">文件隐藏模式</string>
     <string name="apply_on_restart">更改将与下一次启动时生效</string>
+    <string name="unhidden_toast">取消隐藏</string>
+    <string name="hidden_toast">已隐藏</string>
 </resources>
