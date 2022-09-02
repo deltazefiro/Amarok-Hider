@@ -9,6 +9,8 @@ import android.widget.Toast;
 import java.nio.file.Paths;
 import java.util.Set;
 
+import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.AppHider.RootAppHider;
 
 
 public class Hider {
@@ -16,7 +18,7 @@ public class Hider {
     private static final String TAG = "Hider";
     private final Context context;
     private final Handler backgroundHandler;
-    public AppHider appHider;
+    public AppHiderBase appHider;
     public PrefMgr prefMgr;
 
     public interface HiderCallback {
@@ -26,7 +28,7 @@ public class Hider {
     public Hider(Context context) {
         this.context = context;
         prefMgr = new PrefMgr(context);
-        appHider = new AppHider(new AppHider.RootMode());
+        appHider = new RootAppHider();
 
         // Init Background Handler
         HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
@@ -72,14 +74,7 @@ public class Hider {
         // Hide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            if (appHider.checkAvailability()) {
-                for (String a : hideApps) {
-                    appHider.hide(a);
-                }
-            } else {
-                Log.w(TAG, "Unable to hide App: Hider not available");
-                Toast.makeText(context, "App hide not available", Toast.LENGTH_SHORT).show();
-            }
+            appHider.hide(hideApps);
         } else {
             Log.i(TAG, "No hide App, skipped App hiding.");
         }
@@ -107,14 +102,7 @@ public class Hider {
         // Unhide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            if (appHider.checkAvailability()) {
-                for (String a : hideApps) {
-                    appHider.unhide(a);
-                }
-            } else {
-                Log.w(TAG, "Unable to unhide App: Hider not available");
-                Toast.makeText(context, "App hide not available", Toast.LENGTH_SHORT).show();
-            }
+            appHider.unhide(hideApps);
         } else {
             Log.i(TAG, "No hide App, skipped App unhiding.");
         }

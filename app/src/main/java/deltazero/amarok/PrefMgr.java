@@ -3,17 +3,20 @@ package deltazero.amarok;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
+import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.AppHider.NoneAppHider;
+import deltazero.amarok.AppHider.RootAppHider;
 
 public class PrefMgr {
 
     private final SharedPreferences mPrefs;
     private final SharedPreferences.Editor mPrefEditor;
-    public AppHider appHider;
     public Context context;
 
     public PrefMgr(Context context) {
@@ -21,7 +24,6 @@ public class PrefMgr {
 
         mPrefs = context.getSharedPreferences("deltazero.amarok.prefs", MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
-        appHider = new AppHider(new AppHider.RootMode());
     }
 
 
@@ -58,6 +60,24 @@ public class PrefMgr {
 
     public void setEnableAnalytics(boolean isEnable) {
         mPrefEditor.putBoolean("isEnableAnalytics", isEnable);
+        mPrefEditor.commit();
+    }
+
+    public AppHiderBase getAppHiderMode() {
+        switch (mPrefs.getInt("appHiderMode", 0)) {
+            case 1:
+                return new RootAppHider();
+            default:
+                return new NoneAppHider();
+        }
+    }
+
+    public void setAppHiderMode(AppHiderBase mode) {
+        int modeCode = 0;
+        if (mode instanceof RootAppHider) {
+            modeCode = 1;
+        }
+        mPrefEditor.putInt("appHiderMode", modeCode);
         mPrefEditor.commit();
     }
 }
