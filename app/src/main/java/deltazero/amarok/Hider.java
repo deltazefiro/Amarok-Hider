@@ -10,7 +10,6 @@ import java.nio.file.Paths;
 import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
-import deltazero.amarok.AppHider.RootAppHider;
 
 
 public class Hider {
@@ -28,7 +27,6 @@ public class Hider {
     public Hider(Context context) {
         this.context = context;
         prefMgr = new PrefMgr(context);
-        appHider = new RootAppHider();
 
         // Init Background Handler
         HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
@@ -59,6 +57,8 @@ public class Hider {
 
     public void syncHide() {
 
+        appHider = prefMgr.getAppHider();
+
         // Hide files
         Set<String> hideFilePath = prefMgr.getHideFilePath();
         if (hideFilePath.size() > 0) {
@@ -74,7 +74,11 @@ public class Hider {
         // Hide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            appHider.hide(hideApps);
+            if (appHider != null) {
+                appHider.hide(hideApps);
+            } else {
+                Log.w(TAG, "No AppHider selected, skipped App hiding.");
+            }
         } else {
             Log.i(TAG, "No hide App, skipped App hiding.");
         }
@@ -86,6 +90,8 @@ public class Hider {
     }
 
     public void syncUnhide() {
+
+        appHider = prefMgr.getAppHider();
 
         // Unhide files
         Set<String> hideFilePath = prefMgr.getHideFilePath();
@@ -102,7 +108,11 @@ public class Hider {
         // Unhide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            appHider.unhide(hideApps);
+            if (appHider != null) {
+                appHider.hide(hideApps);
+            } else {
+                Log.w(TAG, "No AppHider selected, skipped App hiding.");
+            }
         } else {
             Log.i(TAG, "No hide App, skipped App unhiding.");
         }

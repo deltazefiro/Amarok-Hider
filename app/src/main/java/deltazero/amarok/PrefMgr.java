@@ -3,14 +3,12 @@ package deltazero.amarok;
 import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 
 import java.util.HashSet;
 import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
-import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
 
 public class PrefMgr {
@@ -63,12 +61,12 @@ public class PrefMgr {
         mPrefEditor.commit();
     }
 
-    public AppHiderBase getAppHiderMode() {
+    public AppHiderBase getAppHider() {
         switch (mPrefs.getInt("appHiderMode", 0)) {
             case 1:
                 return new RootAppHider();
             default:
-                return new NoneAppHider();
+                return null;
         }
     }
 
