@@ -66,7 +66,7 @@ public class PrefMgr {
             case 1:
                 return new RootAppHider();
             default:
-                return null;
+                return new RootAppHider(); // FIXME: Here should be 'null' when release.
         }
     }
 

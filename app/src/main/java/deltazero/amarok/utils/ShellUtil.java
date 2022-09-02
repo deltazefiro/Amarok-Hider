@@ -10,10 +10,28 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
 public class ShellUtil {
+    public static String[] exec(String[] cmds) {
+        try {
+            Log.d("ShellExec", Arrays.toString(cmds));
+            Process p = Runtime.getRuntime().exec(cmds);
+            String stdoutString = convertInputStreamToString(p.getInputStream());
+            String stderrString = convertInputStreamToString(p.getErrorStream());
+            if (stdoutString.length() > 0)
+                Log.d("ShellOut", stdoutString);
+            if (stderrString.length() > 0)
+                Log.i("ShellErr", stderrString);
+            return new String[]{stdoutString, stderrString};
+        } catch (IOException e) {
+            Log.w("ShellErr", e.toString());
+            return null;
+        }
+    }
+
     public static String[] exec(String cmd){
         try {
             Process p = Runtime.getRuntime().exec(cmd);
