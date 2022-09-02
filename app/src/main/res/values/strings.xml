@@ -34,4 +34,6 @@
     <string name="switch_file_hider_description">Switch workmode for file hiding.</string>
     <string name="switch_file_hider">FileHider Workmode</string>
     <string name="apply_on_restart">Changes will be applied on next restart.</string>
+    <string name="hidden_toast">Hidden. Cock-a-doodle-do~!</string>
+    <string name="unhidden_toast">Unhidden. Be careful.</string>
 </resources>

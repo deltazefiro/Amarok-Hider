@@ -85,8 +85,8 @@ public class Hider {
 
         prefMgr.setIsHidden(true);
 
-        Log.i(TAG, "Dusk to Dawn! Goodmorning ~");
-        Toast.makeText(context, "Cock-a-doodle-do~ Morning!", Toast.LENGTH_SHORT).show();
+        Log.i(TAG, "Hid. Dusk to Dawn! Goodmorning ~");
+        Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
     }
 
     public void syncUnhide() {
@@ -120,7 +120,7 @@ public class Hider {
         prefMgr.setIsHidden(false);
 
         Log.i(TAG, "Dusk to Dusk! Night has come!");
-        Toast.makeText(context, "Hoooooooooo! Night falls!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
     }
 
 
