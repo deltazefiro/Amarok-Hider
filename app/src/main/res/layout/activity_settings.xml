@@ -59,12 +59,12 @@
                         style="@style/TextAppearance.Material3.TitleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/switch_app_mode" />
+                        android:text="@string/switch_app_hider" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/switch_app_mode_description"
+                        android:text="@string/switch_app_hider_description"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -100,12 +100,12 @@
                         style="@style/TextAppearance.Material3.TitleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/switch_file_mode" />
+                        android:text="@string/switch_file_hider" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/switch_file_mode_description"
+                        android:text="@string/switch_file_hider_description"
                         android:textSize="12sp" />
 
                 </LinearLayout>
