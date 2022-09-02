@@ -109,9 +109,9 @@ public class Hider {
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
             if (appHider != null) {
-                appHider.hide(hideApps);
+                appHider.unhide(hideApps);
             } else {
-                Log.w(TAG, "No AppHider selected, skipped App hiding.");
+                Log.w(TAG, "No AppHider selected, skipped App unhiding.");
             }
         } else {
             Log.i(TAG, "No hide App, skipped App unhiding.");

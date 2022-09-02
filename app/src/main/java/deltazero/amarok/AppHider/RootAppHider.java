@@ -8,18 +8,18 @@ public class RootAppHider implements AppHiderBase {
 
     @Override
     public void hide(Set<String> pkgNames) {
-        StringBuilder cmd = new StringBuilder("su\n");
+        StringBuilder cmd = new StringBuilder("echo amarok");
         for (String p: pkgNames)
-            cmd.append(String.format("pm disable-user %s\n", p));
-        ShellUtil.exec(cmd.toString());
+            cmd.append(String.format("&pm disable-user %s", p));
+        ShellUtil.exec(new String[]{"su", "-c", cmd.toString()});
     }
 
     @Override
     public void unhide(Set<String> pkgNames) {
-        StringBuilder cmd = new StringBuilder("su\n");
+        StringBuilder cmd = new StringBuilder("echo amarok");
         for (String p: pkgNames)
-            cmd.append(String.format("pm enable %s\n", p));
-        ShellUtil.exec(cmd.toString());
+            cmd.append(String.format("&pm enable %s", p));
+        ShellUtil.exec(new String[]{"su", "-c", cmd.toString()});
     }
 
     @Override

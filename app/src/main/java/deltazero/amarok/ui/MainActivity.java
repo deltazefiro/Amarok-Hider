@@ -133,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (!hider.appHider.checkAvailability()) {
+        if (prefMgr.getAppHider() == null || !prefMgr.getAppHider().checkAvailability()) {
             Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
             Log.i(TAG, "AppHider not available");
             return;
