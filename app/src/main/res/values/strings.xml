@@ -34,4 +34,5 @@
     <string name="switch_file_mode_description">Switch workmode for file hiding.</string>
     <string name="switch_file_mode">FileHider Workmode</string>
     <string name="apply_on_restart">Changes will be applied on next restart.</string>
+    <string name="switch_app_hider">Switch App Hider</string>
 </resources>

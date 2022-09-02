@@ -58,4 +58,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .show();
     }
 
+    public void switchAppHider(View view) {
+    }
+
 }
