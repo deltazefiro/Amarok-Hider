@@ -1,10 +1,16 @@
 package deltazero.amarok.AppHider;
 
+import android.content.Context;
+
 import java.util.Set;
 
 import deltazero.amarok.utils.ShellUtil;
 
-public class RootAppHider implements AppHiderBase {
+public class RootAppHider extends AppHiderBase {
+
+    public RootAppHider(Context context) {
+        super(context);
+    }
 
     @Override
     public void hide(Set<String> pkgNames) {
