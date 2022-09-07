@@ -9,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
 
 public class PrefMgr {
@@ -64,18 +65,31 @@ public class PrefMgr {
     public AppHiderBase getAppHider() {
         switch (mPrefs.getInt("appHiderMode", 0)) {
             case 1:
-                return new RootAppHider();
+                return new RootAppHider(context);
+            case 2:
+                return new DsmAppHider(context);
             default:
-                return new RootAppHider(); // FIXME: Here should be 'null' when release.
+                return null;
         }
     }
 
     public void setAppHiderMode(AppHiderBase mode) {
         int modeCode = 0;
-        if (mode instanceof RootAppHider) {
+        // Null is not the instance of Obj, but a reference
+        if (mode instanceof RootAppHider)
             modeCode = 1;
-        }
+        if (mode instanceof DsmAppHider)
+            modeCode = 2;
         mPrefEditor.putInt("appHiderMode", modeCode);
         mPrefEditor.commit();
+    }
+
+    public void setAppHiderMode(int modeCode) {
+        mPrefEditor.putInt("appHiderMode", modeCode);
+        mPrefEditor.commit();
+    }
+
+    public int getAppHiderCode() {
+        return mPrefs.getInt("appHiderMode", 0);
     }
 }

@@ -36,4 +36,8 @@
     <string name="apply_on_restart">Changes will be applied on next restart.</string>
     <string name="hidden_toast">Hidden. Cock-a-doodle-do~!</string>
     <string name="unhidden_toast">Unhidden. Be careful.</string>
+    <string name="show_debug_info">Show Debug Info</string>
+    <string name="debug_info_description">Ignore it if you are not a developer.</string>
+    <string name="invalid_dsm_provider">Invalid DSM Provider.</string>
+    <string name="hide_app_failed_admin_inactive">Hide App failed: Admin not active.</string>
 </resources>

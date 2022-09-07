@@ -28,4 +28,6 @@
     <string name="apply_on_restart">更改将与下一次启动时生效</string>
     <string name="unhidden_toast">取消隐藏</string>
     <string name="hidden_toast">已隐藏</string>
+    <string name="invalid_dsm_provider">Invalid DSM Provider.</string>
+    <string name="hide_app_failed_admin_inactive">Hide App failed: Admin not active.</string>
 </resources>
