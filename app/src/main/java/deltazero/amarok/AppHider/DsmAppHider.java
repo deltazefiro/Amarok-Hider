@@ -64,4 +64,9 @@ public class DsmAppHider extends AppHiderBase {
         return true;
 
     }
+
+    @Override
+    public String getName() {
+        return "DSM";
+    }
 }

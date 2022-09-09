@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.AppHider.NoneAppHider;
 
 
 public class Hider {
@@ -74,7 +75,7 @@ public class Hider {
         // Hide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            if (appHider != null) {
+            if (!(appHider instanceof NoneAppHider)) {
                 appHider.hide(hideApps);
             } else {
                 Log.w(TAG, "No AppHider selected, skipped App hiding.");
@@ -108,7 +109,7 @@ public class Hider {
         // Unhide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
-            if (appHider != null) {
+            if (!(appHider instanceof NoneAppHider)) {
                 appHider.unhide(hideApps);
             } else {
                 Log.w(TAG, "No AppHider selected, skipped App unhiding.");

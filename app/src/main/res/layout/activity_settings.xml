@@ -34,7 +34,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="switchAppHider">
+                android:onClick="switchAppHider"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/settings_iv_app_mode"
@@ -63,9 +65,10 @@
                         android:text="@string/switch_app_hider" />
 
                     <TextView
+                        android:id="@+id/settings_tv_curr_app_hider"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/switch_app_hider_description"
+                        android:text="@string/current_mode"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -75,7 +78,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/settings_iv_file_mode"
@@ -85,7 +90,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="24dp"
                     android:src="@drawable/ic_folder"
-                    app:tint="?attr/colorOnSurface"/>
+                    app:tint="?attr/colorOnSurface" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -104,9 +109,10 @@
                         android:text="@string/switch_file_hider" />
 
                     <TextView
+                        android:id="@+id/settings_tv_curr_file_hider"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/switch_file_hider_description"
+                        android:text="@string/current_mode"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -173,7 +179,9 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/settings_iv_usage"
@@ -215,7 +223,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="showAbout">
+                android:onClick="showAbout"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/settings_iv_about"
@@ -257,7 +267,9 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:onClick="showDebugInfo">
+                android:onClick="showDebugInfo"
+                android:clickable="true"
+                android:background="?android:attr/selectableItemBackground">
 
                 <ImageView
                     android:id="@+id/settings_iv_debug_info"

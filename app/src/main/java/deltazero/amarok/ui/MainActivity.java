@@ -24,6 +24,7 @@ import com.microsoft.appcenter.crashes.Crashes;
 import java.util.HashSet;
 import java.util.Set;
 
+import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
@@ -133,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (prefMgr.getAppHider() == null || !prefMgr.getAppHider().checkAvailability()) {
+        if (prefMgr.getAppHider() instanceof NoneAppHider || !prefMgr.getAppHider().checkAvailability()) {
             Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
             Log.i(TAG, "AppHider not available");
             return;

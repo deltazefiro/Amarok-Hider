@@ -21,8 +21,7 @@
     <string name="more_settings">更多设置</string>
     <string name="about_description">显示关于</string>
     <string name="usage_description">打开帮助文档</string>
-    <string name="switch_app_hider_description">切换APP隐藏模式</string>
-    <string name="switch_file_hider_description">切换文件隐藏模式</string>
+    <string name="current_mode">当前模式：%s</string>
     <string name="switch_app_hider">应用隐藏模式</string>
     <string name="switch_file_hider">文件隐藏模式</string>
     <string name="apply_on_restart">更改将与下一次启动时生效</string>

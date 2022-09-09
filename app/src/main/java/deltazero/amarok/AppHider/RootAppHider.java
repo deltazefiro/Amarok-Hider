@@ -33,5 +33,10 @@ public class RootAppHider extends AppHiderBase {
         String[] output = ShellUtil.exec("su -c echo \"Amarok-root-test\"");
         return output != null && output[1].length() == 0;
     }
-    
+
+    @Override
+    public String getName() {
+        return "Root";
+    }
+
 }
