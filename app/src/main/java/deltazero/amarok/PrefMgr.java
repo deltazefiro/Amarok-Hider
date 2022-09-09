@@ -10,6 +10,7 @@ import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.DsmAppHider;
+import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
 
 public class PrefMgr {
@@ -69,13 +70,12 @@ public class PrefMgr {
             case 2:
                 return new DsmAppHider(context);
             default:
-                return null;
+                return new NoneAppHider(context);
         }
     }
 
     public void setAppHiderMode(AppHiderBase mode) {
         int modeCode = 0;
-        // Null is not the instance of Obj, but a reference
         if (mode instanceof RootAppHider)
             modeCode = 1;
         if (mode instanceof DsmAppHider)

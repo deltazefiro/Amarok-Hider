@@ -16,4 +16,6 @@ public abstract class AppHiderBase {
     public abstract void unhide(Set<String> pkgNames);
 
     public abstract boolean checkAvailability();
+
+    public abstract String getName();
 }

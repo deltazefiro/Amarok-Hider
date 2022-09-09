@@ -28,11 +28,10 @@
     <string name="about_description">Show about.</string>
     <string name="usage">Usage</string>
     <string name="usage_description">Open usage.</string>
-    <string name="switch_app_hider">AppHider Workmode</string>
-    <string name="switch_app_hider_description">Switch workmode for app hiding.</string>
+    <string name="switch_app_hider">Switch AppHider Workmode</string>
+    <string name="current_mode">Current Mode: %s</string>
     <string name="more_settings">More Settings</string>
-    <string name="switch_file_hider_description">Switch workmode for file hiding.</string>
-    <string name="switch_file_hider">FileHider Workmode</string>
+    <string name="switch_file_hider">Switch FileHider Workmode</string>
     <string name="apply_on_restart">Changes will be applied on next restart.</string>
     <string name="hidden_toast">Hidden. Cock-a-doodle-do~!</string>
     <string name="unhidden_toast">Unhidden. Be careful.</string>
