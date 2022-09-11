@@ -27,13 +27,13 @@ public class PrefMgr {
     }
 
 
+    public Set<String> getHideFilePath() {
+        return mPrefs.getStringSet("hideFilePath", new HashSet<>());
+    }
+
     public void setHideFilePath(Set<String> path) {
         mPrefEditor.putStringSet("hideFilePath", path);
         mPrefEditor.commit();
-    }
-
-    public Set<String> getHideFilePath() {
-        return mPrefs.getStringSet("hideFilePath", new HashSet<>());
     }
 
     public boolean getIsHidden() {

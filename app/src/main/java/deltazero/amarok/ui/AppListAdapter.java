@@ -3,7 +3,6 @@ package deltazero.amarok.ui;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,13 +55,14 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
     @NonNull
     @Override
     public AppListAdapter.AppListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // Inflate the viewHolder
         View mItemView = inflater.inflate(R.layout.item_hideapps, parent, false);
-        return new AppListHolder(mItemView, this);
+        return new AppListHolder(mItemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AppListAdapter.AppListHolder holder, int position) {
-        // Get current item
+        // Run for each item
         ApplicationInfo currAppInfo = lsAppInfo.get(position);
         holder.tvAppName.setText(pkgMgr.getApplicationLabel(currAppInfo));
         holder.cbIsHidden.setChecked(prefMgr.getHideApps().contains(currAppInfo.packageName));
@@ -79,15 +79,12 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
 
         // For every single item in the list
 
-        public TextView tvAppName;
-        public TextView tvPkgName;
+        public TextView tvAppName, tvPkgName;
         public MaterialCheckBox cbIsHidden;
         public ImageView ivAppIcon;
-        AppListAdapter adapter;
 
-        public AppListHolder(View view, AppListAdapter adapter) {
+        public AppListHolder(View view) {
             super(view);
-            this.adapter = adapter;
 
             // Init for adapter.onBindViewHolder
             tvAppName = view.findViewById(R.id.hideapp_tv_appname);
