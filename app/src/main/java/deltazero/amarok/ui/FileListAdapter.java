@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,8 +22,8 @@ import deltazero.amarok.R;
 
 public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+    public final LinkedList<String> lsPath;
     private final LayoutInflater inflater;
-    private final LinkedList<String> lsPath;
     private final PrefMgr prefMgr;
     private final Context context;
 
@@ -41,7 +42,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == TYPE_FOOTAGE)
             return new FootageHolder(inflater.inflate(R.layout.item_hidefiles_footage, parent, false));
-        return new FileListHolder(inflater.inflate(R.layout.item_hidefiles, parent, false));
+        return new FileListHolder(inflater.inflate(R.layout.item_hidefiles, parent, false), this);
     }
 
     @Override
@@ -67,18 +68,25 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return TYPE_FILE_ITEM;
     }
 
-    public class FileListHolder extends RecyclerView.ViewHolder implements DialogInterface.OnClickListener {
+    public class FileListHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public MaterialTextView tvFolderName, tvPath;
+        public LinearLayout llPathItem;
+        private FileListAdapter adapter;
 
-        public FileListHolder(@NonNull View itemView) {
+        public FileListHolder(@NonNull View itemView, FileListAdapter adapter) {
             super(itemView);
+            this.adapter = adapter;
+
             tvFolderName = itemView.findViewById(R.id.hidefile_tv_foldername);
             tvPath = itemView.findViewById(R.id.hidefile_tv_path);
+            llPathItem = itemView.findViewById(R.id.hideapp_ll_pathitem);
+
+            llPathItem.setOnClickListener(this);
         }
 
         @Override
-        public void onClick(DialogInterface dialog, int which) {
+        public void onClick(View v) {
             new MaterialAlertDialogBuilder(context)
                     .setTitle(R.string.delete_hide_path)
                     .setMessage(context.getString(R.string.delete_hide_path_description, tvPath.getText()))
@@ -86,11 +94,15 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Set<String> hideFilePath = prefMgr.getHideFilePath();
-                            hideFilePath.remove(lsPath.get(which));
+                            hideFilePath.remove(lsPath.get(getLayoutPosition()));
                             prefMgr.setHideFilePath(hideFilePath);
+
+                            lsPath.remove(getLayoutPosition());
+                            adapter.notifyItemRemoved(getAdapterPosition());
                         }
                     })
-                    .setNegativeButton(R.string.cancel, null);
+                    .setNegativeButton(R.string.cancel, null)
+                    .show();
         }
     }
 
