@@ -24,6 +24,7 @@ public class SetHideFilesActivity extends AppCompatActivity {
     private PrefMgr prefMgr;
     private static final String TAG = "SetHideFiles";
     private RecyclerView rvFileList;
+    private FileListAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +33,11 @@ public class SetHideFilesActivity extends AppCompatActivity {
 
         prefMgr = new PrefMgr(this);
 
-
         rvFileList = findViewById(R.id.hidefiles_rv_filelist);
 
         // Inflate File list
-        rvFileList.setAdapter(new FileListAdapter(this));
+        adapter = new FileListAdapter(this);
+        rvFileList.setAdapter(adapter);
         rvFileList.setLayoutManager(new LinearLayoutManager(this));
 
         // Register file-picker result handler
@@ -55,6 +56,9 @@ public class SetHideFilesActivity extends AppCompatActivity {
                         Set<String> hideFilePath = prefMgr.getHideFilePath();
                         hideFilePath.add(path);
                         prefMgr.setHideFilePath(hideFilePath);
+
+                        adapter.lsPath.add(path);
+                        adapter.notifyItemInserted(adapter.lsPath.size() - 1);
 
                         Log.i(TAG, "Added file hide path: " + path);
 
