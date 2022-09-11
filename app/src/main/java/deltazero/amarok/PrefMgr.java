@@ -33,7 +33,7 @@ public class PrefMgr {
 
     public void setHideFilePath(Set<String> path) {
         mPrefEditor.putStringSet("hideFilePath", path);
-        mPrefEditor.commit();
+        mPrefEditor.apply();
     }
 
     public boolean getIsHidden() {
@@ -42,7 +42,7 @@ public class PrefMgr {
 
     public void setIsHidden(boolean isHidden) {
         mPrefEditor.putBoolean("isHidden", isHidden);
-        mPrefEditor.commit();
+        mPrefEditor.apply();
     }
 
     public Set<String> getHideApps() {
@@ -51,7 +51,7 @@ public class PrefMgr {
 
     public void setHideApps(Set<String> pkgNames) {
         mPrefEditor.putStringSet("hidePkgNames", pkgNames);
-        mPrefEditor.commit();
+        mPrefEditor.apply();
     }
 
     public boolean getEnableAnalytics() {
@@ -60,7 +60,7 @@ public class PrefMgr {
 
     public void setEnableAnalytics(boolean isEnable) {
         mPrefEditor.putBoolean("isEnableAnalytics", isEnable);
-        mPrefEditor.commit();
+        mPrefEditor.apply();
     }
 
     public AppHiderBase getAppHider() {
@@ -81,12 +81,12 @@ public class PrefMgr {
         if (mode instanceof DsmAppHider)
             modeCode = 2;
         mPrefEditor.putInt("appHiderMode", modeCode);
-        mPrefEditor.commit();
+        mPrefEditor.apply();
     }
 
     public void setAppHiderMode(int modeCode) {
         mPrefEditor.putInt("appHiderMode", modeCode);
-        mPrefEditor.commit();
+        mPrefEditor.apply();
     }
 
     public int getAppHiderCode() {
