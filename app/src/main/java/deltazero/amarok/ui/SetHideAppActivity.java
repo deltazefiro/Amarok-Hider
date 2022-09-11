@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import deltazero.amarok.R;
 
-public class SelectHideAppActivity extends AppCompatActivity {
+public class SetHideAppActivity extends AppCompatActivity {
 
     private RecyclerView rvAppList;
     private AppListAdapter adapter;

@@ -75,31 +75,6 @@ public class MainActivity extends AppCompatActivity {
         // Process Permissions
         PermissionUtil.requestStoragePermission(this);
 
-        // Register file-picker result handler
-        mDirRequest = registerForActivityResult(
-                new ActivityResultContracts.OpenDocumentTree(),
-                uri -> {
-                    if (uri != null) {
-                        // call this to persist permission across device reboots
-                        getContentResolver().takePersistableUriPermission(uri,
-                                Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
-
-                        // set hide path
-                        String path = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
-
-                        Set<String> hideFilePath = new HashSet<String>(); // TODO: Support multiple path
-                        hideFilePath.add(path);
-                        prefMgr.setHideFilePath(hideFilePath);
-
-                        Log.i(TAG, "Set file hide path: " + path);
-
-                    } else {
-                        // request denied by user
-                        Log.i(TAG, "Set file hide path cancelled");
-                    }
-                }
-        );
-
     }
 
     private class onHiderCallback implements Hider.HiderCallback {
@@ -140,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        startActivity(new Intent(this, SelectHideAppActivity.class));
+        startActivity(new Intent(this, SetHideAppActivity.class));
 
     }
 
@@ -161,7 +136,8 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
-        mDirRequest.launch(null);
+
+        startActivity(new Intent(this, SetHideFilesActivity.class));
     }
 
 
