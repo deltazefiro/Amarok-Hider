@@ -1,17 +1,19 @@
 package deltazero.amarok.ui;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.view.View;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Set;
 
@@ -50,8 +52,21 @@ public class SetHideFilesActivity extends AppCompatActivity {
                                 Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
 
                         // set hide path
-                        // FIXME: HarmonyOS may result in wrong path.
-                        String path = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
+                        // FIXME: Assign a not local file may cause an error.
+                        String path;
+                        try {
+                            path = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
+                        } catch (ArrayIndexOutOfBoundsException e) {
+                            Log.w(TAG, "Not supported Directory: " + uri);
+
+                            new MaterialAlertDialogBuilder(this)
+                                    .setTitle(R.string.not_local_storage)
+                                    .setMessage(R.string.not_local_storage_description)
+                                    .setPositiveButton(R.string.ok, null)
+                                    .setNeutralButton(R.string.help, null)
+                                    .show();
+                            return;
+                        }
 
                         Set<String> hideFilePath = prefMgr.getHideFilePath();
                         hideFilePath.add(path);
