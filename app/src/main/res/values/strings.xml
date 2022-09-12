@@ -51,4 +51,8 @@
     <string name="path_duplicated_description"><u>\'%s\'</u>\n\n     contains     \n\n<u>\'%s\'</u></string>
     <string name="no_apphider">Please select AppHider Workmode in More settings.</string>
     <string name="root_not_ava">Unable to get root access.</string>
+    <string name="check_update_on_start">Auto Update</string>
+    <string name="check_update_on_start_description">Check for updates on Amarok start.</string>
+    <string name="check_update">Check Update</string>
+    <string name="check_update_description">Current version: %s</string>
 </resources>
