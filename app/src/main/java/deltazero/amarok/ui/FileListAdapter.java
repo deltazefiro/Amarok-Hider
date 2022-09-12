@@ -88,8 +88,8 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         @Override
         public void onClick(View v) {
             new MaterialAlertDialogBuilder(context)
-                    .setTitle(R.string.delete_hide_path)
-                    .setMessage(context.getString(R.string.delete_hide_path_description, tvPath.getText()))
+                    .setTitle(R.string.remove_hide_path)
+                    .setMessage(context.getString(R.string.remove_hide_path_description, tvPath.getText()))
                     .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {

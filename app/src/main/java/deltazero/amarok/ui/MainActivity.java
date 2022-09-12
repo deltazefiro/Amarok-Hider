@@ -109,8 +109,13 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (prefMgr.getAppHider() instanceof NoneAppHider || !prefMgr.getAppHider().checkAvailability()) {
-            Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
+        if (prefMgr.getAppHider() instanceof NoneAppHider) {
+            Toast.makeText(this, R.string.no_apphider, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        if (!prefMgr.getAppHider().checkAvailability()) {
+            // Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
             Log.i(TAG, "AppHider not available");
             return;
         }

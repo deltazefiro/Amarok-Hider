@@ -1,9 +1,11 @@
 package deltazero.amarok.AppHider;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import java.util.Set;
 
+import deltazero.amarok.R;
 import deltazero.amarok.utils.ShellUtil;
 
 public class RootAppHider extends AppHiderBase {
@@ -31,7 +33,11 @@ public class RootAppHider extends AppHiderBase {
     @Override
     public boolean checkAvailability() {
         String[] output = ShellUtil.exec("su -c echo \"Amarok-root-test\"");
-        return output != null && output[1].length() == 0;
+        if (output == null || output[1].length() != 0) {
+            Toast.makeText(context, R.string.root_not_ava, Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
     }
 
     @Override
