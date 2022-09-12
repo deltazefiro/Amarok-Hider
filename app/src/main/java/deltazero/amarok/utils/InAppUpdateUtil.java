@@ -20,6 +20,7 @@ public class InAppUpdateUtil {
 
     public static class AmarokDistributeListener implements DistributeListener {
 
+
         @Override
         public boolean onReleaseAvailable(Activity activity, ReleaseDetails releaseDetails) {
 
@@ -39,13 +40,20 @@ public class InAppUpdateUtil {
                             Distribute.notifyUpdateAction(UpdateAction.UPDATE);
                         }
                     })
-                    .setNegativeButton(R.string.never, new DialogInterface.OnClickListener() {
+                    .setNeutralButton(R.string.never, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             new PrefMgr(activity).setEnableAutoUpdate(false);
+                            Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
                         }
                     })
-                    .setNeutralButton(R.string.cancel, null)
+                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
+                        }
+                    })
+                    .setCancelable(false)
                     .show();
 
             return true;

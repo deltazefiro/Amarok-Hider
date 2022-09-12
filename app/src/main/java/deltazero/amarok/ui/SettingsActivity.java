@@ -68,6 +68,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         swAutoUpdate.setOnCheckedChangeListener((buttonView, isChecked) -> {
             prefMgr.setEnableAutoUpdate(isChecked);
+
+            // Clean postpone
+            if (isChecked) {
+                Distribute.setEnabled(false);
+                Distribute.setEnabled(true);
+            }
+
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
         });
     }
@@ -126,6 +133,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void checkUpdate(View view) {
+        // To clean postpone
+        Distribute.setEnabled(false);
+        Distribute.setEnabled(true);
+
         Distribute.checkForUpdate();
     }
 

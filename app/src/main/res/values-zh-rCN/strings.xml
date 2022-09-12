@@ -50,6 +50,6 @@
     <string name="update_ava">有可用更新</string>
     <string name="update">更新</string>
     <string name="never">不再提示</string>
-    <string name="no_update_ava">咕咕咕...还没有新版本</string>
-    <string name="update_description">发现新版本: Amarok %s (%i)</string>
+    <string name="no_update_ava">咕咕咕…还没有新版本</string>
+    <string name="update_description">发现新版本: Amarok %s (%s)</string>
 </resources>
