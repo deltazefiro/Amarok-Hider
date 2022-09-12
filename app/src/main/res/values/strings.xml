@@ -47,4 +47,6 @@
     <string name="not_local_storage">Unsupported directory</string>
     <string name="not_local_storage_description">Please ensure it is local path and not a virtual one.</string>
     <string name="help">Help</string>
+    <string name="path_duplicated">Duplicated Path</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>\n\n   contains   \n\n<u>\'%s\'</u></string>
 </resources>

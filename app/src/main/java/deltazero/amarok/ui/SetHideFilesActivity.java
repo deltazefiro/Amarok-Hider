@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Set;
 
@@ -53,12 +54,12 @@ public class SetHideFilesActivity extends AppCompatActivity {
 
                         // set hide path
                         // FIXME: Assign a not local file may cause an error.
-                        String path;
+                        String newPath;
                         try {
-                            path = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
+                            newPath = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
                         } catch (ArrayIndexOutOfBoundsException e) {
+                            // When selected a path not in local storage.
                             Log.w(TAG, "Not supported Directory: " + uri);
-
                             new MaterialAlertDialogBuilder(this)
                                     .setTitle(R.string.not_local_storage)
                                     .setMessage(R.string.not_local_storage_description)
@@ -69,13 +70,34 @@ public class SetHideFilesActivity extends AppCompatActivity {
                         }
 
                         Set<String> hideFilePath = prefMgr.getHideFilePath();
-                        hideFilePath.add(path);
+
+                        // Check if the path is duplicated
+                        for (String p: hideFilePath) {
+                            if (p.contains(newPath)) {
+                                new MaterialAlertDialogBuilder(this)
+                                        .setTitle(R.string.path_duplicated)
+                                        .setMessage(getString(R.string.path_duplicated_description, p, newPath))
+                                        .setPositiveButton(R.string.ok, null)
+                                        .show();
+                                return;
+                            }
+                            if (newPath.contains(p)) {
+                                new MaterialAlertDialogBuilder(this)
+                                        .setTitle(R.string.path_duplicated)
+                                        .setMessage(getString(R.string.path_duplicated_description, newPath, p))
+                                        .setPositiveButton(R.string.ok, null)
+                                        .show();
+                                return;
+                            }
+                        }
+
+                        hideFilePath.add(newPath);
                         prefMgr.setHideFilePath(hideFilePath);
 
-                        adapter.lsPath.add(path);
+                        adapter.lsPath.add(newPath);
                         adapter.notifyItemInserted(adapter.lsPath.size() - 1);
 
-                        Log.i(TAG, "Added file hide path: " + path);
+                        Log.i(TAG, "Added file hide path: " + newPath);
 
                     } else {
                         // request denied by user
