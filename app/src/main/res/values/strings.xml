@@ -35,18 +35,20 @@
     <string name="apply_on_restart">Changes will be applied on next restart.</string>
     <string name="hidden_toast">Hidden. Cock-a-doodle-do~!</string>
     <string name="unhidden_toast">Unhidden. Be careful.</string>
-    <string name="show_debug_info">Show Debug Info</string>
-    <string name="debug_info_description">Ignore it if you are not a developer.</string>
+    <string name="show_debug_info">Debug Info</string>
+    <string name="debug_info_description">Show debug info</string>
     <string name="invalid_dsm_provider">Invalid DSM Provider.</string>
     <string name="hide_app_failed_admin_inactive">Hide App failed: Admin not active.</string>
     <string name="add_hide_files">Add Hide Folder</string>
     <string name="folder_selector_hints">Hints for folder selector: \n\t 1. Click \'Use This Folder\' to select the Folder\n\t 2. Always select the file from local storage \n\t(You can slide from the right of the screen to open local files)</string>
-    <string name="delete_hide_path">Delete Hide Path?</string>
-    <string name="delete_hide_path_description">Are you sure to remove path \'%s\' from hiding?</string>
+    <string name="remove_hide_path">Remove Hide Path?</string>
+    <string name="remove_hide_path_description">Are you sure to remove path \'%s\' from hiding?</string>
     <string name="confirm">Confirm</string>
     <string name="not_local_storage">Unsupported directory</string>
     <string name="not_local_storage_description">Please ensure it is local path and not a virtual one.</string>
     <string name="help">Help</string>
     <string name="path_duplicated">Duplicated Path</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>\n\n   contains   \n\n<u>\'%s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>\n\n     contains     \n\n<u>\'%s\'</u></string>
+    <string name="no_apphider">Please select AppHider Workmode in More settings.</string>
+    <string name="root_not_ava">Unable to get root access.</string>
 </resources>

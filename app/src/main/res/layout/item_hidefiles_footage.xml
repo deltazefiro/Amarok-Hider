@@ -10,11 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="0dp"
+        android:layout_marginVertical="10dp"
         android:gravity="start|center"
-        android:text="@string/add_hide_files"
-        app:icon="@drawable/ic_add"
         android:onClick="addHideFolder"
-        android:paddingHorizontal="35dp"/>
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="15dp"
+        android:text="@string/add_hide_files"
+        app:icon="@drawable/ic_add" />
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"

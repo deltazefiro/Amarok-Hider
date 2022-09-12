@@ -27,6 +27,20 @@
     <string name="apply_on_restart">更改将与下一次启动时生效</string>
     <string name="unhidden_toast">取消隐藏</string>
     <string name="hidden_toast">已隐藏</string>
-    <string name="invalid_dsm_provider">Invalid DSM Provider.</string>
-    <string name="hide_app_failed_admin_inactive">Hide App failed: Admin not active.</string>
+    <string name="invalid_dsm_provider">DSM 服务不可用。</string>
+    <string name="show_debug_info">调试信息</string>
+    <string name="debug_info_description">显示调试信息</string>
+    <string name="hide_app_failed_admin_inactive">隐藏应用失败：DSM管理员未激活</string>
+    <string name="add_hide_files">选择隐藏文件夹</string>
+    <string name="folder_selector_hints">文件选择器使用说明：\n\t 1. 点击 \'使用此文件夹\' 以选择隐藏此文件夹\n\t 2. Amarok仅支持隐藏本地储存中的文件 \n\t（您可以在选择器中从屏幕左端右滑打开本地储存）</string>
+    <string name="remove_hide_path">移除隐藏文件夹？</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>\n\n     包含     \n\n<u>\'%s\'</u></string>
+    <string name="help">帮助</string>
+    <string name="path_duplicated">隐藏路径重复</string>
+    <string name="not_local_storage_description">请确认您选择的文件位于本地储存，且不是虚拟文件夹。</string>
+    <string name="not_local_storage">不支持此文件夹</string>
+    <string name="confirm">确定</string>
+    <string name="remove_hide_path_description">确认将 \'%s\' 从文件隐藏中移除？</string>
+    <string name="no_apphider">请先在 更多设置 中选择工作模式</string>
+    <string name="root_not_ava">无法获取root权限</string>
 </resources>
