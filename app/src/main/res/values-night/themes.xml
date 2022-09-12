@@ -1,27 +1,15 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Night theme. -->
     <style name="Theme.Amarok" parent="Theme.Material3.DayNight.NoActionBar">
 
-        <item name="android:statusBarColor">@color/grey</item>
-        <item name="android:navigationBarColor">@color/dark_grey</item>
-        <item name="android:colorBackground">@color/dark_grey</item>
-        <item name="colorSurface">@color/grey</item>
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
 
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/grey</item>
+        <!--        <item name="android:colorBackground">@color/dark_grey</item>-->
+        <!--        <item name="colorSurface">@color/grey</item>-->
+
+        <!--        <item name="android:textColorPrimary">@color/white</item>-->
+        <!--        <item name="android:textColorSecondary">@color/grey</item>-->
         <item name="windowNoTitle">true</item>
     </style>
-
-    <style name="Theme.Amarok.NoAppbar" parent="Theme.Material3.DayNight.NoActionBar">
-
-        <item name="android:statusBarColor">@color/dark_grey</item>
-        <item name="android:navigationBarColor">@color/dark_grey</item>
-        <item name="android:colorBackground">@color/dark_grey</item>
-        <item name="colorSurface">@color/grey</item>
-
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:textColorSecondary">@color/grey</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-
 </resources>
