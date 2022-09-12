@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         prefMgr = hider.prefMgr;
 
         // Start App-center
-        Distribute.setEnabledForDebuggableBuild(true);
+        Distribute.setEnabledForDebuggableBuild(false);
 
         if (!prefMgr.getEnableAutoUpdate())
             Distribute.disableAutomaticCheckForUpdate();
