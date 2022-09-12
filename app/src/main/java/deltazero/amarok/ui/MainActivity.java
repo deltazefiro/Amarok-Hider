@@ -1,17 +1,13 @@
 package deltazero.amarok.ui;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
@@ -20,9 +16,7 @@ import com.hjq.permissions.XXPermissions;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
-
-import java.util.HashSet;
-import java.util.Set;
+import com.microsoft.appcenter.distribute.Distribute;
 
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
@@ -42,25 +36,19 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
 
-    private ActivityResultLauncher<Uri> mDirRequest;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // Start App-center Analytics
-        AppCenter.start(getApplication(), "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12",
-                Analytics.class, Crashes.class);
-
         // Init
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         hider = new Hider(this);
         prefMgr = hider.prefMgr;
 
-        // Apply Analytics Switch
-        AppCenter.setEnabled(prefMgr.getEnableAnalytics());
-
+        // Start App-center
+        if (!prefMgr.getEnableAutoUpdate())
+            Distribute.disableAutomaticCheckForUpdate();
+        AppCenter.start(getApplication(), "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12",
+                Analytics.class, Crashes.class, Distribute.class);
 
         // Init UI
         ivStatusImg = findViewById(R.id.main_iv_status);

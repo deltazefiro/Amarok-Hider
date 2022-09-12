@@ -13,6 +13,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.catchingnow.delegatedscopeclient.DSMClient;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
+import com.microsoft.appcenter.distribute.Distribute;
 
 import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
@@ -22,9 +25,10 @@ import deltazero.amarok.R;
 public class SettingsActivity extends AppCompatActivity {
 
     private PrefMgr prefMgr;
-    private MaterialSwitch swAnalytics;
+    private MaterialSwitch swAnalytics, swAutoUpdate;
     private Context context;
-    private TextView tvCurrAppHider, tvCurrFileHider;
+    private TextView tvCurrAppHider, tvCurrFileHider, tvCurrVer;
+    private String appVersionName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,23 +38,38 @@ public class SettingsActivity extends AppCompatActivity {
         prefMgr = new PrefMgr(this);
         context = this;
 
+        // Get app version
+        try {
+            appVersionName = this.getPackageManager()
+                    .getPackageInfo(this.getPackageName(), PackageManager.GET_ACTIVITIES).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            appVersionName = null;
+            // Make compiler happy
+        }
+        assert appVersionName != null;
 
         tvCurrAppHider = findViewById(R.id.settings_tv_curr_app_hider);
         tvCurrFileHider = findViewById(R.id.settings_tv_curr_file_hider);
+        tvCurrVer = findViewById(R.id.settings_tv_curr_ver);
         swAnalytics = findViewById(R.id.settings_sw_analytics);
-
-
-        swAnalytics.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (prefMgr.getEnableAnalytics() != isChecked) {
-                prefMgr.setEnableAnalytics(isChecked);
-                Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
-            }
-        });
+        swAutoUpdate = findViewById(R.id.settings_sw_auto_update);
 
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
         tvCurrFileHider.setText(getString(R.string.current_mode, "HideOnly"));
-        swAnalytics.setChecked(prefMgr.getEnableAnalytics());
+        tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
+        swAnalytics.setChecked(Crashes.isEnabled().get());
+        swAutoUpdate.setChecked(prefMgr.getEnableAutoUpdate());
 
+        swAnalytics.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            Crashes.setEnabled(isChecked);
+            Analytics.setEnabled(isChecked);
+            Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
+        });
+
+        swAutoUpdate.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefMgr.setEnableAutoUpdate(isChecked);
+            Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
+        });
     }
 
 
@@ -61,17 +80,6 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     public void showAbout(View view) {
-
-        // Get app version
-        String appVersionName;
-        try {
-            appVersionName = this.getPackageManager()
-                    .getPackageInfo(this.getPackageName(), PackageManager.GET_ACTIVITIES).versionName;
-        } catch (PackageManager.NameNotFoundException e) {
-            appVersionName = null;
-            // Make compiler happy
-        }
-        assert appVersionName != null;
 
         new MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.about))
@@ -115,6 +123,10 @@ public class SettingsActivity extends AppCompatActivity {
                         DSMClient.getOwnerSDKVersion(this), DSMClient.getOwnerPackageName(this)))
                 .setPositiveButton(getString(R.string.ok), null)
                 .show();
+    }
+
+    public void checkUpdate(View view) {
+        Distribute.checkForUpdate();
     }
 
 }

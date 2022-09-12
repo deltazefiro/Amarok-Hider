@@ -54,15 +54,6 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public boolean getEnableAnalytics() {
-        return mPrefs.getBoolean("isEnableAnalytics", true);
-    }
-
-    public void setEnableAnalytics(boolean isEnable) {
-        mPrefEditor.putBoolean("isEnableAnalytics", isEnable);
-        mPrefEditor.apply();
-    }
-
     public AppHiderBase getAppHider() {
         switch (mPrefs.getInt("appHiderMode", 0)) {
             case 1:
@@ -91,5 +82,14 @@ public class PrefMgr {
 
     public int getAppHiderCode() {
         return mPrefs.getInt("appHiderMode", 0);
+    }
+
+    public boolean getEnableAutoUpdate() {
+        return mPrefs.getBoolean("isEnableAutoUpdate", true);
+    }
+
+    public void setEnableAutoUpdate(boolean isEnable) {
+        mPrefEditor.putBoolean("isEnableAutoUpdate", isEnable);
+        mPrefEditor.apply();
     }
 }
