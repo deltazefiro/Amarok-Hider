@@ -22,6 +22,7 @@ import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.utils.InAppUpdateUtil;
 import deltazero.amarok.utils.PermissionUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,8 +46,12 @@ public class MainActivity extends AppCompatActivity {
         prefMgr = hider.prefMgr;
 
         // Start App-center
+        // Distribute.setEnabledForDebuggableBuild(true);
+
         if (!prefMgr.getEnableAutoUpdate())
             Distribute.disableAutomaticCheckForUpdate();
+
+        Distribute.setListener(new InAppUpdateUtil.AmarokDistributeListener());
         AppCenter.start(getApplication(), "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12",
                 Analytics.class, Crashes.class, Distribute.class);
 
