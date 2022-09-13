@@ -84,7 +84,7 @@
                             android:layout_height="wrap_content"
                             android:onClick="changeStatus"
                             android:text="@string/hide"
-                            app:icon="@drawable/ic_button_hide" />
+                            app:icon="@drawable/ic_paw" />
 
                         <com.google.android.material.progressindicator.CircularProgressIndicator
                             android:id="@+id/main_pi_process_status"
