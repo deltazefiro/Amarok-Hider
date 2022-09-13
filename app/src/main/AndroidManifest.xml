@@ -63,7 +63,7 @@
         <service
             android:name=".QuickSettingService"
             android:exported="true"
-            android:icon="@drawable/ic_tile"
+            android:icon="@drawable/ic_paw"
             android:label="@string/app_name"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter android:exported="true">

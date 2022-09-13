@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             // Visible
             ivStatusImg.setImageResource(R.drawable.img_status_visible);
             btChangeStatus.setText(R.string.hide);
-            btChangeStatus.setIconResource(R.drawable.ic_button_hide);
+            btChangeStatus.setIconResource(R.drawable.ic_paw);
             btSetHideFiles.setEnabled(true);
             btSetHideApps.setEnabled(true);
             tvStatus.setText(getText(R.string.visible_status));
@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
             // Hidden
             ivStatusImg.setImageResource(R.drawable.img_status_hidden);
             btChangeStatus.setText(R.string.unhide);
-            btChangeStatus.setIconResource(R.drawable.ic_button_unhide);
+            btChangeStatus.setIconResource(R.drawable.ic_wolf);
             btSetHideFiles.setEnabled(false);
             btSetHideApps.setEnabled(false);
             tvStatus.setText(getText(R.string.hidden_status));
