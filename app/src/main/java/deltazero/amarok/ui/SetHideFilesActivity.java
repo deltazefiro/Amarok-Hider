@@ -13,8 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.textview.MaterialTextView;
 
 import java.util.Set;
 
@@ -28,6 +28,7 @@ public class SetHideFilesActivity extends AppCompatActivity {
     private static final String TAG = "SetHideFiles";
     private RecyclerView rvFileList;
     private FileListAdapter adapter;
+    private MaterialToolbar tbToolBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class SetHideFilesActivity extends AppCompatActivity {
         prefMgr = new PrefMgr(this);
 
         rvFileList = findViewById(R.id.hidefiles_rv_filelist);
+        tbToolBar = findViewById(R.id.hidefiles_tb_toolbar);
 
         // Inflate File list
         adapter = new FileListAdapter(this);
@@ -105,6 +107,14 @@ public class SetHideFilesActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        // Enable back button
+        tbToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 

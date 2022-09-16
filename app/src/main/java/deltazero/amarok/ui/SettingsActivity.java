@@ -1,5 +1,6 @@
 package deltazero.amarok.ui;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
@@ -8,9 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.catchingnow.delegatedscopeclient.DSMClient;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.microsoft.appcenter.analytics.Analytics;
@@ -22,13 +22,14 @@ import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends Activity {
 
     private PrefMgr prefMgr;
-    private MaterialSwitch swAnalytics, swAutoUpdate;
     private Context context;
-    private TextView tvCurrAppHider, tvCurrFileHider, tvCurrVer;
     private String appVersionName;
+    private MaterialSwitch swAnalytics, swAutoUpdate;
+    private MaterialToolbar tbToolBar;
+    private TextView tvCurrAppHider, tvCurrFileHider, tvCurrVer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class SettingsActivity extends AppCompatActivity {
         tvCurrVer = findViewById(R.id.settings_tv_curr_ver);
         swAnalytics = findViewById(R.id.settings_sw_analytics);
         swAutoUpdate = findViewById(R.id.settings_sw_auto_update);
+        tbToolBar = findViewById(R.id.settings_tb_toolbar);
 
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
         tvCurrFileHider.setText(getString(R.string.current_mode, "HideOnly"));
@@ -77,6 +79,14 @@ public class SettingsActivity extends AppCompatActivity {
 
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
         });
+
+        // Enable back button
+        tbToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
 
@@ -84,7 +94,6 @@ public class SettingsActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
     }
-
 
     public void showAbout(View view) {
 
