@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.catchingnow.delegatedscopeclient.DSMClient;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -22,7 +24,7 @@ import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends AppCompatActivity {
 
     private PrefMgr prefMgr;
     private Context context;
