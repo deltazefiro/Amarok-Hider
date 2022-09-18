@@ -1,6 +1,5 @@
 package deltazero.amarok.ui;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;

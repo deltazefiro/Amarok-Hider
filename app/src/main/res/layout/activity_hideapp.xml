@@ -22,6 +22,7 @@
             app:title="@string/set_hide_apps"
             app:navigationIconTint="?attr/colorOnSurface"/>
 
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView

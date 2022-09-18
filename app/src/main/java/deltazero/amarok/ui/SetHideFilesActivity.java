@@ -74,7 +74,7 @@ public class SetHideFilesActivity extends AppCompatActivity {
                         Set<String> hideFilePath = prefMgr.getHideFilePath();
 
                         // Check if the path is duplicated
-                        for (String p: hideFilePath) {
+                        for (String p : hideFilePath) {
                             if (p.contains(newPath)) {
                                 new MaterialAlertDialogBuilder(this)
                                         .setTitle(R.string.path_duplicated)
