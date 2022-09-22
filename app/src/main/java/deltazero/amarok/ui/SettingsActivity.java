@@ -108,11 +108,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void switchAppHider(View view) {
-        CharSequence[] hiders = {"None", "RootHider", "DsmHider"};
+        CharSequence[] hiders = {"None", "Root", "DSM"};
         final int[] choice = {prefMgr.getAppHiderCode()};
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.switch_app_hider)
-                // .setMessage(R.string.switch_app_hider_description)
                 .setSingleChoiceItems(hiders, choice[0], new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
