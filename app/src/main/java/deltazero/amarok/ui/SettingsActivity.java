@@ -2,7 +2,9 @@ package deltazero.amarok.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -148,6 +150,10 @@ public class SettingsActivity extends AppCompatActivity {
         Distribute.setEnabled(true);
 
         Distribute.checkForUpdate();
+    }
+
+    public void openGithub(View view) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider")));
     }
 
 }

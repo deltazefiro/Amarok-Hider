@@ -63,4 +63,6 @@
     <string name="path">Path</string>
     <string name="manually_set_path">Set Path Manually</string>
     <string name="manually_set_path_description">Caution: The path you setting manually will SKIP validation. Please ensure the path is vaild.</string>
+    <string name="view_github_repo">View Github Repo</string>
+    <string name="view_github_repo_description" translatable="false">deltazefiro/Amarok-Hider</string>
 </resources>
