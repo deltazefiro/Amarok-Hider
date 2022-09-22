@@ -2,20 +2,25 @@ package deltazero.amarok.ui;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.os.Environment;
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.io.File;
 import java.util.LinkedList;
 import java.util.Set;
+import java.util.zip.Inflater;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
@@ -110,6 +115,23 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public FootageHolder(@NonNull View itemView) {
             super(itemView);
+
+            MaterialButton btAddFolder = itemView.findViewById(R.id.hidefiles_bt_add_folder);
+            btAddFolder.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    MaterialAlertDialogBuilder alertBuilder = new MaterialAlertDialogBuilder(itemView.getContext())
+                            .setTitle(R.string.manually_set_path)
+                            .setMessage(R.string.manually_set_path_description)
+                            .setPositiveButton(R.string.confirm, null)
+                            .setNeutralButton(R.string.cancel, null);
+                    View dlPathInput = LayoutInflater.from(alertBuilder.getContext()).inflate(R.layout.dialog_path_input, null);
+                    ((EditText) dlPathInput.findViewById(R.id.dialog_et_input)).setHint(Environment.getExternalStorageDirectory().getPath() + "/...");
+                    alertBuilder.setView(dlPathInput).show();
+                    return true;
+                }
+            });
+
         }
     }
 }

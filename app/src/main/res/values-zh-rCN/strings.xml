@@ -52,4 +52,6 @@
     <string name="never">不再提示</string>
     <string name="no_update_ava">咕咕咕…还没有新版本</string>
     <string name="update_description">发现新版本: Amarok %s (%s)</string>
+    <string name="path">Path</string>
+    <string name="manually_set_path_description">Caution: The path you setting manually will SKIP validation. Please ensure the path is vaild.</string>
 </resources>

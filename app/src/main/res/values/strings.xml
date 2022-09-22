@@ -60,4 +60,7 @@
     <string name="update">Update</string>
     <string name="never">Never</string>
     <string name="no_update_ava">No available update yet.</string>
+    <string name="path">Path</string>
+    <string name="manually_set_path">Set Path Manually</string>
+    <string name="manually_set_path_description">Caution: The path you setting manually will SKIP validation. Please ensure the path is vaild.</string>
 </resources>
