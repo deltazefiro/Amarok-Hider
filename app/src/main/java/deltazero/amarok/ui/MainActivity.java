@@ -70,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Process Permissions
         PermissionUtil.requestStoragePermission(this);
-        PermissionUtil.setShizukuPermissionListener(prefMgr, this);
     }
 
     private class onHiderCallback implements Hider.HiderCallback {

@@ -1,5 +1,7 @@
 package deltazero.amarok.ui;
 
+import static deltazero.amarok.utils.PermissionUtil.setShizukuPermissionListener;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -32,7 +34,9 @@ public class SettingsActivity extends AppCompatActivity {
     private String appVersionName;
     private MaterialSwitch swAnalytics, swAutoUpdate;
     private MaterialToolbar tbToolBar;
-    private TextView tvCurrAppHider, tvCurrFileHider, tvCurrVer;
+    public TextView tvCurrAppHider;
+    private TextView tvCurrFileHider;
+    private TextView tvCurrVer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +94,9 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // Permission callback
+        setShizukuPermissionListener(prefMgr, this);
     }
 
 
