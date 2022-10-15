@@ -68,4 +68,6 @@
     <string name="shizuku_pre_v11">Unsupported shizuku version: Pre-V11</string>
     <string name="shizuku_permission_denied">Shizuku: Permission denied</string>
     <string name="shizuku_not_working">Shizuku: Service not available</string>
+    <string name="shizuku_hidden_api_error">Failed to hide app: Unable to get IPackageManager api.</string>
+    <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
 </resources>

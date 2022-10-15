@@ -40,7 +40,7 @@ public class FileHider {
             filename = Base64.encodeToString((ENCODED_TAG + filename).getBytes(UTF_8), BASE64_TAG);
             newPath = Paths.get(path.getParent().toString(), filename);
 
-            Log.d(TAG, "Encode: " + path.toString() + " -> " + newPath.toString());
+            // Log.d(TAG, "Encode: " + path.toString() + " -> " + newPath.toString());
 
         } else if (processMethod == ProcessMethod.DECODE) {
 
@@ -51,7 +51,7 @@ public class FileHider {
                     return;
                 }
                 newPath = Paths.get(path.getParent().toString(), filename.replace(ENCODED_TAG, ""));
-                Log.d(TAG, "Decode: " + path.toString() + " -> " + newPath.toString());
+                // Log.d(TAG, "Decode: " + path.toString() + " -> " + newPath.toString());
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Unable to decode: " + filename);
                 return;
@@ -78,7 +78,7 @@ public class FileHider {
               2.Insert random binary to the head of files to make them unreadable
          */
 
-        Log.d(TAG, "Applying hider to: " + targetDir);
+        Log.i(TAG, "Applying hider to: " + targetDir);
 
         try {
 
