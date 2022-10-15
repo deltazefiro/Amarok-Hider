@@ -12,6 +12,7 @@ import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
+import deltazero.amarok.AppHider.ShizukuHider;
 
 public class PrefMgr {
 
@@ -60,17 +61,21 @@ public class PrefMgr {
                 return new RootAppHider(context);
             case 2:
                 return new DsmAppHider(context);
+            case 3:
+                return new ShizukuHider(context);
             default:
                 return new NoneAppHider(context);
         }
     }
 
-    public void setAppHiderMode(AppHiderBase mode) {
+    public void setAppHiderMode(Class<? extends AppHiderBase> mode) {
         int modeCode = 0;
-        if (mode instanceof RootAppHider)
+        if (mode == RootAppHider.class)
             modeCode = 1;
-        if (mode instanceof DsmAppHider)
+        if (mode == DsmAppHider.class)
             modeCode = 2;
+        if (mode == ShizukuHider.class)
+            modeCode = 3;
         mPrefEditor.putInt("appHiderMode", modeCode);
         mPrefEditor.apply();
     }

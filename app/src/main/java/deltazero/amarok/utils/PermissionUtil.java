@@ -1,6 +1,7 @@
 package deltazero.amarok.utils;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -11,7 +12,11 @@ import com.hjq.permissions.XXPermissions;
 
 import java.util.List;
 
+import deltazero.amarok.AppHider.NoneAppHider;
+import deltazero.amarok.AppHider.ShizukuHider;
+import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import rikka.shizuku.Shizuku;
 
 
 public class PermissionUtil {
@@ -45,6 +50,23 @@ public class PermissionUtil {
                 .show();
 
 
+    }
+
+    public static void setShizukuPermissionListener(PrefMgr prefMgr, Context context) {
+        Shizuku.addRequestPermissionResultListener(new Shizuku.OnRequestPermissionResultListener() {
+            @Override
+            public void onRequestPermissionResult(int requestCode, int grantResult) {
+                if (grantResult == PackageManager.PERMISSION_GRANTED)
+                {
+                    Log.i("ShizukuHider", "Permission granted. Set hider to ShizukuHider.");
+                    prefMgr.setAppHiderMode(ShizukuHider.class);
+                } else {
+                    Log.i("ShizukuHider", "Permission denied.");
+                    Toast.makeText(context, R.string.shizuku_permission_denied, Toast.LENGTH_LONG).show();
+                    // prefMgr.setAppHiderMode(NoneAppHider.class);
+                }
+            }
+        });
     }
 
 //

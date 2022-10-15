@@ -108,7 +108,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void switchAppHider(View view) {
-        CharSequence[] hiders = {"None", "Root", "DSM"};
+        CharSequence[] hiders = {"None", "Root", "DSM", "Shizuku/Sui"};
         final int[] choice = {prefMgr.getAppHiderCode()};
         new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.switch_app_hider)
