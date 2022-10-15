@@ -1,6 +1,7 @@
 package deltazero.amarok.ui;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,11 +20,13 @@ import com.microsoft.appcenter.crashes.Crashes;
 import com.microsoft.appcenter.distribute.Distribute;
 
 import deltazero.amarok.AppHider.NoneAppHider;
+import deltazero.amarok.AppHider.ShizukuHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.InAppUpdateUtil;
 import deltazero.amarok.utils.PermissionUtil;
+import rikka.shizuku.Shizuku;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Process Permissions
         PermissionUtil.requestStoragePermission(this);
-
+        PermissionUtil.setShizukuPermissionListener(prefMgr, this);
     }
 
     private class onHiderCallback implements Hider.HiderCallback {
@@ -108,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         if (!prefMgr.getAppHider().checkAvailability()) {
-            // Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.apphider_not_ava, Toast.LENGTH_LONG).show();
             Log.i(TAG, "AppHider not available");
             return;
         }

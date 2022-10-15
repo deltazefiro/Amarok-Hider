@@ -11,6 +11,8 @@ import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
+import deltazero.amarok.AppHider.ShizukuHider;
+import rikka.shizuku.ShizukuProvider;
 
 
 public class Hider {
@@ -34,6 +36,8 @@ public class Hider {
         backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
 
+        // Enable shizukuProvider
+        backgroundHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
     }
 
     public void Hide(HiderCallback callback) {
