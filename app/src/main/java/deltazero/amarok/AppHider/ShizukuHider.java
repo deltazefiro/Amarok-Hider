@@ -47,6 +47,7 @@ public class ShizukuHider extends AppHiderBase {
             mSetApplicationEnabledSetting = iPmClass.getMethod("setApplicationEnabledSetting", String.class, int.class, int.class, int.class, String.class);
         } catch (Exception e) {
             Log.e("ShizukuHider", e.toString());
+            Toast.makeText(context, R.string.shizuku_hidden_api_error, Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -58,8 +59,9 @@ public class ShizukuHider extends AppHiderBase {
                         0,
                         Os.getuid() / 100000,
                         BuildConfig.APPLICATION_ID);
+                Log.i("ShizukuHider", "Hid app: " + p);
             } catch (Exception e) {
-                Log.e("ShizukuHider", e.toString());
+                Log.w("ShizukuHider", e.toString());
             }
         }
 
@@ -92,7 +94,12 @@ public class ShizukuHider extends AppHiderBase {
                 return false;
             }
             if (Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED) {
-                Log.d("ShizukuHider", "checkAvailability: Shizuku available.");
+                if (!Shizuku.pingBinder()) {
+                    Log.w("ShizukuHider", "checkAvailability: Binder not available.");
+                    Toast.makeText(context, R.string.shizuku_service_not_running, Toast.LENGTH_LONG).show();
+                    return false;
+                }
+                Log.i("ShizukuHider", "checkAvailability: Shizuku available.");
                 return true;
             } else if (Shizuku.shouldShowRequestPermissionRationale()) {
                 // Users choose "Deny and don't ask again"
