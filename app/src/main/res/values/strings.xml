@@ -6,7 +6,11 @@
     <string name="hidden_status">Hidden</string>
     <string name="visible_moto" translatable="false">"\"Night has fallen. Be careful.\" "</string>
     <string name="hidden_moto" translatable="false">"\"Secrets never emerge under the sun.\" "</string>
-    <string name="app_about" translatable="false">" Amarok %s           [Developer] @Deltazefiro           [Info] Amarok: A simple android app for private file and app hiding.           [Repo] https://github.com/deltazefiro/Amarok-Hider           Copyright 2022 DeltaZero, Licensed under Apache-2.0 "</string>
+    <string name="app_about" translatable="false">\nAmarok %s\n\n
+        [Developer] @Deltazefiro\n\n
+        [Info] Amarok: A simple android app for private file and app hiding.\n\n
+        [Repo] https://github.com/deltazefiro/Amarok-Hider\n\n
+        Copyright 2022 DeltaZero, Licensed under Apache-2.0\n</string>
     <string name="ok">OK</string>
     <string name="about">About</string>
     <string name="cancel">Cancel</string>
