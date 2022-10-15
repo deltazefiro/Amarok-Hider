@@ -7,15 +7,14 @@ import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.hjq.permissions.OnPermissionCallback;
-import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 
 import java.util.List;
 
-import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.ShizukuHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.ui.SettingsActivity;
 import rikka.shizuku.Shizuku;
 
 
@@ -52,18 +51,19 @@ public class PermissionUtil {
 
     }
 
-    public static void setShizukuPermissionListener(PrefMgr prefMgr, Context context) {
+    public static void setShizukuPermissionListener(PrefMgr prefMgr, SettingsActivity activity) {
         Shizuku.addRequestPermissionResultListener(new Shizuku.OnRequestPermissionResultListener() {
             @Override
             public void onRequestPermissionResult(int requestCode, int grantResult) {
-                if (grantResult == PackageManager.PERMISSION_GRANTED)
-                {
+                if (grantResult == PackageManager.PERMISSION_GRANTED) {
                     Log.i("ShizukuHider", "Permission granted. Set hider to ShizukuHider.");
                     prefMgr.setAppHiderMode(ShizukuHider.class);
+
+                    // Update `Current Hider` textview in SettingsActivity
+                    activity.tvCurrAppHider.setText(activity.getString(R.string.current_mode, prefMgr.getAppHider().getName()));
                 } else {
                     Log.i("ShizukuHider", "Permission denied.");
-                    Toast.makeText(context, R.string.shizuku_permission_denied, Toast.LENGTH_LONG).show();
-                    // prefMgr.setAppHiderMode(NoneAppHider.class);
+                    Toast.makeText(activity, R.string.shizuku_permission_denied, Toast.LENGTH_LONG).show();
                 }
             }
         });
