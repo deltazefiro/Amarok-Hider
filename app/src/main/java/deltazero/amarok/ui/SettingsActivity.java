@@ -137,6 +137,7 @@ public class SettingsActivity extends AppCompatActivity {
                         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
                     }
                 })
+                .setNeutralButton(R.string.help, (dialog, which) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/hideapp.html"))))
                 .show();
     }
 
@@ -160,6 +161,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void openGithub(View view) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider")));
+    }
+
+    public void openHelp(View view){
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/faq.html")));
+
     }
 
 }
