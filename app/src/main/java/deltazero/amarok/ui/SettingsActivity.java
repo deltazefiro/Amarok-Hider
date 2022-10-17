@@ -164,7 +164,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void openHelp(View view){
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/faq.html")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/")));
 
     }
 
