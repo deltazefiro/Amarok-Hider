@@ -1,9 +1,7 @@
 package deltazero.amarok.ui;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +10,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
 import com.microsoft.appcenter.AppCenter;
@@ -19,14 +18,13 @@ import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 import com.microsoft.appcenter.distribute.Distribute;
 
+import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
-import deltazero.amarok.AppHider.ShizukuHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.InAppUpdateUtil;
 import deltazero.amarok.utils.PermissionUtil;
-import rikka.shizuku.Shizuku;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -70,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Process Permissions
         PermissionUtil.requestStoragePermission(this);
+        checkAppHiderAvailability();
     }
 
     private class onHiderCallback implements Hider.HiderCallback {
@@ -155,6 +154,21 @@ public class MainActivity extends AppCompatActivity {
             btSetHideApps.setEnabled(false);
             tvStatus.setText(getText(R.string.hidden_status));
             tvStatusInfo.setText(getText(R.string.hidden_moto));
+        }
+    }
+
+
+    public void checkAppHiderAvailability() {
+        if (prefMgr.getAppHider().checkAvailability().result
+                != AppHiderBase.CheckAvailabilityResult.Result.AVAILABLE) {
+
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.apphider_not_ava_title)
+                    .setMessage(R.string.apphider_not_ava)
+                    .setPositiveButton(getString(R.string.ok), null)
+                    .show();
+
+            prefMgr.setAppHiderMode(NoneAppHider.class);
         }
     }
 
