@@ -77,7 +77,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         public MaterialTextView tvFolderName, tvPath;
         public LinearLayout llPathItem;
-        private FileListAdapter adapter;
+        private final FileListAdapter adapter;
 
         public FileListHolder(@NonNull View itemView, FileListAdapter adapter) {
             super(itemView);
