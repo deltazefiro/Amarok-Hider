@@ -1,7 +1,5 @@
 package deltazero.amarok.ui;
 
-import static deltazero.amarok.utils.PermissionUtil.setShizukuPermissionListener;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -37,9 +35,6 @@ public class SettingsActivity extends AppCompatActivity {
     public TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
     private TextView tvCurrVer;
-
-    private FragmentManager fragmentManager;
-    private SwitchHideAppFragment switchAppHiderFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,12 +92,6 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-        // Permission callback
-        setShizukuPermissionListener(prefMgr, this);
-
-        // Init fragments
-        fragmentManager = getSupportFragmentManager();
     }
 
 
@@ -123,15 +112,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void switchAppHider(View view) {
-        switchAppHiderFragment = new SwitchHideAppFragment(); // Instantiate every time to prevent buttons flicker on resume.
-        fragmentManager.beginTransaction()
-                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-                .add(android.R.id.content, switchAppHiderFragment)
-                .addToBackStack(null).commit();
-    }
-
-    public void onCheckAppHiderRadioButton(View view) {
-        switchAppHiderFragment.onCheckRadioButton(view);
+        startActivity(new Intent(this, SwitchAppHiderActivity.class));
     }
 
 

@@ -70,4 +70,14 @@
     <string name="shizuku_hidden_api_error">Failed to hide app: Unable to get IPackageManager api.</string>
     <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
     <string name="apphider_not_ava_title">Unavailable AppHider</string>
+    <string name="dsm_permission_denied">DSM: Permission denied</string>
+    <string name="apphider_none">Disabled</string>
+    <string name="apphider_none_description">Disable HideApp feature.</string>
+    <string name="apphider_root">Root Mode</string>
+    <string name="apphider_root_description">HideApp with Root.\nRecommended if your device is rooted but without Xposed framework. Root permission is required.</string>
+    <string name="apphider_shizuku">Shizuku Mode</string>
+    <string name="apphider_shizuku_description">HideApp with Shizuku (or Shi). \nRecommended if your device runs Android 11+ or with Xposed framework. You need to install and active Shizuku or Sui to use this mode.</string>
+    <string name="apphider_dsm">DSM Mode [Deprecated]</string>
+    <string name="apphider_dsm_description">HideApp with Delegated-Scopes-Manager.\nNOT recommended unless your device runs Android 10 or below and not rooted. It may be BUGGY and work unexpectedly. You need to install Icebox or StopAPP and set them as DeviceManager to use this mode.</string>
+    <string name="learn_more">Learn More</string>
 </resources>
