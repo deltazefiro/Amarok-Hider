@@ -37,7 +37,7 @@
     <string name="unhidden_toast">Unhidden. Be careful.</string>
     <string name="show_debug_info">Debug Info</string>
     <string name="debug_info_description">Show debug info</string>
-    <string name="invalid_dsm_provider">Invalid DSM Provider.</string>
+    <string name="invalid_dsm_provider">DSM: Invalid DSM Provider.</string>
     <string name="hide_app_failed_admin_inactive">Hide App failed: Admin not active.</string>
     <string name="add_hide_files">Add Hide Folder</string>
     <string name="folder_selector_hints">Hints for folder selector: \n\t 1. Click \'Use This Folder\' to select the Folder\n\t 2. Always select the file from local storage \n\t(You can slide from the right of the screen to open local files)</string>
@@ -69,4 +69,5 @@
     <string name="shizuku_not_working">Shizuku: Service not available</string>
     <string name="shizuku_hidden_api_error">Failed to hide app: Unable to get IPackageManager api.</string>
     <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
+    <string name="apphider_not_ava_title">Unavailable AppHider</string>
 </resources>

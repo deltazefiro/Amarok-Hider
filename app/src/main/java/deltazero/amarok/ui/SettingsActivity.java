@@ -3,16 +3,18 @@ package deltazero.amarok.ui;
 import static deltazero.amarok.utils.PermissionUtil.setShizukuPermissionListener;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.catchingnow.delegatedscopeclient.DSMClient;
 import com.google.android.material.appbar.MaterialToolbar;
@@ -22,8 +24,6 @@ import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
 import com.microsoft.appcenter.distribute.Distribute;
 
-import deltazero.amarok.AppHider.AppHiderBase;
-import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
@@ -37,6 +37,9 @@ public class SettingsActivity extends AppCompatActivity {
     public TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
     private TextView tvCurrVer;
+
+    private FragmentManager fragmentManager;
+    private SwitchHideAppFragment switchAppHiderFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,12 +100,17 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Permission callback
         setShizukuPermissionListener(prefMgr, this);
+
+        // Init fragments
+        fragmentManager = getSupportFragmentManager();
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
+        tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
+        tvCurrFileHider.setText(getString(R.string.current_mode, "HideOnly"));
     }
 
     public void showAbout(View view) {
@@ -115,31 +123,17 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void switchAppHider(View view) {
-        CharSequence[] hiders = {"None", "Root", "DSM", "Shizuku/Sui"};
-        final int[] choice = {prefMgr.getAppHiderCode()};
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.switch_app_hider)
-                .setSingleChoiceItems(hiders, choice[0], new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        choice[0] = which;
-                    }
-                })
-                .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        prefMgr.setAppHiderMode(choice[0]);
-                        AppHiderBase hider = prefMgr.getAppHider();
-                        if (!(hider instanceof NoneAppHider || hider.checkAvailability())) {
-                            // Not available.
-                            prefMgr.setAppHiderMode(0);
-                        }
-                        tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
-                    }
-                })
-                .setNeutralButton(R.string.help, (dialog, which) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/hideapp.html"))))
-                .show();
+        switchAppHiderFragment = new SwitchHideAppFragment(); // Instantiate every time to prevent buttons flicker on resume.
+        fragmentManager.beginTransaction()
+                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+                .add(android.R.id.content, switchAppHiderFragment)
+                .addToBackStack(null).commit();
     }
+
+    public void onCheckAppHiderRadioButton(View view) {
+        switchAppHiderFragment.onCheckRadioButton(view);
+    }
+
 
     public void showDebugInfo(View view) {
         new MaterialAlertDialogBuilder(this)
@@ -163,9 +157,10 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider")));
     }
 
-    public void openHelp(View view){
+    public void openHelp(View view) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/")));
 
     }
 
 }
+
