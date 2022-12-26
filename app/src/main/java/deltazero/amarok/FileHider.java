@@ -17,8 +17,15 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 public class FileHider {
     private final static String TAG = "FileHider";
-    private final static String ENCODED_TAG = "[AMAROK]";
+    private final static String AMAROK_MARK = "[AMAROK]";
+    private final static String ENCODED_AMAROK_MARK = "W0FNQVJPS1"; // The base64 encode of AMAROK_MARK
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
+
+    private static String stripLeadingDot(String str) {
+        if (str.startsWith("."))
+            return str.substring(1);
+        return str;
+    }
 
     private static void processFilename(Path path, ProcessMethod processMethod) {
         String filename = path.getFileName().toString();
@@ -28,8 +35,8 @@ public class FileHider {
 
             // Check if the filename have already been encoded.
             try {
-                if (new String(Base64.decode(filename, BASE64_TAG), UTF_8)
-                        .startsWith(ENCODED_TAG)) {
+                if (stripLeadingDot(filename).startsWith(ENCODED_AMAROK_MARK) &&
+                        new String(Base64.decode(stripLeadingDot(filename), BASE64_TAG), UTF_8).startsWith(AMAROK_MARK)) {
                     Log.d(TAG, "Found encoded filename: " + filename + ", skip...");
                     return;
                 }
@@ -37,7 +44,7 @@ public class FileHider {
                 // Filename is not encoded
             }
 
-            filename = Base64.encodeToString((ENCODED_TAG + filename).getBytes(UTF_8), BASE64_TAG);
+            filename = "." + Base64.encodeToString((AMAROK_MARK + filename).getBytes(UTF_8), BASE64_TAG);
             newPath = Paths.get(path.getParent().toString(), filename);
 
             // Log.d(TAG, "Encode: " + path.toString() + " -> " + newPath.toString());
@@ -45,12 +52,12 @@ public class FileHider {
         } else if (processMethod == ProcessMethod.DECODE) {
 
             try {
-                filename = new String(Base64.decode(filename, BASE64_TAG), UTF_8);
-                if (!filename.startsWith(ENCODED_TAG)) {
+                filename = new String(Base64.decode(stripLeadingDot(filename), BASE64_TAG), UTF_8);
+                if (!filename.startsWith(AMAROK_MARK)) {
                     Log.w(TAG, "Found not coded text: " + path.getFileName().toString() + ", skip...");
                     return;
                 }
-                newPath = Paths.get(path.getParent().toString(), filename.replace(ENCODED_TAG, ""));
+                newPath = Paths.get(path.getParent().toString(), filename.replace(AMAROK_MARK, ""));
                 // Log.d(TAG, "Decode: " + path.toString() + " -> " + newPath.toString());
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Unable to decode: " + filename);
