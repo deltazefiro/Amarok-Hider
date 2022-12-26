@@ -36,17 +36,8 @@
         android:theme="@style/Theme.Amarok"
         tools:ignore="AllowBackup,MissingTvBanner">
         <activity
-            android:name=".ui.SetHideFilesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.SettingsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.SetHideAppActivity"
-            android:exported="true" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
+        android:name=".ui.MainActivity"
+        android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
@@ -54,6 +45,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.SwitchAppHiderActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SetHideFilesActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SettingsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".ui.SetHideAppActivity"
+            android:exported="true" />
 
         <service
             android:name=".QuickSettingService"
@@ -83,11 +86,10 @@
         <provider
             android:name="rikka.shizuku.ShizukuProvider"
             android:authorities="${applicationId}.shizuku"
-            android:multiprocess="false"
             android:enabled="true"
             android:exported="true"
+            android:multiprocess="false"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
-
     </application>
 
 </manifest>

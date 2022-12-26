@@ -51,24 +51,6 @@ public class PermissionUtil {
 
     }
 
-    public static void setShizukuPermissionListener(PrefMgr prefMgr, SettingsActivity activity) {
-        Shizuku.addRequestPermissionResultListener(new Shizuku.OnRequestPermissionResultListener() {
-            @Override
-            public void onRequestPermissionResult(int requestCode, int grantResult) {
-                if (grantResult == PackageManager.PERMISSION_GRANTED) {
-                    Log.i("ShizukuHider", "Permission granted. Set hider to ShizukuHider.");
-                    prefMgr.setAppHiderMode(ShizukuHider.class);
-
-                    // Update `Current Hider` textview in SettingsActivity
-                    activity.tvCurrAppHider.setText(activity.getString(R.string.current_mode, prefMgr.getAppHider().getName()));
-                } else {
-                    Log.i("ShizukuHider", "Permission denied.");
-                    Toast.makeText(activity, R.string.shizuku_permission_denied, Toast.LENGTH_LONG).show();
-                }
-            }
-        });
-    }
-
 //
 //    private static int PERMISSION_REQUEST_CODE = 100;
 //
