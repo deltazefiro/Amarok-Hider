@@ -86,35 +86,49 @@ public class ShizukuHider extends AppHiderBase {
     }
 
     @Override
-    public boolean checkAvailability() {
+    public CheckAvailabilityResult checkAvailability() {
         try {
             if (Shizuku.isPreV11()) {
                 Log.w("ShizukuHider", "checkAvailability: Shizuku is running pre v11.");
-                Toast.makeText(context, R.string.shizuku_pre_v11, Toast.LENGTH_LONG).show();
-                return false;
+                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
+                        R.string.shizuku_pre_v11);
             }
             if (Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED) {
                 if (!Shizuku.pingBinder()) {
                     Log.w("ShizukuHider", "checkAvailability: Binder not available.");
-                    Toast.makeText(context, R.string.shizuku_service_not_running, Toast.LENGTH_LONG).show();
-                    return false;
+                    return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
+                            R.string.shizuku_service_not_running);
                 }
                 Log.i("ShizukuHider", "checkAvailability: Shizuku available.");
-                return true;
+                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.AVAILABLE);
             } else if (Shizuku.shouldShowRequestPermissionRationale()) {
                 // Users choose "Deny and don't ask again"
                 Log.w("ShizukuHider", "checkAvailability: permission denied.");
-                Toast.makeText(context, R.string.shizuku_permission_denied, Toast.LENGTH_LONG).show();
-                return false;
+                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
+                        R.string.shizuku_permission_denied);
             } else {
                 // Request the permission
-                Shizuku.requestPermission(shizukuReqCode);
-                return false;
+                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.REQ_PERM);
             }
         } catch (IllegalStateException e) {
             Log.w("ShizukuHider", "checkAvailability: Shizuku not available: ", e);
-            Toast.makeText(context, R.string.shizuku_not_working, Toast.LENGTH_LONG).show();
-            return false;
+            return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
+                    R.string.shizuku_not_working);
+        }
+    }
+
+    @Override
+    public void active(OnActivateCallbackListener onActivateCallbackListener) {
+        CheckAvailabilityResult r = checkAvailability();
+        switch (r.result) {
+            case UNAVAILABLE:
+                onActivateCallbackListener.onActivateCallback(this.getClass(), false, r.msgResID);
+                break;
+            case AVAILABLE:
+                onActivateCallbackListener.onActivateCallback(this.getClass(), true, 0);
+                break;
+            case REQ_PERM:
+                Shizuku.requestPermission(shizukuReqCode);
         }
     }
 

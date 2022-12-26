@@ -23,8 +23,13 @@ public class NoneAppHider extends AppHiderBase{
     }
 
     @Override
-    public boolean checkAvailability() {
-        return true;
+    public CheckAvailabilityResult checkAvailability() {
+        return new CheckAvailabilityResult(CheckAvailabilityResult.Result.AVAILABLE);
+    }
+
+    @Override
+    public void active(OnActivateCallbackListener onActivateCallbackListener) {
+        onActivateCallbackListener.onActivateCallback(getClass(), true, 0);
     }
 
     @Override
