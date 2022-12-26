@@ -67,7 +67,7 @@ public class FileHider {
             // the number of this error.
             Log.w(TAG, String.format("While processing '%s' -> '%s': %s", path, newPath, e));
             Crashes.trackError(e);
-        };
+        }
 
     }
 

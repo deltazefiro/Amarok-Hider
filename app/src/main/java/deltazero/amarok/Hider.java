@@ -11,7 +11,6 @@ import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
-import deltazero.amarok.AppHider.ShizukuHider;
 import rikka.shizuku.ShizukuProvider;
 
 
