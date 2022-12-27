@@ -68,7 +68,7 @@ public class Hider {
         if (hideFilePath.size() > 0) {
             Log.i(TAG, "Hiding files ...");
             for (String p : hideFilePath) {
-                FileHider.process(Paths.get(p), FileHider.ProcessMethod.ENCODE);
+                FileHider.hide(Paths.get(p), prefMgr.getEnableCorruptFileHeader());
             }
         } else {
             Log.i(TAG, "No hide path, skipped file hiding.");
@@ -102,7 +102,7 @@ public class Hider {
         if (hideFilePath.size() > 0) {
             Log.i(TAG, "Unhiding files ...");
             for (String p : hideFilePath) {
-                FileHider.process(Paths.get(p), FileHider.ProcessMethod.DECODE);
+                FileHider.unhide(Paths.get(p), prefMgr.getEnableCorruptFileHeader());
             }
         } else {
             Log.i(TAG, "No hide path, skipped file unhiding.");
