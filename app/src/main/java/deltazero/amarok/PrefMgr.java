@@ -97,4 +97,13 @@ public class PrefMgr {
         mPrefEditor.putBoolean("isEnableAutoUpdate", isEnable);
         mPrefEditor.apply();
     }
+
+    public boolean getEnableCorruptFileHeader() {
+        return mPrefs.getBoolean("enableCorruptFileHeader", false);
+    }
+
+    public void setEnableCorruptFileHeader(boolean ifCorruptFileHeader) {
+        mPrefEditor.putBoolean("enableCorruptFileHeader", ifCorruptFileHeader);
+        mPrefEditor.apply();
+    }
 }

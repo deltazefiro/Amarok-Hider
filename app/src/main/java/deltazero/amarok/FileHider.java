@@ -8,6 +8,7 @@ import android.util.Log;
 import com.microsoft.appcenter.crashes.Crashes;
 
 import java.io.IOException;
+import java.io.RandomAccessFile;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,17 +22,21 @@ public class FileHider {
     private final static String ENCODED_AMAROK_MARK = "W0FNQVJPS1"; // The base64 encode of AMAROK_MARK
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
 
+    public enum ProcessMethod {
+        HIDE, UNHIDE
+    }
+
     private static String stripLeadingDot(String str) {
         if (str.startsWith("."))
             return str.substring(1);
         return str;
     }
 
-    private static void processFilename(Path path, ProcessMethod processMethod) {
+    private static void process(Path path, ProcessMethod processMethod, boolean processHeader) {
         String filename = path.getFileName().toString();
         Path newPath = null;
 
-        if (processMethod == ProcessMethod.ENCODE) {
+        if (processMethod == ProcessMethod.HIDE) {
 
             // Check if the filename have already been encoded.
             try {
@@ -48,7 +53,7 @@ public class FileHider {
 
             // Log.d(TAG, "Encode: " + path.toString() + " -> " + newPath.toString());
 
-        } else if (processMethod == ProcessMethod.DECODE) {
+        } else if (processMethod == ProcessMethod.UNHIDE) {
 
             try {
                 filename = new String(Base64.decode(stripLeadingDot(filename), BASE64_TAG), UTF_8);
@@ -66,16 +71,38 @@ public class FileHider {
         }
 
         assert newPath != null;
-        //noinspection ResultOfMethodCallIgnored
-        path.toFile().renameTo(newPath.toFile());
+        boolean success = path.toFile().renameTo(newPath.toFile());
+
+        if (success && processHeader) {
+            processFileHeader(newPath);
+        }
 
     }
 
-    public static void process(Path targetDir, ProcessMethod processMethod) {
+    private static void processFileHeader(Path path) {
+        try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw")) {
+
+            byte[] bytes = new byte[8];
+            int numBytesRead = file.read(bytes);
+            int numBytesToReplace = Math.max(Math.min(numBytesRead, 8), 0);
+
+            for (int i = 0; i < numBytesToReplace; i++) {
+                bytes[i] = (byte) ~bytes[i];
+            }
+
+            file.seek(0);
+            file.write(bytes, 0, numBytesToReplace);
+
+        } catch (IOException e) {
+            Log.w(TAG, e);
+        }
+
+    }
+
+    public static void processFileTree(Path targetDir, ProcessMethod processMethod, boolean processHeader) {
         /*
         Use Base64 to encode the filename, making filename unreadable.
         TODO: 1.Handle long filename that invalid to android after Base64 encode
-              2.Insert random binary to the head of files to make them unreadable
          */
 
         Log.i(TAG, "Applying hider to: " + targetDir);
@@ -86,14 +113,14 @@ public class FileHider {
 
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-                    processFilename(file, processMethod);
+                    process(file, processMethod, processHeader);
                     return FileVisitResult.CONTINUE;
                 }
 
                 @Override
                 public FileVisitResult postVisitDirectory(Path dir, IOException e) {
                     if (dir != targetDir)
-                        processFilename(dir, processMethod);
+                        process(dir, processMethod, processHeader);
                     return FileVisitResult.CONTINUE;
                 }
 
@@ -105,7 +132,11 @@ public class FileHider {
         }
     }
 
-    public enum ProcessMethod {
-        ENCODE, DECODE
+    public static void hide(Path targetDir, boolean processHeader) {
+        processFileTree(targetDir, ProcessMethod.HIDE, processHeader);
+    }
+
+    public static void unhide(Path targetDir, boolean processHeader) {
+        processFileTree(targetDir, ProcessMethod.UNHIDE, processHeader);
     }
 }
