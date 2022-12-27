@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.content.res.AppCompatResources;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -109,7 +110,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
                     .setTitle(R.string.apphider_not_ava_title)
                     .setMessage(msgResID)
                     .setPositiveButton(getString(R.string.ok), null)
-                    .setNeutralButton(R.string.help, (dialog, which) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/hideapp.html#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"))))
+                    .setNegativeButton(R.string.help, (dialog, which) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/hideapp.html#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"))))
                     .show();
         }
     }

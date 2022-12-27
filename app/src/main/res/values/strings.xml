@@ -80,4 +80,11 @@
     <string name="apphider_dsm">DSM Mode [Deprecated]</string>
     <string name="apphider_dsm_description">HideApp with Delegated-Scopes-Manager.\nNOT recommended unless your device runs Android 10 or below and not rooted. It may be BUGGY and work unexpectedly. You need to install Icebox or StopAPP and set them as DeviceManager to use this mode.</string>
     <string name="learn_more">Learn More</string>
+    <string name="option_unava_when_hidden">Options are unavailable until Unhide.</string>
+    <string name="obfuscate_filename">Obfuscate Filename</string>
+    <string name="obfuscate_filename_description">Make filename human-unreadable. Basic feature of FileHider. Can not disable.</string>
+    <string name="corrupt_file_header">Obfuscate File Header [Experimental]</string>
+    <string name="corrupt_file_header_description">Obfuscate file header to make the file corrupted. This prevent the file being opened by selecting \"Open With\" manually, but may slow down the file hiding process.</string>
+    <string name="filename_only">Filename Only</string>
+    <string name="filename_and_header">Filename + Header</string>
 </resources>
