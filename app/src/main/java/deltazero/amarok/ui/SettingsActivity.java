@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
     private String appVersionName;
     private MaterialSwitch swAnalytics, swAutoUpdate;
     private MaterialToolbar tbToolBar;
-    public TextView tvCurrAppHider;
+    private TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
     private TextView tvCurrVer;
 
@@ -62,8 +62,11 @@ public class SettingsActivity extends AppCompatActivity {
         tbToolBar = findViewById(R.id.settings_tb_toolbar);
 
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
-        tvCurrFileHider.setText(getString(R.string.current_mode, "HideOnly"));
+        tvCurrFileHider.setText(getString(R.string.current_mode,
+                getString(R.string.obfuscate_filename) +
+                        (prefMgr.getEnableCorruptFileHeader() ? " + " + getString(R.string.corrupt_file_header) : "")));
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
+
         swAnalytics.setChecked(Crashes.isEnabled().get());
         swAutoUpdate.setChecked(prefMgr.getEnableAutoUpdate());
 
@@ -99,7 +102,8 @@ public class SettingsActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
-        tvCurrFileHider.setText(getString(R.string.current_mode, "HideOnly"));
+        tvCurrFileHider.setText(getString(R.string.current_mode,
+                (prefMgr.getEnableCorruptFileHeader() ? getString(R.string.filename_and_header) : getString(R.string.filename_only))));
     }
 
     public void showAbout(View view) {
@@ -115,6 +119,9 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(new Intent(this, SwitchAppHiderActivity.class));
     }
 
+    public void switchFileHider(View view) {
+        startActivity(new Intent(this, SwitchFileHiderActivity.class));
+    }
 
     public void showDebugInfo(View view) {
         new MaterialAlertDialogBuilder(this)

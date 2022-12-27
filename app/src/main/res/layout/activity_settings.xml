@@ -17,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_back"
             app:navigationIconTint="?attr/colorOnSurface"
-            app:title="Settings" />
+            app:title="@string/more_settings" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -80,7 +80,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="?android:attr/selectableItemBackground"
-                android:clickable="true">
+                android:clickable="true"
+                android:onClick="switchFileHider">
 
                 <ImageView
                     android:id="@+id/settings_iv_file_mode"
