@@ -35,8 +35,7 @@ public class FileHider {
 
             // Check if the filename have already been encoded.
             try {
-                if (stripLeadingDot(filename).startsWith(ENCODED_AMAROK_MARK) &&
-                        new String(Base64.decode(stripLeadingDot(filename), BASE64_TAG), UTF_8).startsWith(AMAROK_MARK)) {
+                if (stripLeadingDot(filename).startsWith(ENCODED_AMAROK_MARK)) {
                     Log.d(TAG, "Found encoded filename: " + filename + ", skip...");
                     return;
                 }
@@ -66,15 +65,9 @@ public class FileHider {
 
         }
 
-        try {
-            Files.move(path, newPath);
-        } catch (IOException e) {
-            // If the file name is too long that can not used as a filename after Base64,
-            // The exception will be triggered. AppCenter-Crashes is used to analytics
-            // the number of this error.
-            Log.w(TAG, String.format("While processing '%s' -> '%s': %s", path, newPath, e));
-            Crashes.trackError(e);
-        }
+        assert newPath != null;
+        //noinspection ResultOfMethodCallIgnored
+        path.toFile().renameTo(newPath.toFile());
 
     }
 
