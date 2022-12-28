@@ -22,6 +22,28 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        flavorDimensions "version"
+        appcenter {
+            dimension 'version'
+        }
+        foss {
+            dimension 'version'
+            applicationIdSuffix '.foss'
+            versionNameSuffix '-foss'
+        }
+    }
+
+    sourceSets {
+        appcenter {
+            java.srcDirs = ['src/appcenter/java']
+        }
+        foss {
+            java.srcDirs = ['src/foss/java']
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -41,9 +63,9 @@ dependencies {
     implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
 
     def appCenterSdkVersion = '4.4.5'
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
+    appcenterImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
+    appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
+    appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 
     implementation 'com.github.getActivity:XXPermissions:13.2'
     implementation 'androidx.appcompat:appcompat:1.5.1'

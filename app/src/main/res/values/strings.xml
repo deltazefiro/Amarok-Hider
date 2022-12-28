@@ -56,7 +56,7 @@
     <string name="check_update">Check Update</string>
     <string name="check_update_description">Current version: %s</string>
     <string name="update_ava">Update available!</string>
-    <string name="update_description">Amarok %s (%s) is available to download and install.</string>
+    <string name="update_description">Amarok %s (%d) is available to download and install.</string>
     <string name="update">Update</string>
     <string name="never">Never</string>
     <string name="no_update_ava">No available update yet.</string>

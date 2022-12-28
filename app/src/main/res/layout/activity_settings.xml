@@ -218,8 +218,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="24dp"
-                    android:checked="true" />
+                    android:layout_marginEnd="24dp"/>
 
             </RelativeLayout>
 
@@ -275,8 +274,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="24dp"
-                    android:checked="true" />
+                    android:layout_marginEnd="24dp"/>
 
             </RelativeLayout>
 
