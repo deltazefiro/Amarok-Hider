@@ -10,8 +10,8 @@ android {
         applicationId "deltazero.amarok"
         minSdkVersion 26
         targetSdkVersion 32
-        versionCode 24
-        versionName "0.8.0b3"
+        versionCode 25
+        versionName "0.8.1b1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -41,6 +41,12 @@ android {
         }
         foss {
             java.srcDirs = ['src/foss/java']
+        }
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {
+            outputFileName = "Amarok-${defaultConfig.versionName}.apk"
         }
     }
 
