@@ -1,5 +1,10 @@
 # Amarok-Hider
 
+![poster](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-poster.PNG)
+
+![version](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2)
+![tag](https://img.shields.io/github/v/tag/deltazefiro/Amarok-Hider)
+![commit-freq](https://img.shields.io/github/commit-activity/m/deltazefiro/Amarok-Hider)
 ## Amarok 是什么？
 Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的隐私。  
 
@@ -8,26 +13,39 @@ Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的�
 > 但我们的文件其实**根本不需要严格的保护，只是不希望不小心被别人看见，或手滑发给错误的人。**  
 > 我们只需要一个工具，不让它们被**随便看到**，使别人**心生好奇**。
 
-而 Amarok 就是这样一个文件应用隐藏工具。  
+而 Amarok 就是这样一个隐藏文件、应用的工具。  
 
 ## 功能
-- 隐藏文件，将文件名字混淆并去除后缀  
-- 隐藏应用，使应用在桌面上不可见 ~~(目前只支持Root隐藏~~ 已支持DSM隐藏）  
+- 隐藏文件，将混淆文件名、文件头  
+- 免Root隐藏应用，使应用在桌面上不可见  
 
 **<u>请注意：Amarok 并非加密程序，而只是隐藏程序！请勿使用 Amarok 保护重要文件！</u>**
 
 ## 特点 & Todos
-- [x] 一键隐藏&一键取消隐藏：文件应用，一键隐藏。
-- [x] 高速大文件隐藏：只混淆文件名，文件大小并不影响隐藏速度。`FileApi` 直接调用，上千文件瞬间隐藏。
-- [x] 提供快速隐藏：提供控制中心开关，随时开关隐藏状态。
-- [x] 全新的 Material3 UI设计。
-- [x] 免Root应用隐藏：使用DSM进行隐藏。
-- [ ] 自身图标隐藏：隐藏Amarok的启动器图标。
+- 一键隐藏&一键取消隐藏：文件应用，一键隐藏。
+- 高速大文件隐藏：混淆文件名与文件头，轻松隐藏视频、图像等大文件。
+- 提供快速隐藏：提供控制中心开关，随时开关隐藏状态。
+- 全新的 Material3 UI设计。
+- 免Root应用隐藏：Root、Shizuku、DSM等多种隐藏模式。
+- ~~自身图标隐藏：隐藏Amarok的启动器图标。~~
+
+
+## 使用文档
+[![](https://img.shields.io/badge/Amarok%E4%BD%BF%E7%94%A8%E6%96%87%E6%A1%A3-%E7%82%B9%E5%87%BB%E6%9F%A5%E7%9C%8B-brightgreen)](https://deltazefiro.github.io/Amarok-doc/)  
+
+
+## 下载
+[![](https://img.shields.io/badge/Github%20Release-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD-brightgreen)](https://github.com/deltazefiro/Amarok-Hider/releases)  
+[![](https://img.shields.io/badge/AppCenter-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD-brightgreen)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public)  
+[![](https://img.shields.io/badge/IzzyOnDroid%20F--Droid-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD-brightgreen)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok)  
+
 
 
 ## 截图
 
-![New UI](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/Amarok-screenshot.jpg)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-screenshot1.PNG)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-screenshot2.PNG)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-screenshot3.PNG)
 
 
 ## 感谢
@@ -39,7 +57,7 @@ Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的�
 
 ## 免责声明
 
-<u>**Amaork 目前处于早期开发阶段，切勿用于重要文件或应用的隐藏。**</u>  
+<u>**请您切勿将 Amaork 用于重要文件或应用的隐藏。**</u>  
 <u>**您使用 Amaork 导致的一切损失和后果均由您自行承担。**</u>
 
 ## 更新记录
