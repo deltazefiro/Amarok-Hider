@@ -5,8 +5,6 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import android.util.Base64;
 import android.util.Log;
 
-import com.microsoft.appcenter.crashes.Crashes;
-
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.file.FileVisitResult;
@@ -128,7 +126,6 @@ public class FileHider {
 
         } catch (IOException e) {
             Log.w(TAG, String.format("While processing '%s': %s", targetDir.getFileName(), e));
-            Crashes.trackError(e);
         }
     }
 

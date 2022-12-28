@@ -13,17 +13,13 @@ import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
-import com.microsoft.appcenter.AppCenter;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
-import com.microsoft.appcenter.distribute.Distribute;
 
 import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
-import deltazero.amarok.utils.InAppUpdateUtil;
+import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.PermissionUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -47,14 +43,7 @@ public class MainActivity extends AppCompatActivity {
         prefMgr = hider.prefMgr;
 
         // Start App-center
-        Distribute.setEnabledForDebuggableBuild(false);
-
-        if (!prefMgr.getEnableAutoUpdate())
-            Distribute.disableAutomaticCheckForUpdate();
-
-        Distribute.setListener(new InAppUpdateUtil.AmarokDistributeListener());
-        AppCenter.start(getApplication(), "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12",
-                Analytics.class, Crashes.class, Distribute.class);
+        AppCenterUtil.startAppCenter(this);
 
         // Init UI
         ivStatusImg = findViewById(R.id.main_iv_status);

@@ -7,6 +7,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.microsoft.appcenter.AppCenter;
+import com.microsoft.appcenter.analytics.Analytics;
+import com.microsoft.appcenter.crashes.Crashes;
 import com.microsoft.appcenter.distribute.Distribute;
 import com.microsoft.appcenter.distribute.DistributeListener;
 import com.microsoft.appcenter.distribute.ReleaseDetails;
@@ -16,10 +19,11 @@ import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.ui.SettingsActivity;
 
-public class InAppUpdateUtil {
+public class AppCenterUtil {
+
+    private static final String appSecret = "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12";
 
     public static class AmarokDistributeListener implements DistributeListener {
-
 
         @Override
         public boolean onReleaseAvailable(Activity activity, ReleaseDetails releaseDetails) {
@@ -67,4 +71,38 @@ public class InAppUpdateUtil {
         }
     }
 
+    public static void cleanUpdatePostpone() {
+        // To clean postpone
+        Distribute.setEnabled(false);
+        Distribute.setEnabled(true);
+    }
+
+    public static void checkUpdate() {
+        cleanUpdatePostpone();
+        Distribute.checkForUpdate();
+    }
+
+    public static void setAnalyticsEnabled(boolean enabled) {
+        Crashes.setEnabled(enabled);
+        Analytics.setEnabled(enabled);
+    }
+
+    public static boolean isAnalyticsEnabled() {
+        return Crashes.isEnabled().get();
+    }
+
+    public static void startAppCenter(Activity activity) {
+        Distribute.setEnabledForDebuggableBuild(false);
+
+        if (!new PrefMgr(activity).getEnableAutoUpdate())
+            Distribute.disableAutomaticCheckForUpdate();
+
+        Distribute.setListener(new AmarokDistributeListener());
+        AppCenter.start(activity.getApplication(), appSecret,
+                Analytics.class, Crashes.class, Distribute.class);
+    }
+
+    public static boolean isAvailable() {
+        return true;
+    }
 }

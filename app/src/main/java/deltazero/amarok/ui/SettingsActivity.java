@@ -5,25 +5,19 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.catchingnow.delegatedscopeclient.DSMClient;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
-import com.microsoft.appcenter.analytics.Analytics;
-import com.microsoft.appcenter.crashes.Crashes;
-import com.microsoft.appcenter.distribute.Distribute;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.utils.AppCenterUtil;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -67,22 +61,25 @@ public class SettingsActivity extends AppCompatActivity {
                         (prefMgr.getEnableCorruptFileHeader() ? " + " + getString(R.string.corrupt_file_header) : "")));
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
-        swAnalytics.setChecked(Crashes.isEnabled().get());
-        swAutoUpdate.setChecked(prefMgr.getEnableAutoUpdate());
+        if (AppCenterUtil.isAvailable())
+        {
+            swAnalytics.setChecked(AppCenterUtil.isAnalyticsEnabled());
+            swAutoUpdate.setChecked(prefMgr.getEnableAutoUpdate());
+        } else {
+            swAnalytics.setEnabled(false);
+            swAutoUpdate.setEnabled(false);
+        }
 
         swAnalytics.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            Crashes.setEnabled(isChecked);
-            Analytics.setEnabled(isChecked);
+            AppCenterUtil.setAnalyticsEnabled(isChecked);
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
         });
 
         swAutoUpdate.setOnCheckedChangeListener((buttonView, isChecked) -> {
             prefMgr.setEnableAutoUpdate(isChecked);
 
-            // Clean postpone
             if (isChecked) {
-                Distribute.setEnabled(false);
-                Distribute.setEnabled(true);
+                AppCenterUtil.cleanUpdatePostpone();
             }
 
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
@@ -123,22 +120,12 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(new Intent(this, SwitchFileHiderActivity.class));
     }
 
-    public void showDebugInfo(View view) {
-        new MaterialAlertDialogBuilder(this)
-                .setTitle("Debug Info")
-                .setMessage(String.format("DSMClient.getOwnerSDKVersion: %s\n" +
-                                "DSMClient.getOwnerPackageName: %s",
-                        DSMClient.getOwnerSDKVersion(this), DSMClient.getOwnerPackageName(this)))
-                .setPositiveButton(getString(R.string.ok), null)
-                .show();
-    }
-
     public void checkUpdate(View view) {
-        // To clean postpone
-        Distribute.setEnabled(false);
-        Distribute.setEnabled(true);
-
-        Distribute.checkForUpdate();
+        if (AppCenterUtil.isAvailable()) {
+            AppCenterUtil.checkUpdate();
+        } else {
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok")));
+        }
     }
 
     public void openGithub(View view) {
