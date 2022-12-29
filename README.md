@@ -1,6 +1,6 @@
 # Amarok-Hider
 
-![poster](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-poster.PNG)
+![poster](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-169-poster.png)
 
 ![version](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2)
 ![tag](https://img.shields.io/github/v/tag/deltazefiro/Amarok-Hider)
@@ -35,17 +35,18 @@ Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的�
 
 
 ## 下载
-[![](https://img.shields.io/badge/Github%20Release-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD-brightgreen)](https://github.com/deltazefiro/Amarok-Hider/releases)  
-[![](https://img.shields.io/badge/AppCenter-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD-brightgreen)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public)  
-[![](https://img.shields.io/badge/IzzyOnDroid%20F--Droid-%E7%82%B9%E5%87%BB%E4%B8%8B%E8%BD%BD-brightgreen)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok)  
+[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?include_prereleases&label=Github%20Release)](https://github.com/deltazefiro/Amarok-Hider/releases)  
+[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public)  
+[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)  
 
 
 
 ## 截图
 
-![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-screenshot1.PNG)
-![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-screenshot2.PNG)
-![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-screenshot3.PNG)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-169-1.png)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-169-2.png)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-169-3.png)
+![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-169-4.png)
 
 
 ## 感谢
@@ -61,6 +62,25 @@ Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的�
 <u>**您使用 Amaork 导致的一切损失和后果均由您自行承担。**</u>
 
 ## 更新记录
+
+### Amarok v0.8.1b1
+
+- Breakings
+    - **此版本非稳定版本，未经过测试，请谨慎使用**
+    - **新增 `-foss` 后缀版本，用于 F-droid 分发。此版本无自动更新等网络功能。**
+- New Features
+    - **新增 混淆文件头功能** (#3)
+    - **新增 应用隐藏模式 选择界面**
+    - 新增 隐藏后的文件以 `.` 开头 (#4)
+    - 新增 每次启动时检测应用隐藏器权限
+- Optimize
+    - 重构 应用隐藏器选择逻辑
+    - 优化 文件隐藏速度
+    - 优化 中英文翻译
+    - 升级 AppCenter & Shizuku API 版本
+- Fix
+    - 移除 已停止使用的 `android.software.leanback` 权限 (#5)
+
 ### Amarok v0.7.4a5
 
 - Breakings
@@ -78,7 +98,9 @@ Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的�
     - 修复 暗色模式下状态栏颜色与 `AppBar` 不一致
     - 修复 亮色模式下状态栏文字颜色为白色
     - 修复 选择非本地储存中文件后崩溃 **(在 HarmonyOS 下隐藏文件崩溃的原因)**
+
 ### Amarok v0.7.3a3
+
 - Breakings
     - 加入 Microsoft AppCenter 进行自动错误统计与分析。
     - 升级 Android targetSDK 到 32
