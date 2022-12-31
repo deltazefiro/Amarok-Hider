@@ -13,7 +13,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/dialog_et_input"/>
+            android:id="@+id/dialog_path_input_et_input"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>

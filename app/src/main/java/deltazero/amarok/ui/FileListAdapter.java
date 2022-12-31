@@ -3,7 +3,6 @@ package deltazero.amarok.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Environment;
-import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +18,8 @@ import com.google.android.material.textview.MaterialTextView;
 
 import java.io.File;
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Set;
-import java.util.zip.Inflater;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
@@ -28,8 +27,8 @@ import deltazero.amarok.R;
 public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public final LinkedList<String> lsPath;
-    private final LayoutInflater inflater;
     private final PrefMgr prefMgr;
+    private final LayoutInflater inflater;
     private final Context context;
 
     private final int TYPE_FILE_ITEM = 0;
@@ -46,7 +45,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         if (viewType == TYPE_FOOTAGE)
-            return new FootageHolder(inflater.inflate(R.layout.item_hidefiles_footage, parent, false));
+            return new FootageHolder(inflater.inflate(R.layout.item_hidefiles_footage, parent, false), this);
         return new FileListHolder(inflater.inflate(R.layout.item_hidefiles, parent, false), this);
     }
 
@@ -111,9 +110,9 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public static class FootageHolder extends RecyclerView.ViewHolder {
+    public class FootageHolder extends RecyclerView.ViewHolder {
 
-        public FootageHolder(@NonNull View itemView) {
+        public FootageHolder(@NonNull View itemView, FileListAdapter adapter) {
             super(itemView);
 
             MaterialButton btAddFolder = itemView.findViewById(R.id.hidefiles_bt_add_folder);
@@ -123,11 +122,27 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     MaterialAlertDialogBuilder alertBuilder = new MaterialAlertDialogBuilder(itemView.getContext())
                             .setTitle(R.string.manually_set_path)
                             .setMessage(R.string.manually_set_path_description)
-                            .setPositiveButton(R.string.confirm, null)
                             .setNeutralButton(R.string.cancel, null);
+
                     View dlPathInput = LayoutInflater.from(alertBuilder.getContext()).inflate(R.layout.dialog_path_input, null);
-                    ((EditText) dlPathInput.findViewById(R.id.dialog_et_input)).setHint(Environment.getExternalStorageDirectory().getPath() + "/...");
-                    alertBuilder.setView(dlPathInput).show();
+                    EditText etPathInput = dlPathInput.findViewById(R.id.dialog_path_input_et_input);
+                    etPathInput.setHint(Environment.getExternalStorageDirectory().getPath() + "/...");
+
+                    alertBuilder.setView(dlPathInput)
+                            .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String newPath = Objects.requireNonNull(etPathInput.getText()).toString();
+
+                                    Set<String> hideFilePaths = prefMgr.getHideFilePath();
+                                    hideFilePaths.add(newPath);
+                                    prefMgr.setHideFilePath(hideFilePaths);
+
+                                    lsPath.add(newPath);
+                                    adapter.notifyItemInserted(getAdapterPosition());
+                                }
+                            })
+                            .show();
                     return true;
                 }
             });
