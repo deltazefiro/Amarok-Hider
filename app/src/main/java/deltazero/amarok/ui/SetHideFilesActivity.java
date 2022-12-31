@@ -9,6 +9,7 @@ import android.view.View;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,10 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import java.io.File;
 import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.utils.SDCardUtil;
 
 public class SetHideFilesActivity extends AppCompatActivity {
 
@@ -57,10 +60,8 @@ public class SetHideFilesActivity extends AppCompatActivity {
                         // set hide path
                         // FIXME: Assign a not local file may cause an error.
                         String newPath;
-                        try {
-                            newPath = Environment.getExternalStorageDirectory() + "/" + uri.getPath().split(":")[1];
-                        } catch (ArrayIndexOutOfBoundsException e) {
-                            // When selected a path not in local storage.
+                        newPath = getPathFromUri(uri);
+                        if (newPath == null) {
                             Log.w(TAG, "Not supported Directory: " + uri);
                             new MaterialAlertDialogBuilder(this)
                                     .setTitle(R.string.not_local_storage)
@@ -116,6 +117,30 @@ public class SetHideFilesActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Nullable
+    private String getPathFromUri(Uri uri) {
+        String[] splitUri = uri.getPath().split(":");
+        if (splitUri.length != 2) {
+            return null;
+        }
+
+        // Check if removable storage (i.e. SD card)
+        String path = SDCardUtil.getSdCardPathFromUri(this, splitUri);
+        if (path != null) {
+            return path;
+        }
+
+        // Check if external storage
+        // FIXME: `com.android.externalstorage.documents` can not exactly filter out
+        //  whether the path is in external storage or removable SdCard.
+        if ("com.android.externalstorage.documents".equals(uri.getAuthority())) {
+            return Environment.getExternalStorageDirectory() + File.separator + splitUri[1];
+        }
+
+        // Other virtual path
+        return null;
     }
 
     public void addHideFolder(View view) {
