@@ -1,10 +1,8 @@
 package deltazero.amarok.AppHider;
 
-import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -14,6 +12,7 @@ import java.util.Set;
 
 import deltazero.amarok.AdminReceiver;
 import deltazero.amarok.R;
+import deltazero.amarok.ui.SwitchAppHiderActivity;
 
 public class DsmAppHider extends AppHiderBase {
 
@@ -80,20 +79,7 @@ public class DsmAppHider extends AppHiderBase {
             case REQ_PERM:
                 Log.i("DsmAppHider", "No delegation-package-access, start to request...");
 
-                DSMClient.requestScopes(new Activity() {
-                    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-                        super.onActivityResult(requestCode, resultCode, data);
-                        if (requestCode == dsmReqCode) {
-                            if (resultCode == RESULT_OK) {
-                                onActivateCallbackListener.onActivateCallback(DsmAppHider.class, true, 0);
-                            } else if (resultCode == RESULT_CANCELED) {
-                                Log.w("DsmAppHider", "DsmHider: Permission denied");
-                                onActivateCallbackListener.onActivateCallback(DsmAppHider.class, false, R.string.dsm_permission_denied);
-                            }
-                        }
-                    }
-
-                }, dsmReqCode, DevicePolicyManager.DELEGATION_PACKAGE_ACCESS);
+                DSMClient.requestScopes((SwitchAppHiderActivity) context, dsmReqCode, DevicePolicyManager.DELEGATION_PACKAGE_ACCESS);
         }
 
     }
