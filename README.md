@@ -5,6 +5,9 @@
 ![version](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2)
 ![tag](https://img.shields.io/github/v/tag/deltazefiro/Amarok-Hider)
 ![commit-freq](https://img.shields.io/github/commit-activity/m/deltazefiro/Amarok-Hider)
+
+**简体中文 | [ENGLISH](https://github.com/deltazefiro/Amarok-Hider/blob/main/README.en.md)**
+
 ## Amarok 是什么？
 Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的隐私。  
 
@@ -21,7 +24,7 @@ Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的�
 
 **<u>请注意：Amarok 并非加密程序，而只是隐藏程序！请勿使用 Amarok 保护重要文件！</u>**
 
-## 特点 & Todos
+## 特点
 - 一键隐藏&一键取消隐藏：文件应用，一键隐藏。
 - 高速大文件隐藏：混淆文件名与文件头，轻松隐藏视频、图像等大文件。
 - 提供快速隐藏：提供控制中心开关，随时开关隐藏状态。
