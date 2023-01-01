@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.content.res.AppCompatResources;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -112,6 +111,19 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
                     .setPositiveButton(getString(R.string.ok), null)
                     .setNegativeButton(R.string.help, (dialog, which) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/hideapp.html#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"))))
                     .show();
+        }
+    }
+
+    // Callback for DSM permission request
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == DsmAppHider.dsmReqCode) {
+            if (resultCode == RESULT_OK) {
+                onActivationCallback(DsmAppHider.class, true, 0);
+            } else if (resultCode == RESULT_CANCELED) {
+                Log.w("DsmAppHider", "DsmHider: Permission denied");
+                onActivationCallback(DsmAppHider.class, false, R.string.dsm_permission_denied);
+            }
         }
     }
 
