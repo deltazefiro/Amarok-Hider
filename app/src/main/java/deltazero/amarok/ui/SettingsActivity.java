@@ -124,7 +124,7 @@ public class SettingsActivity extends AppCompatActivity {
         if (AppCenterUtil.isAvailable()) {
             AppCenterUtil.checkUpdate();
         } else {
-            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok")));
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider/releases")));
         }
     }
 
