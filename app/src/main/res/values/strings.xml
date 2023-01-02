@@ -37,10 +37,10 @@
     <string name="unhidden_toast">Unhidden. Be careful.</string>
     <string name="show_debug_info">Debug Info</string>
     <string name="debug_info_description">Show debug info</string>
-    <string name="invalid_dsm_provider">DSM: Invalid DSM Provider.</string>
+    <string name="invalid_dsm_provider">DSM: Invalid DSM Provider. Have you installed and activated the DSM Provider on your device?</string>
     <string name="hide_app_failed_admin_inactive">Hide App failed: Admin not active.</string>
     <string name="add_hide_files">Add Hide Folder</string>
-    <string name="folder_selector_hints">Hints for folder selector: \n\t 1. Click \'Use This Folder\' to select the Folder\n\t 2. Always select the file from local storage \n\t(You can slide from the right of the screen to open local files)</string>
+    <string name="folder_selector_hints">Hints for folder selector: \n\t 1. Click \'Use This Folder\' to select the Folder\n\t 2. Always select the file from the local storage \n\t(You can slide from the right of the screen to open local files)</string>
     <string name="remove_hide_path">Remove Hide Path?</string>
     <string name="remove_hide_path_description">Are you sure to remove path \'%s\' from hiding?</string>
     <string name="confirm">Confirm</string>
@@ -61,12 +61,12 @@
     <string name="never">Never</string>
     <string name="no_update_ava">No available update yet.</string>
     <string name="manually_set_path">Set Path Manually</string>
-    <string name="manually_set_path_description">Caution: The path you setting manually will SKIP validation. Please ensure the path is vaild.</string>
+    <string name="manually_set_path_description">Caution: The path you set manually will **skip** the validation. Please ensure the path is valid.</string>
     <string name="view_github_repo">View Github Repo</string>
     <string name="view_github_repo_description" translatable="false">deltazefiro/Amarok-Hider</string>
-    <string name="shizuku_pre_v11">Unsupported shizuku version: Pre-V11</string>
+    <string name="shizuku_pre_v11">Unsupported shizuku version: Pre-V11. Please update your Shizuku.</string>
     <string name="shizuku_permission_denied">Shizuku: Permission denied</string>
-    <string name="shizuku_not_working">Shizuku: Service not available</string>
+    <string name="shizuku_not_working">Shizuku: Service not available. Have you installed Shizuku/Shu on your device?</string>
     <string name="shizuku_hidden_api_error">Failed to hide app: Unable to get IPackageManager api.</string>
     <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
     <string name="apphider_not_ava_title">Unavailable AppHider</string>
@@ -78,13 +78,13 @@
     <string name="apphider_shizuku">Shizuku Mode</string>
     <string name="apphider_shizuku_description">HideApp with Shizuku (or Shi). \nRecommended if your device runs Android 11+ or with Xposed framework. You need to install and active Shizuku or Sui to use this mode.</string>
     <string name="apphider_dsm">DSM Mode [Deprecated]</string>
-    <string name="apphider_dsm_description">HideApp with Delegated-Scopes-Manager.\nNOT recommended unless your device runs Android 10 or below and not rooted. It may be BUGGY and work unexpectedly. You need to install Icebox or StopAPP and set them as DeviceManager to use this mode.</string>
+    <string name="apphider_dsm_description">HideApp with Delegated-Scopes-Manager.\nNOT recommended unless your device runs Android 10 or below and is not rooted. It may be BUGGY and work unexpectedly. You need to install Icebox or StopAPP and set them as DeviceManager to use this mode.</string>
     <string name="learn_more">Learn More</string>
     <string name="option_unava_when_hidden">Options are unavailable until Unhide.</string>
     <string name="obfuscate_filename">Obfuscate Filename</string>
-    <string name="obfuscate_filename_description">Make filename human-unreadable. Basic feature of FileHider. Can not disable.</string>
+    <string name="obfuscate_filename_description">Make the filename human-unreadable. The basic feature of FileHider. Can not be disabled.</string>
     <string name="corrupt_file_header">Obfuscate File Header [Experimental]</string>
-    <string name="corrupt_file_header_description">Obfuscate file header to make the file corrupted. This prevent the file being opened by selecting \"Open With\" manually, but may slow down the file hiding process.</string>
+    <string name="corrupt_file_header_description">Obfuscate the file signature in the file header to make the file \"corrupted\". This prevents the file from being opened by selecting \"Open With\" manually but may slow down the file-hiding process.</string>
     <string name="filename_only">Filename Only</string>
     <string name="filename_and_header">Filename + Header</string>
 </resources>

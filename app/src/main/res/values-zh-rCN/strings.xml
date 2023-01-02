@@ -27,7 +27,7 @@
     <string name="apply_on_restart">更改将与下一次启动时生效</string>
     <string name="unhidden_toast">取消隐藏</string>
     <string name="hidden_toast">已隐藏</string>
-    <string name="invalid_dsm_provider">DSM 服务不可用。</string>
+    <string name="invalid_dsm_provider">DSM 服务不可用。请在您的设备上安装作为DSM管理员的应用，设置其为设备管理员。</string>
     <string name="show_debug_info">调试信息</string>
     <string name="debug_info_description">显示调试信息</string>
     <string name="hide_app_failed_admin_inactive">隐藏应用失败：DSM管理员未激活</string>
@@ -56,8 +56,8 @@
     <string name="view_github_repo">打开 Github 仓库</string>
     <string name="shizuku_pre_v11">Shizuku 版本过低: 请升级您的 Shizuku</string>
     <string name="shizuku_permission_denied">Shizuku: 权限请求被拒绝</string>
-    <string name="shizuku_not_working">Shizuku 服务无效</string>
-    <string name="shizuku_hidden_api_error">隐藏应用失败: 无法获取 IPackageManager 接口</string>
+    <string name="shizuku_not_working">Shizuku 服务无效。请在您的设备上安装 Shizuku 或 Sui。</string>
+    <string name="shizuku_hidden_api_error">隐藏应用失败: 无法获取 IPackageManager 接口。</string>
     <string name="shizuku_service_not_running">Shizuku 服务未运行（大概是没开）</string>
     <string name="no_update_ava">无可用更新</string>
     <string name="apphider_not_ava_title">应用隐藏器无效</string>
