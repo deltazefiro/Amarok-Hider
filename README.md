@@ -6,7 +6,7 @@
 ![tag](https://img.shields.io/github/v/tag/deltazefiro/Amarok-Hider)
 ![commit-freq](https://img.shields.io/github/commit-activity/m/deltazefiro/Amarok-Hider)
 
-**简体中文 | [ENGLISH](https://github.com/deltazefiro/Amarok-Hider/blob/main/README.en.md)**
+**[>> ENGLISH VERSION <<](https://github.com/deltazefiro/Amarok-Hider/blob/main/README.en.md)**
 
 ## Amarok 是什么？
 Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的隐私。  
