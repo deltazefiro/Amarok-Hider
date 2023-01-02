@@ -9,7 +9,7 @@
 > The Readme is mostly translated by machine.  
 > [Help us improve](https://github.com/deltazefiro/Amarok-Hider/issues/12)
 
-**[简体中文](https://github.com/deltazefiro/Amarok-Hider) | <u>ENGLISH</u>**
+**[>> 简体中文版本 <<](https://github.com/deltazefiro/Amarok-Hider)**
 
 ## What is Amarok?
 Amarok is an Android application which enables you to hide your private files & apps with just one click.
