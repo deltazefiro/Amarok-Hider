@@ -218,7 +218,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="24dp"/>
+                    android:layout_marginEnd="24dp" />
 
             </RelativeLayout>
 
@@ -274,7 +274,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="24dp"/>
+                    android:layout_marginEnd="24dp" />
 
             </RelativeLayout>
 
@@ -410,48 +410,50 @@
 
             </RelativeLayout>
 
-            <!--            <RelativeLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:onClick="showDebugInfo"-->
-            <!--                android:clickable="true"-->
-            <!--                android:background="?android:attr/selectableItemBackground">-->
+            <RelativeLayout
+                android:id="@+id/settings_rl_debug_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="showDebugInfo"
+                android:visibility="gone">
 
-            <!--                <ImageView-->
-            <!--                    android:id="@+id/settings_iv_debug_info"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_alignParentStart="true"-->
-            <!--                    android:layout_centerVertical="true"-->
-            <!--                    android:layout_marginStart="24dp"-->
-            <!--                    android:src="@drawable/ic_null"-->
-            <!--                    app:tint="?attr/colorOnSurface" />-->
+                <ImageView
+                    android:id="@+id/settings_iv_debug_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_null"
+                    app:tint="?attr/colorOnSurface" />
 
-            <!--                <LinearLayout-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:layout_centerVertical="true"-->
-            <!--                    android:layout_marginVertical="16dp"-->
-            <!--                    android:layout_marginStart="18dp"-->
-            <!--                    android:layout_marginEnd="24dp"-->
-            <!--                    android:layout_toEndOf="@id/settings_iv_debug_info"-->
-            <!--                    android:orientation="vertical">-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="16dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_toEndOf="@id/settings_iv_debug_info"
+                    android:orientation="vertical">
 
-            <!--                    <TextView-->
-            <!--                        style="@style/TextAppearance.Material3.TitleSmall"-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:text="@string/show_debug_info" />-->
+                    <TextView
+                        style="@style/TextAppearance.Material3.TitleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/show_debug_info" />
 
-            <!--                    <TextView-->
-            <!--                        android:layout_width="wrap_content"-->
-            <!--                        android:layout_height="wrap_content"-->
-            <!--                        android:text="@string/debug_info_description"-->
-            <!--                        android:textSize="12sp" />-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/debug_info_description"
+                        android:textSize="12sp" />
 
-            <!--                </LinearLayout>-->
+                </LinearLayout>
 
-            <!--            </RelativeLayout>-->
+            </RelativeLayout>
 
 
         </LinearLayout>
