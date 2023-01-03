@@ -60,7 +60,7 @@ public class SDCardUtil {
      * @see <a href="https://stackoverflow.com/questions/11281010/how-can-i-get-the-external-sd-card-path-for-android-4-0/27197248#27197248">...</a>
      */
     public static List<String> getSdCardPaths(Context context, boolean includePrimaryExternalStorage) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             StorageManager storageManager = (StorageManager) context
                     .getSystemService(Context.STORAGE_SERVICE);
             List<StorageVolume> storageVolumes = storageManager.getStorageVolumes();
@@ -111,7 +111,7 @@ public class SDCardUtil {
     }
 
     private static String getRootOfInnerSdCardFolder(Context context, File inputFile) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             StorageManager storageManager = (StorageManager) context
                     .getSystemService(Context.STORAGE_SERVICE);
             StorageVolume storageVolume = storageManager.getStorageVolume(inputFile);
