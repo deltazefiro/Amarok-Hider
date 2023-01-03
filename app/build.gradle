@@ -82,7 +82,7 @@ dependencies {
 
     implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
 
-    def appCenterSdkVersion = '4.4.5'
+    def appCenterSdkVersion = '5.0.0'
     appcenterImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
