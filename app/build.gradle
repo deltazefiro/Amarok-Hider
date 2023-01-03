@@ -2,6 +2,15 @@ plugins {
     id 'com.android.application'
 }
 
+def getGitHash = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'rev-parse', '--short', 'HEAD'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
 android {
     compileSdkVersion 32
     buildToolsVersion "30.0.3"
@@ -20,6 +29,11 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            applicationIdSuffix ".debug"
+            versionNameSuffix "-${getGitHash()}"
+            debuggable true
         }
     }
 
