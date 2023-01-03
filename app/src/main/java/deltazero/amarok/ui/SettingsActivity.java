@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 
+import deltazero.amarok.BuildConfig;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
@@ -29,6 +31,7 @@ public class SettingsActivity extends AppCompatActivity {
     private TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
     private TextView tvCurrVer;
+    private RelativeLayout rlDebugInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
         swAnalytics = findViewById(R.id.settings_sw_analytics);
         swAutoUpdate = findViewById(R.id.settings_sw_auto_update);
         tbToolBar = findViewById(R.id.settings_tb_toolbar);
+        rlDebugInfo = findViewById(R.id.settings_rl_debug_info);
 
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
         tvCurrFileHider.setText(getString(R.string.current_mode,
@@ -92,6 +96,11 @@ public class SettingsActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        // Show debug button in debug mode
+        if (BuildConfig.DEBUG) {
+            rlDebugInfo.setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -137,5 +146,7 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+    public void showDebugInfo(View view) {
+    }
 }
 
