@@ -106,4 +106,22 @@ public class PrefMgr {
         mPrefEditor.putBoolean("enableCorruptFileHeader", ifCorruptFileHeader);
         mPrefEditor.apply();
     }
+
+    public boolean getEnableCorruptTextFile() {
+        return mPrefs.getBoolean("enableCorruptTextFile", false);
+    }
+
+    public void setEnableCorruptTextFile(boolean ifCorruptTextFile) {
+        mPrefEditor.putBoolean("enableCorruptTextFile", ifCorruptTextFile);
+        mPrefEditor.apply();
+    }
+
+    public boolean getEnableTextFileEnhanced() {
+        return mPrefs.getBoolean("enableCorruptTextFileEnhanced", false);
+    }
+
+    public void setEnableCorruptTextFileEnhanced(boolean ifCorruptTextFileEnhanced) {
+        mPrefEditor.putBoolean("enableCorruptTextFileEnhanced", ifCorruptTextFileEnhanced);
+        mPrefEditor.apply();
+    }
 }
