@@ -19,15 +19,18 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.util.List;
+
+import deltazero.amarok.utils.FileHiderUtil;
 
 public class FileHider {
     private final static String TAG = "FileHider";
-    private final static String AMAROK_MARK = "[AMAROK]";
-    private final static String ENCODED_AMAROK_MARK = "W0FNQVJPS1"; // The base64 encode of AMAROK_MARK
-    private final static List<String> COMMON_TEXT_EXTENSION = List.of(".txt", ".md");
+
     private final static int MAX_PROCESS_WHOLE_FILE_SIZE = 10; // In MB.
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
+
+    public final static String FILENAME_START_MARK = "[AMAROK]";
+    public final static String FILENAME_START_MARK_ENCODED = "W0FNQVJPS1";
+    public final static String FILENAME_ENDING_FULL_PROCESS_MARK = ".amk1";
 
     public static class ProcessConfig {
         public ProcessConfig(PrefMgr prefMgr) {
@@ -47,78 +50,63 @@ public class FileHider {
         public boolean processTextFileEnhanced;
     }
 
-    private static String stripLeadingDot(String str) {
-        if (str.startsWith("."))
-            return str.substring(1);
-        return str;
-    }
-
-    /**
-     * Get file size.
-     *
-     * @param p Path to the file.
-     * @return File size, in MB.
-     */
-    private static int getFileSize(Path p) {
-        return Integer.parseInt(String.valueOf(p.toFile().length() / 1024 / 1024));
-    }
-
 
     /**
      * Process the Filename and check if the process succeeds.
      *
-     * @param path          The path to be processed.
-     * @param processMethod Process method.
+     * @param path            The path to be processed.
+     * @param processMethod   Process method.
+     * @param extraEndingMark Extra mark to be append to the end of the filename.
      * @return If the process succeeds, return the new path. Otherwise, return null.
      */
     @Nullable
-    private static Path processFilename(Path path, ProcessConfig.ProcessMethod processMethod) {
+    private static Path processFilename(Path path, ProcessConfig.ProcessMethod processMethod, String extraEndingMark) {
         String filename = path.getFileName().toString();
-        Path newPath = null;
+        String newFilename = null;
+        Path newPath;
+
+        boolean hasEncoded = FileHiderUtil.stripFilenameExtras(filename).startsWith(FILENAME_START_MARK_ENCODED);
 
         if (processMethod == HIDE) {
-
-            // Check if the filename have already been encoded.
-            try {
-                if (stripLeadingDot(filename).startsWith(ENCODED_AMAROK_MARK)) {
-                    Log.d(TAG, "Found encoded filename: " + filename + ", skip...");
-                    return null;
-                }
-            } catch (IllegalArgumentException e) {
-                // Filename is not encoded
+            if (hasEncoded) {
+                Log.d(TAG, "Found encoded name: " + filename + ", skip...");
+                return null;
             }
 
-            filename = "." + Base64.encodeToString((AMAROK_MARK + filename).getBytes(UTF_8), BASE64_TAG);
-            newPath = Paths.get(path.getParent().toString(), filename);
-
-            Log.d(TAG, "Encode: " + path + " -> " + newPath.toString());
+            newFilename = "." + Base64.encodeToString((FILENAME_START_MARK + filename).getBytes(UTF_8), BASE64_TAG) + extraEndingMark;
+            Log.d(TAG, "Encode: " + path + " -> " + newFilename);
 
         } else if (processMethod == UNHIDE) {
+            if (!hasEncoded) {
+                Log.w(TAG, "Found not coded name: " + filename + ", skip...");
+                return null;
+            }
 
             try {
-                filename = new String(Base64.decode(stripLeadingDot(filename), BASE64_TAG), UTF_8);
-                if (!filename.startsWith(AMAROK_MARK)) {
-                    Log.w(TAG, "Found not coded text: " + path.getFileName().toString() + ", skip...");
-                    return null;
-                }
-                newPath = Paths.get(path.getParent().toString(), filename.replace(AMAROK_MARK, ""));
-                Log.d(TAG, "Decode: " + path + " -> " + newPath.toString());
+                newFilename = new String(
+                        Base64.decode(FileHiderUtil.stripFilenameExtras(filename), BASE64_TAG), UTF_8
+                ).replace(FILENAME_START_MARK, "");
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Unable to decode: " + filename);
                 return null;
             }
 
+            Log.d(TAG, "Decode: " + path + " -> " + newFilename);
         }
 
-        assert newPath != null;
-        boolean success = path.toFile().renameTo(newPath.toFile());
+        // Try to rename.
 
-        if (!success) {
+        assert newFilename != null;
+        newPath = Paths.get(path.getParent().toString(), newFilename);
+
+        boolean is_succeeded = path.toFile().renameTo(newPath.toFile());
+
+        if (!is_succeeded) {
             Log.w(TAG, "Error when renaming file: " + path + " -> " + newPath);
             return null;
+        } else {
+            return newPath;
         }
-
-        return newPath;
     }
 
     private static void processFileHeader(Path path) {
@@ -161,6 +149,30 @@ public class FileHider {
         }
     }
 
+    private static boolean checkShouldProcessWhole(Path path, ProcessConfig processConfig) {
+
+        if ((!processConfig.processHeader) || (!processConfig.processTextFile)) {
+            return false;
+        }
+
+        String filename = path.getFileName().toString();
+        if (processConfig.processMethod == HIDE) {
+
+            // HIDE
+            if (processConfig.processTextFileEnhanced) {
+                return FileHiderUtil.checkIsTextFileEnhanced(path)
+                        && FileHiderUtil.getFileSize(path) <= MAX_PROCESS_WHOLE_FILE_SIZE;
+            } else { // Not enhanced
+                return FileHiderUtil.checkIsTextFile(filename)
+                        && FileHiderUtil.getFileSize(path) <= MAX_PROCESS_WHOLE_FILE_SIZE;
+            }
+
+        } else {
+            // UNHIDE
+            return filename.endsWith(FILENAME_ENDING_FULL_PROCESS_MARK);
+        }
+    }
+
     /**
      * TODO: 2023/1/9 Handle long filename that invalid to android after Base64 encode
      */
@@ -174,19 +186,19 @@ public class FileHider {
 
                 @Override
                 public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
-                    Path newPath = processFilename(path, processConfig.processMethod);
+
+                    // Check whether the whole file should be processed before renaming (processFilename).
+                    boolean shouldProcessWhole = checkShouldProcessWhole(path, processConfig);
+
+                    Path newPath = processFilename(path, processConfig.processMethod,
+                            (shouldProcessWhole ? FILENAME_ENDING_FULL_PROCESS_MARK : ""));
 
                     if (newPath != null && processConfig.processHeader) {
-                        String extension = path.toString().substring(path.toString().lastIndexOf("."));
-
-                        if (processConfig.processTextFile
-                                && COMMON_TEXT_EXTENSION.contains(extension)
-                                && getFileSize(newPath) <= MAX_PROCESS_WHOLE_FILE_SIZE) {
+                        if (shouldProcessWhole) {
                             processWholeFile(newPath);
                         } else {
                             processFileHeader(newPath);
                         }
-
                     }
 
                     return FileVisitResult.CONTINUE;
@@ -195,7 +207,7 @@ public class FileHider {
                 @Override
                 public FileVisitResult postVisitDirectory(Path dir, IOException e) {
                     if (dir != targetDir)
-                        processFilename(dir, processConfig.processMethod);
+                        processFilename(dir, processConfig.processMethod, "");
                     return FileVisitResult.CONTINUE;
                 }
 
