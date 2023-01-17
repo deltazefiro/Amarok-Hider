@@ -23,7 +23,8 @@ import deltazero.amarok.utils.FileHiderUtil;
 public class FileHider {
     private final static String TAG = "FileHider";
 
-    private final static float MAX_PROCESS_WHOLE_FILE_SIZE_KB = 10 * 1024; // In KB.
+    private final static int MAX_PROCESS_WHOLE_FILE_SIZE_KB = 10 * 1024; // In KB.
+    private final static int MAX_PROCESS_ENHANCED_WHOLE_FILE_SIZE_KB = 30 * 1024;
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
 
     public final static String FILENAME_START_MARK = "[AMAROK]";
@@ -165,14 +166,12 @@ public class FileHider {
         String filename = path.getFileName().toString();
         if (processConfig.processMethod == HIDE) {
 
-            // HIDE
-            if (FileHiderUtil.getFileSizeKB(path) > MAX_PROCESS_WHOLE_FILE_SIZE_KB)
-                return false; // File is too large to be fully processed.
-
             if (processConfig.processTextFileEnhanced) {
-                return FileHiderUtil.checkIsTextFileEnhanced(path);
+                return FileHiderUtil.checkIsTextFileEnhanced(path)
+                        && FileHiderUtil.getFileSizeKB(path) <= MAX_PROCESS_WHOLE_FILE_SIZE_KB;
             } else { // Not enhanced
-                return FileHiderUtil.checkIsTextFile(filename);
+                return FileHiderUtil.checkIsTextFile(filename)
+                        && FileHiderUtil.getFileSizeKB(path) <= MAX_PROCESS_ENHANCED_WHOLE_FILE_SIZE_KB;
             }
 
         } else {
