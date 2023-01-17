@@ -62,7 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
         tvCurrFileHider.setText(getString(R.string.current_mode,
                 getString(R.string.obfuscate_filename) +
-                        (prefMgr.getEnableCorruptFileHeader() ? " + " + getString(R.string.corrupt_file_header) : "")));
+                        (prefMgr.getEnableCorruptFileHeader() ? " + " + getString(R.string.obfuscate_file_header) : "")));
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
         if (AppCenterUtil.isAvailable())

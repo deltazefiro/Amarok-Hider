@@ -9,8 +9,6 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.file.FileVisitResult;
@@ -25,7 +23,7 @@ import deltazero.amarok.utils.FileHiderUtil;
 public class FileHider {
     private final static String TAG = "FileHider";
 
-    private final static int MAX_PROCESS_WHOLE_FILE_SIZE = 10; // In MB.
+    private final static float MAX_PROCESS_WHOLE_FILE_SIZE_KB = 10 * 1024; // In KB.
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
 
     public final static String FILENAME_START_MARK = "[AMAROK]";
@@ -37,7 +35,7 @@ public class FileHider {
             processMethod = prefMgr.getIsHidden() ? UNHIDE : HIDE;
             processHeader = prefMgr.getEnableCorruptFileHeader();
             processTextFile = prefMgr.getEnableCorruptTextFile();
-            processTextFileEnhanced = prefMgr.getEnableTextFileEnhanced();
+            processTextFileEnhanced = prefMgr.getEnableCorruptTextFileEnhanced();
         }
 
         public enum ProcessMethod {
@@ -126,26 +124,35 @@ public class FileHider {
             file.write(bytes, 0, numBytesToReplace);
 
         } catch (IOException e) {
-            Log.w(TAG, e);
+            Log.w(TAG, "processFileHeader failed: ", e);
         }
     }
 
     private static void processWholeFile(Path path) {
         Log.d(TAG, "Processing whole file: " + path);
 
-        try (FileInputStream fis = new FileInputStream(path.toFile());
-             FileOutputStream fos = new FileOutputStream(path.toFile())) {
+        byte[] buffer = new byte[1024];
+        long numReadLoops = 0;
+        int numBytesRead, numBytesToReplace;
 
-            byte[] buffer = new byte[1024];
-            int numRead;
-            while ((numRead = fis.read(buffer)) != -1) {
-                for (int i = 0; i < numRead; i++) {
+        try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw")) {
+
+            while ((numBytesRead = file.read(buffer)) != -1) {
+
+                numBytesToReplace = Math.max(Math.min(numBytesRead, buffer.length), 0);
+
+                for (int i = 0; i < numBytesToReplace; i++) {
                     buffer[i] = (byte) ~buffer[i];
                 }
-                fos.write(buffer, 0, numRead);
+
+                file.seek(numReadLoops * buffer.length);
+                file.write(buffer, 0, numBytesToReplace);
+
+                numReadLoops++;
             }
+
         } catch (IOException e) {
-            // handle exception
+            Log.w(TAG, "processWholeFile failed: ", e);
         }
     }
 
@@ -159,12 +166,13 @@ public class FileHider {
         if (processConfig.processMethod == HIDE) {
 
             // HIDE
+            if (FileHiderUtil.getFileSizeKB(path) > MAX_PROCESS_WHOLE_FILE_SIZE_KB)
+                return false; // File is too large to be fully processed.
+
             if (processConfig.processTextFileEnhanced) {
-                return FileHiderUtil.checkIsTextFileEnhanced(path)
-                        && FileHiderUtil.getFileSize(path) <= MAX_PROCESS_WHOLE_FILE_SIZE;
+                return FileHiderUtil.checkIsTextFileEnhanced(path);
             } else { // Not enhanced
-                return FileHiderUtil.checkIsTextFile(filename)
-                        && FileHiderUtil.getFileSize(path) <= MAX_PROCESS_WHOLE_FILE_SIZE;
+                return FileHiderUtil.checkIsTextFile(filename);
             }
 
         } else {

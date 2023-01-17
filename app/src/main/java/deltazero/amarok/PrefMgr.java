@@ -116,7 +116,7 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public boolean getEnableTextFileEnhanced() {
+    public boolean getEnableCorruptTextFileEnhanced() {
         return mPrefs.getBoolean("enableCorruptTextFileEnhanced", false);
     }
 
