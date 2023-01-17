@@ -83,8 +83,12 @@
     <string name="option_unava_when_hidden">Options are unavailable until Unhide.</string>
     <string name="obfuscate_filename">Obfuscate Filename</string>
     <string name="obfuscate_filename_description">Make the filename human-unreadable. The basic feature of FileHider. Can not be disabled.</string>
-    <string name="corrupt_file_header">Obfuscate File Header [Experimental]</string>
-    <string name="corrupt_file_header_description">Obfuscate the file signature in the file header to make the file \"corrupted\". This prevents the file from being opened by selecting \"Open With\" manually but may slow down the file-hiding process.</string>
+    <string name="obfuscate_file_header">Obfuscate File Header [Experimental]</string>
+    <string name="obfuscate_file_header_description">Obfuscate the file signature in the file header to make the file \"corrupted\". This prevents the file from being opened by selecting \"Open With\" manually but may slow down the file-hiding process.</string>
     <string name="filename_only">Filename Only</string>
     <string name="filename_and_header">Filename + Header</string>
+    <string name="obfuscate_text_file">Obfuscate Whole Text File</string>
+    <string name="obfuscate_text_file_description">Obfuscate whole text file.</string>
+    <string name="obfuscate_text_file_enhanced">Obfuscate All Non-Binary File</string>
+    <string name="obfuscate_text_file_description_enhanced">Obfuscate all non-binary file.</string>
 </resources>

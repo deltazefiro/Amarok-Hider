@@ -74,8 +74,8 @@
     <string name="option_unava_when_hidden">请先取消隐藏以更改此设置</string>
     <string name="obfuscate_filename">混淆文件名</string>
     <string name="obfuscate_filename_description">混淆文件名以及文件后缀使文件无法打开，但若指定打开方式后仍可打开。此为文件隐藏的基础功能，无法禁用。</string>
-    <string name="corrupt_file_header">混淆文件头 [实验性]</string>
-    <string name="corrupt_file_header_description">通过混淆文件头部内容使文件损坏，即使文件通过手动选择打开方式仍无法打开。对压缩文件与文本文件无效。开启此可能将降低隐藏速度。</string>
+    <string name="obfuscate_file_header">混淆文件头 [实验性]</string>
+    <string name="obfuscate_file_header_description">通过混淆文件头部内容使文件损坏，即使文件通过手动选择打开方式仍无法打开。对压缩文件与文本文件无效。开启此可能将降低隐藏速度。</string>
     <string name="filename_only">仅混淆文件名</string>
     <string name="filename_and_header">混淆文件名与文件头</string>
 </resources>
