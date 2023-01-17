@@ -6,19 +6,17 @@
 ![tag](https://img.shields.io/github/v/tag/deltazefiro/Amarok-Hider)
 ![commit-freq](https://img.shields.io/github/commit-activity/m/deltazefiro/Amarok-Hider)
 
-> The Readme is mostly translated by machine.  
-> [Help us improve](https://github.com/deltazefiro/Amarok-Hider/issues/12)
-
-**[>> 简体中文版本 <<](https://github.com/deltazefiro/Amarok-Hider)**
+<font size="4"> 🌐 [简体中文](https://github.com/deltazefiro/Amarok-Hider) | **ENGLISH VERSION** </font>
 
 ## What is Amarok?
+
 Amarok is an Android application which enables you to hide your private files & apps with just one click.
 
 > In many cases, we use sophisticated encryptors to encrypt our files and apps, just not wanting others to see them.  
-> Most of the encryptors are slow and heavy, which makes encrypting large files like videos and music become a nightmare. Though that's indeed secure.  
-> But often we don't need such kind of security at all. We simply not wanting others to see them by accident.  
+> However, many of these encryptors are slow and resource-intensive, making the encryption of large files such as videos and music a daunting task.   
+> While these solutions may be secure, they are often overkill for the average user who simply wants to prevent others from accidentally accessing their private files and apps.
 
-And Amarok is precisely such a tool — a lightweight file "hider". It obfuscates filenames and file signatures, so the files become unreadable by humans. And it "disables" apps to hide them from the launcher. All of these can be done with just one click.
+Amarok is designed specifically for these situations, as it is a lightweight file and app "hider". Amarok only obscures filenames and file signatures, making files unreadable to humans, and this process can be done almost instantly regardless of the size of the file. Additionally, it "disables" apps, effectively hiding them from the launcher. All of these functions can be accomplished with just one click.
 
 ## Features
 - **High-speed Large File Hiding**: Obfuscate filenames and file signatures to make files unreadable.  
@@ -55,4 +53,4 @@ And Amarok is precisely such a tool — a lightweight file "hider". It obfuscate
 
 ## Disclaimers
 <u>**THIS APPLICATION IS PROVIDED WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.  
-You are solely responsible for all damages and consequences resulting from your use of Amarok.**</u>
+You are solely responsible for any and all damages and consequences that may arise from the use of Amarok.**</u>
