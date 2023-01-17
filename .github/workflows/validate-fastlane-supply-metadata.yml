@@ -1,0 +1,6 @@
+on: [pull_request]
+jobs:
+  runs-on: ubuntu-latest
+  steps:
+    - uses: actions/checkout@v3
+    - uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
