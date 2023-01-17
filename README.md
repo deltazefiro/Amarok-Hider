@@ -6,8 +6,9 @@
 ![tag](https://img.shields.io/github/v/tag/deltazefiro/Amarok-Hider)
 ![commit-freq](https://img.shields.io/github/commit-activity/m/deltazefiro/Amarok-Hider)
 
-<font size="4"> 🌐 **简体中文** | [ENGLISH VERSION](https://github.com/deltazefiro/Amarok-Hider/blob/main/README.en.md) </font>
+---
 
+<font size="4"> 🌐 **简体中文** | [ENGLISH VERSION](https://github.com/deltazefiro/Amarok-Hider/blob/main/README.en.md) </font>
 
 ## Amarok 是什么？
 
