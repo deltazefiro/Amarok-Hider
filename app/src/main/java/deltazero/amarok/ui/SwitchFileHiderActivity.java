@@ -38,22 +38,22 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
 
         // Init UI
         swObfuscateFileHeader.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableCorruptFileHeader(isChecked);
+            prefMgr.setEnableObfuscateFileHeader(isChecked);
             if (!isChecked) {
-                prefMgr.setEnableCorruptTextFile(false);
-                prefMgr.setEnableCorruptTextFileEnhanced(false);
+                prefMgr.setEnableObfuscateTextFile(false);
+                prefMgr.setEnableObfuscateTextFileEnhanced(false);
             }
             updateUI();
         });
         swObfuscateTextFile.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableCorruptTextFile(isChecked);
+            prefMgr.setEnableObfuscateTextFile(isChecked);
             if (!isChecked) {
-                prefMgr.setEnableCorruptTextFileEnhanced(false);
+                prefMgr.setEnableObfuscateTextFileEnhanced(false);
             }
             updateUI();
         });
         swObfuscateTextFileEnhanced.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableCorruptTextFileEnhanced(isChecked);
+            prefMgr.setEnableObfuscateTextFileEnhanced(isChecked);
             updateUI();
         });
 
@@ -76,17 +76,17 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        swObfuscateFileHeader.setChecked(prefMgr.getEnableCorruptFileHeader());
-        swObfuscateTextFile.setChecked(prefMgr.getEnableCorruptTextFile());
-        swObfuscateTextFileEnhanced.setChecked(prefMgr.getEnableCorruptTextFileEnhanced());
+        swObfuscateFileHeader.setChecked(prefMgr.getEnableObfuscateFileHeader());
+        swObfuscateTextFile.setChecked(prefMgr.getEnableObfuscateTextFile());
+        swObfuscateTextFileEnhanced.setChecked(prefMgr.getEnableObfuscateTextFileEnhanced());
 
-        if (prefMgr.getEnableCorruptFileHeader()) {
+        if (prefMgr.getEnableObfuscateFileHeader()) {
             rlObfuscateTextFile.setVisibility(View.VISIBLE);
         } else {
             rlObfuscateTextFile.setVisibility(View.GONE);
         }
 
-        if (prefMgr.getEnableCorruptFileHeader() && prefMgr.getEnableCorruptTextFile()) {
+        if (prefMgr.getEnableObfuscateFileHeader() && prefMgr.getEnableObfuscateTextFile()) {
             rlObfuscateTextFileEnhanced.setVisibility(View.VISIBLE);
         } else {
             rlObfuscateTextFileEnhanced.setVisibility(View.GONE);

@@ -27,16 +27,23 @@ public class FileHider {
     private final static int MAX_PROCESS_ENHANCED_WHOLE_FILE_SIZE_KB = 30 * 1024;
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
 
-    public final static String FILENAME_START_MARK = "[AMAROK]";
-    public final static String FILENAME_START_MARK_ENCODED = "W0FNQVJPS1";
-    public final static String FILENAME_ENDING_FULL_PROCESS_MARK = ".amk1";
+    @Deprecated
+    public final static String FILENAME_LEGACY_START_MARK = "[AMAROK]";
+    @Deprecated
+    public final static String FILENAME_LEGACY_START_MARK_ENCODED = "W0FNQVJPS1";
+
+    public final static String FILENAME_NO_PROCESS_MARK = "!amk";
+    public final static String FILENAME_FULL_PROCESS_MARK = "!amk1";
+    public final static String FILENAME_HEADER_PROCESS_MARK = "!amk2";
+
 
     public static class ProcessConfig {
         public ProcessConfig(PrefMgr prefMgr) {
             processMethod = prefMgr.getIsHidden() ? UNHIDE : HIDE;
-            processHeader = prefMgr.getEnableCorruptFileHeader();
-            processTextFile = prefMgr.getEnableCorruptTextFile();
-            processTextFileEnhanced = prefMgr.getEnableCorruptTextFileEnhanced();
+            processHeader = prefMgr.getEnableObfuscateFileHeader();
+            processHeaderLegacy = prefMgr.getLegacyEnableObfuscateFileHeader();
+            processTextFile = prefMgr.getEnableObfuscateTextFile();
+            processTextFileEnhanced = prefMgr.getEnableObfuscateTextFileEnhanced();
         }
 
         public enum ProcessMethod {
@@ -45,6 +52,8 @@ public class FileHider {
 
         public ProcessMethod processMethod;
         public boolean processHeader;
+        @Deprecated
+        public boolean processHeaderLegacy;
         public boolean processTextFile;
         public boolean processTextFileEnhanced;
     }
@@ -55,7 +64,7 @@ public class FileHider {
      *
      * @param path            The path to be processed.
      * @param processMethod   Process method.
-     * @param extraEndingMark Extra mark to be append to the end of the filename.
+     * @param extraEndingMark (only effective when `HIDE`) Extra mark to be append to the end of the filename.
      * @return If the process succeeds, return the new path. Otherwise, return null.
      */
     @Nullable
@@ -64,7 +73,7 @@ public class FileHider {
         String newFilename = null;
         Path newPath;
 
-        boolean hasEncoded = FileHiderUtil.stripFilenameExtras(filename).startsWith(FILENAME_START_MARK_ENCODED);
+        boolean hasEncoded = FileHiderUtil.checkIsMarkInFilename(filename);
 
         if (processMethod == HIDE) {
             if (hasEncoded) {
@@ -72,7 +81,7 @@ public class FileHider {
                 return null;
             }
 
-            newFilename = "." + Base64.encodeToString((FILENAME_START_MARK + filename).getBytes(UTF_8), BASE64_TAG) + extraEndingMark;
+            newFilename = "." + Base64.encodeToString(filename.getBytes(UTF_8), BASE64_TAG) + extraEndingMark;
             Log.d(TAG, "Encode: " + path + " -> " + newFilename);
 
         } else if (processMethod == UNHIDE) {
@@ -84,7 +93,11 @@ public class FileHider {
             try {
                 newFilename = new String(
                         Base64.decode(FileHiderUtil.stripFilenameExtras(filename), BASE64_TAG), UTF_8
-                ).replace(FILENAME_START_MARK, "");
+                );
+
+                // Strip legacy file mark [version < 0.8.2b1(28)]
+                newFilename = FileHiderUtil.stripStart(newFilename, FILENAME_LEGACY_START_MARK);
+
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Unable to decode: " + filename);
                 return null;
@@ -174,10 +187,27 @@ public class FileHider {
                         && FileHiderUtil.getFileSizeKB(path) <= MAX_PROCESS_ENHANCED_WHOLE_FILE_SIZE_KB;
             }
 
-        } else {
-            // UNHIDE
-            return filename.endsWith(FILENAME_ENDING_FULL_PROCESS_MARK);
+        } else { // UNHIDE
+            return filename.endsWith(FILENAME_FULL_PROCESS_MARK);
         }
+    }
+
+    private static boolean checkShouldProcessHeader(Path path, ProcessConfig processConfig) {
+        String filename = path.getFileName().toString();
+
+        if (processConfig.processMethod == HIDE) {
+            return processConfig.processHeader;
+        } else { // UNHIDE
+
+            // Deal with legacy files [version < 0.8.2b1(28)]
+            if (filename.startsWith("." + FILENAME_LEGACY_START_MARK_ENCODED)) {
+                Log.w(TAG, "Found legacy filename mark: " + filename);
+                return processConfig.processHeaderLegacy;
+            }
+
+            return filename.endsWith(FILENAME_HEADER_PROCESS_MARK);
+        }
+
     }
 
     /**
@@ -195,15 +225,24 @@ public class FileHider {
                 public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
 
                     // Check whether the whole file should be processed before renaming (processFilename).
+                    boolean shouldProcessHeader = checkShouldProcessHeader(path, processConfig);
                     boolean shouldProcessWhole = checkShouldProcessWhole(path, processConfig);
 
-                    Path newPath = processFilename(path, processConfig.processMethod,
-                            (shouldProcessWhole ? FILENAME_ENDING_FULL_PROCESS_MARK : ""));
+                    // Choose filename ending mark
+                    String endingMark = FILENAME_NO_PROCESS_MARK;
+                    if (shouldProcessHeader)
+                        endingMark = FILENAME_HEADER_PROCESS_MARK;
+                    if (shouldProcessWhole)
+                        endingMark = FILENAME_FULL_PROCESS_MARK;
 
-                    if (newPath != null && processConfig.processHeader) {
-                        if (shouldProcessWhole) {
+                    // Process filename
+                    Path newPath = processFilename(path, processConfig.processMethod, endingMark);
+
+                    // Process file content
+                    if (newPath != null) {
+                        if (shouldProcessWhole) { // Check shouldProcessWhole first.
                             processWholeFile(newPath);
-                        } else {
+                        } else if (shouldProcessHeader) { // Then check shouldProcessHeader.
                             processFileHeader(newPath);
                         }
                     }
@@ -214,7 +253,7 @@ public class FileHider {
                 @Override
                 public FileVisitResult postVisitDirectory(Path dir, IOException e) {
                     if (dir != targetDir)
-                        processFilename(dir, processConfig.processMethod, "");
+                        processFilename(dir, processConfig.processMethod, FILENAME_NO_PROCESS_MARK);
                     return FileVisitResult.CONTINUE;
                 }
 

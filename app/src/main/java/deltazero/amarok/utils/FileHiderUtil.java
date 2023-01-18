@@ -1,6 +1,9 @@
 package deltazero.amarok.utils;
 
-import static deltazero.amarok.FileHider.FILENAME_ENDING_FULL_PROCESS_MARK;
+import static deltazero.amarok.FileHider.FILENAME_FULL_PROCESS_MARK;
+import static deltazero.amarok.FileHider.FILENAME_HEADER_PROCESS_MARK;
+import static deltazero.amarok.FileHider.FILENAME_NO_PROCESS_MARK;
+import static deltazero.amarok.FileHider.FILENAME_LEGACY_START_MARK_ENCODED;
 
 import android.util.Log;
 
@@ -12,6 +15,39 @@ public class FileHiderUtil {
 
     private final static List<String> COMMON_TEXT_EXTENSION = List.of(".txt", ".md", ".lrc");
     private final static int ASSUME_IS_TEXT_FILE_SIZE_THRESHOLD_KB = 5 * 1024;
+
+    public static String stripEnding(String str, String suffix) {
+        if (str.isEmpty() || suffix.isEmpty()) {
+            return str;
+        }
+        int indexOfLast = str.lastIndexOf(suffix);
+        if (indexOfLast >= 0) {
+            str = str.substring(0, indexOfLast);
+        }
+        return str;
+    }
+
+    public static String stripStart(String str, String prefix) {
+        if (str.isEmpty() || prefix.isEmpty()) {
+            return str;
+        }
+        if (str.startsWith(prefix)){
+            return str.substring(prefix.length());
+        }
+        return str;
+    }
+
+    public static boolean checkIsMarkInFilename(String filename) {
+        // Strip leading dot
+        if (filename.startsWith("."))
+            filename = filename.substring(1);
+
+        return filename.startsWith(FILENAME_LEGACY_START_MARK_ENCODED)
+                || filename.endsWith(FILENAME_NO_PROCESS_MARK)
+                || filename.endsWith(FILENAME_HEADER_PROCESS_MARK)
+                || filename.endsWith(FILENAME_FULL_PROCESS_MARK);
+    }
+
 
     /**
      * Remove leading-dot & full obfuscation mark form the filename.
@@ -26,8 +62,9 @@ public class FileHiderUtil {
             filename = filename.substring(1);
 
         // Strip ending mark
-        if (filename.endsWith(FILENAME_ENDING_FULL_PROCESS_MARK))
-            filename = filename.replace(FILENAME_ENDING_FULL_PROCESS_MARK, "");
+        filename = stripEnding(filename, FILENAME_NO_PROCESS_MARK);
+        filename = stripEnding(filename, FILENAME_HEADER_PROCESS_MARK);
+        filename = stripEnding(filename, FILENAME_FULL_PROCESS_MARK);
 
         return filename;
     }

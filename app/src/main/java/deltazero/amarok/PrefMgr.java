@@ -98,30 +98,35 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public boolean getEnableCorruptFileHeader() {
+    @Deprecated
+    public boolean getLegacyEnableObfuscateFileHeader() {
         return mPrefs.getBoolean("enableCorruptFileHeader", false);
     }
 
-    public void setEnableCorruptFileHeader(boolean ifCorruptFileHeader) {
-        mPrefEditor.putBoolean("enableCorruptFileHeader", ifCorruptFileHeader);
+    public boolean getEnableObfuscateFileHeader() {
+        return mPrefs.getBoolean("enableObfuscateFileHeader", false);
+    }
+
+    public void setEnableObfuscateFileHeader(boolean ifObfuscateFileHeader) {
+        mPrefEditor.putBoolean("enableObfuscateFileHeader", ifObfuscateFileHeader);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableCorruptTextFile() {
-        return mPrefs.getBoolean("enableCorruptTextFile", false);
+    public boolean getEnableObfuscateTextFile() {
+        return mPrefs.getBoolean("enableObfuscateTextFile", false);
     }
 
-    public void setEnableCorruptTextFile(boolean ifCorruptTextFile) {
-        mPrefEditor.putBoolean("enableCorruptTextFile", ifCorruptTextFile);
+    public void setEnableObfuscateTextFile(boolean ifObfuscateTextFile) {
+        mPrefEditor.putBoolean("enableObfuscateTextFile", ifObfuscateTextFile);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableCorruptTextFileEnhanced() {
-        return mPrefs.getBoolean("enableCorruptTextFileEnhanced", false);
+    public boolean getEnableObfuscateTextFileEnhanced() {
+        return mPrefs.getBoolean("enableObfuscateTextFileEnhanced", false);
     }
 
-    public void setEnableCorruptTextFileEnhanced(boolean ifCorruptTextFileEnhanced) {
-        mPrefEditor.putBoolean("enableCorruptTextFileEnhanced", ifCorruptTextFileEnhanced);
+    public void setEnableObfuscateTextFileEnhanced(boolean ifObfuscateTextFileEnhanced) {
+        mPrefEditor.putBoolean("enableObfuscateTextFileEnhanced", ifObfuscateTextFileEnhanced);
         mPrefEditor.apply();
     }
 }
