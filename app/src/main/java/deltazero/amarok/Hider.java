@@ -63,18 +63,6 @@ public class Hider {
 
         appHider = prefMgr.getAppHider();
 
-        // Hide files
-        Set<String> hideFilePath = prefMgr.getHideFilePath();
-        if (hideFilePath.size() > 0) {
-            Log.i(TAG, "Hiding files ...");
-            for (String p : hideFilePath) {
-                FileHider.process(Paths.get(p), new FileHider.ProcessConfig(prefMgr));
-            }
-        } else {
-            Log.i(TAG, "No hide path, skipped file hiding.");
-        }
-
-
         // Hide apps
         Set<String> hideApps = prefMgr.getHideApps();
         if (hideApps.size() > 0) {
@@ -87,6 +75,17 @@ public class Hider {
             Log.i(TAG, "No hide App, skipped App hiding.");
         }
 
+        // Hide files
+        Set<String> hideFilePath = prefMgr.getHideFilePath();
+        if (hideFilePath.size() > 0) {
+            Log.i(TAG, "Hiding files ...");
+            for (String p : hideFilePath) {
+                FileHider.process(Paths.get(p), new FileHider.ProcessConfig(prefMgr));
+            }
+        } else {
+            Log.i(TAG, "No hide path, skipped file hiding.");
+        }
+
         prefMgr.setIsHidden(true);
 
         Log.i(TAG, "Hid. Dusk to Dawn! Goodmorning ~");
@@ -96,18 +95,6 @@ public class Hider {
     public void syncUnhide() {
 
         appHider = prefMgr.getAppHider();
-
-        // Unhide files
-        Set<String> hideFilePath = prefMgr.getHideFilePath();
-        if (hideFilePath.size() > 0) {
-            Log.i(TAG, "Unhiding files ...");
-            for (String p : hideFilePath) {
-                FileHider.process(Paths.get(p), new FileHider.ProcessConfig(prefMgr));
-            }
-        } else {
-            Log.i(TAG, "No hide path, skipped file unhiding.");
-        }
-
 
         // Unhide apps
         Set<String> hideApps = prefMgr.getHideApps();
@@ -119,6 +106,17 @@ public class Hider {
             }
         } else {
             Log.i(TAG, "No hide App, skipped App unhiding.");
+        }
+
+        // Unhide files
+        Set<String> hideFilePath = prefMgr.getHideFilePath();
+        if (hideFilePath.size() > 0) {
+            Log.i(TAG, "Unhiding files ...");
+            for (String p : hideFilePath) {
+                FileHider.process(Paths.get(p), new FileHider.ProcessConfig(prefMgr));
+            }
+        } else {
+            Log.i(TAG, "No hide path, skipped file unhiding.");
         }
 
         prefMgr.setIsHidden(false);
