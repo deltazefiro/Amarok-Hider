@@ -41,19 +41,19 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
             }
         });
 
-        // Disable switches if hidden.
-        if (prefMgr.getIsHidden()) {
-            swEnableCorruptFileHider.setEnabled(false);
-            Snackbar.make(tbToolBar, R.string.option_unava_when_hidden, Snackbar.LENGTH_INDEFINITE).show();
-        }
+        // // Disable switches if hidden.
+        // if (prefMgr.getIsHidden()) {
+        //     swEnableCorruptFileHider.setEnabled(false);
+        //     Snackbar.make(tbToolBar, R.string.option_unava_when_hidden, Snackbar.LENGTH_INDEFINITE).show();
+        // }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (prefMgr.getIsHidden()) {
-            swEnableCorruptFileHider.setEnabled(false);
-            Snackbar.make(tbToolBar, R.string.option_unava_when_hidden, Snackbar.LENGTH_INDEFINITE).show();
-        }
+        // if (prefMgr.getIsHidden()) {
+        //     swEnableCorruptFileHider.setEnabled(false);
+        //     Snackbar.make(tbToolBar, R.string.option_unava_when_hidden, Snackbar.LENGTH_INDEFINITE).show();
+        // }
     }
 }
