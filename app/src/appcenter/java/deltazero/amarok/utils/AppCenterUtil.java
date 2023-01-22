@@ -1,12 +1,12 @@
 package deltazero.amarok.utils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -35,7 +35,7 @@ public class AppCenterUtil {
 
             Log.i("CheckUpdate", "Found new update: Amarok " + versionName);
 
-            new MaterialAlertDialogBuilder(activity)
+            new AlertDialog.Builder(activity)
                     .setTitle(R.string.update_ava)
                     .setMessage(activity.getString(R.string.update_description, versionName, versionCode))
                     .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
