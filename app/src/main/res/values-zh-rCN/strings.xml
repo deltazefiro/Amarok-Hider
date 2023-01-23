@@ -66,8 +66,8 @@
     <string name="apphider_none_description">停用应用隐藏功能。</string>
     <string name="apphider_root">Root 模式</string>
     <string name="apphider_root_description">通过 Root 隐藏应用。\n若您的设备已 Root 但是未安装 Xposed 框架（如 LSPosed、EdXposed 等），则推荐使用此模式。需要 Root 权限。</string>
-    <string name="apphider_shizuku">Shizuku 模式</string>
-    <string name="apphider_shizuku_description">通过 Shizuku API 隐藏应用。\n若您的设备使用 Android 11+ 或已安装了 Xposed 框架，则推荐使用此模式。您需要先安装并激活 Shizuku 或 Sui 以使用此模式。</string>
+    <string name="apphider_shizuku">Shizuku (Shu) 模式</string>
+    <string name="apphider_shizuku_description">通过 Shizuku API 隐藏应用。\n若您的设备使用 Android 11+ 或已安装了 Xposed 框架，则推荐使用此模式。您需要先安装并激活 Shizuku 或 Sui 以使用此模式。\n<i><b>* DeepHide</b>: 此模式下被隐藏的应用在系统菜单中不可见。</i></string>
     <string name="apphider_dsm">DSM 模式 [已停止开发]</string>
     <string name="apphider_dsm_description">通过共享设备管理员（DSM）隐藏应用。\n若您的设备使用 Android 10 或以下且未 Root，则推荐使用此模式。此模式已经停止开发，可能无法正常工作。您需要先安装 冰箱 或 小黑屋 并使用设备管理员模式将其激活以使用此模式。</string>
     <string name="learn_more">详细指南</string>
