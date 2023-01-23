@@ -67,6 +67,44 @@ public class ShizukuHider extends AppHiderBase {
 
     }
 
+    @SuppressLint("PrivateApi")
+    private void setAppHidden(boolean hidden, Set<String> pkgNames) {
+        /*
+        Call android.content.pm.IPackageManager.setApplicationHiddenSettingAsUser with reflection.
+        Via Shizuku wrapper.
+         */
+
+        Method mSetApplicationHiddenSettingAsUser;
+        Object iPmInstance;
+
+        try {
+            Class<?> iPmClass = Class.forName("android.content.pm.IPackageManager");
+
+            Class<?> iPmStub = Class.forName("android.content.pm.IPackageManager$Stub");
+            Method asInterfaceMethod = iPmStub.getMethod("asInterface", IBinder.class);
+            iPmInstance = asInterfaceMethod.invoke(null, new ShizukuBinderWrapper(SystemServiceHelper.getSystemService("package")));
+
+            mSetApplicationHiddenSettingAsUser = iPmClass.getMethod("setApplicationHiddenSettingAsUser", String.class, boolean.class, int.class);
+        } catch (Exception e) {
+            Log.e("ShizukuHider", e.toString());
+            Toast.makeText(context, R.string.shizuku_hidden_api_error, Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        for (String p : pkgNames) {
+            try {
+                mSetApplicationHiddenSettingAsUser.invoke(iPmInstance,
+                        p,
+                        hidden,
+                        Os.getuid() / 100000);
+                Log.i("ShizukuHider", "Hid app: " + p);
+            } catch (Exception e) {
+                Log.w("ShizukuHider", e.toString());
+            }
+        }
+
+    }
+
     @Override
     public void hide(Set<String> pkgNames) {
         if (!Shizuku.pingBinder()) {
@@ -74,6 +112,7 @@ public class ShizukuHider extends AppHiderBase {
             return;
         }
         setAppDisabled(true, pkgNames);
+        setAppHidden(true, pkgNames);
     }
 
     @Override
@@ -83,6 +122,7 @@ public class ShizukuHider extends AppHiderBase {
             return;
         }
         setAppDisabled(false, pkgNames);
+        setAppHidden(false, pkgNames);
     }
 
     @Override

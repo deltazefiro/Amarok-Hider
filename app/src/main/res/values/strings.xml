@@ -75,8 +75,8 @@
     <string name="apphider_none_description">Disable HideApp feature.</string>
     <string name="apphider_root">Root Mode</string>
     <string name="apphider_root_description">HideApp with Root.\nRecommended if your device is rooted but without Xposed framework. Root permission is required.</string>
-    <string name="apphider_shizuku">Shizuku Mode</string>
-    <string name="apphider_shizuku_description">HideApp with Shizuku (or Shi). \nRecommended if your device runs Android 11+ or with Xposed framework. You need to install and active Shizuku or Sui to use this mode.</string>
+    <string name="apphider_shizuku">Shizuku (Sui) Mode - <font fgcolor='#de5f1b'>DeepHide</font></string>
+    <string name="apphider_shizuku_description">HideApp with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or with Xposed framework. You need to install and active Shizuku or Sui to use this mode.\n<i><b>* DeepHide</b>: Hidden applications will not show in the system menu in this mode.</i></string>
     <string name="apphider_dsm">DSM Mode [Deprecated]</string>
     <string name="apphider_dsm_description">HideApp with Delegated-Scopes-Manager.\nNOT recommended unless your device runs Android 10 or below and is not rooted. It may be BUGGY and work unexpectedly. You need to install Icebox or StopAPP and set them as DeviceManager to use this mode.</string>
     <string name="learn_more">Learn More</string>
