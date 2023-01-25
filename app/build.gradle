@@ -25,10 +25,28 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    if (project.hasProperty("RELEASE_STORE_FILE")) {
+        signingConfigs {
+            release {
+                storeFile file(RELEASE_STORE_FILE)
+                storePassword RELEASE_STORE_PASSWORD
+                keyAlias RELEASE_KEY_ALIAS
+                keyPassword RELEASE_KEY_PASSWORD
+
+                enableV2Signing = true
+                enableV3Signing = true
+                enableV4Signing = true
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            if (project.hasProperty("RELEASE_STORE_FILE")) {
+                signingConfig signingConfigs.release
+            }
         }
         debug {
             applicationIdSuffix ".debug"
@@ -58,8 +76,15 @@ android {
     }
 
     applicationVariants.all { variant ->
-        variant.outputs.all {
-            outputFileName = "Amarok-v${variant.versionName}.apk"
+        def flavorName = variant.productFlavors[0].name
+        if (flavorName == "appcenter") {
+            variant.outputs.all { output ->
+                outputFileName = "Amarok-v${variant.versionName}.apk"
+            }
+        } else {
+            variant.outputs.all { output ->
+                outputFileName = "Amarok-v${variant.versionName}-${flavorName}.apk"
+            }
         }
     }
 
