@@ -45,7 +45,6 @@ android {
         foss {
             dimension 'version'
             applicationIdSuffix '.foss'
-            versionNameSuffix '-foss'
         }
     }
 
