@@ -1,0 +1,58 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  release:
+    types: [published, edited]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CCACHE_DIR: ${{ github.workspace }}/.ccache
+      CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
+      CCACHE_NOHASHDIR: true
+      CCACHE_MAXSIZE: 1G
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+          cache: 'gradle'
+      - name: Set up ccache
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          key: ${{ runner.os }}-${{ github.sha }}
+          restore-keys: ${{ runner.os }}
+      - name: Inject signing key
+        run: |
+          echo 'RELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}' >> ~/.gradle/gradle.properties
+          echo 'RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}' >> ~/.gradle/gradle.properties
+          echo 'RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}' >> ~/.gradle/gradle.properties
+          echo 'RELEASE_STORE_FILE=${{ github.workspace }}/keystore.jks' >> ~/.gradle/gradle.properties
+          echo '${{ secrets.KEY_STORE }}' | base64 --decode > ${{ github.workspace }}/keystore.jks
+      - name: Build with Gradle
+        run: |
+          echo 'org.gradle.caching=true' >> gradle.properties
+          echo 'org.gradle.parallel=true' >> gradle.properties
+          echo 'org.gradle.vfs.watch=true' >> gradle.properties
+          echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
+          echo 'android.native.buildOutput=verbose' >> gradle.properties
+          ./gradlew assembleRelease
+      - name: Upload built apk
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+              ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
+              
+#       - name: Upload release asset
+#         if: success()
+#         uses: shogo82148/actions-upload-release-asset@v1
+#         with:
+#           upload_url: ${{ github.event.release.upload_url }}
+#           asset_path: ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
