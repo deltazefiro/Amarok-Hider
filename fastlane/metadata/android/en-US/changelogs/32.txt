@@ -1,0 +1,13 @@
+Breakings
+* Upgrade TargetAPI to 33 (Android 13)
+New Features
+* Supports full obfuscation of text files (#3)
+* Support Enhanced obfuscation of text files (#3)
+Optimize
+* Upgrade Java compile version to Java 11
+* Upgrade dep AppCompat
+* Refactor the FileHider to improve stability (#20)(#16)
+* Exchange application & file hiding order
+* Optimize English and Chinese translation
+Fix
+* None
