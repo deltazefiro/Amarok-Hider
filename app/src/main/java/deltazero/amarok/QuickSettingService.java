@@ -4,32 +4,30 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+
 public class QuickSettingService extends TileService {
 
     private static final String TAG = "TileService";
 
-    Tile tile;
-    Hider hider;
-    PrefMgr prefMgr;
-    boolean isProcessing = false;
+    private Tile tile;
+    private Hider hider;
+    private PrefMgr prefMgr;
+    private MutableLiveData<Boolean> isProcessing;
+    // private TileUpdateObserver updateObserver;
 
-    public class onHiderCallback implements Hider.HiderCallback {
-
+    private class TileUpdateObserver implements Observer<Boolean> {
         @Override
-        public void onStart() {
-            isProcessing = true;
-            updateTile();
-        }
-
-        @Override
-        public void onComplete() {
-            isProcessing = false;
+        public void onChanged(Boolean aBoolean) {
             updateTile();
         }
     }
 
     public void updateTile() {
-        if (isProcessing) {
+        assert isProcessing.getValue() != null;
+
+        if (isProcessing.getValue()) {
             tile.setState(Tile.STATE_UNAVAILABLE);
             tile.setLabel(getString(R.string.processing));
         } else {
@@ -44,19 +42,31 @@ public class QuickSettingService extends TileService {
         tile = getQsTile();
         hider = new Hider(this);
         prefMgr = new PrefMgr(this);
+        isProcessing = hider.getIsProcessingLiveData();
+
+        try {
+            isProcessing.observeForever(new TileUpdateObserver());
+        } catch (IllegalStateException e) {
+            Log.w(TAG, "UpdateObserver already exist: ", e);
+        }
 
         updateTile();
-
         super.onStartListening();
     }
+
+    // @Override
+    // public void onStopListening() {
+    //     isProcessing.removeObserver(updateObserver);
+    //     super.onStopListening();
+    // }
 
     @Override
     public void onClick() {
         Log.i(TAG, "Toggled tile.");
         if (prefMgr.getIsHidden()) {
-            hider.unhide(new onHiderCallback());
+            hider.unhide();
         } else {
-            hider.hide(new onHiderCallback());
+            hider.hide();
         }
     }
 }
