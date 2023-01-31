@@ -3,9 +3,10 @@ package deltazero.amarok;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.lifecycle.MutableLiveData;
 
 import java.nio.file.Paths;
 import java.util.Set;
@@ -19,14 +20,14 @@ public class Hider {
 
     private static final String TAG = "Hider";
     private static final HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
+    private static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);
     private final Context context;
     private final Handler backgroundHandler;
     public AppHiderBase appHider;
     public PrefMgr prefMgr;
 
-    public interface HiderCallback {
-        void onStart();
-        void onComplete();
+    public MutableLiveData<Boolean> getIsProcessingLiveData() {
+        return isProcessing;
     }
 
     public Hider(Context context) {
@@ -42,19 +43,19 @@ public class Hider {
         backgroundHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
     }
 
-    public void hide(HiderCallback callback) {
+    public void hide() {
         backgroundHandler.post(() -> {
-            callback.onStart();
+            isProcessing.postValue(true);
             syncHide();
-            callback.onComplete();
+            isProcessing.postValue(false);
         });
     }
 
-    public void unhide(HiderCallback callback) {
+    public void unhide() {
         backgroundHandler.post(() -> {
-            callback.onStart();
+            isProcessing.postValue(true);
             syncUnhide();
-            callback.onComplete();
+            isProcessing.postValue(false);
         });
     }
 
