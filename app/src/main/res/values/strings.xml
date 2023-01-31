@@ -93,4 +93,5 @@
     <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully Obfuscating Text Files\". Utilize this option only if the standard method proves ineffective. It will slow down the hiding process dramatically.</string>
     <string name="join_developer_channel">Join Developer Channel</string>
     <string name="developer_channel_telegram" translatable="false">Telegram @amarok_app</string>
+    <string name="processing">Processing</string>
 </resources>

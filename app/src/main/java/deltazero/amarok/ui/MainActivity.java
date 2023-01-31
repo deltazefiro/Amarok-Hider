@@ -1,7 +1,9 @@
 package deltazero.amarok.ui;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.quicksettings.TileService;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +20,7 @@ import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
+import deltazero.amarok.QuickSettingService;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.PermissionUtil;
@@ -62,26 +65,35 @@ public class MainActivity extends AppCompatActivity {
 
     private class onHiderCallback implements Hider.HiderCallback {
         // For background thread call back
+
+        @Override
+        public void onStart() {
+            runOnUiThread(() -> {
+                piProcessStatus.show();
+                btChangeStatus.setEnabled(false);
+                TileService.requestListeningState(MainActivity.this,
+                        new ComponentName(MainActivity.this, QuickSettingService.class));
+                updateUi();
+            });
+        }
+
         @Override
         public void onComplete() {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    piProcessStatus.hide();
-                    btChangeStatus.setEnabled(true);
-                    updateUi();
-                }
+            runOnUiThread(() -> {
+                piProcessStatus.hide();
+                btChangeStatus.setEnabled(true);
+                TileService.requestListeningState(MainActivity.this,
+                        new ComponentName(MainActivity.this, QuickSettingService.class));
+                updateUi();
             });
         }
     }
 
     public void changeStatus(View view) {
-        piProcessStatus.show();
-        btChangeStatus.setEnabled(false);
         if (prefMgr.getIsHidden()) {
-            hider.Unhide(new onHiderCallback());
+            hider.unhide(new onHiderCallback());
         } else {
-            hider.Hide(new onHiderCallback());
+            hider.hide(new onHiderCallback());
         }
     }
 

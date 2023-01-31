@@ -3,6 +3,7 @@ package deltazero.amarok;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Message;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -17,12 +18,14 @@ import rikka.shizuku.ShizukuProvider;
 public class Hider {
 
     private static final String TAG = "Hider";
+    private static final HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
     private final Context context;
     private final Handler backgroundHandler;
     public AppHiderBase appHider;
     public PrefMgr prefMgr;
 
     public interface HiderCallback {
+        void onStart();
         void onComplete();
     }
 
@@ -31,31 +34,27 @@ public class Hider {
         prefMgr = new PrefMgr(context);
 
         // Init Background Handler
-        HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
-        backgroundThread.start();
+        if (backgroundThread.getState() == Thread.State.NEW)
+            backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
 
         // Enable shizukuProvider
         backgroundHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
     }
 
-    public void Hide(HiderCallback callback) {
-        backgroundHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                syncHide();
-                callback.onComplete();
-            }
+    public void hide(HiderCallback callback) {
+        backgroundHandler.post(() -> {
+            callback.onStart();
+            syncHide();
+            callback.onComplete();
         });
     }
 
-    public void Unhide(HiderCallback callback) {
-        backgroundHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                syncUnhide();
-                callback.onComplete();
-            }
+    public void unhide(HiderCallback callback) {
+        backgroundHandler.post(() -> {
+            callback.onStart();
+            syncUnhide();
+            callback.onComplete();
         });
     }
 

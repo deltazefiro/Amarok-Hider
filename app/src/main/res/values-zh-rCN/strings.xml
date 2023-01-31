@@ -83,4 +83,5 @@
     <string name="obfuscate_text_file_description">实验性功能。由于仅混淆文件头对文本文件无效，启用此选项将会对文本文件进行完全混淆。会影响隐藏速度。</string>
     <string name="obfuscate_text_file_description_enhanced">实验性功能，不建议使用。增强版本的混淆文本文件，对许多疑似文本的文件也进行混淆。可能明显减慢隐藏速度。</string>
     <string name="join_developer_channel">加入开发群组</string>
+    <string name="processing">运行中…</string>
 </resources>
