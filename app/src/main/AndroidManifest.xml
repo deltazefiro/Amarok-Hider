@@ -47,7 +47,7 @@
         </activity>
         <activity
             android:name=".ui.SwitchFileHiderActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ui.SwitchAppHiderActivity"
             android:exported="true" />
@@ -70,6 +70,9 @@
             <intent-filter android:exported="true">
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
         </service>
 
         <receiver

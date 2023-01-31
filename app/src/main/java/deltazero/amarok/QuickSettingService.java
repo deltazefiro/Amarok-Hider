@@ -6,36 +6,57 @@ import android.util.Log;
 
 public class QuickSettingService extends TileService {
 
-    private static final String TAG = "MyTileService";
+    private static final String TAG = "TileService";
+
     Tile tile;
     Hider hider;
     PrefMgr prefMgr;
+    boolean isProcessing = false;
+
+    public class onHiderCallback implements Hider.HiderCallback {
+
+        @Override
+        public void onStart() {
+            isProcessing = true;
+            updateTile();
+        }
+
+        @Override
+        public void onComplete() {
+            isProcessing = false;
+            updateTile();
+        }
+    }
+
+    public void updateTile() {
+        if (isProcessing) {
+            tile.setState(Tile.STATE_UNAVAILABLE);
+            tile.setLabel(getString(R.string.processing));
+        } else {
+            tile.setLabel(getString(R.string.app_name));
+            tile.setState(prefMgr.getIsHidden() ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+        }
+        tile.updateTile();
+    }
 
     @Override
     public void onStartListening() {
         tile = getQsTile();
-
         hider = new Hider(this);
         prefMgr = new PrefMgr(this);
 
-        if (prefMgr.getIsHidden()) {
-            tile.setState(Tile.STATE_INACTIVE);
-        } else {
-            tile.setState(Tile.STATE_ACTIVE);
-        }
+        updateTile();
+
         super.onStartListening();
     }
 
     @Override
     public void onClick() {
-        Log.d(TAG, "QS tile is clicked!");
+        Log.i(TAG, "Toggled tile.");
         if (prefMgr.getIsHidden()) {
-            hider.syncUnhide();
-            tile.setState(Tile.STATE_ACTIVE);
+            hider.unhide(new onHiderCallback());
         } else {
-            hider.syncHide();
-            tile.setState(Tile.STATE_INACTIVE);
+            hider.hide(new onHiderCallback());
         }
-        tile.updateTile();
     }
 }
