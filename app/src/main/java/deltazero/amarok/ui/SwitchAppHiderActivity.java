@@ -87,7 +87,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
     }
 
     public void onClickLearnMoreButton(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/hideapp.html")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.hideapp_doc_url))));
     }
 
     public void onClickOKButton(View view) {
@@ -109,7 +109,8 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
                     .setTitle(R.string.apphider_not_ava_title)
                     .setMessage(msgResID)
                     .setPositiveButton(getString(R.string.ok), null)
-                    .setNegativeButton(R.string.help, (dialog, which) -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/hideapp.html#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF"))))
+                    .setNegativeButton(R.string.help, (dialog, which)
+                            -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.common_error_doc_url)))))
                     .show();
         }
     }

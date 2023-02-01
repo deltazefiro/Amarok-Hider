@@ -94,4 +94,7 @@
     <string name="join_developer_channel">Join Developer Channel</string>
     <string name="developer_channel_telegram" translatable="false">Telegram @amarok_app</string>
     <string name="processing">Processing</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
 </resources>
