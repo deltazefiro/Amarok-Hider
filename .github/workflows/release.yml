@@ -8,11 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      CCACHE_DIR: ${{ github.workspace }}/.ccache
-      CCACHE_COMPILERCHECK: "%compiler% -dumpmachine; %compiler% -dumpversion"
-      CCACHE_NOHASHDIR: true
-      CCACHE_MAXSIZE: 1G
+
     steps:
       - uses: actions/checkout@v3
         with:
@@ -23,11 +19,6 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
           cache: 'gradle'
-      - name: Set up ccache
-        uses: hendrikmuhs/ccache-action@v1.2
-        with:
-          key: ${{ runner.os }}-${{ github.sha }}
-          restore-keys: ${{ runner.os }}
       - name: Inject signing key
         run: |
           echo 'RELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}' >> ~/.gradle/gradle.properties
