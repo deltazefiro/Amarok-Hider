@@ -142,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void openHelp(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.doc_url))));
     }
 
     public void joinDevGroup(View view) {
