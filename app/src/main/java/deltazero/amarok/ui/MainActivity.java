@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -51,11 +50,9 @@ public class MainActivity extends AppCompatActivity {
         // Start App-center
         AppCenterUtil.startAppCenter(this);
 
-        // Link LiveData & Activate tile service
+        // Link LiveData
         isProcessing = hider.getIsProcessingLiveData();
         isProcessing.observe(this, aBoolean -> updateUi());
-        TileService.requestListeningState(MainActivity.this,
-                new ComponentName(MainActivity.this, QuickSettingService.class));
 
         // Init UI
         ivStatusImg = findViewById(R.id.main_iv_status);
@@ -151,6 +148,9 @@ public class MainActivity extends AppCompatActivity {
                 tvStatusInfo.setText(getText(R.string.hidden_moto));
             }
         }
+
+        TileService.requestListeningState(MainActivity.this,
+                new ComponentName(MainActivity.this, QuickSettingService.class));
     }
 
 

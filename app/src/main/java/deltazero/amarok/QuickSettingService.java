@@ -1,13 +1,22 @@
 package deltazero.amarok;
 
+import android.content.Intent;
+import android.os.IBinder;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
+import androidx.annotation.CallSuper;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LifecycleService;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ServiceLifecycleDispatcher;
 
-public class QuickSettingService extends TileService {
+public class QuickSettingService extends TileService implements LifecycleOwner {
 
     private static final String TAG = "TileService";
 
@@ -15,7 +24,52 @@ public class QuickSettingService extends TileService {
     private Hider hider;
     private PrefMgr prefMgr;
     private MutableLiveData<Boolean> isProcessing;
-    // private TileUpdateObserver updateObserver;
+
+    /**
+     * =========================== LifecycleService =============================
+     */
+
+    private final ServiceLifecycleDispatcher mDispatcher = new ServiceLifecycleDispatcher(this);
+
+    @CallSuper
+    @Override
+    public void onCreate() {
+        mDispatcher.onServicePreSuperOnCreate();
+        super.onCreate();
+    }
+
+    @CallSuper
+    @Nullable
+    @Override
+    public IBinder onBind(@NonNull Intent intent) {
+        mDispatcher.onServicePreSuperOnBind();
+        return super.onBind(intent);
+    }
+
+    @SuppressWarnings("deprecation")
+    @CallSuper
+    @Override
+    public void onStart(@Nullable Intent intent, int startId) {
+        mDispatcher.onServicePreSuperOnStart();
+        super.onStart(intent, startId);
+    }
+
+    @CallSuper
+    @Override
+    public void onDestroy() {
+        mDispatcher.onServicePreSuperOnDestroy();
+        super.onDestroy();
+    }
+
+    @Override
+    @NonNull
+    public Lifecycle getLifecycle() {
+        return mDispatcher.getLifecycle();
+    }
+
+    /**
+     * =========================== LifecycleService End =============================
+     */
 
     private class TileUpdateObserver implements Observer<Boolean> {
         @Override
@@ -45,7 +99,7 @@ public class QuickSettingService extends TileService {
         isProcessing = hider.getIsProcessingLiveData();
 
         try {
-            isProcessing.observeForever(new TileUpdateObserver());
+            isProcessing.observe(this, new TileUpdateObserver());
         } catch (IllegalStateException e) {
             Log.w(TAG, "UpdateObserver already exist: ", e);
         }
@@ -53,12 +107,6 @@ public class QuickSettingService extends TileService {
         updateTile();
         super.onStartListening();
     }
-
-    // @Override
-    // public void onStopListening() {
-    //     isProcessing.removeObserver(updateObserver);
-    //     super.onStopListening();
-    // }
 
     @Override
     public void onClick() {
