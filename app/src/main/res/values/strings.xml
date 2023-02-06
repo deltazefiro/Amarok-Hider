@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">Amarok</string>
     <string name="unhide">Unhide</string>
@@ -19,7 +20,7 @@
     <string name="storage_permission_request_title">Storage permission required</string>
     <string name="storage_permission_request_message">Amarok needs external storage access to hide your files.</string>
     <string name="storage_permission_denied">Storage permission denied. File hiding is unavailable</string>
-    <string name="apphider_not_ava">AppHider not available. Check MoreSettings -> Switch AppHider.</string>
+    <string name="apphider_not_ava">AppHider not available. Check MoreSettings -&gt; Switch AppHider.</string>
     <string name="set_hide_files">Set Hide Files</string>
     <string name="show_about">Show About</string>
     <string name="moto" translatable="false">Hunting alone in the starless night.</string>
@@ -62,7 +63,7 @@
     <string name="no_update_ava">No available update yet.</string>
     <string name="manually_set_path">Set Path Manually</string>
     <string name="manually_set_path_description">Caution: The path you set manually will **skip** the validation. Please ensure the path is valid.</string>
-    <string name="view_github_repo">View Github Repo</string>
+    <string name="view_github_repo">View GitHub Repo</string>
     <string name="view_github_repo_description" translatable="false">deltazefiro/Amarok-Hider</string>
     <string name="shizuku_pre_v11">Unsupported shizuku version: Pre-V11. Please update your Shizuku.</string>
     <string name="shizuku_permission_denied">Shizuku: Permission denied</string>
@@ -75,7 +76,7 @@
     <string name="apphider_none_description">Disable HideApp feature.</string>
     <string name="apphider_root">Root Mode</string>
     <string name="apphider_root_description">HideApp with Root.\nRecommended if your device is rooted but without Xposed framework. Root permission is required.</string>
-    <string name="apphider_shizuku">Shizuku (Sui) Mode - <font fgcolor='#de5f1b'>DeepHide</font></string>
+    <string name="apphider_shizuku">Shizuku (Sui) Mode - <font fgcolor="#de5f1b">DeepHide</font></string>
     <string name="apphider_shizuku_description">HideApp with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or with Xposed framework. You need to install and active Shizuku or Sui to use this mode.\n<i><b>* DeepHide</b>: Hidden applications will not show in the system menu in this mode.</i></string>
     <string name="apphider_dsm">DSM Mode [Deprecated]</string>
     <string name="apphider_dsm_description">HideApp with Delegated-Scopes-Manager.\nNOT recommended unless your device runs Android 10 or below and is not rooted. It may be BUGGY and work unexpectedly. You need to install Icebox or StopAPP and set them as DeviceManager to use this mode.</string>
