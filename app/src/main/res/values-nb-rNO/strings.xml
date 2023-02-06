@@ -1,2 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="about">Om</string>
+    <string name="confirm">Bekreft</string>
+    <string name="view_github_repo">Vis GitHub-kodelager</string>
+    <string name="learn_more">Lær mer</string>
+    <string name="unhide">Vis igjen</string>
+    <string name="hide">Skjul</string>
+    <string name="visible_status">Synlig</string>
+    <string name="hidden_status">Skjult</string>
+    <string name="show_about">Vis «Om»</string>
+    <string name="about_description">Vis «Om».</string>
+    <string name="usage">Bruk</string>
+    <string name="more_settings">Flere innstillinger</string>
+    <string name="debug_info_description">Vis avlusingsinfo</string>
+    <string name="current_mode">Nåværende modus: %s</string>
+    <string name="apply_on_restart">Endringer vil tre i kraft ved neste oppstart.</string>
+    <string name="show_debug_info">Avlusningsinfo</string>
+    <string name="never">Aldri</string>
+    <string name="help">Hjelp</string>
+    <string name="apphider_none">Avskrudd</string>
+    <string name="apphider_root">Rot-modus</string>
+    <string name="filename_only">Kun filnavn</string>
+    <string name="join_developer_channel">Ta del i utviklerkanalen</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Avbryt</string>
+</resources>
