@@ -65,7 +65,7 @@
     <string name="manually_set_path_description">Caution: The path you set manually will **skip** the validation. Please ensure the path is valid.</string>
     <string name="view_github_repo">View GitHub Repo</string>
     <string name="view_github_repo_description" translatable="false">deltazefiro/Amarok-Hider</string>
-    <string name="shizuku_pre_v11">Unsupported shizuku version: Pre-V11. Please update your Shizuku.</string>
+    <string name="shizuku_pre_v11">Unsupported Shizuku version: Pre-v11. Please update your Shizuku.</string>
     <string name="shizuku_permission_denied">Shizuku: Permission denied</string>
     <string name="shizuku_not_working">Shizuku: Service not available. Have you installed Shizuku/Shu on your device?</string>
     <string name="shizuku_hidden_api_error">Failed to hide app: Unable to get IPackageManager api.</string>
