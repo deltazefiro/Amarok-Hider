@@ -20,17 +20,17 @@ import java.util.List;
 
 public class PanicButton {
 
-    private final Context context;
+    private final Application application;
     private final MutableLiveData<Boolean> isProcessing;
     private final XToast<?> xToast;
     private final Hider hider;
     private final ImageView ivPanicButton;
 
-    public PanicButton(Context context) {
-        this.context = context;
-        hider = new Hider(context);
+    public PanicButton(Application application) {
+        this.application = application;
+        hider = new Hider(application.getBaseContext());
 
-        xToast = new XToast<>((Application) context.getApplicationContext())
+        xToast = new XToast<>(application)
                 .setContentView(R.layout.dialog_panic_button)
                 .setGravity(Gravity.END | Gravity.BOTTOM)
                 .setYOffset(300)
@@ -39,14 +39,14 @@ public class PanicButton {
                         (XToast.OnClickListener<ImageView>) (xToast, view) -> hider.hide());
 
         ivPanicButton = xToast.findViewById(R.id.dialog_iv_panic_button);
-        ivPanicButton.setColorFilter(context.getColor(R.color.light_grey),
+        ivPanicButton.setColorFilter(application.getColor(R.color.light_grey),
                 android.graphics.PorterDuff.Mode.SRC_IN);
 
         isProcessing = hider.getIsProcessingLiveData();
         isProcessing.observeForever(aBoolean -> updateToastState());
     }
 
-    private void requestPermission() {
+    public void requestPermission(Context context) {
         if (XXPermissions.isGranted(context, Permission.SYSTEM_ALERT_WINDOW))
             return;
 
@@ -70,7 +70,6 @@ public class PanicButton {
                                 }
                             });
                 })
-                .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.cancel())
                 .show();
     }
 
@@ -80,11 +79,9 @@ public class PanicButton {
             return;
         }
 
-        requestPermission();
-
         assert isProcessing.getValue() != null;
         if (isProcessing.getValue()) {
-            ivPanicButton.setColorFilter(context.getColor(R.color.design_default_color_error),
+            ivPanicButton.setColorFilter(application.getColor(R.color.design_default_color_error),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(false);
         } else {
@@ -93,7 +90,7 @@ public class PanicButton {
             } else {
                 xToast.show();
             }
-            ivPanicButton.setColorFilter(context.getColor(R.color.light_grey),
+            ivPanicButton.setColorFilter(application.getColor(R.color.light_grey),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(true);
         }
