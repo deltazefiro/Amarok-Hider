@@ -87,4 +87,12 @@
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/hideapp.html#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/hideapp.html</string>
+    <string name="alert_permission_denied">悬浮窗权限获取失败。</string>
+    <string name="alert_permission_request_title">悬浮窗权限请求</string>
+    <string name="alert_permission_request_message">“快速隐藏悬浮球” 需要悬浮窗权限。请在设置中找到 Amarok 并授予其权限。</string>
+    <string name="workmode">工作模式</string>
+    <string name="misc">杂项</string>
+    <string name="security">安全</string>
+    <string name="panic_button">快速隐藏悬浮球</string>
+    <string name="panic_button_description">在界面上方显示一个悬浮球，点击即可进行隐藏。悬浮球仅在非隐藏状态下可见。</string>
 </resources>

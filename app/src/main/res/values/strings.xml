@@ -99,5 +99,10 @@
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="alert_permission_denied">Display-over-apps  permission denied.</string>
     <string name="alert_permission_request_title">Popout-window permission required</string>
-    <string name="alert_permission_request_message">It need popout-window permission to work. Please find Amarok in the menu and grant the permission.</string>
+    <string name="alert_permission_request_message">Panic Button needs Popout-window permission to work. Please find Amarok in the settings menu and grant it permission.</string>
+    <string name="workmode">Workmode</string>
+    <string name="misc">Misc.</string>
+    <string name="security">Security</string>
+    <string name="panic_button">Panic Button</string>
+    <string name="panic_button_description">Display an Emergency-Hide floating button over other apps. The button only shows in unhide state.</string>
 </resources>
