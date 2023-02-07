@@ -144,6 +144,13 @@ public class SetHideFilesActivity extends AppCompatActivity {
     }
 
     public void addHideFolder(View view) {
-        mDirRequest.launch(null);
+        try {
+            mDirRequest.launch(null);
+        } catch (Exception e) {
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.failed_to_open_doc_tree)
+                    .setMessage(R.string.failed_to_open_doc_tree_description)
+                    .show();
+        }
     }
 }
