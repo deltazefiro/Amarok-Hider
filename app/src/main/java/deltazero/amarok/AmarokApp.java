@@ -4,7 +4,7 @@ import android.app.Application;
 
 public class AmarokApp extends Application {
 
-    private PanicButton panicButton;
+    public PanicButton panicButton;
 
     @Override
     public void onCreate() {

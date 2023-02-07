@@ -74,36 +74,28 @@ public class PanicButton {
                 .show();
     }
 
-    private void updateToastState() {
+    public void updateToastState() {
+        if (!hider.prefMgr.getEnablePanicButton()) {
+            xToast.cancel();
+            return;
+        }
+
+        requestPermission();
+
         assert isProcessing.getValue() != null;
         if (isProcessing.getValue()) {
             ivPanicButton.setColorFilter(context.getColor(R.color.design_default_color_error),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(false);
         } else {
-
             if (hider.prefMgr.getIsHidden()) {
                 xToast.cancel();
             } else {
                 xToast.show();
             }
-
             ivPanicButton.setColorFilter(context.getColor(R.color.light_grey),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(true);
-        }
-    }
-
-    private void show() {
-        if (!xToast.isShowing()) {
-            requestPermission();
-            xToast.show();
-        }
-    }
-
-    private void cancel() {
-        if (xToast.isShowing()) {
-            xToast.cancel();
         }
     }
 }
