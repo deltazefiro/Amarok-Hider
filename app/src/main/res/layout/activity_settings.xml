@@ -30,6 +30,15 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.TitleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="62dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/workmode"
+                android:textColor="?attr/colorPrimary" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -52,7 +61,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="24dp"
                     android:layout_toEndOf="@id/settings_iv_app_mode"
@@ -97,7 +106,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="24dp"
                     android:layout_toEndOf="@id/settings_iv_file_mode"
@@ -121,12 +130,74 @@
 
             </RelativeLayout>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.TitleSmall"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
-                app:dividerInsetEnd="24dp"
-                app:dividerInsetStart="24dp" />
+                android:layout_marginHorizontal="62dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/security"
+                android:textColor="?attr/colorPrimary" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/settings_iv_panic_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_null"
+                    app:tint="?attr/colorOnSurface" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="22dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/settings_sw_panic_button"
+                    android:layout_toEndOf="@id/settings_iv_panic_button"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.Material3.TitleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/panic_button" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/panic_button_description"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/settings_sw_panic_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="24dp" />
+
+            </RelativeLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.TitleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="62dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/update"
+                android:textColor="?attr/colorPrimary" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -149,7 +220,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="24dp"
                     android:layout_toEndOf="@id/settings_iv_check_update"
@@ -191,7 +262,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="10dp"
                     android:layout_toStartOf="@id/settings_sw_auto_update"
@@ -222,13 +293,6 @@
 
             </RelativeLayout>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="15dp"
-                app:dividerInsetEnd="24dp"
-                app:dividerInsetStart="24dp" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -247,7 +311,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="10dp"
                     android:layout_toStartOf="@id/settings_sw_analytics"
@@ -278,93 +342,15 @@
 
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
+            <com.google.android.material.textview.MaterialTextView
+                style="@style/TextAppearance.Material3.TitleSmall"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:onClick="openHelp">
-
-                <ImageView
-                    android:id="@+id/settings_iv_usage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_usage"
-                    app:tint="?attr/colorOnSurface" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_toEndOf="@id/settings_iv_usage"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextAppearance.Material3.TitleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/usage" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/usage_description"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="?android:attr/selectableItemBackground"
-                android:clickable="true"
-                android:onClick="showAbout">
-
-                <ImageView
-                    android:id="@+id/settings_iv_about"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginStart="24dp"
-                    android:src="@drawable/ic_info"
-                    app:tint="?attr/colorOnSurface" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
-                    android:layout_marginStart="18dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_toEndOf="@id/settings_iv_about"
-                    android:orientation="vertical">
-
-                    <TextView
-                        style="@style/TextAppearance.Material3.TitleSmall"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/about" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/about_description"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-
-            </RelativeLayout>
+                android:layout_marginHorizontal="62dp"
+                android:layout_marginTop="26dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/about"
+                android:textColor="?attr/colorPrimary" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -387,7 +373,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="24dp"
                     android:layout_toEndOf="@id/settings_iv_github"
@@ -431,7 +417,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="24dp"
                     android:layout_toEndOf="@id/settings_iv_telegram"
@@ -447,6 +433,50 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/developer_channel_telegram"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:attr/selectableItemBackground"
+                android:clickable="true"
+                android:onClick="openHelp">
+
+                <ImageView
+                    android:id="@+id/settings_iv_usage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="24dp"
+                    android:src="@drawable/ic_usage"
+                    app:tint="?attr/colorOnSurface" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginVertical="22dp"
+                    android:layout_marginStart="18dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_toEndOf="@id/settings_iv_usage"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/TextAppearance.Material3.TitleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/usage" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/usage_description"
                         android:textSize="12sp" />
 
                 </LinearLayout>
@@ -477,7 +507,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginVertical="16dp"
+                    android:layout_marginVertical="22dp"
                     android:layout_marginStart="18dp"
                     android:layout_marginEnd="24dp"
                     android:layout_toEndOf="@id/settings_iv_debug_info"

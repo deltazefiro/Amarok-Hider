@@ -94,4 +94,19 @@
     <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully Obfuscating Text Files\". Utilize this option only if the standard method proves ineffective. It will slow down the hiding process dramatically.</string>
     <string name="join_developer_channel">Join Developer Channel</string>
     <string name="developer_channel_telegram" translatable="false">Telegram @amarok_app</string>
+    <string name="processing">Processing</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="alert_permission_denied">Display-over-apps  permission denied.</string>
+    <string name="alert_permission_request_title">Popout-window permission required</string>
+    <string name="alert_permission_request_message">Panic Button needs Popout-window permission to work. Please find Amarok in the settings menu and grant it permission.</string>
+    <string name="workmode">Workmode</string>
+    <string name="misc">Misc.</string>
+    <string name="security">Security</string>
+    <string name="panic_button">Panic Button</string>
+    <string name="panic_button_description">Display an Emergency-Hide floating button over other apps. The button only shows in unhide state.</string>
+    <string name="in_app_update_failed">New update available but failed to fetch. Please update manually.</string>
+    <string name="failed_to_open_doc_tree">Failed to open system file selector</string>
+    <string name="failed_to_open_doc_tree_description">Oops! Seems that your system does not have a default filemanager? Please long press the \"Add Hide Folder\" button and set path manually.</string>
 </resources>

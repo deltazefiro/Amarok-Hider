@@ -16,6 +16,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 
+import deltazero.amarok.AmarokApp;
 import deltazero.amarok.BuildConfig;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
@@ -26,7 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
     private PrefMgr prefMgr;
     private Context context;
     private String appVersionName;
-    private MaterialSwitch swAnalytics, swAutoUpdate;
+    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton;
     private MaterialToolbar tbToolBar;
     private TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
@@ -54,19 +55,21 @@ public class SettingsActivity extends AppCompatActivity {
         tvCurrAppHider = findViewById(R.id.settings_tv_curr_app_hider);
         tvCurrFileHider = findViewById(R.id.settings_tv_curr_file_hider);
         tvCurrVer = findViewById(R.id.settings_tv_curr_ver);
+        swPanicButton = findViewById(R.id.settings_sw_panic_button);
         swAnalytics = findViewById(R.id.settings_sw_analytics);
         swAutoUpdate = findViewById(R.id.settings_sw_auto_update);
         tbToolBar = findViewById(R.id.settings_tb_toolbar);
         rlDebugInfo = findViewById(R.id.settings_rl_debug_info);
 
+        // Init view
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
         tvCurrFileHider.setText(getString(R.string.current_mode,
                 getString(R.string.obfuscate_filename) +
                         (prefMgr.getEnableObfuscateFileHeader() ? " + " + getString(R.string.obfuscate_file_header) : "")));
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
-        if (AppCenterUtil.isAvailable())
-        {
+        swPanicButton.setChecked(prefMgr.getEnablePanicButton());
+        if (AppCenterUtil.isAvailable()) {
             swAnalytics.setChecked(AppCenterUtil.isAnalyticsEnabled());
             swAutoUpdate.setChecked(prefMgr.getEnableAutoUpdate());
         } else {
@@ -74,6 +77,11 @@ public class SettingsActivity extends AppCompatActivity {
             swAutoUpdate.setEnabled(false);
         }
 
+        // Set Listener
+        swPanicButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefMgr.setEnablePanicButton(isChecked);
+            ((AmarokApp) getApplication()).panicButton.updateToastState();
+        });
         swAnalytics.setOnCheckedChangeListener((buttonView, isChecked) -> {
             AppCenterUtil.setAnalyticsEnabled(isChecked);
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
@@ -142,7 +150,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void openHelp(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://deltazefiro.github.io/Amarok-doc/")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.doc_url))));
     }
 
     public void joinDevGroup(View view) {

@@ -6,6 +6,8 @@ import android.os.HandlerThread;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.lifecycle.MutableLiveData;
+
 import java.nio.file.Paths;
 import java.util.Set;
 
@@ -17,13 +19,15 @@ import rikka.shizuku.ShizukuProvider;
 public class Hider {
 
     private static final String TAG = "Hider";
+    private static final HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
+    private static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);
     private final Context context;
     private final Handler backgroundHandler;
     public AppHiderBase appHider;
     public PrefMgr prefMgr;
 
-    public interface HiderCallback {
-        void onComplete();
+    public MutableLiveData<Boolean> getIsProcessingLiveData() {
+        return isProcessing;
     }
 
     public Hider(Context context) {
@@ -31,31 +35,27 @@ public class Hider {
         prefMgr = new PrefMgr(context);
 
         // Init Background Handler
-        HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
-        backgroundThread.start();
+        if (backgroundThread.getState() == Thread.State.NEW)
+            backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
 
         // Enable shizukuProvider
         backgroundHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
     }
 
-    public void Hide(HiderCallback callback) {
-        backgroundHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                syncHide();
-                callback.onComplete();
-            }
+    public void hide() {
+        backgroundHandler.post(() -> {
+            isProcessing.postValue(true);
+            syncHide();
+            isProcessing.postValue(false);
         });
     }
 
-    public void Unhide(HiderCallback callback) {
-        backgroundHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                syncUnhide();
-                callback.onComplete();
-            }
+    public void unhide() {
+        backgroundHandler.post(() -> {
+            isProcessing.postValue(true);
+            syncUnhide();
+            isProcessing.postValue(false);
         });
     }
 
