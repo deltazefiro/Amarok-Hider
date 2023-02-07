@@ -1,12 +1,12 @@
 package deltazero.amarok.utils;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.analytics.Analytics;
 import com.microsoft.appcenter.crashes.Crashes;
@@ -35,30 +35,38 @@ public class AppCenterUtil {
 
             Log.i("CheckUpdate", "Found new update: Amarok " + versionName);
 
-            new AlertDialog.Builder(activity)
-                    .setTitle(R.string.update_ava)
-                    .setMessage(activity.getString(R.string.update_description, versionName, versionCode))
-                    .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Distribute.notifyUpdateAction(UpdateAction.UPDATE);
-                        }
-                    })
-                    .setNeutralButton(R.string.never, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            new PrefMgr(activity).setEnableAutoUpdate(false);
-                            Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
-                        }
-                    })
-                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
-                        }
-                    })
-                    .setCancelable(false)
-                    .show();
+            try {
+
+                new MaterialAlertDialogBuilder(activity)
+                        .setTitle(R.string.update_ava)
+                        .setMessage(activity.getString(R.string.update_description, versionName, versionCode))
+                        .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Distribute.notifyUpdateAction(UpdateAction.UPDATE);
+                            }
+                        })
+                        .setNeutralButton(R.string.never, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                new PrefMgr(activity).setEnableAutoUpdate(false);
+                                Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
+                            }
+                        })
+                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
+                            }
+                        })
+                        .setCancelable(false)
+                        .show();
+
+            } catch (Exception e) {
+                Log.e("AppCenterUtil", "Failed to update: ", e);
+                Toast.makeText(activity, R.string.in_app_update_failed, Toast.LENGTH_LONG).show();
+                Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
+            }
 
             return true;
         }
