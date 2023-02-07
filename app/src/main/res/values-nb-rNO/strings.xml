@@ -43,7 +43,7 @@
     <string name="check_update_on_start_description">Let etter nye versjoner når Amarok starter.</string>
     <string name="check_update">Let etter nye versjoner</string>
     <string name="update_ava">Ny versjon tilgjengelig.</string>
-    <string name="update_description">Amarok %d (%d) kan lastes ned og installeres.</string>
+    <string name="update_description">Amarok %s (%d) kan lastes ned og installeres.</string>
     <string name="shizuku_permission_denied">Shizuku: Tilgang nektet</string>
     <string name="filename_and_header">Filnavn + hode</string>
     <string name="dsm_permission_denied">DSM: Tilgang nektet</string>
