@@ -64,8 +64,8 @@ Contributions in all forms are welcomed, including reporting bugs, proposing new
 
 We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translations.  
 
-<a href="https://hosted.weblate.org/engage/amarok-hider/nb_NO/">
-<img src="https://hosted.weblate.org/widgets/amarok-hider/nb_NO/amarok-app/multi-auto.svg" alt="Translation status" />
+<a href="https://hosted.weblate.org/engage/amarok-hider/">
+<img src="https://hosted.weblate.org/widgets/amarok-hider/-/multi-auto.svg" alt="Translation status" />
 </a>
 
 ## Acknowledgement
