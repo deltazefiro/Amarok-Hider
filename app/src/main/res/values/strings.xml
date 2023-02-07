@@ -105,4 +105,5 @@
     <string name="security">Security</string>
     <string name="panic_button">Panic Button</string>
     <string name="panic_button_description">Display an Emergency-Hide floating button over other apps. The button only shows in unhide state.</string>
+    <string name="in_app_update_failed">New update available but failed to fetch. Please update manually.</string>
 </resources>

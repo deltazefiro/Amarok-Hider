@@ -95,4 +95,5 @@
     <string name="security">安全</string>
     <string name="panic_button">快速隐藏悬浮球</string>
     <string name="panic_button_description">在界面上方显示一个悬浮球，点击即可进行隐藏。悬浮球仅在非隐藏状态下可见。</string>
+    <string name="in_app_update_failed">新更新可用但自动更新失败。请手动更新。</string>
 </resources>
