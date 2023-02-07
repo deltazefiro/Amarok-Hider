@@ -44,6 +44,8 @@ public class PanicButton {
 
         isProcessing = hider.getIsProcessingLiveData();
         isProcessing.observeForever(aBoolean -> updateToastState());
+
+        updateToastState();
     }
 
     public void requestPermission(Context context) {
@@ -61,6 +63,7 @@ public class PanicButton {
                                 @Override
                                 public void onGranted(List<String> permissions, boolean all) {
                                     Log.d("Permission", "Granted: SYSTEM_ALERT_WINDOW");
+                                    updateToastState();
                                 }
 
                                 @Override
@@ -86,13 +89,25 @@ public class PanicButton {
             ivPanicButton.setEnabled(false);
         } else {
             if (hider.prefMgr.getIsHidden()) {
-                xToast.cancel();
+                cancel();
             } else {
-                xToast.show();
+                show();
             }
             ivPanicButton.setColorFilter(application.getColor(R.color.light_grey),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(true);
+        }
+    }
+
+    private void show() {
+        if (!xToast.isShowing() && XXPermissions.isGranted(application, Permission.SYSTEM_ALERT_WINDOW)) {
+            xToast.show();
+        }
+    }
+
+    private void cancel() {
+        if (xToast.isShowing()) {
+            xToast.cancel();
         }
     }
 }
