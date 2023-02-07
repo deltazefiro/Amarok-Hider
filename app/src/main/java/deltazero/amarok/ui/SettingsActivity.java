@@ -65,8 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
                         (prefMgr.getEnableObfuscateFileHeader() ? " + " + getString(R.string.obfuscate_file_header) : "")));
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
-        if (AppCenterUtil.isAvailable())
-        {
+        if (AppCenterUtil.isAvailable()) {
             swAnalytics.setChecked(AppCenterUtil.isAnalyticsEnabled());
             swAutoUpdate.setChecked(prefMgr.getEnableAutoUpdate());
         } else {

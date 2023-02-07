@@ -97,4 +97,7 @@
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="alert_permission_denied">Display-over-apps  permission denied.</string>
+    <string name="alert_permission_request_title">Popout-window permission required</string>
+    <string name="alert_permission_request_message">It need popout-window permission to work. Please find Amarok in the menu and grant the permission.</string>
 </resources>
