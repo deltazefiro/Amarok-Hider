@@ -15,13 +15,13 @@
     <string name="ok">OK</string>
     <string name="about">About</string>
     <string name="cancel">Cancel</string>
-    <string name="set_hide_apps">Set Hide Apps</string>
-    <string name="setting_not_ava_when_hidden">Setting is only available after unhide</string>
+    <string name="set_hide_apps">Set Hidden Apps</string>
+    <string name="setting_not_ava_when_hidden">This setting is only available after unhiding</string>
     <string name="storage_permission_request_title">Storage permission required</string>
     <string name="storage_permission_request_message">Amarok needs external storage access to hide your files.</string>
     <string name="storage_permission_denied">Storage permission denied. File hiding is unavailable</string>
     <string name="apphider_not_ava">AppHider not available. Check MoreSettings -&gt; Switch AppHider.</string>
-    <string name="set_hide_files">Set Hide Files</string>
+    <string name="set_hide_files">Set Hidden Files</string>
     <string name="show_about">Show About</string>
     <string name="moto" translatable="false">Hunting alone in the starless night.</string>
     <string name="enable_analytics">Enable Analytics</string>
