@@ -106,4 +106,6 @@
     <string name="panic_button">Panic Button</string>
     <string name="panic_button_description">Display an Emergency-Hide floating button over other apps. The button only shows in unhide state.</string>
     <string name="in_app_update_failed">New update available but failed to fetch. Please update manually.</string>
+    <string name="failed_to_open_doc_tree">Failed to open system file selector</string>
+    <string name="failed_to_open_doc_tree_description">Oops! Seems that your system does not have a default filemanager? Please long press the \"Add Hide Folder\" button and set path manually.</string>
 </resources>
