@@ -83,4 +83,19 @@
     <string name="obfuscate_text_file_description">实验性功能。由于仅混淆文件头对文本文件无效，启用此选项将会对文本文件进行完全混淆。会影响隐藏速度。</string>
     <string name="obfuscate_text_file_description_enhanced">实验性功能，不建议使用。增强版本的混淆文本文件，对许多疑似文本的文件也进行混淆。可能明显减慢隐藏速度。</string>
     <string name="join_developer_channel">加入开发群组</string>
+    <string name="processing">运行中…</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/hideapp.html#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/hideapp.html</string>
+    <string name="alert_permission_denied">悬浮窗权限获取失败。</string>
+    <string name="alert_permission_request_title">悬浮窗权限请求</string>
+    <string name="alert_permission_request_message">“快速隐藏悬浮球” 需要悬浮窗权限。请在设置中找到 Amarok 并授予其权限。</string>
+    <string name="workmode">工作模式</string>
+    <string name="misc">杂项</string>
+    <string name="security">安全</string>
+    <string name="panic_button">快速隐藏悬浮球</string>
+    <string name="panic_button_description">在界面上方显示一个悬浮球，点击即可进行隐藏。悬浮球仅在非隐藏状态下可见。</string>
+    <string name="in_app_update_failed">新更新可用但自动更新失败。请手动更新。</string>
+    <string name="failed_to_open_doc_tree">无法打开文件选择器</string>
+    <string name="failed_to_open_doc_tree_description">您的系统似乎没有默认文件管理器？请长按 “选择隐藏文件夹” 按键手动设置路径。</string>
 </resources>

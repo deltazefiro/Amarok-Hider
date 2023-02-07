@@ -6,6 +6,7 @@ import android.widget.Toast;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.hjq.permissions.OnPermissionCallback;
+import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 
 import java.util.List;
@@ -14,8 +15,9 @@ import deltazero.amarok.R;
 
 
 public class PermissionUtil {
+
     public static void requestStoragePermission(Context context) {
-        if (XXPermissions.isGranted(context, com.hjq.permissions.Permission.MANAGE_EXTERNAL_STORAGE))
+        if (XXPermissions.isGranted(context, Permission.MANAGE_EXTERNAL_STORAGE))
             return;
 
         new MaterialAlertDialogBuilder(context)

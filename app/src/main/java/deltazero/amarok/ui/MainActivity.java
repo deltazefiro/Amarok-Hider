@@ -1,13 +1,16 @@
 package deltazero.amarok.ui;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
+import android.service.quicksettings.TileService;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -17,7 +20,9 @@ import com.hjq.permissions.XXPermissions;
 import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
+import deltazero.amarok.PanicButton;
 import deltazero.amarok.PrefMgr;
+import deltazero.amarok.QuickSettingService;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.PermissionUtil;
@@ -33,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private TextView tvStatusInfo, tvStatus;
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
+    private MutableLiveData<Boolean> isProcessing;
+
+    private PanicButton panicButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Start App-center
         AppCenterUtil.startAppCenter(this);
+
+        // Link LiveData
+        isProcessing = hider.getIsProcessingLiveData();
+        isProcessing.observe(this, aBoolean -> updateUi());
 
         // Init UI
         ivStatusImg = findViewById(R.id.main_iv_status);
@@ -60,28 +72,11 @@ public class MainActivity extends AppCompatActivity {
         checkAppHiderAvailability();
     }
 
-    private class onHiderCallback implements Hider.HiderCallback {
-        // For background thread call back
-        @Override
-        public void onComplete() {
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    piProcessStatus.hide();
-                    btChangeStatus.setEnabled(true);
-                    updateUi();
-                }
-            });
-        }
-    }
-
     public void changeStatus(View view) {
-        piProcessStatus.show();
-        btChangeStatus.setEnabled(false);
         if (prefMgr.getIsHidden()) {
-            hider.Unhide(new onHiderCallback());
+            hider.unhide();
         } else {
-            hider.Hide(new onHiderCallback());
+            hider.hide();
         }
     }
 
@@ -125,25 +120,40 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateUi() {
 
-        if (!prefMgr.getIsHidden()) {
-            // Visible
-            ivStatusImg.setImageResource(R.drawable.img_status_visible);
-            btChangeStatus.setText(R.string.hide);
-            btChangeStatus.setIconResource(R.drawable.ic_paw);
-            btSetHideFiles.setEnabled(true);
-            btSetHideApps.setEnabled(true);
-            tvStatus.setText(getText(R.string.visible_status));
-            tvStatusInfo.setText(getText(R.string.visible_moto));
+        assert isProcessing.getValue() != null;
+
+        if (isProcessing.getValue()) {
+            // Processing
+            piProcessStatus.show();
+            btChangeStatus.setEnabled(false);
         } else {
-            // Hidden
-            ivStatusImg.setImageResource(R.drawable.img_status_hidden);
-            btChangeStatus.setText(R.string.unhide);
-            btChangeStatus.setIconResource(R.drawable.ic_wolf);
-            btSetHideFiles.setEnabled(false);
-            btSetHideApps.setEnabled(false);
-            tvStatus.setText(getText(R.string.hidden_status));
-            tvStatusInfo.setText(getText(R.string.hidden_moto));
+            // Not Processing
+            piProcessStatus.hide();
+            btChangeStatus.setEnabled(true);
+
+            if (!prefMgr.getIsHidden()) {
+                // Visible
+                ivStatusImg.setImageResource(R.drawable.img_status_visible);
+                btChangeStatus.setText(R.string.hide);
+                btChangeStatus.setIconResource(R.drawable.ic_paw);
+                btSetHideFiles.setEnabled(true);
+                btSetHideApps.setEnabled(true);
+                tvStatus.setText(getText(R.string.visible_status));
+                tvStatusInfo.setText(getText(R.string.visible_moto));
+            } else {
+                // Hidden
+                ivStatusImg.setImageResource(R.drawable.img_status_hidden);
+                btChangeStatus.setText(R.string.unhide);
+                btChangeStatus.setIconResource(R.drawable.ic_wolf);
+                btSetHideFiles.setEnabled(false);
+                btSetHideApps.setEnabled(false);
+                tvStatus.setText(getText(R.string.hidden_status));
+                tvStatusInfo.setText(getText(R.string.hidden_moto));
+            }
         }
+
+        TileService.requestListeningState(MainActivity.this,
+                new ComponentName(MainActivity.this, QuickSettingService.class));
     }
 
 

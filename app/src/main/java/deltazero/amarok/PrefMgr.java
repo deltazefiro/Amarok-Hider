@@ -129,4 +129,13 @@ public class PrefMgr {
         mPrefEditor.putBoolean("enableObfuscateTextFileEnhanced", ifObfuscateTextFileEnhanced);
         mPrefEditor.apply();
     }
+
+    public boolean getEnablePanicButton() {
+        return mPrefs.getBoolean("enablePanicButton", false);
+    }
+
+    public void setEnablePanicButton(boolean isEnablePanicButton) {
+        mPrefEditor.putBoolean("enablePanicButton", isEnablePanicButton);
+        mPrefEditor.apply();
+    }
 }
