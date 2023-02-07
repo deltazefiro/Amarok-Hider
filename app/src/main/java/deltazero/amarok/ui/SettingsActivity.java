@@ -81,6 +81,9 @@ public class SettingsActivity extends AppCompatActivity {
         swPanicButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
             prefMgr.setEnablePanicButton(isChecked);
             ((AmarokApp) getApplication()).panicButton.updateToastState();
+            if (isChecked) {
+                ((AmarokApp) getApplication()).panicButton.requestPermission(context);
+            }
         });
         swAnalytics.setOnCheckedChangeListener((buttonView, isChecked) -> {
             AppCenterUtil.setAnalyticsEnabled(isChecked);
