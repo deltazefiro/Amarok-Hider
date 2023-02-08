@@ -105,7 +105,7 @@
     <string name="misc">Misc.</string>
     <string name="security">Security</string>
     <string name="panic_button">Panic button</string>
-    <string name="panic_button_description">Floating emergency button used to hide apps shown over all other apps.\nOnly shows when apps are unhidden.</string>
+    <string name="panic_button_description">Floating emergency button used to hide apps again.\nIt is shown over all other apps.</string>
     <string name="in_app_update_failed">New version available, but it could not be downloaded. Please isntall it manually.</string>
     <string name="failed_to_open_doc_tree">Could not open the file selector on the system</string>
     <string name="failed_to_open_doc_tree_description">Your system does not have a default filemanager. Please long-press the \"Add hidden folder\" button and select one manually.</string>
