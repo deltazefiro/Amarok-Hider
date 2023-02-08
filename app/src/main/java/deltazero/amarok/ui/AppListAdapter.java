@@ -1,5 +1,9 @@
 package deltazero.amarok.ui;
 
+import static android.content.pm.PackageManager.GET_META_DATA;
+import static android.content.pm.PackageManager.MATCH_DISABLED_COMPONENTS;
+import static android.content.pm.PackageManager.MATCH_UNINSTALLED_PACKAGES;
+
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
@@ -17,7 +21,6 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
@@ -36,12 +39,12 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppListH
 
         pkgMgr = context.getPackageManager();
         prefMgr = new PrefMgr(context);
-        lsAppInfo = pkgMgr.getInstalledApplications(PackageManager.GET_META_DATA);
+        lsAppInfo = pkgMgr.getInstalledApplications(GET_META_DATA | MATCH_DISABLED_COMPONENTS | MATCH_UNINSTALLED_PACKAGES);
 
         // Remove system apps
         lsAppInfo.removeIf(a -> (a.flags & ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM);
         // Remove Amarok
-        lsAppInfo.removeIf(a -> (Objects.equals(a.packageName, "deltazero.amarok")));
+        lsAppInfo.removeIf(a -> (a.packageName.contains("deltazero.amarok")));
         // Sort with name
         lsAppInfo.sort(new Comparator<ApplicationInfo>() {
             @Override
