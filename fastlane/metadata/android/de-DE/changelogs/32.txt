@@ -1,0 +1,13 @@
+Pannen
+* Upgrade der TargetAPI auf 33 (Android 13)
+Neue Funktionen
+* Unterstützt vollständige Obfuskation von Textdateien (#3)
+* Unterstützung der erweiterten Verschleierung von Textdateien (#3)
+Optimiert
+* Upgrade der Java-Kompilierversion auf Java 11
+* Upgrade dep AppCompat
+* Refactor des FileHider zur Verbesserung der Stabilität (#20)(#16)
+* Austausch der Reihenfolge des Ausblendens von Anwendungen und Dateien
+* Optimierung der englischen und chinesischen Übersetzung
+Fix
+* Keine
