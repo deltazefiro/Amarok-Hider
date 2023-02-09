@@ -24,7 +24,7 @@
     <string name="set_hide_files">Set Hidden Files</string>
     <string name="show_about">Show about</string>
     <string name="moto" translatable="false">Hunting alone in the starless night.</string>
-    <string name="enable_analytics">Anonymous Analytics</string>
+    <string name="enable_analytics">Anonymous analytics</string>
     <string name="analytics_description">Send anonymous crash reports to the developers for analysis.</string>
     <string name="about_description">Shows info about the app.</string>
     <string name="usage">Usage</string>
@@ -52,7 +52,7 @@
     <string name="path_duplicated_description"><u>\'%s\'</u>\n\ncontains\n\n<u>\'%s\'</u></string>
     <string name="no_apphider">Please select app-hiding mode in \"More settings\".</string>
     <string name="root_not_ava">Could not get root access.</string>
-    <string name="check_update_on_start">Auto Update</string>
+    <string name="check_update_on_start">Auto update</string>
     <string name="check_update_on_start_description">Check for new Amarok versions when opening the app.</string>
     <string name="check_update">Check for update</string>
     <string name="check_update_description">Current version: %s</string>
@@ -63,7 +63,7 @@
     <string name="no_update_ava">You are running the latest version.</string>
     <string name="manually_set_path">Pick manually</string>
     <string name="manually_set_path_description">Caution: Ensure the what you select manually actually exists, as this is not validated.</string>
-    <string name="view_github_repo">Source code</string>
+    <string name="view_github_repo">GitHub repository</string>
     <string name="view_github_repo_description" translatable="false">deltazefiro/Amarok-Hider</string>
     <string name="shizuku_pre_v11">Unsupported Shizuku version: Pre-v11. Please install Shizuku v11 or later.</string>
     <string name="shizuku_permission_denied">Shizuku: Permission denied</string>
@@ -75,9 +75,9 @@
     <string name="apphider_none">Disabled</string>
     <string name="apphider_none_description">Turn off app-hiding.</string>
     <string name="apphider_root">Root mode</string>
-    <string name="apphider_root_description">App hiding with root access.\nRecommended if your device is rooted, but lacks the Xposed framework. Root permission is required.</string>
+    <string name="apphider_root_description">App-hiding with root access.\nRecommended if your device is rooted, but lacks the Xposed framework. Root permission is required.</string>
     <string name="apphider_shizuku">Shizuku (Sui) mode</string>
-    <string name="apphider_shizuku_description">App-hiding with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or has the Xposed framework. Installed and active Shizuku or Sui required.\n<i><b>* Deep hiding</b>: Removes hidden apps from the system menu.</i></string>
+    <string name="apphider_shizuku_description">App-hiding with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or has the Xposed framework. Installed and active Shizuku or Sui required.\n</string>
     <string name="apphider_dsm">DSM mode</string>
     <string name="apphider_dsm_description">App-hiding with Delegated-Scopes-Manager.\nNot recommended unless your device runs Android 10 or earlier and is not rooted. May be buggy and work unexpectedly. Installed Icebox (or StopAPP) set as device owner required.</string>
     <string name="learn_more">Learn more</string>
@@ -88,11 +88,11 @@
     <string name="obfuscate_file_header_description">Obfuscate the file signature in the file header to make the file \"corrupted\". Prevents the file from being opened by \"Open With\" manually, but may slow down the file-hiding process.</string>
     <string name="filename_only">Filenames only</string>
     <string name="filename_and_header">Filename + Header</string>
-    <string name="obfuscate_text_file">Fully obfuscated text files</string>
+    <string name="obfuscate_text_file">Fully obfuscate text files</string>
     <string name="obfuscate_text_file_description">Experimental feature. Obfuscating file headers have no effect on text files. Enabling this function will fully obfuscate text files. It will slow down the hiding process to some extent.</string>
     <string name="obfuscate_text_file_enhanced">Fully obfuscate text files - Enhanced</string>
-    <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully obfuscated text files\". Utilize this option only if the standard method proves ineffective. Slows down the hiding process dramatically.</string>
-    <string name="join_developer_channel">Join Developer Channel</string>
+    <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully obfuscate text files\". Utilize this option only if the standard method proves ineffective. Slows down the hiding process dramatically.</string>
+    <string name="join_developer_channel">Telegram channel</string>
     <string name="developer_channel_telegram" translatable="false">Telegram @amarok_app</string>
     <string name="processing">Processing…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
@@ -105,7 +105,7 @@
     <string name="misc">Misc.</string>
     <string name="security">Security</string>
     <string name="panic_button">Panic button</string>
-    <string name="panic_button_description">Display an emergency button used to hide apps again. It is shown over all other apps. The button only shows in unhidden state.</string>
+    <string name="panic_button_description">Display an floating hide button used to hide apps &amp; files in emergency. It is shown over all other apps. The button only shows in unhidden state.</string>
     <string name="in_app_update_failed">New version available, but failed to fetch. Please update manually.</string>
     <string name="failed_to_open_doc_tree">Could not open the system file picker</string>
     <string name="failed_to_open_doc_tree_description">Oops! Your system does not have a default filemanager. Please long-press the \"Add hidden folder\" button and input the path manually.</string>
