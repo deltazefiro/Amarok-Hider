@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hide">Verstecken</string>
+    <string name="setting_not_ava_when_hidden">Diese Einstellung ist nur nach dem Einblenden verfügbar</string>
+    <string name="visible_status">Sichtbar</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="unhide">Einblenden</string>
+    <string name="about">Über</string>
+    <string name="show_about">Über anzeigen</string>
+    <string name="hidden_status">Versteckt</string>
+    <string name="storage_permission_denied">Speicherberechtigung verweigert. Das Ausblenden von Dateien ist nicht verfügbar</string>
+    <string name="ok">OK</string>
+    <string name="set_hide_apps">Versteckte Apps einstellen</string>
+    <string name="storage_permission_request_title">Speichererlaubnis erforderlich</string>
+    <string name="storage_permission_request_message">Amarok benötigt Zugriff auf externen Speicher, um Ihre Dateien zu verstecken.</string>
+    <string name="set_hide_files">Versteckte Dateien einstellen</string>
+    <string name="usage_description">Offene Verwendung.</string>
+    <string name="apphider_not_ava">AppHider nicht verfügbar. Überprüfen Sie WeitereEinstellungen -&gt; AppHider wechseln.</string>
+    <string name="enable_analytics">Analytik einschalten</string>
+    <string name="analytics_description">Erlauben Sie Amarok, Protokolle für die Analyse zu senden.</string>
+    <string name="about_description">Über anzeigen.</string>
+    <string name="usage">Verwendung</string>
+    <string name="switch_app_hider">AppHider Arbeitsmodus wechseln</string>
+    <string name="current_mode">Aktueller Modus: %s</string>
+    <string name="switch_file_hider">FileHider Arbeitsmodus wechseln</string>
+    <string name="more_settings">Weitere Einstellungen</string>
+    <string name="apply_on_restart">Änderungen werden beim nächsten Neustart übernommen.</string>
+    <string name="no_apphider">Bitte wählen Sie AppHider Arbeitsmodus in Weitere Einstellungen.</string>
+    <string name="hidden_toast">Versteckt. Hahn-ein-Gekritzel-tun~!</string>
+    <string name="unhidden_toast">Unversteckt. Seien Sie vorsichtig.</string>
+    <string name="show_debug_info">Debug-Informationen</string>
+    <string name="debug_info_description">Debug-Informationen anzeigen</string>
+    <string name="invalid_dsm_provider">DSM: Ungültiger DSM Provider. Haben Sie den DSM Provider auf Ihrem Gerät installiert und aktiviert\?</string>
+    <string name="folder_selector_hints">Hinweise zur Ordnerauswahl:
+\n\t 1. Klicken Sie auf \"Diesen Ordner verwenden\", um den Ordner auszuwählen
+\n\t 2. Wählen Sie immer die Datei aus dem lokalen Speicher
+\n\t(Sie können von der rechten Seite des Bildschirms schieben, um lokale Dateien zu öffnen)</string>
+    <string name="check_update_on_start">Automatische Aktualisierung</string>
+    <string name="apphider_shizuku_description">HideApp mit Shizuku (oder Sui).
+\nEmpfohlen, wenn Ihr Gerät mit Android 11+ oder mit Xposed Verschalung läuft. Sie müssen Shizuku oder Sui installieren und aktivieren, um diesen Modus zu verwenden.
+\n<i><b>* DeepHide</b>: Versteckte Anwendungen werden in diesem Modus nicht im Systemmenü angezeigt.</i></string>
+    <string name="hide_app_failed_admin_inactive">App ausblenden fehlgeschlagen: Admin nicht aktiv.</string>
+    <string name="apphider_dsm">DSM-Modus [Veraltet]</string>
+    <string name="obfuscate_filename">Dateiname verschleiern</string>
+    <string name="add_hide_files">Versteckter-Ordner hinzufügen</string>
+    <string name="apphider_not_ava_title">Nicht verfügbar AppHider</string>
+    <string name="dsm_permission_denied">DSM: Erlaubnis verweigert</string>
+    <string name="remove_hide_path">Pfad verbergen entfernen\?</string>
+    <string name="root_not_ava">Root-Zugriff nicht möglich.</string>
+    <string name="check_update_on_start_description">Prüfen Sie, ob es beim Start von Amarok Aktualisierungen gibt.</string>
+    <string name="check_update">Aktualisierung überprüfen</string>
+    <string name="check_update_description">Aktuelle Version: %s</string>
+    <string name="update_description">Amarok %s (%d) ist zum Herunterladen und Installieren verfügbar.</string>
+    <string name="manually_set_path_description">Achtung! Der manuell eingegebene Pfad **überspringt** die Validierung. Bitte stellen Sie sicher, dass der Pfad gültig ist.</string>
+    <string name="apphider_none_description">Deaktivieren Sie die HideApp-Funktion.</string>
+    <string name="update_ava">Aktualisierung verfügbar!</string>
+    <string name="never">Niemals</string>
+    <string name="no_update_ava">Noch keine Aktualisierung verfügbar.</string>
+    <string name="manually_set_path">Pfad manuell festlegen</string>
+    <string name="view_github_repo">GitHub Repo anzeigen</string>
+    <string name="apphider_root">Root-Modus</string>
+    <string name="update">Aktualisierung</string>
+    <string name="shizuku_permission_denied">Shizuku: Erlaubnis verweigert</string>
+    <string name="shizuku_hidden_api_error">App kann nicht versteckt werden: IPackageManager api kann nicht abgerufen werden.</string>
+    <string name="shizuku_pre_v11">Nicht unterstützte Shizuku-Version: Vor-v11. Bitte aktualisieren Sie Ihr Shizuku.</string>
+    <string name="shizuku_not_working">Shizuku: Dienst nicht verfügbar. Haben Sie Shizuku/Shu auf Ihrem Gerät installiert\?</string>
+    <string name="shizuku_service_not_running">Shizuku: Der Dienst läuft nicht.</string>
+    <string name="apphider_none">Behinderte</string>
+    <string name="apphider_dsm_description">HideApp mit Delegated-Scopes-Manager.
+\nNICHT empfohlen, es sei denn, Ihr Gerät läuft unter Android 10 oder darunter und ist nicht verwurzelt. Er kann FEHLERHAFT sein und unerwartet funktionieren. Sie müssen Icebox oder StopAPP installieren und sie als DeviceManager einstellen, um diesen Modus zu verwenden.</string>
+    <string name="apphider_root_description">HideApp mit Root.
+\nEmpfohlen, wenn Ihr Gerät verwurzelt ist, aber ohne Xposed-Verschalung. Root-Erlaubnis ist erforderlich.</string>
+    <string name="apphider_shizuku">Shizuku (Sui) Modus - <font fgcolor="#de5f1b">DeepHide</font></string>
+    <string name="filename_only">Nur Dateiname</string>
+    <string name="panic_button">Panik Knopf</string>
+    <string name="learn_more">Mehr erfahren</string>
+    <string name="option_unava_when_hidden">Optionen sind bis zum Einblenden nicht verfügbar.</string>
+    <string name="obfuscate_text_file">Textdatei vollständig verschleiern</string>
+    <string name="filename_and_header">Dateiname + Köpfzeile</string>
+    <string name="obfuscate_filename_description">Den Dateinamen für Menschen unlesbar machen. Die Grundfunktion von FileHider. Kann nicht deaktiviert werden.</string>
+    <string name="security">Sicherheit</string>
+    <string name="obfuscate_text_file_description_enhanced">Nicht empfohlen. Eine erweiterte Version von \"Vollständige Verschleierung von Textdateien\". Verwenden Sie diese Option nur, wenn sich die Standardmethode als unwirksam erweist. Sie verlangsamt den Verbergungsprozess drastisch.</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="workmode">Arbeitsmodus</string>
+    <string name="processing">Verarbeitung</string>
+    <string name="misc">Sonstiges</string>
+    <string name="panic_button_description">Zeigen Sie eine schwebende Schaltfläche \"Notfall - Ausblenden\" über anderen Anwendungen an. Die Schaltfläche wird nur im eingeblendeten Zustand angezeigt.</string>
+    <string name="failed_to_open_doc_tree">Systemdateiauswahl konnte nicht geöffnet werden</string>
+    <string name="in_app_update_failed">Neues Aktualisierung verfügbar, konnte aber nicht abgerufen werden. Bitte aktualisieren Sie manuell.</string>
+    <string name="obfuscate_file_header">Dateiköpf verschleiern</string>
+    <string name="obfuscate_file_header_description">Verschleiern Sie die Dateisignatur in der Dateiköpf, um die Datei \"beschädigt\" zu machen. Dies verhindert, dass die Datei durch die manuelle Auswahl von \"Öffnen mit\" geöffnet wird, kann aber den Prozess des Ausblendens der Datei verlangsamen.</string>
+    <string name="remove_hide_path_description">Sind Sie sicher, dass Sie den Pfad \'%s\' aus dem Versteck entfernen müssen\?</string>
+    <string name="confirm">Bestätigen</string>
+    <string name="not_local_storage">Nicht unterstütztes Verzeichnis</string>
+    <string name="not_local_storage_description">Bitte stellen Sie sicher, dass es sich um einen lokalen Pfad handelt und nicht um einen virtuellen.</string>
+    <string name="help">Hilfe</string>
+    <string name="path_duplicated">Duplizierter Pfad</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>
+\n
+\n enthält
+\n
+\n<u>\'%s\'</u></string>
+    <string name="obfuscate_text_file_description">Experimentelle Funktion. Die Obfuskierung von Dateiköpfen hat keine Auswirkungen auf Textdateien. Wenn Sie diese Funktion aktivieren, werden Textdateien vollständig verschleiert. Sie verlangsamt den Verbergungsprozess bis zu einem gewissen Grad.</string>
+    <string name="obfuscate_text_file_enhanced">Textdatei vollständig verschleiern - Erweitert</string>
+    <string name="join_developer_channel">Entwickler-Kanal beitreten</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="alert_permission_denied">Display-over-apps-Erlaubnis verweigert.</string>
+    <string name="alert_permission_request_title">Erlaubnis für Popup-Fenster erforderlich</string>
+    <string name="alert_permission_request_message">Der Panik-Button benötigt die Berechtigung \"Popout-Fenster\", um zu funktionieren. Bitte finden Sie Amarok im Einstellungsmenü und erteilen Sie die Erlaubnis.</string>
+    <string name="failed_to_open_doc_tree_description">Huch! Es scheint, dass Ihr System keinen Standard-Dateimanager hat\? Bitte drücken Sie lange auf die Schaltfläche \"Versteckter-Ordner hinzufügen\" und legen Sie den Pfad manuell fest.</string>
+</resources>
