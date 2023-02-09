@@ -48,4 +48,65 @@
     <string name="filename_and_header">Filnavn + hode</string>
     <string name="dsm_permission_denied">DSM: Tilgang nektet</string>
     <string name="shizuku_service_not_running">Shizuku: Tjenesten kjører ikke.</string>
+    <string name="shizuku_pre_v11">Ustøttet Shizuku-versjon: Installer Shizuku v11 eller nyere.</string>
+    <string name="manually_set_path_description">Advarsel: Forsikre at stien du setter manuelt er gyldig, fordi den **hopper over** bekreftelsen.</string>
+    <string name="analytics_description">Tillat Amarok og sende loggføring i analyseøyemed.</string>
+    <string name="set_hide_files">Sett skjulte filer</string>
+    <string name="enable_analytics">Skru på analyseinnhenting</string>
+    <string name="usage_description">Åpne «Bruk».</string>
+    <string name="switch_app_hider">Bytt programskjulingsmodus</string>
+    <string name="switch_file_hider">Bytt arbeidsmetode for filskjuling</string>
+    <string name="hidden_toast">Borte. Hei duuuuu.</string>
+    <string name="hide_app_failed_admin_inactive">Kunne ikke skjule programmet. Administrering er ikke aktiv.</string>
+    <string name="add_hide_files">Programskjulingsmappe</string>
+    <string name="apphider_not_ava">Programskjuler er ikke tilgjengelig. Sjekk «Flere innstillinger» → «Bytt programskjuler».</string>
+    <string name="shizuku_not_working">Shizuku: Tjenesten er ikke gyldig. Har du installert Shizuku/Shu på enheten din\?</string>
+    <string name="remove_hide_path">Fjern skjulingssti\?</string>
+    <string name="remove_hide_path_description">Fjern stien «%s» fra skjuling\?</string>
+    <string name="not_local_storage_description">Forsikre deg om at det er en mappe som finnes.</string>
+    <string name="path_duplicated">Duplisert sti</string>
+    <string name="no_apphider">Velg programskjulingsmodus i «Flere innstillinger».</string>
+    <string name="root_not_ava">Fikk ikke rot-tilgang.</string>
+    <string name="check_update_on_start">Automatisk oppdatering</string>
+    <string name="update">Oppdater</string>
+    <string name="shizuku_hidden_api_error">Klarte ikke å skjule programmet: Kunne ikke hente IPackageManager-API.</string>
+    <string name="apphider_not_ava_title">Utilgjengelig programskjuler</string>
+    <string name="apphider_shizuku">Shizuku (Sui)-modus - <font fgcolor="#de5f1b">DeepHide</font></string>
+    <string name="apphider_dsm">DSM-modus [Foreldet]</string>
+    <string name="obfuscate_filename">Tilslør filnavnet</string>
+    <string name="obfuscate_filename_description">Gjør filnavnet lesbart for mennesker. Den grunnleggende funksjonen til fulskjuleren. Kan ikke skrus av.</string>
+    <string name="obfuscate_text_file">Tilslør tekstfilen helt</string>
+    <string name="obfuscate_text_file_enhanced">Tilslør tekstfilen helt - forbedret</string>
+    <string name="obfuscate_text_file_description_enhanced">Ikke anbefalt. En forbedret versjon av «Tilslør tekstfilen helt». Kun bruk dette hvis forvalgt metode ikke fungerer. Det gjør skjulingsprosessen mye tregere.</string>
+    <string name="apphider_root_description">Skjuling av programmer med rot-tilgang.
+\nAnbefalt hvis du har rot-tilgang på enheten din, men ikke Xposed-rammeverket. Rot-tilgang kreves.</string>
+    <string name="panic_button">Panikk-knapp</string>
+    <string name="misc">Ymse</string>
+    <string name="security">Sikkerhet</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="obfuscate_file_header">Tilslør filhodet</string>
+    <string name="apphider_none_description">Skru av programskjulingsfunksjon.</string>
+    <string name="processing">Behandler …</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="alert_permission_denied">Tilgang til visning over programmer nektet.</string>
+    <string name="alert_permission_request_title">Tilgang til åpning av oppsprettsvinduer kreves.</string>
+    <string name="alert_permission_request_message">Panikk-knappen trenger tilgang til åpning av oppsprettsvinduer. Finn Amarok i innstillingsmenyen og innvilg den tilgangen.</string>
+    <string name="in_app_update_failed">Ny oppdatering tilgjengelig, men klarte ikke å hente. Oppdater manuelt.</string>
+    <string name="workmode">Modus</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="failed_to_open_doc_tree">Klarte ikke å åpne systemfilvelgeren</string>
+    <string name="folder_selector_hints">Hint for valg av mappe:
+\n\t 1. Trykk på «Bruk denne mappen» for å velge mappen.
+\n\t 2. Alltid velg en fil som er lagret på selve enheten du bruker.
+\n\t(Du kan dra fra høyre av skjermen for å åpne lokale filer)</string>
+    <string name="option_unava_when_hidden">Alternativer er tilgjengelig til skjuling opphører.</string>
+    <string name="apphider_shizuku_description">HideApp med Shizuku (eller Sui).
+\nAnbefalt hvis enheten din kjører Android 11+, eller med Xposed-rammeverket. Du må installere og aktivere Shizuku eller Sui for å bruke dette.
+\n<i><b>* DeepHide</b>: Skjulte programmer vises ikke i systemmenyen.</i></string>
+    <string name="obfuscate_file_header_description">Tilslør filsignaturen i filhodet for å gjøre filen «skadet». Dette forhindrer den fra åpning eller å bli valgt med «Åpne i …» manuelt, men kan gjøre filskjulingsprosessen tregere.</string>
+    <string name="apphider_dsm_description">HideApp med Delegated-Scopes-Manager.
+\nIkke anbefalt med mindre enheten din kjører Android 10 eller tidligere, og ikke har rot-tilgang. Det kan være feilaktig og fungere dårlig. Du må installere Icebox eller StopAPP og sette dem som enhetshåndterer for å bruke dette.</string>
+    <string name="panic_button_description">Vis en flytende knapp over andre programmer til bruk i nødsfall. Knappen vises kun når skjuling er opphevet.</string>
+    <string name="failed_to_open_doc_tree_description">Du har ingen forvalgt filbehandler. Lang-trykk på «Legg til skjulingsmappe»-knappen og sett en sti manuelt.</string>
+    <string name="obfuscate_text_file_description">Eksperimentell funksjon. Tilsløring av filhoder har ingen effekt på tekstfiler. Å skru på denne funksjonen tilslører tekstfiler helt, men gjør det tregere.</string>
 </resources>
