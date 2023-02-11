@@ -17,7 +17,7 @@ public class RootAppHider extends AppHiderBase {
     public void hide(Set<String> pkgNames) {
         StringBuilder cmd = new StringBuilder("echo amarok");
         for (String p : pkgNames)
-            cmd.append(String.format("&pm disable-user %s", p));
+            cmd.append(String.format("&pm disable-user %s & pm hide %s", p, p));
         ShellUtil.exec(new String[]{"su", "-c", cmd.toString()});
     }
 
@@ -25,7 +25,7 @@ public class RootAppHider extends AppHiderBase {
     public void unhide(Set<String> pkgNames) {
         StringBuilder cmd = new StringBuilder("echo amarok");
         for (String p : pkgNames)
-            cmd.append(String.format("&pm enable %s", p));
+            cmd.append(String.format("&pm enable %s & pm unhide %s", p, p));
         ShellUtil.exec(new String[]{"su", "-c", cmd.toString()});
     }
 
