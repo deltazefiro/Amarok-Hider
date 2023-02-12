@@ -92,8 +92,8 @@
     <string name="obfuscate_text_file_description">Experimental feature. Obfuscating file headers have no effect on text files. Enabling this function will fully obfuscate text files. It will slow down the hiding process to some extent.</string>
     <string name="obfuscate_text_file_enhanced">Fully obfuscate text files - Enhanced</string>
     <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully obfuscate text files\". Utilize this option only if the standard method proves ineffective. Slows down the hiding process dramatically.</string>
-    <string name="join_developer_channel">Telegram channel</string>
-    <string name="developer_channel_telegram" translatable="false">Telegram @amarok_app</string>
+    <string name="join_developer_channel">Telegram group</string>
+    <string name="developer_channel_telegram" translatable="false">Telegram @amarok_dev</string>
     <string name="processing">Processing…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
