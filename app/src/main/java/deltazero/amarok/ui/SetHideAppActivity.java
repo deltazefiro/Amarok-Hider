@@ -1,7 +1,5 @@
 package deltazero.amarok.ui;
 
-import android.app.SearchManager;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 
@@ -43,15 +41,12 @@ public class SetHideAppActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_hideapp, menu);
 
-        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         SearchView searchView = (SearchView) menu.findItem(R.id.action_search_app).getActionView();
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             private boolean once = false;
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // adapter.update(query);
                 return true;
             }
 
@@ -65,7 +60,7 @@ public class SetHideAppActivity extends AppCompatActivity {
 
         searchView.setOnCloseListener(() -> {
             adapter.update(null);
-            return false;
+            return true;
         });
 
         return super.onCreateOptionsMenu(menu);
