@@ -109,4 +109,5 @@
     <string name="in_app_update_failed">New version available, but failed to fetch. Please update manually.</string>
     <string name="failed_to_open_doc_tree">Could not open the system file picker</string>
     <string name="failed_to_open_doc_tree_description">Oops! Your system does not have a default filemanager. Please long-press the \"Add hidden folder\" button and input the path manually.</string>
+    <string name="search">Search</string>
 </resources>

@@ -18,9 +18,10 @@
             android:id="@+id/hideapp_tb_toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:menu="@menu/menu_hideapp"
             app:navigationIcon="@drawable/ic_back"
-            app:title="@string/set_hide_apps"
-            app:navigationIconTint="?attr/colorOnSurface"/>
+            app:navigationIconTint="?attr/colorOnSurface"
+            app:title="@string/set_hide_apps" />
 
 
     </com.google.android.material.appbar.AppBarLayout>
