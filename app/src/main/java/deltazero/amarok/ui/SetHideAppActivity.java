@@ -1,9 +1,12 @@
 package deltazero.amarok.ui;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,14 +34,40 @@ public class SetHideAppActivity extends AppCompatActivity {
         rvAppList.setLayoutManager(new LinearLayoutManager(this));
 
         // Enable back button
-        tbToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
+        setSupportActionBar(tbToolBar);
+        tbToolBar.setNavigationOnClickListener(v -> finish());
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_hideapp, menu);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search_app).getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            private boolean once = false;
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // adapter.update(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (once) adapter.update(newText);
+                else once = true;
+                return true;
+            }
+        });
+
+        searchView.setOnCloseListener(() -> {
+            adapter.update(null);
+            return false;
+        });
+
+        return super.onCreateOptionsMenu(menu);
+    }
 }
