@@ -224,6 +224,10 @@ public class FileHider {
                 @Override
                 public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
 
+                    // Skip .nomedia
+                    if (path.getFileName().toString().equals(".nomedia"))
+                        return FileVisitResult.CONTINUE;
+
                     // Check whether the whole file should be processed before renaming (processFilename).
                     boolean shouldProcessHeader = checkShouldProcessHeader(path, processConfig);
                     boolean shouldProcessWhole = checkShouldProcessWhole(path, processConfig);
