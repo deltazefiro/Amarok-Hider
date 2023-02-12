@@ -157,7 +157,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void joinDevGroup(View view) {
-        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/amarok_app")));
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/amarok_dev")));
     }
 
     public void showDebugInfo(View view) {
