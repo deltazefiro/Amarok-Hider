@@ -48,6 +48,7 @@ public class Hider {
             isProcessing.postValue(true);
             syncHide();
             isProcessing.postValue(false);
+            QuickHideService.stopService(context);
         });
     }
 
@@ -56,6 +57,7 @@ public class Hider {
             isProcessing.postValue(true);
             syncUnhide();
             isProcessing.postValue(false);
+            QuickHideService.startService(context);
         });
     }
 
