@@ -20,7 +20,6 @@ import com.hjq.permissions.XXPermissions;
 import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
-import deltazero.amarok.PanicButton;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.QuickSettingService;
 import deltazero.amarok.R;
@@ -39,8 +38,6 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
     private MutableLiveData<Boolean> isProcessing;
-
-    private PanicButton panicButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

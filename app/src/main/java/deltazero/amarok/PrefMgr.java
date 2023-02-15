@@ -130,6 +130,15 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
+    public boolean getEnableQuickHideService() {
+        return mPrefs.getBoolean("enableQuickHideService", false);
+    }
+
+    public void setEnableQuickHideService(boolean isEnableQuickHideService) {
+        mPrefEditor.putBoolean("enableQuickHideService", isEnableQuickHideService);
+        mPrefEditor.apply();
+    }
+
     public boolean getEnablePanicButton() {
         return mPrefs.getBoolean("enablePanicButton", false);
     }

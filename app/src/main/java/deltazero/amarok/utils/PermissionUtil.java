@@ -1,6 +1,7 @@
 package deltazero.amarok.utils;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -46,6 +47,46 @@ public class PermissionUtil {
                 .show();
 
 
+    }
+
+    public static void requestNotificationPermission(Context context, OnPermissionCallback callback) {
+        if (XXPermissions.isGranted(context, Permission.SYSTEM_ALERT_WINDOW)) {
+            callback.onGranted(null, true);
+            return;
+        }
+
+        new MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.notification_permission_request_title)
+                .setMessage(R.string.notification_permission_request_message)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    // Request permissions
+                    XXPermissions.with(context)
+                            .permission(Permission.NOTIFICATION_SERVICE)
+                            .request(callback);
+                })
+                .setNegativeButton(R.string.cancel, (dialog, which) -> callback.onDenied(null, false))
+                .setOnCancelListener(dialog -> callback.onDenied(null, false))
+                .show();
+    }
+
+    public static void requestSystemAlertPermission(Context context, OnPermissionCallback callback) {
+        if (XXPermissions.isGranted(context, Permission.SYSTEM_ALERT_WINDOW)) {
+            callback.onGranted(null, true);
+            return;
+        }
+
+        new MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.alert_permission_request_title)
+                .setMessage(R.string.alert_permission_request_message)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    // Request permissions
+                    XXPermissions.with(context)
+                            .permission(Permission.SYSTEM_ALERT_WINDOW)
+                            .request(callback);
+                })
+                .setNegativeButton(R.string.cancel, (dialog, which) -> callback.onDenied(null, false))
+                .setOnCancelListener(dialog -> callback.onDenied(null, false))
+                .show();
     }
 
 }
