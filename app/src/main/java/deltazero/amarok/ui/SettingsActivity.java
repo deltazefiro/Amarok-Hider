@@ -72,6 +72,9 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Setup Listeners
         swQuickHideNotification.setOnCheckedChangeListener(((buttonView, isChecked) -> {
+            if (!buttonView.isPressed())
+                return; // Triggered by setCheck
+
             if (isChecked) {
                 PermissionUtil.requestNotificationPermission(this, new OnPermissionCallback() {
                     @Override
@@ -101,6 +104,9 @@ public class SettingsActivity extends AppCompatActivity {
         }));
 
         swPanicButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (!buttonView.isPressed())
+                return; // Triggered by setCheck
+
             if (isChecked) {
                 PermissionUtil.requestSystemAlertPermission(this, new OnPermissionCallback() {
                     @Override

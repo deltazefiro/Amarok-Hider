@@ -69,10 +69,11 @@ public class QuickHideService extends LifecycleService {
         // Start foreground
         Notification notification =
                 new Notification.Builder(this, CHANNEL_ID)
-                        .setContentTitle("Quick Hide Service")
-                        .setContentText("Your privacy is visible. Be aware.")
-                        .setSmallIcon(R.drawable.ic_app)
+                        .setContentTitle(getText(R.string.quick_hide_notification_title))
+                        .setContentText(getText(R.string.quick_hide_notification_content))
+                        .setSmallIcon(R.drawable.ic_paw)
                         .setContentIntent(pendingIntent)
+                        .setOngoing(true)
                         .build();
 
         startForeground(NOTIFICATION_ID, notification);

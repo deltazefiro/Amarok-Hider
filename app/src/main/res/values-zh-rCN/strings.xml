@@ -98,4 +98,14 @@
     <string name="in_app_update_failed">新更新可用但自动更新失败。请手动更新。</string>
     <string name="failed_to_open_doc_tree">无法打开文件选择器</string>
     <string name="failed_to_open_doc_tree_description">您的系统似乎没有默认文件管理器？请长按 “选择隐藏文件夹” 按键手动设置路径。</string>
+    <string name="search">搜索</string>
+    <string name="notification_channel_name">快速隐藏服务</string>
+    <string name="quick_hide">快速隐藏</string>
+    <string name="notification">通知</string>
+    <string name="quick_hide_notification_description">在未隐藏状态下显示一个通知用来提醒用户。</string>
+    <string name="notification_permission_request_title">需要通知权限</string>
+    <string name="notification_permission_request_message">快速隐藏服务需要通知权限来运行。</string>
+    <string name="notification_permission_denied">获取通知权限失败。</string>
+    <string name="quick_hide_notification_title">未隐藏</string>
+    <string name="quick_hide_notification_content">您的隐私未隐藏。点击进行隐藏。</string>
 </resources>
