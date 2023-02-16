@@ -110,11 +110,13 @@
     <string name="failed_to_open_doc_tree">Could not open the system file picker</string>
     <string name="failed_to_open_doc_tree_description">Oops! Your system does not have a default filemanager. Please long-press the \"Add hidden folder\" button and input the path manually.</string>
     <string name="search">Search</string>
-    <string name="notification_channel_name">State notification</string>
+    <string name="notification_channel_name">Quick Hide Service</string>
     <string name="quick_hide">Quick Hide</string>
     <string name="notification">Notification</string>
-    <string name="quick_hide_notification_description">Show a permanent notification with a quick hiding button when not hidden.</string>
+    <string name="quick_hide_notification_description">Show a permanent notification to notify users when not hidden.</string>
     <string name="notification_permission_request_title">Notification permission required</string>
     <string name="notification_permission_request_message">QuickHide service need notification permission to work.</string>
     <string name="notification_permission_denied">Notification permission denied.</string>
+    <string name="quick_hide_notification_title">Privacy not hidden</string>
+    <string name="quick_hide_notification_content">Your privacy is not hidden. Click to hide.</string>
 </resources>

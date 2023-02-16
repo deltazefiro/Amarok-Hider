@@ -1,7 +1,6 @@
 package deltazero.amarok.utils;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -24,7 +23,7 @@ public class PermissionUtil {
         new MaterialAlertDialogBuilder(context)
                 .setTitle(R.string.storage_permission_request_title)
                 .setMessage(R.string.storage_permission_request_message)
-                .setPositiveButton("OK", (dialog, which) -> {
+                .setPositiveButton(R.string.ok, (dialog, which) -> {
 
                     // Request permissions
                     XXPermissions.with(context)
@@ -58,7 +57,7 @@ public class PermissionUtil {
         new MaterialAlertDialogBuilder(context)
                 .setTitle(R.string.notification_permission_request_title)
                 .setMessage(R.string.notification_permission_request_message)
-                .setPositiveButton("OK", (dialog, which) -> {
+                .setPositiveButton(R.string.ok, (dialog, which) -> {
                     // Request permissions
                     XXPermissions.with(context)
                             .permission(Permission.NOTIFICATION_SERVICE)
@@ -78,7 +77,7 @@ public class PermissionUtil {
         new MaterialAlertDialogBuilder(context)
                 .setTitle(R.string.alert_permission_request_title)
                 .setMessage(R.string.alert_permission_request_message)
-                .setPositiveButton("OK", (dialog, which) -> {
+                .setPositiveButton(R.string.ok, (dialog, which) -> {
                     // Request permissions
                     XXPermissions.with(context)
                             .permission(Permission.SYSTEM_ALERT_WINDOW)
