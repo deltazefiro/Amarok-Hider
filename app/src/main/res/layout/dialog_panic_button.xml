@@ -4,5 +4,6 @@
     android:id="@+id/dialog_iv_panic_button"
     android:layout_width="40dp"
     android:layout_height="40dp"
+    android:alpha="0.8"
     android:src="@drawable/ic_paw"
     app:tint="@color/light_grey" />
