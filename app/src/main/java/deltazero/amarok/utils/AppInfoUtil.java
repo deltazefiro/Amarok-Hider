@@ -36,7 +36,9 @@ public class AppInfoUtil {
         return false;
     }
 
-    public void init() {
+    public void update() {
+        appInfoList.clear();
+
         // Get applications info
         List<ApplicationInfo> installedApplications = pkgMgr.getInstalledApplications(GET_META_DATA | MATCH_DISABLED_COMPONENTS | MATCH_UNINSTALLED_PACKAGES);
         for (ApplicationInfo applicationInfo : installedApplications) {

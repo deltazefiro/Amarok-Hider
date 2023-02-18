@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
@@ -17,6 +18,9 @@ public class SetHideAppActivity extends AppCompatActivity {
     private RecyclerView rvAppList;
     private AppListAdapter adapter;
     private MaterialToolbar tbToolBar;
+    private SwipeRefreshLayout srLayout;
+
+    private String query = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +29,10 @@ public class SetHideAppActivity extends AppCompatActivity {
 
         rvAppList = findViewById(R.id.hideapp_rv_applist);
         tbToolBar = findViewById(R.id.hideapp_tb_toolbar);
+        srLayout = findViewById(R.id.hideapp_sr_layout);
 
         // Inflate App list
-        adapter = new AppListAdapter(this);
+        adapter = new AppListAdapter(this, srLayout);
         rvAppList.setAdapter(adapter);
         rvAppList.setLayoutManager(new LinearLayoutManager(this));
 
@@ -35,6 +40,8 @@ public class SetHideAppActivity extends AppCompatActivity {
         setSupportActionBar(tbToolBar);
         tbToolBar.setNavigationOnClickListener(v -> finish());
 
+        // Setup onRefresh listener
+        srLayout.setOnRefreshListener(() -> adapter.update(query, true));
     }
 
     @Override
@@ -52,14 +59,15 @@ public class SetHideAppActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                if (once) adapter.update(newText);
+                query = newText.isEmpty() ? null : newText;
+                if (once) adapter.update(newText, false);
                 else once = true;
                 return true;
             }
         });
-
         searchView.setOnCloseListener(() -> {
-            adapter.update(null);
+            query = null;
+            adapter.update(null, false);
             return true;
         });
 
