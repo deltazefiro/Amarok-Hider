@@ -2,7 +2,6 @@ package deltazero.amarok.ui;
 
 import static deltazero.amarok.utils.AppInfoUtil.AppInfo;
 
-import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.os.HandlerThread;
@@ -17,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.checkbox.MaterialCheckBox;
 
@@ -41,9 +41,10 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
     private final Handler backgroundHandler;
     private boolean isRefreshing = false;
 
-    private final Activity activity;
+    private final SetHideAppActivity activity;
+    private final SwipeRefreshLayout srLayout;
 
-    public AppListAdapter(Activity activity) {
+    public AppListAdapter(SetHideAppActivity activity, SwipeRefreshLayout srLayout) {
         super(new DiffUtil.ItemCallback<>() {
             @Override
             public boolean areItemsTheSame(@NonNull AppInfo oldItem, @NonNull AppInfo newItem) {
@@ -67,10 +68,9 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
         appInfoUtil = new AppInfoUtil(activity);
 
         this.activity = activity;
-        backgroundHandler.post(() -> {
-            appInfoUtil.init();
-            update(null);
-        });
+        this.srLayout = srLayout;
+
+        update(null, true);
     }
 
     @NonNull
@@ -92,13 +92,17 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
     }
 
 
-    public void update(String query) {
+    public void update(String query, boolean fullUpdate) {
 
         // Refreshing thread lock
         if (isRefreshing) return;
         else isRefreshing = true;
 
+        if (fullUpdate) srLayout.setRefreshing(true);
+
         backgroundHandler.post(() -> {
+            // Refresh installed apps
+            if (fullUpdate) appInfoUtil.update();
             // Get app info
             List<AppInfo> lsAppInfo = appInfoUtil.getInstalledApps(query);
             // Sort with app name
@@ -113,8 +117,9 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
             // Notify update
             activity.runOnUiThread(() -> {
                 submitList(lsAppInfo);
+                srLayout.setRefreshing(false);
+                isRefreshing = false;
             });
-            isRefreshing = false;
         });
     }
 

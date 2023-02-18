@@ -117,6 +117,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 
     //    testImplementation 'junit:junit:4.+'
     //    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
