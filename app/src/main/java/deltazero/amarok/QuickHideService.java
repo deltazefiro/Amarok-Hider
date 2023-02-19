@@ -10,19 +10,15 @@ import android.graphics.PorterDuff;
 import android.util.Log;
 import android.view.Gravity;
 import android.widget.ImageView;
-import android.widget.Toast;
 
+import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.LifecycleService;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 import com.hjq.xtoast.XToast;
 import com.hjq.xtoast.draggable.SpringDraggable;
-
-import java.util.List;
 
 import deltazero.amarok.ui.MainActivity;
 
@@ -33,7 +29,8 @@ public class QuickHideService extends LifecycleService {
     private Hider hider;
     private ImageView ivPanicButton;
 
-    private PendingIntent pendingIntent;
+    private PendingIntent activityPendingIntent;
+    private NotificationCompat.Action action;
     private static final String CHANNEL_ID = "QUICK_HIDE_CHANNEL";
     private static final int NOTIFICATION_ID = 1;
 
@@ -50,8 +47,17 @@ public class QuickHideService extends LifecycleService {
                 getString(R.string.notification_channel_name), NotificationManager.IMPORTANCE_DEFAULT);
         getSystemService(NotificationManager.class).createNotificationChannel(channel);
 
-        pendingIntent = PendingIntent.getActivity(this, 0,
+        Intent actionIntent = new Intent(this, ActionReceiver.class);
+        actionIntent.setAction("deltazero.amarok.HIDE");
+        PendingIntent actionPendingIntent = PendingIntent.getBroadcast(this, 1,
+                actionIntent, PendingIntent.FLAG_IMMUTABLE);
+        action = new NotificationCompat.Action.Builder(
+                R.drawable.ic_paw,
+                getString(R.string.hide), actionPendingIntent).build();
+
+        activityPendingIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), PendingIntent.FLAG_IMMUTABLE);
+
     }
 
     @Override
@@ -68,12 +74,13 @@ public class QuickHideService extends LifecycleService {
 
         // Start foreground
         Notification notification =
-                new Notification.Builder(this, CHANNEL_ID)
+                new NotificationCompat.Builder(this, CHANNEL_ID)
                         .setContentTitle(getText(R.string.quick_hide_notification_title))
                         .setContentText(getText(R.string.quick_hide_notification_content))
                         .setSmallIcon(R.drawable.ic_paw)
-                        .setContentIntent(pendingIntent)
+                        .setContentIntent(activityPendingIntent)
                         .setOngoing(true)
+                        .addAction(action)
                         .build();
 
         startForeground(NOTIFICATION_ID, notification);

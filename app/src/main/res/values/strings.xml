@@ -119,4 +119,5 @@
     <string name="notification_permission_denied">Notification permission denied.</string>
     <string name="quick_hide_notification_title">Privacy not hidden</string>
     <string name="quick_hide_notification_content">Your privacy is not hidden. Click to hide.</string>
+    <string name="invalid_action">Invalid action received: %s</string>
 </resources>
