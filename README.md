@@ -23,6 +23,8 @@ Amarok only obscures filenames and file signatures, making files unreadable, and
 
 - **High-speed Large File Hiding**: Obfuscate filenames and file signatures to make files unreadable.  
 - **Root-free Application Hiding**: Make apps invisible on the launcher. Currently, it supports Root, Shizuku and DSM modes.  
+- **Boss key**: Hide apps & files with floating button in emergency.
+- **Quick settings tile**: Provide quick settings tile.
 - **Beautiful UI**: Full Material3 design.
 
 <table>
