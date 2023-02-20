@@ -53,7 +53,7 @@
     <string name="update_description">发现新版本: Amarok %s (%d)</string>
     <string name="manually_set_path">手动设置隐藏路径</string>
     <string name="manually_set_path_description">注意：手动输入路径将跳过可用性检测。请确保您输入的位置存在且有权访问。</string>
-    <string name="view_github_repo">打开 Github 仓库</string>
+    <string name="view_github_repo">Github 仓库</string>
     <string name="shizuku_pre_v11">Shizuku 版本过低: 请升级您的 Shizuku</string>
     <string name="shizuku_permission_denied">Shizuku: 权限请求被拒绝</string>
     <string name="shizuku_not_working">Shizuku 服务无效。请在您的设备上安装 Shizuku 或 Sui。</string>
@@ -82,19 +82,19 @@
     <string name="obfuscate_text_file_enhanced">文本文档完全混淆 - 增强</string>
     <string name="obfuscate_text_file_description">实验性功能。由于仅混淆文件头对文本文件无效，启用此选项将会对文本文件进行完全混淆。会影响隐藏速度。</string>
     <string name="obfuscate_text_file_description_enhanced">实验性功能，不建议使用。增强版本的混淆文本文件，对许多疑似文本的文件也进行混淆。可能明显减慢隐藏速度。</string>
-    <string name="join_developer_channel">加入开发群组</string>
+    <string name="join_developer_channel">开发群组</string>
     <string name="processing">运行中…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/hideapp.html#%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/hideapp.html</string>
     <string name="alert_permission_denied">悬浮窗权限获取失败。</string>
     <string name="alert_permission_request_title">悬浮窗权限请求</string>
-    <string name="alert_permission_request_message">“快速隐藏悬浮球” 需要悬浮窗权限。请在设置中找到 Amarok 并授予其权限。</string>
+    <string name="alert_permission_request_message">需要悬浮窗权限。请在设置中找到 Amarok 并授予其权限。</string>
     <string name="workmode">工作模式</string>
     <string name="misc">杂项</string>
     <string name="security">安全</string>
-    <string name="panic_button">快速隐藏悬浮球</string>
-    <string name="panic_button_description">在界面上方显示一个悬浮球，点击即可进行隐藏。悬浮球仅在非隐藏状态下可见。</string>
+    <string name="panic_button">悬浮球（老板键）</string>
+    <string name="panic_button_description">在界面上方显示一个悬浮球用于紧急隐藏。悬浮球仅在非隐藏状态下可见。</string>
     <string name="in_app_update_failed">新更新可用但自动更新失败。请手动更新。</string>
     <string name="failed_to_open_doc_tree">无法打开文件选择器</string>
     <string name="failed_to_open_doc_tree_description">您的系统似乎没有默认文件管理器？请长按 “选择隐藏文件夹” 按键手动设置路径。</string>
@@ -108,4 +108,5 @@
     <string name="notification_permission_denied">获取通知权限失败。</string>
     <string name="quick_hide_notification_title">未隐藏</string>
     <string name="quick_hide_notification_content">您的隐私未隐藏。点击进行隐藏。</string>
+    <string name="invalid_action">无效的 Intent: %s</string>
 </resources>

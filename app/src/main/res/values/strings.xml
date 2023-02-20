@@ -5,8 +5,8 @@
     <string name="hide">Hide</string>
     <string name="visible_status">Visible</string>
     <string name="hidden_status">Hidden</string>
-    <string name="visible_moto">"\"Night has fallen. Be careful.\" "</string>
-    <string name="hidden_moto">"\"Secrets never emerge under the sun.\" "</string>
+    <string name="visible_moto" translatable="false">"\"Night has fallen. Be careful.\" "</string>
+    <string name="hidden_moto" translatable="false">"\"Secrets never emerge under the sun.\" "</string>
     <string name="app_about">\nAmarok %s\n\n
         [Developer] @Deltazefiro\n\n
         [Info] Amarok: A simple android app for private file- and app-hiding.\n\n
@@ -80,7 +80,7 @@
     <string name="apphider_shizuku_description">App-hiding with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or has the Xposed framework. Installed and active Shizuku or Sui required.\n</string>
     <string name="apphider_dsm">DSM mode</string>
     <string name="apphider_dsm_description">App-hiding with Delegated-Scopes-Manager.\nNot recommended unless your device runs Android 10 or earlier and is not rooted. May be buggy and work unexpectedly. Installed Icebox (or StopAPP) set as device owner required.</string>
-    <string name="learn_more">Learn more</string>
+    <string name="learn_more">Setup tutorial</string>
     <string name="option_unava_when_hidden">Options are unavailable until unhidden.</string>
     <string name="obfuscate_filename">Obfuscate filenames</string>
     <string name="obfuscate_filename_description">Make the filename human-unreadable. The basic feature of file-hiding. Can not be turned off.</string>
@@ -100,12 +100,12 @@
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="alert_permission_denied">Permission to display over other apps denied.</string>
     <string name="alert_permission_request_title">Permission to spawn pop-up windows required</string>
-    <string name="alert_permission_request_message">Panic button needs permission to spawn pop-up windows. Please find Amarok in the settings menu and grant it.</string>
+    <string name="alert_permission_request_message">Floating button needs permission to spawn pop-up windows. Please find Amarok in the settings menu and grant it.</string>
     <string name="workmode">Workmode</string>
     <string name="misc">Misc.</string>
     <string name="security">Security</string>
-    <string name="panic_button">Panic button</string>
-    <string name="panic_button_description">Display an floating hide button used to hide apps &amp; files in emergency. It is shown over all other apps. The button only shows in unhidden state.</string>
+    <string name="panic_button">Floating button (Boss key)</string>
+    <string name="panic_button_description">Display an floating button used to hide apps &amp; files in emergency. It is shown over all other apps. The button only shows in unhidden state.</string>
     <string name="in_app_update_failed">New version available, but failed to fetch. Please update manually.</string>
     <string name="failed_to_open_doc_tree">Could not open the system file picker</string>
     <string name="failed_to_open_doc_tree_description">Oops! Your system does not have a default filemanager. Please long-press the \"Add hidden folder\" button and input the path manually.</string>
@@ -119,5 +119,5 @@
     <string name="notification_permission_denied">Notification permission denied.</string>
     <string name="quick_hide_notification_title">Privacy not hidden</string>
     <string name="quick_hide_notification_content">Your privacy is not hidden. Click to hide.</string>
-    <string name="invalid_action">Invalid action received: %s</string>
+    <string name="invalid_action">Invalid intent received: %s</string>
 </resources>
