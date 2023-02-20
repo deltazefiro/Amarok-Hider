@@ -1,0 +1,26 @@
+v0.8.3b1
+- Add refreshing UI in "Set Hidden Apps" menu
+- Add hide button in notification
+- Add alpha to BossKey
+- Update en & zh translation
+v0.8.3a3
+- Add notification to notify the user to hide
+- Add app searching in "Set Hidden Apps"
+- Support DeepHide in Root mode
+- Add translation: German (by @SecularSteve) (#37)
+- Improve translation: Norwegian Bokmål & English (by @comradekingu) (#37 #40)
+- Improve performance: loading icons in "Set Hidden Apps"
+- Skip .nomedia when hiding files (#31)
+- Change the Telegram channel to the group
+- Avoid Amarok hide itself in foss version (#43 #41)
+- Fix hidden apps not visible in "Set Hidden Apps" (#43 #41)
+- Fix BossKey being killed in the background
+v0.8.3a2
+- Add BossKey
+- Add English document
+- Add translation: Norwegian Bokmål (by @comradekingu) (#33)
+- Support shortcut state sync with MainActivity
+- New settings UI
+- Fix shortcut freeze (#22)
+- Fix crash in-app update
+- Fix crash on open-document tree
