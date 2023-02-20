@@ -19,8 +19,8 @@ android {
         applicationId "deltazero.amarok"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 35
-        versionName "0.8.3a3"
+        versionCode 36
+        versionName "0.8.3b1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
