@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hidden_status">Скрыто</string>
+    <string name="storage_permission_request_title">Требуется разрешение на доступ к хранилищу</string>
+    <string name="storage_permission_request_message">Предоставьте Amarok доступ к хранилищу, чтобы скрыть файлы.</string>
+    <string name="storage_permission_denied">Отказано в доступе к хранилищу. Скрытие файлов недоступно</string>
+    <string name="hide">Скрыть</string>
+    <string name="unhide">Показать</string>
+    <string name="visible_status">Не скрыто</string>
+    <string name="ok">ОК</string>
+    <string name="about">О нас</string>
+    <string name="cancel">Отмена</string>
+    <string name="setting_not_ava_when_hidden">Этот параметр доступен только после отключения скрытия</string>
+    <string name="set_hide_apps">Вабрать приложения для скрытия</string>
+    <string name="apphider_not_ava">Скрытие приложений недоступно. Проверьте \"Настройки\" → \"Выбрать режим скрытия приложений\".</string>
+    <string name="set_hide_files">Вабрать файлы для скрытия</string>
+    <string name="switch_file_hider">Выбрать режим скрытия файлов</string>
+    <string name="apply_on_restart">Перезапустите приложение, чтобы применить новые изменения.</string>
+    <string name="hidden_toast">Скрыто. Ку-ка-ре-ку~!</string>
+    <string name="unhidden_toast">Не скрыто. Будь осторожен.</string>
+    <string name="show_debug_info">Отладочная информация</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n [Разработчик] @Deltazefiro
+\n
+\n [Информация] Amarok: Простое приложение для приватного скрытия файлов и приложений.
+\n
+\n [Репо] https://github.com/deltazefiro/Amarok-Hider
+\n
+\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
+\n"</string>
+    <string name="enable_analytics">Анонимная аналитика</string>
+    <string name="switch_app_hider">Выбрать режим скрытия приложений</string>
+    <string name="current_mode">Текущий режим: %s</string>
+    <string name="analytics_description">Анонимно отправлять отчеты о сбоях разработчику для анализа.</string>
+    <string name="about_description">Показать информацию о приложении.</string>
+    <string name="usage">Использование</string>
+    <string name="usage_description">Открыть справочный центр.</string>
+    <string name="more_settings">Настройки</string>
+    <string name="shizuku_service_not_running">Shizuku: Служба не запущена.</string>
+</resources>
