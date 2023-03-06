@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="storage_permission_request_title">Permissão de armazenamento necessária</string>
+    <string name="usage">Uso</string>
+    <string name="cancel">Cancelar</string>
+    <string name="show_about">Mostrar sobre</string>
+    <string name="storage_permission_denied">Permissão de armazenamento negada. A ocultação de arquivos está indisponível</string>
+    <string name="unhide">Revelar</string>
+    <string name="enable_analytics">Estatísticas anônimas</string>
+    <string name="usage_description">Abrir central de ajuda.</string>
+    <string name="more_settings">Mais Opções</string>
+    <string name="current_mode">Modo Atual: %s</string>
+    <string name="confirm">Confirmar</string>
+    <string name="hide">Ocultar</string>
+    <string name="visible_status">Visível</string>
+    <string name="about">Sobre</string>
+    <string name="hidden_status">Oculto</string>
+    <string name="add_hide_files">Adicionar pasta oculta</string>
+    <string name="check_update_description">Versão atual: %s</string>
+    <string name="update_ava">Nova versão disponível</string>
+    <string name="update">Atualizar</string>
+    <string name="view_github_repo">Repositório GitHub</string>
+    <string name="never">Nunca</string>
+    <string name="apphider_none">Desativado</string>
+</resources>
