@@ -110,11 +110,13 @@ public class QuickSettingService extends TileService implements LifecycleOwner {
 
     @Override
     public void onClick() {
-        Log.i(TAG, "Toggled tile.");
-        if (prefMgr.getIsHidden()) {
-            hider.unhide();
-        } else {
-            hider.hide();
-        }
+        unlockAndRun(() -> {
+            Log.i(TAG, "Toggled tile.");
+            if (prefMgr.getIsHidden()) {
+                hider.unhide();
+            } else {
+                hider.hide();
+            }
+        });
     }
 }
