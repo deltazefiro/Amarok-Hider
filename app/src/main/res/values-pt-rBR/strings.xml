@@ -46,4 +46,7 @@
     <string name="security">Segurança</string>
     <string name="notification">Notificação</string>
     <string name="notification_permission_denied">Permissão de notificação negada.</string>
+    <string name="analytics_description">Eviar relatórios anônimos de crash aos desenvolvedores para análises.</string>
+    <string name="dsm_permission_denied">DSM: Permissão negada</string>
+    <string name="check_update">Procurar por atualização</string>
 </resources>
