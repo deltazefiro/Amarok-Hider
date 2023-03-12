@@ -1,0 +1,6 @@
+v0.8.3b2
+- Support Android 13 adaptive themed icon (#50)
+- Require unlock to toggle QuickSetting tile (#51)
+- Add translation: Russian (by @koji-takahiro) (#53)
+- Add translation: Portuguese (by @fnogcps) (#54 #55)
+- Add translation: Turkish (by @croxz900) (#57 #56)
