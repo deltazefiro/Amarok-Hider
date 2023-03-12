@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visible_status">Görünür</string>
+    <string name="ok">Tamam</string>
+    <string name="about">Hakkında</string>
+    <string name="cancel">İptal et</string>
+    <string name="set_hide_apps">Gizli Uygulamaları Ayarla</string>
+    <string name="setting_not_ava_when_hidden">Bu ayar, yalnızca gizlemeyi kaldırdıktan sonra kullanılabilir</string>
+    <string name="storage_permission_request_title">Depolama izni gerekli</string>
+    <string name="storage_permission_request_message">Dosyaları gizlemek için Amarok’a harici depolamaya erişim izni verin.</string>
+    <string name="storage_permission_denied">Depolama izni reddedildi. Dosya gizleme kullanılamıyor</string>
+    <string name="apphider_not_ava">Uygulama gizleme kullanılamıyor. “Daha fazla ayar” → “Uygulama gizleme yönetimi değiştir” kısmını kontrol edin.</string>
+    <string name="set_hide_files">Gizli Dosyaları Ayarla</string>
+    <string name="show_about">Bilgi göster</string>
+    <string name="enable_analytics">Anonim analiz bilgileri</string>
+    <string name="analytics_description">Analiz için geliştiricilere anonim çökme raporları gönder.</string>
+    <string name="usage_description">Yardım merkezini aç.</string>
+    <string name="switch_app_hider">Uygulama gizleme yöntemini değiştir</string>
+    <string name="current_mode">Şu anki yöntem: %s</string>
+    <string name="more_settings">Daha fazla ayar</string>
+    <string name="switch_file_hider">Dosya gizleme yöntemini değiştir</string>
+    <string name="apply_on_restart">Yeni değişikliklerin etkili olabilmesi için uygulamayı yeniden başlatın.</string>
+    <string name="unhidden_toast">Gizleme kaldırıldı. Dikkatli ol.</string>
+    <string name="show_debug_info">Hata ayıklama bilgisi</string>
+    <string name="debug_info_description">Sorunları çözmeye yardımcı olacak bilgi gösterir.</string>
+    <string name="invalid_dsm_provider">DSM: Geçersiz DSM sağlayıcısı. DSM sağlayıcısını cihazınıza yükleyip etkinleştirdiniz mi\?</string>
+    <string name="hide_app_failed_admin_inactive">Uygulama gizlenemedi: DSM sağlayıcısı etkin değil.</string>
+    <string name="add_hide_files">Gizli klasör ekle</string>
+    <string name="remove_hide_path">Gizli klasörü kaldırmak istiyor musunuz\?</string>
+    <string name="remove_hide_path_description">‘%s’ klasörünün gizlenmesi kaldırılsın mı\?</string>
+    <string name="confirm">Onayla</string>
+    <string name="not_local_storage_description">Seçtiğiniz dosyanın yerel hafızada olduğundan ve sanal bir dosya olmadığından emin olun.</string>
+    <string name="help">Yardım</string>
+    <string name="path_duplicated">Gizli klasörü yinele</string>
+    <string name="no_apphider">Lütfen “Daha fazla ayar” kısmından uygulama gizleme yöntemi seçin.</string>
+    <string name="root_not_ava">Kök (root) erişimi alınamadı.</string>
+    <string name="check_update_on_start_description">Uygulama başlatıldığında Amarok için güncellemeleri kontrol et.</string>
+    <string name="check_update_description">Mevcut sürüm: %s</string>
+    <string name="update_ava">Yeni sürüm mevcut</string>
+    <string name="update_description">Amarok %s (%d) indirilip kurulabilir.</string>
+    <string name="update">Güncelle</string>
+    <string name="never">Hiçbir zaman</string>
+    <string name="no_update_ava">Son sürümü kullanıyorsunuz.</string>
+    <string name="manually_set_path">El ile seç</string>
+    <string name="view_github_repo">GitHub repo’su</string>
+    <string name="shizuku_pre_v11">Desteklenmeyen Shizuku sürümü: v11 ve öncesi. Lütfen v11 veya üzeri bir Shizuku kullanın.</string>
+    <string name="shizuku_permission_denied">Shizuku: İzin reddedildi</string>
+    <string name="shizuku_not_working">Shizuku: Servis kullanılamıyor. Shizuku/Sui cihazınızda kurulu mu\?</string>
+    <string name="shizuku_hidden_api_error">Uygulama gizlenemedi: IPackageManager API erişimi sağlanamadı.</string>
+    <string name="apphider_not_ava_title">Uygulama gizleme yöntemi kullanılamıyor</string>
+    <string name="dsm_permission_denied">DSM: İzin reddedildi</string>
+    <string name="apphider_none">Devre dışı bırakıldı</string>
+    <string name="apphider_none_description">Uygulama gizlemeyi kapat.</string>
+    <string name="apphider_root">Root (kök) yöntemi</string>
+    <string name="apphider_shizuku">Shizuku (Sui) yöntemi</string>
+    <string name="apphider_shizuku_description">Shizuku (veya Sui) kullanarak uygulama gizleme.
+\nCihazınız Android 11 ve üzeri ise veya Xposed Framework yüklü ise bu yöntem önerilir . Shizuku (veya Sui) yüklü ve etkin olmalıdır.
+\n</string>
+    <string name="apphider_dsm">DSM yöntemi</string>
+    <string name="learn_more">Kurulum eğitimi</string>
+    <string name="option_unava_when_hidden">Gizleme kapatılmadığı sürece seçenekler kullanılamıyor.</string>
+    <string name="obfuscate_filename">Dosya adlarını gizle</string>
+    <string name="obfuscate_filename_description">Dosya adını okunamaz hale getirir. Dosya gizlemenin temel özelliği olduğundan kapatılamaz.</string>
+    <string name="obfuscate_file_header">Dosya başlıklarını gizle</string>
+    <string name="filename_only">Sadece dosya adları</string>
+    <string name="filename_and_header">Dosya adları + Başlıklar</string>
+    <string name="obfuscate_text_file">Metin dosyalarını tamamen gizle</string>
+    <string name="obfuscate_text_file_description">Deneysel özellik. Dosya başlıklarını gizlemenin metin dosyaları üzerinde hiçbir etkisi yoktur. Bu işlevi etkinleştirmek, metin dosyalarını tamamen gizleyecektir. Gizleme işlemi biraz olsun yavaşlayacaktır.</string>
+    <string name="obfuscate_text_file_enhanced">Metin dosyalarını tamamen gizle - Gelişmiş</string>
+    <string name="join_developer_channel">Telegram grubu</string>
+    <string name="processing">İşleniyor…</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="alert_permission_denied">Diğer uygulamaların üzerinde gösterme izni reddedildi.</string>
+    <string name="alert_permission_request_title">Açılır pencereler oluşturmak için izin gerekli</string>
+    <string name="workmode">Çalışma yöntemi</string>
+    <string name="misc">Çeşitli</string>
+    <string name="security">Güvenlik</string>
+    <string name="panic_button">Yüzen buton (Patron tuşu)</string>
+    <string name="in_app_update_failed">Yeni sürüm mevcut ancak otomatik olarak güncellenemedi. Lütfen manuel olarak güncelleyin.</string>
+    <string name="failed_to_open_doc_tree">Sistem dosya seçici açılamadı</string>
+    <string name="failed_to_open_doc_tree_description">Hata! Sisteminizde varsayılan bir dosya yöneticisi yok. Lütfen \"Gizli klasör ekle\" düğmesine basılı tutun ve ardından yolu manuel olarak girin.</string>
+    <string name="search">Ara</string>
+    <string name="notification_channel_name">Hızlı Gizleme Hizmeti</string>
+    <string name="quick_hide">Hızlı Gizleme</string>
+    <string name="quick_hide_notification_description">Gizleme devre dışı iken kullanıcıları bilgilendirmek için kalıcı bir bildirim göster.</string>
+    <string name="notification_permission_request_title">Bildirim izni gerekir</string>
+    <string name="notification_permission_request_message">Hızlı Gizleme hizmetinin çalışabilmesi için bildirim izni gereklidir.</string>
+    <string name="quick_hide_notification_content">Gizleme devre dışı. Etkinleştirmek için tıklayın.</string>
+    <string name="hide">Gizle</string>
+    <string name="invalid_action">Geçersiz niyet alındı: %s</string>
+    <string name="hidden_status">Gizli</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n [Geliştirici] @Deltazefiro
+\n
+\n [Bilgi] Amarok: Dosya şifreleme ve uygulama gizleme için basit bir android uygulaması.
+\n
+\n [Repo] https://github.com/deltazefiro/Amarok-Hider
+\n
+\n Telif Hakkı © 2022–2023 DeltaZero, Apache 2.0 Lisanslı
+\n"</string>
+    <string name="unhide">Gizlemeyi kaldır</string>
+    <string name="about_description">Uygulama hakkında bilgi gösterir.</string>
+    <string name="usage">Kullanım</string>
+    <string name="hidden_toast">Gizlendi. Arkana-yaslan-ve-rahatla~!</string>
+    <string name="folder_selector_hints">Klasör seçimi için ipuçları:
+\n\t 1. Klasörü seçmek için “Bu klasörü kullan”a tıklayın
+\n\t 2. Cihaz hafızasında bulunan bir dosyayı seçtiğinizden emin olun
+\n\t(Yerel dosyalara erişmek için ekranın sağından kaydırın)</string>
+    <string name="not_local_storage">Desteklenmeyen dizin</string>
+    <string name="check_update_on_start">Otomatik güncelleme</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>
+\n
+\niçeriyor
+\n
+\n<u>\'%s\'</u></string>
+    <string name="check_update">Güncellemeleri kontrol et</string>
+    <string name="apphider_root_description">Root (kök) erişimi ile uygulama gizleme.
+\nCihazınızda root erişimi varsa ve Xposed Framework etkin değilse bu yöntem önerilir. Root izni gereklidir.</string>
+    <string name="manually_set_path_description">Dikkat: Seçtiğiniz dizinin varlığından emin olun çünkü dizinin geçerliliği doğrulanamıyor.</string>
+    <string name="shizuku_service_not_running">Shizuku: Hizmet çalışmıyor.</string>
+    <string name="apphider_dsm_description">Yetkilendirilmiş Cihaz Yöneticisi yöntemini kullanarak uygulama gizleme.
+\nCihazınız Android 10 veya öncesi ise ve root erişimi yoksa kullanılabilir fakat önerilen bir yöntem değildir. Hatalı ve beklenmedik şekilde çalışabilir. Icebox (veya StopAPP) yüklü ve cihaz yöneticisi olarak ayarlanmış olmalıdır.</string>
+    <string name="panic_button_description">Acil durumlarda uygulamaları ve dosyaları gizlemek için kullanılan yüzen bir buton görüntüler. Diğer tüm uygulamaların üzerinde gösterilir. Buton yalnızca gizlemenin kapalı olduğu durumda görünür haldedir.</string>
+    <string name="obfuscate_file_header_description">Dosyayı “bozulmuş” olarak göstermek için dosya başlığındaki imzayı gizler. Dosyanın “birlikte aç” ile açılmasını engellemeye yarar ancak dosya gizleme işlemini yavaşlatabilir.</string>
+    <string name="obfuscate_text_file_description_enhanced">Tavsiye edilmez. “Metin dosyalarını tamamen gizle”nin geliştirilmiş halidir. Bu seçeneği yalnızca normal yöntem hiçbir işe yaramazsa kullanın. Gizleme işlemini önemli ölçüde yavaşlatır.</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="alert_permission_request_message">Yüzen butonun açılır pencereler oluşturması için izne ihtiyacı var. Lütfen ayarlar menüsünden Amarok’u bulun ve izin verin.</string>
+    <string name="notification">Bildirim</string>
+    <string name="notification_permission_denied">Bildirim izni reddedildi.</string>
+    <string name="quick_hide_notification_title">Gizleme devre dışı</string>
+</resources>
