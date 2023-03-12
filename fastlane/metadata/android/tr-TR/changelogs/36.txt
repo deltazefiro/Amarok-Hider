@@ -1,0 +1,26 @@
+v0.8.3b1
+ - "Gizli Uygulamaları Ayarla" menüsüne canlandırıcı kullanıcı arayüzü ekleyin
+ - Bildirime gizle düğmesi ekle
+ - BossKey'e alfa ekleyin
+ - tr & zh çevirisini güncelle
+ v0.8.3a3
+ - Kullanıcıya gizlemesini bildirmek için bildirim ekleyin
+ - "Gizli Uygulamaları Ayarla"da uygulama arama ekleyin
+ - Root modunda DeepHide desteği
+ - Çeviri ekle: Almanca (@SecularSteve tarafından) (#37)
+ - Çeviriyi geliştirin: Norveççe Bokmål ve İngilizce (@comradekingu tarafından) (#37 #40)
+ - Performansı artırın: "Gizli Uygulamaları Ayarla"daki simgeleri yükleme
+ - Dosyaları gizlerken .nomedia'yı atla (#31)
+ - Telegram kanalını gruba değiştirin
+ - Foss versiyonunda kendini gizleyen Amarok'tan kaçının (#43 #41)
+ - "Gizli Uygulamaları Ayarla" (#43 #41) bölümünde görünmeyen gizli uygulamaları düzeltin
+ - BossKey'in arka planda öldürülmesi düzeltildi
+ v0.8.3a2
+ - BossKey'i ekleyin
+ - İngilizce belge ekle
+ - Çeviri ekle: Norveççe Bokmål (@comradekingu tarafından) (#33)
+ - MainActivity ile kısayol durumu senkronizasyonunu destekleyin
+ - Yeni ayarlar kullanıcı arayüzü
+ - Kısayol donmasını düzeltin (#22)
+ - Kilitlenme uygulama içi güncellemeyi düzeltin
+ - Açık belge ağacındaki çökmeyi düzeltin
