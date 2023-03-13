@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visible_status">Видимий</string>
+    <string name="hidden_status">Приховано</string>
+    <string name="ok">OK</string>
+    <string name="about">Про застосунок</string>
+    <string name="cancel">Скасувати</string>
+    <string name="setting_not_ava_when_hidden">Це налаштування доступне лише після відображення</string>
+    <string name="storage_permission_request_title">Потрібен дозвіл на зберігання</string>
+    <string name="storage_permission_denied">У доступі до сховища відмовлено. Приховування файлів недоступне</string>
+    <string name="set_hide_apps">Вибрати прихованих застосунків</string>
+    <string name="set_hide_files">Вибрати приховані файли</string>
+    <string name="show_about">Показати «Про застосунок»</string>
+    <string name="enable_analytics">Анонімна аналітика</string>
+    <string name="analytics_description">Надсилайте анонімні звіти про збої розробникам для аналізу.</string>
+    <string name="about_description">Показує інформацію про застосунок.</string>
+    <string name="switch_app_hider">Увімкнути режим приховування застосунків</string>
+    <string name="current_mode">Поточний режим: %s</string>
+    <string name="apply_on_restart">Перезапустіть застосунок, щоб застосувати нові зміни.</string>
+    <string name="hidden_toast">Сховано. Чорт забирай!</string>
+    <string name="unhidden_toast">Неприхований. Обережно.</string>
+    <string name="show_debug_info">Інформація про налагодження</string>
+    <string name="invalid_dsm_provider">DSM: Недійсний постачальник DSM. Ви встановили та активували постачальника DSM на своєму пристрої\?</string>
+    <string name="add_hide_files">Додати приховану папку</string>
+    <string name="remove_hide_path">Видалити приховану папку\?</string>
+    <string name="remove_hide_path_description">Видалити папку \'%s\' з приховуваного\?</string>
+    <string name="confirm">Підтвердити</string>
+    <string name="not_local_storage">Непідтримуваний каталог</string>
+    <string name="not_local_storage_description">Будь ласка, переконайтеся, що це локальний файл, а не віртуальний.</string>
+    <string name="help">Допомога</string>
+    <string name="more_settings">Додаткові налаштування</string>
+    <string name="root_not_ava">Не вдалося отримати root-доступ.</string>
+    <string name="check_update_on_start">Автоматичне оновлення</string>
+    <string name="check_update_on_start_description">Перевірте наявність нових версій Amarok при відкритті застосунку.</string>
+    <string name="check_update">Перевірка наявності оновлення</string>
+    <string name="update_description">Amarok %s (%d) можна завантажити та встановити.</string>
+    <string name="update">Оновлення</string>
+    <string name="never">Ніколи</string>
+    <string name="no_update_ava">Ви використовуєте останню версію.</string>
+    <string name="manually_set_path">Виберіть вручну</string>
+    <string name="view_github_repo">Репозиторій GitHub</string>
+    <string name="shizuku_pre_v11">Непідтримувана версія Shizuku: Pre-v11. Будь ласка, встановіть Shizuku v11 або новішу версію.</string>
+    <string name="shizuku_not_working">Shizuku: Послуга недоступна. Чи встановлено Shizuku/Shu на вашому пристрої\?</string>
+    <string name="shizuku_hidden_api_error">Не вдалося приховати застосунок: Не вдалося отримати доступ до API IPackageManager.</string>
+    <string name="shizuku_service_not_running">Shizuku: Служба не працює.</string>
+    <string name="dsm_permission_denied">DSM: У дозволі відмовлено</string>
+    <string name="apphider_none">Вимкнено</string>
+    <string name="apphider_none_description">Вимкніть приховування застосунків.</string>
+    <string name="apphider_root">Root режим</string>
+    <string name="apphider_shizuku">Shizuku (Sui) режим</string>
+    <string name="apphider_dsm">DSM режим</string>
+    <string name="learn_more">Посібник з встановлення</string>
+    <string name="option_unava_when_hidden">Опції недоступні, поки їх не буде приховано.</string>
+    <string name="obfuscate_filename">Приховувати ім\'я файлів</string>
+    <string name="obfuscate_filename_description">Зробити ім\'я файлу нечитабельним для людини. Основна функція приховування файлів. Не може бути вимкнена.</string>
+    <string name="obfuscate_file_header">Приховати заголовки файлів</string>
+    <string name="filename_only">Тільки імена файлів</string>
+    <string name="filename_and_header">Ім\'я файлу + заголовок</string>
+    <string name="unhide">Показати</string>
+    <string name="hide">Приховати</string>
+    <string name="obfuscate_text_file">Повністю приховувати текстові файли</string>
+    <string name="obfuscate_text_file_description">Експериментальна можливість. Приховання заголовків файлів не впливає на текстові файли. Увімкнення цієї функції повністю приховає текстові файли. Це дещо сповільнить процес приховування.</string>
+    <string name="obfuscate_text_file_enhanced">Повне приховування текстових файлів - Покращено</string>
+    <string name="obfuscate_text_file_description_enhanced">Не рекомендується. Розширена версія \"Повністю приховати текстові файли\". Використовуйте цю опцію, тільки якщо стандартний метод виявився неефективним. Значно уповільнює процес приховування.</string>
+    <string name="join_developer_channel">Telegram група</string>
+    <string name="processing">Обробка…</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="alert_permission_denied">Дозвіл на відображення поверх інших застосунків заборонено.</string>
+    <string name="alert_permission_request_title">Потрібен дозвіл на створення спливаючих вікон</string>
+    <string name="workmode">Режим роботи</string>
+    <string name="misc">Різне.</string>
+    <string name="security">Безпека</string>
+    <string name="panic_button">Плаваюча кнопка (кнопка боса)</string>
+    <string name="in_app_update_failed">Нова версія доступна, але її не вдалося завантажити. Будь ласка, оновіть вручну.</string>
+    <string name="failed_to_open_doc_tree">Не вдалося відкрити засіб вибору системних файлів</string>
+    <string name="search">Пошук</string>
+    <string name="quick_hide">Швидко приховати</string>
+    <string name="notification">Сповіщення</string>
+    <string name="quick_hide_notification_description">Показувати постійне сповіщення, щоб сповіщати користувачів, коли його не приховано.</string>
+    <string name="notification_permission_request_title">Потрібен дозвіл на сповіщення</string>
+    <string name="notification_channel_name">Служба швидкого приховування</string>
+    <string name="notification_permission_request_message">Для запуску служби швидкого приховування потрібні дозволи на сповіщення.</string>
+    <string name="quick_hide_notification_title">Конфіденційність не прихована</string>
+    <string name="quick_hide_notification_content">Ваша конфіденційність не прихована. Натисніть, щоб приховати.</string>
+    <string name="invalid_action">Отримано недійсний намір: %s</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n [Розробник] @Deltazefiro
+\n
+\n [Інформація] Amarok: Простий застосунок для Android для приватного приховування файлів та застосунків.
+\n
+\n [Репозиторій] https://github.com/deltazefiro/Amarok-Hider
+\n
+\n Авторське право © 2022-2023 DeltaZero, ліцензія Apache 2.0
+\n"</string>
+    <string name="usage">Використання</string>
+    <string name="switch_file_hider">Увімкнути режим приховування файлів</string>
+    <string name="no_apphider">Будь ласка, виберіть режим приховування застосунків у \"Додаткових налаштуваннях\".</string>
+    <string name="storage_permission_request_message">Надайте Amarok доступ до зовнішнього сховища, щоб приховати файли.</string>
+    <string name="usage_description">Відкрити довідковий центр.</string>
+    <string name="apphider_not_ava">Приховування застосунків недоступне. Перевірте \"Додаткові налаштування\" → \"Увімкнути режим приховування застосунків\".</string>
+    <string name="path_duplicated">Приховати дублювання шляхів</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>
+\n
+\nмістить
+\n
+\n<u>\'%s\'</u></string>
+    <string name="update_ava">Доступна нова версія</string>
+    <string name="notification_permission_denied">У дозволі на сповіщення відмовлено.</string>
+    <string name="debug_info_description">Показує інформацію, яка допоможе виправити проблеми.</string>
+    <string name="folder_selector_hints">Підказки для селектора папок:
+\n\t 1. Натисніть \"Використовувати цю папку\", щоб вибрати папку
+\n\t 2. Завжди вибирайте файл на пристрої
+\n\t(Щоб відкрити локальні файли, проведіть пальцем від правого краю екрана)</string>
+    <string name="shizuku_permission_denied">Shizuku: У дозволі відмовлено</string>
+    <string name="hide_app_failed_admin_inactive">Не вдалося приховати застосунок: Провайдер DSM не активний.</string>
+    <string name="manually_set_path_description">Увага: Переконайтеся, що те, що ви вибрали вручну, дійсно існує, оскільки це не перевіряється.</string>
+    <string name="apphider_not_ava_title">Недоступний режим приховування застосунку</string>
+    <string name="check_update_description">Поточна версія: %s</string>
+    <string name="apphider_root_description">Приховування застосунків з root-доступом.
+\nРекомендується, якщо на вашому пристрої є root, але відсутній фреймворк Xposed. Потрібен root-дозвіл.</string>
+    <string name="obfuscate_file_header_description">Приховати підпис файлу в заголовку файлу, щоб зробити його \"пошкодженим\". Запобігає відкриттю файлу за допомогою \"Відкрити за допомогою\" вручну, але може сповільнити процес приховування файлу.</string>
+    <string name="apphider_shizuku_description">Приховування застосунків за допомогою Shizuku (або Sui).
+\nРекомендується, якщо ваш пристрій працює на Android 11+ або має фреймворк Xposed. Потрібен встановлений та активний Shizuku або Sui.
+\n</string>
+    <string name="apphider_dsm_description">Приховування застосунків за допомогою Delegated-Scopes-Manager.
+\nНе рекомендується, якщо ваш пристрій працює під управлінням Android 10 або новішої версії і не є рутованим. Може мати баги і працювати несподівано. Встановлений Icebox (або StopAPP), налаштований як власник пристрою.</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="panic_button_description">Відображати плаваючу кнопку для екстреного приховування застосунків і файлів. Відображається над усіма іншими застосунками. Кнопка відображається лише у неприхованому стані.</string>
+    <string name="failed_to_open_doc_tree_description">Упс! У вашій системі немає файлового менеджера за замовчуванням. Будь ласка, натисніть і утримуйте кнопку \"Додати приховану папку\" та введіть шлях до неї вручну.</string>
+    <string name="alert_permission_request_message">Плаваюча кнопка потребує дозволу на створення спливаючих вікон. Будь ласка, знайдіть Amarok у меню налаштувань і надайте дозвіл.</string>
+</resources>
