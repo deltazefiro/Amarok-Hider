@@ -88,7 +88,7 @@
     <string name="notification_permission_request_message">Hızlı Gizleme hizmetinin çalışabilmesi için bildirim izni gereklidir.</string>
     <string name="quick_hide_notification_content">Gizleme devre dışı. Etkinleştirmek için tıklayın.</string>
     <string name="hide">Gizle</string>
-    <string name="invalid_action">Geçersiz niyet alındı: %s</string>
+    <string name="invalid_action">Geçersiz eylem alındı: %s</string>
     <string name="hidden_status">Gizli</string>
     <string name="app_about">"
 \nAmarok %s
