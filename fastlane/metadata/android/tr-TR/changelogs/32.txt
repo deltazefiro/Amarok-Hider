@@ -1,13 +1,13 @@
-Önemli
+Son değişiklikler 
  * TargetAPI 33’e yükseltildi (Android 13)
  Yeni özellikler
- * Metin dosyalarının tamamen gizlenmesini destekler (#3)
- * Metin dosyalarının gelişmiş gizlenmesini destekler (#3)
- Optimize edildi
+ * Metin dosyaları tamamen gizlenebilir (#3)
+ * Metin dosyaları gelişmiş şekilde gizlenebilir (#3)
+ Optimize edilen özellikler
  * Java derleme sürümü Java 11’e yükseltildi
  * AppCompat deposu yükseltildi
  * Kararlılığı artırmak için FileHider yeniden düzenlendi (#20)(#16)
- * Değişim uygulaması ve dosya gizleme sırası
+ * Değişim uygulaması ve dosya gizleme sırası optimize edildi 
  * İngilizce ve Çince çeviri optimize edildi
  Düzeltilen hatalar
  * Yok
