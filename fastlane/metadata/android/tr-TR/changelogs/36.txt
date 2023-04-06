@@ -1,7 +1,7 @@
 v0.8.3b1
- - "Gizli Uygulamaları Ayarla" menüsüne canlandırıcı kullanıcı arayüzü ekleyin
- - Bildirime gizle düğmesi ekle
- - BossKey'e alfa ekleyin
+ - "Gizli Uygulamaları Ayarla" menüsüne yepyeni ve canlı kullanıcı arayüzü eklendi
+ - Bildirimde gözüken gizle düğmesi eklendi
+ - Patron Tuşuna alfa eklendi
  - tr & zh çevirisini güncelle
  v0.8.3a3
  - Kullanıcıya gizlemesini bildirmek için bildirim ekleyin
