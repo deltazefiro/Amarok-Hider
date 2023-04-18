@@ -1,0 +1,6 @@
+v0.8.3b2
+- Android 13 uyarlanabilir temalı simge desteği eklendi (#50)
+- Bildirim çubuğundan Amarok'a erişmek için kilit açma zorunluluğu getirildi (#51)
+- Çeviri eklendi: Russian (@koji-takahiro) (#53)
+- Çeviri eklendi: Portuguese (@fnogcps) (#54 #55)
+- Çeviri eklendi: Turkish (@croxz900) (#57 #56)
