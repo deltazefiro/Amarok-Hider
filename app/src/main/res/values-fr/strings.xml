@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visible_status">Visible</string>
+    <string name="ok">OK</string>
+    <string name="setting_not_ava_when_hidden">Ce paramètre n\'est disponible qu\'après avoir révélé</string>
+    <string name="storage_permission_denied">Autorisation de stockage refusée. Le masquage de fichiers n\'est pas disponible</string>
+    <string name="set_hide_files">Choisir les fichiers masqués</string>
+    <string name="unhide">Révéler</string>
+    <string name="set_hide_apps">Choisir les applications masquées</string>
+    <string name="cancel">Anuler</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n[Developer] @Deltazefiro
+\n
+\n[Info] Amarok: Simple application Android pour cacher des fichiers privés et des applications.
+\n
+\n[Repo] https://github.com/deltazefiro/Amarok-Hider
+\n
+\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
+\n"</string>
+    <string name="about">À propos</string>
+    <string name="storage_permission_request_title">Autorisation de stockage requise</string>
+    <string name="storage_permission_request_message">Accordez à Amarok l\'accès au stockage externe pour masquer les fichiers.</string>
+    <string name="hide">Masquer</string>
+    <string name="hidden_status">Masqué</string>
+    <string name="apphider_not_ava">Masquage d\'application indisponible. Cochez \"Plus de paramètres\" → \"Changer de mode de masquage d\'application\".</string>
+</resources>
