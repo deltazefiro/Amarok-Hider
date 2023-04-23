@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="usage_description">Abrir centro de ayuda.</string>
+    <string name="add_hide_files">Añadir carpeta oculta</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>
+\n
+\ncontiene
+\n
+\n<u>\'%s\'</u></string>
+    <string name="manually_set_path_description">Atención: Asegúrese de que lo que selecciona manualmente existe realmente, ya que no se valida.</string>
+    <string name="show_about">Mostrar acerca de</string>
+    <string name="switch_app_hider">Cambiar el modo de ocultar aplicaciones</string>
+    <string name="switch_file_hider">Cambiar el modo de ocultar archivos</string>
+    <string name="apply_on_restart">Reinicie la aplicación para aplicar los nuevos cambios.</string>
+    <string name="usage">Uso</string>
+    <string name="ok">Ok</string>
+    <string name="obfuscate_file_header">Ofuscar las cabeceras de los archivos</string>
+    <string name="obfuscate_file_header_description">Ofusca la firma del archivo en la cabecera del archivo para hacer que el archivo esté \"corrupto\". Evita que el archivo se abra mediante \"Abrir con\" manualmente, pero puede ralentizar el proceso de ocultación del archivo.</string>
+    <string name="filename_only">Sólo nombres de archivo</string>
+    <string name="filename_and_header">Nombre de archivo + Encabezado</string>
+    <string name="obfuscate_text_file">Ofuscar completamente archivos de texto</string>
+    <string name="obfuscate_text_file_description">Característica experimental. La ofuscación de las cabeceras de los archivos no tiene efecto en los archivos de texto. Activar esta función ofuscará completamente los archivos de texto. Se ralentizará el proceso de ocultación en cierta medida.</string>
+    <string name="obfuscate_text_file_enhanced">Ofuscación completa de archivos de texto - Mejorado</string>
+    <string name="obfuscate_text_file_description_enhanced">No recomendado. Una versión mejorada de \"Ofuscar completamente archivos de texto\". Utilice esta opción sólo si el método estándar resulta ineficaz. Ralentiza drásticamente el proceso de ocultación.</string>
+    <string name="join_developer_channel">Grupo de Telegram</string>
+    <string name="processing">Procesando…</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="alert_permission_denied">Permiso para mostrar sobre otras apps denegado.</string>
+    <string name="alert_permission_request_title">Se requiere permiso para generar ventanas emergentes</string>
+    <string name="workmode">Modo de trabajo</string>
+    <string name="security">Seguridad</string>
+    <string name="panic_button">Botón flotante (tecla Boss)</string>
+    <string name="panic_button_description">Muestra un botón flotante para ocultar aplicaciones y archivos en caso de emergencia. Se muestra sobre todas las demás aplicaciones. El botón sólo se muestra en estado no oculto.</string>
+    <string name="in_app_update_failed">Nueva versión disponible, pero no se ha podido descargar. Actualícela manualmente.</string>
+    <string name="failed_to_open_doc_tree">No se ha podido abrir el selector de archivos del sistema</string>
+    <string name="search">Buscar</string>
+    <string name="notification_channel_name">Servicio de ocultación rápida</string>
+    <string name="quick_hide">Ocultación rápida</string>
+    <string name="notification">Notificación</string>
+    <string name="quick_hide_notification_description">Mostrar una notificación permanente para avisar a los usuarios cuando no está oculto.</string>
+    <string name="notification_permission_request_title">Se requiere permiso de notificación</string>
+    <string name="notification_permission_request_message">El servicio de ocultación rápida necesita permiso de notificación para funcionar.</string>
+    <string name="notification_permission_denied">Permiso de notificación denegado.</string>
+    <string name="quick_hide_notification_title">Privacidad no oculta</string>
+    <string name="invalid_action">Intento no válido recibido: %s</string>
+    <string name="misc">Varios.</string>
+    <string name="unhide">Mostrar</string>
+    <string name="hide">Ocultar</string>
+    <string name="visible_status">Visible</string>
+    <string name="about">Acerca de</string>
+    <string name="set_hide_apps">Establecer aplicaciones ocultas</string>
+    <string name="hidden_status">Oculto</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n [Desarrollador] @Deltazefiro
+\n
+\n [Info] Amarok: Una simple aplicación android para ocultar archivos y aplicaciones.
+\n
+\n [Repo] https://github.com/deltazefiro/Amarok-Hider
+\n
+\n Copyright © 2022-2023 DeltaZero, Licencia Apache 2.0
+\n"</string>
+    <string name="setting_not_ava_when_hidden">Este ajuste solo está disponible después de mostrar los elementos ocultos</string>
+    <string name="storage_permission_request_title">Se requiere permisos de almacenamiento</string>
+    <string name="storage_permission_request_message">Concede a Amarok acceso al almacenamiento externo para ocultar los archivos.</string>
+    <string name="enable_analytics">Estadísticas anónimas</string>
+    <string name="current_mode">Modo actual: %s</string>
+    <string name="storage_permission_denied">Permiso de almacenamiento denegado. El ocultamiento de archivos no está disponible</string>
+    <string name="apphider_not_ava">El modo de ocultar aplicaciones no está disponible. Comprueba \"Más ajustes\" → \"Cambiar modo de ocultación de aplicaciones\".</string>
+    <string name="set_hide_files">Establecer archivos ocultos</string>
+    <string name="analytics_description">Envíe informes anónimos de fallos a los desarrolladores para su análisis.</string>
+    <string name="about_description">Mostrar información sobre la aplicación.</string>
+    <string name="unhidden_toast">Sin ocultar. Ten cuidado.</string>
+    <string name="hide_app_failed_admin_inactive">No se puede ocultar la aplicación: Proveedor DSM no activo.</string>
+    <string name="manually_set_path">Elegir manualmente</string>
+    <string name="view_github_repo">Repositorio GitHub</string>
+    <string name="more_settings">Más ajustes</string>
+    <string name="show_debug_info">Información de depuración</string>
+    <string name="debug_info_description">Muestra información para ayudar a solucionar los problemas.</string>
+    <string name="invalid_dsm_provider">DSM: Proveedor DSM no válido. Ha instalado y activado el proveedor DSM en su dispositivo\?</string>
+    <string name="hidden_toast">Oculto. ¡Cock-a-doodle-do~!</string>
+    <string name="folder_selector_hints">Consejos para el selector de carpetas:
+\n\t 1. Haga clic en \"Usar esta carpeta\" para seleccionar la carpeta
+\n\t 2. Seleccione siempre un archivo del dispositivo
+\n\t(Deslice desde la derecha de la pantalla para abrir archivos locales)</string>
+    <string name="remove_hide_path">¿Quitar carpeta oculta\?</string>
+    <string name="remove_hide_path_description">¿Quitar la carpeta \'%s\' de las carpetas ocultas\?</string>
+    <string name="not_local_storage">Directorio no soportado</string>
+    <string name="confirm">Confirmar</string>
+    <string name="not_local_storage_description">Por favor, asegúrese de que es un archivo local y no virtual.</string>
+    <string name="help">Ayuda</string>
+    <string name="check_update_on_start">Actualización automática</string>
+    <string name="check_update">Comprobar si hay actualizaciones</string>
+    <string name="never">Nunca</string>
+    <string name="path_duplicated">Carpeta oculta duplicada</string>
+    <string name="no_apphider">Por favor selecciona el modo de ocultar aplicaciones en \"Más ajustes\".</string>
+    <string name="root_not_ava">No se pudo conseguir acceso root.</string>
+    <string name="update_ava">Nueva versión disponible</string>
+    <string name="update_description">Amarok %s (%d) está disponible para su descarga e instalación.</string>
+    <string name="check_update_on_start_description">Comprueba si hay nuevas versiones de Amarok al abrir la aplicación.</string>
+    <string name="check_update_description">Versión actual: %s</string>
+    <string name="update">Actualizar</string>
+    <string name="no_update_ava">Está ejecutando la versión más reciente.</string>
+    <string name="shizuku_pre_v11">Versión de Shizuku no compatible: Pre-v11. Por favor, instale Shizuku v11 o posterior.</string>
+    <string name="shizuku_permission_denied">Shizuku: Permiso denegado</string>
+    <string name="apphider_not_ava_title">Modo ocultar aplicación no disponible</string>
+    <string name="shizuku_not_working">Shizuku: Servicio no disponible. ¿Has instalado Shizuku/Shu en tu dispositivo\?</string>
+    <string name="apphider_root_description">Ocultar aplicaciones con acceso root.
+\nRecomendado si su dispositivo tiene acceso root, pero carece del marco Xposed. Se requiere permiso root.</string>
+    <string name="shizuku_hidden_api_error">No se ha podido ocultar la aplicación: No se ha podido acceder a la API IPackageManager.</string>
+    <string name="shizuku_service_not_running">Shizuku: El servicio no funciona.</string>
+    <string name="dsm_permission_denied">DSM: Permiso denegado</string>
+    <string name="apphider_none">Desactivado</string>
+    <string name="apphider_none_description">Desactiva la opción de ocultar aplicaciones.</string>
+    <string name="apphider_root">Modo root</string>
+    <string name="apphider_shizuku">Modo Shizuku (Sui)</string>
+    <string name="apphider_dsm_description">Ocultar aplicaciones con Delegated-Scopes-Manager.
+\nNo se recomienda a menos que el dispositivo ejecute Android 10 o anterior y no esté rooteado. Puede tener errores y funcionar de forma inesperada. Se requiere Icebox (o StopAPP) instalado como propietario del dispositivo.</string>
+    <string name="apphider_shizuku_description">Ocultar aplicaciones con Shizuku (o Sui).
+\nRecomendado si su dispositivo ejecuta Android 11+ o tiene el framework Xposed. Se requiere Shizuku o Sui instalado y activo.
+\n</string>
+    <string name="apphider_dsm">Modo DSM</string>
+    <string name="learn_more">Tutorial de configuración</string>
+    <string name="option_unava_when_hidden">Las opciones estarán disponibles hasta que se no estén ocultos.</string>
+    <string name="obfuscate_filename_description">Hacer que el nombre del archivo sea ilegible. La característica básica de ocultar archivos. No se puede desactivar.</string>
+    <string name="obfuscate_filename">Ofuscar nombres de archivo</string>
+    <string name="cancel">Cancelar</string>
+    <string name="failed_to_open_doc_tree_description">¡Ups! Su sistema no tiene un gestor de archivos predeterminado. Mantenga pulsado el botón \"Añadir carpeta oculta\" e introduzca la ruta manualmente.</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="alert_permission_request_message">El botón flotante necesita permiso para generar ventanas emergentes. Por favor, busca Amarok en el menú de configuración y concédelo.</string>
+    <string name="quick_hide_notification_content">Tu privacidad no está oculta. Haz clic para ocultarla.</string>
+</resources>
