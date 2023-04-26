@@ -1,0 +1,6 @@
+v0.8.3b2
+- Admite el icono temático adaptable de Android 13 (#50)
+- Requerir desbloqueo para activar el azulejo Ajuste rápido (#51)
+- Añadir traducción: Ruso (por @koji-takahiro) (#53)
+- Añadir traducción: Portugués (por @fnogcps) (#54 #55)
+- Añadir traducción: Turco: Turco (por @croxz900) (#57 #56)
