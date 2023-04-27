@@ -51,10 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Show security check fragment
         if (prefMgr.getAmarokPassword() != null) {
-            new SecurityFragment(prefMgr, succeed -> {
-                if (succeed) initUi();
-                else finish();
-            }).show(getSupportFragmentManager(), null);
+            new SecurityFragment()
+                    .setOnVerifiedCallback(succeed -> {
+                        if (succeed) initUi();
+                        else finish();
+                    })
+                    .show(getSupportFragmentManager(), null);
         } else {
             initUi();
         }
