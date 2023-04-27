@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.utils.HashUtil;
 
 public class SecurityFragment extends BottomSheetDialogFragment {
 
@@ -66,11 +67,15 @@ public class SecurityFragment extends BottomSheetDialogFragment {
     }
 
     private void verify() {
-        if ("123".equals(etPassword.getText().toString())) {
-            dismiss();
+
+        String password = prefMgr.getAmarokPassword();
+        assert etPassword.getText() != null;
+
+        if (password == null || HashUtil.calculateHash(etPassword.getText().toString()).equals(password)) {
             onVerifiedCallback.onVerified(true);
+            dismiss();
         } else {
-            tilPassword.setError(getText(R.string.password_error));
+            tilPassword.setError(getText(R.string.password_incorrect));
         }
     }
 

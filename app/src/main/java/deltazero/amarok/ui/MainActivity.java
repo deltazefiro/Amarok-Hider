@@ -50,10 +50,14 @@ public class MainActivity extends AppCompatActivity {
         prefMgr = hider.prefMgr;
 
         // Show security check fragment
-        new SecurityFragment(prefMgr, succeed -> {
-            if (succeed) initUi();
-            else finish();
-        }).show(getSupportFragmentManager(), null);
+        if (prefMgr.getAmarokPassword() != null) {
+            new SecurityFragment(prefMgr, succeed -> {
+                if (succeed) initUi();
+                else finish();
+            }).show(getSupportFragmentManager(), null);
+        } else {
+            initUi();
+        }
     }
 
     public void changeStatus(View view) {
