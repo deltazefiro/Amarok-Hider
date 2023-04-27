@@ -123,5 +123,5 @@
     <string name="password">Password</string>
     <string name="unlock">Unlock</string>
     <string name="unlock_required">Unlock required</string>
-    <string name="password_error">Password error.</string>
+    <string name="password_incorrect">Password incorrect.</string>
 </resources>
