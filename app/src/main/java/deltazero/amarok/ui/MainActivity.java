@@ -39,34 +39,21 @@ public class MainActivity extends AppCompatActivity {
     private CircularProgressIndicator piProcessStatus;
     private MutableLiveData<Boolean> isProcessing;
 
+    // Has security check passed and UI been initialized
+    private boolean isInitialized = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Init
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         hider = new Hider(this);
         prefMgr = hider.prefMgr;
 
-        // Start App-center
-        AppCenterUtil.startAppCenter(this);
-
-        // Link LiveData
-        isProcessing = hider.getIsProcessingLiveData();
-        isProcessing.observe(this, aBoolean -> updateUi());
-
-        // Init UI
-        ivStatusImg = findViewById(R.id.main_iv_status);
-        tvStatus = findViewById(R.id.main_tv_status);
-        tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
-        btChangeStatus = findViewById(R.id.main_bt_change_status);
-        btSetHideApps = findViewById(R.id.main_bt_set_hide_apps);
-        btSetHideFiles = findViewById(R.id.main_bt_set_hide_files);
-        piProcessStatus = findViewById(R.id.main_pi_process_status);
-        updateUi();
-
-        // Process Permissions
-        PermissionUtil.requestStoragePermission(this);
-        checkAppHiderAvailability();
+        // Show security check fragment
+        new SecurityFragment(prefMgr, succeed -> {
+            if (succeed) initUi();
+            else finish();
+        }).show(getSupportFragmentManager(), null);
     }
 
     public void changeStatus(View view) {
@@ -114,9 +101,38 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, SetHideFilesActivity.class));
     }
 
+    private void initUi() {
+        // Init
+        setContentView(R.layout.activity_main);
+
+        // Start App-center
+        AppCenterUtil.startAppCenter(this);
+
+        // Link LiveData
+        isProcessing = hider.getIsProcessingLiveData();
+        isProcessing.observe(this, aBoolean -> updateUi());
+
+        // Init UI
+        ivStatusImg = findViewById(R.id.main_iv_status);
+        tvStatus = findViewById(R.id.main_tv_status);
+        tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
+        btChangeStatus = findViewById(R.id.main_bt_change_status);
+        btSetHideApps = findViewById(R.id.main_bt_set_hide_apps);
+        btSetHideFiles = findViewById(R.id.main_bt_set_hide_files);
+        piProcessStatus = findViewById(R.id.main_pi_process_status);
+        updateUi();
+
+        // Process Permissions
+        PermissionUtil.requestStoragePermission(this);
+        checkAppHiderAvailability();
+
+        isInitialized = true;
+    }
+
 
     public void updateUi() {
 
+        if (!isInitialized) return;
         assert isProcessing.getValue() != null;
 
         if (isProcessing.getValue()) {
