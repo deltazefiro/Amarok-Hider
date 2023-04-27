@@ -106,10 +106,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         swAppLock.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (isChecked) {
-                new SetPasswordFragment(password -> {
-                    prefMgr.setAmarokPassword(password == null ? null : HashUtil.calculateHash(password));
-                    updateUI();
-                }).show(getSupportFragmentManager(), null);
+                new SetPasswordFragment()
+                        .setCallback(password -> {
+                            prefMgr.setAmarokPassword(password == null ? null : HashUtil.calculateHash(password));
+                            updateUI();
+                        })
+                        .show(getSupportFragmentManager(), null);
             } else {
                 prefMgr.setAmarokPassword(null);
             }

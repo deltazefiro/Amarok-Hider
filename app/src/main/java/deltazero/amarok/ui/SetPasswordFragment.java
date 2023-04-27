@@ -33,10 +33,6 @@ public class SetPasswordFragment extends BottomSheetDialogFragment {
     private MaterialButton btOk, btCancel;
     private OnSetPasswordCallback callback;
 
-    public SetPasswordFragment(OnSetPasswordCallback callback) {
-        this.callback = callback;
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.dialog_set_password, container, false);
@@ -72,7 +68,7 @@ public class SetPasswordFragment extends BottomSheetDialogFragment {
         });
 
         btCancel.setOnClickListener(v -> {
-            callback.onSetPassword(null);
+            if (callback != null) callback.onSetPassword(null);
             dismiss();
         });
 
@@ -95,9 +91,14 @@ public class SetPasswordFragment extends BottomSheetDialogFragment {
         });
     }
 
+    public SetPasswordFragment setCallback(OnSetPasswordCallback callback) {
+        this.callback = callback;
+        return this;
+    }
+
     @Override
     public void onCancel(@NonNull DialogInterface dialog) {
-        callback.onSetPassword(null);
+        if (callback != null) callback.onSetPassword(null);
         super.onCancel(dialog);
     }
 }

@@ -20,7 +20,7 @@ import deltazero.amarok.utils.HashUtil;
 
 public class SecurityFragment extends BottomSheetDialogFragment {
 
-    private final OnVerifiedCallback onVerifiedCallback;
+    private OnVerifiedCallback onVerifiedCallback;
     private TextInputEditText etPassword;
     private TextInputLayout tilPassword;
     private PrefMgr prefMgr;
@@ -29,20 +29,19 @@ public class SecurityFragment extends BottomSheetDialogFragment {
         public void onVerified(boolean succeed);
     }
 
-    public SecurityFragment(PrefMgr prefMgr, OnVerifiedCallback onVerifiedCallback) {
-        this.prefMgr = prefMgr;
-        this.onVerifiedCallback = onVerifiedCallback;
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        prefMgr = new PrefMgr(requireContext());
 
         setCancelable(false);
         View fragmentView = inflater.inflate(R.layout.dialog_security, container, false);
 
         fragmentView.findViewById(R.id.security_dialog_bt_unlock).setOnClickListener(v -> verify());
-        fragmentView.findViewById(R.id.security_dialog_bt_cancel).setOnClickListener(v -> onVerifiedCallback.onVerified(false));
+        fragmentView.findViewById(R.id.security_dialog_bt_cancel).setOnClickListener(v -> {
+            if (onVerifiedCallback != null) onVerifiedCallback.onVerified(false);
+        });
         etPassword = fragmentView.findViewById(R.id.security_dialog_et_password_input);
         tilPassword = fragmentView.findViewById(R.id.security_dialog_til_password_input);
 
@@ -66,13 +65,18 @@ public class SecurityFragment extends BottomSheetDialogFragment {
         return fragmentView;
     }
 
+    public SecurityFragment setOnVerifiedCallback(OnVerifiedCallback onVerifiedCallback) {
+        this.onVerifiedCallback = onVerifiedCallback;
+        return this;
+    }
+
     private void verify() {
 
         String password = prefMgr.getAmarokPassword();
         assert etPassword.getText() != null;
 
         if (password == null || HashUtil.calculateHash(etPassword.getText().toString()).equals(password)) {
-            onVerifiedCallback.onVerified(true);
+            if (onVerifiedCallback != null) onVerifiedCallback.onVerified(true);
             dismiss();
         } else {
             tilPassword.setError(getText(R.string.password_incorrect));
