@@ -18,15 +18,15 @@ import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.HashUtil;
 
-public class SecurityFragment extends BottomSheetDialogFragment {
+public class PasswordAuthFragment extends BottomSheetDialogFragment {
 
     private OnVerifiedCallback onVerifiedCallback;
     private TextInputEditText etPassword;
     private TextInputLayout tilPassword;
     private PrefMgr prefMgr;
 
-    interface OnVerifiedCallback {
-        public void onVerified(boolean succeed);
+    public interface OnVerifiedCallback {
+        void onVerified(boolean succeed);
     }
 
     @Nullable
@@ -65,7 +65,7 @@ public class SecurityFragment extends BottomSheetDialogFragment {
         return fragmentView;
     }
 
-    public SecurityFragment setOnVerifiedCallback(OnVerifiedCallback onVerifiedCallback) {
+    public PasswordAuthFragment setOnVerifiedCallback(OnVerifiedCallback onVerifiedCallback) {
         this.onVerifiedCallback = onVerifiedCallback;
         return this;
     }

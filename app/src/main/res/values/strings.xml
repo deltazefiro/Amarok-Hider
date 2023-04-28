@@ -130,4 +130,6 @@
     <string name="set_password">Set password</string>
     <string name="password_length_error">Password must be between 3 and 15 characters.</string>
     <string name="password_mismatch_error">Passwords do not match.</string>
+    <string name="biometric_auth">Biometric authentication</string>
+    <string name="biometric_auth_description">Use biometric authentication of the device to access Amarok when available.</string>
 </resources>

@@ -159,4 +159,13 @@ public class PrefMgr {
         mPrefEditor.putString("amarokPassword", password);
         mPrefEditor.apply();
     }
+
+    public boolean getEnableAmarokBiometricAuth() {
+        return mPrefs.getBoolean("enableAmarokBiometricAuth", false);
+    }
+
+    public void setEnableAmarokBiometricAuth(boolean enableAmarokBiometricAuth) {
+        mPrefEditor.putBoolean("enableAmarokBiometricAuth", enableAmarokBiometricAuth);
+        mPrefEditor.apply();
+    }
 }
