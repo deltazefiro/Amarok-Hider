@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
     private PrefMgr prefMgr;
     private Context context;
     private String appVersionName;
-    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock;
+    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock, swBiometricAuth;
     private MaterialToolbar tbToolBar;
     private TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
@@ -61,6 +61,7 @@ public class SettingsActivity extends AppCompatActivity {
         tvCurrFileHider = findViewById(R.id.settings_tv_curr_file_hider);
         tvCurrVer = findViewById(R.id.settings_tv_curr_ver);
         swAppLock = findViewById(R.id.settings_sw_amarok_lock);
+        swBiometricAuth = findViewById(R.id.settings_sw_biometric_auth);
         swQuickHideNotification = findViewById(R.id.settings_sw_quick_hide_notification);
         swPanicButton = findViewById(R.id.settings_sw_panic_button);
         swAnalytics = findViewById(R.id.settings_sw_analytics);
@@ -114,7 +115,12 @@ public class SettingsActivity extends AppCompatActivity {
                         .show(getSupportFragmentManager(), null);
             } else {
                 prefMgr.setAmarokPassword(null);
+                updateUI();
             }
+        });
+
+        swBiometricAuth.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefMgr.setEnableAmarokBiometricAuth(isChecked);
         });
 
         swPanicButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -178,9 +184,12 @@ public class SettingsActivity extends AppCompatActivity {
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
         swAppLock.setChecked(prefMgr.getAmarokPassword() != null);
+        swBiometricAuth.setChecked(prefMgr.getEnableAmarokBiometricAuth());
         swQuickHideNotification.setChecked(prefMgr.getEnableQuickHideService());
         swPanicButton.setChecked(prefMgr.getEnablePanicButton());
+
         swPanicButton.setEnabled(prefMgr.getEnableQuickHideService());
+        swBiometricAuth.setEnabled(prefMgr.getAmarokPassword() != null);
 
         if (AppCenterUtil.isAvailable()) {
             swAnalytics.setChecked(AppCenterUtil.isAnalyticsEnabled());

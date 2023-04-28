@@ -25,6 +25,7 @@ import deltazero.amarok.QuickSettingService;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.PermissionUtil;
+import deltazero.amarok.utils.SecurityAuth;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -50,16 +51,10 @@ public class MainActivity extends AppCompatActivity {
         prefMgr = hider.prefMgr;
 
         // Show security check fragment
-        if (prefMgr.getAmarokPassword() != null) {
-            new SecurityFragment()
-                    .setOnVerifiedCallback(succeed -> {
-                        if (succeed) initUi();
-                        else finish();
-                    })
-                    .show(getSupportFragmentManager(), null);
-        } else {
-            initUi();
-        }
+        new SecurityAuth(this, succeed -> {
+            if (succeed) initUi();
+            else finish();
+        }).authenticate();
     }
 
     public void changeStatus(View view) {
