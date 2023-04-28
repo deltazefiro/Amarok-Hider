@@ -109,4 +109,16 @@
     <string name="quick_hide_notification_title">未隐藏</string>
     <string name="quick_hide_notification_content">您的隐私未隐藏。点击进行隐藏。</string>
     <string name="invalid_action">无效的 Intent: %s</string>
+    <string name="password">密码</string>
+    <string name="unlock">解锁</string>
+    <string name="unlock_required">应用锁</string>
+    <string name="password_incorrect">密码错误。</string>
+    <string name="app_lock">应用锁</string>
+    <string name="app_lock_description">打开 Amarok 时需输入密码解锁。</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="set_password">设置密码</string>
+    <string name="password_length_error">密码长度需在 3 ~ 15 个字符之间。</string>
+    <string name="password_mismatch_error">密码不匹配。</string>
+    <string name="biometric_auth">生物验证</string>
+    <string name="biometric_auth_description">采用设备的生物验证（指纹传感器或人脸识别）来解锁 Amarok。</string>
 </resources>
