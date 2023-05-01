@@ -39,4 +39,59 @@
     <string name="usage_description">Открыть справочный центр.</string>
     <string name="more_settings">Настройки</string>
     <string name="shizuku_service_not_running">Shizuku: Служба не запущена.</string>
+    <string name="view_github_repo">Репозиторий GitHub</string>
+    <string name="never">Никогда</string>
+    <string name="manually_set_path">Выбрать вручную</string>
+    <string name="apphider_shizuku_description">Скрытие с помощью Shizuku (или Sui).
+\nРекомендуется, если у вас Android 11+ или есть Xposed. Требуется установленный Shizuku или Sui.
+\n</string>
+    <string name="apphider_dsm_description">Скрытие с помощью Delegated-Scopes-Manager.
+\nРекомендуется только при наличии Android 10 или старее и отсутствии root-прав. Может работать со сбоями. Необходим Icebox (или StopAPP) в режиме администратора устройства.</string>
+    <string name="filename_only">Только имена файлов</string>
+    <string name="obfuscate_text_file_description">Экспериментальная функция. Запутывание заголовка файла не даёт нужного эффекта на текстовых файлах. Эта функция полностью запутывает текстовый файл. Замедляет процесс скрытия.</string>
+    <string name="obfuscate_text_file_description_enhanced">Не рекомендуется. Расширенная версия \"Полной обфускации текстовых файлов\". Используйте эту функцию, если обычный метод недостаточно эффективен. Очень сильно замедляет скрытие.</string>
+    <string name="debug_info_description">Показывает информацию, помогающую устранить проблемы.</string>
+    <string name="add_hide_files">Добавить папку для скрытия</string>
+    <string name="folder_selector_hints">Подсказки:
+\n\t 1. Нажмите «Использовать эту папку», чтобы выбрать папку.
+\n\t 2. Всегда выбирайте файл на устройстве
+\n\t(Проведите пальцем от правого края экрана, чтобы открыть локальные файлы)</string>
+    <string name="remove_hide_path">Убрать папку из скрытия\?</string>
+    <string name="remove_hide_path_description">Удалить папку \'%s\' из скрытия\?</string>
+    <string name="confirm">Подтвердить</string>
+    <string name="not_local_storage">Папка не поддерживается</string>
+    <string name="not_local_storage_description">Убедитесь, что это локальный файл, а не виртуальный.</string>
+    <string name="help">Помощь</string>
+    <string name="no_apphider">Выберите режим скрытия приложений в настройках.</string>
+    <string name="root_not_ava">Невозможно получить рут-доступ.</string>
+    <string name="check_update_on_start">Автоматическое обновление</string>
+    <string name="check_update_on_start_description">Проверять наличие новых версий Amarok при открытии приложения.</string>
+    <string name="check_update">Проверить наличие обновлений</string>
+    <string name="check_update_description">Текущая версия: %s</string>
+    <string name="update_ava">Доступна новая версия</string>
+    <string name="update_description">Amarok %s (%d) доступен для скачивания и установки.</string>
+    <string name="update">Обновить</string>
+    <string name="no_update_ava">Вы используете последнюю версию.</string>
+    <string name="manually_set_path_description">Внимание: Убедитесь, что ваш выбор действительно существует, так как он не проверяется.</string>
+    <string name="shizuku_pre_v11">Неподдерживаемая версия Shizuku: До версии 11. Пожалуйста, установите Shizuku v11 или более позднюю версию.</string>
+    <string name="shizuku_hidden_api_error">Не удалось скрыть приложение: Не удалось получить доступ к IPackageManager API.</string>
+    <string name="shizuku_not_working">Shizuku: Сервис не доступен. Вы установили Shizuku/Shu на своё устройство\?</string>
+    <string name="dsm_permission_denied">DSM: В разрешении отказано</string>
+    <string name="apphider_none">Отключен</string>
+    <string name="apphider_none_description">Отключить скрытие приложений.</string>
+    <string name="apphider_root">Режим Root</string>
+    <string name="apphider_root_description">Скрытие с root-правами.
+\nРекомендуется, если ваше устройство имеет root-права, но отсутствуют Xposed. Необходим root.</string>
+    <string name="apphider_shizuku">Режим Shizuku (Sui)</string>
+    <string name="apphider_dsm">Режим DSM</string>
+    <string name="learn_more">Туториал</string>
+    <string name="obfuscate_filename">Обфускация имён файлов</string>
+    <string name="obfuscate_filename_description">Делает названия файлов нечитаемым для человека. Базовая функция скрытия файлов. Невозможно отключить.</string>
+    <string name="obfuscate_file_header">Обфускация заголовков файлов</string>
+    <string name="obfuscate_file_header_description">Запутывает подпись файла в заголовке, чтобы файл выглядел как повреждённый. Предотвращает открытие файла через \"Открыть с помощью...\", но замедляет процесс скрытия файлов.</string>
+    <string name="filename_and_header">Имя файла + Заголовок</string>
+    <string name="obfuscate_text_file">Полная обфускация текстовых файлов</string>
+    <string name="obfuscate_text_file_enhanced">Полная обфускация текстовых файлов - Расширенная</string>
+    <string name="join_developer_channel">Канал Telegram</string>
+    <string name="processing">Обработка…</string>
 </resources>
