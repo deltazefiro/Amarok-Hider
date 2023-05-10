@@ -12,14 +12,14 @@ v0.8.3a3
 - Mejorar el rendimiento: carga de iconos en "Establecer aplicaciones ocultas" (por @comradekingu) (#40)
 - Saltar .nomedia al ocultar archivos (#31)
 - Cambiar el canal de Telegram al grupo
-- Evitar que Amarok se oculte en la versión foss (#43 #41)
-- Arreglar que las apps ocultas no sean visibles en "Establecer aplicaciones ocultas" (#43 #41)
+- Evitar que Amarok se oculte en la versión FOSS (#43 #41)
+- Arreglar que las aplicaciones ocultas no sean visibles en "Establecer aplicaciones ocultas" (#43 #41)
 - Arreglar que BossKey se mate en segundo plano
 v0.8.3a2
 - Añadir BossKey
 - Añadir documento en inglés
 - Añadir traducción: Noruego Bokmål (por @comradekingu) (#33)
-- Apoyar la sincronización del estado de acceso directo con MainActivity
+- Apoyar la sincronización del estado de acceso directo con Actividad Principal
 - Nueva interfaz de configuración
 - Arreglar congelación de acceso directo (#22)
 - Corrección de fallos en la actualización de la aplicación
