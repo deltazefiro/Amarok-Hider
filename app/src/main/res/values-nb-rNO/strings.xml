@@ -109,4 +109,14 @@
     <string name="panic_button_description">Vis en flytende knapp over andre programmer til bruk i nødsfall. Knappen vises kun når skjuling er opphevet.</string>
     <string name="failed_to_open_doc_tree_description">Du har ingen forvalgt filbehandler. Lang-trykk på «Legg til skjulingsmappe»-knappen og sett en sti manuelt.</string>
     <string name="obfuscate_text_file_description">Eksperimentell funksjon. Tilsløring av filhoder har ingen effekt på tekstfiler. Å skru på denne funksjonen tilslører tekstfiler helt, men gjør det tregere.</string>
+    <string name="quick_hide_notification_description">Vis vedvarende merknad for å vise brukere når ikke skjult.</string>
+    <string name="notification_permission_request_title">Merknadstilgang kreves</string>
+    <string name="notification_permission_denied">Merknadstilgang nektet</string>
+    <string name="notification_permission_request_message">Hurtigskjulingstjeneste trenger merknadstilgang for å virke.</string>
+    <string name="quick_hide_notification_content">Personvernet ditt er ikke skjult. Klikk for å skjule.</string>
+    <string name="notification_channel_name">Hurtigskjulingstjeneste</string>
+    <string name="quick_hide_notification_title">Personvern ikke skjult</string>
+    <string name="quick_hide">Hurtigskjuling</string>
+    <string name="notification">Merknad</string>
+    <string name="invalid_action">Ugyldig intensjon mottatt: %s</string>
 </resources>
