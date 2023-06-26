@@ -8,14 +8,14 @@
     <string name="unhide">Показать</string>
     <string name="visible_status">Не скрыто</string>
     <string name="ok">ОК</string>
-    <string name="about">О нас</string>
+    <string name="about">О приложении</string>
     <string name="cancel">Отмена</string>
     <string name="setting_not_ava_when_hidden">Этот параметр доступен только после отключения скрытия</string>
-    <string name="set_hide_apps">Вабрать приложения для скрытия</string>
+    <string name="set_hide_apps">Выбрать приложения для скрытия</string>
     <string name="apphider_not_ava">Скрытие приложений недоступно. Проверьте \"Настройки\" → \"Выбрать режим скрытия приложений\".</string>
-    <string name="set_hide_files">Вабрать файлы для скрытия</string>
+    <string name="set_hide_files">Выбрать файлы для скрытия</string>
     <string name="switch_file_hider">Выбрать режим скрытия файлов</string>
-    <string name="apply_on_restart">Перезапустите приложение, чтобы применить новые изменения.</string>
+    <string name="apply_on_restart">Перезапустите приложение, чтобы применить изменения.</string>
     <string name="hidden_toast">Скрыто. Ку-ка-ре-ку~!</string>
     <string name="unhidden_toast">Не скрыто. Будь осторожен.</string>
     <string name="show_debug_info">Отладочная информация</string>
@@ -24,20 +24,20 @@
 \n
 \n [Разработчик] @Deltazefiro
 \n
-\n [Информация] Amarok: Простое приложение для приватного скрытия файлов и приложений.
+\n [Информация] Amarok: Простое Android приложение для скрытия личных файлов и приложений.
 \n
-\n [Репо] https://github.com/deltazefiro/Amarok-Hider
+\n [Репозиторий] https://github.com/deltazefiro/Amarok-Hider
 \n
 \n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
 \n"</string>
     <string name="enable_analytics">Анонимная аналитика</string>
     <string name="switch_app_hider">Выбрать режим скрытия приложений</string>
     <string name="current_mode">Текущий режим: %s</string>
-    <string name="analytics_description">Анонимно отправлять отчеты о сбоях разработчику для анализа.</string>
+    <string name="analytics_description">Отправлять разработчикам анонимные отчеты о сбоях для анализа.</string>
     <string name="about_description">Показать информацию о приложении.</string>
     <string name="usage">Использование</string>
     <string name="usage_description">Открыть справочный центр.</string>
-    <string name="more_settings">Настройки</string>
+    <string name="more_settings">Дополнительно</string>
     <string name="shizuku_service_not_running">Shizuku: Служба не запущена.</string>
     <string name="view_github_repo">Репозиторий GitHub</string>
     <string name="never">Никогда</string>
@@ -72,19 +72,19 @@
     <string name="update_description">Amarok %s (%d) доступен для скачивания и установки.</string>
     <string name="update">Обновить</string>
     <string name="no_update_ava">Вы используете последнюю версию.</string>
-    <string name="manually_set_path_description">Внимание: Убедитесь, что ваш выбор действительно существует, так как он не проверяется.</string>
-    <string name="shizuku_pre_v11">Неподдерживаемая версия Shizuku: До версии 11. Пожалуйста, установите Shizuku v11 или более позднюю версию.</string>
+    <string name="manually_set_path_description">Внимание: Убедитесь, что то, что вы выбираете вручную, действительно существует, так как это не проверяется.</string>
+    <string name="shizuku_pre_v11">Неподдерживаемая версия Shizuku: Pre-v11. Пожалуйста, установите Shizuku v11 или более позднюю версию.</string>
     <string name="shizuku_hidden_api_error">Не удалось скрыть приложение: Не удалось получить доступ к IPackageManager API.</string>
-    <string name="shizuku_not_working">Shizuku: Сервис не доступен. Вы установили Shizuku/Shu на своё устройство\?</string>
+    <string name="shizuku_not_working">Shizuku: Служба не доступна. Вы установили Shizuku/Shu на своё устройство\?</string>
     <string name="dsm_permission_denied">DSM: В разрешении отказано</string>
     <string name="apphider_none">Отключен</string>
-    <string name="apphider_none_description">Отключить скрытие приложений.</string>
+    <string name="apphider_none_description">Скрытие приложений отключено.</string>
     <string name="apphider_root">Режим Root</string>
     <string name="apphider_root_description">Скрытие с root-правами.
 \nРекомендуется, если ваше устройство имеет root-права, но отсутствуют Xposed. Необходим root.</string>
     <string name="apphider_shizuku">Режим Shizuku (Sui)</string>
     <string name="apphider_dsm">Режим DSM</string>
-    <string name="learn_more">Туториал</string>
+    <string name="learn_more">Руководство по настройке</string>
     <string name="obfuscate_filename">Обфускация имён файлов</string>
     <string name="obfuscate_filename_description">Делает названия файлов нечитаемым для человека. Базовая функция скрытия файлов. Невозможно отключить.</string>
     <string name="obfuscate_file_header">Обфускация заголовков файлов</string>
@@ -92,6 +92,38 @@
     <string name="filename_and_header">Имя файла + Заголовок</string>
     <string name="obfuscate_text_file">Полная обфускация текстовых файлов</string>
     <string name="obfuscate_text_file_enhanced">Полная обфускация текстовых файлов - Расширенная</string>
-    <string name="join_developer_channel">Канал Telegram</string>
+    <string name="join_developer_channel">Группа в Telegram</string>
     <string name="processing">Обработка…</string>
+    <string name="search">Поиск</string>
+    <string name="alert_permission_request_message">Плавающей кнопке требуется разрешение на создание всплывающих окон. Пожалуйста, найдите Amarok в меню настроек и предоставьте это разрешение.</string>
+    <string name="panic_button_description">Отображение плавающей кнопки, используемой для скрытия приложений и файлов в экстренных случаях. Она отображается поверх всех других приложений. Кнопка отображается только в нескрытом состоянии.</string>
+    <string name="invalid_dsm_provider">DSM: недействительный поставщик DSM. Вы установили и активировали поставщика DSM на своем устройстве\?</string>
+    <string name="hide_app_failed_admin_inactive">Не удалось скрыть приложение: поставщик DSM не активен.</string>
+    <string name="path_duplicated">Зациклить скрытую папку</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>
+\n
+\nсодержит
+\n
+\n<u>\'%s\'</u></string>
+    <string name="shizuku_permission_denied">Shizuku: В доступе отказано</string>
+    <string name="apphider_not_ava_title">Недоступный режим скрытия приложения</string>
+    <string name="alert_permission_denied">Отказано в разрешении на отображение поверх других приложений.</string>
+    <string name="alert_permission_request_title">Требуется разрешение на создание всплывающих окон</string>
+    <string name="workmode">Режим работы</string>
+    <string name="misc">Разное</string>
+    <string name="security">Безопасность</string>
+    <string name="panic_button">Плавающая кнопка (Boss key)</string>
+    <string name="in_app_update_failed">Доступна новая версия, но ее не удалось получить. Пожалуйста, обновите вручную.</string>
+    <string name="failed_to_open_doc_tree">Не удалось открыть системный файл-пикер</string>
+    <string name="failed_to_open_doc_tree_description">Ой! В вашей системе нет файлового менеджера по умолчанию. Нажмите и удерживайте кнопку «Добавить скрытую папку» и введите путь вручную.</string>
+    <string name="notification_channel_name">Служба быстрого скрытия</string>
+    <string name="quick_hide">Быстрое скрытие</string>
+    <string name="notification">Уведомление</string>
+    <string name="quick_hide_notification_description">Показывать постоянное уведомление для оповещения пользователей, когда скрытие отключено.</string>
+    <string name="notification_permission_request_title">Требуется разрешение на уведомления</string>
+    <string name="notification_permission_request_message">Для работы службы быстрого скрытия необходимо разрешение на уведомление.</string>
+    <string name="notification_permission_denied">В разрешении на уведомление отказано.</string>
+    <string name="quick_hide_notification_title">Конфиденциальность не защищена</string>
+    <string name="quick_hide_notification_content">Ваша конфиденциальность не скрыта. Нажмите, чтобы скрыть.</string>
+    <string name="invalid_action">Получен недействительный интент: %s</string>
 </resources>
