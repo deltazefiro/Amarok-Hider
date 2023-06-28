@@ -1,21 +1,21 @@
 v0.8.3b1
-- Yeni arayüz
-- Bild. çub. kısayol
+- Arayüz+
+- Bild. çub. k.yol
 - PT
-- en & zh çevirisi
+- en & zh
 v0.8.3a3
 - Gizlenmeyi söyleyen bild.
 - Uyg. arama
 - DerinGizleme(Root)
-- Çeviri: German(@SecularSteve)(#37),Norwegian Bokmål & English(@comradekingu)(#37 #40)
-- Simge yüklenmesi iyileştirildi
-- .nomedia atlanıyor (#31)
-- Telegram kanal->grup
-- Uyg.nın kendini gizlemesi engellendi(#43 #41)
-- Gizli uyg. gözükmemesi(#43 #41),PyyT kapanması düzeltildi
+- German(@SecularSteve)(#37),Norwegian Bokmål & English(@comradekingu)(#37 #40)
+- Simge yüklenmesi+
+- .nomedia sorunu✓(#31)
+- Tg kanal->grup
+- Uyg.nın kendini gizlemesi✓(#43 #41)
+- Gizli uyg. gözükmemesi(#43 #41),PT kapanması✓
 v0.8.3a2
 - PatronTuşu(PT)
-- İng. döküman
+- Belge
 - Norwegian Bokmål (@comradekingu) (#33)
 - Kısayol desteği
 - Yeni arayüz
