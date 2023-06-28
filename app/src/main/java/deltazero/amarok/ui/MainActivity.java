@@ -4,6 +4,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.service.quicksettings.TileService;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -166,8 +167,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-        TileService.requestListeningState(MainActivity.this,
-                new ComponentName(MainActivity.this, QuickSettingService.class));
+        try {
+            TileService.requestListeningState(MainActivity.this,
+                    new ComponentName(MainActivity.this, QuickSettingService.class));
+        } catch (IllegalArgumentException e) {
+            Log.w(TAG, "QuickSetting is unavailable when running in an Android work profile.");
+        }
     }
 
 
