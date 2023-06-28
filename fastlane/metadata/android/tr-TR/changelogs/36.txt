@@ -1,26 +1,22 @@
 v0.8.3b1
- - "Gizli Uygulamaları Ayarla" menüsüne yepyeni ve canlı kullanıcı arayüzü eklendi
- - Bildirimde gözüken gizle düğmesi eklendi
- - Patron Tuşuna alfa eklendi
- - en & zh çevirisi güncellendi
- v0.8.3a3
- - Kullanıcıya gizlenmesini söyleyen bildirim eklendi
- - "Gizli Uygulamaları Ayarla" kısmına arama desteği eklendi
- - Root kullanarak DeepHide (gelişmiş gizleme) desteği eklendi 
- - Çeviri eklendi: Almanca (@SecularSteve) (#37)
-- Çeviri geliştirildi: Norveççe Bokmål & İngilizce (@comradekingu) (#37 #40)
-- Performans artırıldı: "Gizli Uygulamaları Ayarla"daki simgelerin yüklenmesi hızlandı 
- - Dosyaları gizlerken .nomedia atlanıyor (#31)
- - Telegram kanalı grup olarak değiştirildi
- - Foss versiyonunda Amarok'un kendini gizlemesi engellendi (#43 #41)
- - "Gizli Uygulamaları Ayarla" bölümünde görünmeyen gizli uygulamalar düzeltildi (#43 #41) 
- - Patron Tuşu'nun arka plandayken kapatılması düzeltildi
- v0.8.3a2
- - Patron Tuşu eklendi
- - İngilizce belge eklendi
- - Çeviri eklendi: Norveççe Bokmål (@comradekingu ) (#33)
- - MainActivity ile kısayol durumu senkronizasyonu desteği eklendi
- - Ayarlara yeni kullanıcı arayüzü eklendi 
- - Kısayolun donması düzeltildi (#22)
- - Uygulama içi güncellemede kilitlenme düzeltildi
- - Açık belge ağacındaki çökme düzeltildi
+- Yeni arayüz
+- Bild. çub. kısayol
+- PT
+- en & zh çevirisi
+v0.8.3a3
+- Gizlenmeyi söyleyen bild.
+- Uyg. arama
+- DerinGizleme(Root)
+- Çeviri: German(@SecularSteve)(#37),Norwegian Bokmål & English(@comradekingu)(#37 #40)
+- Simge yüklenmesi iyileştirildi
+- .nomedia atlanıyor (#31)
+- Telegram kanal->grup
+- Uyg.nın kendini gizlemesi engellendi(#43 #41)
+- Gizli uyg. gözükmemesi(#43 #41),PyyT kapanması düzeltildi
+v0.8.3a2
+- PatronTuşu(PT)
+- İng. döküman
+- Norwegian Bokmål (@comradekingu) (#33)
+- Kısayol desteği
+- Yeni arayüz
+- Kısayol donması(#22),çökmeler düzeltildi
