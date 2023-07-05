@@ -19,8 +19,8 @@ android {
         applicationId "deltazero.amarok"
         minSdkVersion 26
         targetSdkVersion 33
-        versionCode 37
-        versionName "0.8.3b2"
+        versionCode 50
+        versionName "0.8.4a1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -89,8 +89,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     namespace 'deltazero.amarok'
 }
@@ -100,21 +100,22 @@ repositories {
 }
 
 dependencies {
-    def shizukuVersion = '12.2.0'
+    def shizukuVersion = '13.1.1'
     implementation "dev.rikka.shizuku:api:${shizukuVersion}"
     implementation "dev.rikka.shizuku:provider:${shizukuVersion}"
 
-    implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
-
-    def appCenterSdkVersion = '5.0.0'
+    def appCenterSdkVersion = '5.0.1'
     appcenterImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 
+    implementation 'com.github.Dimezis:BlurView:version-2.0.3'
     implementation 'com.github.getActivity:XXPermissions:16.8'
     implementation 'com.github.getActivity:XToast:8.9'
-    implementation 'androidx.appcompat:appcompat:1.6.0'
+    implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
     implementation 'com.google.android.material:material:1.7.0'
+    implementation "androidx.biometric:biometric:1.1.0"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
