@@ -7,6 +7,7 @@ import android.service.quicksettings.TileService;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,25 +36,49 @@ public class MainActivity extends AppCompatActivity {
     private Hider hider;
     private PrefMgr prefMgr;
 
+    private ScrollView svMainLayout;
     private ImageView ivStatusImg;
     private TextView tvStatusInfo, tvStatus;
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
     private MutableLiveData<Boolean> isProcessing;
 
-    // Has security check passed and UI been initialized
-    private boolean isInitialized = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Init
+        // Setup activity
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Start App-center
+        AppCenterUtil.startAppCenter(this);
+
+        // Prepare data & init hider
         hider = new Hider(this);
         prefMgr = hider.prefMgr;
 
+        // Init UI
+        svMainLayout = findViewById(R.id.main_sv_main_layout);
+        ivStatusImg = findViewById(R.id.main_iv_status);
+        tvStatus = findViewById(R.id.main_tv_status);
+        tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
+        btChangeStatus = findViewById(R.id.main_bt_change_status);
+        btSetHideApps = findViewById(R.id.main_bt_set_hide_apps);
+        btSetHideFiles = findViewById(R.id.main_bt_set_hide_files);
+        piProcessStatus = findViewById(R.id.main_pi_process_status);
+        refreshUi();
+
+        // Setup observer
+        isProcessing = hider.getIsProcessingLiveData();
+        isProcessing.observe(this, aBoolean -> refreshUi());
+
+        // Process Permissions
+        PermissionUtil.requestStoragePermission(this);
+        checkAppHiderAvailability();
+
         // Show security check fragment
+        svMainLayout.setVisibility(View.GONE);
         new SecurityAuth(this, succeed -> {
-            if (succeed) initUi();
+            if (succeed) svMainLayout.setVisibility(View.VISIBLE);
             else finish();
         }).authenticate();
     }
@@ -103,41 +128,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, SetHideFilesActivity.class));
     }
 
-    private void initUi() {
-        // Init
-        setContentView(R.layout.activity_main);
-
-        // Start App-center
-        AppCenterUtil.startAppCenter(this);
-
-        // Link LiveData
-        isProcessing = hider.getIsProcessingLiveData();
-        isProcessing.observe(this, aBoolean -> updateUi());
-
-        // Init UI
-        ivStatusImg = findViewById(R.id.main_iv_status);
-        tvStatus = findViewById(R.id.main_tv_status);
-        tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
-        btChangeStatus = findViewById(R.id.main_bt_change_status);
-        btSetHideApps = findViewById(R.id.main_bt_set_hide_apps);
-        btSetHideFiles = findViewById(R.id.main_bt_set_hide_files);
-        piProcessStatus = findViewById(R.id.main_pi_process_status);
-        updateUi();
-
-        // Process Permissions
-        PermissionUtil.requestStoragePermission(this);
-        checkAppHiderAvailability();
-
-        isInitialized = true;
-    }
-
-
-    public void updateUi() {
-
-        if (!isInitialized) return;
-        assert isProcessing.getValue() != null;
-
-        if (isProcessing.getValue()) {
+    public void refreshUi() {
+        if (isProcessing != null && Boolean.TRUE.equals(isProcessing.getValue())) {
             // Processing
             piProcessStatus.show();
             btChangeStatus.setEnabled(false);
@@ -193,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        updateUi();
+        refreshUi();
         super.onResume();
     }
 
