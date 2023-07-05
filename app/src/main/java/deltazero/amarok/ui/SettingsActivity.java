@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.hjq.permissions.OnPermissionCallback;
 
@@ -25,6 +24,7 @@ import deltazero.amarok.PrefMgr;
 import deltazero.amarok.QuickHideService;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
+import deltazero.amarok.utils.HashUtil;
 import deltazero.amarok.utils.PermissionUtil;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class SettingsActivity extends AppCompatActivity {
     private PrefMgr prefMgr;
     private Context context;
     private String appVersionName;
-    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification;
+    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock, swBiometricAuth;
     private MaterialToolbar tbToolBar;
     private TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
@@ -60,6 +60,8 @@ public class SettingsActivity extends AppCompatActivity {
         tvCurrAppHider = findViewById(R.id.settings_tv_curr_app_hider);
         tvCurrFileHider = findViewById(R.id.settings_tv_curr_file_hider);
         tvCurrVer = findViewById(R.id.settings_tv_curr_ver);
+        swAppLock = findViewById(R.id.settings_sw_amarok_lock);
+        swBiometricAuth = findViewById(R.id.settings_sw_biometric_auth);
         swQuickHideNotification = findViewById(R.id.settings_sw_quick_hide_notification);
         swPanicButton = findViewById(R.id.settings_sw_panic_button);
         swAnalytics = findViewById(R.id.settings_sw_analytics);
@@ -102,6 +104,24 @@ public class SettingsActivity extends AppCompatActivity {
                 updateUI();
             }
         }));
+
+        swAppLock.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                new SetPasswordFragment()
+                        .setCallback(password -> {
+                            prefMgr.setAmarokPassword(password == null ? null : HashUtil.calculateHash(password));
+                            updateUI();
+                        })
+                        .show(getSupportFragmentManager(), null);
+            } else {
+                prefMgr.setAmarokPassword(null);
+                updateUI();
+            }
+        });
+
+        swBiometricAuth.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefMgr.setEnableAmarokBiometricAuth(isChecked);
+        });
 
         swPanicButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
             if (!buttonView.isPressed())
@@ -148,12 +168,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         // Enable back button
-        tbToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        tbToolBar.setNavigationOnClickListener(v -> finish());
 
         // Show debug button in debug mode
         if (BuildConfig.DEBUG) {
@@ -168,9 +183,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
+        swAppLock.setChecked(prefMgr.getAmarokPassword() != null);
+        swBiometricAuth.setChecked(prefMgr.getEnableAmarokBiometricAuth());
         swQuickHideNotification.setChecked(prefMgr.getEnableQuickHideService());
         swPanicButton.setChecked(prefMgr.getEnablePanicButton());
+
         swPanicButton.setEnabled(prefMgr.getEnableQuickHideService());
+        swBiometricAuth.setEnabled(prefMgr.getAmarokPassword() != null);
 
         if (AppCenterUtil.isAvailable()) {
             swAnalytics.setChecked(AppCenterUtil.isAnalyticsEnabled());
@@ -187,15 +206,6 @@ public class SettingsActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         updateUI();
-    }
-
-    public void showAbout(View view) {
-
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.about))
-                .setMessage(String.format(getString(R.string.app_about), appVersionName))
-                .setPositiveButton(getString(R.string.ok), null)
-                .show();
     }
 
     public void switchAppHider(View view) {

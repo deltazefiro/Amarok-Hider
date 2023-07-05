@@ -9,6 +9,7 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.file.FileVisitResult;
@@ -20,6 +21,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 
 import deltazero.amarok.utils.FileHiderUtil;
 
+@SuppressWarnings("deprecation")
 public class FileHider {
     private final static String TAG = "FileHider";
 
@@ -124,20 +126,34 @@ public class FileHider {
     private static void processFileHeader(Path path) {
         Log.d(TAG, "Processing file header: " + path);
 
-        try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw")) {
+        try {
 
-            byte[] bytes = new byte[8];
-            int numBytesRead = file.read(bytes);
-            int numBytesToReplace = Math.max(Math.min(numBytesRead, 8), 0);
+            File file = path.toFile();
 
-            for (int i = 0; i < numBytesToReplace; i++) {
-                bytes[i] = (byte) ~bytes[i];
+            // Preserve original lastModified time
+            var lastModified = path.toFile().lastModified();
+
+            try (RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw")) {
+
+                byte[] bytes = new byte[8];
+                int numBytesRead = randomAccessFile.read(bytes);
+                int numBytesToReplace = Math.max(Math.min(numBytesRead, 8), 0);
+
+                for (int i = 0; i < numBytesToReplace; i++) {
+                    bytes[i] = (byte) ~bytes[i];
+                }
+
+                randomAccessFile.seek(0);
+                randomAccessFile.write(bytes, 0, numBytesToReplace);
+
+            } catch (IOException e) {
+                Log.w(TAG, "processFileHeader failed: ", e);
             }
 
-            file.seek(0);
-            file.write(bytes, 0, numBytesToReplace);
+            // noinspection ResultOfMethodCallIgnored
+            file.setLastModified(lastModified);
 
-        } catch (IOException e) {
+        } catch (SecurityException e) {
             Log.w(TAG, "processFileHeader failed: ", e);
         }
     }
@@ -149,23 +165,35 @@ public class FileHider {
         long numReadLoops = 0;
         int numBytesRead, numBytesToReplace;
 
-        try (RandomAccessFile file = new RandomAccessFile(path.toFile(), "rw")) {
+        try {
 
-            while ((numBytesRead = file.read(buffer)) != -1) {
+            File file = path.toFile();
 
-                numBytesToReplace = Math.max(Math.min(numBytesRead, buffer.length), 0);
+            // Preserve original lastModified time
+            var lastModified = path.toFile().lastModified();
 
-                for (int i = 0; i < numBytesToReplace; i++) {
-                    buffer[i] = (byte) ~buffer[i];
+            try (RandomAccessFile randomAccessFile = new RandomAccessFile(file, "rw")) {
+                while ((numBytesRead = randomAccessFile.read(buffer)) != -1) {
+
+                    numBytesToReplace = Math.max(Math.min(numBytesRead, buffer.length), 0);
+
+                    for (int i = 0; i < numBytesToReplace; i++) {
+                        buffer[i] = (byte) ~buffer[i];
+                    }
+
+                    randomAccessFile.seek(numReadLoops * buffer.length);
+                    randomAccessFile.write(buffer, 0, numBytesToReplace);
+
+                    numReadLoops++;
                 }
-
-                file.seek(numReadLoops * buffer.length);
-                file.write(buffer, 0, numBytesToReplace);
-
-                numReadLoops++;
+            } catch (IOException e) {
+                Log.w(TAG, "processWholeFile failed: ", e);
             }
 
-        } catch (IOException e) {
+            // noinspection ResultOfMethodCallIgnored
+            file.setLastModified(lastModified);
+
+        } catch (SecurityException  e) {
             Log.w(TAG, "processWholeFile failed: ", e);
         }
     }

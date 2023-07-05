@@ -144,7 +144,7 @@ public class QuickHideService extends LifecycleService {
 
         assert isProcessing.getValue() != null;
         if (isProcessing.getValue()) {
-            ivPanicButton.setColorFilter(getApplication().getColor(R.color.design_default_color_error),
+            ivPanicButton.setColorFilter(getApplication().getColor(com.google.android.material.R.color.design_default_color_error),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(false);
         } else {

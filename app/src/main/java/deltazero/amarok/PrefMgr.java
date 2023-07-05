@@ -5,6 +5,8 @@ import static android.content.Context.MODE_PRIVATE;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.Nullable;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -145,6 +147,25 @@ public class PrefMgr {
 
     public void setEnablePanicButton(boolean isEnablePanicButton) {
         mPrefEditor.putBoolean("enablePanicButton", isEnablePanicButton);
+        mPrefEditor.apply();
+    }
+
+    @Nullable
+    public String getAmarokPassword() {
+        return mPrefs.getString("amarokPassword", null);
+    }
+
+    public void setAmarokPassword(String password) {
+        mPrefEditor.putString("amarokPassword", password);
+        mPrefEditor.apply();
+    }
+
+    public boolean getEnableAmarokBiometricAuth() {
+        return mPrefs.getBoolean("enableAmarokBiometricAuth", false);
+    }
+
+    public void setEnableAmarokBiometricAuth(boolean enableAmarokBiometricAuth) {
+        mPrefEditor.putBoolean("enableAmarokBiometricAuth", enableAmarokBiometricAuth);
         mPrefEditor.apply();
     }
 }
