@@ -16,6 +16,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ServiceLifecycleDispatcher;
 
+import deltazero.amarok.ui.SecurityAuthForQuickHideActivity;
+
 public class QuickSettingService extends TileService implements LifecycleOwner {
 
     private static final String TAG = "TileService";
@@ -113,7 +115,8 @@ public class QuickSettingService extends TileService implements LifecycleOwner {
         unlockAndRun(() -> {
             Log.i(TAG, "Toggled tile.");
             if (prefMgr.getIsHidden()) {
-                hider.unhide();
+                startActivityAndCollapse(new Intent(this, SecurityAuthForQuickHideActivity.class)
+                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
             } else {
                 hider.hide();
             }
