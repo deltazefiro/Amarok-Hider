@@ -131,4 +131,16 @@
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="alert_permission_request_message">El botón flotante necesita permiso para generar ventanas emergentes. Por favor, busca Amarok en el menú de configuración y concédelo.</string>
     <string name="quick_hide_notification_content">Tu privacidad no está oculta. Haz clic para ocultarla.</string>
+    <string name="unlock">Desbloquear</string>
+    <string name="unlock_required">Desbloqueo necesario</string>
+    <string name="app_lock">Bloqueo de la aplicación</string>
+    <string name="confirm_password">Confirmar la contraseña</string>
+    <string name="password_length_error">La contraseña debe tener entre 3 y 15 caracteres.</string>
+    <string name="password">Contraseña</string>
+    <string name="password_incorrect">Contraseña incorrecta.</string>
+    <string name="app_lock_description">Requiere una contraseña para acceder a Amarok.</string>
+    <string name="set_password">Establecer una contraseña</string>
+    <string name="password_mismatch_error">Las contraseñas no coinciden.</string>
+    <string name="biometric_auth">Autenticación biométrica</string>
+    <string name="biometric_auth_description">Utiliza la autentificación biométrica del dispositivo para acceder a Amarok cuando esté disponible.</string>
 </resources>
