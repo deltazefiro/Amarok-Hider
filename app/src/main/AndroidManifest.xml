@@ -51,19 +51,19 @@
         </activity>
         <activity
             android:name=".ui.SwitchFileHiderActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.SwitchAppHiderActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.SetHideFilesActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.SettingsActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.SetHideAppActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".ui.SecurityAuthForQuickHideActivity"
             android:excludeFromRecents="true"
