@@ -17,14 +17,19 @@ public class SecurityAuth {
     private SecurityAuthCallback callback;
     private FragmentActivity activity;
     private PrefMgr prefMgr;
+    private PasswordAuthFragment passwordAuthFragment;
 
     public SecurityAuth(FragmentActivity activity, SecurityAuthCallback callback) {
         this.callback = callback;
         this.activity = activity;
         prefMgr = new PrefMgr(activity);
+        if (passwordAuthFragment == null)
+            passwordAuthFragment = new PasswordAuthFragment();
     }
 
     public void authenticate() {
+        if (passwordAuthFragment.isAdded())
+            passwordAuthFragment.dismiss();
         if (prefMgr.getAmarokPassword() != null) {
             if (prefMgr.getEnableAmarokBiometricAuth()) biometricAuthenticate();
             else passwordAuthenticate();
@@ -35,7 +40,7 @@ public class SecurityAuth {
 
     private void passwordAuthenticate() {
         assert prefMgr.getAmarokPassword() != null;
-        new PasswordAuthFragment()
+        passwordAuthFragment
                 .setOnVerifiedCallback(succeed -> callback.onSecurityAuthCallback(succeed))
                 .show(activity.getSupportFragmentManager(), null);
     }

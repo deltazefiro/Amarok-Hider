@@ -64,6 +64,11 @@
         <activity
             android:name=".ui.SetHideAppActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.SecurityAuthForQuickHideActivity"
+            android:excludeFromRecents="true"
+            android:exported="true"
+            android:theme="@style/Theme.Amarok.Transparent" />
 
         <service
             android:name=".QuickSettingService"
