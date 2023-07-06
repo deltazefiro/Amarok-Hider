@@ -115,8 +115,13 @@ public class QuickSettingService extends TileService implements LifecycleOwner {
         unlockAndRun(() -> {
             Log.i(TAG, "Toggled tile.");
             if (prefMgr.getIsHidden()) {
-                startActivityAndCollapse(new Intent(this, SecurityAuthForQuickHideActivity.class)
-                        .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                if (prefMgr.getAmarokPassword() == null) {
+                    // Avoid jump back to Amarok even without password
+                    hider.unhide();
+                } else {
+                    startActivityAndCollapse(new Intent(this, SecurityAuthForQuickHideActivity.class)
+                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                }
             } else {
                 hider.hide();
             }
