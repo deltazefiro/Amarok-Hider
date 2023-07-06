@@ -17,15 +17,15 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
-import com.hjq.xtoast.XToast;
-import com.hjq.xtoast.draggable.SpringDraggable;
+import com.hjq.window.EasyWindow;
+import com.hjq.window.draggable.SpringDraggable;
 
 import deltazero.amarok.ui.MainActivity;
 
 public class QuickHideService extends LifecycleService {
 
     private MutableLiveData<Boolean> isProcessing;
-    private XToast<?> panicButton;
+    private EasyWindow<?> panicButton;
     private Hider hider;
     private ImageView ivPanicButton;
 
@@ -87,13 +87,13 @@ public class QuickHideService extends LifecycleService {
         isServiceRunning = true;
 
         // Init panic button
-        panicButton = new XToast<>(getApplication())
+        panicButton = new EasyWindow<>(getApplication())
                 .setContentView(R.layout.dialog_panic_button)
                 .setGravity(Gravity.END | Gravity.BOTTOM)
                 .setYOffset(300)
                 .setDraggable(new SpringDraggable())
                 .setOnClickListener(R.id.dialog_iv_panic_button,
-                        (XToast.OnClickListener<ImageView>) (xToast, view) -> hider.hide());
+                        (EasyWindow.OnClickListener<ImageView>) (xToast, view) -> hider.hide());
 
         ivPanicButton = panicButton.findViewById(R.id.dialog_iv_panic_button);
         ivPanicButton.setColorFilter(getColor(R.color.light_grey),
