@@ -1,0 +1,12 @@
+v0.8.4a2
+- Soporta Dhizuku: oculta aplicaciones
+- Establece `android:exported` a false para mayor seguridad
+- Sin contraseña con QuickSettings
+- Solución de fallos en Android Work Profile
+- Java 17
+- Gradle 8.0
+- Traducción: Ruso (por Егор Ермаков & @gallegonovato) (#65)
+- Traducción: Ucraniano (por @gallegonovato & Dan) (#71)
+- Traducción: Bokmål noruego (por Allan Nordhøy) (#68)
+- Traducción: Español (por @gallegonovato & @LuisGamas & tommynok) (#67 #74 #75)
+- Traducción: Turco (por @Croxz)
