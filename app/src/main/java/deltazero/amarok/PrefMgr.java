@@ -11,6 +11,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.AppHider.DhizukuHider;
 import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
@@ -58,26 +59,30 @@ public class PrefMgr {
     }
 
     public AppHiderBase getAppHider() {
-        switch (mPrefs.getInt("appHiderMode", 0)) {
-            case 1:
-                return new RootAppHider(context);
-            case 2:
-                return new DsmAppHider(context);
-            case 3:
-                return new ShizukuHider(context);
-            default:
-                return new NoneAppHider(context);
-        }
+        return switch (mPrefs.getInt("appHiderMode", 0)) {
+            case 0 -> new NoneAppHider(context);
+            case 1 -> new RootAppHider(context);
+            case 2 -> new DsmAppHider(context);
+            case 3 -> new ShizukuHider(context);
+            case 4 -> new DhizukuHider(context);
+            default -> throw new IndexOutOfBoundsException();
+        };
     }
 
     public void setAppHiderMode(Class<? extends AppHiderBase> mode) {
-        int modeCode = 0;
-        if (mode == RootAppHider.class)
+        int modeCode;
+        if (mode == NoneAppHider.class)
+            modeCode = 0;
+        else if (mode == RootAppHider.class)
             modeCode = 1;
-        if (mode == DsmAppHider.class)
+        else if (mode == DsmAppHider.class)
             modeCode = 2;
-        if (mode == ShizukuHider.class)
+        else if (mode == ShizukuHider.class)
             modeCode = 3;
+        else if (mode == DhizukuHider.class)
+            modeCode = 4;
+        else
+            throw new IndexOutOfBoundsException();
         mPrefEditor.putInt("appHiderMode", modeCode);
         mPrefEditor.apply();
     }
