@@ -2,6 +2,8 @@ package deltazero.amarok;
 
 import android.app.Application;
 
+import com.rosan.dhizuku.api.Dhizuku;
+
 public class AmarokApp extends Application {
 
     @Override
@@ -10,5 +12,8 @@ public class AmarokApp extends Application {
 
         // Start PanicButton service
         QuickHideService.startService(this);
+
+        // init dhizuku
+        Dhizuku.init();
     }
 }
