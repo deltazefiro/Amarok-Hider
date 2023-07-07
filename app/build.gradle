@@ -109,6 +109,7 @@ dependencies {
     appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 
+    implementation 'io.github.iamr0s:Dhizuku-API:2.4'
     implementation 'com.github.getActivity:XXPermissions:18.2'
     implementation 'com.github.getActivity:EasyWindow:10.2'
     implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'

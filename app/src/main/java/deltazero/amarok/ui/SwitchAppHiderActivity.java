@@ -14,6 +14,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.AppHider.DhizukuHider;
 import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
@@ -26,7 +27,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
 
     PrefMgr prefMgr;
     MaterialToolbar tbToolBar;
-    RadioButton rbDisabled, rbRoot, rbShizuku, rbDSM;
+    RadioButton rbDisabled, rbRoot, rbShizuku, rbDSM, rbDhizuku;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
         rbRoot = findViewById(R.id.switch_apphider_radio_root);
         rbShizuku = findViewById(R.id.switch_apphider_radio_shizuku);
         rbDSM = findViewById(R.id.switch_apphider_radio_dsm);
+        rbDhizuku = findViewById(R.id.switch_apphider_radio_dhizuku);
         tbToolBar = findViewById(R.id.switch_apphider_tb_toolbar);
 
         prefMgr = new PrefMgr(this);
@@ -82,6 +84,8 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
                 new ShizukuHider(this).active(this::onActivationCallback);
             } else if (buttonID == R.id.switch_apphider_radio_dsm) {
                 new DsmAppHider(this).active(this::onActivationCallback);
+            } else if (buttonID == R.id.switch_apphider_radio_dhizuku) {
+                new DhizukuHider(this).active(this::onActivationCallback);
             }
         }
     }
@@ -105,13 +109,14 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
             prefMgr.setAppHiderMode(NoneAppHider.class);
             setCheckedRadioButton(NoneAppHider.class);
 
-            new MaterialAlertDialogBuilder(this)
+            runOnUiThread(() -> new MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.apphider_not_ava_title)
                     .setMessage(msgResID)
                     .setPositiveButton(getString(R.string.ok), null)
                     .setNegativeButton(R.string.help, (dialog, which)
                             -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.common_error_doc_url)))))
-                    .show();
+                    .show());
+
         }
     }
 
@@ -130,27 +135,36 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
 
 
     private void setCheckedRadioButton(Class<? extends AppHiderBase> appHider) {
-        // Thank you, ChatGPT!
         if (appHider.isAssignableFrom(NoneAppHider.class)) {
             rbDisabled.setChecked(true);
             rbRoot.setChecked(false);
             rbShizuku.setChecked(false);
             rbDSM.setChecked(false);
+            rbDhizuku.setChecked(false);
         } else if (appHider.isAssignableFrom(RootAppHider.class)) {
             rbDisabled.setChecked(false);
             rbRoot.setChecked(true);
             rbShizuku.setChecked(false);
             rbDSM.setChecked(false);
+            rbDhizuku.setChecked(false);
         } else if (appHider.isAssignableFrom(ShizukuHider.class)) {
             rbDisabled.setChecked(false);
             rbRoot.setChecked(false);
             rbShizuku.setChecked(true);
             rbDSM.setChecked(false);
+            rbDhizuku.setChecked(false);
         } else if (appHider.isAssignableFrom(DsmAppHider.class)) {
             rbDisabled.setChecked(false);
             rbRoot.setChecked(false);
             rbShizuku.setChecked(false);
             rbDSM.setChecked(true);
+            rbDhizuku.setChecked(false);
+        } else if (appHider.isAssignableFrom(DhizukuHider.class)) {
+            rbDisabled.setChecked(false);
+            rbRoot.setChecked(false);
+            rbShizuku.setChecked(false);
+            rbDSM.setChecked(false);
+            rbDhizuku.setChecked(true);
         }
     }
 }
