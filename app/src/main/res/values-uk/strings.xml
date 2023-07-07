@@ -131,4 +131,16 @@
     <string name="panic_button_description">Відображати плаваючу кнопку для екстреного приховування застосунків і файлів. Відображається над усіма іншими застосунками. Кнопка відображається лише у неприхованому стані.</string>
     <string name="failed_to_open_doc_tree_description">Упс! У вашій системі немає файлового менеджера за замовчуванням. Будь ласка, натисніть і утримуйте кнопку \"Додати приховану папку\" та введіть шлях до неї вручну.</string>
     <string name="alert_permission_request_message">Плаваюча кнопка потребує дозволу на створення спливаючих вікон. Будь ласка, знайдіть Amarok у меню налаштувань і надайте дозвіл.</string>
+    <string name="password_incorrect">Неправильний пароль.</string>
+    <string name="app_lock">Блокування застосунку</string>
+    <string name="app_lock_description">Для доступу до Amarok потрібен пароль.</string>
+    <string name="confirm_password">Підтвердити пароль</string>
+    <string name="password_length_error">Пароль повинен містити від 3 до 15 символів.</string>
+    <string name="password_mismatch_error">Паролі не збігаються.</string>
+    <string name="biometric_auth">Біометрична автентифікація</string>
+    <string name="password">Пароль</string>
+    <string name="unlock_required">Потрібно розблокувати</string>
+    <string name="unlock">Розблокувати</string>
+    <string name="set_password">Встановити пароль</string>
+    <string name="biometric_auth_description">Використовувати біометричну автентифікацію пристрою для доступу до Amarok, коли це можливо.</string>
 </resources>
