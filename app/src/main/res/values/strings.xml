@@ -132,4 +132,9 @@
     <string name="password_mismatch_error">Passwords do not match.</string>
     <string name="biometric_auth">Biometric authentication</string>
     <string name="biometric_auth_description">Use biometric authentication of the device to access Amarok when available.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Permission denied</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Unsupported Dhizuku version. Please update Dhizuku to version 5 or higher.</string>
+    <string name="dhizuku_not_init">Dhizuku: Service unavailable. Please ensure that you have installed and activated Dhizuku.</string>
+    <string name="apphider_dhizuku">Dhizuku mode</string>
+    <string name="apphider_dhizuku_description">[Experimental] App-hiding with Dhizuku.\nA modern and improved solution for hiding apps on non-rooted devices. Installation and activation of the Dhizuku app are required.</string>
 </resources>

@@ -121,4 +121,9 @@
     <string name="password_mismatch_error">密码不匹配。</string>
     <string name="biometric_auth">生物验证</string>
     <string name="biometric_auth_description">采用设备的生物验证（指纹传感器或人脸识别）来解锁 Amarok。</string>
+    <string name="dhizuku_permission_denied">Dhizuku: 权限请求被拒绝</string>
+    <string name="dhizuku_pre_v5">Dhizuku: 版本过低。请将 Dhizuku 升级到 v5.0 以上。</string>
+    <string name="dhizuku_not_init">Dhizuku: 服务无效。请确定您的设备已安装 Dhizuku 并成功激活。</string>
+    <string name="apphider_dhizuku">Dhizuku 模式</string>
+    <string name="apphider_dhizuku_description">[实验性功能] 通过 Dhizuku API 隐藏应用。\nDhizuku 通过共享设备管理员权限，赋予无 Root 设备应用隐藏的能力。需要安装并激活 Dhizuku。</string>
 </resources>
