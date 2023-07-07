@@ -1,0 +1,12 @@
+v0.8.4a2
+- Support Dhizuku for app-hiding
+- Set `android:exported` to false for internal Activities to enhance security
+- Fix no password is required when unhiding with QuickSettings
+- Fix crashes in Android Work Profile
+- Migrate to Java 17
+- Bump gradle to 8.0
+- Improve translation: Russian (by Егор Ермаков & @gallegonovato) (#65)
+- Improve translation: Ukrainian (by @gallegonovato & Dan) (#71)
+- Improve translation: Norwegian Bokmål (by Allan Nordhøy) (#68)
+- Improve translation: Spanish (by @gallegonovato & @LuisGamas & tommynok) (#67 #74 #75)
+- Improve translation: Turkish (by @Croxz)
