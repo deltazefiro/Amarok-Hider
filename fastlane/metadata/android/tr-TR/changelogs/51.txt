@@ -1,0 +1,12 @@
+v0.8.4a2
+- Dhizuku desteği
+- Güvenliği artırmak amacıyla dahili etkinlikler için`android:exported` değeri false olarak ayarlandı
+- Artık HızlıAyarlar ile gizlemeyi kaldırırken parola gerekiyor
+- Android Çalışma Profilindeki çökmeler düzeltildi
+- Java 17'ye ve Gradle 8.0'a geçiş yapıldı
+- Çeviriler güncellendi:
+* Russian(Егор Ермаков & @gallegonovato) (#65)
+* Ukrainian(@gallegonovato & Dan)
+* Norwegian Bokmål(Allan Nordhøy)
+* Spain(@gallegonovato & @LuisGamas & tommynok)
+* Türkçe(@croxz900)
