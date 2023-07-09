@@ -72,10 +72,22 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 
 ## Acknowledgement
 
-- [heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License
-- [Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License
-- [Icongeek26](https://www.flaticon.com/authors/icongeek26) & [Freepik](), For the icons
+- ~~[heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License~~
+- ~~[Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License~~
+- [aistra0528/Hail](https://github.com/aistra0528/Hail), for providing code reference for the app hider.
+- [Icongeek26](https://www.flaticon.com/authors/icongeek26) & 
+[Freepik](), for the icons
+- [Jetbrains](https://www.jetbrains.com/community/opensource/#support), provides IDE support for open source projects
+- [RikkaApps/Shizuku](https://github.com/RikkaApps/Shizuku)
+- [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku)
 
+... And all the dedicated contributors!  
+
+<a href="https://github.com/deltazefiro/Amarok-Hider/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=deltazefiro/Amarok-Hider&anon=1" />
+</a>  
+
+Made with [contrib.rocks](https://contrib.rocks).
 
 ## Disclaimers
 <u>**THIS APPLICATION IS PROVIDED WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.  

@@ -27,9 +27,11 @@ Amarok 是一款轻便的隐藏工具。它不对文件与应用进行加密，�
 ## 特点
 - 一键隐藏&一键取消隐藏：文件应用，一键隐藏。
 - 高速大文件隐藏：只混淆文件名和文件签名，文件大小并不影响隐藏速度。
-- 多模式免Root应用隐藏：支持 Shizuku、DSM 等模式隐藏应用。
+- 无需Root应用隐藏：从桌面隐藏应用程序。目前支持 Root、Shizuku、Dhizuku 和 DSM 模式。
+- 老板键：在紧急情况下使用浮动按钮隐藏应用和文件。
 - 快捷开关：控制中心开关，无需打开应用即可隐藏。
-- 基于 Material3 的全新UI设计。
+- 精美的用户界面：简洁干净的 Material3 设计。
+
 
 <table>
   <tr>
@@ -62,7 +64,7 @@ Amarok 是一款轻便的隐藏工具。它不对文件与应用进行加密，�
 ![Screenshot](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-169-4.png)
 
 
-## Contributing
+## 参与开发
 Thank you for dedicating your time in contributing to this project!
 Contributions in all forms are welcomed, including reporting bugs, proposing new features, performing language translations, and submitting code development PRs.
 
@@ -75,11 +77,22 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 
 ## 感谢
 
-- [heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License
-- [Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License
-- [Icongeek26](https://www.flaticon.com/authors/icongeek26) & [Freepik](), For the icons
-- [Jetbrains](https://www.jetbrains.com/community/opensource/#support)
+- ~~[heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License~~
+- ~~[Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License~~
+- [aistra0528/Hail](https://github.com/aistra0528/Hail), for providing code reference for the app hider.
+- [Icongeek26](https://www.flaticon.com/authors/icongeek26) & 
+[Freepik](), for the icons
+- [Jetbrains](https://www.jetbrains.com/community/opensource/#support), provides IDE support for open source projects
+- [RikkaApps/Shizuku](https://github.com/RikkaApps/Shizuku)
+- [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku)
 
+... 以及所有的贡献者！  
+
+<a href="https://github.com/deltazefiro/Amarok-Hider/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=deltazefiro/Amarok-Hider&anon=1" />
+</a>  
+
+Made with [contrib.rocks](https://contrib.rocks).
 
 ## 免责声明
 
