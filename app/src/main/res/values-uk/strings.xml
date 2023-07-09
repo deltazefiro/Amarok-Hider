@@ -143,4 +143,10 @@
     <string name="unlock">Розблокувати</string>
     <string name="set_password">Встановити пароль</string>
     <string name="biometric_auth_description">Використовувати біометричну автентифікацію пристрою для доступу до Amarok, коли це можливо.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Дозвіл відхилено</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Непідтримувана версія Dhizuku. Будь ласка, оновіть Dhizuku до версії 5 або новішої.</string>
+    <string name="dhizuku_not_init">Dhizuku: Сервіс недоступний. Будь ласка, переконайтеся, що ви встановили та активували Dhizuku.</string>
+    <string name="apphider_dhizuku">Режим Dhizuku</string>
+    <string name="apphider_dhizuku_description">[Експериментально] Приховування застосунків за допомогою Dhizuku.
+\nСучасне та покращене рішення для приховування застосунків на нерутованих пристроях. Потрібно встановити та активувати застосунок Dhizuku.</string>
 </resources>
