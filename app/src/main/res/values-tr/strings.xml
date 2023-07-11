@@ -93,13 +93,13 @@
     <string name="app_about">"
 \nAmarok %s
 \n
-\n [Geliştirici] @Deltazefiro
+\n[Geliştirici] @Deltazefiro
 \n
-\n [Bilgi] Amarok: Dosya şifreleme ve uygulama gizleme için basit bir android uygulaması.
+\n[Bilgi] Amarok: Dosya şifreleme ve uygulama gizleme için basit bir android uygulaması.
 \n
-\n [Repo] https://github.com/deltazefiro/Amarok-Hider
+\n[Repo] https://github.com/deltazefiro/Amarok-Hider
 \n
-\n Telif Hakkı © 2022–2023 DeltaZero, Apache 2.0 Lisanslı
+\nTelif Hakkı © 2022–2023 DeltaZero, Apache 2.0 Lisanslı
 \n"</string>
     <string name="unhide">Gizlemeyi kaldır</string>
     <string name="about_description">Uygulama hakkında bilgi gösterir.</string>
@@ -131,4 +131,22 @@
     <string name="notification">Bildirim</string>
     <string name="notification_permission_denied">Bildirim izni reddedildi.</string>
     <string name="quick_hide_notification_title">Gizleme devre dışı</string>
+    <string name="password">Parola</string>
+    <string name="unlock">Kilidi aç</string>
+    <string name="unlock_required">Kilit açma gerekli</string>
+    <string name="password_incorrect">Parola yanlış.</string>
+    <string name="confirm_password">Parolayı onayla</string>
+    <string name="set_password">Parolayı ayarla</string>
+    <string name="password_length_error">Parola 3 ila 15 karakter uzunluğunda olmalı.</string>
+    <string name="password_mismatch_error">Parolalar eşleşmiyor.</string>
+    <string name="biometric_auth">Biyometrik Kimlik Doğrulama</string>
+    <string name="dhizuku_permission_denied">Dhizuku: İzin reddedildi</string>
+    <string name="dhizuku_not_init">Dhizuku: Hizmet kullanılamıyor. Lütfen Dhizuku\'nun yüklü ve aktif olduğundan emin olun.</string>
+    <string name="apphider_dhizuku">Dhizuku yöntemi</string>
+    <string name="app_lock">Uygulama kilidi</string>
+    <string name="app_lock_description">Amarok\'a erişmek için parola girmeyi gerektir.</string>
+    <string name="biometric_auth_description">Amarok\'a erişmek için mümkünse cihazın biyometrik kimlik doğrulama verilerini kullan.</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Desteklenmeyen Dhizuku sürümü. Lütfen Dhizuku\'yu 5 ya da daha yüksek bir sürüme güncelleyin.</string>
+    <string name="apphider_dhizuku_description">[Deneysel] Dhizuku ile uygulama gizleme.
+\nRoot erişimi olmayan cihazlarda uygulamaları gizlemek için modern ve geliştirilmiş bir çözüm. Dhizuku uygulamasının yüklenmesi ve aktif edilmesi gereklidir.</string>
 </resources>
