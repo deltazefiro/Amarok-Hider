@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="35dp"
             android:layout_marginTop="45dp"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="3dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -75,7 +75,7 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="45dp"
+                        android:layout_marginTop="35dp"
                         android:orientation="horizontal">
 
                         <com.google.android.material.button.MaterialButton
