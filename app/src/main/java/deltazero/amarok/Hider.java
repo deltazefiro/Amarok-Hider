@@ -9,17 +9,15 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 
 import java.nio.file.Paths;
-import java.util.Set;
 
 import deltazero.amarok.AppHider.AppHiderBase;
-import deltazero.amarok.AppHider.NoneAppHider;
 import rikka.shizuku.ShizukuProvider;
 
 
 public class Hider {
 
     private static final String TAG = "Hider";
-    private static final HandlerThread backgroundThread = new HandlerThread("HIDER_THREAD");
+    private static final HandlerThread hiderThread = new HandlerThread("HIDER_THREAD");
     private static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);
     private final Context context;
     private final Handler backgroundHandler;
@@ -35,9 +33,9 @@ public class Hider {
         prefMgr = new PrefMgr(context);
 
         // Init Background Handler
-        if (backgroundThread.getState() == Thread.State.NEW)
-            backgroundThread.start();
-        backgroundHandler = new Handler(backgroundThread.getLooper());
+        if (hiderThread.getState() == Thread.State.NEW)
+            hiderThread.start();
+        backgroundHandler = new Handler(hiderThread.getLooper());
 
         // Enable shizukuProvider
         backgroundHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
@@ -61,71 +59,71 @@ public class Hider {
         });
     }
 
-    public void syncHide() {
+    private void syncHide() {
 
         appHider = prefMgr.getAppHider();
 
-        // Hide apps
-        Set<String> hideApps = prefMgr.getHideApps();
-        if (hideApps.size() > 0) {
-            if (!(appHider instanceof NoneAppHider)) {
-                appHider.hide(hideApps);
-            } else {
-                Log.w(TAG, "No AppHider selected, skipped App hiding.");
-            }
-        } else {
-            Log.i(TAG, "No hide App, skipped App hiding.");
-        }
+        try {
 
-        // Hide files
-        Set<String> hideFilePath = prefMgr.getHideFilePath();
-        if (hideFilePath.size() > 0) {
-            Log.i(TAG, "Hiding files ...");
-            for (String p : hideFilePath) {
-                FileHider.process(Paths.get(p), new FileHider.ProcessConfig(prefMgr));
+            // Hide apps
+            try {
+                appHider.hide(prefMgr.getHideApps());
+            } catch (UnsupportedOperationException e) {
+                Log.w(TAG, "Unable to hide app(s): ", e);
             }
-        } else {
-            Log.i(TAG, "No hide path, skipped file hiding.");
+
+            // Hide files
+            for (String p : prefMgr.getHideFilePath()) {
+                FileHider.process(Paths.get(p),
+                        new FileHider.ProcessConfig(prefMgr, FileHider.ProcessConfig.ProcessMethod.HIDE));
+            }
+
+        } catch (InterruptedException e) {
+            Log.w(TAG, "Process 'hide' interrupted.");
+            return;
         }
 
         prefMgr.setIsHidden(true);
 
-        Log.i(TAG, "Hid. Dusk to Dawn! Goodmorning ~");
+        Log.i(TAG, "Process 'hide' finished.");
         Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
     }
 
-    public void syncUnhide() {
+    private void syncUnhide() {
 
         appHider = prefMgr.getAppHider();
 
-        // Unhide apps
-        Set<String> hideApps = prefMgr.getHideApps();
-        if (hideApps.size() > 0) {
-            if (!(appHider instanceof NoneAppHider)) {
-                appHider.unhide(hideApps);
-            } else {
-                Log.w(TAG, "No AppHider selected, skipped App unhiding.");
-            }
-        } else {
-            Log.i(TAG, "No hide App, skipped App unhiding.");
-        }
+        try {
 
-        // Unhide files
-        Set<String> hideFilePath = prefMgr.getHideFilePath();
-        if (hideFilePath.size() > 0) {
-            Log.i(TAG, "Unhiding files ...");
-            for (String p : hideFilePath) {
-                FileHider.process(Paths.get(p), new FileHider.ProcessConfig(prefMgr));
+            // Unhide apps
+            try {
+                appHider.unhide(prefMgr.getHideApps());
+            } catch (UnsupportedOperationException e) {
+                Log.w(TAG, "Unable to hide app(s): ", e);
             }
-        } else {
-            Log.i(TAG, "No hide path, skipped file unhiding.");
+
+            // Unhide files
+            for (String p : prefMgr.getHideFilePath()) {
+                FileHider.process(Paths.get(p),
+                        new FileHider.ProcessConfig(prefMgr, FileHider.ProcessConfig.ProcessMethod.UNHIDE));
+            }
+
+        } catch (InterruptedException e) {
+            Log.w(TAG, "Process 'unhide' interrupted.");
+            return;
         }
 
         prefMgr.setIsHidden(false);
 
-        Log.i(TAG, "Dusk to Dusk! Night has come!");
+        Log.i(TAG, "Process 'unhide' finished.");
         Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
     }
 
-
+    public void forceUnhide() {
+        if (Boolean.TRUE.equals(isProcessing.getValue())) {
+            hiderThread.interrupt();
+        }
+        prefMgr.setIsHidden(true);
+        unhide();
+    }
 }

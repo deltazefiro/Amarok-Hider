@@ -14,12 +14,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.hjq.permissions.OnPermissionCallback;
 
 import java.util.List;
 
 import deltazero.amarok.BuildConfig;
+import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.QuickHideService;
 import deltazero.amarok.R;
@@ -234,6 +236,19 @@ public class SettingsActivity extends AppCompatActivity {
 
     public void joinDevGroup(View view) {
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/amarok_dev")));
+    }
+
+    public void forceUnhide(View view) {
+        new MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.force_unhide)
+                .setMessage(R.string.force_unhide_confirm_msg)
+                .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                    new Hider(this).forceUnhide();
+                    Toast.makeText(this, R.string.performing_force_unhide, Toast.LENGTH_LONG).show();
+                    finish();
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
     }
 
     public void showDebugInfo(View view) {

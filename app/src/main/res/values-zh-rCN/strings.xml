@@ -126,4 +126,8 @@
     <string name="dhizuku_not_init">Dhizuku: 服务无效。请确定您的设备已安装 Dhizuku 并成功激活。</string>
     <string name="apphider_dhizuku">Dhizuku 模式</string>
     <string name="apphider_dhizuku_description">[实验性功能] 通过 Dhizuku API 隐藏应用。\nDhizuku 通过共享设备管理员权限，赋予无 Root 设备应用隐藏的能力。需要安装并激活 Dhizuku。</string>
+    <string name="force_unhide">强制取消隐藏</string>
+    <string name="force_unhide_description">尝试恢复所有隐藏的文件与应用。仅在出现问题时使用。</string>
+    <string name="force_unhide_confirm_msg">尝试恢复所有隐藏的文件与应用？\n\n<b>警告：</b>此功能可能导致文件损坏。请仅当无法正常取消隐藏时使用。</string>
+    <string name="performing_force_unhide">正在尝试取消隐藏。请稍后。</string>
 </resources>
