@@ -141,4 +141,6 @@
     <string name="force_unhide_description">Try to restore everything. Use this option only when you run into troubles.</string>
     <string name="force_unhide_confirm_msg">Try to restore everything?\n\n<b>WARNING: </b>This option may corrupt your files. Only use it when you encounter trouble and cannot perform the \"unhide\" function normally.</string>
     <string name="performing_force_unhide">Executing force unhide. Please sit tight.</string>
+    <string name="filter">Filter</string>
+    <string name="display_system_apps">Display system apps</string>
 </resources>
