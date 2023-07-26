@@ -1,10 +1,15 @@
 package deltazero.amarok.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.core.view.MenuProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -19,6 +24,8 @@ public class SetHideAppActivity extends AppCompatActivity {
     private AppListAdapter adapter;
     private MaterialToolbar tbToolBar;
     private SwipeRefreshLayout srLayout;
+
+    private boolean showSystemApps = false;
 
     private String query = null;
 
@@ -41,36 +48,51 @@ public class SetHideAppActivity extends AppCompatActivity {
         tbToolBar.setNavigationOnClickListener(v -> finish());
 
         // Setup onRefresh listener
-        srLayout.setOnRefreshListener(() -> adapter.update(query, true));
-    }
+        srLayout.setOnRefreshListener(() -> adapter.update(query, true, showSystemApps));
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_hideapp, menu);
-
-        SearchView searchView = (SearchView) menu.findItem(R.id.action_search_app).getActionView();
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            private boolean once = false;
-
+        // Setup menu
+        addMenuProvider(new MenuProvider() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return true;
+            public void onCreateMenu(@NonNull Menu menu, @NonNull MenuInflater menuInflater) {
+                menuInflater.inflate(R.menu.menu_hideapp, menu);
+
+                menu.findItem(R.id.display_system_apps).setChecked(showSystemApps);
+
+                SearchView searchView = (SearchView) menu.findItem(R.id.action_search_app).getActionView();
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    private boolean once = false;
+
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return true;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        query = newText.isEmpty() ? null : newText;
+                        if (once) adapter.update(newText, false, showSystemApps);
+                        else once = true;
+                        return true;
+                    }
+                });
+                searchView.setOnCloseListener(() -> {
+                    query = null;
+                    adapter.update(null, false, showSystemApps);
+                    return true;
+                });
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                query = newText.isEmpty() ? null : newText;
-                if (once) adapter.update(newText, false);
-                else once = true;
-                return true;
+            public boolean onMenuItemSelected(@NonNull MenuItem menuItem) {
+                if (menuItem.getItemId() == R.id.display_system_apps) {
+                    showSystemApps = !showSystemApps;
+                    menuItem.setChecked(showSystemApps);
+                    adapter.update(query, false, showSystemApps);
+                    return true;
+                }
+                return false;
             }
         });
-        searchView.setOnCloseListener(() -> {
-            query = null;
-            adapter.update(null, false);
-            return true;
-        });
-
-        return super.onCreateOptionsMenu(menu);
     }
+
 }

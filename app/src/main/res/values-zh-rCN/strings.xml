@@ -130,4 +130,6 @@
     <string name="force_unhide_description">尝试恢复所有隐藏的文件与应用。仅在出现问题时使用。</string>
     <string name="force_unhide_confirm_msg">尝试恢复所有隐藏的文件与应用？\n\n<b>警告：</b>此功能可能导致文件损坏。请仅当无法正常取消隐藏时使用。</string>
     <string name="performing_force_unhide">正在尝试取消隐藏。请稍后。</string>
+    <string name="filter">筛选</string>
+    <string name="display_system_apps">显示系统应用</string>
 </resources>

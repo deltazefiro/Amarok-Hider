@@ -20,9 +20,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.checkbox.MaterialCheckBox;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
@@ -30,12 +28,10 @@ import deltazero.amarok.utils.AppInfoUtil;
 
 public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListHolder> {
 
-    private final PackageManager pkgMgr;
     private final PrefMgr prefMgr;
     private final AppInfoUtil appInfoUtil;
 
     private final LayoutInflater inflater;
-    private Set<String> hiddenApps;
 
     private static final HandlerThread backgroundThread = new HandlerThread("APP_ADAPTER_THREAD");
     private final Handler backgroundHandler;
@@ -63,14 +59,13 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
             backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
 
-        pkgMgr = activity.getPackageManager();
         prefMgr = new PrefMgr(activity);
         appInfoUtil = new AppInfoUtil(activity);
 
         this.activity = activity;
         this.srLayout = srLayout;
 
-        update(null, true);
+        update(null, true, false);
     }
 
     @NonNull
@@ -92,7 +87,7 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
     }
 
 
-    public void update(String query, boolean fullUpdate) {
+    public void update(String query, boolean fullUpdate, boolean includeSystemApps) {
 
         // Refreshing thread lock
         if (isRefreshing) return;
@@ -102,21 +97,10 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
 
         backgroundHandler.post(() -> {
             // Refresh installed apps
-            if (fullUpdate) appInfoUtil.update();
-            // Get app info
-            List<AppInfo> lsAppInfo = appInfoUtil.getInstalledApps(query);
-            // Sort with app name
-            hiddenApps = prefMgr.getHideApps();
-            lsAppInfo.sort((o1, o2) -> {
-                if (hiddenApps.contains(o1.packageName) && !hiddenApps.contains(o2.packageName))
-                    return -1;
-                if (hiddenApps.contains(o2.packageName) && !hiddenApps.contains(o1.packageName))
-                    return 1;
-                return (o1.label.compareTo(o2.label));
-            });
+            if (fullUpdate) appInfoUtil.refresh();
             // Notify update
             activity.runOnUiThread(() -> {
-                submitList(lsAppInfo);
+                submitList(appInfoUtil.getFilteredApps(query, includeSystemApps));
                 srLayout.setRefreshing(false);
                 isRefreshing = false;
             });
@@ -146,7 +130,7 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             String appPkgName = getCurrentList().get(getLayoutPosition()).packageName;
-            hiddenApps = prefMgr.getHideApps();
+            var hiddenApps = prefMgr.getHideApps();
 
             if (buttonView.isChecked()) {
                 hiddenApps.add(appPkgName);

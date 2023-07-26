@@ -5,7 +5,21 @@
         android:id="@+id/action_search_app"
         android:icon="@drawable/ic_search"
         android:title="@string/search"
-        app:showAsAction="always|collapseActionView"
-        app:actionViewClass="androidx.appcompat.widget.SearchView" />
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
+
+    <item
+        android:id="@+id/action_filter_app"
+        android:icon="@drawable/ic_filter"
+        android:title="@string/filter"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group android:checkableBehavior="all">
+                <item
+                    android:id="@+id/display_system_apps"
+                    android:title="@string/display_system_apps" />
+            </group>
+        </menu>
+    </item>
 
 </menu>
