@@ -14,12 +14,12 @@ public class NoneAppHider extends AppHiderBase{
 
     @Override
     public void hide(Set<String> pkgNames) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("App-hiding disabled");
     }
 
     @Override
     public void unhide(Set<String> pkgNames) {
-        throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException("App-hiding disabled");
     }
 
     @Override

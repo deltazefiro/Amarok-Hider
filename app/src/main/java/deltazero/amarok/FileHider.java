@@ -40,8 +40,8 @@ public class FileHider {
 
 
     public static class ProcessConfig {
-        public ProcessConfig(PrefMgr prefMgr) {
-            processMethod = prefMgr.getIsHidden() ? UNHIDE : HIDE;
+        public ProcessConfig(PrefMgr prefMgr, ProcessMethod method) {
+            processMethod = method;
             processHeader = prefMgr.getEnableObfuscateFileHeader();
             processHeaderLegacy = prefMgr.getLegacyEnableObfuscateFileHeader();
             processTextFile = prefMgr.getEnableObfuscateTextFile();
@@ -241,9 +241,9 @@ public class FileHider {
     /**
      * TODO: 2023/1/9 Handle long filename that invalid to android after Base64 encode
      */
-    public static void process(Path targetDir, ProcessConfig processConfig) {
+    public static void process(Path targetDir, ProcessConfig processConfig) throws InterruptedException {
 
-        Log.i(TAG, "Applying hider to: " + targetDir);
+        Log.i(TAG, "Start to process folder: " + targetDir);
 
         try {
 
@@ -251,6 +251,12 @@ public class FileHider {
 
                 @Override
                 public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
+
+                    // Handle interruption
+                    if (Thread.currentThread().isInterrupted()) {
+                        Log.w(TAG, "File process interrupted.");
+                        return FileVisitResult.TERMINATE;
+                    }
 
                     // Skip .nomedia
                     if (path.getFileName().toString().equals(".nomedia"))
@@ -293,6 +299,11 @@ public class FileHider {
 
         } catch (IOException e) {
             Log.w(TAG, String.format("While processing '%s': %s", targetDir.getFileName(), e));
+        }
+
+        // Clear interrupted flag & throw InterruptedException
+        if (Thread.interrupted()) {
+            throw new InterruptedException();
         }
     }
 }

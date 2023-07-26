@@ -137,4 +137,8 @@
     <string name="dhizuku_not_init">Dhizuku: Service unavailable. Please ensure that you have installed and activated Dhizuku.</string>
     <string name="apphider_dhizuku">Dhizuku mode</string>
     <string name="apphider_dhizuku_description">[Experimental] App-hiding with Dhizuku.\nA modern and improved solution for hiding apps on non-rooted devices. Installation and activation of the Dhizuku app are required.</string>
+    <string name="force_unhide">Force unhide</string>
+    <string name="force_unhide_description">Try to restore everything. Use this option only when you run into troubles.</string>
+    <string name="force_unhide_confirm_msg">Try to restore everything?\n\n<b>WARNING: </b>This option may corrupt your files. Only use it when you encounter trouble and cannot perform the \"unhide\" function normally.</string>
+    <string name="performing_force_unhide">Executing force unhide. Please sit tight.</string>
 </resources>
