@@ -107,7 +107,7 @@ public class Hider {
 
     private void refreshHiders() {
         appHider = prefMgr.getAppHider();
-        fileHider = new ObfuscateFileHider(context);
+        fileHider = prefMgr.getFileHider();
     }
 
 }

@@ -3,11 +3,13 @@ package deltazero.amarok.ui;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,10 +19,13 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textview.MaterialTextView;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Set;
 
+import deltazero.amarok.FileHider.NoMediaFileHider;
+import deltazero.amarok.FileHider.ObfuscateFileHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
@@ -129,18 +134,35 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     etPathInput.setHint(Environment.getExternalStorageDirectory().getPath() + "/...");
 
                     alertBuilder.setView(dlPathInput)
-                            .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialog, int which) {
-                                    String newPath = Objects.requireNonNull(etPathInput.getText()).toString();
+                            .setPositiveButton(R.string.confirm, (dialog, which) -> {
+                                String input = Objects.requireNonNull(etPathInput.getText()).toString();
 
-                                    Set<String> hideFilePaths = prefMgr.getHideFilePath();
-                                    hideFilePaths.add(newPath);
-                                    prefMgr.setHideFilePath(hideFilePaths);
-
-                                    lsPath.add(newPath);
-                                    adapter.notifyItemInserted(getAdapterPosition());
+                                /* Check for experiment flags */
+                                if (input.equals("#enable-nomedia-filehider")) {
+                                    prefMgr.setFileHiderMode(NoMediaFileHider.class);
+                                    Toast.makeText(context, "NoMedia filehider activated.", Toast.LENGTH_LONG).show();
+                                    return;
+                                } else if (input.equals("#disable-nomedia-filehider")) {
+                                    prefMgr.setFileHiderMode(ObfuscateFileHider.class);
+                                    Toast.makeText(context, "NoMedia filehider deactivated.", Toast.LENGTH_LONG).show();
+                                    return;
                                 }
+
+                                /* Check path availability */
+                                try {
+                                    Paths.get(input);
+                                } catch (Exception e) {
+                                    Log.w("FilePicker", String.format("Invalid path %s: ", input), e);
+                                    Toast.makeText(context, R.string.invalid_path, Toast.LENGTH_SHORT).show();
+                                    return;
+                                }
+
+                                Set<String> hideFilePaths = prefMgr.getHideFilePath();
+                                hideFilePaths.add(input);
+                                prefMgr.setHideFilePath(hideFilePaths);
+
+                                lsPath.add(input);
+                                adapter.notifyItemInserted(getAdapterPosition());
                             })
                             .show();
                     return true;

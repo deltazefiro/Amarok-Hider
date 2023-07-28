@@ -59,7 +59,13 @@ public class ObfuscateFileHider extends FileHiderBase {
     @Override
     protected void process(Set<String> targetDirs, ProcessMethod method) throws InterruptedException {
         for (var dir : targetDirs) {
-            processTree(Paths.get(dir), method);
+            try {
+                processTree(Paths.get(dir), method);
+            } catch (InterruptedException e) {
+                throw new InterruptedException();
+            } catch (Exception e) {
+                Log.w(TAG, String.format("Failed to process %s: ", dir), e);
+            }
         }
     }
 
