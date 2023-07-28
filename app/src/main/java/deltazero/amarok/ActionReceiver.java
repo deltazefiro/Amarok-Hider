@@ -14,7 +14,7 @@ public class ActionReceiver extends BroadcastReceiver {
         Log.i("ActionReceiver", "New action received.");
         Hider hider = new Hider(context);
 
-        if (Boolean.TRUE.equals(hider.getIsProcessingLiveData().getValue())) {
+        if (Boolean.TRUE.equals(Hider.isProcessing.getValue())) {
             Log.w("ActionReceiver", "Already processing. Ignore the new action.");
             return;
         }

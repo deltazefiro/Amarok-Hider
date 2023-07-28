@@ -10,6 +10,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.snackbar.Snackbar;
 
+import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
@@ -19,6 +20,7 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
     private MaterialSwitch swObfuscateFileHeader, swObfuscateTextFile, swObfuscateTextFileEnhanced;
     private RelativeLayout rlObfuscateTextFile, rlObfuscateTextFileEnhanced;
     private MaterialToolbar tbToolBar;
+    private Snackbar snackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,19 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
         rlObfuscateTextFile = findViewById(R.id.switch_filehider_rl_obfuscate_text);
         rlObfuscateTextFileEnhanced = findViewById(R.id.switch_filehider_rl_obfuscate_text_enhanced);
         tbToolBar = findViewById(R.id.switch_filehider_tb_toolbar);
+        snackbar = Snackbar.make(tbToolBar, R.string.option_unava_when_hidden, Snackbar.LENGTH_INDEFINITE);
+
+        Hider.isProcessing.observe(this, processing -> {
+            boolean show = !prefMgr.getIsHidden() && !processing;
+            swObfuscateFileHeader.setEnabled(show);
+            swObfuscateTextFile.setEnabled(show);
+            swObfuscateTextFileEnhanced.setEnabled(show);
+            if (show) {
+                snackbar.dismiss();
+            } else {
+                snackbar.show();
+            }
+        });
 
         updateUI();
 
@@ -58,21 +73,12 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
         });
 
         // Enable back button
-        tbToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
+        tbToolBar.setNavigationOnClickListener(v -> finish());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (prefMgr.getIsHidden()) {
-            swObfuscateFileHeader.setEnabled(false);
-            Snackbar.make(tbToolBar, R.string.option_unava_when_hidden, Snackbar.LENGTH_INDEFINITE).show();
-        }
     }
 
     private void updateUI() {
@@ -90,14 +96,6 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
             rlObfuscateTextFileEnhanced.setVisibility(View.VISIBLE);
         } else {
             rlObfuscateTextFileEnhanced.setVisibility(View.GONE);
-        }
-
-        // Disable switches if hidden.
-        if (prefMgr.getIsHidden()) {
-            swObfuscateFileHeader.setEnabled(false);
-            swObfuscateTextFile.setEnabled(false);
-            swObfuscateTextFileEnhanced.setEnabled(false);
-            Snackbar.make(tbToolBar, R.string.option_unava_when_hidden, Snackbar.LENGTH_INDEFINITE).show();
         }
     }
 }

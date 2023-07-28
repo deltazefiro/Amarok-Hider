@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         refreshUi();
 
         // Setup observer
-        isProcessing = hider.getIsProcessingLiveData();
+        isProcessing = Hider.isProcessing;
         isProcessing.observe(this, aBoolean -> refreshUi());
 
         // Process Permissions

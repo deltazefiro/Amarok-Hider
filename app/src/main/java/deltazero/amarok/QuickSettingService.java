@@ -98,7 +98,7 @@ public class QuickSettingService extends TileService implements LifecycleOwner {
         tile = getQsTile();
         hider = new Hider(this);
         prefMgr = new PrefMgr(this);
-        isProcessing = hider.getIsProcessingLiveData();
+        isProcessing = Hider.isProcessing;
 
         try {
             isProcessing.observe(this, new TileUpdateObserver());
