@@ -120,3 +120,13 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }
+
+apply plugin: 'dev.rikka.tools.autoresconfig'
+autoResConfig {
+    generateClass = true
+    generatedClassFullName = "deltazero.amarok.utils.LangList"
+    generateRes = true
+    generatedResPrefix = null
+    generatedArrayFirstItem = "SYSTEM"
+    generateLocaleConfig = true
+}
