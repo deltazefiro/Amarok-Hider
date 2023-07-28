@@ -11,6 +11,8 @@ import androidx.lifecycle.MutableLiveData;
 import java.nio.file.Paths;
 
 import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.FileHider.FileHiderBase;
+import deltazero.amarok.FileHider.ObfuscateFileHider;
 import rikka.shizuku.ShizukuProvider;
 
 
@@ -19,10 +21,13 @@ public class Hider {
     private static final String TAG = "Hider";
     private static final HandlerThread hiderThread = new HandlerThread("HIDER_THREAD");
     private static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);
+
+    private final PrefMgr prefMgr;
     private final Context context;
-    private final Handler backgroundHandler;
-    public AppHiderBase appHider;
-    public PrefMgr prefMgr;
+    private final Handler threadHandler;
+
+    private AppHiderBase appHider;
+    private FileHiderBase fileHider;
 
     public MutableLiveData<Boolean> getIsProcessingLiveData() {
         return isProcessing;
@@ -35,14 +40,14 @@ public class Hider {
         // Init Background Handler
         if (hiderThread.getState() == Thread.State.NEW)
             hiderThread.start();
-        backgroundHandler = new Handler(hiderThread.getLooper());
+        threadHandler = new Handler(hiderThread.getLooper());
 
         // Enable shizukuProvider
-        backgroundHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
+        threadHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
     }
 
     public void hide() {
-        backgroundHandler.post(() -> {
+        threadHandler.post(() -> {
             isProcessing.postValue(true);
             syncHide();
             isProcessing.postValue(false);
@@ -51,7 +56,7 @@ public class Hider {
     }
 
     public void unhide() {
-        backgroundHandler.post(() -> {
+        threadHandler.post(() -> {
             isProcessing.postValue(true);
             syncUnhide();
             isProcessing.postValue(false);
@@ -59,25 +64,21 @@ public class Hider {
         });
     }
 
+    public void forceUnhide() {
+        if (Boolean.TRUE.equals(isProcessing.getValue())) {
+            hiderThread.interrupt();
+        }
+        prefMgr.setIsHidden(true);
+        unhide();
+    }
+
     private void syncHide() {
 
-        appHider = prefMgr.getAppHider();
+        refreshHiders();
 
         try {
-
-            // Hide apps
-            try {
-                appHider.hide(prefMgr.getHideApps());
-            } catch (UnsupportedOperationException e) {
-                Log.w(TAG, "Unable to hide app(s): ", e);
-            }
-
-            // Hide files
-            for (String p : prefMgr.getHideFilePath()) {
-                FileHider.process(Paths.get(p),
-                        new FileHider.ProcessConfig(prefMgr, FileHider.ProcessConfig.ProcessMethod.HIDE));
-            }
-
+            appHider.hide(prefMgr.getHideApps());
+            fileHider.hide(prefMgr.getHideFilePath());
         } catch (InterruptedException e) {
             Log.w(TAG, "Process 'hide' interrupted.");
             return;
@@ -91,23 +92,11 @@ public class Hider {
 
     private void syncUnhide() {
 
-        appHider = prefMgr.getAppHider();
+        refreshHiders();
 
         try {
-
-            // Unhide apps
-            try {
-                appHider.unhide(prefMgr.getHideApps());
-            } catch (UnsupportedOperationException e) {
-                Log.w(TAG, "Unable to hide app(s): ", e);
-            }
-
-            // Unhide files
-            for (String p : prefMgr.getHideFilePath()) {
-                FileHider.process(Paths.get(p),
-                        new FileHider.ProcessConfig(prefMgr, FileHider.ProcessConfig.ProcessMethod.UNHIDE));
-            }
-
+            appHider.unhide(prefMgr.getHideApps());
+            fileHider.unhide(prefMgr.getHideFilePath());
         } catch (InterruptedException e) {
             Log.w(TAG, "Process 'unhide' interrupted.");
             return;
@@ -119,11 +108,9 @@ public class Hider {
         Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
     }
 
-    public void forceUnhide() {
-        if (Boolean.TRUE.equals(isProcessing.getValue())) {
-            hiderThread.interrupt();
-        }
-        prefMgr.setIsHidden(true);
-        unhide();
+    private void refreshHiders() {
+        appHider = prefMgr.getAppHider();
+        fileHider = new ObfuscateFileHider(context);
     }
+
 }

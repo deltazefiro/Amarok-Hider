@@ -27,6 +27,7 @@ public class QuickHideService extends LifecycleService {
     private MutableLiveData<Boolean> isProcessing;
     private EasyWindow<?> panicButton;
     private Hider hider;
+    private PrefMgr prefMgr;
     private ImageView ivPanicButton;
 
     private PendingIntent activityPendingIntent;
@@ -41,6 +42,7 @@ public class QuickHideService extends LifecycleService {
         super.onCreate();
 
         hider = new Hider(this);
+        prefMgr = new PrefMgr(this);
 
         // Create notification channel
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
@@ -133,12 +135,12 @@ public class QuickHideService extends LifecycleService {
     }
 
     private void updatePanicButton() {
-        if (!hider.prefMgr.getEnablePanicButton())
+        if (!prefMgr.getEnablePanicButton())
             return;
 
         if (!XXPermissions.isGranted(getApplication(), Permission.SYSTEM_ALERT_WINDOW)) {
             Log.w("QuickHideService", "Failed to show PanicButton: Permission denied: SYSTEM_ALERT_WINDOW");
-            hider.prefMgr.setEnablePanicButton(false);
+            prefMgr.setEnablePanicButton(false);
             return;
         }
 
@@ -148,7 +150,7 @@ public class QuickHideService extends LifecycleService {
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(false);
         } else {
-            if (hider.prefMgr.getIsHidden()) {
+            if (prefMgr.getIsHidden()) {
                 cancelPanicButton();
             } else {
                 showPanicButton();
