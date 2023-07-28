@@ -1,6 +1,7 @@
 package deltazero.amarok.AppHider;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.Set;
 
@@ -14,12 +15,12 @@ public class NoneAppHider extends AppHiderBase{
 
     @Override
     public void hide(Set<String> pkgNames) {
-        throw new UnsupportedOperationException("App-hiding disabled");
+        Log.w("AppHider", "Skip app hiding: hider disabled");
     }
 
     @Override
     public void unhide(Set<String> pkgNames) {
-        throw new UnsupportedOperationException("App-hiding disabled");
+        Log.w("AppHider", "Skip app unhiding: hider disabled");
     }
 
     @Override

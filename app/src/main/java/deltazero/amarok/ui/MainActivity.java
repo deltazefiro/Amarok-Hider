@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Prepare data & init hider
         hider = new Hider(this);
-        prefMgr = hider.prefMgr;
+        prefMgr = new PrefMgr(this);
 
         // Init UI
         svMainLayout = findViewById(R.id.main_sv_main_layout);

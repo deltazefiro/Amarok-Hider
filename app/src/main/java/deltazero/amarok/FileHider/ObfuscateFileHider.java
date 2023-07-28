@@ -1,9 +1,10 @@
-package deltazero.amarok;
+package deltazero.amarok.FileHider;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static deltazero.amarok.FileHider.ProcessConfig.ProcessMethod.HIDE;
-import static deltazero.amarok.FileHider.ProcessConfig.ProcessMethod.UNHIDE;
+import static deltazero.amarok.FileHider.FileHiderBase.ProcessMethod.HIDE;
+import static deltazero.amarok.FileHider.FileHiderBase.ProcessMethod.UNHIDE;
 
+import android.content.Context;
 import android.util.Base64;
 import android.util.Log;
 
@@ -18,11 +19,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Set;
 
+import deltazero.amarok.PrefMgr;
 import deltazero.amarok.utils.FileHiderUtil;
 
 @SuppressWarnings("deprecation")
-public class FileHider {
+public class ObfuscateFileHider extends FileHiderBase {
     private final static String TAG = "FileHider";
 
     private final static int MAX_PROCESS_WHOLE_FILE_SIZE_KB = 10 * 1024; // In KB.
@@ -38,46 +41,112 @@ public class FileHider {
     public final static String FILENAME_FULL_PROCESS_MARK = "!amk1";
     public final static String FILENAME_HEADER_PROCESS_MARK = "!amk2";
 
+    public boolean processHeader;
+    @Deprecated
+    public boolean processHeaderLegacy;
+    public boolean processTextFile;
+    public boolean processTextFileEnhanced;
 
-    public static class ProcessConfig {
-        public ProcessConfig(PrefMgr prefMgr, ProcessMethod method) {
-            processMethod = method;
-            processHeader = prefMgr.getEnableObfuscateFileHeader();
-            processHeaderLegacy = prefMgr.getLegacyEnableObfuscateFileHeader();
-            processTextFile = prefMgr.getEnableObfuscateTextFile();
-            processTextFileEnhanced = prefMgr.getEnableObfuscateTextFileEnhanced();
-        }
-
-        public enum ProcessMethod {
-            HIDE, UNHIDE
-        }
-
-        public ProcessMethod processMethod;
-        public boolean processHeader;
-        @Deprecated
-        public boolean processHeaderLegacy;
-        public boolean processTextFile;
-        public boolean processTextFileEnhanced;
+    public ObfuscateFileHider(Context context) {
+        super(context);
+        var prefMgr = new PrefMgr(context);
+        processHeader = prefMgr.getEnableObfuscateFileHeader();
+        processHeaderLegacy = prefMgr.getLegacyEnableObfuscateFileHeader();
+        processTextFile = prefMgr.getEnableObfuscateTextFile();
+        processTextFileEnhanced = prefMgr.getEnableObfuscateTextFileEnhanced();
     }
 
+    @Override
+    protected void process(Set<String> targetDirs, ProcessMethod method) throws InterruptedException {
+        for (var dir : targetDirs) {
+            processTree(Paths.get(dir), method);
+        }
+    }
+
+    private void processTree(Path targetDir, ProcessMethod method) throws InterruptedException {
+
+        Log.i(TAG, "Start to process file tree: " + targetDir);
+
+        try {
+
+            Files.walkFileTree(targetDir, new SimpleFileVisitor<>() {
+
+                @Override
+                public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
+
+                    // Handle interruption
+                    if (Thread.currentThread().isInterrupted()) {
+                        Log.w(TAG, "File process interrupted.");
+                        return FileVisitResult.TERMINATE;
+                    }
+
+                    // Skip .nomedia
+                    if (path.getFileName().toString().equals(".nomedia"))
+                        return FileVisitResult.CONTINUE;
+
+                    // Check whether the whole file should be processed before renaming (processFilename).
+                    boolean shouldProcessHeader = checkShouldProcessHeader(path, method);
+                    boolean shouldProcessWhole = checkShouldProcessWhole(path, method);
+
+                    // Choose filename ending mark
+                    String endingMark = FILENAME_NO_PROCESS_MARK;
+                    if (shouldProcessHeader)
+                        endingMark = FILENAME_HEADER_PROCESS_MARK;
+                    if (shouldProcessWhole)
+                        endingMark = FILENAME_FULL_PROCESS_MARK;
+
+                    // Process filename
+                    // TODO: 2023/1/9 Handle long filename that invalid to android after Base64 encode
+                    Path newPath = processFilename(path, method, endingMark);
+
+                    // Process file content
+                    if (newPath != null) {
+                        if (shouldProcessWhole) { // Check shouldProcessWhole first.
+                            processWholeFile(newPath);
+                        } else if (shouldProcessHeader) { // Then check shouldProcessHeader.
+                            processFileHeader(newPath);
+                        }
+                    }
+
+                    return FileVisitResult.CONTINUE;
+                }
+
+                @Override
+                public FileVisitResult postVisitDirectory(Path dir, IOException e) {
+                    if (dir != targetDir)
+                        processFilename(dir, method, FILENAME_NO_PROCESS_MARK);
+                    return FileVisitResult.CONTINUE;
+                }
+
+            });
+
+        } catch (IOException e) {
+            Log.w(TAG, String.format("While processing '%s': %s", targetDir.getFileName(), e));
+        }
+
+        // Clear interrupted flag & throw InterruptedException
+        if (Thread.interrupted()) {
+            throw new InterruptedException();
+        }
+    }
 
     /**
      * Process the Filename and check if the process succeeds.
      *
      * @param path            The path to be processed.
-     * @param processMethod   Process method.
+     * @param method   Process method.
      * @param extraEndingMark (only effective when `HIDE`) Extra mark to be append to the end of the filename.
      * @return If the process succeeds, return the new path. Otherwise, return null.
      */
     @Nullable
-    private static Path processFilename(Path path, ProcessConfig.ProcessMethod processMethod, String extraEndingMark) {
+    private Path processFilename(Path path, ProcessMethod method, String extraEndingMark) {
         String filename = path.getFileName().toString();
         String newFilename = null;
         Path newPath;
 
         boolean hasEncoded = FileHiderUtil.checkIsMarkInFilename(filename);
 
-        if (processMethod == HIDE) {
+        if (method == HIDE) {
             if (hasEncoded) {
                 Log.d(TAG, "Found encoded name: " + filename + ", skip...");
                 return null;
@@ -86,7 +155,7 @@ public class FileHider {
             newFilename = "." + Base64.encodeToString(filename.getBytes(UTF_8), BASE64_TAG) + extraEndingMark;
             Log.d(TAG, "Encode: " + path + " -> " + newFilename);
 
-        } else if (processMethod == UNHIDE) {
+        } else if (method == UNHIDE) {
             if (!hasEncoded) {
                 Log.w(TAG, "Found not coded name: " + filename + ", skip...");
                 return null;
@@ -123,7 +192,7 @@ public class FileHider {
         }
     }
 
-    private static void processFileHeader(Path path) {
+    private void processFileHeader(Path path) {
         Log.d(TAG, "Processing file header: " + path);
 
         try {
@@ -158,7 +227,7 @@ public class FileHider {
         }
     }
 
-    private static void processWholeFile(Path path) {
+    private void processWholeFile(Path path) {
         Log.d(TAG, "Processing whole file: " + path);
 
         byte[] buffer = new byte[1024];
@@ -193,21 +262,21 @@ public class FileHider {
             // noinspection ResultOfMethodCallIgnored
             file.setLastModified(lastModified);
 
-        } catch (SecurityException  e) {
+        } catch (SecurityException e) {
             Log.w(TAG, "processWholeFile failed: ", e);
         }
     }
 
-    private static boolean checkShouldProcessWhole(Path path, ProcessConfig processConfig) {
+    private boolean checkShouldProcessWhole(Path path, ProcessMethod method) {
 
-        if ((!processConfig.processHeader) || (!processConfig.processTextFile)) {
+        if ((!processHeader) || (!processTextFile)) {
             return false;
         }
 
         String filename = path.getFileName().toString();
-        if (processConfig.processMethod == HIDE) {
+        if (method == HIDE) {
 
-            if (processConfig.processTextFileEnhanced) {
+            if (processTextFileEnhanced) {
                 return FileHiderUtil.checkIsTextFileEnhanced(path)
                         && FileHiderUtil.getFileSizeKB(path) <= MAX_PROCESS_WHOLE_FILE_SIZE_KB;
             } else { // Not enhanced
@@ -220,90 +289,21 @@ public class FileHider {
         }
     }
 
-    private static boolean checkShouldProcessHeader(Path path, ProcessConfig processConfig) {
+    private boolean checkShouldProcessHeader(Path path, ProcessMethod method) {
         String filename = path.getFileName().toString();
 
-        if (processConfig.processMethod == HIDE) {
-            return processConfig.processHeader;
+        if (method == HIDE) {
+            return processHeader;
         } else { // UNHIDE
 
             // Deal with legacy files [version < 0.8.2b1(28)]
             if (filename.startsWith("." + FILENAME_LEGACY_START_MARK_ENCODED)) {
                 Log.w(TAG, "Found legacy filename mark: " + filename);
-                return processConfig.processHeaderLegacy;
+                return processHeaderLegacy;
             }
 
             return filename.endsWith(FILENAME_HEADER_PROCESS_MARK);
         }
 
-    }
-
-    /**
-     * TODO: 2023/1/9 Handle long filename that invalid to android after Base64 encode
-     */
-    public static void process(Path targetDir, ProcessConfig processConfig) throws InterruptedException {
-
-        Log.i(TAG, "Start to process folder: " + targetDir);
-
-        try {
-
-            Files.walkFileTree(targetDir, new SimpleFileVisitor<Path>() {
-
-                @Override
-                public FileVisitResult visitFile(Path path, BasicFileAttributes attrs) {
-
-                    // Handle interruption
-                    if (Thread.currentThread().isInterrupted()) {
-                        Log.w(TAG, "File process interrupted.");
-                        return FileVisitResult.TERMINATE;
-                    }
-
-                    // Skip .nomedia
-                    if (path.getFileName().toString().equals(".nomedia"))
-                        return FileVisitResult.CONTINUE;
-
-                    // Check whether the whole file should be processed before renaming (processFilename).
-                    boolean shouldProcessHeader = checkShouldProcessHeader(path, processConfig);
-                    boolean shouldProcessWhole = checkShouldProcessWhole(path, processConfig);
-
-                    // Choose filename ending mark
-                    String endingMark = FILENAME_NO_PROCESS_MARK;
-                    if (shouldProcessHeader)
-                        endingMark = FILENAME_HEADER_PROCESS_MARK;
-                    if (shouldProcessWhole)
-                        endingMark = FILENAME_FULL_PROCESS_MARK;
-
-                    // Process filename
-                    Path newPath = processFilename(path, processConfig.processMethod, endingMark);
-
-                    // Process file content
-                    if (newPath != null) {
-                        if (shouldProcessWhole) { // Check shouldProcessWhole first.
-                            processWholeFile(newPath);
-                        } else if (shouldProcessHeader) { // Then check shouldProcessHeader.
-                            processFileHeader(newPath);
-                        }
-                    }
-
-                    return FileVisitResult.CONTINUE;
-                }
-
-                @Override
-                public FileVisitResult postVisitDirectory(Path dir, IOException e) {
-                    if (dir != targetDir)
-                        processFilename(dir, processConfig.processMethod, FILENAME_NO_PROCESS_MARK);
-                    return FileVisitResult.CONTINUE;
-                }
-
-            });
-
-        } catch (IOException e) {
-            Log.w(TAG, String.format("While processing '%s': %s", targetDir.getFileName(), e));
-        }
-
-        // Clear interrupted flag & throw InterruptedException
-        if (Thread.interrupted()) {
-            throw new InterruptedException();
-        }
     }
 }
