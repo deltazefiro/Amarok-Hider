@@ -132,4 +132,6 @@
     <string name="performing_force_unhide">正在尝试取消隐藏。请稍后。</string>
     <string name="filter">筛选</string>
     <string name="display_system_apps">显示系统应用</string>
+    <string name="language">语言</string>
+    <string name="follow_system">（跟随系统）</string>
 </resources>

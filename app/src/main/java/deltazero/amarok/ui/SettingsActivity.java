@@ -28,6 +28,7 @@ import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.HashUtil;
 import deltazero.amarok.utils.PermissionUtil;
+import deltazero.amarok.utils.SwitchLocaleUtil;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -249,6 +250,10 @@ public class SettingsActivity extends AppCompatActivity {
                 })
                 .setNegativeButton(R.string.cancel, null)
                 .show();
+    }
+
+    public void switchLanguage(View view) {
+        SwitchLocaleUtil.switchLocale(this);
     }
 
     public void showDebugInfo(View view) {
