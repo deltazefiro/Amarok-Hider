@@ -1,0 +1,6 @@
+v0.8.4a3
+- Add option: force unhide
+- Support hiding system apps (#83)
+- Support in-app language switch
+- Experimental: NoMediaFileHider
+- Translations update: Spanish, Turkish, Ukrainian, Norwegian Bokmål
