@@ -149,4 +149,12 @@
     <string name="apphider_dhizuku">Режим Dhizuku</string>
     <string name="apphider_dhizuku_description">[Експериментально] Приховування застосунків за допомогою Dhizuku.
 \nСучасне та покращене рішення для приховування застосунків на нерутованих пристроях. Потрібно встановити та активувати застосунок Dhizuku.</string>
+    <string name="display_system_apps">Відображати системні застосунки</string>
+    <string name="force_unhide">Примусово показати</string>
+    <string name="force_unhide_description">Спробувати відновити все. Використовуйте цю опцію лише тоді, коли у вас виникли проблеми.</string>
+    <string name="force_unhide_confirm_msg">Спробувати відновити все\?
+\n
+\n<b>ПОПЕРЕДЖЕННЯ: </b>Ця опція може пошкодити ваші файли. Використовуйте її лише тоді, коли у вас виникли проблеми і ви не можете нормально виконати функцію \"показати\".</string>
+    <string name="performing_force_unhide">Намагається показатися. Зачекайте, будь ласка.</string>
+    <string name="filter">Фільтр</string>
 </resources>
