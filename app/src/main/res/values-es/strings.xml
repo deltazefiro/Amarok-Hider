@@ -149,4 +149,7 @@
     <string name="apphider_dhizuku">Modo Dhizuku</string>
     <string name="apphider_dhizuku_description">[Experimental] Ocultar las aplicaciones con Dhizuku. 
 \nUna solución moderna y mejorada para ocultar aplicaciones en dispositivos no rooteados. Se requiere la instalación y activación de la aplicación Dhizuku.</string>
+    <string name="force_unhide_confirm_msg">¿Intentar restaurar todo\?.
+\n
+\n<b>ADVERTENCIA:</b> Esta opción puede corromper tus archivos. Úsala solamente cuando encuentres problemas y no puedas realizar la función \"mostrar\" de manera normal.</string>
 </resources>
