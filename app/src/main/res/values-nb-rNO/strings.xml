@@ -119,4 +119,14 @@
     <string name="quick_hide">Hurtigskjuling</string>
     <string name="notification">Merknad</string>
     <string name="invalid_action">Ugyldig intensjon mottatt: %s</string>
+    <string name="set_password">Sett passord</string>
+    <string name="unlock">Lås opp</string>
+    <string name="unlock_required">Opplåsing kreves</string>
+    <string name="password_incorrect">Feil passord.</string>
+    <string name="app_lock">Programlås</string>
+    <string name="confirm_password">Bekreft passord</string>
+    <string name="password_length_error">Passordet må være mellom 3 og 15 tegn.</string>
+    <string name="password_mismatch_error">Passordene samsvarer ikke.</string>
+    <string name="search">Søk</string>
+    <string name="apphider_dhizuku">Dhizuku-modus</string>
 </resources>
