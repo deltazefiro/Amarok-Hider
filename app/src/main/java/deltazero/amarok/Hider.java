@@ -20,7 +20,6 @@ public class Hider {
 
     private static final String TAG = "Hider";
     private static final HandlerThread hiderThread = new HandlerThread("HIDER_THREAD");
-    private static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);
 
     private final PrefMgr prefMgr;
     private final Context context;
@@ -29,9 +28,7 @@ public class Hider {
     private AppHiderBase appHider;
     private FileHiderBase fileHider;
 
-    public MutableLiveData<Boolean> getIsProcessingLiveData() {
-        return isProcessing;
-    }
+    public static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);
 
     public Hider(Context context) {
         this.context = context;

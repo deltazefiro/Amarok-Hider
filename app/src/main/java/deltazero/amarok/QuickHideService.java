@@ -101,7 +101,7 @@ public class QuickHideService extends LifecycleService {
         ivPanicButton.setColorFilter(getColor(R.color.light_grey),
                 PorterDuff.Mode.SRC_IN);
 
-        isProcessing = hider.getIsProcessingLiveData();
+        isProcessing = Hider.isProcessing;
         isProcessing.observe(this, aBoolean -> updatePanicButton());
         updatePanicButton();
 
