@@ -2,9 +2,11 @@ package deltazero.amarok.ui;
 
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.service.quicksettings.TileService;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -141,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
             if (!prefMgr.getIsHidden()) {
                 // Visible
                 ivStatusImg.setImageResource(R.drawable.img_status_visible);
+                ivStatusImg.setImageTintList(null);
                 btChangeStatus.setText(R.string.hide);
                 btChangeStatus.setIconResource(R.drawable.ic_paw);
                 btSetHideFiles.setEnabled(true);
@@ -150,6 +153,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 // Hidden
                 ivStatusImg.setImageResource(R.drawable.img_status_hidden);
+                ivStatusImg.setImageTintList(getColorStateList(com.google.android.material.R.color.material_on_background_emphasis_high_type));
                 btChangeStatus.setText(R.string.unhide);
                 btChangeStatus.setIconResource(R.drawable.ic_wolf);
                 btSetHideFiles.setEnabled(false);
