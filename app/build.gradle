@@ -13,7 +13,6 @@ def getGitHash = { ->
 
 android {
     compileSdkVersion 33
-    buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "deltazero.amarok"
@@ -100,7 +99,7 @@ repositories {
 }
 
 dependencies {
-    def shizukuVersion = '13.1.1'
+    def shizukuVersion = '13.1.4'
     implementation "dev.rikka.shizuku:api:${shizukuVersion}"
     implementation "dev.rikka.shizuku:provider:${shizukuVersion}"
 
