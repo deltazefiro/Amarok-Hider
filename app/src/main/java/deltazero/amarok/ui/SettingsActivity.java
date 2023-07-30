@@ -256,6 +256,10 @@ public class SettingsActivity extends AppCompatActivity {
         SwitchLocaleUtil.switchLocale(this);
     }
 
+    public void participateTranslation(View view) {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://hosted.weblate.org/engage/amarok-hider/")));
+    }
+
     public void showDebugInfo(View view) {
     }
 }
