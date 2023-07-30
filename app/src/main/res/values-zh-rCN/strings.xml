@@ -20,7 +20,7 @@
     <string name="usage">帮助</string>
     <string name="more_settings">更多设置</string>
     <string name="about_description">显示关于</string>
-    <string name="usage_description">打开帮助文档</string>
+    <string name="usage_description">打开帮助文档。</string>
     <string name="current_mode">当前模式：%s</string>
     <string name="switch_app_hider">应用隐藏模式</string>
     <string name="switch_file_hider">文件隐藏模式</string>
@@ -44,7 +44,7 @@
     <string name="no_apphider">请先在 更多设置 中选择工作模式</string>
     <string name="root_not_ava">无法获取root权限</string>
     <string name="check_update_on_start">自动更新</string>
-    <string name="check_update_on_start_description">在启动时检查更新</string>
+    <string name="check_update_on_start_description">在启动时检查更新。</string>
     <string name="check_update">检查更新</string>
     <string name="check_update_description">当前版本: Amarok %s</string>
     <string name="update_ava">有可用更新</string>
@@ -135,4 +135,6 @@
     <string name="language">语言</string>
     <string name="follow_system">（跟随系统）</string>
     <string name="invalid_path">无效路径。</string>
+    <string name="participate_translation">参与翻译</string>
+    <string name="participate_translation_description">帮助我们翻译 Amarok。</string>
 </resources>
