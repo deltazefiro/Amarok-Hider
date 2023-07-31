@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">隠匿を解除</string>
+    <string name="hide">隠匿する</string>
+    <string name="more_settings">その他の設定</string>
+    <string name="hidden_toast">隠したよ。コケコッコー!(\?)</string>
+    <string name="set_hide_apps">隠すアプリ</string>
+    <string name="set_hide_files">隠すファイル</string>
+</resources>
