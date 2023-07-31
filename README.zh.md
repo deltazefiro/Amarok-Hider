@@ -3,46 +3,33 @@
 
 # Amarok-Hider
 
-![version](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2)
-![tag](https://img.shields.io/github/v/tag/deltazefiro/Amarok-Hider)
-![commit-freq](https://img.shields.io/github/commit-activity/m/deltazefiro/Amarok-Hider)
+[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public) 
+[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases) 
+[![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) 
+[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss) 
 
 🌐 [ENGLISH](https://github.com/deltazefiro/Amarok-Hider) | **简体中文**
 
 
 ## Amarok 是什么？
 
-Amarok 是一个轻量级的安卓的文件应用隐藏器，旨在保护您的隐私。  
+Amarok 是一款轻量级隐私保护工具，一键隐藏你的隐私文件和应用。
 
-> 我们的手机里不免有一些隐私文件和应用不想被他人看到。它们并不是机密资料，但是可能"不宜出现在工作场所"。使用加密工具对它们加密，不仅是高射炮打蚊子，且往往加密大文件和应用花费的时间是无法接受的。但我们的文件其实根本不需要严格的保护，只是不希望不小心被别人看见，或手滑发给错误的人。我们只需要一个工具，不让它们被随便看到，使别人心生好奇。
+> 在我们设备中可能会存在一些私密文件与应用程序。尽管这些内容并非机密资料，但在工作环境中可能并不适宜出现。使用加密工具对其进行加密显得有些杀鸡焉用牛刀，且加密大文件和应用程序所需的时间往往是无法接受的。
 
-Amarok 是一款轻便的隐藏工具。它不对文件与应用进行加密，而是进行“隐藏”。它不加密全部的文件内容，而是只混淆文件名以及文件头部的签名，使文件“损坏”无法打开；Amarok 使用停用应用的方式“隐藏”应用，使它们在启动器中不可见。
-
-## 功能
-- 隐藏文件，将混淆文件名、文件头  
-- 免Root隐藏应用，使应用在桌面上不可见  
+Amarok 的设计理念为不对文件与应用进行复杂加密，而是进行“隐藏”：
+- Amarok 通过混淆文件名以及文件头部，改名文件并使文件“损坏”无法打开，从而达到隐藏的目的。
+- Amarok 通过停用应用等方式，使它们在启动器与系统菜单中不可见，从而隐藏应用。
 
 **<u>请注意：Amarok 并非加密程序，而只是隐藏程序！请勿使用 Amarok 保护重要文件！</u>**
 
-## 特点
-- 一键隐藏&一键取消隐藏：文件应用，一键隐藏。
-- 高速大文件隐藏：只混淆文件名和文件签名，文件大小并不影响隐藏速度。
-- 无需Root应用隐藏：从桌面隐藏应用程序。目前支持 Root、Shizuku、Dhizuku 和 DSM 模式。
-- 老板键：在紧急情况下使用浮动按钮隐藏应用和文件。
-- 快捷开关：控制中心开关，无需打开应用即可隐藏。
-- 精美的用户界面：简洁干净的 Material3 设计。
-
-
-<table>
-  <tr>
-    <td>文件隐藏 (隐藏+混淆)</td>
-    <td>应用隐藏</td>
-  </tr>
-  <tr>
-    <td><img src="https://s2.loli.net/2023/01/27/dHWMGPZV1krzjAg.gif" width="600"></td>
-    <td><img src="https://s2.loli.net/2023/01/27/RsjLuC7AvwYFJzS.gif" width="600"></td>
-  </tr>
- </table>
+## 功能 & 特点
+- **简单易用**: 文件应用，一键隐藏。
+- **高速大文件隐藏**: 只混淆文件名和文件签名，文件大小并不影响隐藏速度。
+- **免 Root 应用隐藏**: 从桌面隐藏应用程序。目前支持 Root、Shizuku、Dhizuku 和 DSM 模式。
+- **老板键**: 在紧急情况下使用浮动按钮隐藏应用和文件。
+- **快捷开关**: 控制中心开关，无需打开应用即可隐藏。
+- **赏心悦目的界面**: 简洁干净的 Material3 设计。
 
 
 ## 使用文档
@@ -50,10 +37,10 @@ Amarok 是一款轻便的隐藏工具。它不对文件与应用进行加密，�
 
 
 ## 下载
-[![](https://img.shields.io/f-droid/v/deltazero.amarok.foss)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/)  
-[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)  (包含 Pre-release)  
-[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?include_prereleases&label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases)  (包含 Pre-release)  
-[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public)  
+[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public) (推荐)  
+[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases)  
+[![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) (FOSS)  
+[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)  (FOSS) (测试通道)  
 
 
 ## 截图
@@ -92,7 +79,6 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 <img src="https://contrib.rocks/image?repo=deltazefiro/Amarok-Hider&anon=1" />
 </a>  
 
-Made with [contrib.rocks](https://contrib.rocks).
 
 ## 免责声明
 
