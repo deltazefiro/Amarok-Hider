@@ -1,0 +1,6 @@
+v0.8.4a3
+- Añadida la opción: forzar mostrar
+- Soporte para ocultar las aplicaciones del sistema (#83)
+- Admite el cambio de idioma en la aplicación
+- Experimental: NoMediaFileHider
+- Actualización de las traducciones: Español, Turco, Ucraniano, Noruego Bokmål
