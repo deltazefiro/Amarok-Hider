@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">非表示を解除する</string>
+    <string name="hide">非表示にする</string>
+    <string name="more_settings">その他の設定</string>
+    <string name="hidden_toast">非表示に戻したよ。コケコッコー!(\?)</string>
+    <string name="set_hide_apps">非表示にするアプリ</string>
+    <string name="set_hide_files">非表示にするファイル</string>
+    <string name="about">Amarok</string>
+    <string name="hidden_status">非表示中</string>
+    <string name="visible_status">非表示を解除中</string>
+    <string name="switch_app_hider">アプリの隠蔽方法を切り替える</string>
+    <string name="switch_file_hider">ファイルの隠蔽方法を切り替える</string>
+    <string name="enable_analytics">匿名のデータ提供</string>
+    <string name="usage">説明書</string>
+    <string name="analytics_description">クラッシュレポートを開発者に送信し、アプリの改善に協力する。
+\nしてくれると助かります。</string>
+    <string name="usage_description">ヘルプデスクを開く。</string>
+    <string name="unhidden_toast">非表示を解除したよ。気をつけてね。</string>
+    <string name="update">アップデート</string>
+    <string name="check_update">アップデートを確認</string>
+    <string name="check_update_description">現在のバージョン: %s</string>
+    <string name="check_update_on_start">自動アップデート</string>
+    <string name="check_update_on_start_description">アプリを開くとき、新しいバージョンがあるかを確認する。</string>
+    <string name="view_github_repo">GitHubリポジトリ</string>
+    <string name="security">セキュリティ</string>
+    <string name="misc">その他</string>
+    <string name="app_lock">アプリロック</string>
+    <string name="app_lock_description">Amarokへのアクセスにパスワードを要求する。</string>
+    <string name="biometric_auth">生体認証</string>
+    <string name="biometric_auth_description">可能な場合、アプリロックに生体認証を使用する。</string>
+    <string name="force_unhide_description">問題が発生した場合に、全ての復元を試みる。</string>
+    <string name="force_unhide">強制非表示解除</string>
+    <string name="language">言語</string>
+    <string name="participate_translation_description">あなたの言語へのAmarokの翻訳に協力してください。</string>
+</resources>
