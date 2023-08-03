@@ -1,0 +1,5 @@
+v0.8.4b1
+- Support dynamic color
+- Add "participate in translation" button
+- New translations: Italian (by Hisako) & Japanese (by しいたけ)
+- Update Spanish translation (by gallegonovato)
