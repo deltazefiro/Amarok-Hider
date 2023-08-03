@@ -137,4 +137,6 @@
     <string name="invalid_path">无效路径。</string>
     <string name="participate_translation">参与翻译</string>
     <string name="participate_translation_description">帮助我们翻译 Amarok。</string>
+    <string name="enable_dynamic_color">动态配色</string>
+    <string name="dynamic_color_description">启用动态配色主题。</string>
 </resources>
