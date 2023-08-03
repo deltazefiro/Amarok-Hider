@@ -35,7 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
     private PrefMgr prefMgr;
     private Context context;
     private String appVersionName;
-    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock, swBiometricAuth;
+    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock, swBiometricAuth, swDynamicColor;
     private MaterialToolbar tbToolBar;
     private TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
@@ -69,6 +69,7 @@ public class SettingsActivity extends AppCompatActivity {
         swPanicButton = findViewById(R.id.settings_sw_panic_button);
         swAnalytics = findViewById(R.id.settings_sw_analytics);
         swAutoUpdate = findViewById(R.id.settings_sw_auto_update);
+        swDynamicColor = findViewById(R.id.settings_sw_dynamic_color);
         tbToolBar = findViewById(R.id.settings_tb_toolbar);
         rlDebugInfo = findViewById(R.id.settings_rl_debug_info);
 
@@ -170,6 +171,11 @@ public class SettingsActivity extends AppCompatActivity {
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
         });
 
+        swDynamicColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefMgr.setEnableDynamicColor(isChecked);
+            Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
+        });
+
         // Enable back button
         tbToolBar.setNavigationOnClickListener(v -> finish());
 
@@ -190,6 +196,7 @@ public class SettingsActivity extends AppCompatActivity {
         swBiometricAuth.setChecked(prefMgr.getEnableAmarokBiometricAuth());
         swQuickHideNotification.setChecked(prefMgr.getEnableQuickHideService());
         swPanicButton.setChecked(prefMgr.getEnablePanicButton());
+        swDynamicColor.setChecked(prefMgr.getEnableDynamicColor());
 
         swPanicButton.setEnabled(prefMgr.getEnableQuickHideService());
         swBiometricAuth.setEnabled(prefMgr.getAmarokPassword() != null);

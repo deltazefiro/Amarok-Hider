@@ -191,4 +191,13 @@ public class PrefMgr {
         mPrefEditor.putBoolean("enableAmarokBiometricAuth", enableAmarokBiometricAuth);
         mPrefEditor.apply();
     }
+
+    public boolean getEnableDynamicColor() {
+        return mPrefs.getBoolean("enableDynamicColor", false);
+    }
+
+    public void setEnableDynamicColor(boolean enableDynamicColor) {
+        mPrefEditor.putBoolean("enableDynamicColor", enableDynamicColor);
+        mPrefEditor.apply();
+    }
 }

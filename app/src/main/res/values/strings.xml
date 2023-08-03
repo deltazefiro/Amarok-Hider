@@ -149,4 +149,6 @@
     <string name="invalid_path">Invalid path.</string>
     <string name="participate_translation">Participate in translation</string>
     <string name="participate_translation_description">Help us translate Amarok into your language.</string>
+    <string name="enable_dynamic_color">Dynamic color</string>
+    <string name="dynamic_color_description">Enable dynamic color theming.</string>
 </resources>
