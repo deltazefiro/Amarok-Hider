@@ -1,0 +1,5 @@
+v0.8.4b1
+- Supporto per colori dinamici
+- Aggiunto bottone "partecipa nella traduzione"
+- Nuove Traduzioni: Italiano (da Hisako) e Giapponese (da しいたけ)
+- Aggiornata traduzione: Spagnolo (da gallegonovato)
