@@ -157,4 +157,11 @@
 \n<b>ПОПЕРЕДЖЕННЯ: </b>Ця опція може пошкодити ваші файли. Використовуйте її лише тоді, коли у вас виникли проблеми і ви не можете нормально виконати функцію \"показати\".</string>
     <string name="performing_force_unhide">Намагається показатися. Зачекайте, будь ласка.</string>
     <string name="filter">Фільтр</string>
+    <string name="language">Мова</string>
+    <string name="follow_system">(Слідкувати за системою)</string>
+    <string name="invalid_path">Некоректний шлях.</string>
+    <string name="participate_translation">Долучитися до перекладу</string>
+    <string name="participate_translation_description">Допоможіть нам перевести Amarok на вашу мову.</string>
+    <string name="enable_dynamic_color">Динамічні кольори</string>
+    <string name="dynamic_color_description">Увімкнути динамічну кольорову тему.</string>
 </resources>
