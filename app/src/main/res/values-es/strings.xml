@@ -154,4 +154,14 @@
 \n<b>ADVERTENCIA:</b> Esta opción puede corromper tus archivos. Úsala solamente cuando encuentres problemas y no puedas realizar la función \"mostrar\" de manera normal.</string>
     <string name="force_unhide_description">Intenta restaurar todo. Usa esta opción solo cuando tengas problemas.</string>
     <string name="force_unhide">Forzar mostrar</string>
+    <string name="filter">Filtrar</string>
+    <string name="display_system_apps">Mostrar aplicaciones del sistema</string>
+    <string name="language">Idioma</string>
+    <string name="follow_system">(Seguimiento del sistema)</string>
+    <string name="invalid_path">Ruta no válida.</string>
+    <string name="participate_translation">Participa en la traducción</string>
+    <string name="participate_translation_description">Ayúdanos a traducir Amarok a tu idioma.</string>
+    <string name="performing_force_unhide">Tratando de desocultar. Por favor espera.</string>
+    <string name="dynamic_color_description">Habilita el tema con el color dinámico.</string>
+    <string name="enable_dynamic_color">Color dinámico</string>
 </resources>
