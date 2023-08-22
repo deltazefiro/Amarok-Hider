@@ -24,6 +24,7 @@ import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Set;
 
+import deltazero.amarok.FileHider.ChmodFileHider;
 import deltazero.amarok.FileHider.NoMediaFileHider;
 import deltazero.amarok.FileHider.ObfuscateFileHider;
 import deltazero.amarok.PrefMgr;
@@ -138,14 +139,22 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                                 String input = Objects.requireNonNull(etPathInput.getText()).toString();
 
                                 /* Check for experiment flags */
-                                if (input.equals("#enable-nomedia-filehider")) {
-                                    prefMgr.setFileHiderMode(NoMediaFileHider.class);
-                                    Toast.makeText(context, "NoMedia filehider activated.", Toast.LENGTH_LONG).show();
-                                    return;
-                                } else if (input.equals("#disable-nomedia-filehider")) {
-                                    prefMgr.setFileHiderMode(ObfuscateFileHider.class);
-                                    Toast.makeText(context, "NoMedia filehider deactivated.", Toast.LENGTH_LONG).show();
-                                    return;
+                                switch (input) {
+                                    case "#nomedia-filehider" -> {
+                                        prefMgr.setFileHiderMode(NoMediaFileHider.class);
+                                        Toast.makeText(context, "NoMedia filehider activated.", Toast.LENGTH_LONG).show();
+                                        return;
+                                    }
+                                    case "#obfuscate-filehider" -> {
+                                        prefMgr.setFileHiderMode(ObfuscateFileHider.class);
+                                        Toast.makeText(context, "Obfuscate filehider activated.", Toast.LENGTH_LONG).show();
+                                        return;
+                                    }
+                                    case "#chmod-filehider" -> {
+                                        prefMgr.setFileHiderMode(ChmodFileHider.class);
+                                        Toast.makeText(context, "Chmod filehider activated.", Toast.LENGTH_LONG).show();
+                                        return;
+                                    }
                                 }
 
                                 /* Check path availability */

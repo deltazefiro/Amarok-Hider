@@ -16,6 +16,7 @@ import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
 import deltazero.amarok.AppHider.ShizukuHider;
+import deltazero.amarok.FileHider.ChmodFileHider;
 import deltazero.amarok.FileHider.FileHiderBase;
 import deltazero.amarok.FileHider.NoMediaFileHider;
 import deltazero.amarok.FileHider.ObfuscateFileHider;
@@ -94,6 +95,7 @@ public class PrefMgr {
         return switch (mPrefs.getInt("fileHiderMode", 1)) {
             case 1 -> new ObfuscateFileHider(context);
             case 2 -> new NoMediaFileHider(context);
+            case 3 -> new ChmodFileHider(context);
             default -> throw new IndexOutOfBoundsException("Should not reach here");
         };
     }
@@ -104,6 +106,8 @@ public class PrefMgr {
             modeCode = 1;
         else if (mode == NoMediaFileHider.class)
             modeCode = 2;
+        else if (mode == ChmodFileHider.class)
+            modeCode = 3;
         else
             throw new IndexOutOfBoundsException("Should not reach here");
         mPrefEditor.putInt("fileHiderMode", modeCode);
