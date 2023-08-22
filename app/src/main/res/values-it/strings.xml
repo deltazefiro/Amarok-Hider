@@ -22,7 +22,7 @@
     <string name="enable_analytics">Analisi Anonima</string>
     <string name="usage_description">Apri il centro assistenza.</string>
     <string name="show_about">Mostra informazioni</string>
-    <string name="analytics_description">invia segnalazioni anonime di crash agli sviluppatori per analisi.</string>
+    <string name="analytics_description">Invia segnalazioni anonime di crash agli sviluppatori per analisi.</string>
     <string name="current_mode">Modalità Corrente: %s</string>
     <string name="about_description">Mostra informazioni sull\'app.</string>
     <string name="switch_file_hider">Cambia la modalità di nascondimento dei file</string>

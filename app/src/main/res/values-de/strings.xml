@@ -72,8 +72,8 @@
 \nEmpfohlen, wenn Ihr Gerät verwurzelt ist, aber ohne Xposed-Verschalung. Root-Erlaubnis ist erforderlich.</string>
     <string name="apphider_shizuku">Shizuku (Sui) Modus - <font fgcolor="#de5f1b">DeepHide</font></string>
     <string name="filename_only">Nur Dateiname</string>
-    <string name="panic_button">Panik Knopf</string>
-    <string name="learn_more">Mehr erfahren</string>
+    <string name="panic_button">Schwebeknopf</string>
+    <string name="learn_more">Setup-Lernprogramm</string>
     <string name="option_unava_when_hidden">Optionen sind bis zum Einblenden nicht verfügbar.</string>
     <string name="obfuscate_text_file">Textdatei vollständig verschleiern</string>
     <string name="filename_and_header">Dateiname + Köpfzeile</string>
@@ -107,6 +107,53 @@
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="alert_permission_denied">Display-over-apps-Erlaubnis verweigert.</string>
     <string name="alert_permission_request_title">Erlaubnis für Popup-Fenster erforderlich</string>
-    <string name="alert_permission_request_message">Der Panik-Button benötigt die Berechtigung \"Popout-Fenster\", um zu funktionieren. Bitte finden Sie Amarok im Einstellungsmenü und erteilen Sie die Erlaubnis.</string>
+    <string name="alert_permission_request_message">Der Schwebe-Button benötigt die Berechtigung \"Popout-Fenster\", um zu funktionieren. Bitte finden Sie Amarok im Einstellungsmenü und erteilen Sie die Erlaubnis.</string>
     <string name="failed_to_open_doc_tree_description">Huch! Es scheint, dass Ihr System keinen Standard-Dateimanager hat\? Bitte drücken Sie lange auf die Schaltfläche \"Versteckter-Ordner hinzufügen\" und legen Sie den Pfad manuell fest.</string>
+    <string name="notification">Benachrichtigung</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n [Developer] @Deltazefiro
+\n
+\n [Info] Amarok: Eine einfache Android-App, um private Dateien und Apps zu verbergen.
+\n
+\n [Repo] https://github.com/deltazefiro/Amarok-Hider
+\n
+\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
+\n"</string>
+    <string name="performing_force_unhide">Erzwinge das Einblenden. Bleiben Sie ruhig.</string>
+    <string name="filter">Filter</string>
+    <string name="display_system_apps">System-Apps anzeigen</string>
+    <string name="biometric_auth">Biometrische Entsperrung</string>
+    <string name="app_lock_description">Passwort erforderlich, um Amarok zu starten.</string>
+    <string name="biometric_auth_description">Wenn möglich, biometrische Funktionen des Gerätes verwenden um Amarok zu öffnen</string>
+    <string name="quick_hide_notification_title">Privatsphäre nicht versteckt</string>
+    <string name="quick_hide_notification_content">Ihre Privatsphäre ist nicht versteckt. Zum Verstecken drücken.</string>
+    <string name="notification_channel_name">Rascher Verstecken Dienst</string>
+    <string name="language">Sprache</string>
+    <string name="invalid_path">Pfad ungültig.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Berechtigung abgelehnt</string>
+    <string name="participate_translation">Helfen Sie bei der Übersetzung</string>
+    <string name="participate_translation_description">Helfen Sie uns, Amarok in Ihre Sprache zu übersetzen.</string>
+    <string name="quick_hide">Rasch verstecken</string>
+    <string name="search">Suche</string>
+    <string name="notification_permission_request_title">Berechtigung für Benachrichtigungen erforderlich</string>
+    <string name="notification_permission_denied">Berechtigung für Benachrichtigungen abgelehnt.</string>
+    <string name="password">Passwort</string>
+    <string name="unlock_required">Entsperren notwendig</string>
+    <string name="force_unhide_description">Versuche alles wiederherzustellen. Verwenden Sie diese Option, wenn Probleme auftreten.</string>
+    <string name="force_unhide_confirm_msg">Alles wiederherstellen\?
+\n
+\n<b>ACHTUNG:</b> Diese Funktion kann Ihre Dateien beschädigen. Verwenden Sie sie nur, wenn Probleme auftreten und Sie die \"Einblenden\"-Funktion nicht normal ausführen können.</string>
+    <string name="notification_permission_request_message">Der Rasche-Versteck-Dienst braucht die Berechtigung für Benachrichtigungen.</string>
+    <string name="unlock">Entsperren</string>
+    <string name="password_incorrect">Falsches Passwort.</string>
+    <string name="confirm_password">Passwort bestätigen</string>
+    <string name="app_lock">App gesperrt</string>
+    <string name="set_password">Passwort festlegen</string>
+    <string name="password_length_error">Das Passwort muss aus 3 bis 15 Zeichen bestehen.</string>
+    <string name="password_mismatch_error">Die Passwörter sind nicht gleich.</string>
+    <string name="force_unhide">Einblenden erzwingen</string>
+    <string name="enable_dynamic_color">Dynamische Farbe</string>
+    <string name="dynamic_color_description">Dynamisches Farb Thema einschalten.</string>
 </resources>
