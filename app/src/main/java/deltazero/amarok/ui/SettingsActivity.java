@@ -27,6 +27,7 @@ import deltazero.amarok.QuickHideService;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.HashUtil;
+import deltazero.amarok.utils.LauncherIconController;
 import deltazero.amarok.utils.PermissionUtil;
 import deltazero.amarok.utils.SwitchLocaleUtil;
 
@@ -35,7 +36,7 @@ public class SettingsActivity extends AppCompatActivity {
     private PrefMgr prefMgr;
     private Context context;
     private String appVersionName;
-    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock, swBiometricAuth, swDynamicColor;
+    private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock, swBiometricAuth, swDynamicColor, swDisguise;
     private MaterialToolbar tbToolBar;
     private TextView tvCurrAppHider;
     private TextView tvCurrFileHider;
@@ -64,6 +65,7 @@ public class SettingsActivity extends AppCompatActivity {
         tvCurrFileHider = findViewById(R.id.settings_tv_curr_file_hider);
         tvCurrVer = findViewById(R.id.settings_tv_curr_ver);
         swAppLock = findViewById(R.id.settings_sw_amarok_lock);
+        swDisguise = findViewById(R.id.settings_sw_disguise);
         swBiometricAuth = findViewById(R.id.settings_sw_biometric_auth);
         swQuickHideNotification = findViewById(R.id.settings_sw_quick_hide_notification);
         swPanicButton = findViewById(R.id.settings_sw_panic_button);
@@ -121,6 +123,10 @@ public class SettingsActivity extends AppCompatActivity {
                 prefMgr.setAmarokPassword(null);
                 updateUI();
             }
+        });
+
+        swDisguise.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            LauncherIconController.switchDisguise(this, isChecked);
         });
 
         swBiometricAuth.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -194,6 +200,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         swAppLock.setChecked(prefMgr.getAmarokPassword() != null);
         swBiometricAuth.setChecked(prefMgr.getEnableAmarokBiometricAuth());
+        swDisguise.setChecked(LauncherIconController.checkIsDisguised(this));
         swQuickHideNotification.setChecked(prefMgr.getEnableQuickHideService());
         swPanicButton.setChecked(prefMgr.getEnablePanicButton());
         swDynamicColor.setChecked(prefMgr.getEnableDynamicColor());
