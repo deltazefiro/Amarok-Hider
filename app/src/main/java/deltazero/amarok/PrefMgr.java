@@ -213,4 +213,13 @@ public class PrefMgr {
         mPrefEditor.putBoolean("enableDisguise", enableDisguise);
         mPrefEditor.apply();
     }
+
+    public boolean getDoShowQuitDisguiseInstuct() {
+        return mPrefs.getBoolean("doShowQuitDisguiseInstuct", true);
+    }
+
+    public void setDoShowQuitDisguiseInstuct(boolean doShowQuitDisguiseInstuct) {
+        mPrefEditor.putBoolean("doShowQuitDisguiseInstuct", doShowQuitDisguiseInstuct);
+        mPrefEditor.apply();
+    }
 }

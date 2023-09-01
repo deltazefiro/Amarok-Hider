@@ -126,6 +126,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         swDisguise.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefMgr.setDoShowQuitDisguiseInstuct(true);
             prefMgr.setEnableDisguise(isChecked);
             LauncherIconController.switchDisguise(this, isChecked);
         });

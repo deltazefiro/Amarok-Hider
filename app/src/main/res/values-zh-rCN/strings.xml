@@ -143,4 +143,6 @@
     <string name="disguise">应用伪装</string>
     <string name="disguise_description">将 Amarok 伪装成日历。</string>
     <string name="calendar_about">极简日历 | by @koramA</string>
+    <string name="close_disguise_spotlight_tip">长按<b>年份数字</b>进入 Amarok。</string>
+    <string name="spotlight_do_not_show_again">不再提示</string>
 </resources>

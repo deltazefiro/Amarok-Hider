@@ -14,4 +14,5 @@
     <color name="calendar_bg_secondary">#51356E</color>
     <color name="calendar_white_light">#4DFFFFFF</color>
     <color name="calendar_white">#D9FFFFFF</color>
+    <color name="calendar_spotlight_bg">#00000099</color>
 </resources>
