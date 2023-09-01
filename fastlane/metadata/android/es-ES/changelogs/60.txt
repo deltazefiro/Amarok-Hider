@@ -1,0 +1,4 @@
+v0.8.5a1
+- Soporta disfrazar Amarok como calendario
+- Añadir la característica experimental: ocultar archivos Chomd
+- Actualizar traducciones de la comunidad: Húngaro, Italiano, Ucraniano, Francés, Español, Alemán (Para más información, por favor revisa Github)
