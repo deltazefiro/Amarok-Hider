@@ -1,0 +1,7 @@
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:id="@+id/calendar_tv_day_title_text"
+    android:textColor="@color/white"
+    android:layout_weight="1"
+    android:gravity="center" />

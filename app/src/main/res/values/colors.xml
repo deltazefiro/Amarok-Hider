@@ -5,6 +5,13 @@
     <color name="dark_grey">#141414</color>
     <color name="grey">#303030</color>
     <color name="light_grey">#d1d1d1</color>
-
     <color name="orange">#FF9800</color>
+
+    <color name="calendar_selection_color">#FCCA3E</color>
+    <color name="calendar_inactive_text_color">#BEBEBE</color>
+    <color name="calendar_bg">#3A284C</color>
+    <color name="calendar_bg_light">#433254</color>
+    <color name="calendar_bg_secondary">#51356E</color>
+    <color name="calendar_white_light">#4DFFFFFF</color>
+    <color name="calendar_white">#D9FFFFFF</color>
 </resources>
