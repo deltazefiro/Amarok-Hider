@@ -142,4 +142,5 @@
     <string name="app_name_calendar">日历</string>
     <string name="disguise">应用伪装</string>
     <string name="disguise_description">将 Amarok 伪装成日历。</string>
+    <string name="calendar_about">极简日历 | by @koramA</string>
 </resources>

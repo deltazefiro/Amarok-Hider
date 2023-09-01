@@ -63,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_marginVertical="20dp"
-        android:text="Pure Calendar | by @Korama"
+        android:text="@string/calendar_about"
         android:textColor="@color/calendar_white_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

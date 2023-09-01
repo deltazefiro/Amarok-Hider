@@ -204,4 +204,13 @@ public class PrefMgr {
         mPrefEditor.putBoolean("enableDynamicColor", enableDynamicColor);
         mPrefEditor.apply();
     }
+
+    public boolean getEnableDisguise() {
+        return mPrefs.getBoolean("enableDisguise", false);
+    }
+
+    public void setEnableDisguise(boolean enableDisguise) {
+        mPrefEditor.putBoolean("enableDisguise", enableDisguise);
+        mPrefEditor.apply();
+    }
 }

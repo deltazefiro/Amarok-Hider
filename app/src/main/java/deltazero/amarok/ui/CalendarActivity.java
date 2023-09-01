@@ -61,6 +61,11 @@ public class CalendarActivity extends AppCompatActivity {
             updateTitle();
             return null;
         });
+        tvYear.setOnLongClickListener(v -> {
+            setResult(RESULT_OK);
+            finish();
+            return true;
+        });
     }
 
     private void updateTitle() {

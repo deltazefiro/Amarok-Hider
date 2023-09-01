@@ -126,6 +126,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         swDisguise.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            prefMgr.setEnableDisguise(isChecked);
             LauncherIconController.switchDisguise(this, isChecked);
         });
 
@@ -200,7 +201,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         swAppLock.setChecked(prefMgr.getAmarokPassword() != null);
         swBiometricAuth.setChecked(prefMgr.getEnableAmarokBiometricAuth());
-        swDisguise.setChecked(LauncherIconController.checkIsDisguised(this));
+        swDisguise.setChecked(prefMgr.getEnableDisguise());
         swQuickHideNotification.setChecked(prefMgr.getEnableQuickHideService());
         swPanicButton.setChecked(prefMgr.getEnablePanicButton());
         swDynamicColor.setChecked(prefMgr.getEnableDynamicColor());
