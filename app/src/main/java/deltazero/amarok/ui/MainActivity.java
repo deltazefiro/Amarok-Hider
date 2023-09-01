@@ -1,12 +1,11 @@
 package deltazero.amarok.ui;
 
+import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.service.quicksettings.TileService;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -28,6 +27,7 @@ import deltazero.amarok.PrefMgr;
 import deltazero.amarok.QuickSettingService;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
+import deltazero.amarok.utils.BetterActivityLauncher;
 import deltazero.amarok.utils.PermissionUtil;
 import deltazero.amarok.utils.SecurityAuth;
 
@@ -77,12 +77,27 @@ public class MainActivity extends AppCompatActivity {
         PermissionUtil.requestStoragePermission(this);
         checkAppHiderAvailability();
 
-        // Show security check fragment
+        var activityLauncher = BetterActivityLauncher.registerActivityForResult(this);
         svMainLayout.setVisibility(View.GONE);
-        new SecurityAuth(this, succeed -> {
-            if (succeed) svMainLayout.setVisibility(View.VISIBLE);
-            else finish();
-        }).authenticate();
+        if (prefMgr.getEnableDisguise()) {
+            // Launch disguise
+            activityLauncher.launch(new Intent(this, CalendarActivity.class), result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) {
+                    new SecurityAuth(this, succeed -> {
+                        if (succeed) svMainLayout.setVisibility(View.VISIBLE);
+                        else finish();
+                    }).authenticate();
+                } else {
+                    finish();
+                }
+            });
+        } else {
+            // Show security check fragment
+            new SecurityAuth(this, succeed -> {
+                if (succeed) svMainLayout.setVisibility(View.VISIBLE);
+                else finish();
+            }).authenticate();
+        }
     }
 
     public void changeStatus(View view) {

@@ -154,4 +154,5 @@
     <string name="app_name_calendar">Calendar</string>
     <string name="disguise">App disguise</string>
     <string name="disguise_description">Disguise Amarok as a calendar.</string>
+    <string name="calendar_about">Pure Calendar | by @koramA</string>
 </resources>
