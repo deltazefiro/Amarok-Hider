@@ -275,6 +275,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void showDebugInfo(View view) {
+        startActivity(new Intent(this, CalendarActivity.class));
     }
 }
 

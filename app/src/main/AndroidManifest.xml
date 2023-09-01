@@ -89,6 +89,10 @@
             android:name=".ui.SetHideAppActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.CalendarActivity"
+            android:exported="false"
+            android:theme="@style/Theme.Calculator"/>
+        <activity
             android:name=".ui.SecurityAuthForQuickHideActivity"
             android:excludeFromRecents="true"
             android:exported="true"
