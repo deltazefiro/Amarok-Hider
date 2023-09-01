@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        style="@style/TextAppearance.Material3.HeadlineMedium"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="250dp"
+        android:id="@+id/calendar_tv_spotlight_tip"
+        android:text="@string/close_disguise_spotlight_tip"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/white"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendar_bt_spotlight_do_not_show_again"
+        app:layout_constraintTop_toBottomOf="@id/calendar_tv_spotlight_tip"
+        app:layout_constraintStart_toStartOf="@id/calendar_tv_spotlight_tip"
+        android:layout_marginTop="10dp"
+        android:text="@string/spotlight_do_not_show_again"
+        android:textColor="@color/calendar_selection_color"
+        style="@style/Widget.Material3.Button.OutlinedButton"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
