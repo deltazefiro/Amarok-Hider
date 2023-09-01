@@ -63,4 +63,12 @@ public class SwitchLocaleUtil {
                 .setView(radioGroupView)
                 .show();
     }
+
+    public static Locale getActiveLocale(Context context) {
+        var activeLocale = AppCompatDelegate.getApplicationLocales();
+        if (activeLocale.equals(LocaleListCompat.getEmptyLocaleList()))
+            return context.getResources().getConfiguration().getLocales().get(0);
+        else
+            return Locale.forLanguageTag(activeLocale.toLanguageTags());
+    }
 }

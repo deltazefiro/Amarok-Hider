@@ -139,4 +139,10 @@
     <string name="participate_translation_description">帮助我们翻译 Amarok。</string>
     <string name="enable_dynamic_color">动态配色</string>
     <string name="dynamic_color_description">启用动态配色主题。</string>
+    <string name="app_name_calendar">日历</string>
+    <string name="disguise">应用伪装</string>
+    <string name="disguise_description">将 Amarok 伪装成日历。</string>
+    <string name="calendar_about">极简日历 | by @koramA</string>
+    <string name="close_disguise_spotlight_tip">长按<font fgcolor="#FCCA3E"><b>年份数字</b></font>进入 Amarok。</string>
+    <string name="spotlight_do_not_show_again">不再提示</string>
 </resources>

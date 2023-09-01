@@ -81,6 +81,7 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 - [Jetbrains](https://www.jetbrains.com/community/opensource/#support), provides IDE support for open source projects
 - [RikkaApps/Shizuku](https://github.com/RikkaApps/Shizuku)
 - [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku)
+- [kizitonwose/Calendar](https://github.com/kizitonwose/Calendar)
 
 ... And all the dedicated contributors!  
 

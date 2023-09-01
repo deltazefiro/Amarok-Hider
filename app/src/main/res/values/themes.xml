@@ -1,18 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Daytime theme. -->
-    <style name="Theme.Amarok" parent="Theme.Material3.Light.NoActionBar">
 
+    <style name="Theme.Amarok" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:statusBarColor">?attr/colorSurface</item>
         <item name="android:navigationBarColor">?attr/colorSurface</item>
-
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
-
-        <!--        <item name="android:colorBackground">@color/white</item>-->
-        <!--        <item name="colorSurface">@color/white</item>-->
-
-        <!--        <item name="android:textColorPrimary">@color/black</item>-->
-        <!--        <item name="android:textColorSecondary">@color/grey</item>-->
     </style>
 
     <style name="Theme.Amarok.Transparent" parent="Theme.Amarok">
@@ -23,4 +15,12 @@
         <item name="android:windowIsFloating">true</item>
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
+    <style name="Theme.Calculator" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="android:statusBarColor">@color/calendar_bg_light</item>
+        <item name="android:navigationBarColor">@color/calendar_bg</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+    </style>
+
 </resources>
