@@ -1,0 +1,26 @@
+v0.8.3b1
+- Aggiunta dell'interfaccia utente di aggiornamento nel menu "Imposta applicazioni nascoste".
+- Aggiunta del pulsante per nascondere le applicazioni nelle notifiche
+- Aggiunta di alfa a BossKey
+- Aggiornate le traduzioni: Inglese & Cinese Semplificato
+v0.8.3a3
+- Aggiunta di una notifica per avvisare l'utente di nascondere
+- Aggiunta della ricerca delle app in "Imposta applicazioni nascoste".
+- Supporto DeepHide in modalità Root
+- Aggiunta traduzione: Tedesco (da @SecularSteve) (#37)
+- Migliorata la traduzione: Norvegese Bokmål e inglese (da @comradekingu) (#37 #40)
+- Migliorate le prestazioni: caricamento delle icone in "Imposta applicazioni nascoste".
+- Saltare .nomedia quando si nascondono i file (#31)
+- Cambiato il canale Telegram al gruppo
+- Evitare che Amarok si nasconda nella versione foss (#43 #41)
+- Corretto bug dove le app nascoste non visibili in "Imposta app nascoste" (#43 #41)
+- Corretto bug dove il processo BossKey veniva chiuso in background
+v0.8.3a2
+- Aggiunto BossKey
+- Aggiunto documento in Inglese
+- Aggiunta la traduzione: Norvegese Bokmål (di @comradekingu) (#33)
+- Supporto scorciatoia per sincronizzazione di stato con MainActivity
+- Nuova interfaccia utente delle impostazioni
+- Correzione del blocco delle scorciatoie (#22)
+- Correzione dell'arresto anomalo durante l'aggiornamento dell'app
+- Correzione dell'arresto anomalo dell'albero dei documenti aperti

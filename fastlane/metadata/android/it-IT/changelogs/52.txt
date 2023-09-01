@@ -1,0 +1,6 @@
+v0.8.4a3
+- Aggiunta opzione: disarmo forzato
+- Supporto per nascondere le app di sistema (#83)
+- Supporto al cambio di lingua in-app
+- Sperimentale: NoMediaFileHider
+- Aggiornamento delle traduzioni: Spagnolo, Turco, Ucraino, Norvegese Bokmål

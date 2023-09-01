@@ -1,0 +1,6 @@
+v0.8.3b2
+- Supporto dell'icona a tema adattivo di Android 13 (#50)
+- Richiede lo sblocco per attivare la piastrella QuickSetting (#51)
+- Aggiunta traduzione: Russo (da @koji-takahiro) (#53)
+- Aggiungere traduzione: Portoghese (da @fnogcps) (#54 #55)
+- Aggiungere la traduzione: Turco (da @croxz900) (#57 #56)
