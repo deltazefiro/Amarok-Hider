@@ -6,6 +6,7 @@ import static deltazero.amarok.utils.SwitchLocaleUtil.getActiveLocale;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -86,10 +87,12 @@ public class CalendarActivity extends AppCompatActivity {
     @SuppressLint("MissingInflatedId")
     private void showInstruction() {
 
+        float circleRadius = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 180, getResources().getDisplayMetrics());
+
         var spotlightLayout = getLayoutInflater().inflate(R.layout.spotlight_layout, new FrameLayout(this));
         var target = new Target.Builder()
                 .setAnchor(tvYear)
-                .setShape(new Circle(550f))
+                .setShape(new Circle(circleRadius))
                 .setOverlay(spotlightLayout)
                 .build();
 
