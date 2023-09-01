@@ -112,7 +112,9 @@ dependencies {
     implementation 'com.github.getActivity:XXPermissions:18.2'
     implementation 'com.github.getActivity:EasyWindow:10.2'
     implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
+    implementation 'com.github.takusemba:spotlight:2.0.5'
     implementation 'com.google.android.material:material:1.9.0'
+    implementation 'com.kizitonwose.calendar:view:2.3.0'
     implementation "androidx.biometric:biometric:1.1.0"
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

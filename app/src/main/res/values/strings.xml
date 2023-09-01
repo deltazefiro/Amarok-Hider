@@ -151,4 +151,10 @@
     <string name="participate_translation_description">Help us translate Amarok into your language.</string>
     <string name="enable_dynamic_color">Dynamic color</string>
     <string name="dynamic_color_description">Enable dynamic color theming.</string>
+    <string name="app_name_calendar">Calendar</string>
+    <string name="disguise">App disguise</string>
+    <string name="disguise_description">Disguise Amarok as a calendar.</string>
+    <string name="calendar_about">Pure Calendar | by @koramA</string>
+    <string name="close_disguise_spotlight_tip">Long press the <font fgcolor="#FCCA3E"><b>Year Number</b></font> to access Amarok.</string>
+    <string name="spotlight_do_not_show_again">DON\'T SHOW AGAIN</string>
 </resources>
