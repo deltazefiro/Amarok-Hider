@@ -155,6 +155,6 @@
     <string name="disguise">App disguise</string>
     <string name="disguise_description">Disguise Amarok as a calendar.</string>
     <string name="calendar_about">Pure Calendar | by @koramA</string>
-    <string name="close_disguise_spotlight_tip">Long press the <b>Year Number</b> to access Amarok.</string>
+    <string name="close_disguise_spotlight_tip">Long press the <font fgcolor="#FCCA3E"><b>Year Number</b></font> to access Amarok.</string>
     <string name="spotlight_do_not_show_again">DON\'T SHOW AGAIN</string>
 </resources>
