@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="unhide">非表示を解除する</string>
+    <string name="unhide">表示する</string>
     <string name="hide">非表示にする</string>
     <string name="more_settings">その他の設定</string>
     <string name="hidden_toast">非表示に戻したよ。コケコッコー!(\?)</string>
@@ -8,7 +8,7 @@
     <string name="set_hide_files">非表示にするファイル</string>
     <string name="about">Amarok</string>
     <string name="hidden_status">非表示中</string>
-    <string name="visible_status">非表示を解除中</string>
+    <string name="visible_status">表示中</string>
     <string name="switch_app_hider">アプリの隠蔽方法を切り替える</string>
     <string name="switch_file_hider">ファイルの隠蔽方法を切り替える</string>
     <string name="enable_analytics">匿名のデータ提供</string>
@@ -33,4 +33,19 @@
     <string name="force_unhide">強制非表示解除</string>
     <string name="language">言語</string>
     <string name="participate_translation_description">あなたの言語へのAmarokの翻訳に協力してください。</string>
+    <string name="ok">確認する</string>
+    <string name="cancel">取り消す</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n [開発者] @Deltazefiro
+\n
+\n [概要] Amarok: プライベートなファイルとアプリを隠すアプリ
+\n
+\n [リポジトリ] https://github.com/deltazefiro/Amarok-Hider
+\n
+\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
+\n"</string>
+    <string name="setting_not_ava_when_hidden">この設定は非表示時に変更できません</string>
+    <string name="storage_permission_request_title">ファイルへのアクセス権限が必要です</string>
 </resources>
