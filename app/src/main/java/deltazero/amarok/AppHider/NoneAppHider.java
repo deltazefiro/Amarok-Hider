@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.Set;
 
-public class NoneAppHider extends AppHiderBase{
+public class NoneAppHider extends IAppHider {
     
     // Active when no AppHider is available.
 
@@ -24,13 +24,8 @@ public class NoneAppHider extends AppHiderBase{
     }
 
     @Override
-    public CheckAvailabilityResult checkAvailability() {
-        return new CheckAvailabilityResult(CheckAvailabilityResult.Result.AVAILABLE);
-    }
-
-    @Override
-    public void active(OnActivateCallbackListener onActivateCallbackListener) {
-        onActivateCallbackListener.onActivateCallback(getClass(), true, 0);
+    public void tryToActivate(ActivationCallbackListener activationCallbackListener) {
+        activationCallbackListener.onActivateCallback(getClass(), true, 0);
     }
 
     @Override
