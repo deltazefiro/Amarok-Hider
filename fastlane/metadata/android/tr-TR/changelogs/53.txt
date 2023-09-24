@@ -1,0 +1,5 @@
+v0.8.4b1
+-Dinamik renk teması
+-Çeviriye destek olma butonu eklendi
+-Yeni çeviriler: İtalyanca (Hisako tarafından) ve Japonca (しいたけ tarafından)
+-İspanyolca çeviride değişikler yapıldı (gallegonovato tarafından)
