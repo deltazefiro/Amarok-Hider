@@ -149,4 +149,25 @@
     <string name="dhizuku_pre_v5">Dhizuku: Desteklenmeyen Dhizuku sürümü. Lütfen Dhizuku\'yu 5 ya da daha yüksek bir sürüme güncelleyin.</string>
     <string name="apphider_dhizuku_description">[Deneysel] Dhizuku ile uygulama gizleme.
 \nRoot erişimi olmayan cihazlarda uygulamaları gizlemek için modern ve geliştirilmiş bir çözüm. Dhizuku uygulamasının yüklenmesi ve aktif edilmesi gereklidir.</string>
+    <string name="performing_force_unhide">Görünür kılmaya zorlanıyor, lütfen bekleyiniz.</string>
+    <string name="app_name_calendar">Takvim</string>
+    <string name="filter">Filtre</string>
+    <string name="dynamic_color_description">Dinamik renkli temayı etkinleştir.</string>
+    <string name="close_disguise_spotlight_tip">Amarok\'a erişmek için <font fgcolor="#FCCA3E"><b> Yıl sayısına</b></font> basılı tut.</string>
+    <string name="disguise">Amarok\'u sakla</string>
+    <string name="force_unhide_confirm_msg">Her şeyi kurtarmak istediğinize emin misiniz\?
+\n
+\n<b>WARNING: </b>Bu, dosyalarınıza zarar verebilir, bunu yalnızca normal olarak gizlemeyi kaldıramadığınızda kullanın.</string>
+    <string name="invalid_path">Geçersiz dizin.</string>
+    <string name="spotlight_do_not_show_again">TEKRAR GÖSTERME</string>
+    <string name="force_unhide_description">Tüm uygulamalar ve dosyaları kurtarmaya çalış. Bu seçeneği yalnızca problem yaşadığınızda kullanın.</string>
+    <string name="follow_system">(Cihaz varsayılanı)</string>
+    <string name="language">Dil</string>
+    <string name="participate_translation">Çeviriye destek ol</string>
+    <string name="force_unhide">Görünür kılmaya zorla</string>
+    <string name="participate_translation_description">Amarok\'u senin diline çevirmemize yardım et.</string>
+    <string name="disguise_description">Amarok\'u takvim olarak göstererek sakla.</string>
+    <string name="calendar_about">Pure Calendar | @koramA tarafından yapıldı</string>
+    <string name="display_system_apps">Sistem uygulamalarını göster</string>
+    <string name="enable_dynamic_color">Dinamik renk</string>
 </resources>

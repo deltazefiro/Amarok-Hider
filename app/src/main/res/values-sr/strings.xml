@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dhizuku_not_init">Dhizuku: Услуга недоступна. Уверите се да сте инсталирали и активирали Dhizuku.</string>
+    <string name="unhidden_toast">Откривено. Будите пажљиви.</string>
+    <string name="performing_force_unhide">Извршавање присилног откривања. Молимо, стрпите се.</string>
+    <string name="debug_info_description">Приказује информације које помажу у решавању проблема.</string>
+    <string name="app_name_calendar">Календар</string>
+    <string name="about_description">Приказује информације о апликацији.</string>
+    <string name="hidden_toast">Сакривено. Ку-ку-ри-ку~!</string>
+    <string name="obfuscate_filename_description">Учините име фајла нечитљивим за људе. Основна функција сакривања фајлова. Не може се искључити.</string>
+    <string name="quick_hide_notification_title">Приватност није сакривена</string>
+    <string name="apphider_shizuku">Shizuku (Sui) режим</string>
+    <string name="notification_permission_request_title">Потребна је дозвола за обавештења</string>
+    <string name="update_ava">Доступна нова верзија</string>
+    <string name="no_apphider">Изаберите режим сакривања апликација у „Више подешавања“.</string>
+    <string name="not_local_storage">Неподржани директоријум</string>
+    <string name="filter">Филтер</string>
+    <string name="notification_permission_denied">Дозвола за обавештење је одбијена.</string>
+    <string name="add_hide_files">Додај скривени фолдер</string>
+    <string name="manually_set_path">Изаберите ручно</string>
+    <string name="folder_selector_hints">Савети за бирач фолдера:
+\n\t1. Кликните на „Користи овај фолдер“ да бисте изабрали фолдер
+\n\t2. Увек изаберите фајл на уређају
+\n\t(Превуците с десне стране екрана да бисте отворили локалне фајлове)</string>
+    <string name="biometric_auth_description">Користите биометријску аутентификацију уређаја за приступ Amarok-у, када је доступно.</string>
+    <string name="visible_status">Видљиво</string>
+    <string name="path_duplicated_description"><u>„%s“</u>
+\n
+\nсадржи
+\n
+\n<u>„%s“</u></string>
+    <string name="shizuku_hidden_api_error">Није могуће сакрити апликацију: Није могуће приступити IPackageManager API-ју.</string>
+    <string name="dynamic_color_description">Омогућите динамичку тему боја.</string>
+    <string name="password">Лозинка</string>
+    <string name="app_about">"
+\nAmarok %s
+\n
+\n [Програмер] @Deltazefiro
+\n
+\n [Информације] Amarok: Једноставна Android апликација за скривање приватних фајлова и апликација.
+\n
+\n [Репозиторијум]
+\nhttps://github.com/deltazefiro/Amarok-Hider
+\n
+\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
+\n"</string>
+    <string name="shizuku_pre_v11">Неподржана верзија Shizuku-а: Pre-v11. Инсталирајте Shizuku v11 или новију верзију.</string>
+    <string name="show_debug_info">Информације о отклањању грешака</string>
+    <string name="apphider_root">Root режим</string>
+    <string name="apphider_not_ava">Сaкривање апликација недоступно. Проверите „Више подешавања“ → „Промени режим сакривања апликација“.</string>
+    <string name="unlock">Откључај</string>
+    <string name="storage_permission_denied">Дозвола за приступ меморији је одбијена. Сакривање фајлова недоступно</string>
+    <string name="storage_permission_request_message">Одобрите Amarok-у приступ спољној меморији да бисте сакрили фајлове.</string>
+    <string name="hide_app_failed_admin_inactive">Није могуће сакрити апликацију: DSM пружалац није активан.</string>
+    <string name="show_about">Показати „О апликацији“</string>
+    <string name="processing">Обрада…</string>
+    <string name="obfuscate_file_header_description">Замаглите потпис фајла у заглављу фајла, како би фајл био „оштећен“. Спречава ручно отварање фајла преко „Отвори помоћу“, али може успорити процес сакривања фајла.</string>
+    <string name="obfuscate_text_file">Потпуно замагли текстуалне фајлове</string>
+    <string name="app_lock_description">Захтевајтe лозинку за приступ Amarok-у.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Дозвола одбијена</string>
+    <string name="misc">Разно</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="close_disguise_spotlight_tip">Притисните и задржите <font fgcolor="#FCCA3E"><b>број године</b></font> да бисте приступили Amarok-у.</string>
+    <string name="shizuku_service_not_running">Shizuku: Услуга не ради.</string>
+    <string name="panic_button_description">Прикажите плутајуће дугме коришћено за сакривање апликација и фајлова у хитним случајевима. Приказује се преко свих других апликација. Дугме се приказује само у откривеном стању.</string>
+    <string name="disguise">Прерушавање апликације</string>
+    <string name="quick_hide">Брзо сакривање</string>
+    <string name="apphider_none">Онемогућено</string>
+    <string name="learn_more">Упутство за подешавање</string>
+    <string name="failed_to_open_doc_tree">Није могуће отворити системски бирач фајлова</string>
+    <string name="root_not_ava">Није могуће добити root приступ.</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Неподржана верзија Dhizuku-а. Ажурирајте Dhizuku на верзију 5 или новију.</string>
+    <string name="filename_only">Само имена фајлова</string>
+    <string name="more_settings">Више подешавања</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="join_developer_channel">Telegram група</string>
+    <string name="current_mode">Тренутни режим: %s</string>
+    <string name="update">Ажурирање</string>
+    <string name="notification">Обавештење</string>
+    <string name="confirm_password">Потврдите лозинку</string>
+    <string name="obfuscate_text_file_enhanced">Потпуно замагли текстуалне фајлове - Побољшано</string>
+    <string name="invalid_action">Примљена неважећа намера: %s</string>
+    <string name="check_update_on_start">Аутоматско ажурирање</string>
+    <string name="force_unhide_confirm_msg">Покушајте да вратите све\?
+\n
+\n<b>УПОЗОРЕЊЕ: </b>Ова опција може оштетити ваше фајлове. Користите је само када наиђете на проблеме и не можете нормално да извршите функцију „Откриј“.</string>
+    <string name="set_password">Поставите лозинку</string>
+    <string name="dsm_permission_denied">DSM: Дозвола одбијена</string>
+    <string name="set_hide_files">Подеси скривене фајлове</string>
+    <string name="apply_on_restart">Рестартујте апликацију да бисте применили нове промене.</string>
+    <string name="help">Помоћ</string>
+    <string name="unlock_required">Потребно је откључавање</string>
+    <string name="biometric_auth">Биометријска аутентификација</string>
+    <string name="check_update_on_start_description">Проверавање да ли постоје нове верзије Amarok-а при отварању апликације.</string>
+    <string name="invalid_path">Неважећа путања.</string>
+    <string name="analytics_description">Шаљите анонимне извештаје о отказивању програмерима на анализу.</string>
+    <string name="ok">ОК</string>
+    <string name="setting_not_ava_when_hidden">Ово подешавање је доступно само након откривања</string>
+    <string name="option_unava_when_hidden">Опције су недоступне док не откријете.</string>
+    <string name="quick_hide_notification_description">Приказивање трајног обавештења да би корисници били обавештени када нису сакривени.</string>
+    <string name="quick_hide_notification_content">Ваша приватност није сакривена. Кликните да бисте сакрили.</string>
+    <string name="obfuscate_file_header">Замагли заглавља фајлова</string>
+    <string name="apphider_root_description">Сакривање апликација с root приступом.
+\nПрепоручено, ако је ваш уређај root-ован, али му недостаје Xposed оквир. Потребна је root дозвола.</string>
+    <string name="switch_file_hider">Промени режим сакривања фајлова</string>
+    <string name="apphider_shizuku_description">Сакривање апликација помоћу Shizuku-а (или Sui-ја).
+\nПрепоручено, ако ваш уређај користи Android 11+ или има Xposed оквир. Потребан је инсталиран и активан Shizuku или Sui.
+\n</string>
+    <string name="apphider_dsm_description">Сакривање апликација помоћу Delegated-Scopes-Manager-а.
+\nНије препоручено, осим ако ваш уређај не користи Android 10 или старију верзију и није root-ован. Може радити неочекивано. Потребан је инсталиран Icebox (или StopAPP), постављен као власник уређаја.</string>
+    <string name="apphider_none_description">Искључите сакривање апликација.</string>
+    <string name="about">О апликацији</string>
+    <string name="spotlight_do_not_show_again">НЕ ПРИКАЗУЈ ПОНОВО</string>
+    <string name="storage_permission_request_title">Потребна је дозвола за приступ меморији</string>
+    <string name="shizuku_permission_denied">Shizuku: Дозвола одбијена</string>
+    <string name="manually_set_path_description">Опрез: Уверите се да оно што ручно изаберете, заиста, постоји, јер ово није потврђено.</string>
+    <string name="filename_and_header">Име фајла + Заглавље</string>
+    <string name="obfuscate_filename">Замагли имена фајлова</string>
+    <string name="notification_channel_name">Услуга брзог сакривања</string>
+    <string name="shizuku_not_working">Shizuku: Услуга недоступна. Да ли сте инсталирали Shizuku/Shu на свој уређај\?</string>
+    <string name="unhide">Откриј</string>
+    <string name="hide">Сакриј</string>
+    <string name="workmode">Радни режим</string>
+    <string name="cancel">Откажи</string>
+    <string name="usage">Употреба</string>
+    <string name="alert_permission_denied">Дозвола за приказ преко других апликација је одбијена.</string>
+    <string name="not_local_storage_description">Уверите се да је то локални фајл, а не виртуелни.</string>
+    <string name="force_unhide_description">Покушајте да вратите све. Користите ову опцију само када наиђете на проблеме.</string>
+    <string name="path_duplicated">Дуплирај скривени фолдер</string>
+    <string name="no_update_ava">Користите најновију верзију.</string>
+    <string name="notification_permission_request_message">Услузи брзог сакривања је потребна дозвола за обавештења да би радила.</string>
+    <string name="confirm">Потврди</string>
+    <string name="follow_system">(Прати систем)</string>
+    <string name="apphider_dhizuku">Dhizuku режим</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="password_incorrect">Нетачна лозинка.</string>
+    <string name="language">Језик</string>
+    <string name="alert_permission_request_message">Плутајућем дугмету је потребна дозвола за покретање искачућих прозора. Пронађите Amarok у менију подешавања и одобрите га.</string>
+    <string name="search">Претрага</string>
+    <string name="failed_to_open_doc_tree_description">Упс! Ваш систем нема подразумевани менаџер фајлова. Притисните и задржите дугме „Додај скривени фолдер“ и ручно унесите путању.</string>
+    <string name="participate_translation">Учествуј у превођењу</string>
+    <string name="enable_analytics">Анонимна аналитика</string>
+    <string name="force_unhide">Присилно откриј</string>
+    <string name="apphider_dhizuku_description">[Експериментално] Сакривање апликација помоћу Dhizuku-а.
+\nМодерно и побољшано решење за сакривање апликација на уређајима без root-а. Потребна је инсталација и активација апликације Dhizuku.</string>
+    <string name="alert_permission_request_title">Потребна је дозвола за покретање искачућих прозора</string>
+    <string name="password_length_error">Лозинка мора бити између 3 и 15 знакова.</string>
+    <string name="usage_description">Отворите центар за помоћ.</string>
+    <string name="never">Никада</string>
+    <string name="in_app_update_failed">Нова верзија је доступна, али није успела да се преузме. Ажурирајте ручно.</string>
+    <string name="participate_translation_description">Помозите нам да преведемо Amarok на Ваш језик.</string>
+    <string name="password_mismatch_error">Лозинке се не подударају.</string>
+    <string name="set_hide_apps">Подеси скривене апликације</string>
+    <string name="check_update_description">Тренутна верзија: %s</string>
+    <string name="apphider_not_ava_title">Недоступан режим сакривања апликације</string>
+    <string name="disguise_description">Прерушите Amarok као календар.</string>
+    <string name="security">Безбедност</string>
+    <string name="hidden_status">Сакривено</string>
+    <string name="apphider_dsm">DSM режим</string>
+    <string name="app_lock">Закључавање апликације</string>
+    <string name="obfuscate_text_file_description_enhanced">Није препоручено. Побољшана верзија опције „Потпуно замагли текстуалне фајлове“. Користите ову опцију само ако се стандардни метод покаже неефикасним. Драматично успорава процес сакривања.</string>
+    <string name="check_update">Провери ажурирање</string>
+    <string name="remove_hide_path">Уклонити скривени фолдер\?</string>
+    <string name="obfuscate_text_file_description">Експериментална функција. Замагљивање заглавља фајлова нема утицаја на текстуалне фајлове. Омогућавање ове функције ће у потпуности сакрити текстуалне фајлове. То ће, донекле, успорити процес сакривања.</string>
+    <string name="remove_hide_path_description">Уклонити фолдер „%s“ из сакривања\?</string>
+    <string name="switch_app_hider">Промени режим сакривања апликација</string>
+    <string name="panic_button">Плутајуће дугме (Boss тастер)</string>
+    <string name="update_description">Amarok %s (%d) је доступан за преузимање и инсталирање.</string>
+    <string name="calendar_about">Pure Calendar | од @koramA</string>
+    <string name="display_system_apps">Прикажи системске апликације</string>
+    <string name="enable_dynamic_color">Динамичка боја</string>
+    <string name="invalid_dsm_provider">DSM: Неважећи DSM пружалац. Да ли сте инсталирали и активирали DSM пружаоца на свом уређају\?</string>
+    <string name="view_github_repo">GitHub репозиторијум</string>
+</resources>
