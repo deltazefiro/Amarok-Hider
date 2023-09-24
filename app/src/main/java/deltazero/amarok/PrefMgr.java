@@ -10,12 +10,12 @@ import androidx.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
-import deltazero.amarok.AppHider.AppHiderBase;
-import deltazero.amarok.AppHider.DhizukuHider;
+import deltazero.amarok.AppHider.IAppHider;
+import deltazero.amarok.AppHider.DhizukuAppHider;
 import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
-import deltazero.amarok.AppHider.ShizukuHider;
+import deltazero.amarok.AppHider.ShizukuAppHider;
 import deltazero.amarok.FileHider.ChmodFileHider;
 import deltazero.amarok.FileHider.FileHiderBase;
 import deltazero.amarok.FileHider.NoMediaFileHider;
@@ -62,18 +62,18 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public AppHiderBase getAppHider() {
+    public IAppHider getAppHider() {
         return switch (mPrefs.getInt("appHiderMode", 0)) {
             case 0 -> new NoneAppHider(context);
             case 1 -> new RootAppHider(context);
             case 2 -> new DsmAppHider(context);
-            case 3 -> new ShizukuHider(context);
-            case 4 -> new DhizukuHider(context);
+            case 3 -> new ShizukuAppHider(context);
+            case 4 -> new DhizukuAppHider(context);
             default -> throw new IndexOutOfBoundsException("Should not reach here");
         };
     }
 
-    public void setAppHiderMode(Class<? extends AppHiderBase> mode) {
+    public void setAppHiderMode(Class<? extends IAppHider> mode) {
         int modeCode;
         if (mode == NoneAppHider.class)
             modeCode = 0;
@@ -81,9 +81,9 @@ public class PrefMgr {
             modeCode = 1;
         else if (mode == DsmAppHider.class)
             modeCode = 2;
-        else if (mode == ShizukuHider.class)
+        else if (mode == ShizukuAppHider.class)
             modeCode = 3;
-        else if (mode == DhizukuHider.class)
+        else if (mode == DhizukuAppHider.class)
             modeCode = 4;
         else
             throw new IndexOutOfBoundsException("Should not reach here");

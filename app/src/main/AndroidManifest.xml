@@ -97,6 +97,11 @@
             android:excludeFromRecents="true"
             android:exported="true"
             android:theme="@style/Theme.Amarok.Transparent" />
+        <activity
+            android:name=".ui.DsmActivationActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:theme="@style/Theme.Amarok.Transparent" />
 
         <service
             android:name=".QuickSettingService"

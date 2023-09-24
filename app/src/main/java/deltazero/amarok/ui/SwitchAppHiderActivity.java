@@ -1,27 +1,25 @@
 package deltazero.amarok.ui;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import deltazero.amarok.AppHider.AppHiderBase;
-import deltazero.amarok.AppHider.DhizukuHider;
+import deltazero.amarok.AppHider.DhizukuAppHider;
 import deltazero.amarok.AppHider.DsmAppHider;
+import deltazero.amarok.AppHider.IAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
-import deltazero.amarok.AppHider.ShizukuHider;
+import deltazero.amarok.AppHider.ShizukuAppHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
-import rikka.shizuku.Shizuku;
 
 public class SwitchAppHiderActivity extends AppCompatActivity {
 
@@ -44,25 +42,8 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
         prefMgr = new PrefMgr(this);
         setCheckedRadioButton(prefMgr.getAppHider().getClass());
 
-        // Setup Shizuku permission callback listener
-        Shizuku.addRequestPermissionResultListener((requestCode, grantResult) -> {
-            if (grantResult == PackageManager.PERMISSION_GRANTED) {
-                Log.i("ShizukuHider", "Permission granted. Set hider to ShizukuHider.");
-                onActivationCallback(ShizukuHider.class, true, 0);
-            } else {
-                Log.i("ShizukuHider", "Permission denied.");
-                onActivationCallback(ShizukuHider.class, false, R.string.shizuku_permission_denied);
-            }
-        });
-
         // Enable back button
-        tbToolBar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
+        tbToolBar.setNavigationOnClickListener(v -> finish());
     }
 
 
@@ -77,15 +58,15 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
         int buttonID = view.getId();
         if (((RadioButton) view).isChecked()) {
             if (buttonID == R.id.switch_apphider_radio_disabled) {
-                new NoneAppHider(this).active(this::onActivationCallback);
+                new NoneAppHider(this).tryToActivate(this::onActivationCallback);
             } else if (buttonID == R.id.switch_apphider_radio_root) {
-                new RootAppHider(this).active(this::onActivationCallback);
+                new RootAppHider(this).tryToActivate(this::onActivationCallback);
             } else if (buttonID == R.id.switch_apphider_radio_shizuku) {
-                new ShizukuHider(this).active(this::onActivationCallback);
+                new ShizukuAppHider(this).tryToActivate(this::onActivationCallback);
             } else if (buttonID == R.id.switch_apphider_radio_dsm) {
-                new DsmAppHider(this).active(this::onActivationCallback);
+                new DsmAppHider(this).tryToActivate(this::onActivationCallback);
             } else if (buttonID == R.id.switch_apphider_radio_dhizuku) {
-                new DhizukuHider(this).active(this::onActivationCallback);
+                new DhizukuAppHider(this).tryToActivate(this::onActivationCallback);
             }
         }
     }
@@ -98,13 +79,12 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onActivationCallback(Class<? extends AppHiderBase> appHider, boolean success, int msgResID) {
+    public void onActivationCallback(Class<? extends IAppHider> appHider, boolean success, @Nullable Integer msgResID) {
         if (success) {
-
             prefMgr.setAppHiderMode(appHider);
             setCheckedRadioButton(appHider);
-
         } else {
+            assert msgResID != null && msgResID != 0;
 
             prefMgr.setAppHiderMode(NoneAppHider.class);
             setCheckedRadioButton(NoneAppHider.class);
@@ -116,54 +96,27 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
                     .setNegativeButton(R.string.help, (dialog, which)
                             -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.common_error_doc_url)))))
                     .show());
-
-        }
-    }
-
-    // Callback for DSM permission request
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == DsmAppHider.dsmReqCode) {
-            if (resultCode == RESULT_OK) {
-                onActivationCallback(DsmAppHider.class, true, 0);
-            } else if (resultCode == RESULT_CANCELED) {
-                Log.w("DsmAppHider", "DsmHider: Permission denied");
-                onActivationCallback(DsmAppHider.class, false, R.string.dsm_permission_denied);
-            }
         }
     }
 
 
-    private void setCheckedRadioButton(Class<? extends AppHiderBase> appHider) {
+    private void setCheckedRadioButton(Class<? extends IAppHider> appHider) {
+
+        rbDisabled.setChecked(false);
+        rbRoot.setChecked(false);
+        rbShizuku.setChecked(false);
+        rbDSM.setChecked(false);
+        rbDhizuku.setChecked(false);
+
         if (appHider.isAssignableFrom(NoneAppHider.class)) {
             rbDisabled.setChecked(true);
-            rbRoot.setChecked(false);
-            rbShizuku.setChecked(false);
-            rbDSM.setChecked(false);
-            rbDhizuku.setChecked(false);
         } else if (appHider.isAssignableFrom(RootAppHider.class)) {
-            rbDisabled.setChecked(false);
             rbRoot.setChecked(true);
-            rbShizuku.setChecked(false);
-            rbDSM.setChecked(false);
-            rbDhizuku.setChecked(false);
-        } else if (appHider.isAssignableFrom(ShizukuHider.class)) {
-            rbDisabled.setChecked(false);
-            rbRoot.setChecked(false);
+        } else if (appHider.isAssignableFrom(ShizukuAppHider.class)) {
             rbShizuku.setChecked(true);
-            rbDSM.setChecked(false);
-            rbDhizuku.setChecked(false);
         } else if (appHider.isAssignableFrom(DsmAppHider.class)) {
-            rbDisabled.setChecked(false);
-            rbRoot.setChecked(false);
-            rbShizuku.setChecked(false);
             rbDSM.setChecked(true);
-            rbDhizuku.setChecked(false);
-        } else if (appHider.isAssignableFrom(DhizukuHider.class)) {
-            rbDisabled.setChecked(false);
-            rbRoot.setChecked(false);
-            rbShizuku.setChecked(false);
-            rbDSM.setChecked(false);
+        } else if (appHider.isAssignableFrom(DhizukuAppHider.class)) {
             rbDhizuku.setChecked(true);
         }
     }

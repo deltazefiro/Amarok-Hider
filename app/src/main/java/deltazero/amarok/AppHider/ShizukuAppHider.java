@@ -17,10 +17,10 @@ import rikka.shizuku.Shizuku;
 import rikka.shizuku.ShizukuBinderWrapper;
 import rikka.shizuku.SystemServiceHelper;
 
-public class ShizukuHider extends AppHiderBase {
+public class ShizukuAppHider extends IAppHider {
     public static final int shizukuReqCode = 600;
 
-    public ShizukuHider(Context context) {
+    public ShizukuAppHider(Context context) {
         super(context);
     }
 
@@ -126,49 +126,56 @@ public class ShizukuHider extends AppHiderBase {
     }
 
     @Override
-    public CheckAvailabilityResult checkAvailability() {
+    public void tryToActivate(ActivationCallbackListener activationCallbackListener) {
         try {
+
+            // Check if Shizuku is running pre v11
             if (Shizuku.isPreV11()) {
                 Log.w("ShizukuHider", "checkAvailability: Shizuku is running pre v11.");
-                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
-                        R.string.shizuku_pre_v11);
+                activationCallbackListener.onActivateCallback(this.getClass(), false, R.string.shizuku_pre_v11);
+                return;
             }
+
+            // Check if Shizuku is available
             if (Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED) {
-                if (!Shizuku.pingBinder()) {
+                if (Shizuku.pingBinder()) {
+                    Log.i("ShizukuHider", "checkAvailability: Shizuku available.");
+                    activationCallbackListener.onActivateCallback(this.getClass(), true, 0);
+                } else {
                     Log.w("ShizukuHider", "checkAvailability: Binder not available.");
-                    return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
-                            R.string.shizuku_service_not_running);
+                    activationCallbackListener.onActivateCallback(this.getClass(), false, R.string.shizuku_service_not_running);
                 }
-                Log.i("ShizukuHider", "checkAvailability: Shizuku available.");
-                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.AVAILABLE);
-            } else if (Shizuku.shouldShowRequestPermissionRationale()) {
+                return;
+            }
+
+            // Check if user has denied permission forever
+            if (Shizuku.shouldShowRequestPermissionRationale()) {
                 // Users choose "Deny and don't ask again"
                 Log.w("ShizukuHider", "checkAvailability: permission denied.");
-                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
-                        R.string.shizuku_permission_denied);
-            } else {
-                // Request the permission
-                return new CheckAvailabilityResult(CheckAvailabilityResult.Result.REQ_PERM);
+                activationCallbackListener.onActivateCallback(this.getClass(), false, R.string.shizuku_permission_denied);
+                return;
             }
+
+            // Request permission
+            var listener = new Shizuku.OnRequestPermissionResultListener() {
+                @Override
+                public void onRequestPermissionResult(int requestCode, int grantResult) {
+                    if (grantResult == PackageManager.PERMISSION_GRANTED) {
+                        Log.i("ShizukuHider", "Permission granted. Set hider to ShizukuHider.");
+                        activationCallbackListener.onActivateCallback(ShizukuAppHider.class, true, 0);
+                    } else {
+                        Log.i("ShizukuHider", "Permission denied.");
+                        activationCallbackListener.onActivateCallback(ShizukuAppHider.class, false, R.string.shizuku_permission_denied);
+                    }
+                    Shizuku.removeRequestPermissionResultListener(this);
+                }
+            };
+            Shizuku.addRequestPermissionResultListener(listener);
+            Shizuku.requestPermission(shizukuReqCode);
+
         } catch (IllegalStateException e) {
             Log.w("ShizukuHider", "checkAvailability: Shizuku not available: ", e);
-            return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE,
-                    R.string.shizuku_not_working);
-        }
-    }
-
-    @Override
-    public void active(OnActivateCallbackListener onActivateCallbackListener) {
-        CheckAvailabilityResult r = checkAvailability();
-        switch (r.result) {
-            case UNAVAILABLE:
-                onActivateCallbackListener.onActivateCallback(this.getClass(), false, r.msgResID);
-                break;
-            case AVAILABLE:
-                onActivateCallbackListener.onActivateCallback(this.getClass(), true, 0);
-                break;
-            case REQ_PERM:
-                Shizuku.requestPermission(shizukuReqCode);
+            activationCallbackListener.onActivateCallback(this.getClass(), false, R.string.shizuku_not_working);
         }
     }
 
