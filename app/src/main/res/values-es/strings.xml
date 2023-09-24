@@ -164,4 +164,10 @@
     <string name="performing_force_unhide">Tratando de desocultar. Por favor espera.</string>
     <string name="dynamic_color_description">Habilita el tema con el color dinámico.</string>
     <string name="enable_dynamic_color">Color dinámico</string>
+    <string name="disguise">Aplicación disfrazada</string>
+    <string name="disguise_description">Disfraza a Amarok de calendario.</string>
+    <string name="close_disguise_spotlight_tip">Mantén presionado el <font fgcolor="#FCCA3E"><b>Número del año</b></font> para acceder a Amarok.</string>
+    <string name="spotlight_do_not_show_again">NO VOLVER A MOSTRAR</string>
+    <string name="app_name_calendar">Calendario</string>
+    <string name="calendar_about">Calendario puro | por @koramA</string>
 </resources>
