@@ -8,11 +8,8 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
-import java.nio.file.Paths;
-
-import deltazero.amarok.AppHider.AppHiderBase;
+import deltazero.amarok.AppHider.IAppHider;
 import deltazero.amarok.FileHider.FileHiderBase;
-import deltazero.amarok.FileHider.ObfuscateFileHider;
 import rikka.shizuku.ShizukuProvider;
 
 
@@ -25,7 +22,7 @@ public class Hider {
     private final Context context;
     private final Handler threadHandler;
 
-    private AppHiderBase appHider;
+    private IAppHider appHider;
     private FileHiderBase fileHider;
 
     public static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);

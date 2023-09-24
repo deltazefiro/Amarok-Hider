@@ -7,7 +7,7 @@ import java.util.Set;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.ShellUtil;
 
-public class RootAppHider extends AppHiderBase {
+public class RootAppHider extends IAppHider {
 
     public RootAppHider(Context context) {
         super(context);
@@ -30,22 +30,12 @@ public class RootAppHider extends AppHiderBase {
     }
 
     @Override
-    public CheckAvailabilityResult checkAvailability() {
+    public void tryToActivate(ActivationCallbackListener activationCallbackListener) {
         String[] output = ShellUtil.exec("su -c echo \"Amarok-root-test\"");
         if (output == null || output[1].length() != 0) {
-            return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE, R.string.root_not_ava);
-        }
-        return new CheckAvailabilityResult(CheckAvailabilityResult.Result.AVAILABLE);
-    }
-
-    @Override
-    public void active(OnActivateCallbackListener onActivateCallbackListener) {
-        // Will active when calling `checkAvailability`.
-        CheckAvailabilityResult r = checkAvailability();
-        if (r.result == CheckAvailabilityResult.Result.AVAILABLE) {
-            onActivateCallbackListener.onActivateCallback(getClass(), true, 0);
+            activationCallbackListener.onActivateCallback(RootAppHider.class, false, R.string.root_not_ava);
         } else {
-            onActivateCallbackListener.onActivateCallback(getClass(), false, r.msgResID);
+            activationCallbackListener.onActivateCallback(getClass(), true, 0);
         }
     }
 
