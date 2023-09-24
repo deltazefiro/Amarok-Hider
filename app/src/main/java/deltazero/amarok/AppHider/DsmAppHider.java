@@ -3,6 +3,7 @@ package deltazero.amarok.AppHider;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -12,11 +13,10 @@ import java.util.Set;
 
 import deltazero.amarok.AdminReceiver;
 import deltazero.amarok.R;
-import deltazero.amarok.ui.SwitchAppHiderActivity;
+import deltazero.amarok.ui.DsmActivationActivity;
 
-public class DsmAppHider extends AppHiderBase {
-
-    public static final int dsmReqCode = 700;
+public class DsmAppHider extends IAppHider {
+    public static ActivationCallbackListener activationCallbackListener;
     private final DevicePolicyManager dpm;
     private final ComponentName admin;
 
@@ -49,39 +49,23 @@ public class DsmAppHider extends AppHiderBase {
     }
 
     @Override
-    public CheckAvailabilityResult checkAvailability() {
+    public void tryToActivate(ActivationCallbackListener activationCallbackListener) {
+
         if (DSMClient.getOwnerSDKVersion(context) < DSMClient.SDK_VERSION) {
             // If no dsm provider registered, sdk_ver=-1, owner_name=null
             Log.w("DsmAppHider", String.format("Invalid DSM provider: sdk_ver=%s, owner_name=%s", DSMClient.getOwnerSDKVersion(context), DSMClient.getOwnerPackageName(context)));
-            return new CheckAvailabilityResult(CheckAvailabilityResult.Result.UNAVAILABLE, R.string.invalid_dsm_provider);
+            activationCallbackListener.onActivateCallback(this.getClass(), false, R.string.invalid_dsm_provider);
+            return;
         }
 
         if (!DSMClient.getDelegatedScopes(context).contains("delegation-package-access")) {
             Log.i("DsmAppHider", "Permission required.");
-            return new CheckAvailabilityResult(CheckAvailabilityResult.Result.REQ_PERM);
+            DsmAppHider.activationCallbackListener = activationCallbackListener;
+            context.startActivity(new Intent(context, DsmActivationActivity.class));
+            return;
         }
 
-        return new CheckAvailabilityResult(CheckAvailabilityResult.Result.AVAILABLE);
-
-    }
-
-    @Override
-    public void active(OnActivateCallbackListener onActivateCallbackListener) {
-
-        CheckAvailabilityResult r = checkAvailability();
-        switch (r.result) {
-            case UNAVAILABLE:
-                onActivateCallbackListener.onActivateCallback(this.getClass(), false, r.msgResID);
-                break;
-            case AVAILABLE:
-                onActivateCallbackListener.onActivateCallback(this.getClass(), true, 0);
-                break;
-            case REQ_PERM:
-                Log.i("DsmAppHider", "No delegation-package-access, start to request...");
-
-                DSMClient.requestScopes((SwitchAppHiderActivity) context, dsmReqCode, DevicePolicyManager.DELEGATION_PACKAGE_ACCESS);
-        }
-
+        activationCallbackListener.onActivateCallback(this.getClass(), true, 0);
     }
 
     @Override

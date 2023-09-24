@@ -20,7 +20,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
 
-import deltazero.amarok.AppHider.AppHiderBase;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
@@ -58,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         hider = new Hider(this);
         prefMgr = new PrefMgr(this);
 
-        // Init UI
+        // Binding views
         svMainLayout = findViewById(R.id.main_sv_main_layout);
         ivStatusImg = findViewById(R.id.main_iv_status);
         tvStatus = findViewById(R.id.main_tv_status);
@@ -67,24 +66,22 @@ public class MainActivity extends AppCompatActivity {
         btSetHideApps = findViewById(R.id.main_bt_set_hide_apps);
         btSetHideFiles = findViewById(R.id.main_bt_set_hide_files);
         piProcessStatus = findViewById(R.id.main_pi_process_status);
+
+        // Init UI
+        svMainLayout.setVisibility(View.GONE);
         refreshUi();
 
         // Setup observer
         isProcessing = Hider.isProcessing;
         isProcessing.observe(this, aBoolean -> refreshUi());
 
-        // Process Permissions
-        PermissionUtil.requestStoragePermission(this);
-        checkAppHiderAvailability();
-
+        // Launch disguise activity if needed
         var activityLauncher = BetterActivityLauncher.registerActivityForResult(this);
-        svMainLayout.setVisibility(View.GONE);
         if (prefMgr.getEnableDisguise()) {
-            // Launch disguise
             activityLauncher.launch(new Intent(this, CalendarActivity.class), result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     new SecurityAuth(this, succeed -> {
-                        if (succeed) svMainLayout.setVisibility(View.VISIBLE);
+                        if (succeed) init();
                         else finish();
                     }).authenticate();
                 } else {
@@ -94,10 +91,34 @@ public class MainActivity extends AppCompatActivity {
         } else {
             // Show security check fragment
             new SecurityAuth(this, succeed -> {
-                if (succeed) svMainLayout.setVisibility(View.VISIBLE);
+                if (succeed) init();
                 else finish();
             }).authenticate();
         }
+    }
+
+    public void init() {
+
+        // Show main UI
+        svMainLayout.setVisibility(View.VISIBLE);
+
+        // Process permissions
+        PermissionUtil.requestStoragePermission(this);
+
+        // Check AppHider availability
+        prefMgr.getAppHider().tryToActivate((appHiderClass, succeed, msg) -> {
+            if (!succeed) {
+                prefMgr.setAppHiderMode(NoneAppHider.class);
+                new MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.apphider_not_ava_title)
+                        .setMessage(msg)
+                        .setPositiveButton(R.string.switch_app_hider, (dialog, which) -> {
+                            startActivity(new Intent(this, SwitchAppHiderActivity.class));
+                        })
+                        .setNegativeButton(getString(R.string.ok), null)
+                        .show();
+            }
+        });
     }
 
     public void changeStatus(View view) {
@@ -185,22 +206,6 @@ public class MainActivity extends AppCompatActivity {
             Log.w(TAG, "QuickSetting is unavailable when running in an Android work profile.");
         }
     }
-
-
-    public void checkAppHiderAvailability() {
-        if (prefMgr.getAppHider().checkAvailability().result
-                != AppHiderBase.CheckAvailabilityResult.Result.AVAILABLE) {
-
-            new MaterialAlertDialogBuilder(this)
-                    .setTitle(R.string.apphider_not_ava_title)
-                    .setMessage(R.string.apphider_not_ava)
-                    .setPositiveButton(getString(R.string.ok), null)
-                    .show();
-
-            prefMgr.setAppHiderMode(NoneAppHider.class);
-        }
-    }
-
 
     @Override
     protected void onResume() {
