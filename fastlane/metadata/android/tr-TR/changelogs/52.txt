@@ -1,0 +1,6 @@
+v0.8.4a3
+-Zorla görünür kılma seçeneği eklendi 
+-Sistem uygulamalarını gizleme(#83)
+-Uygulama içi dil değiştirme
+-*Deneysel*: NoMediaFileHider
+- Dil geliştirmeleri: İspanyolca, Türkçe, Ukrayna dili, Norveççe, Bokmål
