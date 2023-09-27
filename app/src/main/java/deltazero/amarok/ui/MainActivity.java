@@ -21,6 +21,7 @@ import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
 
 import deltazero.amarok.AppHider.NoneAppHider;
+import deltazero.amarok.FileHider.NoneFileHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.QuickSettingService;
@@ -114,6 +115,20 @@ public class MainActivity extends AppCompatActivity {
                         .setMessage(msg)
                         .setPositiveButton(R.string.switch_app_hider, (dialog, which) -> {
                             startActivity(new Intent(this, SwitchAppHiderActivity.class));
+                        })
+                        .setNegativeButton(getString(R.string.ok), null)
+                        .show();
+            }
+        });
+
+        prefMgr.getFileHider().tryToActive((fileHiderClass, succeed, msg) -> {
+            if (!succeed) {
+                prefMgr.setFileHiderMode(NoneFileHider.class);
+                new MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.filehider_not_ava_title)
+                        .setMessage(msg)
+                        .setPositiveButton(R.string.switch_file_hider, (dialog, which) -> {
+                            startActivity(new Intent(this, SwitchFileHiderActivity.class));
                         })
                         .setNegativeButton(getString(R.string.ok), null)
                         .show();

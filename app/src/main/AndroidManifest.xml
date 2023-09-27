@@ -39,18 +39,15 @@
         android:theme="@style/Theme.Amarok"
         tools:ignore="AllowBackup,MissingTvBanner">
 
-        <activity-alias
-            android:name=".launcher.default"
-            android:enabled="true"
-            android:exported="true"
-            android:icon="@mipmap/ic_launcher"
-            android:label="@string/app_name"
-            android:targetActivity=".ui.MainActivity">
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity-alias>
+        </activity>
 
         <activity-alias
             android:name=".launcher.calendar"
@@ -61,20 +58,30 @@
             android:targetActivity=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias
+            android:name=".launcher.default"
+            android:enabled="true"
+            android:exported="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:targetActivity=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
 
         <activity
-            android:name=".ui.MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
             android:name=".ui.SwitchFileHiderActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ObfuscateFileHiderSettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SwitchAppHiderActivity"
@@ -91,7 +98,7 @@
         <activity
             android:name=".ui.CalendarActivity"
             android:exported="false"
-            android:theme="@style/Theme.Calculator"/>
+            android:theme="@style/Theme.Calculator" />
         <activity
             android:name=".ui.SecurityAuthForQuickHideActivity"
             android:excludeFromRecents="true"
@@ -112,6 +119,7 @@
             <intent-filter android:exported="true">
                 <action android:name="android.service.quicksettings.action.QS_TILE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.service.quicksettings.ACTIVE_TILE"
                 android:value="true" />

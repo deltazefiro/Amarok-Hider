@@ -158,4 +158,12 @@
     <string name="close_disguise_spotlight_tip">Long press the <font fgcolor="#FCCA3E"><b>Year Number</b></font> to access Amarok.</string>
     <string name="spotlight_do_not_show_again">DON\'T SHOW AGAIN</string>
     <string name="filehider_not_ava_title">File hiding unavailable</string>
+    <string name="filehider_none">Disabled</string>
+    <string name="filehider_none_description">Disable file hiding.</string>
+    <string name="filehider_obfuscate">Obfuscation Mode</string>
+    <string name="filehider_obfuscate_description">Obfuscate filenames and a portion of the files. No root access is required. May take some time to process.</string>
+    <string name="filehider_chmod">Chmod Mode</string>
+    <string name="filehider_chmod_description">Change file permissions to make them unreadable. Root access is required. The procedure is immediate.</string>
+    <string name="filehider_nomedia">NoMedia Mode</string>
+    <string name="filehider_nomedia_description">Only add .nomedia to folders. No root access is required.</string>
 </resources>

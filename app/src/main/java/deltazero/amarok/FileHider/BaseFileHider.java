@@ -16,6 +16,8 @@ public abstract class BaseFileHider {
 
     public abstract void tryToActive(ActivationCallbackListener activationCallbackListener);
 
+    public abstract String getName();
+
     protected enum ProcessMethod {
         HIDE, UNHIDE
     }
