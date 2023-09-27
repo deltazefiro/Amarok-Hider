@@ -1,8 +1,8 @@
 package deltazero.amarok.FileHider;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static deltazero.amarok.FileHider.FileHiderBase.ProcessMethod.HIDE;
-import static deltazero.amarok.FileHider.FileHiderBase.ProcessMethod.UNHIDE;
+import static deltazero.amarok.FileHider.BaseFileHider.ProcessMethod.HIDE;
+import static deltazero.amarok.FileHider.BaseFileHider.ProcessMethod.UNHIDE;
 
 import android.content.Context;
 import android.util.Base64;
@@ -25,7 +25,7 @@ import deltazero.amarok.PrefMgr;
 import deltazero.amarok.utils.FileHiderUtil;
 
 @SuppressWarnings("deprecation")
-public class ObfuscateFileHider extends FileHiderBase {
+public class ObfuscateFileHider extends BaseFileHider {
     private final static String TAG = "FileHider";
 
     private final static int MAX_PROCESS_WHOLE_FILE_SIZE_KB = 10 * 1024; // In KB.

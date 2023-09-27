@@ -4,11 +4,11 @@ import android.content.Context;
 
 import java.util.Set;
 
-public abstract class FileHiderBase {
+public abstract class BaseFileHider {
 
     private final Context context;
 
-    public FileHiderBase(Context context) {
+    public BaseFileHider(Context context) {
         this.context = context;
     }
 

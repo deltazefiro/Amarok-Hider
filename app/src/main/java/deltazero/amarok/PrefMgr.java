@@ -10,14 +10,14 @@ import androidx.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
-import deltazero.amarok.AppHider.IAppHider;
+import deltazero.amarok.AppHider.BaseAppHider;
 import deltazero.amarok.AppHider.DhizukuAppHider;
 import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
 import deltazero.amarok.AppHider.ShizukuAppHider;
 import deltazero.amarok.FileHider.ChmodFileHider;
-import deltazero.amarok.FileHider.FileHiderBase;
+import deltazero.amarok.FileHider.BaseFileHider;
 import deltazero.amarok.FileHider.NoMediaFileHider;
 import deltazero.amarok.FileHider.ObfuscateFileHider;
 
@@ -62,7 +62,7 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public IAppHider getAppHider() {
+    public BaseAppHider getAppHider() {
         return switch (mPrefs.getInt("appHiderMode", 0)) {
             case 0 -> new NoneAppHider(context);
             case 1 -> new RootAppHider(context);
@@ -73,7 +73,7 @@ public class PrefMgr {
         };
     }
 
-    public void setAppHiderMode(Class<? extends IAppHider> mode) {
+    public void setAppHiderMode(Class<? extends BaseAppHider> mode) {
         int modeCode;
         if (mode == NoneAppHider.class)
             modeCode = 0;
@@ -91,7 +91,7 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public FileHiderBase getFileHider() {
+    public BaseFileHider getFileHider() {
         return switch (mPrefs.getInt("fileHiderMode", 1)) {
             case 1 -> new ObfuscateFileHider(context);
             case 2 -> new NoMediaFileHider(context);
@@ -100,7 +100,7 @@ public class PrefMgr {
         };
     }
 
-    public void setFileHiderMode(Class<? extends FileHiderBase> mode) {
+    public void setFileHiderMode(Class<? extends BaseFileHider> mode) {
         int modeCode;
         if (mode == ObfuscateFileHider.class)
             modeCode = 1;

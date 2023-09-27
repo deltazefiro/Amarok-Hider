@@ -17,7 +17,7 @@ import rikka.shizuku.Shizuku;
 import rikka.shizuku.ShizukuBinderWrapper;
 import rikka.shizuku.SystemServiceHelper;
 
-public class ShizukuAppHider extends IAppHider {
+public class ShizukuAppHider extends BaseAppHider {
     public static final int shizukuReqCode = 600;
 
     public ShizukuAppHider(Context context) {

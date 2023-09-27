@@ -7,7 +7,7 @@ import java.util.Set;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.ShellUtil;
 
-public class RootAppHider extends IAppHider {
+public class RootAppHider extends BaseAppHider {
 
     public RootAppHider(Context context) {
         super(context);
