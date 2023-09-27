@@ -145,4 +145,13 @@
     <string name="calendar_about">极简日历 | by @koramA</string>
     <string name="close_disguise_spotlight_tip">长按<font fgcolor="#FCCA3E"><b>年份数字</b></font>进入 Amarok。</string>
     <string name="spotlight_do_not_show_again">不再提示</string>
+    <string name="filehider_not_ava_title">无效的文件隐藏器</string>
+    <string name="filehider_none">禁用</string>
+    <string name="filehider_none_description">停用文件隐藏功能。</string>
+    <string name="filehider_obfuscate">混淆模式</string>
+    <string name="filehider_obfuscate_description">通过混淆文件名和文件签名隐藏。不需要 Root。处理可能需要一些时间。</string>
+    <string name="filehider_chmod">权限更改模式</string>
+    <string name="filehider_chmod_description">通过更改文件权限隐藏。需要 Root。可瞬间完成隐藏。</string>
+    <string name="filehider_nomedia">.nomedia 模式</string>
+    <string name="filehider_nomedia_description">仅仅在需隐藏的文件夹中加入 .nomedia 文件。不需要 Root。</string>
 </resources>
