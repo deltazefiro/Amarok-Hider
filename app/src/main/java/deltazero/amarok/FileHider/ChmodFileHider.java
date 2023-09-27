@@ -3,10 +3,12 @@ package deltazero.amarok.FileHider;
 import android.content.Context;
 import android.util.Log;
 
+import com.topjohnwu.superuser.Shell;
+
 import java.util.HashSet;
 import java.util.Set;
 
-import deltazero.amarok.utils.ShellUtil;
+import deltazero.amarok.R;
 
 public class ChmodFileHider extends BaseFileHider {
 
@@ -25,9 +27,18 @@ public class ChmodFileHider extends BaseFileHider {
                 Log.w("ChmodFileHider", String.format("Unsupported path: %s", d));
         }
 
-        StringBuilder cmd = new StringBuilder("echo amarok");
         for (String d : processDirs)
-            cmd.append(String.format("&chmod -R %s %s", method == ProcessMethod.HIDE ? 0 : 2770, d));
-        ShellUtil.exec(new String[]{"su", "-c", cmd.toString()});
+            Shell.cmd(String.format("chmod -R %s %s", method == ProcessMethod.HIDE ? 0 : 2770, d)).submit();
+    }
+
+    @Override
+    public void tryToActive(ActivationCallbackListener activationCallbackListener) {
+        Shell.getShell(shell -> {
+            if (shell.isRoot()) {
+                activationCallbackListener.onActivateCallback(ChmodFileHider.this.getClass(), true, 0);
+            } else {
+                activationCallbackListener.onActivateCallback(ChmodFileHider.this.getClass(), false, R.string.root_not_ava);
+            }
+        });
     }
 }
