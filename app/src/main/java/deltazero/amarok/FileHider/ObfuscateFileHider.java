@@ -69,6 +69,11 @@ public class ObfuscateFileHider extends BaseFileHider {
         }
     }
 
+    @Override
+    public void tryToActive(ActivationCallbackListener activationCallbackListener) {
+        activationCallbackListener.onActivateCallback(this.getClass(), true, 0);
+    }
+
     private void processTree(Path targetDir, ProcessMethod method) throws InterruptedException {
 
         Log.i(TAG, "Start to process file tree: " + targetDir);

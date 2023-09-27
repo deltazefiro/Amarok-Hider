@@ -14,6 +14,8 @@ public abstract class BaseFileHider {
 
     protected abstract void process(Set<String> targetDirs, ProcessMethod method) throws InterruptedException;
 
+    public abstract void tryToActive(ActivationCallbackListener activationCallbackListener);
+
     protected enum ProcessMethod {
         HIDE, UNHIDE
     }
@@ -24,5 +26,9 @@ public abstract class BaseFileHider {
 
     public void unhide(Set<String> targetDirs) throws InterruptedException {
         process(targetDirs, ProcessMethod.UNHIDE);
+    }
+
+    public interface ActivationCallbackListener {
+        void onActivateCallback(Class<? extends BaseFileHider> appHider, boolean success, int msgResID);
     }
 }
