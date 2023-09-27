@@ -19,6 +19,7 @@ import deltazero.amarok.AppHider.ShizukuAppHider;
 import deltazero.amarok.FileHider.ChmodFileHider;
 import deltazero.amarok.FileHider.BaseFileHider;
 import deltazero.amarok.FileHider.NoMediaFileHider;
+import deltazero.amarok.FileHider.NoneFileHider;
 import deltazero.amarok.FileHider.ObfuscateFileHider;
 
 public class PrefMgr {
@@ -93,6 +94,7 @@ public class PrefMgr {
 
     public BaseFileHider getFileHider() {
         return switch (mPrefs.getInt("fileHiderMode", 1)) {
+            case 0 -> new NoneFileHider(context);
             case 1 -> new ObfuscateFileHider(context);
             case 2 -> new NoMediaFileHider(context);
             case 3 -> new ChmodFileHider(context);
@@ -102,7 +104,9 @@ public class PrefMgr {
 
     public void setFileHiderMode(Class<? extends BaseFileHider> mode) {
         int modeCode;
-        if (mode == ObfuscateFileHider.class)
+        if (mode == NoneFileHider.class)
+            modeCode = 0;
+        else if (mode == ObfuscateFileHider.class)
             modeCode = 1;
         else if (mode == NoMediaFileHider.class)
             modeCode = 2;

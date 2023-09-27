@@ -30,6 +30,6 @@ public class NoneAppHider extends BaseAppHider {
 
     @Override
     public String getName() {
-        return "None";
+        return "Disabled";
     }
 }

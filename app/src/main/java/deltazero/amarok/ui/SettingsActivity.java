@@ -196,7 +196,7 @@ public class SettingsActivity extends AppCompatActivity {
     private void updateUI() {
         tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
         tvCurrFileHider.setText(getString(R.string.current_mode,
-                (prefMgr.getEnableObfuscateTextFile() ? getString(R.string.filename_and_header) : getString(R.string.filename_only))));
+                (prefMgr.getFileHider().getName())));
 
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
@@ -232,6 +232,10 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void switchFileHider(View view) {
+        if (prefMgr.getIsHidden() || Boolean.TRUE.equals(Hider.isProcessing.getValue())) {
+            Toast.makeText(this, R.string.option_unava_when_hidden, Toast.LENGTH_SHORT).show();
+            return;
+        }
         startActivity(new Intent(this, SwitchFileHiderActivity.class));
     }
 

@@ -54,4 +54,9 @@ public class NoMediaFileHider extends BaseFileHider {
     public void tryToActive(ActivationCallbackListener activationCallbackListener) {
         activationCallbackListener.onActivateCallback(this.getClass(), true, 0);
     }
+
+    @Override
+    public String getName() {
+        return "NoMedia";
+    }
 }

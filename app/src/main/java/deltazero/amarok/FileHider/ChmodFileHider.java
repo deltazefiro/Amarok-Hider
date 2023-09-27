@@ -41,4 +41,9 @@ public class ChmodFileHider extends BaseFileHider {
             }
         });
     }
+
+    @Override
+    public String getName() {
+        return "Chmod";
+    }
 }
