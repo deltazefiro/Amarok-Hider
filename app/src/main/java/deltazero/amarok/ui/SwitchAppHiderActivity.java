@@ -14,7 +14,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import deltazero.amarok.AppHider.DhizukuAppHider;
 import deltazero.amarok.AppHider.DsmAppHider;
-import deltazero.amarok.AppHider.IAppHider;
+import deltazero.amarok.AppHider.BaseAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
 import deltazero.amarok.AppHider.ShizukuAppHider;
@@ -79,7 +79,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
         finish();
     }
 
-    public void onActivationCallback(Class<? extends IAppHider> appHider, boolean success, @Nullable Integer msgResID) {
+    public void onActivationCallback(Class<? extends BaseAppHider> appHider, boolean success, @Nullable Integer msgResID) {
         if (success) {
             prefMgr.setAppHiderMode(appHider);
             setCheckedRadioButton(appHider);
@@ -100,7 +100,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
     }
 
 
-    private void setCheckedRadioButton(Class<? extends IAppHider> appHider) {
+    private void setCheckedRadioButton(Class<? extends BaseAppHider> appHider) {
 
         rbDisabled.setChecked(false);
         rbRoot.setChecked(false);

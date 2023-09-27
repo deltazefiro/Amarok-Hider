@@ -15,7 +15,7 @@ import deltazero.amarok.AdminReceiver;
 import deltazero.amarok.R;
 import deltazero.amarok.ui.DsmActivationActivity;
 
-public class DsmAppHider extends IAppHider {
+public class DsmAppHider extends BaseAppHider {
     public static ActivationCallbackListener activationCallbackListener;
     private final DevicePolicyManager dpm;
     private final ComponentName admin;

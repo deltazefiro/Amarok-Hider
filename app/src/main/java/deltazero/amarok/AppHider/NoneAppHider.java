@@ -5,7 +5,7 @@ import android.util.Log;
 
 import java.util.Set;
 
-public class NoneAppHider extends IAppHider {
+public class NoneAppHider extends BaseAppHider {
     
     // Active when no AppHider is available.
 

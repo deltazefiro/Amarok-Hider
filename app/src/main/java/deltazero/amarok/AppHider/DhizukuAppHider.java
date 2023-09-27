@@ -15,7 +15,7 @@ import java.util.Set;
 
 import deltazero.amarok.R;
 
-public class DhizukuAppHider extends IAppHider {
+public class DhizukuAppHider extends BaseAppHider {
 
     private final DevicePolicyManager devicePolicyManager;
 

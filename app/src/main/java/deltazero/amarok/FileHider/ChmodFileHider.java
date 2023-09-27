@@ -8,7 +8,7 @@ import java.util.Set;
 
 import deltazero.amarok.utils.ShellUtil;
 
-public class ChmodFileHider extends FileHiderBase {
+public class ChmodFileHider extends BaseFileHider {
 
     public ChmodFileHider(Context context) {
         super(context);

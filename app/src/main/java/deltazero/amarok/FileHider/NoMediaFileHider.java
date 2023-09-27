@@ -6,7 +6,7 @@ import android.util.Log;
 import java.nio.file.Paths;
 import java.util.Set;
 
-public class NoMediaFileHider extends FileHiderBase {
+public class NoMediaFileHider extends BaseFileHider {
 
     private static final String TAG = "NoMediaFileHider";
 

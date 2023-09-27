@@ -4,10 +4,10 @@ import android.content.Context;
 
 import java.util.Set;
 
-public abstract class IAppHider {
+public abstract class BaseAppHider {
     public Context context;
 
-    public IAppHider(Context context) {
+    public BaseAppHider(Context context) {
         this.context = context;
     }
 
@@ -20,6 +20,6 @@ public abstract class IAppHider {
     public abstract String getName();
 
     public interface ActivationCallbackListener {
-        void onActivateCallback(Class<? extends IAppHider> appHider, boolean success, int msgResID);
+        void onActivateCallback(Class<? extends BaseAppHider> appHider, boolean success, int msgResID);
     }
 }
