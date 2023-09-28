@@ -51,17 +51,6 @@
     <string name="about">Acerca de</string>
     <string name="set_hide_apps">Establecer aplicaciones ocultas</string>
     <string name="hidden_status">Oculto</string>
-    <string name="app_about">"
-\nAmarok %s
-\n
-\n [Desarrollador] @Deltazefiro
-\n
-\n [Info] Amarok: Una simple aplicación android para ocultar archivos y aplicaciones.
-\n
-\n [Repo] https://github.com/deltazefiro/Amarok-Hider
-\n
-\n Copyright © 2022-2023 DeltaZero, Licencia Apache 2.0
-\n"</string>
     <string name="setting_not_ava_when_hidden">Este ajuste solo está disponible después de mostrar los elementos ocultos</string>
     <string name="storage_permission_request_title">Se requiere permisos de almacenamiento</string>
     <string name="storage_permission_request_message">Concede a Amarok acceso al almacenamiento externo para ocultar los archivos.</string>

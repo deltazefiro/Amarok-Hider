@@ -1,17 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="visible_status">ظاهر</string>
-    <string name="app_about">"
-\nأماروك %s
-\n
-\n. [المطور] @Deltazefiro
-\n
-\n.[معلومات] أماروك: تطبيق Android بسيط لإخفاء الملفات والتطبيقات الخاصة.
-\n
-\n.[الريبو] https://github.com/deltazefiro/Amarok-Hider
-\n
-\n. حقوق النشر © 2022–2023 DeltaZero, مرخص تحت Apache 2.0
-\n"</string>
     <string name="storage_permission_request_message">أعطي أماروك صلاحية الوصول للذاكرة الخارجية لإخفاء الملفات.</string>
     <string name="ok">حسنًا</string>
     <string name="setting_not_ava_when_hidden">هذا الإعداد متوفر بعد الإظهار فقط</string>

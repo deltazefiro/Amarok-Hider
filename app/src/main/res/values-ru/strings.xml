@@ -19,17 +19,6 @@
     <string name="hidden_toast">Скрыто. Ку-ка-ре-ку~!</string>
     <string name="unhidden_toast">Не скрыто. Будь осторожен.</string>
     <string name="show_debug_info">Отладочная информация</string>
-    <string name="app_about">"
-\nAmarok %s
-\n
-\n [Разработчик] @Deltazefiro
-\n
-\n [Информация] Amarok: Простое Android приложение для скрытия личных файлов и приложений.
-\n
-\n [Репозиторий] https://github.com/deltazefiro/Amarok-Hider
-\n
-\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
-\n"</string>
     <string name="enable_analytics">Анонимная аналитика</string>
     <string name="switch_app_hider">Выбрать режим скрытия приложений</string>
     <string name="current_mode">Текущий режим: %s</string>

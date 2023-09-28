@@ -34,17 +34,6 @@
     <string name="unhidden_toast">Non Nascosto. Fai attenzione.</string>
     <string name="show_debug_info">Informazioni di debug</string>
     <string name="confirm">Conferma</string>
-    <string name="app_about">"
-\nAmarok %s
-\n
-\n  [Sviluppatore] @Deltazefiro
-\n
-\n  [Info] Amarok: una semplice applicazione Android per nascondere file e app in modo privato.
-\n
-\n  [Repo] https://github.com/deltazefiro/Amarok-Hider
-\n
-\n  Copyright © 2022–2023 DeltaZero, Licenza Apache 2.0
-\n"</string>
     <string name="debug_info_description">Mostra informazioni che aiutano a risolvere i problemi.</string>
     <string name="invalid_dsm_provider">DSM: Provider DSM non valido. Hai installato e attivato il provider DSM sul vostro dispositivo\?</string>
     <string name="hide_app_failed_admin_inactive">Impossibile nascondere l\'applicazione: Il provider DSM non è attivo.</string>

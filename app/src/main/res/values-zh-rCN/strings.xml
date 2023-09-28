@@ -154,4 +154,6 @@
     <string name="filehider_chmod_description">通过更改文件权限隐藏。需要 Root。可瞬间完成隐藏。</string>
     <string name="filehider_nomedia">.nomedia 模式</string>
     <string name="filehider_nomedia_description">仅仅在需隐藏的文件夹中加入 .nomedia 文件。不需要 Root。</string>
+    <string name="welcome_title">欢迎</string>
+    <string name="welcome_msg">Amarok 是一款轻量级隐私保护工具，一键隐藏你的隐私文件和应用。本程序完全免费开源。\n\n请注意 Amarok 并非加密程序，而只是隐藏程序。请勿使用 Amarok 保护机密文件与应用。\n\n<u>免责声明：切勿将 Amaork 用于重要文件或应用的隐藏。您使用 Amaork 导致的一切损失和后果均由您自行承担。</u></string>
 </resources>

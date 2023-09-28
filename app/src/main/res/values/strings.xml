@@ -7,11 +7,6 @@
     <string name="hidden_status">Hidden</string>
     <string name="visible_moto" translatable="false">"\"Night has fallen. Be careful.\" "</string>
     <string name="hidden_moto" translatable="false">"\"Secrets never emerge under the sun.\" "</string>
-    <string name="app_about">\nAmarok %s\n\n
-        [Developer] @Deltazefiro\n\n
-        [Info] Amarok: A simple android app for private file- and app-hiding.\n\n
-        [Repo] https://github.com/deltazefiro/Amarok-Hider\n\n
-        Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0\n</string>
     <string name="ok">OK</string>
     <string name="about">About</string>
     <string name="cancel">Cancel</string>
@@ -166,4 +161,6 @@
     <string name="filehider_chmod_description">Change file permissions to make them unreadable. Root access is required. The procedure is immediate.</string>
     <string name="filehider_nomedia">NoMedia Mode</string>
     <string name="filehider_nomedia_description">Only add .nomedia to folders. No root access is required.</string>
+    <string name="welcome_title">Welcome</string>
+    <string name="welcome_msg">Amarok is a free and freedom tool for hiding private files &amp; applications.\n\nPlease note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.\n\n<u>Disclaimers: Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.</u></string>
 </resources>

@@ -84,17 +84,6 @@
     <string name="quick_hide_notification_title">Конфіденційність не прихована</string>
     <string name="quick_hide_notification_content">Ваша конфіденційність не прихована. Натисніть, щоб приховати.</string>
     <string name="invalid_action">Отримано недійсний намір: %s</string>
-    <string name="app_about">"
-\nAmarok %s
-\n
-\n [Розробник] @Deltazefiro
-\n
-\n [Інформація] Amarok: Простий застосунок для Android для приватного приховування файлів та застосунків.
-\n
-\n [Репозиторій] https://github.com/deltazefiro/Amarok-Hider
-\n
-\n Авторське право © 2022-2023 DeltaZero, ліцензія Apache 2.0
-\n"</string>
     <string name="usage">Використання</string>
     <string name="switch_file_hider">Увімкнути режим приховування файлів</string>
     <string name="no_apphider">Будь ласка, виберіть режим приховування застосунків у \"Додаткових налаштуваннях\".</string>
