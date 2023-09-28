@@ -1,2 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name_calendar">Kalendarz</string>
+    <string name="not_local_storage">Niewspierany katalog</string>
+    <string name="filter">Filtr</string>
+    <string name="manually_set_path">Wybierz ręcznie</string>
+    <string name="password">Hasło</string>
+    <string name="apphider_root">Tryb root</string>
+    <string name="unlock">Odblokuj</string>
+    <string name="storage_permission_request_message">Przyznaj Amarok dostępu do pamięci wewnętrznej aby móc ukrywać pliki.</string>
+    <string name="show_about">Pokaż informacje</string>
+    <string name="processing">Przetwarzanie…</string>
+    <string name="misc">Różne</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="apphider_none">Wyłączono</string>
+    <string name="more_settings">Więcej ustawień</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="update">Aktualizacja</string>
+    <string name="notification">Powiadomienie</string>
+    <string name="check_update_on_start">Automatyczna aktualizacja</string>
+    <string name="set_hide_files">Ustaw ukryte pliki</string>
+    <string name="help">Pomoc</string>
+    <string name="ok">OK</string>
+    <string name="setting_not_ava_when_hidden">To ustawienie jest dostępne tylko po cofnięciu ukrycia</string>
+    <string name="about">O aplikacji</string>
+    <string name="workmode">Tryb pracy</string>
+    <string name="cancel">Anuluj</string>
+    <string name="usage">Użycie</string>
+    <string name="confirm">Potwierdź</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="language">Język</string>
+    <string name="search">Szukaj</string>
+    <string name="enable_analytics">Anonimowa analityka</string>
+    <string name="never">Nigdy</string>
+    <string name="set_hide_apps">Ustaw ukryte aplikacje</string>
+    <string name="security">Bezpieczeństwo</string>
+    <string name="apphider_dsm">Tryb DSM</string>
+    <string name="view_github_repo">Repozytorium GitHub</string>
+    <string name="visible_status">Widoczne</string>
+    <string name="unhide">Odkryj</string>
+    <string name="hide">Ukryj</string>
+    <string name="hidden_status">Ukryte</string>
+</resources>

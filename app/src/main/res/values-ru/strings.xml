@@ -115,4 +115,7 @@
     <string name="quick_hide_notification_title">Конфиденциальность не защищена</string>
     <string name="quick_hide_notification_content">Ваша конфиденциальность не скрыта. Нажмите, чтобы скрыть.</string>
     <string name="invalid_action">Получен недействительный интент: %s</string>
+    <string name="password">Пароль</string>
+    <string name="confirm_password">Подтвердить пароль</string>
+    <string name="set_password">Установить пароль</string>
 </resources>
