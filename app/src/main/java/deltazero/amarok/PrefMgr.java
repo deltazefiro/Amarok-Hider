@@ -226,4 +226,13 @@ public class PrefMgr {
         mPrefEditor.putBoolean("doShowQuitDisguiseInstuct", doShowQuitDisguiseInstuct);
         mPrefEditor.apply();
     }
+
+    public boolean getShowWelcome() {
+        return mPrefs.getBoolean("showWelcome", true);
+    }
+
+    public void setShowWelcome(boolean showWelcome) {
+        mPrefEditor.putBoolean("showWelcome", showWelcome);
+        mPrefEditor.apply();
+    }
 }

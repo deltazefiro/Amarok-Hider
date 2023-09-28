@@ -90,17 +90,6 @@
     <string name="hide">Gizle</string>
     <string name="invalid_action">Geçersiz eylem alındı: %s</string>
     <string name="hidden_status">Gizli</string>
-    <string name="app_about">"
-\nAmarok %s
-\n
-\n[Geliştirici] @Deltazefiro
-\n
-\n[Bilgi] Amarok: Dosya şifreleme ve uygulama gizleme için basit bir android uygulaması.
-\n
-\n[Repo] https://github.com/deltazefiro/Amarok-Hider
-\n
-\nTelif Hakkı © 2022–2023 DeltaZero, Apache 2.0 Lisanslı
-\n"</string>
     <string name="unhide">Gizlemeyi kaldır</string>
     <string name="about_description">Uygulama hakkında bilgi gösterir.</string>
     <string name="usage">Kullanım</string>

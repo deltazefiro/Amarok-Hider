@@ -110,17 +110,6 @@
     <string name="check_update">Frissítés ellenőrzése</string>
     <string name="check_update_description">Jelenlegi verzió: %s</string>
     <string name="update">Frissítés</string>
-    <string name="app_about">"
-\nAmarok %s
-\n
-\n [Fejlesztő] @Deltazefiro
-\n
-\n [Infó] Amarok: A simple android app for private file- and app-hiding.
-\n
-\n [Repo] https://github.com/deltazefiro/Amarok-Hider
-\n
-\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
-\n"</string>
     <string name="manually_set_path_description">Vigyázat! Győződjön meg róla, hogy a manuálisan kiválasztott fájl valóban létezik, mivel ez nem kerül hitelesítésre.</string>
     <string name="view_github_repo">GitHub tároló</string>
     <string name="shizuku_pre_v11">Nem támogatott Shizuku verzió: V11 előtti. Kérjük, telepítse a Shizuku v11 vagy újabb verzióját.</string>

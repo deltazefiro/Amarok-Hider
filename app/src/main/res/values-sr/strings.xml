@@ -32,18 +32,6 @@
     <string name="shizuku_hidden_api_error">Није могуће сакрити апликацију: Није могуће приступити IPackageManager API-ју.</string>
     <string name="dynamic_color_description">Омогућите динамичку тему боја.</string>
     <string name="password">Лозинка</string>
-    <string name="app_about">"
-\nAmarok %s
-\n
-\n [Програмер] @Deltazefiro
-\n
-\n [Информације] Amarok: Једноставна Android апликација за скривање приватних фајлова и апликација.
-\n
-\n [Репозиторијум]
-\nhttps://github.com/deltazefiro/Amarok-Hider
-\n
-\n Copyright © 2022–2023 DeltaZero, Licensed Apache 2.0
-\n"</string>
     <string name="shizuku_pre_v11">Неподржана верзија Shizuku-а: Pre-v11. Инсталирајте Shizuku v11 или новију верзију.</string>
     <string name="show_debug_info">Информације о отклањању грешака</string>
     <string name="apphider_root">Root режим</string>

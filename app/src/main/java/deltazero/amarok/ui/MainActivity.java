@@ -3,6 +3,7 @@ package deltazero.amarok.ui;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.service.quicksettings.TileService;
 import android.util.Log;
@@ -103,8 +104,25 @@ public class MainActivity extends AppCompatActivity {
         // Show main UI
         svMainLayout.setVisibility(View.VISIBLE);
 
-        // Process permissions
-        PermissionUtil.requestStoragePermission(this);
+        if (prefMgr.getShowWelcome()) {
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.welcome_title)
+                    .setMessage(R.string.welcome_msg)
+                    .setPositiveButton(R.string.ok, (dialog, which) -> {
+                        PermissionUtil.requestStoragePermission(this);
+                    })
+                    .setNegativeButton(R.string.view_github_repo, (dialog, which) -> {
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider")));
+                        PermissionUtil.requestStoragePermission(this);
+                    })
+                    .setOnCancelListener(dialog -> {
+                        PermissionUtil.requestStoragePermission(this);
+                    })
+                    .show();
+            prefMgr.setShowWelcome(false);
+        } else {
+            PermissionUtil.requestStoragePermission(this);
+        }
 
         // Check AppHider availability
         prefMgr.getAppHider().tryToActivate((appHiderClass, succeed, msg) -> {
