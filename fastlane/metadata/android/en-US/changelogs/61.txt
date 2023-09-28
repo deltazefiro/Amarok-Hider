@@ -1,0 +1,5 @@
+v0.8.5a2
+- Support switching file hiding modes: Chmod mode & NoMedia mode
+- Optimize root mode performance
+- Add welcome notification (#96)
+- Update translations from the community: Spanish, Portuguese, Serbian, Turkish, Arabic, Japanese, Polish, Russian (For further information, please check Github)
