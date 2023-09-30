@@ -3,7 +3,7 @@
 
 # Amarok-Hider
 
-> **Warning:**  
+> **Warning**  
 > An **unofficial** version of Amarok has been uploaded to **AppGallery** without authorization. Please be aware that this version is not endorsed by us and we cannot ensure its safety and security. Refer to [#96](https://github.com/deltazefiro/Amarok-Hider/issues/96) for further details.
 
 [![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public) 
