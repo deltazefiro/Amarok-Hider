@@ -3,6 +3,9 @@
 
 # Amarok-Hider
 
+> **Warning:**  
+> An **unofficial** version of Amarok has been uploaded to **AppGallery** without authorization. Please be aware that this version is not endorsed by us and we cannot ensure its safety and security. Refer to [#96](https://github.com/deltazefiro/Amarok-Hider/issues/96) for further details.
+
 [![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public) 
 [![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases) 
 [![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) 
@@ -21,6 +24,7 @@ Amarok is designed to avoid using complex encryption for files and applications.
 - Amarok obfuscates file names and headers, making them appear "corrupted" and inaccessible.
 - Amarok deactivates applications, rendering them invisible in the launcher and system menu.
 
+
 ## Features
 
 - **User-Friendly**: Easily hide files and applications with a single click.
@@ -29,20 +33,11 @@ Amarok is designed to avoid using complex encryption for files and applications.
 - **Boss Key**: Use a floating button to quickly hide applications and files in emergency situations.
 - **Quick Settings**: Control center switch for instant hiding without the need to open the app.
 - **App Lock**: Supports accessing Amarok with a password or fingerprint.
-- **Pleasant Interface**: Clean and appealing Material3 design.
-
-**Disclaimer: Amarok is not an encryption program; it's solely a hiding tool. Please refrain from using Amarok to hide important files or applications. Any losses or consequences resulting from the use of Amarok are entirely your own responsibility.**
-
-## Usage
-[![](https://img.shields.io/badge/AmarokDocs-ClickToView-brightgreen)](https://deltazefiro.github.io/Amarok-doc/en-US/)  
+- **Pleasant Interface**: Clean and appealing Material3 design.  
 
 
-## Download
-[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public)  
-[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases)  
-[![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) (FOSS)  
-[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)  (FOSS) (Pre-release channel)  
-
+> **Warning**  
+> Please note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.
 
 
 ## Screenshots
@@ -61,6 +56,19 @@ Amarok is designed to avoid using complex encryption for files and applications.
 </table>
 
 
+## Download
+
+
+[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public)  
+[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases)  
+[![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) (FOSS)  
+[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)  (FOSS) (Pre-release channel)
+
+
+## Usage
+[![](https://img.shields.io/badge/AmarokDocs-ClickToView-brightgreen)](https://deltazefiro.github.io/Amarok-doc/en-US/)  
+
+
 ## Contributing
 Thank you for dedicating your time in contributing to this project!
 Contributions in all forms are welcomed, including reporting bugs, proposing new features, performing language translations, and submitting code development PRs.
@@ -71,7 +79,9 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 <img src="https://hosted.weblate.org/widgets/amarok-hider/-/multi-auto.svg" alt="Translation status" />
 </a>
 
-## Acknowledgement
+## Credits
+
+Many thanks to:
 
 - ~~[heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License~~
 - ~~[Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License~~
@@ -83,13 +93,12 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 - [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku)
 - [kizitonwose/Calendar](https://github.com/kizitonwose/Calendar)
 
-... And all the dedicated contributors!  
+... and all the dedicated contributors!  
 
 <a href="https://github.com/deltazefiro/Amarok-Hider/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=deltazefiro/Amarok-Hider&anon=1" />
+<img src="https://contrib.rocks/image?repo=deltazefiro/Amarok-Hider" />
 </a>  
 
 
 ## Disclaimers
-<u>**THIS APPLICATION IS PROVIDED WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND.  
-You are solely responsible for any and all damages and consequences that may arise from the use of Amarok.**</u>
+<u>**Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.**</u>
