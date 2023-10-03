@@ -1,0 +1,13 @@
+Quebras
+* Atualização da TargetAPI para 33 (Android 13)
+Novos recursos
+* Suporte à ofuscação completa de arquivos de texto (nº 3)
+* Suporte à ofuscação aprimorada de arquivos de texto (nº 3)
+Otimização
+* Atualização da versão de compilação do Java para Java 11
+* Atualização do dep AppCompat
+* Refatoração do FileHider para melhorar a estabilidade (nº 20)(nº 16)
+* Troca da ordem de ocultação de aplicativos e arquivos
+* Otimização da tradução para inglês e chinês
+Correção
+* Nenhuma

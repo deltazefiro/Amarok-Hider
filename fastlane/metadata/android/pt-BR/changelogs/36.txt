@@ -1,0 +1,26 @@
+v0.8.3b1
+- Adicionar atualização da interface do usuário no menu "Set Hidden Apps" (Definir aplicativos ocultos)
+- Adicionar botão de ocultar na notificação
+- Adicionar alfa ao BossKey
+- Atualizar a tradução para en e zh
+v0.8.3a3
+- Adicionar notificação para avisar o usuário para ocultar
+- Adicionar pesquisa de aplicativos em "Set Hidden Apps" (Definir aplicativos ocultos)
+- Suporte ao DeepHide no modo Root
+- Adicionar tradução: Alemão (por @SecularSteve) (#37)
+- Melhorar a tradução: Norueguês Bokmål & Inglês (por @comradekingu) (#37 #40)
+- Melhorar o desempenho: carregamento de ícones em "Set Hidden Apps" (Definir aplicativos ocultos)
+- Ignorar .nomedia ao ocultar arquivos (#31)
+- Alterar o canal do Telegram para o grupo
+- Evitar que o Amarok se esconda na versão foss (#43 #41)
+- Corrigir aplicativos ocultos que não são visíveis em "Definir aplicativos ocultos" (#43 #41)
+- Correção do BossKey sendo eliminado em segundo plano
+v0.8.3a2
+- Adicionar BossKey
+- Adicionar documento em inglês
+- Adicionar tradução: Bokmål norueguês (por @comradekingu) (#33)
+- Suporte à sincronização do estado do atalho com MainActivity
+- Nova UI de configurações
+- Correção do congelamento de atalhos (nº 22)
+- Correção de falha na atualização do aplicativo
+- Correção de falha na árvore de documentos abertos
