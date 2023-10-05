@@ -99,7 +99,7 @@ repositories {
 }
 
 dependencies {
-    def shizukuVersion = '13.1.4'
+    def shizukuVersion = '13.1.5'
     implementation "dev.rikka.shizuku:api:${shizukuVersion}"
     implementation "dev.rikka.shizuku:provider:${shizukuVersion}"
 
@@ -109,14 +109,14 @@ dependencies {
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 
     implementation 'io.github.iamr0s:Dhizuku-API:2.4'
-    implementation 'com.github.getActivity:XXPermissions:18.2'
-    implementation 'com.github.getActivity:EasyWindow:10.2'
+    implementation 'com.github.getActivity:XXPermissions:18.3'
+    implementation 'com.github.getActivity:EasyWindow:10.3'
     implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
     implementation 'com.github.takusemba:spotlight:2.0.5'
     implementation 'com.github.topjohnwu.libsu:core:5.2.1'
     implementation 'com.google.android.material:material:1.9.0'
-    implementation 'com.kizitonwose.calendar:view:2.3.0'
-    implementation "androidx.biometric:biometric:1.1.0"
+    implementation 'com.kizitonwose.calendar:view:2.4.0'
+    implementation 'androidx.biometric:biometric:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
