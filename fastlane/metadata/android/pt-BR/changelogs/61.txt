@@ -1,0 +1,5 @@
+v0.8.5a2
+- Suporte para alternar modos de ocultação de arquivos: Modo Chmod e Modo NoMedia
+- Otimização de desempenho no modo root
+- Adição de notificação de boas-vindas (#96)
+- Atualização das traduções da comunidade: Espanhol, Português, Sérvio, Turco, Árabe, Japonês, Polonês, Russo (Para mais informações, consulte o Github)

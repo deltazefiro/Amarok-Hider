@@ -1,0 +1,5 @@
+v0.8.4b1
+- Suporte a cores dinâmicas
+- Adição do botão "participar na tradução"
+- Novas traduções: Italiano (por Hisako) e Japonês (por しいたけ)
+- Atualização da tradução em Espanhol (por gallegonovato)
