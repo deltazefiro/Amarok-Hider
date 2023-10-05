@@ -39,7 +39,7 @@
 \nيحتوي
 \n
 \n<u>\'%s\'</u></string>
-    <string name="shizuku_hidden_api_error">تعذر إخفاء التطبيق: تعذر الوصول إلى واجهة برمجة تطبيقات نظام مدير الحزم.</string>
+    <string name="shizuku_hidden_api_error">تعذر إخفاء التطبيق: تعذر الوصول إلى واجهة برمجة( API)تطبيقات نظام مدير الحزم.</string>
     <string name="dynamic_color_description">تمكين نسق الألوان الديناميكي.</string>
     <string name="password">‪كلمة مرور</string>
     <string name="shizuku_pre_v11">إصدار شيزوكو غير مدعوم: ما قبل الإصدار 11. الرجاء تثبيت شيزوكو ن11 أو إصدار أحدث.</string>
@@ -91,7 +91,7 @@
     <string name="check_update_on_start_description">تحقق من وجود إصدارات أماروك جديدة عند فتح التطبيق.</string>
     <string name="invalid_path">مسار غير صالح.</string>
     <string name="analytics_description">إرسال تقارير الأعطال المجهولة إلى المطورين لتحليلها.</string>
-    <string name="option_unava_when_hidden">الخيارات غير متوفرة حتى غير مخفية.</string>
+    <string name="option_unava_when_hidden">الخيارات غير متوفرة في وضع الإخفاء.</string>
     <string name="quick_hide_notification_description">اعرض إشعار دائما لإعلام المستخدمين عندما لا يكون مخفيا.</string>
     <string name="quick_hide_notification_content">خصوصيتك ليست مخفية. انقر للاخفاء.</string>
     <string name="obfuscate_file_header">تشويش رؤوس الملفات</string>
@@ -102,7 +102,7 @@
 \nموصى به إذا كان جهازك يعمل بنظام أندرويد 11+ أو يحتوي على إطار عمل Xposed. مطلوب شيزوكو أو Sui مثبت ونشط.
 \n</string>
     <string name="apphider_dsm_description">إخفاء التطبيق مع مدير النطاقات المفوض.
-\nلا ينصح به إلا إذا كان جهازك يعمل بنظام Android 10 أو إصدار أقدم ولم يكن مجذرا. ربما تحدث مشاكل ويعمل بشكل غير متوقع. تم تعيين Icebox مثبت (أو StopAPP) كمالك للجهاز مطلوب.</string>
+\nلا ينصح به إلا إذا كان جهازك يعمل بنظام Android 10 أو إصدار أقدم ولم يكن مجذرا. ربما تحدث مشاكل ويعمل بشكل غير متوقع. مطلوب (Icebox) تم تعيينه و تثبيته (أو StopAPP) كمالك للجهاز.</string>
     <string name="apphider_none_description">أوقف إخفاء التطبيقات.</string>
     <string name="spotlight_do_not_show_again">عدم الظهور مرة أخرى</string>
     <string name="shizuku_permission_denied">شيزوكو: تم رفض الإذن</string>
@@ -159,4 +159,19 @@
     <string name="enable_dynamic_color">لون ديناميكي</string>
     <string name="invalid_dsm_provider">DSM: موفر DSM غير صالح. هل قمت بتثبيت وتفعيل موفر DSM على جهازك؟</string>
     <string name="view_github_repo">مستودع جيثب</string>
+    <string name="filehider_nomedia_description">أضف فقط .نوميديا إلى المجلدات. لا يلزم الوصول إلى الجذر(الروت ).</string>
+    <string name="filehider_none_description">تعطيل إخفاء الملفات.</string>
+    <string name="filehider_chmod_description">تغيير أذونات الملفات لجعلها غير قابلة للقراءة. مطلوب الوصول إلى الجذر( الروت). الإجراء فوري.</string>
+    <string name="filehider_obfuscate_description">تشويش أسماء الملفات وتوقيعات الملفات. لا يلزم الوصول إلى الجذر( الروت). قد يستغرق بعض الوقت للمعالجة.</string>
+    <string name="filehider_nomedia">وضع لا وسائط</string>
+    <string name="filehider_none">معطّل</string>
+    <string name="welcome_msg">اماروك هي أداة مجانية وحرة لإخفاء الملفات والتطبيقات الخاصة.
+\n
+\nيرجى ملاحظة أن أماروك ليس برنامج تشفير ، بل أداة لإخفاء الأشياء. ننصح بشدة بعدم استخدام Amarok لحماية الملفات والتطبيقات السرية.
+\n
+\n<u>إخلاء المسؤولية: يتم توفير أماروك دون أي ضمانات أو شروط. يتحمل المستخدم المسؤولية الكاملة عن أي ضرر أو عواقب قد تنشأ عن استخدام أماروك.</u></string>
+    <string name="welcome_title">مرحبا</string>
+    <string name="filehider_obfuscate">وضع التشويش</string>
+    <string name="filehider_not_ava_title">إخفاء الملف غير متوفر</string>
+    <string name="filehider_chmod">وضع Chmod</string>
 </resources>
