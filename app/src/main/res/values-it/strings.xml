@@ -82,7 +82,7 @@
     <string name="join_developer_channel">Gruppo Telegram</string>
     <string name="processing">Elaborazione…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/it-IT/</string>
-    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/it-IT/hideapp.html#common-errors</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
     <string name="alert_permission_denied">Autorizzazione alla visualizzazione su altre applicazioni negata.</string>
     <string name="alert_permission_request_title">È richiesta l\'autorizzazione delle finestre pop-up</string>
     <string name="workmode">Modalità di lavoro</string>
