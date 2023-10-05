@@ -159,4 +159,19 @@
     <string name="spotlight_do_not_show_again">NO VOLVER A MOSTRAR</string>
     <string name="app_name_calendar">Calendario</string>
     <string name="calendar_about">Calendario puro | por @koramA</string>
+    <string name="filehider_nomedia_description">Sólo añade .nomedia a las carpetas. No se requiere acceso root.</string>
+    <string name="filehider_none_description">Desactiva la ocultación de los archivos.</string>
+    <string name="filehider_chmod_description">Cambia los permisos de los archivos para hacerlos ilegibles. Se requiere acceso root. El procedimiento es inmediato.</string>
+    <string name="filehider_obfuscate_description">Ofusca los nombres y las firmas de los archivos. No se requiere acceso root. Puede tardar algún tiempo en procesarse.</string>
+    <string name="filehider_nomedia">Modo NoMedia</string>
+    <string name="filehider_none">Desactivado</string>
+    <string name="welcome_msg">Amarok es una herramienta gratuita y libre para ocultar los archivos privados &amp; aplicaciones.
+\n
+\nPor favor, ten en cuenta que Amarok no es un software de encriptación, sino una herramienta para ocultar las cosas. Desaconsejamos encarecidamente el uso de Amarok para proteger los archivos y las aplicaciones confidenciales.
+\n
+\n<u>Disclaimers: Amarok se provee sin garantías ni condiciones. El usuario es completamente responsable de cualquier daño o consecuencia que pueda surgir del uso de Amarok.</u></string>
+    <string name="welcome_title">Bienvenido</string>
+    <string name="filehider_obfuscate">Modo ofuscación</string>
+    <string name="filehider_not_ava_title">Ocultar archivos no disponible</string>
+    <string name="filehider_chmod">Modo Chmod</string>
 </resources>
