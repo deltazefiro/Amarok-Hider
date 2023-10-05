@@ -1,0 +1,13 @@
+v0.8.5b1
+- Targeting Android 14
+- Update community translations
+
+v0.8.5a2
+- Support switching file hiding modes: Chmod mode & NoMedia mode
+- Optimize root mode performance
+- Add welcome notification (#96)
+- Update translations from the community: Spanish, Portuguese, Serbian, Turkish, Arabic, Japanese, Polish, Russian
+
+v0.8.5a1
+- Support disguise Amarok as a calendar
+- Update translations from the community: Hungarian, Italian, Ukrainian, French, Spanish, German
