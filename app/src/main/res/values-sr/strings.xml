@@ -13,7 +13,7 @@
     <string name="notification_permission_request_title">Потребна је дозвола за обавештења</string>
     <string name="update_ava">Доступна нова верзија</string>
     <string name="no_apphider">Изаберите режим сакривања апликација у „Више подешавања“.</string>
-    <string name="not_local_storage">Неподржани директоријум</string>
+    <string name="not_local_storage">Неподржани фолдер</string>
     <string name="filter">Филтер</string>
     <string name="notification_permission_denied">Дозвола за обавештење је одбијена.</string>
     <string name="add_hide_files">Додај скривени фолдер</string>
@@ -37,7 +37,7 @@
     <string name="apphider_root">Root режим</string>
     <string name="apphider_not_ava">Сaкривање апликација недоступно. Проверите „Више подешавања“ → „Промени режим сакривања апликација“.</string>
     <string name="unlock">Откључај</string>
-    <string name="storage_permission_denied">Дозвола за приступ меморији је одбијена. Сакривање фајлова недоступно</string>
+    <string name="storage_permission_denied">Дозвола за приступ меморији је одбијена. Сакривање фајла недоступно</string>
     <string name="storage_permission_request_message">Одобрите Amarok-у приступ спољној меморији да бисте сакрили фајлове.</string>
     <string name="hide_app_failed_admin_inactive">Није могуће сакрити апликацију: DSM пружалац није активан.</string>
     <string name="show_about">Показати „О апликацији“</string>
@@ -159,4 +159,19 @@
     <string name="enable_dynamic_color">Динамичка боја</string>
     <string name="invalid_dsm_provider">DSM: Неважећи DSM пружалац. Да ли сте инсталирали и активирали DSM пружаоца на свом уређају\?</string>
     <string name="view_github_repo">GitHub репозиторијум</string>
+    <string name="filehider_nomedia_description">Додајте само .nomedia у фолдере. Није потребан root приступ.</string>
+    <string name="filehider_none_description">Онемогућите сакривање фајлова.</string>
+    <string name="filehider_chmod_description">Промените дозволе за фајлове да бисте их учинили нечитљивим. Потребан је root приступ. Процедура је моментална.</string>
+    <string name="filehider_obfuscate_description">Замаглите имена фајлова и потписе фајлова. Није потребан root приступ. Може потрајати неко време због обраде.</string>
+    <string name="filehider_nomedia">NoMedia режим</string>
+    <string name="filehider_none">Онемогућено</string>
+    <string name="welcome_msg">Amarok је бесплатан и слободан алат за сакривање приватних фајлова и апликација.
+\n
+\nИмајте на уму да Amarok није софтвер за шифровање, већ алат за сакривање ствари. Изричито саветујемо да не користите Amarok за заштиту поверљивих фајлова и апликација.
+\n
+\n<u>Одрицање одговорности: Amarok се испоручује без икаквих гаранција или услова. Корисник је у потпуности одговоран за било какву штету или последице које могу настати коришћењем Amarok-а.</u></string>
+    <string name="welcome_title">Добро дошли</string>
+    <string name="filehider_obfuscate">Режим замагљивања</string>
+    <string name="filehider_not_ava_title">Сакривање фајла недоступно</string>
+    <string name="filehider_chmod">Chmod режим</string>
 </resources>
