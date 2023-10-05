@@ -41,7 +41,7 @@
                     android:layout_centerVertical="true"
                     android:layout_marginVertical="20dp"
                     android:layout_marginStart="36dp"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="28dp"
                     android:orientation="vertical">
 
                     <TextView
