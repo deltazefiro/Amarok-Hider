@@ -1,0 +1,6 @@
+v0.8.3b2
+- Suporte ao ícone com tema adaptável do Android 13 (nº 50)
+- Exigir desbloqueio para alternar o bloco QuickSetting (#51)
+- Adicionar tradução: Russo (por @koji-takahiro) (#53)
+- Adicionar tradução: Português (por @fnogcps) (#54 #55)
+- Adicionar tradução: Turco (por @croxz900) (#57 #56)

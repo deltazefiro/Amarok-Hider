@@ -1,0 +1,12 @@
+v0.8.4a2
+- Suporte ao Dhizuku para ocultação de aplicativos
+- Definir `android:exported` como falso para atividades internas para aumentar a segurança
+- Correção de que nenhuma senha é exigida ao exibir com o QuickSettings
+- Correção de falhas no perfil de trabalho do Android
+- Migrar para o Java 17
+- Atualizar o gradle para 8.0
+- Melhorar a tradução: Russo (por Егор Ермаков e @gallegonovato) (#65)
+- Melhorar a tradução: Ucraniano (por @gallegonovato e Dan) (#71)
+- Melhorar a tradução: Bokmål norueguês (por Allan Nordhøy) (#68)
+- Melhorar a tradução: Espanhol (por @gallegonovato & @LuisGamas & tommynok) (#67 #74 #75)
+- Melhorar a tradução: Turco (por @Croxz)
