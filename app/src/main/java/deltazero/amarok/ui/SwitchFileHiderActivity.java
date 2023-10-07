@@ -64,7 +64,14 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
             } else if (buttonID == R.id.switch_filehider_radio_obfuscate) {
                 new ObfuscateFileHider(this).tryToActive(this::onActivationCallback);
             } else if (buttonID == R.id.switch_filehider_radio_chmod) {
-                new ChmodFileHider(this).tryToActive(this::onActivationCallback);
+                // FIXME: Samsung devices may failed to boot with chmod mode
+                new MaterialAlertDialogBuilder(this)
+                        .setTitle(R.string.warning)
+                        .setMessage(R.string.chmod_samsung_warning)
+                        .setPositiveButton(R.string.ok, (dialog, which) -> new ChmodFileHider(this).tryToActive(this::onActivationCallback))
+                        .setNegativeButton(R.string.cancel, (dialog, which) -> new NoneFileHider(this).tryToActive(this::onActivationCallback))
+                        .show();
+                // new ChmodFileHider(this).tryToActive(this::onActivationCallback);
             } else if (buttonID == R.id.switch_filehider_radio_nomedia) {
                 new NoMediaFileHider(this).tryToActive(this::onActivationCallback);
             }
