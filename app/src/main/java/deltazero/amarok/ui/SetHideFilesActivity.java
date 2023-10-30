@@ -18,6 +18,7 @@ import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
@@ -75,19 +76,21 @@ public class SetHideFilesActivity extends AppCompatActivity {
                         Set<String> hideFilePath = prefMgr.getHideFilePath();
 
                         // Check if the path is duplicated
+                        var p2 = Paths.get(newPath).toAbsolutePath();
                         for (String p : hideFilePath) {
-                            if (p.contains(newPath)) {
-                                new MaterialAlertDialogBuilder(this)
-                                        .setTitle(R.string.path_duplicated)
-                                        .setMessage(getString(R.string.path_duplicated_description, p, newPath))
-                                        .setPositiveButton(R.string.ok, null)
-                                        .show();
-                                return;
+                            var p1 = Paths.get(p).toAbsolutePath();
+                            String msg = null;
+
+                            if (p1.startsWith(p2)) {
+                                msg = getString(R.string.path_duplicated_description, newPath, p);
+                            } else if (p2.startsWith(p1)) {
+                                msg = getString(R.string.path_duplicated_description, p, newPath);
                             }
-                            if (newPath.contains(p)) {
+
+                            if (msg != null) {
                                 new MaterialAlertDialogBuilder(this)
                                         .setTitle(R.string.path_duplicated)
-                                        .setMessage(getString(R.string.path_duplicated_description, newPath, p))
+                                        .setMessage(msg)
                                         .setPositiveButton(R.string.ok, null)
                                         .show();
                                 return;
