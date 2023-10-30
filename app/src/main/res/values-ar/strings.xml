@@ -62,7 +62,7 @@
     <string name="panic_button_description">عرض زر عائم يستخدم لإخفاء التطبيقات والملفات في حالات الطوارئ. يتم عرضه على جميع التطبيقات الأخرى. يظهر الزر فقط في حالة غير مخفية.</string>
     <string name="disguise">تمويه التطبيق</string>
     <string name="quick_hide">إخفاء سريع</string>
-    <string name="apphider_none">معطل</string>
+    <string name="apphider_none">معطّل</string>
     <string name="learn_more">البرنامج التعليمي للإعداد</string>
     <string name="failed_to_open_doc_tree">تعذر فتح منتقي ملفات النظام</string>
     <string name="root_not_ava">لا يمكن الحصول على الوصول إلى الجذر.</string>
@@ -174,4 +174,6 @@
     <string name="filehider_obfuscate">وضع التشويش</string>
     <string name="filehider_not_ava_title">إخفاء الملف غير متوفر</string>
     <string name="filehider_chmod">وضع Chmod</string>
+    <string name="warning">تحذير</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">أبلغ بعض مستخدمي Samsung أن استخدام وضع Chmod تسبب في فشل أجهزتهم في التمهيد (بوتلوب).</font> راجع مشكلة جيثب 105# لمزيد من المعلومات. الاستخدام على مسؤوليتك الخاصة.</b></string>
 </resources>
