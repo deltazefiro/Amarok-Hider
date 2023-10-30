@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dhizuku_not_init">Dhizuku: Služba nie je k dispozícii. Uistite sa, že ste nainštalovali a aktivovali Dhizuku.</string>
+    <string name="unhidden_toast">Neskryté. Buďte opatrní.</string>
+    <string name="performing_force_unhide">Vykonávanie vynútenie odkrytia. Prosím, vydržte.</string>
+    <string name="debug_info_description">Zobrazuje informácie, ktoré pomáhajú pri riešení problémov.</string>
+    <string name="app_name_calendar">Kalendár</string>
+    <string name="about_description">Zobrazenie informácií o aplikácii.</string>
+    <string name="hidden_toast">Skryté. Cock-a-doodle-do~!</string>
+    <string name="obfuscate_filename_description">Urobte názov súboru nečitateľným pre človeka. Základná funkcia skrývania súborov. Nedá sa vypnúť.</string>
+    <string name="filehider_nomedia_description">Do priečinkov pridávajte iba súbory .nomedia. Nie je potrebný prístup root.</string>
+    <string name="quick_hide_notification_title">Súkromie nie je skryté</string>
+    <string name="apphider_shizuku">Režim Shizuku (Sui)</string>
+    <string name="notification_permission_request_title">Vyžaduje sa povolenie na oznámenie</string>
+    <string name="update_ava">K dispozícii je nová verzia</string>
+    <string name="no_apphider">V časti \"Ďalšie nastavenia\" vyberte režim skrývania aplikácií.</string>
+    <string name="not_local_storage">Nepodporovaný adresár</string>
+    <string name="filter">Filter</string>
+    <string name="notification_permission_denied">Povolenie na oznámenie bolo zamietnuté.</string>
+    <string name="add_hide_files">Pridať skrytý priečinok</string>
+    <string name="manually_set_path">Vyberte ručne</string>
+    <string name="folder_selector_hints">Tipy pre výber priečinka:
+\n\t1. Kliknutím na \"Use This Folder\" (Použiť tento priečinok) vyberte priečinok
+\n\t2. Vždy vyberte súbor v zariadení
+\n\t(Posunutím z pravej strany obrazovky otvoríte miestne súbory)</string>
+    <string name="biometric_auth_description">Na prístup k službe Amarok použite biometrické overenie zariadenia, ak je k dispozícii.</string>
+    <string name="visible_status">Viditeľné</string>
+    <string name="path_duplicated_description"><u>\'%s\'</u>
+\n
+\nobsahuje
+\n
+\n<u>\'%s\'</u></string>
+    <string name="shizuku_hidden_api_error">Nepodarilo sa skryť aplikáciu: Nepodarilo sa získať prístup k API IPackageManager.</string>
+    <string name="dynamic_color_description">Povoľte dynamické farebné témy.</string>
+    <string name="warning">VAROVANIE</string>
+    <string name="password">Heslo</string>
+    <string name="filehider_none_description">Zakázať skrývanie súborov.</string>
+    <string name="shizuku_pre_v11">Nepodporovaná verzia Shizuku: Pred verziou 11. Nainštalujte si Shizuku v11 alebo novšiu verziu.</string>
+    <string name="show_debug_info">Informácie o ladení</string>
+    <string name="apphider_root">Režim Root</string>
+    <string name="apphider_not_ava">Skrývanie aplikácií nie je k dispozícii. Skontrolujte \"Ďalšie nastavenia\" → \"Prepnúť režim skrývania aplikácií\".</string>
+    <string name="unlock">Odomknutie</string>
+    <string name="storage_permission_denied">Povolenie na ukladanie bolo zamietnuté. Skrývanie súborov nie je k dispozícii</string>
+    <string name="storage_permission_request_message">Udeliť Amaroku prístup k externému úložisku na skrývanie súborov.</string>
+    <string name="hide_app_failed_admin_inactive">Nepodarilo sa skryť aplikáciu: DSM provider nie je aktívny.</string>
+    <string name="show_about">Zobraziť o</string>
+    <string name="processing">Spracovanie…</string>
+    <string name="obfuscate_file_header_description">Zakryje podpis súboru v hlavičke súboru, aby bol súbor \"poškodený\". Zabráni ručnému otvoreniu súboru pomocou funkcie \"Otvoriť pomocou\", ale môže spomaliť proces skrývania súboru.</string>
+    <string name="obfuscate_text_file">Úplné zakrytie textových súborov</string>
+    <string name="app_lock_description">Vyžadovanie hesla na prístup do systému Amarok.</string>
+    <string name="filehider_chmod_description">Zmeňte oprávnenia súborov tak, aby boli nečitateľné. Vyžaduje sa koreňový prístup. Postup je okamžitý.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Povolenie zamietnuté</string>
+    <string name="misc">Rôzne.</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="close_disguise_spotlight_tip">Dlho stlačte tlačidlo <font fgcolor="#FCCA3E"><b>Číslo roku</b></font>na prístup do aplikácie Amarok.</string>
+    <string name="shizuku_service_not_running">Shizuku: Služba nie je spustená.</string>
+    <string name="panic_button_description">Zobrazenie plávajúceho tlačidla, ktoré sa používa na skrytie aplikácií a súborov v núdzových situáciách. Zobrazuje sa nad všetkými ostatnými aplikáciami. Tlačidlo sa zobrazí len v neskrytom stave.</string>
+    <string name="disguise">Zamaskovať aplikáciu</string>
+    <string name="quick_hide">Rýchle skrývanie</string>
+    <string name="apphider_none">Blokovaný</string>
+    <string name="learn_more">Návod na inštaláciu</string>
+    <string name="failed_to_open_doc_tree">Nepodarilo sa otvoriť systémový výber súboru</string>
+    <string name="root_not_ava">Nepodarilo sa získať prístup root.</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Nepodporovaná verzia Dhizuku. Aktualizujte Dhizuku na verziu 5 alebo vyššiu.</string>
+    <string name="filename_only">Len názvy súborov</string>
+    <string name="more_settings">Viac nastavení</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="join_developer_channel">Telegram skupina</string>
+    <string name="current_mode">Aktuálny režim: %s</string>
+    <string name="filehider_obfuscate_description">Zakrývanie názvov súborov a podpisov súborov. Nie je potrebný prístup root. Spracovanie môže trvať určitý čas.</string>
+    <string name="update">Aktualizácia</string>
+    <string name="notification">Oznámenie</string>
+    <string name="confirm_password">Potvrdenie hesla</string>
+    <string name="obfuscate_text_file_enhanced">Plne zakrývať textové súbory - Vylepšené</string>
+    <string name="invalid_action">Prijatý neplatný zámer: %s</string>
+    <string name="check_update_on_start">Automatické aktualizácie</string>
+    <string name="force_unhide_confirm_msg">Pokúsiť sa všetko obnoviť\?
+\n
+\n<b>UPOZORNENIE: </b>Táto možnosť môže poškodiť vaše súbory. Použite ju len vtedy, keď sa vyskytnú problémy a nemôžete funkciu \"unhide\" vykonať normálne.</string>
+    <string name="set_password">Nastavenie hesla</string>
+    <string name="dsm_permission_denied">DSM: Povolenie zamietnuté</string>
+    <string name="set_hide_files">Nastavenie skrytých súborov</string>
+    <string name="apply_on_restart">Reštartujte aplikáciu, aby sa uplatnili nové zmeny.</string>
+    <string name="help">Pomoc</string>
+    <string name="unlock_required">Potrebné odomknutie</string>
+    <string name="biometric_auth">Biometrické overovanie</string>
+    <string name="filehider_nomedia">NoMedia Mode (Režim bez médií)</string>
+    <string name="check_update_on_start_description">Pri otvorení aplikácie Amarok skontrolujte, či sú k dispozícii nové verzie.</string>
+    <string name="invalid_path">Nesprávna cesta.</string>
+    <string name="analytics_description">Odoslanie anonymných hlásení o zlyhaní vývojárom na analýzu.</string>
+    <string name="ok">OK</string>
+    <string name="setting_not_ava_when_hidden">Toto nastavenie je k dispozícii len po zrušení skrytia</string>
+    <string name="option_unava_when_hidden">Možnosti sú nedostupné, kým sa neodkryjú.</string>
+    <string name="quick_hide_notification_description">Zobrazenie trvalého oznámenia, ktoré používateľov upozorní, keď nie je skryté.</string>
+    <string name="quick_hide_notification_content">Vaše súkromie nie je skryté. Kliknutím na tlačidlo skryjete.</string>
+    <string name="obfuscate_file_header">Zakrývanie hlavičiek súborov</string>
+    <string name="apphider_root_description">Skrývanie aplikácií s prístupom root.
+\nOdporúča sa, ak je vaše zariadenie rootnuté, ale nemá framework Xposed. Vyžaduje sa oprávnenie root.</string>
+    <string name="switch_file_hider">Prepnutie režimu skrývania súborov</string>
+    <string name="apphider_shizuku_description">Skrývanie aplikácií so Shizuku (alebo Sui).
+\nOdporúča sa, ak vaše zariadenie používa systém Android 11+ alebo má rámec Xposed. Vyžaduje sa nainštalovaný a aktívny Shizuku alebo Sui.
+\n</string>
+    <string name="apphider_dsm_description">Skrývanie aplikácií pomocou nástroja Delegated-Scopes-Manager.
+\nNeodporúča sa, pokiaľ vaše zariadenie nemá operačný systém Android 10 alebo starší a nie je rootnuté. Môže mať chyby a fungovať neočakávane. Vyžaduje sa nainštalovaný Icebox (alebo StopAPP) nastavený ako vlastník zariadenia.</string>
+    <string name="apphider_none_description">Vypnutie skrývania aplikácií.</string>
+    <string name="filehider_none">Blokovaný</string>
+    <string name="about">O nás</string>
+    <string name="spotlight_do_not_show_again">NEZOBRAZOVAŤ ZNOVA</string>
+    <string name="welcome_msg">Amarok je bezplatný a slobodný nástroj na skrývanie súkromných súborov &amp; aplikácií.
+\n
+\nUpozorňujeme, že Amarok nie je šifrovací softvér, ale skôr nástroj na skrývanie vecí. Dôrazne neodporúčame používať Amarok na ochranu dôverných súborov a aplikácií.
+\n
+\n<u>Odmietnutie zodpovednosti: Amarok sa poskytuje bez akýchkoľvek záruk alebo podmienok. Používateľ je plne zodpovedný za akúkoľvek škodu alebo následky, ktoré môžu vzniknúť používaním programu Amarok.</u></string>
+    <string name="storage_permission_request_title">Potrebné povolenie k úložisku</string>
+    <string name="shizuku_permission_denied">Shizuku: Povolenie zamietnuté</string>
+    <string name="manually_set_path_description">Upozornenie: Uistite sa, že to, čo vyberiete ručne, skutočne existuje, pretože to nie je overené.</string>
+    <string name="filename_and_header">Názov súboru + hlavička</string>
+    <string name="obfuscate_filename">Zakrývanie názvov súborov</string>
+    <string name="notification_channel_name">Služba rýchleho skrývania</string>
+    <string name="welcome_title">Vitajte</string>
+    <string name="shizuku_not_working">Shizuku: Služba nie je k dispozícii. Nainštalovali ste Shizuku/Shu do svojho zariadenia\?</string>
+    <string name="unhide">Odtajnenie</string>
+    <string name="hide">Skryť</string>
+    <string name="workmode">Pracovný režim</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Niektorí používatelia spoločnosti Samsung hlásili, že používanie nástroja ChmodFileHider spôsobilo, že sa ich zariadenia nespustia.</font> Viac informácií nájdete v probléme GitHub #105. Use at your own risk.</b></string>
+    <string name="cancel">Zrušiť</string>
+    <string name="usage">Využitie</string>
+    <string name="alert_permission_denied">Povolenie na zobrazenie nad inými aplikáciami zamietnuté.</string>
+    <string name="not_local_storage_description">Uistite sa, že ide o miestny súbor a nie o virtuálny súbor.</string>
+    <string name="filehider_obfuscate">Režim zakrytia</string>
+    <string name="force_unhide_description">Pokúste sa všetko obnoviť. Túto možnosť použite len vtedy, keď sa vyskytnú problémy.</string>
+    <string name="path_duplicated">Skrytý priečinok Loop</string>
+    <string name="no_update_ava">Používate najnovšiu verziu.</string>
+    <string name="notification_permission_request_message">Služba QuickHide potrebuje na svoju činnosť povolenie na oznamovanie.</string>
+    <string name="confirm">Potvrdiť</string>
+    <string name="follow_system">(Sledovanie systému)</string>
+    <string name="apphider_dhizuku">Režim Dhizuku</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="password_incorrect">Nesprávne heslo.</string>
+    <string name="language">Jazyk</string>
+    <string name="alert_permission_request_message">Plávajúce tlačidlo potrebuje povolenie na vytváranie vyskakovacích okien. Nájdite Amarok v ponuke nastavení a povoľte ho.</string>
+    <string name="search">Vyhľadávanie</string>
+    <string name="failed_to_open_doc_tree_description">Ups! Váš systém nemá predvolený správca súborov. Dlho stlačte tlačidlo \"Pridať skrytý priečinok\" a cestu zadajte ručne.</string>
+    <string name="participate_translation">Podieľať sa na preklade</string>
+    <string name="enable_analytics">Anonymné analýzy</string>
+    <string name="force_unhide">Vynútiť odtajnenie</string>
+    <string name="apphider_dhizuku_description">[Experimentálne] Skrývanie aplikácií pomocou Dhizuku.
+\nModerné a vylepšené riešenie na skrývanie aplikácií na zariadeniach bez koreňového systému. Vyžaduje sa inštalácia a aktivácia aplikácie Dhizuku.</string>
+    <string name="alert_permission_request_title">Vyžaduje sa povolenie na vytváranie vyskakovacích okien</string>
+    <string name="password_length_error">Heslo musí mať 3 až 15 znakov.</string>
+    <string name="filehider_not_ava_title">Skrývanie súborov nie je k dispozícii</string>
+    <string name="usage_description">Otvorte centrum pomoci.</string>
+    <string name="never">Nikdy</string>
+    <string name="in_app_update_failed">Nová verzia je k dispozícii, ale nepodarilo sa ju načítať. Aktualizujte ju manuálne.</string>
+    <string name="participate_translation_description">Pomôžte nám preložiť Amarok do vášho jazyka.</string>
+    <string name="password_mismatch_error">Heslá sa nezhodujú.</string>
+    <string name="set_hide_apps">Nastavenie skrytých aplikácií</string>
+    <string name="check_update_description">Aktuálna verzia: %s</string>
+    <string name="apphider_not_ava_title">Nedostupný režim skrytých aplikácií</string>
+    <string name="disguise_description">Zamaskujte Amarok ako kalendár.</string>
+    <string name="security">Zabezpečenie</string>
+    <string name="hidden_status">Skryté</string>
+    <string name="apphider_dsm">Režim DSM</string>
+    <string name="app_lock">Zámok aplikácie</string>
+    <string name="obfuscate_text_file_description_enhanced">Neodporúča sa. Rozšírená verzia \"Úplne zakryť textové súbory\". Túto možnosť použite len vtedy, ak sa štandardná metóda ukáže ako neúčinná. Výrazne spomaľuje proces skrývania.</string>
+    <string name="check_update">Skontrolujte, či je k dispozícii aktualizácia</string>
+    <string name="remove_hide_path">Odstrániť skrytý priečinok\?</string>
+    <string name="obfuscate_text_file_description">Experimentálna funkcia. Zakrývanie hlavičiek súborov nemá žiadny vplyv na textové súbory. Zapnutím tejto funkcie sa úplne zakryjú textové súbory. Do určitej miery to spomalí proces skrývania.</string>
+    <string name="remove_hide_path_description">Odstrániť priečinok \'%s\' zo skrývania\?</string>
+    <string name="switch_app_hider">Prepnutie režimu skrývania aplikácií</string>
+    <string name="panic_button">Plávajúce tlačidlo (tlačidlo Šéf)</string>
+    <string name="update_description">Amarok %s (%d) je k dispozícii na stiahnutie a inštaláciu.</string>
+    <string name="calendar_about">Čistý kalendár | od @koramA</string>
+    <string name="display_system_apps">Zobraziť systémové aplikácie</string>
+    <string name="filehider_chmod">Režim Chmod</string>
+    <string name="enable_dynamic_color">Dynamická farba</string>
+    <string name="invalid_dsm_provider">DSM: DSM: Neplatný poskytovateľ DSM. Nainštalovali ste a aktivovali ste poskytovateľa DSM vo vašom zariadení\?</string>
+    <string name="view_github_repo">Repozitár GitHub</string>
+</resources>
