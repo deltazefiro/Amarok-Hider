@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visible_status">देख्न सकिने</string>
+    <string name="ok">ठिक</string>
+    <string name="setting_not_ava_when_hidden">यो सेटिङ्ग एप लुकाएपछि मात्र सक्रिय हुन्छ</string>
+    <string name="about">बारेमा</string>
+    <string name="unhide">देखाउनु</string>
+    <string name="hide">लुकाउनु</string>
+    <string name="cancel">रद्द</string>
+    <string name="set_hide_apps">लुकाउने एप तय गर्नुहोस</string>
+    <string name="hidden_status">लुकाईएको</string>
+</resources>
