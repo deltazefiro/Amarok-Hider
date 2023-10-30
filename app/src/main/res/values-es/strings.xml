@@ -174,4 +174,6 @@
     <string name="filehider_obfuscate">Modo ofuscación</string>
     <string name="filehider_not_ava_title">Ocultar archivos no disponible</string>
     <string name="filehider_chmod">Modo Chmod</string>
+    <string name="warning">ADVERTENCIA</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Algunos usuarios de Samsung han informado de que el uso de ChmodFileHider hizo que sus dispositivos no arrancaran.</font> Consulta el tema #105 de GitHub para obtener más información. Utilízalo bajo tu propia responsabilidad.</b></string>
 </resources>
