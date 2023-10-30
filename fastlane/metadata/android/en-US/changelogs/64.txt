@@ -1,0 +1,4 @@
+v0.8.5b3
+- Fix QuickHide Notification crashes on Android 14
+- Fix misidentification of loop folders when folder prefixes are identical
+- Update community translations
