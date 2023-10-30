@@ -11,7 +11,7 @@
     <string name="storage_permission_request_message">برای مخفی سازی فایل ها به آموراک اجازه دسترسی به حافظه را بدهید.</string>
     <string name="show_about">نمایش دربارهٔ</string>
     <string name="more_settings">تنظیمات بیشتر</string>
-    <string name="current_mode">روش فعلی: %</string>
+    <string name="current_mode">روش فعلی: %s</string>
     <string name="set_hide_files">تنظیم فایل های مخفی</string>
     <string name="apply_on_restart">برای اعمال تغییرات جدید برنامه را بسته و دوباره اجرا کنید.</string>
     <string name="analytics_description">گزارش کرش شدن برنامه را به صورت ناشناس برای بررسی به توسعه دهنده ها ارسال کنید.</string>
