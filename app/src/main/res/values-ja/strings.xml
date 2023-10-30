@@ -3,26 +3,25 @@
     <string name="unhide">表示する</string>
     <string name="hide">非表示にする</string>
     <string name="more_settings">その他の設定</string>
-    <string name="hidden_toast">非表示に戻したよ。コケコッコー!(\?)</string>
+    <string name="hidden_toast">非表示に戻したよ。コケコッコー！</string>
     <string name="set_hide_apps">非表示にするアプリ</string>
     <string name="set_hide_files">非表示にするファイル</string>
-    <string name="about">Amarok</string>
+    <string name="about">このアプリについて</string>
     <string name="hidden_status">非表示中</string>
     <string name="visible_status">表示中</string>
-    <string name="switch_app_hider">アプリの隠蔽方法を切り替える</string>
-    <string name="switch_file_hider">ファイルの隠蔽方法を切り替える</string>
-    <string name="enable_analytics">匿名のデータ提供</string>
-    <string name="usage">説明書</string>
-    <string name="analytics_description">クラッシュレポートを開発者に送信し、アプリの改善に協力する。
-\nしてくれると助かります。</string>
-    <string name="usage_description">ヘルプデスクを開く。</string>
+    <string name="switch_app_hider">アプリの非表示方法を切り替え</string>
+    <string name="switch_file_hider">ファイルの非表示方法を切り替える</string>
+    <string name="enable_analytics">匿名のアナリティクス</string>
+    <string name="usage">使用方法</string>
+    <string name="analytics_description">匿名のクラッシュレポートを開発者に送信し、アプリの改善に協力する。</string>
+    <string name="usage_description">ヘルプセンターを開く</string>
     <string name="unhidden_toast">非表示を解除したよ。気をつけてね。</string>
     <string name="update">アップデート</string>
     <string name="check_update">アップデートを確認</string>
     <string name="check_update_description">現在のバージョン: %s</string>
     <string name="check_update_on_start">自動アップデート</string>
-    <string name="check_update_on_start_description">アプリを開くとき、新しいバージョンがあるかを確認する。</string>
-    <string name="view_github_repo">GitHubリポジトリ</string>
+    <string name="check_update_on_start_description">アプリ起動時に新しいバージョンを自動で確認する。</string>
+    <string name="view_github_repo">GitHub リポジトリ</string>
     <string name="security">セキュリティ</string>
     <string name="misc">その他</string>
     <string name="app_lock">アプリロック</string>
@@ -33,8 +32,80 @@
     <string name="force_unhide">強制非表示解除</string>
     <string name="language">言語</string>
     <string name="participate_translation_description">あなたの言語へのAmarokの翻訳に協力してください。</string>
-    <string name="ok">確認する</string>
-    <string name="cancel">取り消す</string>
+    <string name="ok">OK</string>
+    <string name="cancel">キャンセル</string>
     <string name="setting_not_ava_when_hidden">この設定は非表示時に変更できません</string>
     <string name="storage_permission_request_title">ファイルへのアクセス権限が必要です</string>
+    <string name="storage_permission_denied">ストレージへのアクセス権限付与が拒否されました。許可されるまでファイルは隠せません。</string>
+    <string name="storage_permission_request_message">ファイルを隠すために、ストレージへのアクセス権限を付与してください。</string>
+    <string name="enable_dynamic_color">ダイナミックカラー(Material You)</string>
+    <string name="debug_info_description">問題解決に役立つ情報を表示します。</string>
+    <string name="obfuscate_filename_description">ファイル名を人間が読めないようにする。ファイル非表示の基本機能。オフにできません。</string>
+    <string name="apphider_shizuku">Shizuku (Sui) モード</string>
+    <string name="update_ava">新しいバージョンが利用可能です</string>
+    <string name="no_apphider">「ぞの他の設定」からアプリ非表示モードを選択してください。</string>
+    <string name="not_local_storage">サポートされていないディレクトリです</string>
+    <string name="add_hide_files">非表示フォルダーを追加</string>
+    <string name="manually_set_path">手動で選択</string>
+    <string name="folder_selector_hints">フォルダ選択のヒント:
+\n\t 1. 「このフォルダを使用」をタップしてフォルダを選択します
+\n\t 2. デバイス上のファイルを選択します
+\n\t(画面右からスライドしてローカルファイルを開きます)</string>
+    <string name="path_duplicated_description"><u>「%s」</u>
+\nには
+\n<u>「%s」</u>
+\nが含まれます</string>
+    <string name="shizuku_hidden_api_error">アプリを非表示できません: IPackageManager API にアクセスできません。</string>
+    <string name="shizuku_pre_v11">サポートされない Shizuku のバージョン: Shizuku v11 以降をインストールしてください。</string>
+    <string name="show_debug_info">デバッグ情報</string>
+    <string name="apphider_root">Root モード</string>
+    <string name="apphider_not_ava">アプリの非表示は利用できません。「その他の設定」→「アプリの非表示方法を切り替え」を確認してください。</string>
+    <string name="hide_app_failed_admin_inactive">アプリを非表示できません: DSM プロバイダーが有効化されていません。</string>
+    <string name="processing">処理中</string>
+    <string name="obfuscate_file_header_description">ファイルヘッダーのファイル署名を難読化し、ファイルを「破損」させます。手動で「〜で開く」をしてファイルを開くことを防ぎますが、ファイル非表示の処理が遅くなる可能性があります。</string>
+    <string name="obfuscate_text_file">テキストファイルを完全に難読化</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="shizuku_service_not_running">Shizuku: サービスが実行されていません。</string>
+    <string name="apphider_none">無効</string>
+    <string name="learn_more">設定チュートリアル</string>
+    <string name="root_not_ava">Root アクセスを取得できませんでした。</string>
+    <string name="filename_only">ファイル名のみ</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="join_developer_channel">Telegram グループ</string>
+    <string name="current_mode">現在のモード: %s</string>
+    <string name="obfuscate_text_file_enhanced">テキストファイルを完全に難読化 - 拡張</string>
+    <string name="dsm_permission_denied">DSM: 権限が拒否されました</string>
+    <string name="apply_on_restart">再起動して新しい変更を適用。</string>
+    <string name="help">ヘルプ</string>
+    <string name="option_unava_when_hidden">オプションは再表示されるまで利用できません。</string>
+    <string name="obfuscate_file_header">ファイルヘッダーを難読化</string>
+    <string name="apphider_root_description">Root でのアプリ非表示。
+\nあなたのデバイスが root 化されているが、Xposed フレームワークがない場合にお勧めします。Root 権限が必要です。</string>
+    <string name="apphider_shizuku_description">Shizuku (Sui) でのアプリ非表示。
+\nお使いのデバイスが Android 11 以上または Xposed フレームワークがある場合にお勧めします。Shizuku または Sui のインストールと有効化が必要です。
+\n</string>
+    <string name="apphider_dsm_description">Delegated-Scopes-Manager でのアプリ非表示。
+\nAndroid 10 以前を搭載し、root 化されていないデバイスでない限り推奨されません。バグや予期せぬ動作が発生する可能性があります。デバイスの所有者として設定されたIcebox (または StopAPP) のインストールが必要です。</string>
+    <string name="apphider_none_description">アプリの非表示をオフにする。</string>
+    <string name="shizuku_permission_denied">Shizuku: 権限が拒否されました</string>
+    <string name="manually_set_path_description">警告: 手動で選択したものが実際に存在することを確認してください。</string>
+    <string name="filename_and_header">ファイル名 + ヘッダー</string>
+    <string name="obfuscate_filename">ファイル名を難読化</string>
+    <string name="shizuku_not_working">Shizuku: サービスが利用できません。Shizuku/Sui をデバイスにインストールしていますか？</string>
+    <string name="workmode">動作モード</string>
+    <string name="alert_permission_denied">「他のアプリの上に重ねて表示」の権限が拒否されました。</string>
+    <string name="not_local_storage_description">仮想ファイルではなく、ローカルファイルであることを確認してください。</string>
+    <string name="no_update_ava">最新バージョンを使用しています。</string>
+    <string name="confirm">確定</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="alert_permission_request_message">フローティングボタンは他のアプリに重ねて表示するための権限が必要です。設定から Amarok を許可してください。</string>
+    <string name="alert_permission_request_title">ポップアップウィンドウを表示するために必要です</string>
+    <string name="apphider_not_ava_title">アプリ非表示モードが利用できません</string>
+    <string name="apphider_dsm">DSM モード</string>
+    <string name="obfuscate_text_file_description_enhanced">非推奨。「テキストファイルを完全に難読化」の拡張版。このオプションは、標準の方法では効果がない場合にのみ使用してください。処理が劇的に遅くなります。</string>
+    <string name="remove_hide_path">非表示フォルダを削除しますか？</string>
+    <string name="obfuscate_text_file_description">実験的な機能です。ファイルヘッダーの難読化はテキストファイルには効果がありません。この機能を有効にすると、テキストファイルは完全に難読化されます。難読化処理はある程度遅くなります。</string>
+    <string name="remove_hide_path_description">「%s」を非表示フォルダから削除しますか？</string>
+    <string name="update_description">Amarok %s (%d) をダウンロードしてインストールできます。</string>
+    <string name="invalid_dsm_provider">DSM: 無効な DSM プロバイダーです。このデバイスに DSM プロバイダーをインストールし、有効化しましたか？</string>
 </resources>

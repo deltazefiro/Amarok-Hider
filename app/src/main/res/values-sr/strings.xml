@@ -174,4 +174,6 @@
     <string name="filehider_obfuscate">Режим замагљивања</string>
     <string name="filehider_not_ava_title">Сакривање фајла недоступно</string>
     <string name="filehider_chmod">Chmod режим</string>
+    <string name="warning">УПОЗОРЕЊЕ</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Неки корисници Samsung уређаја су пријавили да је коришћење режима „ChmodFileHider“ довело до неуспешног покретања њихових уређаја.</font> Погледајте GitHub издање #105 за више информација. Користите на властиту одговорност.</b></string>
 </resources>
