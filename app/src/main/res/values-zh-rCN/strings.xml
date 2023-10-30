@@ -34,7 +34,7 @@
     <string name="add_hide_files">选择隐藏文件夹</string>
     <string name="folder_selector_hints">文件选择器使用说明：\n\t 1. 点击 \'使用此文件夹\' 以选择隐藏此文件夹\n\t 2. Amarok仅支持隐藏本地储存中的文件 \n\t（您可以在选择器中从屏幕左端右滑打开本地储存）</string>
     <string name="remove_hide_path">移除隐藏文件夹？</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>\n\n     包含     \n\n<u>\'%s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\n     包含     \n\n<u>\'%2$s\'</u></string>
     <string name="help">帮助</string>
     <string name="path_duplicated">隐藏路径重复</string>
     <string name="not_local_storage_description">请确认您选择的文件位于本地储存，且不是虚拟文件夹。</string>
