@@ -1,0 +1,4 @@
+v0.8.5b3
+- Correzione degli arresti anomali di QuickHide Notification su Android 14
+- Correzione errata identificazione loop cartelle quando i loro prefissi sono identici
+- Aggiornate le traduzioni della comunità

@@ -1,0 +1,4 @@
+v0.8.5a1
+- Supporto per mascherare Amarok come calendario
+- Aggiunta di una funzione sperimentale: Chmod file hider
+- Aggiornate le traduzioni della comunità: Ungherese, italiano, ucraino, francese, spagnolo, tedesco (per ulteriori informazioni controllare Github)
