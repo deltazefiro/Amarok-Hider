@@ -1,0 +1,5 @@
+v0.8.5a2
+- Supporto per la commutazione delle modalità di nascondimento dei file: Modalità Chmod e modalità NoMedia
+- Ottimizzate le prestazioni della modalità root
+- Aggiunta la notifica di benvenuto (#96)
+- Aggiornate le traduzioni della comunità: Spagnolo, portoghese, serbo, turco, arabo, giapponese, polacco, russo (per ulteriori informazioni consultare Github).
