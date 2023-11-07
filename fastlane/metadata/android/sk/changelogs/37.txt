@@ -1,0 +1,6 @@
+v0.8.3b2
+- Podpora adaptívnej tematickej ikony Android 13 (#50)
+- Vyžadovať odomknutie na prepnutie dlaždice rýchleho nastavenia (#51)
+- Pridanie prekladu: ruský preklad (od @koji-takahiro) (#53)
+- Pridanie prekladu: portugalčina (autor: @fnogcps) (#54 #55)
+- Pridanie prekladu: turečtina (od @croxz900) (#57 #56)
