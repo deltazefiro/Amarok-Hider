@@ -1,0 +1,5 @@
+v0.8.4b1
+- Podpora dynamickej farby
+- Pridanie tlačidla "podieľať sa na preklade"
+- Nové preklady: Pridanie nových prekladov: taliansky (od Hisako) a japonský (od しいたけ)
+- Aktualizácia španielskeho prekladu (autor: gallegonovato)
