@@ -1,0 +1,26 @@
+v0.8.3b1
+- Pridanie obnovenia používateľského rozhrania do ponuky "Nastaviť skryté aplikácie"
+- Pridanie tlačidla na skrytie v oznámení
+- Pridanie alfa do BossKey
+- Aktualizovať preklad en a zh
+v0.8.3a3
+- Pridanie oznámenia, ktoré používateľa upozorní na skrytie
+- Pridať vyhľadávanie aplikácií v "Nastaviť skryté aplikácie"
+- Podpora funkcie DeepHide v režime root
+- Pridanie prekladu: Nemčina (od @SecularSteve) (#37)
+- Vylepšiť preklad: Nórsky bokmål a angličtina (autor: @comradekingu) (#37 #40)
+- Zlepšiť výkon: načítanie ikon v "Nastaviť skryté aplikácie"
+- Preskočiť .nomedia pri skrývaní súborov (#31)
+- Zmenený kanál Telegramu na skupinu
+- Zabrániť tomu, aby sa Amarok skryl vo verzii foss (#43 #41)
+- Opraviť neviditeľnosť skrytých aplikácií v "Nastaviť skryté aplikácie" (#43 #41)
+- Oprava spadnutia BossKey na pozadí
+v0.8.3a2
+- Pridanie BossKey
+- Pridanie anglického dokumentu
+- Pridanie prekladu: nórčiny Bokmål (od @comradekingu) (#33)
+- Podpora synchronizácie stavu skratiek s MainActivity
+- Nové používateľské rozhranie nastavení
+- Oprava zamrznutia skratiek (#22)
+- Oprava pádu pri aktualizácii aplikácie
+- Oprava pádu pri otvorenom strome dokumentov

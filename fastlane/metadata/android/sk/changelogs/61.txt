@@ -1,0 +1,5 @@
+v0.8.5a2
+- Podpora prepínania režimov skrývania súborov: Chmod & NoMedia
+- Optimalizácia výkonu režimu root
+- Pridanie uvítacieho oznámenia (#96)
+- Aktualizácia prekladov od komunity: :španielčina, portugalčina, srbčina, turečtina, arabčina, japončina, poľština, ruština (pre ďalšie informácie sa prosím pozrite na Github)
