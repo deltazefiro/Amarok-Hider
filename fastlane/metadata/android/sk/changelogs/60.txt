@@ -1,0 +1,4 @@
+v0.8.5a1
+- Podpora zamaskovania Amaroku ako kalendára
+- Pridanie experimentálnej funkcie: Chmod file hider
+- Aktualizácia prekladov od komunity: maďarčina, taliančina, ukrajinčina, francúzština, španielčina, nemčina (ďalšie informácie nájdete na Githube)

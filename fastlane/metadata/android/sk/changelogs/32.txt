@@ -1,0 +1,13 @@
+Zmeny
+* Aktualizácia TargetAPI na 33 (Android 13)
+Nové funkcie
+* Podporuje úplné zakrývanie textových súborov (#3)
+* Podpora rozšírenia zakrývania textových súborov (#3)
+Optimalizácia
+* Aktualizácia verzie kompilácie jazyka Java na verziu Java 11
+* Upgrade dep AppCompat
+* Prepracovať FileHider na zlepšenie stability (#20)(#16)
+* Vymeniť poradie skrývania aplikácií a súborov
+* Optimalizácia anglického a čínskeho prekladu
+Oprava
+* Žiadne

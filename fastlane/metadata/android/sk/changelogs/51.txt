@@ -1,0 +1,12 @@
+v0.8.4a2
+- Podpora Dhizuku pre skrývanie aplikácií
+- Nastavenie `android:exported` na false pre interné Aktivity na zvýšenie bezpečnosti
+- Oprava nevyžaduje sa heslo pri zrušení skrytia pomocou QuickSettings
+- Oprava pádov v pracovnom profile Android
+- Migrácia na Javu 17
+- Bump gradle na verziu 8.0
+- Vylepšiť preklad: ruský jazyk (autor: Егор Ермаков & @gallegonovato) (#65)
+- Vylepšiť preklad: ukrajinčina (autor: @gallegonovato & Dan) (#71)
+- Vylepšiť preklad: nórčina Bokmål (autor: Allan Nordhøy) (#68)
+- Vylepšiť preklad: španielčina (autor: @gallegonovato & @LuisGamas & tommynok) (#67 #74 #75)
+- Vylepšiť preklad: Turečtina (autor: @Croxz)

@@ -1,0 +1,16 @@
+v0.8.5b2 *Náhradná aktualizácia*
+- Upozornenie ChmodFileHider môže spôsobiť, že sa na Samsung S23 nespustí (#105)
+
+v0.8.5b1
+- Zamerané na Android 14
+- Aktualizácia komunitných prekladov
+
+v0.8.5a2
+- Podpora prepínania režimov skrývania súborov: Chmod a NoMedia
+- Optimalizácia výkonu režimu root
+- Pridanie uvítacieho oznámenia (#96)
+- Aktualizácia prekladov od komunity
+
+v0.8.5a1
+- Podpora maskovania Amaroku ako kalendára
+- Aktualizácia prekladov od komunity
