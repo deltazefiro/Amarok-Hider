@@ -135,7 +135,7 @@
     <string name="manually_set_path_description">Cuidado: Garanta que o que você selecionar manualmente realmente exista, pois isso não é validado.</string>
     <string name="notification_channel_name">Serviço de Ocultação Rápida</string>
     <string name="welcome_title">Bem-vindo</string>
-    <string name="shizuku_not_working">Shizuku: Serviço indisponível. Você instalou o Shizuku/Shu em seu dispositivo\?</string>
+    <string name="shizuku_not_working">Shizuku: Serviço indisponível. Você instalou o Shizuku/Sui em seu dispositivo?</string>
     <string name="workmode">Modo de trabalho</string>
     <string name="alert_permission_denied">Permissão para exibir sobre outros aplicativos negada.</string>
     <string name="not_local_storage_description">Por favor, certifique-se de que seja um arquivo local e não um virtual.</string>
