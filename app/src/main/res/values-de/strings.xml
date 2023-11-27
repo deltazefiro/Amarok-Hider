@@ -63,7 +63,7 @@
     <string name="shizuku_permission_denied">Shizuku: Erlaubnis verweigert</string>
     <string name="shizuku_hidden_api_error">App kann nicht versteckt werden: IPackageManager api kann nicht abgerufen werden.</string>
     <string name="shizuku_pre_v11">Nicht unterstützte Shizuku-Version: Vor-v11. Bitte aktualisieren Sie Ihr Shizuku.</string>
-    <string name="shizuku_not_working">Shizuku: Dienst nicht verfügbar. Haben Sie Shizuku/Shu auf Ihrem Gerät installiert\?</string>
+    <string name="shizuku_not_working">Shizuku: Dienst nicht verfügbar. Haben Sie Shizuku/Sui auf Ihrem Gerät installiert?</string>
     <string name="shizuku_service_not_running">Shizuku: Der Dienst läuft nicht.</string>
     <string name="apphider_none">Behinderte</string>
     <string name="apphider_dsm_description">HideApp mit Delegated-Scopes-Manager.
