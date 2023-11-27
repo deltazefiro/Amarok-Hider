@@ -62,7 +62,7 @@
     <string name="view_github_repo_description" translatable="false">deltazefiro/Amarok-Hider</string>
     <string name="shizuku_pre_v11">Unsupported Shizuku version: Pre-v11. Please install Shizuku v11 or later.</string>
     <string name="shizuku_permission_denied">Shizuku: Permission denied</string>
-    <string name="shizuku_not_working">Shizuku: Service unavailable. Have you installed Shizuku/Shu on your device?</string>
+    <string name="shizuku_not_working">Shizuku: Service unavailable. Have you installed Shizuku/Sui on your device?</string>
     <string name="shizuku_hidden_api_error">Could not hide app: Could not access IPackageManager API.</string>
     <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
     <string name="apphider_not_ava_title">Unavailable hide-app mode</string>
