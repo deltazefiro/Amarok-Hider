@@ -45,7 +45,7 @@
     <string name="view_github_repo">GitHub repo’su</string>
     <string name="shizuku_pre_v11">Desteklenmeyen Shizuku sürümü: v11 ve öncesi. Lütfen v11 veya üzeri bir Shizuku kullanın.</string>
     <string name="shizuku_permission_denied">Shizuku: İzin reddedildi</string>
-    <string name="shizuku_not_working">Shizuku: Servis kullanılamıyor. Shizuku/Sui cihazınızda kurulu mu\?</string>
+    <string name="shizuku_not_working">Shizuku: Servis kullanılamıyor. Shizuku/Sui cihazınızda kurulu mu?</string>
     <string name="shizuku_hidden_api_error">Uygulama gizlenemedi: IPackageManager API erişimi sağlanamadı.</string>
     <string name="apphider_not_ava_title">Uygulama gizleme yöntemi kullanılamıyor</string>
     <string name="dsm_permission_denied">DSM: İzin reddedildi</string>
