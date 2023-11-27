@@ -8,7 +8,7 @@
     <string name="about_description">Zobrazenie informácií o aplikácii.</string>
     <string name="hidden_toast">Skryté. Cock-a-doodle-do~!</string>
     <string name="obfuscate_filename_description">Urobte názov súboru nečitateľným pre človeka. Základná funkcia skrývania súborov. Nedá sa vypnúť.</string>
-    <string name="filehider_nomedia_description">Do priečinkov pridávajte iba súbory .nomedia. Nie je potrebný prístup root.</string>
+    <string name="filehider_nomedia_description">Do priečinkov pridá len súbor .nomedia. Nie je potrebný prístup root.</string>
     <string name="quick_hide_notification_title">Súkromie nie je skryté</string>
     <string name="apphider_shizuku">Režim Shizuku (Sui)</string>
     <string name="notification_permission_request_title">Vyžaduje sa povolenie na oznámenie</string>
@@ -25,11 +25,11 @@
 \n\t(Posunutím z pravej strany obrazovky otvoríte miestne súbory)</string>
     <string name="biometric_auth_description">Na prístup k službe Amarok použite biometrické overenie zariadenia, ak je k dispozícii.</string>
     <string name="visible_status">Viditeľné</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
 \nobsahuje
 \n
-\n<u>\'%s\'</u></string>
+\n<u>\'%2$s\'</u></string>
     <string name="shizuku_hidden_api_error">Nepodarilo sa skryť aplikáciu: Nepodarilo sa získať prístup k API IPackageManager.</string>
     <string name="dynamic_color_description">Povoľte dynamické farebné témy.</string>
     <string name="warning">VAROVANIE</string>
@@ -57,7 +57,7 @@
     <string name="panic_button_description">Zobrazenie plávajúceho tlačidla, ktoré sa používa na skrytie aplikácií a súborov v núdzových situáciách. Zobrazuje sa nad všetkými ostatnými aplikáciami. Tlačidlo sa zobrazí len v neskrytom stave.</string>
     <string name="disguise">Zamaskovať aplikáciu</string>
     <string name="quick_hide">Rýchle skrývanie</string>
-    <string name="apphider_none">Blokovaný</string>
+    <string name="apphider_none">Vypnutý</string>
     <string name="learn_more">Návod na inštaláciu</string>
     <string name="failed_to_open_doc_tree">Nepodarilo sa otvoriť systémový výber súboru</string>
     <string name="root_not_ava">Nepodarilo sa získať prístup root.</string>
@@ -103,7 +103,7 @@
     <string name="apphider_dsm_description">Skrývanie aplikácií pomocou nástroja Delegated-Scopes-Manager.
 \nNeodporúča sa, pokiaľ vaše zariadenie nemá operačný systém Android 10 alebo starší a nie je rootnuté. Môže mať chyby a fungovať neočakávane. Vyžaduje sa nainštalovaný Icebox (alebo StopAPP) nastavený ako vlastník zariadenia.</string>
     <string name="apphider_none_description">Vypnutie skrývania aplikácií.</string>
-    <string name="filehider_none">Blokovaný</string>
+    <string name="filehider_none">Vypnutý</string>
     <string name="about">O nás</string>
     <string name="spotlight_do_not_show_again">NEZOBRAZOVAŤ ZNOVA</string>
     <string name="welcome_msg">Amarok je bezplatný a slobodný nástroj na skrývanie súkromných súborov &amp; aplikácií.
@@ -118,7 +118,7 @@
     <string name="obfuscate_filename">Zakrývanie názvov súborov</string>
     <string name="notification_channel_name">Služba rýchleho skrývania</string>
     <string name="welcome_title">Vitajte</string>
-    <string name="shizuku_not_working">Shizuku: Služba nie je k dispozícii. Nainštalovali ste Shizuku/Shu do svojho zariadenia\?</string>
+    <string name="shizuku_not_working">Shizuku: Služba nie je k dispozícii. Nainštalovali ste Shizuku/Sui do svojho zariadenia?</string>
     <string name="unhide">Odtajnenie</string>
     <string name="hide">Skryť</string>
     <string name="workmode">Pracovný režim</string>
@@ -174,6 +174,6 @@
     <string name="display_system_apps">Zobraziť systémové aplikácie</string>
     <string name="filehider_chmod">Režim Chmod</string>
     <string name="enable_dynamic_color">Dynamická farba</string>
-    <string name="invalid_dsm_provider">DSM: DSM: Neplatný poskytovateľ DSM. Nainštalovali ste a aktivovali ste poskytovateľa DSM vo vašom zariadení\?</string>
+    <string name="invalid_dsm_provider">DSM: Neplatný poskytovateľ DSM. Nainštalovali ste a aktivovali ste poskytovateľa DSM vo vašom zariadení?</string>
     <string name="view_github_repo">Repozitár GitHub</string>
 </resources>
