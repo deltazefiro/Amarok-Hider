@@ -2,11 +2,11 @@
 <resources>
     <string name="usage_description">Abrir centro de ayuda.</string>
     <string name="add_hide_files">Añadir carpeta oculta</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
 \ncontiene
 \n
-\n<u>\'%s\'</u></string>
+\n<u>\'%2$s\'</u></string>
     <string name="manually_set_path_description">Atención: Asegúrese de que lo que selecciona manualmente existe realmente, ya que no se valida.</string>
     <string name="show_about">Mostrar acerca de</string>
     <string name="switch_app_hider">Cambiar el modo de ocultar aplicaciones</string>
@@ -95,7 +95,7 @@
     <string name="shizuku_pre_v11">Versión de Shizuku no compatible: Pre-v11. Por favor, instale Shizuku v11 o posterior.</string>
     <string name="shizuku_permission_denied">Shizuku: Permiso denegado</string>
     <string name="apphider_not_ava_title">Modo ocultar aplicación no disponible</string>
-    <string name="shizuku_not_working">Shizuku: Servicio no disponible. ¿Has instalado Shizuku/Shu en tu dispositivo\?</string>
+    <string name="shizuku_not_working">Shizuku: Servicio no disponible. ¿Has instalado Shizuku/Sui en tu dispositivo?</string>
     <string name="apphider_root_description">Ocultar aplicaciones con acceso root.
 \nRecomendado si su dispositivo tiene acceso root, pero carece del marco Xposed. Se requiere permiso root.</string>
     <string name="shizuku_hidden_api_error">No se ha podido ocultar la aplicación: No se ha podido acceder a la API IPackageManager.</string>
