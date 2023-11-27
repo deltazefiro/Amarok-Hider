@@ -9,17 +9,17 @@
     <string name="visible_status">Visibile</string>
     <string name="ok">Ok</string>
     <string name="switch_app_hider">Cambiare la modalità di nascondimento</string>
-    <string name="unhide">Scoprire</string>
-    <string name="set_hide_apps">Impostazioni Applicazioni Nascoste</string>
-    <string name="setting_not_ava_when_hidden">Questa impostazione è solo disponibile dopo aver disattivato il nascondimento</string>
+    <string name="unhide">Mostra</string>
+    <string name="set_hide_apps">Impostazioni App Nascoste</string>
+    <string name="setting_not_ava_when_hidden">Questa impostazione è disponibile solo dopo aver disattivato l\'occultamento</string>
     <string name="storage_permission_request_title">Permesso di accesso alla memoria richiesto</string>
     <string name="set_hide_files">Imposta i file nascosti</string>
     <string name="more_settings">Altre Impostazioni</string>
     <string name="apphider_not_ava">Nascondimento non disponibile. Controlla \"Altre Impostazioni\" → \"Cambia la modalità di nascondimento delle app\".</string>
     <string name="apply_on_restart">Riavviare l\'applicazione per applicare le nuove modifiche.</string>
-    <string name="storage_permission_denied">Permesso della memoria negato. il nascondimento non è disponibile</string>
+    <string name="storage_permission_denied">Permesso della memoria negato. L\'occultamento non è disponibile</string>
     <string name="usage">Utilizzo</string>
-    <string name="enable_analytics">Analisi Anonima</string>
+    <string name="enable_analytics">Telemetria Anonima</string>
     <string name="usage_description">Apri il centro assistenza.</string>
     <string name="show_about">Mostra informazioni</string>
     <string name="analytics_description">Invia segnalazioni anonime di crash agli sviluppatori per analisi.</string>
@@ -35,7 +35,7 @@
     <string name="show_debug_info">Informazioni di debug</string>
     <string name="confirm">Conferma</string>
     <string name="debug_info_description">Mostra informazioni che aiutano a risolvere i problemi.</string>
-    <string name="invalid_dsm_provider">DSM: Provider DSM non valido. Hai installato e attivato il provider DSM sul vostro dispositivo\?</string>
+    <string name="invalid_dsm_provider">DSM: Provider DSM non valido. Hai installato e attivato il provider DSM sul dispositivo\?</string>
     <string name="hide_app_failed_admin_inactive">Impossibile nascondere l\'applicazione: Il provider DSM non è attivo.</string>
     <string name="add_hide_files">Aggiungi una cartella nascosta</string>
     <string name="remove_hide_path">Rimuovere la cartella nascosta\?</string>
@@ -103,7 +103,7 @@
     <string name="biometric_auth_description">Utilizzare l\'autenticazione biometrica del dispositivo per accedere ad Amarok, se disponibile.</string>
     <string name="dhizuku_pre_v5">Dhizuku: Versione di Dhizuku non supportata. Aggiornare Dhizuku alla versione 5 o superiore.</string>
     <string name="apphider_dhizuku">Modalità Dhizuku</string>
-    <string name="force_unhide">Forza nascondimento</string>
+    <string name="force_unhide">Rimuovi modalità nascosta</string>
     <string name="force_unhide_description">Prova a ripristinare tutto. Utilizzare questa opzione solo in caso di problemi.</string>
     <string name="force_unhide_confirm_msg">Provare a ripristinare tutto\?
 \n
@@ -117,7 +117,7 @@
     <string name="confirm_password">Conferma la password</string>
     <string name="dhizuku_not_init">Dhizuku: Servizio non disponibile. Assicurati di aver installato e attivato Dhizuku.</string>
     <string name="apphider_shizuku">Modalità Shizuku (Sui)</string>
-    <string name="shizuku_not_working">Shizuku: Servizio non disponibile. Avete installato Shizuku/Shu sul vostro dispositivo\?</string>
+    <string name="shizuku_not_working">Shizuku: Servizio non disponibile. Avete installato Shizuku/Sui sul vostro dispositivo?</string>
     <string name="apphider_dhizuku_description">[Sperimentale] Nascondere le app con Dhizuku.
 \nUna soluzione moderna e migliorata per nascondere le app su dispositivi non-rootati. Sono necessarie l\'installazione e l\'attivazione dell\'applicazione Dhizuku.</string>
     <string name="apphider_none">Disabilitato</string>
@@ -135,4 +135,45 @@
     <string name="alert_permission_request_message">Il pulsante fluttuante ha bisogno di un permesso per le finestre pop-up. Cercare Amarok nel menu delle impostazioni e concederlo.</string>
     <string name="panic_button_description">Visualizza un pulsante fluttuante utilizzato per nascondere applicazioni e file in caso di emergenza. Viene visualizzato sopra tutte le altre app. Il pulsante viene visualizzato solo se non è nascosto.</string>
     <string name="failed_to_open_doc_tree_description">Oops! Il sistema non dispone di un gestore di file predefinito. Premere a lungo il pulsante \"Aggiungi cartella nascosta\" e inserire manualmente il percorso.</string>
+    <string name="performing_force_unhide">Esecuzione della rimozione modalità nascosta. Attendere.</string>
+    <string name="app_name_calendar">Calendario</string>
+    <string name="filehider_nomedia_description">Aggiunge solo un file .nomedia alle cartelle. Non è richiesto l\'accesso root.</string>
+    <string name="quick_hide_notification_title">Privacy non nascosta</string>
+    <string name="notification_permission_request_title">È necessaria l\'autorizzazione alla notifica</string>
+    <string name="filter">Filtro</string>
+    <string name="notification_permission_denied">Autorizzazione alla notifica negata.</string>
+    <string name="dynamic_color_description">Abilita i temi dinamici per i colori.</string>
+    <string name="warning">ATTENZIONE</string>
+    <string name="password">Password</string>
+    <string name="filehider_none_description">Disabilita il nascondimento dei file.</string>
+    <string name="filehider_chmod_description">Modifica i permessi dei file per renderli illeggibili. È necessario l\'accesso root. La procedura è istantanea.</string>
+    <string name="close_disguise_spotlight_tip">Premi a lungo <font fgcolor="#FCCA3E"><b>Numero Anno</b></font> per aprire Amarok.</string>
+    <string name="disguise">Camuffa app</string>
+    <string name="filehider_obfuscate_description">Offusca i nomi dei file e le firme dei file. Non è richiesto l\'accesso root. L\'elaborazione può richiedere del tempo.</string>
+    <string name="invalid_action">Ricevuto intento non valido: %s</string>
+    <string name="filehider_nomedia">Modalità NoMedia</string>
+    <string name="invalid_path">Percorso non valido.</string>
+    <string name="quick_hide_notification_description">Mostra una notifica permanente per avvisare gli utenti quando non è nascosta.</string>
+    <string name="quick_hide_notification_content">La tua privacy non è protetta. Clicca per nascondere.</string>
+    <string name="filehider_none">Disabilitato</string>
+    <string name="spotlight_do_not_show_again">NON MOSTRARE PIU\'</string>
+    <string name="welcome_msg">Amarok è uno strumento gratuito e libero per nascondere file e app private.
+\n
+\nAmarok non è un software di crittografia, ma uno strumento per nascondere le cose. Si sconsiglia vivamente di utilizzare Amarok per proteggere file confidenziali.
+\n
+\n<u>Disclaimer: Amarok viene fornito senza alcuna garanzia o condizione. L\'utente è pienamente responsabile di qualsiasi danno o conseguenza che possa derivare dall\'uso di Amarok.</u></string>
+    <string name="welcome_title">Benvenuto</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Alcuni utenti Samsung hanno segnalato che l\'utilizzo di ChmodFileHider ha causato il mancato avvio dei loro dispositivi.</font> Per ulteriori informazioni consultare il bug #105 su GitHub. L\'uso dell\'app è a proprio rischio.</b></string>
+    <string name="filehider_obfuscate">Modalità di offuscamento</string>
+    <string name="notification_permission_request_message">Il servizio QuickHide necessita dell\'autorizzazione alla notifica per funzionare.</string>
+    <string name="follow_system">(Segui quella di sistema)</string>
+    <string name="language">Lingua</string>
+    <string name="participate_translation">Partecipa alla traduzione</string>
+    <string name="filehider_not_ava_title">Nascondimento file non disponibile</string>
+    <string name="participate_translation_description">Aiutaci a tradurre Amarok nella tua lingua.</string>
+    <string name="disguise_description">Camuffa Amarok come calendario.</string>
+    <string name="calendar_about">Calendario | by @koramA</string>
+    <string name="display_system_apps">Mostra le app di sistema</string>
+    <string name="filehider_chmod">Modalità Chmod</string>
+    <string name="enable_dynamic_color">Colore dinamico</string>
 </resources>
