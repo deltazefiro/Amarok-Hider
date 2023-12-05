@@ -64,7 +64,7 @@
     <string name="manually_set_path_description">Внимание: Убедитесь, что то, что вы выбираете вручную, действительно существует, так как это не проверяется.</string>
     <string name="shizuku_pre_v11">Неподдерживаемая версия Shizuku: Pre-v11. Пожалуйста, установите Shizuku v11 или более позднюю версию.</string>
     <string name="shizuku_hidden_api_error">Не удалось скрыть приложение: Не удалось получить доступ к IPackageManager API.</string>
-    <string name="shizuku_not_working">Shizuku: Служба не доступна. Вы установили Shizuku/Shu на своё устройство\?</string>
+    <string name="shizuku_not_working">Shizuku: Служба не доступна. Вы установили Shizuku/Sui на своё устройство?</string>
     <string name="dsm_permission_denied">DSM: В разрешении отказано</string>
     <string name="apphider_none">Отключен</string>
     <string name="apphider_none_description">Скрытие приложений отключено.</string>

@@ -60,7 +60,7 @@
     <string name="hide_app_failed_admin_inactive">Kunne ikke skjule programmet. Administrering er ikke aktiv.</string>
     <string name="add_hide_files">Programskjulingsmappe</string>
     <string name="apphider_not_ava">Programskjuler er ikke tilgjengelig. Sjekk «Flere innstillinger» → «Bytt programskjuler».</string>
-    <string name="shizuku_not_working">Shizuku: Tjenesten er ikke gyldig. Har du installert Shizuku/Shu på enheten din\?</string>
+    <string name="shizuku_not_working">Shizuku: Tjenesten er ikke gyldig. Har du installert Shizuku/Sui på enheten din?</string>
     <string name="remove_hide_path">Fjern skjulingssti\?</string>
     <string name="remove_hide_path_description">Fjern stien «%s» fra skjuling\?</string>
     <string name="not_local_storage_description">Forsikre deg om at det er en mappe som finnes.</string>

@@ -110,7 +110,7 @@
     <string name="filename_and_header">اسم الملف + الرأس</string>
     <string name="obfuscate_filename">تعتيم أسماء الملفات</string>
     <string name="notification_channel_name">خدمة الإخفاء السريع</string>
-    <string name="shizuku_not_working">شيزوكو: الخدمة غير متوفرة. هل قمت بتثبيت Shizuku / Shu على جهازك؟</string>
+    <string name="shizuku_not_working">شيزوكو: الخدمة غير متوفرة. هل قمت بتثبيت Shizuku / Sui على جهازك؟</string>
     <string name="workmode">وضع العمل</string>
     <string name="usage">استخدام</string>
     <string name="alert_permission_denied">تم رفض إذن العرض فوق التطبيقات الأخرى.</string>
