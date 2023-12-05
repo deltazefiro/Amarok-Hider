@@ -24,11 +24,11 @@
 \n\t(Превуците с десне стране екрана да бисте отворили локалне фајлове)</string>
     <string name="biometric_auth_description">Користите биометријску аутентификацију уређаја за приступ Amarok-у, када је доступно.</string>
     <string name="visible_status">Видљиво</string>
-    <string name="path_duplicated_description"><u>„%s“</u>
+    <string name="path_duplicated_description"><u>„%1$s“</u>
 \n
 \nсадржи
 \n
-\n<u>„%s“</u></string>
+\n<u>„%2$s“</u></string>
     <string name="shizuku_hidden_api_error">Није могуће сакрити апликацију: Није могуће приступити IPackageManager API-ју.</string>
     <string name="dynamic_color_description">Омогућите динамичку тему боја.</string>
     <string name="password">Лозинка</string>
@@ -105,7 +105,7 @@
     <string name="filename_and_header">Име фајла + Заглавље</string>
     <string name="obfuscate_filename">Замагли имена фајлова</string>
     <string name="notification_channel_name">Услуга брзог сакривања</string>
-    <string name="shizuku_not_working">Shizuku: Услуга недоступна. Да ли сте инсталирали Shizuku/Shu на свој уређај\?</string>
+    <string name="shizuku_not_working">Shizuku: Услуга недоступна. Да ли сте инсталирали Shizuku/Sui на свој уређај?</string>
     <string name="unhide">Откриј</string>
     <string name="hide">Сакриј</string>
     <string name="workmode">Радни режим</string>

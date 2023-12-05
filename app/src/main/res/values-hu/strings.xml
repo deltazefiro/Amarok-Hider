@@ -55,7 +55,7 @@
     <string name="no_update_ava">A legújabb verzió fut.</string>
     <string name="manually_set_path">Manuális kiválasztás</string>
     <string name="shizuku_permission_denied">Shizuku: Engedély megtagadva</string>
-    <string name="shizuku_not_working">Shizuku: A szolgáltatás nem elérhető. Telepítette a Shizuku/Shu-t a készülékére\?</string>
+    <string name="shizuku_not_working">Shizuku: A szolgáltatás nem elérhető. Telepítette a Shizuku/Sui-t a készülékére?</string>
     <string name="shizuku_service_not_running">Shizuku: A szolgáltatás nem fut.</string>
     <string name="apphider_not_ava_title">Nem elérhető alkalmazásrejtés mód</string>
     <string name="apphider_none">Hatástalanítva</string>

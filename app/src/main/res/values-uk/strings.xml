@@ -40,7 +40,7 @@
     <string name="manually_set_path">Виберіть вручну</string>
     <string name="view_github_repo">Репозиторій GitHub</string>
     <string name="shizuku_pre_v11">Непідтримувана версія Shizuku: Pre-v11. Будь ласка, встановіть Shizuku v11 або новішу версію.</string>
-    <string name="shizuku_not_working">Shizuku: Послуга недоступна. Чи встановлено Shizuku/Shu на вашому пристрої\?</string>
+    <string name="shizuku_not_working">Shizuku: Послуга недоступна. Чи встановлено Shizuku/Sui на вашому пристрої?</string>
     <string name="shizuku_hidden_api_error">Не вдалося приховати застосунок: Не вдалося отримати доступ до API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku: Служба не працює.</string>
     <string name="dsm_permission_denied">DSM: У дозволі відмовлено</string>
