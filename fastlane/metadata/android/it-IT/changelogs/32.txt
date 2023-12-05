@@ -1,11 +1,11 @@
-Rotture
+Strutturali
 * Aggiornamento di TargetAPI a 33 (Android 13)
 Nuove Caratteristiche
 * Supporta l'offuscamento completo dei file di testo (#3)
 * Supporto dell'offuscamento avanzato dei file di testo (#3)
 Ottimizzazioni
 * Aggiornamento della versione di compilazione di Java a Java 11
-* Aggiornamento di dep AppCompat
+* Aggiornamento dipendenze AppCompat
 * Riformulato il FileHider per migliorare la stabilità (#20)(#16)
 * Scambiato l'ordine di nascosione per applicazioni e file
 * Ottimizzata la traduzione in inglese e cinese

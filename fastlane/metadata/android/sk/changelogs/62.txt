@@ -1,0 +1,13 @@
+v0.8.5b1
+- Zameranie na Android 14
+- Aktualizácia komunitných prekladov
+
+v0.8.5a2
+- Podpora prepínania režimov skrývania súborov: Chmod a NoMedia
+- Optimalizácia výkonu režimu root
+- Pridanie uvítacieho oznámenia (#96)
+- Aktualizácia prekladov od komunity: španielčina, portugalčina, srbčina, turečtina, arabčina, japončina, poľština, ruština
+
+v0.8.5a1
+- Podpora maskovania Amaroku ako kalendára
+- Aktualizácia prekladov od komunity: maďarčina, taliančina, ukrajinčina, francúzština, španielčina, nemčina

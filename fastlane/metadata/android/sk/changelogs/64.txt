@@ -1,0 +1,4 @@
+v0.8.5b3
+- Oprava pádu oznámenia QuickHide na systéme Android 14
+- Oprava nesprávnej identifikácie priečinkov v slučke, keď sú prefixy priečinkov rovnaké
+- Aktualizácia komunitných prekladov

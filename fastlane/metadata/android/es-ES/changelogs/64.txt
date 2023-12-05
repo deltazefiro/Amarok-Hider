@@ -1,0 +1,4 @@
+v0.8.5b3
+- Solucionar los problemas en la notificación de QuickHide en Android 14
+- Se corrigió la identificación incorrecta de los bucles en las carpetas cuando los prefijos son idénticos
+- Traducciones actualizadas por la comunidad
