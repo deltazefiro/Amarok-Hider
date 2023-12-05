@@ -1,0 +1,16 @@
+v0.8.5b2 *Aggiornamento urgente*
+- L'avviso ChmodFileHider può causare il mancato avvio di Samsung S23 (#105)
+
+v0.8.5b1
+- Pronto per Android 14
+- Aggiornate le traduzioni della comunità
+
+v0.8.5a2
+- Supporto per cambio modalità di nascondimento dei file: modo Chmod e modo NoMedia
+- Ottimizzate prestazioni in modalità root
+- Aggiunta notifica di benvenuto (#96)
+- Aggiornate le traduzioni della comunità
+
+v0.8.5a1
+- Supporto per mascherare Amarok come calendario
+- Aggiornate le traduzioni della comunità

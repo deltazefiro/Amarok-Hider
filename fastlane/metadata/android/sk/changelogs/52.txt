@@ -1,0 +1,6 @@
+v0.8.4a3
+- Pridanie možnosti: vynútiť odkrývanie
+- Podpora skrývania systémových aplikácií (#83)
+- Podpora prepínania jazyka v aplikácii
+- Experimentálne: NoMediaFileHider
+- Aktualizácia prekladov: španielčina, turečtina, ukrajinčina, nórčina Bokmål
