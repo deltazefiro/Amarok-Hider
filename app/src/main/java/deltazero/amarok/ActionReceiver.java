@@ -12,17 +12,16 @@ public class ActionReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i("ActionReceiver", "New action received.");
-        Hider hider = new Hider(context);
 
-        if (Boolean.TRUE.equals(Hider.isProcessing.getValue())) {
+        if (Hider.state.getValue() == Hider.State.PROCESSING) {
             Log.w("ActionReceiver", "Already processing. Ignore the new action.");
             return;
         }
 
         if (Objects.equals(intent.getAction(), "deltazero.amarok.HIDE")) {
-            hider.hide();
+            Hider.hide(context);
         } else if (Objects.equals(intent.getAction(), "deltazero.amarok.UNHIDE")) {
-            hider.unhide();
+            Hider.unhide(context);
         } else {
             Log.w("ActionReceiver", "Invalid action: " + intent.getAction());
             Toast.makeText(context, context.getString(R.string.invalid_action, intent.getAction()),

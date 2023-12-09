@@ -10,7 +10,9 @@ public class AmarokApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         PrefMgr.init(this);
+        Hider.init();
 
         if (PrefMgr.getEnableDynamicColor())
             DynamicColors.applyToActivitiesIfAvailable(this);

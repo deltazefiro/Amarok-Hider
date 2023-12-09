@@ -230,7 +230,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void switchFileHider(View view) {
-        if (PrefMgr.getIsHidden() || Boolean.TRUE.equals(Hider.isProcessing.getValue())) {
+        if (Hider.getState() == Hider.State.PROCESSING || Hider.getState() == Hider.State.HIDDEN) {
             Toast.makeText(this, R.string.option_unava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -262,7 +262,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .setTitle(R.string.force_unhide)
                 .setMessage(R.string.force_unhide_confirm_msg)
                 .setPositiveButton(R.string.confirm, (dialog, which) -> {
-                    new Hider(this).forceUnhide();
+                    Hider.forceUnhide(this);
                     Toast.makeText(this, R.string.performing_force_unhide, Toast.LENGTH_LONG).show();
                     finish();
                 })

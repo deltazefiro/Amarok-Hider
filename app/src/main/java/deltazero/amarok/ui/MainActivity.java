@@ -14,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -36,14 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
     public final static String TAG = "Main";
 
-    private Hider hider;
-
     private ScrollView svMainLayout;
     private ImageView ivStatusImg;
     private TextView tvStatusInfo, tvStatus;
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
-    private MutableLiveData<Boolean> isProcessing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Start App-center
         AppCenterUtil.startAppCenter(this);
-
-        // Prepare data & init hider
-        hider = new Hider(this);
 
         // Binding views
         svMainLayout = findViewById(R.id.main_sv_main_layout);
@@ -69,11 +62,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Init UI
         svMainLayout.setVisibility(View.GONE);
-        refreshUi();
+        refreshUi(Hider.getState());
 
         // Setup observer
-        isProcessing = Hider.isProcessing;
-        isProcessing.observe(this, aBoolean -> refreshUi());
+        Hider.state.observe(this, this::refreshUi);
 
         // Launch disguise activity if needed
         var activityLauncher = BetterActivityLauncher.registerActivityForResult(this);
@@ -106,16 +98,14 @@ public class MainActivity extends AppCompatActivity {
             new MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.welcome_title)
                     .setMessage(R.string.welcome_msg)
-                    .setPositiveButton(R.string.ok, (dialog, which) -> {
-                        PermissionUtil.requestStoragePermission(this);
-                    })
+                    .setPositiveButton(R.string.ok, (dialog, which)
+                            -> PermissionUtil.requestStoragePermission(this))
                     .setNegativeButton(R.string.view_github_repo, (dialog, which) -> {
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider")));
+                        startActivity(new Intent(Intent.ACTION_VIEW,
+                                Uri.parse("https://github.com/deltazefiro/Amarok-Hider")));
                         PermissionUtil.requestStoragePermission(this);
                     })
-                    .setOnCancelListener(dialog -> {
-                        PermissionUtil.requestStoragePermission(this);
-                    })
+                    .setOnCancelListener(dialog -> PermissionUtil.requestStoragePermission(this))
                     .show();
             PrefMgr.setShowWelcome(false);
         } else {
@@ -129,9 +119,8 @@ public class MainActivity extends AppCompatActivity {
                 new MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.apphider_not_ava_title)
                         .setMessage(msg)
-                        .setPositiveButton(R.string.switch_app_hider, (dialog, which) -> {
-                            startActivity(new Intent(this, SwitchAppHiderActivity.class));
-                        })
+                        .setPositiveButton(R.string.switch_app_hider, (dialog, which)
+                                -> startActivity(new Intent(this, SwitchAppHiderActivity.class)))
                         .setNegativeButton(getString(R.string.ok), null)
                         .show();
             }
@@ -143,9 +132,8 @@ public class MainActivity extends AppCompatActivity {
                 new MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.filehider_not_ava_title)
                         .setMessage(msg)
-                        .setPositiveButton(R.string.switch_file_hider, (dialog, which) -> {
-                            startActivity(new Intent(this, SwitchFileHiderActivity.class));
-                        })
+                        .setPositiveButton(R.string.switch_file_hider, (dialog, which)
+                                -> startActivity(new Intent(this, SwitchFileHiderActivity.class)))
                         .setNegativeButton(getString(R.string.ok), null)
                         .show();
             }
@@ -153,16 +141,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeStatus(View view) {
-        if (PrefMgr.getIsHidden()) {
-            hider.unhide();
-        } else {
-            hider.hide();
-        }
+        if (Hider.getState() == Hider.State.HIDDEN) Hider.unhide(this);
+        else Hider.hide(this);
     }
 
     public void setHideApps(View view) {
 
-        if (PrefMgr.getIsHidden()) {
+        if (Hider.getState() == Hider.State.HIDDEN) {
             Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -189,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (PrefMgr.getIsHidden()) {
+        if (Hider.getState() == Hider.State.HIDDEN) {
             Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -197,27 +182,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(this, SetHideFilesActivity.class));
     }
 
-    public void refreshUi() {
-        if (isProcessing != null && Boolean.TRUE.equals(isProcessing.getValue())) {
-            // Processing
-            piProcessStatus.show();
-            btChangeStatus.setEnabled(false);
-        } else {
-            // Not Processing
-            piProcessStatus.hide();
-            btChangeStatus.setEnabled(true);
-
-            if (!PrefMgr.getIsHidden()) {
-                // Visible
-                ivStatusImg.setImageResource(R.drawable.img_status_visible);
-                ivStatusImg.setImageTintList(null);
-                btChangeStatus.setText(R.string.hide);
-                btChangeStatus.setIconResource(R.drawable.ic_paw);
-                btSetHideFiles.setEnabled(true);
-                btSetHideApps.setEnabled(true);
-                tvStatus.setText(getText(R.string.visible_status));
-                tvStatusInfo.setText(getText(R.string.visible_moto));
-            } else {
+    public void refreshUi(Hider.State state) {
+        switch (state) {
+            case HIDDEN -> {
+                // Not Processing
+                piProcessStatus.hide();
+                btChangeStatus.setEnabled(true);
                 // Hidden
                 ivStatusImg.setImageResource(R.drawable.img_status_hidden);
                 ivStatusImg.setImageTintList(getColorStateList(com.google.android.material.R.color.material_on_background_emphasis_high_type));
@@ -227,6 +197,25 @@ public class MainActivity extends AppCompatActivity {
                 btSetHideApps.setEnabled(false);
                 tvStatus.setText(getText(R.string.hidden_status));
                 tvStatusInfo.setText(getText(R.string.hidden_moto));
+            }
+            case VISIBLE -> {
+                // Not Processing
+                piProcessStatus.hide();
+                btChangeStatus.setEnabled(true);
+                // Visible
+                ivStatusImg.setImageResource(R.drawable.img_status_visible);
+                ivStatusImg.setImageTintList(null);
+                btChangeStatus.setText(R.string.hide);
+                btChangeStatus.setIconResource(R.drawable.ic_paw);
+                btSetHideFiles.setEnabled(true);
+                btSetHideApps.setEnabled(true);
+                tvStatus.setText(getText(R.string.visible_status));
+                tvStatusInfo.setText(getText(R.string.visible_moto));
+            }
+            case PROCESSING -> {
+                // Processing
+                piProcessStatus.show();
+                btChangeStatus.setEnabled(false);
             }
         }
 
@@ -240,10 +229,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        refreshUi();
+        refreshUi(Hider.getState());
         super.onResume();
     }
-
 }
 
 

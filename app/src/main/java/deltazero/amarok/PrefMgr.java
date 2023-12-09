@@ -27,6 +27,10 @@ public final class PrefMgr {
     private static SharedPreferences mPrefs;
     private static SharedPreferences.Editor mPrefEditor;
 
+    /**
+     * This method should be invoked in {@link AmarokApp#onCreate()}.
+     * @param context Application context
+     */
     public static void init(Context context) {
         mPrefs = context.getSharedPreferences("deltazero.amarok.prefs", MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
@@ -41,6 +45,10 @@ public final class PrefMgr {
         mPrefEditor.apply();
     }
 
+    /**
+     * Avoid using this method except for initializing {@link Hider}.
+     * Use {@link Hider#getState()} instead.
+     */
     public static boolean getIsHidden() {
         return mPrefs.getBoolean("isHidden", false);
     }

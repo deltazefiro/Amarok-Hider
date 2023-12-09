@@ -16,7 +16,6 @@ import android.widget.ImageView;
 
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.LifecycleService;
-import androidx.lifecycle.MutableLiveData;
 
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
@@ -27,9 +26,7 @@ import deltazero.amarok.ui.MainActivity;
 
 public class QuickHideService extends LifecycleService {
 
-    private MutableLiveData<Boolean> isProcessing;
     private EasyWindow<?> panicButton;
-    private Hider hider;
     private ImageView ivPanicButton;
 
     private PendingIntent activityPendingIntent;
@@ -42,8 +39,6 @@ public class QuickHideService extends LifecycleService {
     @Override
     public void onCreate() {
         super.onCreate();
-
-        hider = new Hider(this);
 
         // Create notification channel
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
@@ -100,14 +95,13 @@ public class QuickHideService extends LifecycleService {
                 .setYOffset(300)
                 .setDraggable(new SpringDraggable())
                 .setOnClickListener(R.id.dialog_iv_panic_button,
-                        (EasyWindow.OnClickListener<ImageView>) (xToast, view) -> hider.hide());
+                        (EasyWindow.OnClickListener<ImageView>) (xToast, view) -> Hider.hide(this));
 
         ivPanicButton = panicButton.findViewById(R.id.dialog_iv_panic_button);
         ivPanicButton.setColorFilter(getColor(R.color.light_grey),
                 PorterDuff.Mode.SRC_IN);
 
-        isProcessing = Hider.isProcessing;
-        isProcessing.observe(this, aBoolean -> updatePanicButton());
+        Hider.state.observe(this, state -> updatePanicButton());
         updatePanicButton();
 
         Log.i("QuickHideService", "Service start.");
@@ -123,7 +117,7 @@ public class QuickHideService extends LifecycleService {
             context.startForegroundService(new Intent(context, QuickHideService.class));
         } else if (!PrefMgr.getEnableQuickHideService()) {
             Log.i("QuickHideService", "QuickHideService is disabled. Skip starting service.");
-        } else if (PrefMgr.getIsHidden()) {
+        } else if (Hider.getState() == Hider.State.HIDDEN) {
             Log.i("QuickHideService", "Current state is hidden. Skip starting service.");
         } else if (!XXPermissions.isGranted(context, Permission.NOTIFICATION_SERVICE)) {
             Log.w("QuickHideService", "Permission denied: NOTIFICATION_SERVICE. Skip starting service.");
@@ -148,13 +142,12 @@ public class QuickHideService extends LifecycleService {
             return;
         }
 
-        assert isProcessing.getValue() != null;
-        if (isProcessing.getValue()) {
+        if (Hider.getState() == Hider.State.PROCESSING) {
             ivPanicButton.setColorFilter(getApplication().getColor(com.google.android.material.R.color.design_default_color_error),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(false);
         } else {
-            if (PrefMgr.getIsHidden()) {
+            if (Hider.getState() == Hider.State.HIDDEN) {
                 cancelPanicButton();
             } else {
                 showPanicButton();
