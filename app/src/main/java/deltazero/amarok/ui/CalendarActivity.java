@@ -4,7 +4,6 @@ import static com.kizitonwose.calendar.core.ExtensionsKt.firstDayOfWeekFromLocal
 import static deltazero.amarok.utils.SwitchLocaleUtil.getActiveLocale;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -44,14 +43,10 @@ public class CalendarActivity extends AppCompatActivity {
     LocalDate selectedDate = null;
     CalendarDay selectedDateDay = null;
 
-    PrefMgr prefMgr;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
-        prefMgr = new PrefMgr(this);
 
         calendarView = findViewById(R.id.calendar_view);
         tvMonth = findViewById(R.id.calendar_tv_month_text);
@@ -61,7 +56,6 @@ public class CalendarActivity extends AppCompatActivity {
         YearMonth startMonth = currentMonth.minusMonths(100);
         YearMonth endMonth = currentMonth.plusMonths(100);
 
-        Context context = this;
         calendarView.setup(startMonth, endMonth, firstDayOfWeekFromLocale());
 
         setupDayBinder(calendarView, currentMonth);
@@ -79,7 +73,7 @@ public class CalendarActivity extends AppCompatActivity {
             return true;
         });
 
-        if (prefMgr.getDoShowQuitDisguiseInstuct()) {
+        if (PrefMgr.getDoShowQuitDisguiseInstuct()) {
             showInstruction();
         }
     }
@@ -105,7 +99,7 @@ public class CalendarActivity extends AppCompatActivity {
         spotlightLayout.setOnClickListener(v -> spotlight.finish());
         spotlightLayout.findViewById(R.id.calendar_bt_spotlight_do_not_show_again).setOnClickListener(v -> {
             spotlight.finish();
-            prefMgr.setDoShowQuitDisguiseInstuct(false);
+            PrefMgr.setDoShowQuitDisguiseInstuct(false);
         });
         spotlight.start();
     }

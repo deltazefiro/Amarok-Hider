@@ -12,7 +12,6 @@ import deltazero.amarok.R;
 
 public class ObfuscateFileHiderSettingsActivity extends AppCompatActivity {
 
-    private PrefMgr prefMgr;
     private MaterialSwitch swObfuscateFileHeader, swObfuscateTextFile, swObfuscateTextFileEnhanced;
     private MaterialToolbar tbToolBar;
 
@@ -21,8 +20,6 @@ public class ObfuscateFileHiderSettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_obfuscate_filehider_settings);
 
-        prefMgr = new PrefMgr(this);
-
         swObfuscateFileHeader = findViewById(R.id.switch_filehider_sw_obfuscate_header);
         swObfuscateTextFile = findViewById(R.id.switch_filehider_sw_obfuscate_text);
         swObfuscateTextFileEnhanced = findViewById(R.id.switch_filehider_sw_obfuscate_text_enhanced);
@@ -30,22 +27,22 @@ public class ObfuscateFileHiderSettingsActivity extends AppCompatActivity {
 
         // Init UI
         swObfuscateFileHeader.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableObfuscateFileHeader(isChecked);
+            PrefMgr.setEnableObfuscateFileHeader(isChecked);
             if (!isChecked) {
-                prefMgr.setEnableObfuscateTextFile(false);
-                prefMgr.setEnableObfuscateTextFileEnhanced(false);
+                PrefMgr.setEnableObfuscateTextFile(false);
+                PrefMgr.setEnableObfuscateTextFileEnhanced(false);
             }
             updateUI();
         });
         swObfuscateTextFile.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableObfuscateTextFile(isChecked);
+            PrefMgr.setEnableObfuscateTextFile(isChecked);
             if (!isChecked) {
-                prefMgr.setEnableObfuscateTextFileEnhanced(false);
+                PrefMgr.setEnableObfuscateTextFileEnhanced(false);
             }
             updateUI();
         });
         swObfuscateTextFileEnhanced.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableObfuscateTextFileEnhanced(isChecked);
+            PrefMgr.setEnableObfuscateTextFileEnhanced(isChecked);
             updateUI();
         });
 
@@ -63,11 +60,11 @@ public class ObfuscateFileHiderSettingsActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        swObfuscateFileHeader.setChecked(prefMgr.getEnableObfuscateFileHeader());
-        swObfuscateTextFile.setChecked(prefMgr.getEnableObfuscateTextFile());
-        swObfuscateTextFileEnhanced.setChecked(prefMgr.getEnableObfuscateTextFileEnhanced());
+        swObfuscateFileHeader.setChecked(PrefMgr.getEnableObfuscateFileHeader());
+        swObfuscateTextFile.setChecked(PrefMgr.getEnableObfuscateTextFile());
+        swObfuscateTextFileEnhanced.setChecked(PrefMgr.getEnableObfuscateTextFileEnhanced());
 
-        swObfuscateTextFile.setEnabled(prefMgr.getEnableObfuscateFileHeader());
-        swObfuscateTextFileEnhanced.setEnabled(prefMgr.getEnableObfuscateFileHeader() && prefMgr.getEnableObfuscateTextFile());
+        swObfuscateTextFile.setEnabled(PrefMgr.getEnableObfuscateFileHeader());
+        swObfuscateTextFileEnhanced.setEnabled(PrefMgr.getEnableObfuscateFileHeader() && PrefMgr.getEnableObfuscateTextFile());
     }
 }

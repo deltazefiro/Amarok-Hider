@@ -18,7 +18,6 @@ public class Hider {
     private static final String TAG = "Hider";
     private static final HandlerThread hiderThread = new HandlerThread("HIDER_THREAD");
 
-    private final PrefMgr prefMgr;
     private final Context context;
     private final Handler threadHandler;
 
@@ -29,7 +28,6 @@ public class Hider {
 
     public Hider(Context context) {
         this.context = context;
-        prefMgr = new PrefMgr(context);
 
         // Init Background Handler
         if (hiderThread.getState() == Thread.State.NEW)
@@ -62,7 +60,7 @@ public class Hider {
         if (Boolean.TRUE.equals(isProcessing.getValue())) {
             hiderThread.interrupt();
         }
-        prefMgr.setIsHidden(true);
+        PrefMgr.setIsHidden(true);
         unhide();
     }
 
@@ -71,14 +69,14 @@ public class Hider {
         refreshHiders();
 
         try {
-            appHider.hide(prefMgr.getHideApps());
-            fileHider.hide(prefMgr.getHideFilePath());
+            appHider.hide(PrefMgr.getHideApps());
+            fileHider.hide(PrefMgr.getHideFilePath());
         } catch (InterruptedException e) {
             Log.w(TAG, "Process 'hide' interrupted.");
             return;
         }
 
-        prefMgr.setIsHidden(true);
+        PrefMgr.setIsHidden(true);
 
         Log.i(TAG, "Process 'hide' finished.");
         Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
@@ -89,22 +87,22 @@ public class Hider {
         refreshHiders();
 
         try {
-            appHider.unhide(prefMgr.getHideApps());
-            fileHider.unhide(prefMgr.getHideFilePath());
+            appHider.unhide(PrefMgr.getHideApps());
+            fileHider.unhide(PrefMgr.getHideFilePath());
         } catch (InterruptedException e) {
             Log.w(TAG, "Process 'unhide' interrupted.");
             return;
         }
 
-        prefMgr.setIsHidden(false);
+        PrefMgr.setIsHidden(false);
 
         Log.i(TAG, "Process 'unhide' finished.");
         Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
     }
 
     private void refreshHiders() {
-        appHider = prefMgr.getAppHider();
-        fileHider = prefMgr.getFileHider();
+        appHider = PrefMgr.getAppHider(context);
+        fileHider = PrefMgr.getFileHider(context);
     }
 
 }

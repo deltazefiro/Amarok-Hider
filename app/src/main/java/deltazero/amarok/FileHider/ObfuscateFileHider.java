@@ -49,11 +49,10 @@ public class ObfuscateFileHider extends BaseFileHider {
 
     public ObfuscateFileHider(Context context) {
         super(context);
-        var prefMgr = new PrefMgr(context);
-        processHeader = prefMgr.getEnableObfuscateFileHeader();
-        processHeaderLegacy = prefMgr.getLegacyEnableObfuscateFileHeader();
-        processTextFile = prefMgr.getEnableObfuscateTextFile();
-        processTextFileEnhanced = prefMgr.getEnableObfuscateTextFileEnhanced();
+        processHeader = PrefMgr.getEnableObfuscateFileHeader();
+        processHeaderLegacy = PrefMgr.getLegacyEnableObfuscateFileHeader();
+        processTextFile = PrefMgr.getEnableObfuscateTextFile();
+        processTextFileEnhanced = PrefMgr.getEnableObfuscateTextFileEnhanced();
     }
 
     @Override

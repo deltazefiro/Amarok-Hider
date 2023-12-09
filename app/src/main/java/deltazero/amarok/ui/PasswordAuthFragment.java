@@ -23,7 +23,6 @@ public class PasswordAuthFragment extends BottomSheetDialogFragment {
     private OnVerifiedCallback onVerifiedCallback;
     private TextInputEditText etPassword;
     private TextInputLayout tilPassword;
-    private PrefMgr prefMgr;
 
     public interface OnVerifiedCallback {
         void onVerified(boolean succeed);
@@ -32,8 +31,6 @@ public class PasswordAuthFragment extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        prefMgr = new PrefMgr(requireContext());
 
         setCancelable(false);
         View fragmentView = inflater.inflate(R.layout.dialog_security, container, false);
@@ -72,7 +69,7 @@ public class PasswordAuthFragment extends BottomSheetDialogFragment {
 
     private void verify() {
 
-        String password = prefMgr.getAmarokPassword();
+        String password = PrefMgr.getAmarokPassword();
         assert etPassword.getText() != null;
 
         if (password == null || HashUtil.calculateHash(etPassword.getText().toString()).equals(password)) {
