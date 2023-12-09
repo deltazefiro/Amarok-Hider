@@ -24,7 +24,7 @@ public class SecurityAuthForQuickHideActivity extends AppCompatActivity {
 
         securityAuth = new SecurityAuth(this, succeed -> {
             if (succeed)
-                new Hider(this).unhide();
+                Hider.unhide(this);
             finish();
         });
     }

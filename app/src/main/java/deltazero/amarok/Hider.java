@@ -13,96 +13,92 @@ import deltazero.amarok.FileHider.BaseFileHider;
 import rikka.shizuku.ShizukuProvider;
 
 
-public class Hider {
+public final class Hider {
 
     private static final String TAG = "Hider";
     private static final HandlerThread hiderThread = new HandlerThread("HIDER_THREAD");
+    private static final Handler threadHandler;
 
-    private final Context context;
-    private final Handler threadHandler;
+    public static MutableLiveData<State> state;
 
-    private BaseAppHider appHider;
-    private BaseFileHider fileHider;
+    public enum State {
+        HIDDEN,
+        VISIBLE,
+        PROCESSING
+    }
 
-    public static final MutableLiveData<Boolean> isProcessing = new MutableLiveData<>(false);
-
-    public Hider(Context context) {
-        this.context = context;
-
-        // Init Background Handler
-        if (hiderThread.getState() == Thread.State.NEW)
-            hiderThread.start();
+    static {
+        hiderThread.start();
         threadHandler = new Handler(hiderThread.getLooper());
-
-        // Enable shizukuProvider
-        threadHandler.post(() -> ShizukuProvider.enableMultiProcessSupport(false));
     }
 
-    public void hide() {
+    /**
+     * This method should be invoked in {@link AmarokApp#onCreate()}, after {@link PrefMgr#init(Context)}.
+     * Do not invoke this method in static part or before {@link PrefMgr#init(Context)}.
+     */
+    public static void init() {
+        state = new MutableLiveData<>(PrefMgr.getIsHidden() ? State.HIDDEN : State.VISIBLE);
+    }
+
+    public static State getState() {
+        return state.getValue();
+    }
+
+    public static void hide(Context context) {
+
         threadHandler.post(() -> {
-            isProcessing.postValue(true);
-            syncHide();
-            isProcessing.postValue(false);
+
+            state.postValue(State.PROCESSING);
+
+            try {
+                PrefMgr.getAppHider(context).hide(PrefMgr.getHideApps());
+                PrefMgr.getFileHider(context).hide(PrefMgr.getHideFilePath());
+            } catch (InterruptedException e) {
+                Log.w(TAG, "Process 'hide' interrupted.");
+                return;
+            }
+
+            PrefMgr.setIsHidden(true);
+            state.postValue(State.HIDDEN);
+
+            Log.i(TAG, "Process 'hide' finished.");
+            Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
+
             QuickHideService.stopService(context);
+
         });
     }
 
-    public void unhide() {
+    public static void unhide(Context context) {
+
         threadHandler.post(() -> {
-            isProcessing.postValue(true);
-            syncUnhide();
-            isProcessing.postValue(false);
+
+            state.postValue(State.PROCESSING);
+
+            try {
+                PrefMgr.getAppHider(context).unhide(PrefMgr.getHideApps());
+                PrefMgr.getFileHider(context).unhide(PrefMgr.getHideFilePath());
+            } catch (InterruptedException e) {
+                Log.w(TAG, "Process 'unhide' interrupted.");
+                return;
+            }
+
+            PrefMgr.setIsHidden(false);
+            state.postValue(State.VISIBLE);
+
+            Log.i(TAG, "Process 'unhide' finished.");
+            Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
+
             QuickHideService.startService(context);
+
         });
     }
 
-    public void forceUnhide() {
-        if (Boolean.TRUE.equals(isProcessing.getValue())) {
+    public static void forceUnhide(Context context) {
+        if (state.getValue() == State.PROCESSING)
             hiderThread.interrupt();
-        }
         PrefMgr.setIsHidden(true);
-        unhide();
-    }
-
-    private void syncHide() {
-
-        refreshHiders();
-
-        try {
-            appHider.hide(PrefMgr.getHideApps());
-            fileHider.hide(PrefMgr.getHideFilePath());
-        } catch (InterruptedException e) {
-            Log.w(TAG, "Process 'hide' interrupted.");
-            return;
-        }
-
-        PrefMgr.setIsHidden(true);
-
-        Log.i(TAG, "Process 'hide' finished.");
-        Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
-    }
-
-    private void syncUnhide() {
-
-        refreshHiders();
-
-        try {
-            appHider.unhide(PrefMgr.getHideApps());
-            fileHider.unhide(PrefMgr.getHideFilePath());
-        } catch (InterruptedException e) {
-            Log.w(TAG, "Process 'unhide' interrupted.");
-            return;
-        }
-
-        PrefMgr.setIsHidden(false);
-
-        Log.i(TAG, "Process 'unhide' finished.");
-        Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
-    }
-
-    private void refreshHiders() {
-        appHider = PrefMgr.getAppHider(context);
-        fileHider = PrefMgr.getFileHider(context);
+        unhide(context);
     }
 
 }
