@@ -8,10 +8,6 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
-import deltazero.amarok.AppHider.BaseAppHider;
-import deltazero.amarok.FileHider.BaseFileHider;
-import rikka.shizuku.ShizukuProvider;
-
 
 public final class Hider {
 
@@ -38,6 +34,10 @@ public final class Hider {
      */
     public static void init() {
         state = new MutableLiveData<>(PrefMgr.getIsHidden() ? State.HIDDEN : State.VISIBLE);
+        state.observeForever(state -> {
+            if (state != State.PROCESSING)
+                PrefMgr.setIsHidden(state == State.HIDDEN);
+        });
     }
 
     public static State getState() {
@@ -48,6 +48,7 @@ public final class Hider {
 
         threadHandler.post(() -> {
 
+            Log.i(TAG, "Process 'hide' start.");
             state.postValue(State.PROCESSING);
 
             try {
@@ -58,10 +59,9 @@ public final class Hider {
                 return;
             }
 
-            PrefMgr.setIsHidden(true);
+            Log.i(TAG, "Process 'hide' finish.");
             state.postValue(State.HIDDEN);
 
-            Log.i(TAG, "Process 'hide' finished.");
             Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
 
             QuickHideService.stopService(context);
@@ -73,6 +73,7 @@ public final class Hider {
 
         threadHandler.post(() -> {
 
+            Log.i(TAG, "Process 'unhide' start.");
             state.postValue(State.PROCESSING);
 
             try {
@@ -83,10 +84,9 @@ public final class Hider {
                 return;
             }
 
-            PrefMgr.setIsHidden(false);
+            Log.i(TAG, "Process 'unhide' finish.");
             state.postValue(State.VISIBLE);
 
-            Log.i(TAG, "Process 'unhide' finished.");
             Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
 
             QuickHideService.startService(context);
