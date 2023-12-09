@@ -20,12 +20,10 @@ import deltazero.amarok.PrefMgr;
 
 public class AppInfoUtil {
     private final PackageManager pkgMgr;
-    private final PrefMgr prefMgr;
     private final List<AppInfo> appInfoList = new ArrayList<>();
 
     public AppInfoUtil(Context context) {
         pkgMgr = context.getPackageManager();
-        prefMgr = new PrefMgr(context);
     }
 
     private static boolean containsIgnoreCase(String str, String searchStr) {
@@ -45,7 +43,7 @@ public class AppInfoUtil {
     public void refresh() {
         appInfoList.clear();
 
-        Set<String> hiddenApps = prefMgr.getHideApps();
+        Set<String> hiddenApps = PrefMgr.getHideApps();
 
         // Get applications info
         List<ApplicationInfo> installedApplications = pkgMgr.getInstalledApplications(GET_META_DATA | MATCH_DISABLED_COMPONENTS | MATCH_UNINSTALLED_PACKAGES);
@@ -76,7 +74,7 @@ public class AppInfoUtil {
     }
 
     public List<AppInfo> getFilteredApps(String query, boolean includeSystemApps) {
-        Set<String> hiddenApps = prefMgr.getHideApps();
+        Set<String> hiddenApps = PrefMgr.getHideApps();
         Log.d("AppInfoUtil", "Hidden apps: " + hiddenApps.toString());
         List<AppInfo> queryAppInfoList = new ArrayList<>();
         for (AppInfo appInfo : appInfoList) {

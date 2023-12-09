@@ -23,7 +23,6 @@ import deltazero.amarok.R;
 
 public class SwitchAppHiderActivity extends AppCompatActivity {
 
-    PrefMgr prefMgr;
     MaterialToolbar tbToolBar;
     RadioButton rbDisabled, rbRoot, rbShizuku, rbDSM, rbDhizuku;
 
@@ -39,8 +38,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
         rbDhizuku = findViewById(R.id.switch_apphider_radio_dhizuku);
         tbToolBar = findViewById(R.id.switch_apphider_tb_toolbar);
 
-        prefMgr = new PrefMgr(this);
-        setCheckedRadioButton(prefMgr.getAppHider().getClass());
+        setCheckedRadioButton(PrefMgr.getAppHider(this).getClass());
 
         // Enable back button
         tbToolBar.setNavigationOnClickListener(v -> finish());
@@ -50,7 +48,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setCheckedRadioButton(prefMgr.getAppHider().getClass());
+        setCheckedRadioButton(PrefMgr.getAppHider(this).getClass());
     }
 
 
@@ -81,12 +79,12 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
 
     public void onActivationCallback(Class<? extends BaseAppHider> appHider, boolean success, @Nullable Integer msgResID) {
         if (success) {
-            prefMgr.setAppHiderMode(appHider);
+            PrefMgr.setAppHiderMode(appHider);
             setCheckedRadioButton(appHider);
         } else {
             assert msgResID != null && msgResID != 0;
 
-            prefMgr.setAppHiderMode(NoneAppHider.class);
+            PrefMgr.setAppHiderMode(NoneAppHider.class);
             setCheckedRadioButton(NoneAppHider.class);
 
             runOnUiThread(() -> new MaterialAlertDialogBuilder(this)

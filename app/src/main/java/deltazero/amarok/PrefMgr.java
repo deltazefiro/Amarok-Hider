@@ -16,54 +16,50 @@ import deltazero.amarok.AppHider.DsmAppHider;
 import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.AppHider.RootAppHider;
 import deltazero.amarok.AppHider.ShizukuAppHider;
-import deltazero.amarok.FileHider.ChmodFileHider;
 import deltazero.amarok.FileHider.BaseFileHider;
+import deltazero.amarok.FileHider.ChmodFileHider;
 import deltazero.amarok.FileHider.NoMediaFileHider;
 import deltazero.amarok.FileHider.NoneFileHider;
 import deltazero.amarok.FileHider.ObfuscateFileHider;
 
-public class PrefMgr {
+public final class PrefMgr {
 
-    private final SharedPreferences mPrefs;
-    private final SharedPreferences.Editor mPrefEditor;
-    public Context context;
+    private static SharedPreferences mPrefs;
+    private static SharedPreferences.Editor mPrefEditor;
 
-    public PrefMgr(Context context) {
-        this.context = context;
-
+    public static void init(Context context) {
         mPrefs = context.getSharedPreferences("deltazero.amarok.prefs", MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
     }
 
-
-    public Set<String> getHideFilePath() {
+    public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet("hideFilePath", new HashSet<>());
     }
 
-    public void setHideFilePath(Set<String> path) {
+    public static void setHideFilePath(Set<String> path) {
         mPrefEditor.putStringSet("hideFilePath", path);
         mPrefEditor.apply();
     }
 
-    public boolean getIsHidden() {
+    public static boolean getIsHidden() {
         return mPrefs.getBoolean("isHidden", false);
     }
 
-    public void setIsHidden(boolean isHidden) {
+    public static void setIsHidden(boolean isHidden) {
         mPrefEditor.putBoolean("isHidden", isHidden);
         mPrefEditor.apply();
     }
 
-    public Set<String> getHideApps() {
+    public static Set<String> getHideApps() {
         return mPrefs.getStringSet("hidePkgNames", new HashSet<>());
     }
 
-    public void setHideApps(Set<String> pkgNames) {
+    public static void setHideApps(Set<String> pkgNames) {
         mPrefEditor.putStringSet("hidePkgNames", pkgNames);
         mPrefEditor.apply();
     }
 
-    public BaseAppHider getAppHider() {
+    public static BaseAppHider getAppHider(Context context) {
         return switch (mPrefs.getInt("appHiderMode", 0)) {
             case 0 -> new NoneAppHider(context);
             case 1 -> new RootAppHider(context);
@@ -74,7 +70,7 @@ public class PrefMgr {
         };
     }
 
-    public void setAppHiderMode(Class<? extends BaseAppHider> mode) {
+    public static void setAppHiderMode(Class<? extends BaseAppHider> mode) {
         int modeCode;
         if (mode == NoneAppHider.class)
             modeCode = 0;
@@ -92,7 +88,7 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public BaseFileHider getFileHider() {
+    public static BaseFileHider getFileHider(Context context) {
         return switch (mPrefs.getInt("fileHiderMode", 1)) {
             case 0 -> new NoneFileHider(context);
             case 1 -> new ObfuscateFileHider(context);
@@ -102,7 +98,7 @@ public class PrefMgr {
         };
     }
 
-    public void setFileHiderMode(Class<? extends BaseFileHider> mode) {
+    public static void setFileHiderMode(Class<? extends BaseFileHider> mode) {
         int modeCode;
         if (mode == NoneFileHider.class)
             modeCode = 0;
@@ -118,120 +114,120 @@ public class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public int getAppHiderCode() {
+    public static int getAppHiderCode() {
         return mPrefs.getInt("appHiderMode", 0);
     }
 
-    public boolean getEnableAutoUpdate() {
+    public static boolean getEnableAutoUpdate() {
         return mPrefs.getBoolean("isEnableAutoUpdate", true);
     }
 
-    public void setEnableAutoUpdate(boolean isEnable) {
+    public static void setEnableAutoUpdate(boolean isEnable) {
         mPrefEditor.putBoolean("isEnableAutoUpdate", isEnable);
         mPrefEditor.apply();
     }
 
     @Deprecated
-    public boolean getLegacyEnableObfuscateFileHeader() {
+    public static boolean getLegacyEnableObfuscateFileHeader() {
         return mPrefs.getBoolean("enableCorruptFileHeader", false);
     }
 
-    public boolean getEnableObfuscateFileHeader() {
+    public static boolean getEnableObfuscateFileHeader() {
         return mPrefs.getBoolean("enableObfuscateFileHeader", false);
     }
 
-    public void setEnableObfuscateFileHeader(boolean ifObfuscateFileHeader) {
+    public static void setEnableObfuscateFileHeader(boolean ifObfuscateFileHeader) {
         mPrefEditor.putBoolean("enableObfuscateFileHeader", ifObfuscateFileHeader);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableObfuscateTextFile() {
+    public static boolean getEnableObfuscateTextFile() {
         return mPrefs.getBoolean("enableObfuscateTextFile", false);
     }
 
-    public void setEnableObfuscateTextFile(boolean ifObfuscateTextFile) {
+    public static void setEnableObfuscateTextFile(boolean ifObfuscateTextFile) {
         mPrefEditor.putBoolean("enableObfuscateTextFile", ifObfuscateTextFile);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableObfuscateTextFileEnhanced() {
+    public static boolean getEnableObfuscateTextFileEnhanced() {
         return mPrefs.getBoolean("enableObfuscateTextFileEnhanced", false);
     }
 
-    public void setEnableObfuscateTextFileEnhanced(boolean ifObfuscateTextFileEnhanced) {
+    public static void setEnableObfuscateTextFileEnhanced(boolean ifObfuscateTextFileEnhanced) {
         mPrefEditor.putBoolean("enableObfuscateTextFileEnhanced", ifObfuscateTextFileEnhanced);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableQuickHideService() {
+    public static boolean getEnableQuickHideService() {
         return mPrefs.getBoolean("enableQuickHideService", false);
     }
 
-    public void setEnableQuickHideService(boolean isEnableQuickHideService) {
+    public static void setEnableQuickHideService(boolean isEnableQuickHideService) {
         mPrefEditor.putBoolean("enableQuickHideService", isEnableQuickHideService);
         mPrefEditor.apply();
     }
 
-    public boolean getEnablePanicButton() {
+    public static boolean getEnablePanicButton() {
         return mPrefs.getBoolean("enablePanicButton", false);
     }
 
-    public void setEnablePanicButton(boolean isEnablePanicButton) {
+    public static void setEnablePanicButton(boolean isEnablePanicButton) {
         mPrefEditor.putBoolean("enablePanicButton", isEnablePanicButton);
         mPrefEditor.apply();
     }
 
     @Nullable
-    public String getAmarokPassword() {
+    public static String getAmarokPassword() {
         return mPrefs.getString("amarokPassword", null);
     }
 
-    public void setAmarokPassword(String password) {
+    public static void setAmarokPassword(String password) {
         mPrefEditor.putString("amarokPassword", password);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableAmarokBiometricAuth() {
+    public static boolean getEnableAmarokBiometricAuth() {
         return mPrefs.getBoolean("enableAmarokBiometricAuth", false);
     }
 
-    public void setEnableAmarokBiometricAuth(boolean enableAmarokBiometricAuth) {
+    public static void setEnableAmarokBiometricAuth(boolean enableAmarokBiometricAuth) {
         mPrefEditor.putBoolean("enableAmarokBiometricAuth", enableAmarokBiometricAuth);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableDynamicColor() {
+    public static boolean getEnableDynamicColor() {
         return mPrefs.getBoolean("enableDynamicColor", false);
     }
 
-    public void setEnableDynamicColor(boolean enableDynamicColor) {
+    public static void setEnableDynamicColor(boolean enableDynamicColor) {
         mPrefEditor.putBoolean("enableDynamicColor", enableDynamicColor);
         mPrefEditor.apply();
     }
 
-    public boolean getEnableDisguise() {
+    public static boolean getEnableDisguise() {
         return mPrefs.getBoolean("enableDisguise", false);
     }
 
-    public void setEnableDisguise(boolean enableDisguise) {
+    public static void setEnableDisguise(boolean enableDisguise) {
         mPrefEditor.putBoolean("enableDisguise", enableDisguise);
         mPrefEditor.apply();
     }
 
-    public boolean getDoShowQuitDisguiseInstuct() {
+    public static boolean getDoShowQuitDisguiseInstuct() {
         return mPrefs.getBoolean("doShowQuitDisguiseInstuct", true);
     }
 
-    public void setDoShowQuitDisguiseInstuct(boolean doShowQuitDisguiseInstuct) {
+    public static void setDoShowQuitDisguiseInstuct(boolean doShowQuitDisguiseInstuct) {
         mPrefEditor.putBoolean("doShowQuitDisguiseInstuct", doShowQuitDisguiseInstuct);
         mPrefEditor.apply();
     }
 
-    public boolean getShowWelcome() {
+    public static boolean getShowWelcome() {
         return mPrefs.getBoolean("showWelcome", true);
     }
 
-    public void setShowWelcome(boolean showWelcome) {
+    public static void setShowWelcome(boolean showWelcome) {
         mPrefEditor.putBoolean("showWelcome", showWelcome);
         mPrefEditor.apply();
     }

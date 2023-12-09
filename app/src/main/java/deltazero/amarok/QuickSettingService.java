@@ -88,7 +88,7 @@ public class QuickSettingService extends TileService implements LifecycleOwner {
             tile.setLabel(getString(R.string.processing));
         } else {
             tile.setLabel(getString(R.string.app_name));
-            tile.setState(prefMgr.getIsHidden() ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+            tile.setState(PrefMgr.getIsHidden() ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
         }
         tile.updateTile();
     }
@@ -97,7 +97,6 @@ public class QuickSettingService extends TileService implements LifecycleOwner {
     public void onStartListening() {
         tile = getQsTile();
         hider = new Hider(this);
-        prefMgr = new PrefMgr(this);
         isProcessing = Hider.isProcessing;
 
         try {
@@ -114,8 +113,8 @@ public class QuickSettingService extends TileService implements LifecycleOwner {
     public void onClick() {
         unlockAndRun(() -> {
             Log.i(TAG, "Toggled tile.");
-            if (prefMgr.getIsHidden()) {
-                if (prefMgr.getAmarokPassword() == null) {
+            if (PrefMgr.getIsHidden()) {
+                if (PrefMgr.getAmarokPassword() == null) {
                     // Avoid jump back to Amarok even without password
                     hider.unhide();
                 } else {

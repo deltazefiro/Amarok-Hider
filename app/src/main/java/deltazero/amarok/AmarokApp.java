@@ -10,8 +10,9 @@ public class AmarokApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        PrefMgr.init(this);
 
-        if (new PrefMgr(this).getEnableDynamicColor())
+        if (PrefMgr.getEnableDynamicColor())
             DynamicColors.applyToActivitiesIfAvailable(this);
 
         // Start PanicButton service

@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     public final static String TAG = "Main";
 
     private Hider hider;
-    private PrefMgr prefMgr;
 
     private ScrollView svMainLayout;
     private ImageView ivStatusImg;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Prepare data & init hider
         hider = new Hider(this);
-        prefMgr = new PrefMgr(this);
 
         // Binding views
         svMainLayout = findViewById(R.id.main_sv_main_layout);
@@ -79,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Launch disguise activity if needed
         var activityLauncher = BetterActivityLauncher.registerActivityForResult(this);
-        if (prefMgr.getEnableDisguise()) {
+        if (PrefMgr.getEnableDisguise()) {
             activityLauncher.launch(new Intent(this, CalendarActivity.class), result -> {
                 if (result.getResultCode() == Activity.RESULT_OK) {
                     new SecurityAuth(this, succeed -> {
@@ -104,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         // Show main UI
         svMainLayout.setVisibility(View.VISIBLE);
 
-        if (prefMgr.getShowWelcome()) {
+        if (PrefMgr.getShowWelcome()) {
             new MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.welcome_title)
                     .setMessage(R.string.welcome_msg)
@@ -119,15 +117,15 @@ public class MainActivity extends AppCompatActivity {
                         PermissionUtil.requestStoragePermission(this);
                     })
                     .show();
-            prefMgr.setShowWelcome(false);
+            PrefMgr.setShowWelcome(false);
         } else {
             PermissionUtil.requestStoragePermission(this);
         }
 
         // Check AppHider availability
-        prefMgr.getAppHider().tryToActivate((appHiderClass, succeed, msg) -> {
+        PrefMgr.getAppHider(this).tryToActivate((appHiderClass, succeed, msg) -> {
             if (!succeed) {
-                prefMgr.setAppHiderMode(NoneAppHider.class);
+                PrefMgr.setAppHiderMode(NoneAppHider.class);
                 new MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.apphider_not_ava_title)
                         .setMessage(msg)
@@ -139,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        prefMgr.getFileHider().tryToActive((fileHiderClass, succeed, msg) -> {
+        PrefMgr.getFileHider(this).tryToActive((fileHiderClass, succeed, msg) -> {
             if (!succeed) {
-                prefMgr.setFileHiderMode(NoneFileHider.class);
+                PrefMgr.setFileHiderMode(NoneFileHider.class);
                 new MaterialAlertDialogBuilder(this)
                         .setTitle(R.string.filehider_not_ava_title)
                         .setMessage(msg)
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeStatus(View view) {
-        if (prefMgr.getIsHidden()) {
+        if (PrefMgr.getIsHidden()) {
             hider.unhide();
         } else {
             hider.hide();
@@ -164,12 +162,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void setHideApps(View view) {
 
-        if (prefMgr.getIsHidden()) {
+        if (PrefMgr.getIsHidden()) {
             Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if (prefMgr.getAppHider() instanceof NoneAppHider) {
+        if (PrefMgr.getAppHider(this) instanceof NoneAppHider) {
             Toast.makeText(this, R.string.no_apphider, Toast.LENGTH_LONG).show();
             return;
         }
@@ -191,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        if (prefMgr.getIsHidden()) {
+        if (PrefMgr.getIsHidden()) {
             Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -209,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
             piProcessStatus.hide();
             btChangeStatus.setEnabled(true);
 
-            if (!prefMgr.getIsHidden()) {
+            if (!PrefMgr.getIsHidden()) {
                 // Visible
                 ivStatusImg.setImageResource(R.drawable.img_status_visible);
                 ivStatusImg.setImageTintList(null);

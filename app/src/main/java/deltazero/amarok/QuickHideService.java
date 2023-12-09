@@ -30,7 +30,6 @@ public class QuickHideService extends LifecycleService {
     private MutableLiveData<Boolean> isProcessing;
     private EasyWindow<?> panicButton;
     private Hider hider;
-    private PrefMgr prefMgr;
     private ImageView ivPanicButton;
 
     private PendingIntent activityPendingIntent;
@@ -45,7 +44,6 @@ public class QuickHideService extends LifecycleService {
         super.onCreate();
 
         hider = new Hider(this);
-        prefMgr = new PrefMgr(this);
 
         // Create notification channel
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
@@ -119,18 +117,17 @@ public class QuickHideService extends LifecycleService {
 
     public static void startService(Context context) {
 
-        var prefMgr = new PrefMgr(context);
         if (isServiceRunning) {
             Log.w("QuickHideService", "Restarting QuickHideService ...");
             stopService(context);
             context.startForegroundService(new Intent(context, QuickHideService.class));
-        } else if (!prefMgr.getEnableQuickHideService()) {
+        } else if (!PrefMgr.getEnableQuickHideService()) {
             Log.i("QuickHideService", "QuickHideService is disabled. Skip starting service.");
-        } else if (prefMgr.getIsHidden()) {
+        } else if (PrefMgr.getIsHidden()) {
             Log.i("QuickHideService", "Current state is hidden. Skip starting service.");
         } else if (!XXPermissions.isGranted(context, Permission.NOTIFICATION_SERVICE)) {
             Log.w("QuickHideService", "Permission denied: NOTIFICATION_SERVICE. Skip starting service.");
-            prefMgr.setEnableQuickHideService(false);
+            PrefMgr.setEnableQuickHideService(false);
         } else {
             // Start the service
             context.startForegroundService(new Intent(context, QuickHideService.class));
@@ -142,12 +139,12 @@ public class QuickHideService extends LifecycleService {
     }
 
     private void updatePanicButton() {
-        if (!prefMgr.getEnablePanicButton())
+        if (!PrefMgr.getEnablePanicButton())
             return;
 
         if (!XXPermissions.isGranted(getApplication(), Permission.SYSTEM_ALERT_WINDOW)) {
             Log.w("QuickHideService", "Failed to show PanicButton: Permission denied: SYSTEM_ALERT_WINDOW");
-            prefMgr.setEnablePanicButton(false);
+            PrefMgr.setEnablePanicButton(false);
             return;
         }
 
@@ -157,7 +154,7 @@ public class QuickHideService extends LifecycleService {
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(false);
         } else {
-            if (prefMgr.getIsHidden()) {
+            if (PrefMgr.getIsHidden()) {
                 cancelPanicButton();
             } else {
                 showPanicButton();

@@ -33,7 +33,6 @@ import deltazero.amarok.R;
 public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public final LinkedList<String> lsPath;
-    private final PrefMgr prefMgr;
     private final LayoutInflater inflater;
     private final Context context;
 
@@ -42,8 +41,7 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public FileListAdapter(Context context) {
         inflater = LayoutInflater.from(context);
-        prefMgr = new PrefMgr(context);
-        lsPath = new LinkedList<>(prefMgr.getHideFilePath());
+        lsPath = new LinkedList<>(PrefMgr.getHideFilePath());
         this.context = context;
     }
 
@@ -103,9 +101,9 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                     .setPositiveButton(R.string.confirm, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            Set<String> hideFilePath = prefMgr.getHideFilePath();
+                            Set<String> hideFilePath = PrefMgr.getHideFilePath();
                             hideFilePath.remove(lsPath.get(getLayoutPosition()));
-                            prefMgr.setHideFilePath(hideFilePath);
+                            PrefMgr.setHideFilePath(hideFilePath);
 
                             lsPath.remove(getLayoutPosition());
                             adapter.notifyItemRemoved(getAdapterPosition());
@@ -141,17 +139,17 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                                 /* Check for experiment flags */
                                 switch (input) {
                                     case "#nomedia-filehider" -> {
-                                        prefMgr.setFileHiderMode(NoMediaFileHider.class);
+                                        PrefMgr.setFileHiderMode(NoMediaFileHider.class);
                                         Toast.makeText(context, "NoMedia filehider activated.", Toast.LENGTH_LONG).show();
                                         return;
                                     }
                                     case "#obfuscate-filehider" -> {
-                                        prefMgr.setFileHiderMode(ObfuscateFileHider.class);
+                                        PrefMgr.setFileHiderMode(ObfuscateFileHider.class);
                                         Toast.makeText(context, "Obfuscate filehider activated.", Toast.LENGTH_LONG).show();
                                         return;
                                     }
                                     case "#chmod-filehider" -> {
-                                        prefMgr.setFileHiderMode(ChmodFileHider.class);
+                                        PrefMgr.setFileHiderMode(ChmodFileHider.class);
                                         Toast.makeText(context, "Chmod filehider activated.", Toast.LENGTH_LONG).show();
                                         return;
                                     }
@@ -166,9 +164,9 @@ public class FileListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                                     return;
                                 }
 
-                                Set<String> hideFilePaths = prefMgr.getHideFilePath();
+                                Set<String> hideFilePaths = PrefMgr.getHideFilePath();
                                 hideFilePaths.add(input);
-                                prefMgr.setHideFilePath(hideFilePaths);
+                                PrefMgr.setHideFilePath(hideFilePaths);
 
                                 lsPath.add(input);
                                 adapter.notifyItemInserted(getAdapterPosition());
