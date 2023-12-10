@@ -112,7 +112,7 @@
             android:theme="@style/Theme.Amarok.Transparent" />
 
         <service
-            android:name=".QuickSettingService"
+            android:name=".QSTileService"
             android:exported="true"
             android:icon="@drawable/ic_paw"
             android:label="@string/app_name"

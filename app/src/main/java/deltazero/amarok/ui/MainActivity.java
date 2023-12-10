@@ -1,12 +1,9 @@
 package deltazero.amarok.ui;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.service.quicksettings.TileService;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ScrollView;
@@ -24,7 +21,6 @@ import deltazero.amarok.AppHider.NoneAppHider;
 import deltazero.amarok.FileHider.NoneFileHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
-import deltazero.amarok.QuickSettingService;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.BetterActivityLauncher;
@@ -217,13 +213,6 @@ public class MainActivity extends AppCompatActivity {
                 piProcessStatus.show();
                 btChangeStatus.setEnabled(false);
             }
-        }
-
-        try {
-            TileService.requestListeningState(MainActivity.this,
-                    new ComponentName(MainActivity.this, QuickSettingService.class));
-        } catch (IllegalArgumentException e) {
-            Log.w(TAG, "QuickSetting is unavailable when running in an Android work profile.");
         }
     }
 

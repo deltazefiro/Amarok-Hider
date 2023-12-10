@@ -11,8 +11,10 @@ public class AmarokApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+        // WARNING: Do not change the order of those initializations.
         PrefMgr.init(this);
         Hider.init();
+        QSTileService.init(getApplicationContext());
 
         if (PrefMgr.getEnableDynamicColor())
             DynamicColors.applyToActivitiesIfAvailable(this);
