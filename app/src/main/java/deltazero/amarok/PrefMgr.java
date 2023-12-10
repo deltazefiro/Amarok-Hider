@@ -26,6 +26,7 @@ public final class PrefMgr {
 
     private static SharedPreferences mPrefs;
     private static SharedPreferences.Editor mPrefEditor;
+    public static boolean initialized = false;
 
     /**
      * This method should be invoked in {@link AmarokApp#onCreate()}.
@@ -34,6 +35,7 @@ public final class PrefMgr {
     public static void init(Context context) {
         mPrefs = context.getSharedPreferences("deltazero.amarok.prefs", MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
+        initialized = true;
     }
 
     public static Set<String> getHideFilePath() {

@@ -15,6 +15,7 @@ public final class Hider {
     private static final HandlerThread hiderThread = new HandlerThread("HIDER_THREAD");
     private static final Handler threadHandler;
 
+    public static boolean initialized = false;
     public static MutableLiveData<State> state;
 
     public enum State {
@@ -33,11 +34,13 @@ public final class Hider {
      * Do not invoke this method in static part or before {@link PrefMgr#init(Context)}.
      */
     public static void init() {
+        assert PrefMgr.initialized;
         state = new MutableLiveData<>(PrefMgr.getIsHidden() ? State.HIDDEN : State.VISIBLE);
         state.observeForever(state -> {
             if (state != State.PROCESSING)
                 PrefMgr.setIsHidden(state == State.HIDDEN);
         });
+        initialized = true;
     }
 
     public static State getState() {
