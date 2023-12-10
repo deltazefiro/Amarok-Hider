@@ -1,4 +1,4 @@
-package deltazero.amarok;
+package deltazero.amarok.receivers;
 
 import android.app.admin.DeviceAdminReceiver;
 import android.content.Context;

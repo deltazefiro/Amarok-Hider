@@ -22,6 +22,7 @@ import com.hjq.permissions.XXPermissions;
 import com.hjq.window.EasyWindow;
 import com.hjq.window.draggable.SpringDraggable;
 
+import deltazero.amarok.receivers.ActionReceiver;
 import deltazero.amarok.ui.MainActivity;
 
 public class QuickHideService extends LifecycleService {

@@ -1,4 +1,4 @@
-package deltazero.amarok;
+package deltazero.amarok.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +7,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.util.Objects;
+
+import deltazero.amarok.Hider;
+import deltazero.amarok.R;
 
 public class ActionReceiver extends BroadcastReceiver {
     @Override

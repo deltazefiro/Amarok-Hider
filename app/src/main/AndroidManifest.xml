@@ -143,7 +143,7 @@
         </service>
 
         <receiver
-            android:name=".AdminReceiver"
+            android:name=".receivers.AdminReceiver"
             android:exported="true"
             android:permission="android.permission.BIND_DEVICE_ADMIN">
             <intent-filter>
@@ -156,7 +156,7 @@
                 android:resource="@xml/app_delegation" />
         </receiver>
         <receiver
-            android:name=".ActionReceiver"
+            android:name=".receivers.ActionReceiver"
             android:enabled="true"
             android:exported="true"
             tools:ignore="ExportedReceiver">

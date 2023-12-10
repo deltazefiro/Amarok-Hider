@@ -1,4 +1,4 @@
-package deltazero.amarok.AppHider;
+package deltazero.amarok.apphider;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

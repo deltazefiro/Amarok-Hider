@@ -13,11 +13,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import deltazero.amarok.FileHider.BaseFileHider;
-import deltazero.amarok.FileHider.ChmodFileHider;
-import deltazero.amarok.FileHider.NoMediaFileHider;
-import deltazero.amarok.FileHider.NoneFileHider;
-import deltazero.amarok.FileHider.ObfuscateFileHider;
+import deltazero.amarok.filehider.BaseFileHider;
+import deltazero.amarok.filehider.ChmodFileHider;
+import deltazero.amarok.filehider.NoMediaFileHider;
+import deltazero.amarok.filehider.NoneFileHider;
+import deltazero.amarok.filehider.ObfuscateFileHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 

@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import deltazero.amarok.AppHider.DhizukuAppHider;
-import deltazero.amarok.AppHider.DsmAppHider;
-import deltazero.amarok.AppHider.BaseAppHider;
-import deltazero.amarok.AppHider.NoneAppHider;
-import deltazero.amarok.AppHider.RootAppHider;
-import deltazero.amarok.AppHider.ShizukuAppHider;
+import deltazero.amarok.apphider.DhizukuAppHider;
+import deltazero.amarok.apphider.DsmAppHider;
+import deltazero.amarok.apphider.BaseAppHider;
+import deltazero.amarok.apphider.NoneAppHider;
+import deltazero.amarok.apphider.RootAppHider;
+import deltazero.amarok.apphider.ShizukuAppHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
