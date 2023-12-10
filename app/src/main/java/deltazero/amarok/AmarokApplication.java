@@ -5,6 +5,8 @@ import android.app.Application;
 import com.google.android.material.color.DynamicColors;
 import com.rosan.dhizuku.api.Dhizuku;
 
+import deltazero.amarok.utils.AppCenterUtil;
+
 public class AmarokApplication extends Application {
 
     @Override
@@ -22,7 +24,10 @@ public class AmarokApplication extends Application {
         // Start PanicButton service
         QuickHideService.startService(this);
 
-        // init dhizuku
+        // Start App-center
+        AppCenterUtil.startAppCenter(this);
+
+        // init Dhizuku
         Dhizuku.init();
     }
 }
