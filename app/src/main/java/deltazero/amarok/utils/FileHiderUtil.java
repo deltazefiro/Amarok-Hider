@@ -3,7 +3,6 @@ package deltazero.amarok.utils;
 import static deltazero.amarok.FileHider.ObfuscateFileHider.FILENAME_FULL_PROCESS_MARK;
 import static deltazero.amarok.FileHider.ObfuscateFileHider.FILENAME_HEADER_PROCESS_MARK;
 import static deltazero.amarok.FileHider.ObfuscateFileHider.FILENAME_NO_PROCESS_MARK;
-import static deltazero.amarok.FileHider.ObfuscateFileHider.FILENAME_LEGACY_START_MARK_ENCODED;
 
 import android.util.Log;
 
@@ -42,8 +41,7 @@ public class FileHiderUtil {
         if (filename.startsWith("."))
             filename = filename.substring(1);
 
-        return filename.startsWith(FILENAME_LEGACY_START_MARK_ENCODED)
-                || filename.endsWith(FILENAME_NO_PROCESS_MARK)
+        return filename.endsWith(FILENAME_NO_PROCESS_MARK)
                 || filename.endsWith(FILENAME_HEADER_PROCESS_MARK)
                 || filename.endsWith(FILENAME_FULL_PROCESS_MARK);
     }
