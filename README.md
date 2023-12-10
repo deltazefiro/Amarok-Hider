@@ -3,9 +3,6 @@
 
 # Amarok-Hider
 
-> **Warning**  
-> An **unofficial** version of Amarok has been uploaded to **AppGallery** without authorization. Please be aware that this version is not endorsed by us and we cannot ensure its safety and security. Refer to [#96](https://github.com/deltazefiro/Amarok-Hider/issues/96) for further details.
-
 [![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public) 
 [![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases) 
 [![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) 
@@ -18,26 +15,26 @@
 
 Amarok is an Android application which enables you to hide your private files & apps with a single click.
 
-> In many cases, we use sophisticated encryptors to encrypt our files and apps, just not wanting others to see them. However, many of these encryptors are slow and resource-intensive, making the encryption of large files such as videos and music a daunting task. While these solutions may be secure, they are often overkill for the average user who simply wants to prevent others from accidentally accessing their private files and apps.
+> Often, we resort to complex encryptors to secure our files and apps, aiming to shield them from prying eyes. These encryptors, while effective, tend to be slow and resource-intensive, making the encryption of large files such as videos and music a daunting task. Despite their robust security, these methods are often overkill for the average user who simply wish to keep their private files and apps out of unintentional reach.  
 
-Amarok is designed to avoid using complex encryption for files and applications. Instead, it takes a "hide" approach:
-- Amarok obfuscates file names and headers, making them appear "corrupted" and inaccessible.
+Amarok is designed to be a light-weight hider for files and applications:
+- It disguises file names and headers, causing them to seem "corrupted" and unopenable.
 - Amarok deactivates applications, rendering them invisible in the launcher and system menu.
 
 
 ## Features
 
 - **User-Friendly**: Easily hide files and applications with a single click.
-- **Fast and Efficient Hiding of Large Files**: Only file name and signature are obfuscated; file size doesn't affect the hiding speed.
-- **Root-Free Application Hiding**: Hide applications from the launcher. Currently supports Root, Shizuku, Dhizuku, and DSM modes.
-- **Boss Key**: Use a floating button to quickly hide applications and files in emergency situations.
-- **Quick Settings**: Control center switch for instant hiding without the need to open the app.
-- **App Lock**: Supports accessing Amarok with a password or fingerprint.
-- **Pleasant Interface**: Clean and appealing Material3 design.  
+- **Rapid and Efficient Large File Hiding**: Hides by altering only file name and signature, unaffected by file size.
+- **Root-Free Application Hiding**: Makes apps vanish from the launcher. Compatible with Root, Shizuku, Dhizuku, and DSM modes.
+- **Panic button**: Use a floating button to quickly hide applications and files in urgent scenarios.
+- **Quick Settings Tile**: A control center toggle for immediate hiding, bypassing the need to launch the app.
+- **App Lock**: Secure Amarok access with a password or fingerprint.
+- **Pleasant Interface**: Clean and attractive Material3 design.  
 
 
-> **Warning**  
-> Please note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.
+> [!IMPORTANT]  
+> Please aware that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.
 
 
 ## Screenshots
