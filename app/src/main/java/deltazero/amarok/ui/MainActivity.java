@@ -22,7 +22,6 @@ import deltazero.amarok.FileHider.NoneFileHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
-import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.BetterActivityLauncher;
 import deltazero.amarok.utils.PermissionUtil;
 import deltazero.amarok.utils.SecurityAuth;
@@ -42,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
         // Setup activity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // Start App-center
-        AppCenterUtil.startAppCenter(this);
 
         // Binding views
         svMainLayout = findViewById(R.id.main_sv_main_layout);

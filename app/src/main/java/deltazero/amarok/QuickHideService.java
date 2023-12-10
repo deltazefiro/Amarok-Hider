@@ -111,6 +111,8 @@ public class QuickHideService extends LifecycleService {
 
     public static void startService(Context context) {
 
+        assert PrefMgr.initialized;
+
         if (isServiceRunning) {
             Log.w("QuickHideService", "Restarting QuickHideService ...");
             stopService(context);
