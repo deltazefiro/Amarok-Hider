@@ -137,11 +137,6 @@ public final class PrefMgr {
         mPrefEditor.apply();
     }
 
-    @Deprecated
-    public static boolean getLegacyEnableObfuscateFileHeader() {
-        return mPrefs.getBoolean("enableCorruptFileHeader", false);
-    }
-
     public static boolean getEnableObfuscateFileHeader() {
         return mPrefs.getBoolean("enableObfuscateFileHeader", false);
     }
