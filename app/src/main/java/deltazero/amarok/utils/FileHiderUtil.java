@@ -1,8 +1,8 @@
 package deltazero.amarok.utils;
 
-import static deltazero.amarok.FileHider.ObfuscateFileHider.FILENAME_FULL_PROCESS_MARK;
-import static deltazero.amarok.FileHider.ObfuscateFileHider.FILENAME_HEADER_PROCESS_MARK;
-import static deltazero.amarok.FileHider.ObfuscateFileHider.FILENAME_NO_PROCESS_MARK;
+import static deltazero.amarok.filehider.ObfuscateFileHider.FILENAME_FULL_PROCESS_MARK;
+import static deltazero.amarok.filehider.ObfuscateFileHider.FILENAME_HEADER_PROCESS_MARK;
+import static deltazero.amarok.filehider.ObfuscateFileHider.FILENAME_NO_PROCESS_MARK;
 
 import android.util.Log;
 

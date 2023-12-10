@@ -24,9 +24,9 @@ import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Set;
 
-import deltazero.amarok.FileHider.ChmodFileHider;
-import deltazero.amarok.FileHider.NoMediaFileHider;
-import deltazero.amarok.FileHider.ObfuscateFileHider;
+import deltazero.amarok.filehider.ChmodFileHider;
+import deltazero.amarok.filehider.NoMediaFileHider;
+import deltazero.amarok.filehider.ObfuscateFileHider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 

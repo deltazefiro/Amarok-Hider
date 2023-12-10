@@ -1,8 +1,8 @@
-package deltazero.amarok.FileHider;
+package deltazero.amarok.filehider;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static deltazero.amarok.FileHider.BaseFileHider.ProcessMethod.HIDE;
-import static deltazero.amarok.FileHider.BaseFileHider.ProcessMethod.UNHIDE;
+import static deltazero.amarok.filehider.BaseFileHider.ProcessMethod.HIDE;
+import static deltazero.amarok.filehider.BaseFileHider.ProcessMethod.UNHIDE;
 
 import android.content.Context;
 import android.util.Base64;

@@ -10,17 +10,17 @@ import androidx.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
-import deltazero.amarok.AppHider.BaseAppHider;
-import deltazero.amarok.AppHider.DhizukuAppHider;
-import deltazero.amarok.AppHider.DsmAppHider;
-import deltazero.amarok.AppHider.NoneAppHider;
-import deltazero.amarok.AppHider.RootAppHider;
-import deltazero.amarok.AppHider.ShizukuAppHider;
-import deltazero.amarok.FileHider.BaseFileHider;
-import deltazero.amarok.FileHider.ChmodFileHider;
-import deltazero.amarok.FileHider.NoMediaFileHider;
-import deltazero.amarok.FileHider.NoneFileHider;
-import deltazero.amarok.FileHider.ObfuscateFileHider;
+import deltazero.amarok.apphider.BaseAppHider;
+import deltazero.amarok.apphider.DhizukuAppHider;
+import deltazero.amarok.apphider.DsmAppHider;
+import deltazero.amarok.apphider.NoneAppHider;
+import deltazero.amarok.apphider.RootAppHider;
+import deltazero.amarok.apphider.ShizukuAppHider;
+import deltazero.amarok.filehider.BaseFileHider;
+import deltazero.amarok.filehider.ChmodFileHider;
+import deltazero.amarok.filehider.NoMediaFileHider;
+import deltazero.amarok.filehider.NoneFileHider;
+import deltazero.amarok.filehider.ObfuscateFileHider;
 
 public final class PrefMgr {
 

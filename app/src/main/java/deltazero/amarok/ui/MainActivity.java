@@ -17,8 +17,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
 
-import deltazero.amarok.AppHider.NoneAppHider;
-import deltazero.amarok.FileHider.NoneFileHider;
+import deltazero.amarok.apphider.NoneAppHider;
+import deltazero.amarok.filehider.NoneFileHider;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;

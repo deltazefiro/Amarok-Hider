@@ -1,4 +1,4 @@
-package deltazero.amarok.FileHider;
+package deltazero.amarok.filehider;
 
 import android.content.Context;
 
