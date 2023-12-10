@@ -29,7 +29,7 @@ public final class PrefMgr {
     public static boolean initialized = false;
 
     /**
-     * This method should be invoked in {@link AmarokApp#onCreate()}.
+     * This method should be invoked in {@link AmarokApplication#onCreate()}.
      * @param context Application context
      */
     public static void init(Context context) {

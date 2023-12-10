@@ -30,7 +30,7 @@ public final class Hider {
     }
 
     /**
-     * This method should be invoked in {@link AmarokApp#onCreate()}, after {@link PrefMgr#init(Context)}.
+     * This method should be invoked in {@link AmarokApplication#onCreate()}, after {@link PrefMgr#init(Context)}.
      * Do not invoke this method in static part or before {@link PrefMgr#init(Context)}.
      */
     public static void init() {
