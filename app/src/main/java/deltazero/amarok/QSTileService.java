@@ -61,7 +61,7 @@ public class QSTileService extends TileService {
     }
 
     /**
-     * The method should be invoked in {@link AmarokApp#onCreate()}, after {@link Hider#state} is initialized.
+     * The method should be invoked in {@link AmarokApplication#onCreate()}, after {@link Hider#state} is initialized.
      * @param context Application context
      */
     public static void init(Context context) {

@@ -5,7 +5,7 @@ import android.app.Application;
 import com.google.android.material.color.DynamicColors;
 import com.rosan.dhizuku.api.Dhizuku;
 
-public class AmarokApp extends Application {
+public class AmarokApplication extends Application {
 
     @Override
     public void onCreate() {
