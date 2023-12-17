@@ -10,7 +10,7 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
-import deltazero.amarok.ui.SecurityAuthForQuickHideActivity;
+import deltazero.amarok.ui.SecurityAuthForQSActivity;
 import deltazero.amarok.utils.SecurityAuth;
 
 public class QSTileService extends TileService {
@@ -53,8 +53,8 @@ public class QSTileService extends TileService {
             switch (Hider.getState()) {
                 case VISIBLE -> Hider.hide(this);
                 case HIDDEN -> {
-                    if (PrefMgr.getAmarokPassword() == null || !SecurityAuth.locked) Hider.unhide(this);
-                    else startAuthThenUnhide();
+                    if (SecurityAuth.isUnlockRequired()) startAuthThenUnhide();
+                    else Hider.unhide(this);
                 }
                 default -> throw new IllegalStateException("Unexpected value: " + Hider.getState());
             }
@@ -63,6 +63,7 @@ public class QSTileService extends TileService {
 
     /**
      * The method should be invoked in {@link AmarokApplication#onCreate()}, after {@link Hider#state} is initialized.
+     *
      * @param context Application context
      */
     public static void init(Context context) {
@@ -79,7 +80,7 @@ public class QSTileService extends TileService {
 
     @SuppressLint("StartActivityAndCollapseDeprecated")
     private void startAuthThenUnhide() {
-        var intent = new Intent(this, SecurityAuthForQuickHideActivity.class).setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        var intent = new Intent(this, SecurityAuthForQSActivity.class);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE) {
             startActivityAndCollapse(PendingIntent.getActivity(this, 0,
                     intent, PendingIntent.FLAG_IMMUTABLE));
