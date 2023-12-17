@@ -106,19 +106,19 @@ dependencies {
     implementation "dev.rikka.shizuku:api:${shizukuVersion}"
     implementation "dev.rikka.shizuku:provider:${shizukuVersion}"
 
-    def appCenterSdkVersion = '5.0.2'
+    def appCenterSdkVersion = '5.0.4'
     appcenterImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 
     implementation 'io.github.iamr0s:Dhizuku-API:2.4'
     implementation 'com.github.getActivity:XXPermissions:18.5'
-    implementation 'com.github.getActivity:EasyWindow:10.3'
+    implementation 'com.github.getActivity:EasyWindow:10.6'
     implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
     implementation 'com.github.takusemba:spotlight:2.0.5'
-    implementation 'com.github.topjohnwu.libsu:core:5.2.1'
-    implementation 'com.google.android.material:material:1.10.0'
-    implementation 'com.kizitonwose.calendar:view:2.4.0'
+    implementation 'com.github.topjohnwu.libsu:core:5.2.2'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'com.kizitonwose.calendar:view:2.4.1'
     implementation 'androidx.biometric:biometric:1.1.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
