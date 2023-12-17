@@ -10,6 +10,8 @@ import java.util.Objects;
 
 import deltazero.amarok.Hider;
 import deltazero.amarok.R;
+import deltazero.amarok.ui.SecurityAuthForQSActivity;
+import deltazero.amarok.utils.SecurityUtil;
 
 public class ActionReceiver extends BroadcastReceiver {
     @Override
@@ -24,7 +26,10 @@ public class ActionReceiver extends BroadcastReceiver {
         if (Objects.equals(intent.getAction(), "deltazero.amarok.HIDE")) {
             Hider.hide(context);
         } else if (Objects.equals(intent.getAction(), "deltazero.amarok.UNHIDE")) {
-            Hider.unhide(context);
+            if (SecurityUtil.isUnlockRequired())
+                context.startActivity(new Intent(context, SecurityAuthForQSActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+            else Hider.unhide(context);
         } else {
             Log.w("ActionReceiver", "Invalid action: " + intent.getAction());
             Toast.makeText(context, context.getString(R.string.invalid_action, intent.getAction()),
