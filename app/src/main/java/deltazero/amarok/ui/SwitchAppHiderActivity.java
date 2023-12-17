@@ -7,21 +7,21 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import deltazero.amarok.AmarokActivity;
+import deltazero.amarok.PrefMgr;
+import deltazero.amarok.R;
+import deltazero.amarok.apphider.BaseAppHider;
 import deltazero.amarok.apphider.DhizukuAppHider;
 import deltazero.amarok.apphider.DsmAppHider;
-import deltazero.amarok.apphider.BaseAppHider;
 import deltazero.amarok.apphider.NoneAppHider;
 import deltazero.amarok.apphider.RootAppHider;
 import deltazero.amarok.apphider.ShizukuAppHider;
-import deltazero.amarok.PrefMgr;
-import deltazero.amarok.R;
 
-public class SwitchAppHiderActivity extends AppCompatActivity {
+public class SwitchAppHiderActivity extends AmarokActivity {
 
     MaterialToolbar tbToolBar;
     RadioButton rbDisabled, rbRoot, rbShizuku, rbDSM, rbDhizuku;

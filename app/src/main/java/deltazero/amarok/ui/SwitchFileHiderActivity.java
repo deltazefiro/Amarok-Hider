@@ -8,20 +8,20 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import deltazero.amarok.AmarokActivity;
+import deltazero.amarok.PrefMgr;
+import deltazero.amarok.R;
 import deltazero.amarok.filehider.BaseFileHider;
 import deltazero.amarok.filehider.ChmodFileHider;
 import deltazero.amarok.filehider.NoMediaFileHider;
 import deltazero.amarok.filehider.NoneFileHider;
 import deltazero.amarok.filehider.ObfuscateFileHider;
-import deltazero.amarok.PrefMgr;
-import deltazero.amarok.R;
 
-public class SwitchFileHiderActivity extends AppCompatActivity {
+public class SwitchFileHiderActivity extends AmarokActivity {
 
     MaterialToolbar tbToolBar;
     RadioButton rbDisabled, rbObfuscate, rbChmod, rbNoMedia;
