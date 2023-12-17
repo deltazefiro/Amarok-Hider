@@ -10,7 +10,6 @@ import android.view.View;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,11 +20,12 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.Set;
 
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.SDCardUtil;
 
-public class SetHideFilesActivity extends AppCompatActivity {
+public class SetHideFilesActivity extends AmarokActivity {
 
     private ActivityResultLauncher<Uri> mDirRequest;
     private static final String TAG = "SetHideFiles";

@@ -11,8 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
@@ -20,6 +18,7 @@ import com.hjq.permissions.OnPermissionCallback;
 
 import java.util.List;
 
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.BuildConfig;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
@@ -32,7 +31,7 @@ import deltazero.amarok.utils.PermissionUtil;
 import deltazero.amarok.utils.SecurityUtil;
 import deltazero.amarok.utils.SwitchLocaleUtil;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AmarokActivity {
 
     private Context context;
     private String appVersionName;

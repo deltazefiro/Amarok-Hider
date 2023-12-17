@@ -2,15 +2,14 @@ package deltazero.amarok.ui;
 
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.materialswitch.MaterialSwitch;
 
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 
-public class ObfuscateFileHiderSettingsActivity extends AppCompatActivity {
+public class ObfuscateFileHiderSettingsActivity extends AmarokActivity {
 
     private MaterialSwitch swObfuscateFileHeader, swObfuscateTextFile, swObfuscateTextFileEnhanced;
     private MaterialToolbar tbToolBar;
