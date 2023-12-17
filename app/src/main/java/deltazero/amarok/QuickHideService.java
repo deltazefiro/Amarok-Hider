@@ -20,7 +20,7 @@ import androidx.lifecycle.LifecycleService;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 import com.hjq.window.EasyWindow;
-import com.hjq.window.draggable.SpringDraggable;
+import com.hjq.window.draggable.SpringBackDraggable;
 
 import deltazero.amarok.ui.MainActivity;
 
@@ -83,7 +83,7 @@ public class QuickHideService extends LifecycleService {
                 .setContentView(R.layout.dialog_panic_button)
                 .setGravity(Gravity.END | Gravity.BOTTOM)
                 .setYOffset(300)
-                .setDraggable(new SpringDraggable())
+                .setDraggable(new SpringBackDraggable())
                 .setOnClickListener(R.id.dialog_iv_panic_button,
                         (EasyWindow.OnClickListener<ImageView>) (xToast, view) -> Hider.hide(this));
 
