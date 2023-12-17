@@ -1,5 +1,6 @@
 package deltazero.amarok.ui;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -54,6 +55,10 @@ public class SecurityAuthActivity extends AppCompatActivity {
     protected void onSuccess() {
         SecurityUtil.unlock();
         finish();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+            overrideActivityTransition(OVERRIDE_TRANSITION_CLOSE, 0, android.R.anim.fade_out);
+        else
+            overridePendingTransition(0, android.R.anim.fade_out);
     }
 
     protected void onFail() {

@@ -103,16 +103,19 @@
         <activity
             android:name=".ui.SecurityAuthActivity"
             android:excludeFromRecents="true"
-            android:exported="false" />
+            android:exported="false"
+            android:noHistory="true" />
         <activity
             android:name=".ui.SecurityAuthForQSActivity"
             android:excludeFromRecents="true"
             android:exported="false"
+            android:noHistory="true"
             android:theme="@style/Theme.Amarok.Transparent" />
         <activity
             android:name=".ui.DsmActivationActivity"
             android:excludeFromRecents="true"
             android:exported="false"
+            android:noHistory="true"
             android:theme="@style/Theme.Amarok.Transparent" />
 
         <service
