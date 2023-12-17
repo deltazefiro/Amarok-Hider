@@ -1,8 +1,8 @@
-package deltazero.amarok.FileHider;
+package deltazero.amarok.filehider;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
-import static deltazero.amarok.FileHider.BaseFileHider.ProcessMethod.HIDE;
-import static deltazero.amarok.FileHider.BaseFileHider.ProcessMethod.UNHIDE;
+import static deltazero.amarok.filehider.BaseFileHider.ProcessMethod.HIDE;
+import static deltazero.amarok.filehider.BaseFileHider.ProcessMethod.UNHIDE;
 
 import android.content.Context;
 import android.util.Base64;
@@ -24,7 +24,6 @@ import java.util.Set;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.utils.FileHiderUtil;
 
-@SuppressWarnings("deprecation")
 public class ObfuscateFileHider extends BaseFileHider {
     private final static String TAG = "FileHider";
 
@@ -32,28 +31,19 @@ public class ObfuscateFileHider extends BaseFileHider {
     private final static int MAX_PROCESS_ENHANCED_WHOLE_FILE_SIZE_KB = 30 * 1024;
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
 
-    @Deprecated
-    public final static String FILENAME_LEGACY_START_MARK = "[AMAROK]";
-    @Deprecated
-    public final static String FILENAME_LEGACY_START_MARK_ENCODED = "W0FNQVJPS1";
-
     public final static String FILENAME_NO_PROCESS_MARK = "!amk";
     public final static String FILENAME_FULL_PROCESS_MARK = "!amk1";
     public final static String FILENAME_HEADER_PROCESS_MARK = "!amk2";
 
     public boolean processHeader;
-    @Deprecated
-    public boolean processHeaderLegacy;
     public boolean processTextFile;
     public boolean processTextFileEnhanced;
 
     public ObfuscateFileHider(Context context) {
         super(context);
-        var prefMgr = new PrefMgr(context);
-        processHeader = prefMgr.getEnableObfuscateFileHeader();
-        processHeaderLegacy = prefMgr.getLegacyEnableObfuscateFileHeader();
-        processTextFile = prefMgr.getEnableObfuscateTextFile();
-        processTextFileEnhanced = prefMgr.getEnableObfuscateTextFileEnhanced();
+        processHeader = PrefMgr.getEnableObfuscateFileHeader();
+        processTextFile = PrefMgr.getEnableObfuscateTextFile();
+        processTextFileEnhanced = PrefMgr.getEnableObfuscateTextFileEnhanced();
     }
 
     @Override
@@ -150,7 +140,7 @@ public class ObfuscateFileHider extends BaseFileHider {
      * Process the Filename and check if the process succeeds.
      *
      * @param path            The path to be processed.
-     * @param method   Process method.
+     * @param method          Process method.
      * @param extraEndingMark (only effective when `HIDE`) Extra mark to be append to the end of the filename.
      * @return If the process succeeds, return the new path. Otherwise, return null.
      */
@@ -181,10 +171,6 @@ public class ObfuscateFileHider extends BaseFileHider {
                 newFilename = new String(
                         Base64.decode(FileHiderUtil.stripFilenameExtras(filename), BASE64_TAG), UTF_8
                 );
-
-                // Strip legacy file mark [version < 0.8.2b1(28)]
-                newFilename = FileHiderUtil.stripStart(newFilename, FILENAME_LEGACY_START_MARK);
-
             } catch (IllegalArgumentException e) {
                 Log.w(TAG, "Unable to decode: " + filename);
                 return null;
@@ -307,19 +293,7 @@ public class ObfuscateFileHider extends BaseFileHider {
 
     private boolean checkShouldProcessHeader(Path path, ProcessMethod method) {
         String filename = path.getFileName().toString();
-
-        if (method == HIDE) {
-            return processHeader;
-        } else { // UNHIDE
-
-            // Deal with legacy files [version < 0.8.2b1(28)]
-            if (filename.startsWith("." + FILENAME_LEGACY_START_MARK_ENCODED)) {
-                Log.w(TAG, "Found legacy filename mark: " + filename);
-                return processHeaderLegacy;
-            }
-
-            return filename.endsWith(FILENAME_HEADER_PROCESS_MARK);
-        }
-
+        if (method == HIDE) return processHeader;
+        else return filename.endsWith(FILENAME_HEADER_PROCESS_MARK);
     }
 }

@@ -1,28 +1,20 @@
 package deltazero.amarok.utils;
 
-import android.app.Activity;
+import android.app.Application;
 
 public class AppCenterUtil {
 
-    public static void cleanUpdatePostpone() {
-        // pass
-    }
+    public static void cleanUpdatePostpone() {}
 
-    public static void checkUpdate() {
-        // pass
-    }
+    public static void checkUpdate() {}
 
-    public static void setAnalyticsEnabled(boolean enabled) {
-        // pass
-    }
+    public static void setAnalyticsEnabled(boolean enabled) {}
 
     public static boolean isAnalyticsEnabled() {
         return false;
     }
 
-    public static void startAppCenter(Activity activity) {
-        // pass
-    }
+    public static void startAppCenter(Application application) {}
 
     public static boolean isAvailable() {
         return false;

@@ -27,8 +27,6 @@ import deltazero.amarok.R;
 import deltazero.amarok.utils.AppInfoUtil;
 
 public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListHolder> {
-
-    private final PrefMgr prefMgr;
     private final AppInfoUtil appInfoUtil;
 
     private final LayoutInflater inflater;
@@ -59,7 +57,6 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
             backgroundThread.start();
         backgroundHandler = new Handler(backgroundThread.getLooper());
 
-        prefMgr = new PrefMgr(activity);
         appInfoUtil = new AppInfoUtil(activity);
 
         this.activity = activity;
@@ -81,7 +78,7 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
         // Run for each item
         AppInfo currAppInfo = getCurrentList().get(position);
         holder.tvAppName.setText(currAppInfo.label);
-        holder.cbIsHidden.setChecked(prefMgr.getHideApps().contains(currAppInfo.packageName));
+        holder.cbIsHidden.setChecked(PrefMgr.getHideApps().contains(currAppInfo.packageName));
         holder.tvPkgName.setText(currAppInfo.packageName);
         holder.ivAppIcon.setImageDrawable(currAppInfo.icon);
     }
@@ -130,14 +127,14 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             String appPkgName = getCurrentList().get(getLayoutPosition()).packageName;
-            var hiddenApps = prefMgr.getHideApps();
+            var hiddenApps = PrefMgr.getHideApps();
 
             if (buttonView.isChecked()) {
                 hiddenApps.add(appPkgName);
             } else {
                 hiddenApps.remove(appPkgName);
             }
-            prefMgr.setHideApps(hiddenApps);
+            PrefMgr.setHideApps(hiddenApps);
         }
     }
 }

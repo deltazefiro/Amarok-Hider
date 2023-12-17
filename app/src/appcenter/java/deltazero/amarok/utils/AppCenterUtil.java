@@ -1,8 +1,7 @@
 package deltazero.amarok.utils;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.net.Uri;
+import android.app.Application;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -30,8 +29,6 @@ public class AppCenterUtil {
 
             String versionName = releaseDetails.getShortVersion();
             int versionCode = releaseDetails.getVersion();
-            String releaseNotes = releaseDetails.getReleaseNotes();
-            Uri releaseNotesUrl = releaseDetails.getReleaseNotesUrl();
 
             Log.i("CheckUpdate", "Found new update: Amarok " + versionName);
 
@@ -40,25 +37,12 @@ public class AppCenterUtil {
                 new MaterialAlertDialogBuilder(activity)
                         .setTitle(R.string.update_ava)
                         .setMessage(activity.getString(R.string.update_description, versionName, versionCode))
-                        .setPositiveButton(R.string.update, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Distribute.notifyUpdateAction(UpdateAction.UPDATE);
-                            }
+                        .setPositiveButton(R.string.update, (dialog, which) -> Distribute.notifyUpdateAction(UpdateAction.UPDATE))
+                        .setNeutralButton(R.string.never, (dialog, which) -> {
+                            PrefMgr.setEnableAutoUpdate(false);
+                            Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
                         })
-                        .setNeutralButton(R.string.never, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                new PrefMgr(activity).setEnableAutoUpdate(false);
-                                Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
-                            }
-                        })
-                        .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
-                            }
-                        })
+                        .setNegativeButton(R.string.cancel, (dialog, which) -> Distribute.notifyUpdateAction(UpdateAction.POSTPONE))
                         .setCancelable(false)
                         .show();
 
@@ -99,14 +83,15 @@ public class AppCenterUtil {
         return Crashes.isEnabled().get();
     }
 
-    public static void startAppCenter(Activity activity) {
-        Distribute.setEnabledForDebuggableBuild(false);
+    public static void startAppCenter(Application application) {
+        assert PrefMgr.initialized;
 
-        if (!new PrefMgr(activity).getEnableAutoUpdate())
+        Distribute.setEnabledForDebuggableBuild(false);
+        if (!PrefMgr.getEnableAutoUpdate())
             Distribute.disableAutomaticCheckForUpdate();
 
         Distribute.setListener(new AmarokDistributeListener());
-        AppCenter.start(activity.getApplication(), appSecret,
+        AppCenter.start(application, appSecret,
                 Analytics.class, Crashes.class, Distribute.class);
     }
 

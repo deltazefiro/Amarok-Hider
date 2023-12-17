@@ -1,4 +1,4 @@
-package deltazero.amarok.AppHider;
+package deltazero.amarok.apphider;
 
 import static android.app.admin.DevicePolicyManager.DELEGATION_PACKAGE_ACCESS;
 

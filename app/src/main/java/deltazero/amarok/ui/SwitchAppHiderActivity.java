@@ -7,23 +7,22 @@ import android.view.View;
 import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import deltazero.amarok.AppHider.DhizukuAppHider;
-import deltazero.amarok.AppHider.DsmAppHider;
-import deltazero.amarok.AppHider.BaseAppHider;
-import deltazero.amarok.AppHider.NoneAppHider;
-import deltazero.amarok.AppHider.RootAppHider;
-import deltazero.amarok.AppHider.ShizukuAppHider;
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.apphider.BaseAppHider;
+import deltazero.amarok.apphider.DhizukuAppHider;
+import deltazero.amarok.apphider.DsmAppHider;
+import deltazero.amarok.apphider.NoneAppHider;
+import deltazero.amarok.apphider.RootAppHider;
+import deltazero.amarok.apphider.ShizukuAppHider;
 
-public class SwitchAppHiderActivity extends AppCompatActivity {
+public class SwitchAppHiderActivity extends AmarokActivity {
 
-    PrefMgr prefMgr;
     MaterialToolbar tbToolBar;
     RadioButton rbDisabled, rbRoot, rbShizuku, rbDSM, rbDhizuku;
 
@@ -39,8 +38,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
         rbDhizuku = findViewById(R.id.switch_apphider_radio_dhizuku);
         tbToolBar = findViewById(R.id.switch_apphider_tb_toolbar);
 
-        prefMgr = new PrefMgr(this);
-        setCheckedRadioButton(prefMgr.getAppHider().getClass());
+        setCheckedRadioButton(PrefMgr.getAppHider(this).getClass());
 
         // Enable back button
         tbToolBar.setNavigationOnClickListener(v -> finish());
@@ -50,7 +48,7 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setCheckedRadioButton(prefMgr.getAppHider().getClass());
+        setCheckedRadioButton(PrefMgr.getAppHider(this).getClass());
     }
 
 
@@ -81,12 +79,12 @@ public class SwitchAppHiderActivity extends AppCompatActivity {
 
     public void onActivationCallback(Class<? extends BaseAppHider> appHider, boolean success, @Nullable Integer msgResID) {
         if (success) {
-            prefMgr.setAppHiderMode(appHider);
+            PrefMgr.setAppHiderMode(appHider);
             setCheckedRadioButton(appHider);
         } else {
             assert msgResID != null && msgResID != 0;
 
-            prefMgr.setAppHiderMode(NoneAppHider.class);
+            PrefMgr.setAppHiderMode(NoneAppHider.class);
             setCheckedRadioButton(NoneAppHider.class);
 
             runOnUiThread(() -> new MaterialAlertDialogBuilder(this)

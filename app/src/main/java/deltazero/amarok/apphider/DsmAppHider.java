@@ -1,4 +1,4 @@
-package deltazero.amarok.AppHider;
+package deltazero.amarok.apphider;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
@@ -11,7 +11,7 @@ import com.catchingnow.delegatedscopeclient.DSMClient;
 
 import java.util.Set;
 
-import deltazero.amarok.AdminReceiver;
+import deltazero.amarok.receivers.AdminReceiver;
 import deltazero.amarok.R;
 import deltazero.amarok.ui.DsmActivationActivity;
 

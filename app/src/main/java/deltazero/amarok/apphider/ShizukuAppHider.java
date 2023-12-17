@@ -1,4 +1,4 @@
-package deltazero.amarok.AppHider;
+package deltazero.amarok.apphider;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -15,10 +15,15 @@ import deltazero.amarok.BuildConfig;
 import deltazero.amarok.R;
 import rikka.shizuku.Shizuku;
 import rikka.shizuku.ShizukuBinderWrapper;
+import rikka.shizuku.ShizukuProvider;
 import rikka.shizuku.SystemServiceHelper;
 
 public class ShizukuAppHider extends BaseAppHider {
     public static final int shizukuReqCode = 600;
+
+    static {
+        ShizukuProvider.enableMultiProcessSupport(false);
+    }
 
     public ShizukuAppHider(Context context) {
         super(context);

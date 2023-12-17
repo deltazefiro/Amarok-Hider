@@ -10,7 +10,6 @@ import android.view.View;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -21,14 +20,14 @@ import java.io.File;
 import java.nio.file.Paths;
 import java.util.Set;
 
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.SDCardUtil;
 
-public class SetHideFilesActivity extends AppCompatActivity {
+public class SetHideFilesActivity extends AmarokActivity {
 
     private ActivityResultLauncher<Uri> mDirRequest;
-    private PrefMgr prefMgr;
     private static final String TAG = "SetHideFiles";
     private RecyclerView rvFileList;
     private FileListAdapter adapter;
@@ -38,8 +37,6 @@ public class SetHideFilesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hidefiles);
-
-        prefMgr = new PrefMgr(this);
 
         rvFileList = findViewById(R.id.hidefiles_rv_filelist);
         tbToolBar = findViewById(R.id.hidefiles_tb_toolbar);
@@ -73,7 +70,7 @@ public class SetHideFilesActivity extends AppCompatActivity {
                             return;
                         }
 
-                        Set<String> hideFilePath = prefMgr.getHideFilePath();
+                        Set<String> hideFilePath = PrefMgr.getHideFilePath();
 
                         // Check if the path is duplicated
                         var p2 = Paths.get(newPath).toAbsolutePath();
@@ -98,7 +95,7 @@ public class SetHideFilesActivity extends AppCompatActivity {
                         }
 
                         hideFilePath.add(newPath);
-                        prefMgr.setHideFilePath(hideFilePath);
+                        PrefMgr.setHideFilePath(hideFilePath);
 
                         adapter.lsPath.add(newPath);
                         adapter.notifyItemInserted(adapter.lsPath.size() - 1);
