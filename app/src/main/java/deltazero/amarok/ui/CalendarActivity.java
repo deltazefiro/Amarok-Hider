@@ -4,6 +4,7 @@ import static com.kizitonwose.calendar.core.ExtensionsKt.firstDayOfWeekFromLocal
 import static deltazero.amarok.utils.SwitchLocaleUtil.getActiveLocale;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -47,6 +48,12 @@ public class CalendarActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
+            overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, 0, 0);
+        else
+            overridePendingTransition(0, 0);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
@@ -81,6 +88,10 @@ public class CalendarActivity extends AppCompatActivity {
                 finishAffinity();
             }
         });
+
+        if (PrefMgr.getDoShowQuitDisguiseInstuct()) {
+            showInstruction();
+        }
     }
 
     @SuppressLint("MissingInflatedId")
