@@ -1,36 +1,29 @@
 package deltazero.amarok.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.hjq.permissions.XXPermissions;
 
-import deltazero.amarok.apphider.NoneAppHider;
-import deltazero.amarok.filehider.NoneFileHider;
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
-import deltazero.amarok.utils.BetterActivityLauncher;
+import deltazero.amarok.apphider.NoneAppHider;
+import deltazero.amarok.filehider.NoneFileHider;
 import deltazero.amarok.utils.PermissionUtil;
-import deltazero.amarok.utils.SecurityAuth;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AmarokActivity {
 
     public final static String TAG = "Main";
-
-    private ScrollView svMainLayout;
     private ImageView ivStatusImg;
     private TextView tvStatusInfo, tvStatus;
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
@@ -43,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Binding views
-        svMainLayout = findViewById(R.id.main_sv_main_layout);
         ivStatusImg = findViewById(R.id.main_iv_status);
         tvStatus = findViewById(R.id.main_tv_status);
         tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
@@ -53,39 +45,12 @@ public class MainActivity extends AppCompatActivity {
         piProcessStatus = findViewById(R.id.main_pi_process_status);
 
         // Init UI
-        svMainLayout.setVisibility(View.GONE);
         refreshUi(Hider.getState());
 
         // Setup observer
         Hider.state.observe(this, this::refreshUi);
 
-        // Launch disguise activity if needed
-        var activityLauncher = BetterActivityLauncher.registerActivityForResult(this);
-        if (PrefMgr.getEnableDisguise()) {
-            activityLauncher.launch(new Intent(this, CalendarActivity.class), result -> {
-                if (result.getResultCode() == Activity.RESULT_OK) {
-                    new SecurityAuth(this, succeed -> {
-                        if (succeed) init();
-                        else finish();
-                    }).authenticate();
-                } else {
-                    finish();
-                }
-            });
-        } else {
-            // Show security check fragment
-            new SecurityAuth(this, succeed -> {
-                if (succeed) init();
-                else finish();
-            }).authenticate();
-        }
-    }
-
-    public void init() {
-
-        // Show main UI
-        svMainLayout.setVisibility(View.VISIBLE);
-
+        // Show welcome dialog
         if (PrefMgr.getShowWelcome()) {
             new MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.welcome_title)
@@ -104,31 +69,29 @@ public class MainActivity extends AppCompatActivity {
             PermissionUtil.requestStoragePermission(this);
         }
 
-        // Check AppHider availability
+        // Check Hiders availability
         PrefMgr.getAppHider(this).tryToActivate((appHiderClass, succeed, msg) -> {
-            if (!succeed) {
-                PrefMgr.setAppHiderMode(NoneAppHider.class);
-                new MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.apphider_not_ava_title)
-                        .setMessage(msg)
-                        .setPositiveButton(R.string.switch_app_hider, (dialog, which)
-                                -> startActivity(new Intent(this, SwitchAppHiderActivity.class)))
-                        .setNegativeButton(getString(R.string.ok), null)
-                        .show();
-            }
+            if (succeed) return;
+            PrefMgr.setAppHiderMode(NoneAppHider.class);
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.apphider_not_ava_title)
+                    .setMessage(msg)
+                    .setPositiveButton(R.string.switch_app_hider, (dialog, which)
+                            -> startActivity(new Intent(this, SwitchAppHiderActivity.class)))
+                    .setNegativeButton(getString(R.string.ok), null)
+                    .show();
         });
 
         PrefMgr.getFileHider(this).tryToActive((fileHiderClass, succeed, msg) -> {
-            if (!succeed) {
-                PrefMgr.setFileHiderMode(NoneFileHider.class);
-                new MaterialAlertDialogBuilder(this)
-                        .setTitle(R.string.filehider_not_ava_title)
-                        .setMessage(msg)
-                        .setPositiveButton(R.string.switch_file_hider, (dialog, which)
-                                -> startActivity(new Intent(this, SwitchFileHiderActivity.class)))
-                        .setNegativeButton(getString(R.string.ok), null)
-                        .show();
-            }
+            if (succeed) return;
+            PrefMgr.setFileHiderMode(NoneFileHider.class);
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.filehider_not_ava_title)
+                    .setMessage(msg)
+                    .setPositiveButton(R.string.switch_file_hider, (dialog, which)
+                            -> startActivity(new Intent(this, SwitchFileHiderActivity.class)))
+                    .setNegativeButton(getString(R.string.ok), null)
+                    .show();
         });
     }
 

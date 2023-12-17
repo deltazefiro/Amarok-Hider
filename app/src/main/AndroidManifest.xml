@@ -101,9 +101,13 @@
             android:exported="false"
             android:theme="@style/Theme.Calculator" />
         <activity
-            android:name=".ui.SecurityAuthForQuickHideActivity"
+            android:name=".ui.SecurityAuthActivity"
             android:excludeFromRecents="true"
-            android:exported="true"
+            android:exported="false" />
+        <activity
+            android:name=".ui.SecurityAuthForQSActivity"
+            android:excludeFromRecents="true"
+            android:exported="false"
             android:theme="@style/Theme.Amarok.Transparent" />
         <activity
             android:name=".ui.DsmActivationActivity"
