@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ import java.util.List;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.utils.SecurityUtil;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -68,14 +70,17 @@ public class CalendarActivity extends AppCompatActivity {
         });
 
         tvYear.setOnLongClickListener(v -> {
-            setResult(RESULT_OK);
+            SecurityUtil.dismissDisguise();
             finish();
             return true;
         });
 
-        if (PrefMgr.getDoShowQuitDisguiseInstuct()) {
-            showInstruction();
-        }
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finishAffinity();
+            }
+        });
     }
 
     @SuppressLint("MissingInflatedId")

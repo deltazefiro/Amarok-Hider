@@ -29,7 +29,7 @@ import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.HashUtil;
 import deltazero.amarok.utils.LauncherIconController;
 import deltazero.amarok.utils.PermissionUtil;
-import deltazero.amarok.utils.SecurityAuth;
+import deltazero.amarok.utils.SecurityUtil;
 import deltazero.amarok.utils.SwitchLocaleUtil;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -280,7 +280,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void showDebugInfo(View view) {
-        SecurityAuth.lock();
+        SecurityUtil.lockAndDisguise();
     }
 }
 
