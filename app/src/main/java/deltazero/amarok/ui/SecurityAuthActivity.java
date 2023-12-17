@@ -8,7 +8,7 @@ import androidx.biometric.BiometricPrompt;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
-import deltazero.amarok.utils.SecurityAuth;
+import deltazero.amarok.utils.SecurityUtil;
 
 public class SecurityAuthActivity extends AppCompatActivity {
     private PasswordAuthFragment passwordAuthFragment;
@@ -45,14 +45,14 @@ public class SecurityAuthActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        if (!SecurityAuth.isUnlockRequired()) finish();
+        if (!SecurityUtil.isUnlockRequired()) finish();
         super.onResume();
         if (PrefMgr.getEnableAmarokBiometricAuth()) biometricAuthenticate();
         else passwordAuthenticate();
     }
 
     protected void onSuccess() {
-        SecurityAuth.unlock();
+        SecurityUtil.unlock();
         finish();
     }
 
