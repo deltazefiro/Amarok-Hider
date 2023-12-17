@@ -11,8 +11,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.materialswitch.MaterialSwitch;
@@ -20,6 +18,7 @@ import com.hjq.permissions.OnPermissionCallback;
 
 import java.util.List;
 
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.BuildConfig;
 import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
@@ -29,11 +28,11 @@ import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.HashUtil;
 import deltazero.amarok.utils.LauncherIconController;
 import deltazero.amarok.utils.PermissionUtil;
+import deltazero.amarok.utils.SecurityUtil;
 import deltazero.amarok.utils.SwitchLocaleUtil;
 
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity extends AmarokActivity {
 
-    private PrefMgr prefMgr;
     private Context context;
     private String appVersionName;
     private MaterialSwitch swAnalytics, swAutoUpdate, swPanicButton, swQuickHideNotification, swAppLock, swBiometricAuth, swDynamicColor, swDisguise;
@@ -48,7 +47,6 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        prefMgr = new PrefMgr(this);
         context = this;
 
         // Get app version
@@ -88,7 +86,7 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onGranted(List<String> permissions, boolean all) {
                         Log.d("QuickHideNotification", "Granted: NOTIFICATION");
-                        prefMgr.setEnableQuickHideService(true);
+                        PrefMgr.setEnableQuickHideService(true);
                         QuickHideService.startService(context);
                         updateUI();
                     }
@@ -98,14 +96,14 @@ public class SettingsActivity extends AppCompatActivity {
                         Log.w("QuickHideNotification", "User denied: NOTIFICATION");
                         Toast.makeText(context, R.string.notification_permission_denied, Toast.LENGTH_LONG).show();
 
-                        prefMgr.setEnableQuickHideService(false);
-                        prefMgr.setEnablePanicButton(false);
+                        PrefMgr.setEnableQuickHideService(false);
+                        PrefMgr.setEnablePanicButton(false);
                         updateUI();
                     }
                 });
             } else {
-                prefMgr.setEnableQuickHideService(false);
-                prefMgr.setEnablePanicButton(false);
+                PrefMgr.setEnableQuickHideService(false);
+                PrefMgr.setEnablePanicButton(false);
                 QuickHideService.stopService(this);
                 updateUI();
             }
@@ -115,24 +113,24 @@ public class SettingsActivity extends AppCompatActivity {
             if (isChecked) {
                 new SetPasswordFragment()
                         .setCallback(password -> {
-                            prefMgr.setAmarokPassword(password == null ? null : HashUtil.calculateHash(password));
+                            PrefMgr.setAmarokPassword(password == null ? null : HashUtil.calculateHash(password));
                             updateUI();
                         })
                         .show(getSupportFragmentManager(), null);
             } else {
-                prefMgr.setAmarokPassword(null);
+                PrefMgr.setAmarokPassword(null);
                 updateUI();
             }
         });
 
         swDisguise.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setDoShowQuitDisguiseInstuct(true);
-            prefMgr.setEnableDisguise(isChecked);
+            PrefMgr.setDoShowQuitDisguiseInstuct(true);
+            PrefMgr.setEnableDisguise(isChecked);
             LauncherIconController.switchDisguise(this, isChecked);
         });
 
         swBiometricAuth.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableAmarokBiometricAuth(isChecked);
+            PrefMgr.setEnableAmarokBiometricAuth(isChecked);
         });
 
         swPanicButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
@@ -144,7 +142,7 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onGranted(List<String> permissions, boolean all) {
                         Log.d("PanicButton", "Granted: SYSTEM_ALERT_WINDOW");
-                        prefMgr.setEnablePanicButton(true);
+                        PrefMgr.setEnablePanicButton(true);
                         QuickHideService.startService(context);
                         updateUI();
                     }
@@ -153,12 +151,12 @@ public class SettingsActivity extends AppCompatActivity {
                     public void onDenied(List<String> permissions, boolean never) {
                         Log.w("PanicButton", "User denied: SYSTEM_ALERT_WINDOW");
                         Toast.makeText(context, R.string.alert_permission_denied, Toast.LENGTH_LONG).show();
-                        prefMgr.setEnablePanicButton(false);
+                        PrefMgr.setEnablePanicButton(false);
                         updateUI();
                     }
                 });
             } else {
-                prefMgr.setEnablePanicButton(false);
+                PrefMgr.setEnablePanicButton(false);
                 QuickHideService.startService(context); // Restart service
                 updateUI();
             }
@@ -170,7 +168,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         swAutoUpdate.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableAutoUpdate(isChecked);
+            PrefMgr.setEnableAutoUpdate(isChecked);
 
             if (isChecked) {
                 AppCenterUtil.cleanUpdatePostpone();
@@ -180,7 +178,7 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         swDynamicColor.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            prefMgr.setEnableDynamicColor(isChecked);
+            PrefMgr.setEnableDynamicColor(isChecked);
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
         });
 
@@ -194,25 +192,25 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void updateUI() {
-        tvCurrAppHider.setText(getString(R.string.current_mode, prefMgr.getAppHider().getName()));
+        tvCurrAppHider.setText(getString(R.string.current_mode, PrefMgr.getAppHider(this).getName()));
         tvCurrFileHider.setText(getString(R.string.current_mode,
-                (prefMgr.getFileHider().getName())));
+                (PrefMgr.getFileHider(this).getName())));
 
         tvCurrVer.setText(getString(R.string.check_update_description, appVersionName));
 
-        swAppLock.setChecked(prefMgr.getAmarokPassword() != null);
-        swBiometricAuth.setChecked(prefMgr.getEnableAmarokBiometricAuth());
-        swDisguise.setChecked(prefMgr.getEnableDisguise());
-        swQuickHideNotification.setChecked(prefMgr.getEnableQuickHideService());
-        swPanicButton.setChecked(prefMgr.getEnablePanicButton());
-        swDynamicColor.setChecked(prefMgr.getEnableDynamicColor());
+        swAppLock.setChecked(PrefMgr.getAmarokPassword() != null);
+        swBiometricAuth.setChecked(PrefMgr.getEnableAmarokBiometricAuth());
+        swDisguise.setChecked(PrefMgr.getEnableDisguise());
+        swQuickHideNotification.setChecked(PrefMgr.getEnableQuickHideService());
+        swPanicButton.setChecked(PrefMgr.getEnablePanicButton());
+        swDynamicColor.setChecked(PrefMgr.getEnableDynamicColor());
 
-        swPanicButton.setEnabled(prefMgr.getEnableQuickHideService());
-        swBiometricAuth.setEnabled(prefMgr.getAmarokPassword() != null);
+        swPanicButton.setEnabled(PrefMgr.getEnableQuickHideService());
+        swBiometricAuth.setEnabled(PrefMgr.getAmarokPassword() != null);
 
         if (AppCenterUtil.isAvailable()) {
             swAnalytics.setChecked(AppCenterUtil.isAnalyticsEnabled());
-            swAutoUpdate.setChecked(prefMgr.getEnableAutoUpdate());
+            swAutoUpdate.setChecked(PrefMgr.getEnableAutoUpdate());
         } else {
             swAnalytics.setEnabled(false);
             swAutoUpdate.setEnabled(false);
@@ -232,7 +230,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void switchFileHider(View view) {
-        if (prefMgr.getIsHidden() || Boolean.TRUE.equals(Hider.isProcessing.getValue())) {
+        if (Hider.getState() == Hider.State.PROCESSING || Hider.getState() == Hider.State.HIDDEN) {
             Toast.makeText(this, R.string.option_unava_when_hidden, Toast.LENGTH_SHORT).show();
             return;
         }
@@ -264,7 +262,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .setTitle(R.string.force_unhide)
                 .setMessage(R.string.force_unhide_confirm_msg)
                 .setPositiveButton(R.string.confirm, (dialog, which) -> {
-                    new Hider(this).forceUnhide();
+                    Hider.forceUnhide(this);
                     Toast.makeText(this, R.string.performing_force_unhide, Toast.LENGTH_LONG).show();
                     finish();
                 })
@@ -281,7 +279,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void showDebugInfo(View view) {
-        startActivity(new Intent(this, CalendarActivity.class));
+        SecurityUtil.lockAndDisguise();
     }
 }
 

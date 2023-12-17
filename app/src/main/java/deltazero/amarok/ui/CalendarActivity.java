@@ -4,7 +4,6 @@ import static com.kizitonwose.calendar.core.ExtensionsKt.firstDayOfWeekFromLocal
 import static deltazero.amarok.utils.SwitchLocaleUtil.getActiveLocale;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -12,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +35,7 @@ import java.util.List;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.utils.SecurityUtil;
 
 public class CalendarActivity extends AppCompatActivity {
 
@@ -44,14 +45,10 @@ public class CalendarActivity extends AppCompatActivity {
     LocalDate selectedDate = null;
     CalendarDay selectedDateDay = null;
 
-    PrefMgr prefMgr;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
-
-        prefMgr = new PrefMgr(this);
 
         calendarView = findViewById(R.id.calendar_view);
         tvMonth = findViewById(R.id.calendar_tv_month_text);
@@ -61,7 +58,6 @@ public class CalendarActivity extends AppCompatActivity {
         YearMonth startMonth = currentMonth.minusMonths(100);
         YearMonth endMonth = currentMonth.plusMonths(100);
 
-        Context context = this;
         calendarView.setup(startMonth, endMonth, firstDayOfWeekFromLocale());
 
         setupDayBinder(calendarView, currentMonth);
@@ -74,14 +70,17 @@ public class CalendarActivity extends AppCompatActivity {
         });
 
         tvYear.setOnLongClickListener(v -> {
-            setResult(RESULT_OK);
+            SecurityUtil.dismissDisguise();
             finish();
             return true;
         });
 
-        if (prefMgr.getDoShowQuitDisguiseInstuct()) {
-            showInstruction();
-        }
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                finishAffinity();
+            }
+        });
     }
 
     @SuppressLint("MissingInflatedId")
@@ -105,7 +104,7 @@ public class CalendarActivity extends AppCompatActivity {
         spotlightLayout.setOnClickListener(v -> spotlight.finish());
         spotlightLayout.findViewById(R.id.calendar_bt_spotlight_do_not_show_again).setOnClickListener(v -> {
             spotlight.finish();
-            prefMgr.setDoShowQuitDisguiseInstuct(false);
+            PrefMgr.setDoShowQuitDisguiseInstuct(false);
         });
         spotlight.start();
     }

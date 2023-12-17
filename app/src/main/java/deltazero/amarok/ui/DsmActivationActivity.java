@@ -1,6 +1,6 @@
 package deltazero.amarok.ui;
 
-import static deltazero.amarok.AppHider.DsmAppHider.activationCallbackListener;
+import static deltazero.amarok.apphider.DsmAppHider.activationCallbackListener;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.Intent;
@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.catchingnow.delegatedscopeclient.DSMClient;
 
-import deltazero.amarok.AppHider.DsmAppHider;
+import deltazero.amarok.apphider.DsmAppHider;
 import deltazero.amarok.R;
 
 public class DsmActivationActivity extends AppCompatActivity {

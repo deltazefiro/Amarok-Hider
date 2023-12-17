@@ -12,12 +12,11 @@ def getGitHash = { ->
 }
 
 android {
-    compileSdkVersion 34
-
     defaultConfig {
         applicationId "deltazero.amarok"
         minSdkVersion 26
         targetSdkVersion 34
+        compileSdk 34
         versionCode 64
         versionName "0.8.5b3"
 
@@ -55,7 +54,7 @@ android {
     }
 
     productFlavors {
-        flavorDimensions "version"
+        flavorDimensions = ['version']
         appcenter {
             dimension 'version'
         }
@@ -74,14 +73,14 @@ android {
         }
     }
 
-    applicationVariants.all { variant ->
+    applicationVariants.configureEach { variant ->
         def flavorName = variant.productFlavors[0].name
         if (flavorName == "appcenter") {
-            variant.outputs.all { output ->
+            variant.outputs.configureEach { output ->
                 outputFileName = "Amarok-v${variant.versionName}.apk"
             }
         } else {
-            variant.outputs.all { output ->
+            variant.outputs.configureEach { output ->
                 outputFileName = "Amarok-v${variant.versionName}-${flavorName}.apk"
             }
         }
@@ -91,7 +90,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_17
         targetCompatibility JavaVersion.VERSION_17
     }
+
     namespace 'deltazero.amarok'
+    buildFeatures {
+        buildConfig true
+    }
 }
 
 repositories {

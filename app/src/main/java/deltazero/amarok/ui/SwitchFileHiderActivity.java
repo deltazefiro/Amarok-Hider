@@ -8,22 +8,21 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import deltazero.amarok.FileHider.BaseFileHider;
-import deltazero.amarok.FileHider.ChmodFileHider;
-import deltazero.amarok.FileHider.NoMediaFileHider;
-import deltazero.amarok.FileHider.NoneFileHider;
-import deltazero.amarok.FileHider.ObfuscateFileHider;
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.filehider.BaseFileHider;
+import deltazero.amarok.filehider.ChmodFileHider;
+import deltazero.amarok.filehider.NoMediaFileHider;
+import deltazero.amarok.filehider.NoneFileHider;
+import deltazero.amarok.filehider.ObfuscateFileHider;
 
-public class SwitchFileHiderActivity extends AppCompatActivity {
+public class SwitchFileHiderActivity extends AmarokActivity {
 
-    PrefMgr prefMgr;
     MaterialToolbar tbToolBar;
     RadioButton rbDisabled, rbObfuscate, rbChmod, rbNoMedia;
     ImageView ivObfuscateSettings;
@@ -33,8 +32,6 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_switch_filehider);
 
-        prefMgr = new PrefMgr(this);
-
         rbDisabled = findViewById(R.id.switch_filehider_radio_disabled);
         rbObfuscate = findViewById(R.id.switch_filehider_radio_obfuscate);
         rbChmod = findViewById(R.id.switch_filehider_radio_chmod);
@@ -42,7 +39,7 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
         tbToolBar = findViewById(R.id.switch_filehider_tb_toolbar);
         ivObfuscateSettings = findViewById(R.id.switch_filehider_iv_obfuscate_settings);
 
-        setCheckedRadioButton(prefMgr.getFileHider().getClass());
+        setCheckedRadioButton(PrefMgr.getFileHider(this).getClass());
 
         tbToolBar.setNavigationOnClickListener(v -> finish());
         ivObfuscateSettings.setOnClickListener(v -> startActivity(new Intent(this, ObfuscateFileHiderSettingsActivity.class)));
@@ -52,7 +49,7 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setCheckedRadioButton(prefMgr.getFileHider().getClass());
+        setCheckedRadioButton(PrefMgr.getFileHider(this).getClass());
     }
 
 
@@ -88,12 +85,12 @@ public class SwitchFileHiderActivity extends AppCompatActivity {
 
     public void onActivationCallback(Class<? extends BaseFileHider> fileHider, boolean success, @Nullable Integer msgResID) {
         if (success) {
-            prefMgr.setFileHiderMode(fileHider);
+            PrefMgr.setFileHiderMode(fileHider);
             setCheckedRadioButton(fileHider);
         } else {
             assert msgResID != null && msgResID != 0;
 
-            prefMgr.setFileHiderMode(NoneFileHider.class);
+            PrefMgr.setFileHiderMode(NoneFileHider.class);
             setCheckedRadioButton(NoneFileHider.class);
 
             runOnUiThread(() -> new MaterialAlertDialogBuilder(this)

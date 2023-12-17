@@ -1,13 +1,11 @@
 package deltazero.amarok.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.view.MenuProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,9 +14,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.google.android.material.appbar.MaterialToolbar;
 
+import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.R;
 
-public class SetHideAppActivity extends AppCompatActivity {
+public class SetHideAppActivity extends AmarokActivity {
 
     private RecyclerView rvAppList;
     private AppListAdapter adapter;
