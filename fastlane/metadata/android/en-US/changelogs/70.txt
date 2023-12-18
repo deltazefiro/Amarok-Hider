@@ -1,0 +1,7 @@
+v0.8.6a1
+- **Breaking**: Discontinued support for decoding legacy obfuscated filenames (prior to v0.8.2b1)
+- Fix crash issue with QuickSetting Tile on Android 14
+- Support locking Amarok up when the screen off
+- Fix vulnerability in ActionReceiver allowing Amarok lock bypass
+- Code refactoring
+- Translations update: Turkish, Portuguese (Brazil), German, English, Russian, Ukrainian, Hungarian, Italian, Arabic, Indonesian, Spanish, Serbian, Slovak, Norwegian Bokmål
