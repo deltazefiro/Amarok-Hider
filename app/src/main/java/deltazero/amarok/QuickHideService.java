@@ -14,6 +14,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.widget.ImageView;
 
+import androidx.annotation.MainThread;
 import androidx.core.app.NotificationCompat;
 import androidx.lifecycle.LifecycleService;
 
@@ -99,6 +100,7 @@ public class QuickHideService extends LifecycleService {
         return START_STICKY;
     }
 
+    @MainThread
     public static void startService(Context context) {
 
         assert PrefMgr.initialized;
