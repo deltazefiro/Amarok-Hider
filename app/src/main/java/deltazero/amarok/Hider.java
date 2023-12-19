@@ -3,6 +3,7 @@ package deltazero.amarok;
 import android.content.Context;
 import android.os.Handler;
 import android.os.HandlerThread;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -43,6 +44,10 @@ public final class Hider {
         initialized = true;
     }
 
+    /**
+     * NOTE: Calling this method on a background thread
+     * does not guarantee that the latest value set will be received.
+     */
     public static State getState() {
         return state.getValue();
     }
@@ -92,8 +97,11 @@ public final class Hider {
 
             Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
 
-            QuickHideService.startService(context);
-
+            // Important: The startService() method of QuickHideService must be invoked on the main thread.
+            // If it's called from a background thread, the service might not get the most recent value from Hider.getState() in time.
+            // As a result, if the state changes into VISIBLE from HIDDEN just before, the service won't start.
+            new Handler(Looper.getMainLooper()).post(
+                    () -> QuickHideService.startService(context));
         });
     }
 
