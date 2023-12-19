@@ -4,6 +4,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Build;
 
 import androidx.annotation.Nullable;
 
@@ -30,6 +31,7 @@ public final class PrefMgr {
 
     /**
      * This method should be invoked in {@link AmarokApplication#onCreate()}.
+     *
      * @param context Application context
      */
     public static void init(Context context) {
@@ -202,7 +204,8 @@ public final class PrefMgr {
     }
 
     public static boolean getEnableDynamicColor() {
-        return mPrefs.getBoolean("enableDynamicColor", false);
+        return mPrefs.getBoolean("enableDynamicColor",
+                (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU));
     }
 
     public static void setEnableDynamicColor(boolean enableDynamicColor) {
