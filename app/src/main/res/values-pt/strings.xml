@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="dhizuku_not_init">Dhizuku: Serviço indisponível. Por favor, certifique-se de que instalou e ativou o Dhizuku.</string>
+    <string name="unhidden_toast">Desocultado. Tenha cuidado.</string>
+    <string name="performing_force_unhide">A executar a desocultação forçada. Por favor, aguarde.</string>
+    <string name="debug_info_description">Exibir informações para ajudar a solucionar problemas.</string>
+    <string name="app_name_calendar">Calendário</string>
+    <string name="about_description">Mostra informações sobre a app.</string>
+    <string name="hidden_toast">Oculto. Cocorico~!</string>
+    <string name="obfuscate_filename_description">Torne o nome do ficheiro ilegível para humanos. Essa é a função básica da ocultação de ficheiros. Não pode ser desativada.</string>
+    <string name="filehider_nomedia_description">Apenas adiciona o ficheiro .nomedia às pastas. Não é necessário acesso root.</string>
+    <string name="quick_hide_notification_title">Privacidade não oculta</string>
+    <string name="apphider_shizuku">Modo Shizuku (Sui)</string>
+    <string name="notification_permission_request_title">Perrmissão de notificação necessária</string>
+    <string name="update_ava">Nova versão disponível</string>
+    <string name="no_apphider">Por favor, selecione o modo de ocultação de apps em \'Mais configurações\'.</string>
+    <string name="not_local_storage">Diretório não suportado</string>
+    <string name="filter">Filtro</string>
+    <string name="notification_permission_denied">Permissão de notificação negada.</string>
+    <string name="add_hide_files">Adicionar pasta oculta</string>
+    <string name="manually_set_path">Escolher manualmente</string>
+    <string name="folder_selector_hints">Dicas para o seletor de pastas:
+\n\t1. Clique em \'Usar Esta Pasta\' para selecionar a pasta
+\n\t2. Sempre selecione um ficheiro no dispositivo
+\n\t(Deslize da direita do ecrã para abrir ficheiros locais)</string>
+    <string name="biometric_auth_description">Utilize a autenticação biométrica do dispositivo para aceder o Amarok quando disponível.</string>
+    <string name="visible_status">Visível</string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
+\n
+\ncontém
+\n
+\n<u>\'%2$s\'</u></string>
+    <string name="shizuku_hidden_api_error">Não foi possível ocultar a app: Não foi possível acessar a API IPackageManager.</string>
+    <string name="dynamic_color_description">Ativar tema de cores dinâmicas.</string>
+    <string name="warning">ATENÇÃO</string>
+    <string name="password">Palavra-passe</string>
+    <string name="filehider_none_description">Desativar ocultação de ficheiros.</string>
+    <string name="shizuku_pre_v11">Versão Shizuku não suportada: Pre-v11. Por favor, instale o Shizuku v11 ou posterior.</string>
+    <string name="show_debug_info">Informações de depuração</string>
+    <string name="apphider_root">Modo root</string>
+    <string name="apphider_not_ava">\"Ocultar apps indisponível. Verifique \"Mais Configurações\" → \"Alternar modo de ocultação de apps\".</string>
+    <string name="unlock">Desbloquear</string>
+    <string name="storage_permission_denied">Permissão de armazenamento negada. A ocultação de ficheiros está indisponível</string>
+    <string name="storage_permission_request_message">Concedor ao Amarok acesso ao armazenamento externo para ocultar ficheiros.</string>
+    <string name="hide_app_failed_admin_inactive">Não foi possível ocultar a app: Provedor DSM não está ativo.</string>
+    <string name="show_about">Mostrar sobre</string>
+    <string name="processing">A processar…</string>
+    <string name="obfuscate_file_header_description">Obfusque a assinatura do ficheiro no cabeçalho do ficheiro para torná-lo \"corrompido\". Isso impede que o ficheiro seja aberto manualmente com \"Abrir com\", mas pode retardar o processo de ocultação de ficheiros.</string>
+    <string name="obfuscate_text_file">Ofusque completamente ficheiros de texto</string>
+    <string name="app_lock_description">Requerer palavra-passe para aceder o Amarok.</string>
+    <string name="filehider_chmod_description">Alterar permissões de ficheiros para torná-los ilegíveis. É necessário acesso root. O procedimento é imediato.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Permissão negada</string>
+    <string name="misc">Outros.</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="close_disguise_spotlight_tip">Mantenha pressionado o <font fgcolor="#FCCA3E"><b>Número do Ano</b></font> para aceder o Amarok.</string>
+    <string name="shizuku_service_not_running">Shizuku: Serviço não em execução.</string>
+    <string name="panic_button_description">Exibir um botão flutuante usado para ocultar apps e ficheiros em caso de emergência. Ele é exibido sobre todos os outras apps. O botão só aparece no estado não oculto.</string>
+    <string name="disguise">Disfarce de app</string>
+    <string name="quick_hide">Ocultação Rápida</string>
+    <string name="apphider_none">Desativado</string>
+    <string name="learn_more">Tutorial de configuração</string>
+    <string name="failed_to_open_doc_tree">Não foi possível abrir o seletor de ficheiros do sistema</string>
+    <string name="root_not_ava">Não foi possível obter acesso root.</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Versão do Dhizuku não suportada. Por favor, atualize o Dhizuku para a versão 5 ou superior.</string>
+    <string name="filename_only">Apenas nomes de ficheiro</string>
+    <string name="more_settings">Mais Opções</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="join_developer_channel">Grupo do Telegram</string>
+    <string name="current_mode">Modo Atual: %s</string>
+    <string name="filehider_obfuscate_description">Ofuscar nomes de ficheiros e assinaturas de ficheiros. Não é necessário acesso root. Pode levar algum tempo para processar.</string>
+    <string name="update">Atualizar</string>
+    <string name="notification">Notificação</string>
+    <string name="confirm_password">Confirme a palavra-passe</string>
+    <string name="obfuscate_text_file_enhanced">Ofuscar completamente ficheiros de texto - Aprimorado</string>
+    <string name="invalid_action">Intent inválido recebido: %s</string>
+    <string name="check_update_on_start">Atualização automática</string>
+    <string name="force_unhide_confirm_msg">Tentar restaurar tudo?
+\n
+\n<b>ATENÇÃO:</b> Esta opção pode corromper os seus ficheiros. Use-a apenas quando encontrar problemas e não puder executar a função \"desocultar\" normalmente.</string>
+    <string name="set_password">Definir palavra-passe</string>
+    <string name="dsm_permission_denied">DSM: Permissão negada</string>
+    <string name="set_hide_files">Definir Ficheiros a ocultar</string>
+    <string name="apply_on_restart">Reinicie a app para aplicar as novas mudanças.</string>
+    <string name="help">Ajuda</string>
+    <string name="unlock_required">Desbloquear necessário</string>
+    <string name="biometric_auth">Autenticação biométrica</string>
+    <string name="filehider_nomedia">Modo NoMedia</string>
+    <string name="check_update_on_start_description">Verifique novas versões do Amarok ao abrir a app.</string>
+    <string name="invalid_path">Caminho inválido.</string>
+    <string name="analytics_description">Eviar relatórios anônimos de crash aos programadores para análises.</string>
+    <string name="ok">OK</string>
+    <string name="setting_not_ava_when_hidden">Essa configuração só está disponível após desocultar</string>
+    <string name="option_unava_when_hidden">As opções não estão disponíveis até que se desligue o modo oculto.</string>
+    <string name="quick_hide_notification_description">Exibir uma notificação permanente para notificar os utilizadores quando não estiver oculto.</string>
+    <string name="quick_hide_notification_content">A sua privacidade não está oculta. Clique para ocultar.</string>
+    <string name="obfuscate_file_header">Obfuscar cabeçalhos de ficheiro</string>
+    <string name="apphider_root_description">Ocultação de apps com acesso root.
+\nRecomendado se o seu dispositivo estiver com root, mas não tiver o framework Xposed. Permissão de root é necessária.</string>
+    <string name="switch_file_hider">Alternar modo de ocultação de ficheiros</string>
+    <string name="apphider_shizuku_description">Ocultação de apps com Shizuku (ou Sui).
+\nRecomendado se o seu dispositivo executa o Android 11+ ou tiver o framework Xposed. Shizuku ou Sui instalados e ativos são necessários.
+\n</string>
+    <string name="apphider_dsm_description">Ocultação de apps com o Delegated-Scopes-Manager.
+\nNão recomendado, a menos que o seu dispositivo esteja executando o Android 10 ou anterior e não tenha root. Pode apresentar bugs e funcionar de maneira inesperada. A instalação do Icebox (ou StopAPP) como proprietário do dispositivo é necessária.</string>
+    <string name="apphider_none_description">Desativar a ocultação de apps.</string>
+    <string name="filehider_none">Desativado</string>
+    <string name="about">Sobre</string>
+    <string name="spotlight_do_not_show_again">NÃO MOSTRAR NOVAMENTE</string>
+    <string name="welcome_msg">Amarok é uma ferramenta gratuita e de código aberto para ocultar ficheiros e aplicações privadas.
+\n
+\nPor favor, observe que o Amarok não é um software de criptografia, mas sim uma ferramenta para ocultar coisas. Recomendamos enfaticamente que evite usar o Amarok para proteger ficheiros e aplicações confidenciais.
+\n
+\n<u>Avisos legais: O Amarok é fornecido sem garantias ou condições. O utilizador é totalmente responsável por qualquer dano ou consequência que possa surgir do uso do Amarok.</u></string>
+    <string name="storage_permission_request_title">Permissão de armazenamento necessária</string>
+    <string name="shizuku_permission_denied">Shizuku: Permissão negada</string>
+    <string name="manually_set_path_description">Cuidado: Garanta que o que selecionar manualmente realmente exista, pois isso não é validado.</string>
+    <string name="filename_and_header">Nome de ficheiro + Cabeçalho</string>
+    <string name="obfuscate_filename">Obfuscar nomes de ficheiros</string>
+    <string name="notification_channel_name">Serviço de Ocultação Rápida</string>
+    <string name="welcome_title">Bem-vindo</string>
+    <string name="shizuku_not_working">Shizuku: Serviço indisponível. Instalou o Shizuku/Sui no seu dispositivo?</string>
+    <string name="unhide">Revelar</string>
+    <string name="hide">Ocultar</string>
+    <string name="workmode">Modo de trabalho</string>
+    <string name="cancel">Cancelar</string>
+    <string name="usage">Uso</string>
+    <string name="alert_permission_denied">Permissão para exibir sobre outros apps negada.</string>
+    <string name="not_local_storage_description">Por favor, certifique-se de que seja um ficheiro local e não um virtual.</string>
+    <string name="filehider_obfuscate">Modo de Ofuscação</string>
+    <string name="force_unhide_description">Tenta restaurar tudo. Use esta opção apenas quando encontrar problemas.</string>
+    <string name="path_duplicated">Repetir pasta oculta</string>
+    <string name="no_update_ava">Está a executar a última versão.</string>
+    <string name="notification_permission_request_message">O serviço QuickHide precisa de permissão de notificação para funcionar.</string>
+    <string name="confirm">Confirmar</string>
+    <string name="follow_system">(Seguir o sistema)</string>
+    <string name="apphider_dhizuku">Modo Dhizuku</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="password_incorrect">Palavra-passe incorreta.</string>
+    <string name="language">Idioma</string>
+    <string name="alert_permission_request_message">O botão flutuante precisa de permissão para abrir janelas pop-up. Por favor, encontre o Amarok no menu de configurações e conceda essa permissão.</string>
+    <string name="search">Procurar</string>
+    <string name="failed_to_open_doc_tree_description">Oops! O seu sistema não possui um gestor de ficheiros padrão. Por favor, mantenha pressionado o botão \"Adicionar pasta oculta\" e insira o caminho manualmente.</string>
+    <string name="participate_translation">Participe na tradução</string>
+    <string name="enable_analytics">Estatísticas anônimas</string>
+    <string name="force_unhide">Forçar desocultação</string>
+    <string name="apphider_dhizuku_description">[Experimental] Ocultação de apps com Dhizuku.
+\nUma solução moderna e aprimorada para ocultar apps em dispositivos sem root. A instalação e ativação da spp Dhizuku são necessárias.</string>
+    <string name="alert_permission_request_title">Permissão para abrir janelas pop-up necessária</string>
+    <string name="password_length_error">A palavra-passe deve ter entre 3 e 15 caracteres.</string>
+    <string name="filehider_not_ava_title">Ocultação de ficheiro indisponível</string>
+    <string name="usage_description">Abrir central de ajuda.</string>
+    <string name="never">Nunca</string>
+    <string name="in_app_update_failed">Nova versão disponível, mas falha ao buscar. Atualize manualmente, por favor.</string>
+    <string name="participate_translation_description">Ajude-nos a traduzir o Amarok para o seu idioma.</string>
+    <string name="password_mismatch_error">As palavras-passe não coincidem.</string>
+    <string name="set_hide_apps">Definir Apps a ocultar</string>
+    <string name="check_update_description">Versão atual: %s</string>
+    <string name="apphider_not_ava_title">Modo de ocultação de app indisponível</string>
+    <string name="disguise_description">Disfarçar o Amarok como um calendário.</string>
+    <string name="security">Segurança</string>
+    <string name="hidden_status">Oculto</string>
+    <string name="apphider_dsm">Modo DSM</string>
+    <string name="app_lock">Bloqueio de app</string>
+    <string name="obfuscate_text_file_description_enhanced">Não recomendado. Uma versão aprimorada de \"Ofuscar completamente ficheiros de texto\". Utilize esta opção apenas se o método padrão se mostrar ineficaz. Diminui drasticamente a velocidade do processo de ocultação.</string>
+    <string name="check_update">Procurar por atualização</string>
+    <string name="remove_hide_path">Remover pasta oculta?</string>
+    <string name="obfuscate_text_file_description">Recurso experimental. Ofuscar cabeçalhos de ficheiros não tem efeito em ficheiros de texto. Ativar essa função irá ofuscar completamente ficheiros de texto. Isso irá atrasar o processo de ocultação em certa medida.</string>
+    <string name="remove_hide_path_description">Remover a pasta \'%s\' da ocultação?</string>
+    <string name="switch_app_hider">Mudar modo de ocultação de apps</string>
+    <string name="panic_button">Botão flutuante (Boss key)</string>
+    <string name="update_description">Amarok %s (%d) está disponível para descarregar e instalar.</string>
+    <string name="calendar_about">Pure Calendar | por @koramA</string>
+    <string name="display_system_apps">Exibir apps do sistema</string>
+    <string name="filehider_chmod">Modo Chmod</string>
+    <string name="enable_dynamic_color">Cores dinâmicas</string>
+    <string name="invalid_dsm_provider">DSM: Provedor DSM inválido. Instalou e ativou o provedor DSM no seu dispositivo?</string>
+    <string name="view_github_repo">Repositório GitHub</string>
+</resources>
