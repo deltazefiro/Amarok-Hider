@@ -3,7 +3,7 @@
     <string name="unhide">表示する</string>
     <string name="hide">非表示にする</string>
     <string name="more_settings">その他の設定</string>
-    <string name="hidden_toast">非表示に戻したよ。コケコッコー！</string>
+    <string name="hidden_toast">非表示に戻したよ。コケコッコー!</string>
     <string name="set_hide_apps">非表示にするアプリ</string>
     <string name="set_hide_files">非表示にするファイル</string>
     <string name="about">このアプリについて</string>
