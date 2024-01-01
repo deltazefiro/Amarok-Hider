@@ -9,6 +9,7 @@ import com.rosan.dhizuku.api.Dhizuku;
 
 import deltazero.amarok.receivers.ScreenLockReceiver;
 import deltazero.amarok.utils.AppCenterUtil;
+import jonathanfinerty.once.Once;
 
 public class AmarokApplication extends Application {
 
@@ -34,5 +35,8 @@ public class AmarokApplication extends Application {
 
         // init Dhizuku
         Dhizuku.init();
+
+        // init Once
+        Once.initialise(this);
     }
 }
