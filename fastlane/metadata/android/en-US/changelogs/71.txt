@@ -1,0 +1,5 @@
+v0.8.6a2
+- Happy New Year 2024 🎉
+- Fix panic button not starting when the app lock is enabled
+- Apply MD3 dynamic color by default on Android 13+
+- Update translations: Japanese, Portuguese, Serbian, Spanish
