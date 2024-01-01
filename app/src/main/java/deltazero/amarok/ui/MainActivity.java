@@ -19,15 +19,20 @@ import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.apphider.NoneAppHider;
 import deltazero.amarok.filehider.NoneFileHider;
+import deltazero.amarok.utils.EasterEggUtil;
 import deltazero.amarok.utils.PermissionUtil;
+import deltazero.amarok.utils.SecurityUtil;
+import jonathanfinerty.once.Once;
+import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class MainActivity extends AmarokActivity {
 
     public final static String TAG = "Main";
     private ImageView ivStatusImg;
-    private TextView tvStatusInfo, tvStatus;
+    private TextView tvStatusInfo, tvStatus, tvMoto;
     private MaterialButton btChangeStatus, btSetHideFiles, btSetHideApps;
     private CircularProgressIndicator piProcessStatus;
+    private KonfettiView konfettiView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +44,12 @@ public class MainActivity extends AmarokActivity {
         ivStatusImg = findViewById(R.id.main_iv_status);
         tvStatus = findViewById(R.id.main_tv_status);
         tvStatusInfo = findViewById(R.id.main_tv_statusinfo);
+        tvMoto = findViewById(R.id.main_tv_moto);
         btChangeStatus = findViewById(R.id.main_bt_change_status);
         btSetHideApps = findViewById(R.id.main_bt_set_hide_apps);
         btSetHideFiles = findViewById(R.id.main_bt_set_hide_files);
         piProcessStatus = findViewById(R.id.main_pi_process_status);
+        konfettiView = findViewById(R.id.main_konfetti_view);
 
         // Init UI
         refreshUi(Hider.getState());
@@ -138,6 +145,7 @@ public class MainActivity extends AmarokActivity {
     }
 
     public void refreshUi(Hider.State state) {
+        tvMoto.setText(R.string.moto);
         switch (state) {
             case HIDDEN -> {
                 // Not Processing
@@ -178,6 +186,18 @@ public class MainActivity extends AmarokActivity {
     @Override
     protected void onResume() {
         refreshUi(Hider.getState());
+
+        // Show easter egg
+        var onceTag = "MAIN_ACTIVITY_EASTER_EGG";
+        var moto = "Welcome to 2024!"; /* Suppress i18n warning */
+        if (!SecurityUtil.isUnlockRequired() && !SecurityUtil.isDisguiseNeeded()
+                && !Once.beenDone(Once.THIS_APP_SESSION, onceTag)
+                && EasterEggUtil.is2024NewYear()) {
+            konfettiView.start(EasterEggUtil.explodeParty);
+            tvMoto.setText(moto);
+            Once.markDone(onceTag);
+        }
+
         super.onResume();
     }
 }
