@@ -1,0 +1,7 @@
+v0.8.6a1
+- **Prerušenie**: Ukončenie podpory dekódovania starších zakrývaných názvov súborov (pred verziou v0.8.2b1)
+- Oprava problému s pádom dlaždice QuickSetting na systéme Android 14
+- Podpora uzamknutia Amaroku pri vypnutej obrazovke
+- Oprava zraniteľnosti v prijímači ActionReceiver umožňujúcej obídenie uzamknutia Amaroku
+- Prepracovanie kódu
+- Aktualizácia prekladov: turečtina, portugalčina (Brazília), nemčina, angličtina, ruština, ukrajinčina, maďarčina, taliančina, arabčina, indonézština, španielčina, srbčina, slovenčina, nórčina Bokmål
