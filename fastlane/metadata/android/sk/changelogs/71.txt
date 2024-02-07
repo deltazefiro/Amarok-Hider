@@ -1,0 +1,5 @@
+v0.8.6a2
+- Šťastný nový rok 2024 🎉
+- Oprava nespustenia tlačidla paniky, keď je zapnutý zámok aplikácie
+- Použitie dynamickej farby MD3 v predvolenom nastavení na systéme Android 13+
+- Aktualizácia prekladov: japončina, portugalčina, srbčina, španielčina
