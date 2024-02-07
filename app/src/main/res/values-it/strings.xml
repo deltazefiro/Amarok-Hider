@@ -26,10 +26,13 @@
     <string name="current_mode">Modalità Corrente: %s</string>
     <string name="about_description">Mostra informazioni sull\'app.</string>
     <string name="switch_file_hider">Cambia la modalità di nascondimento dei file</string>
-    <string name="folder_selector_hints">Suggerimenti per selezionare le cartelle.
-\n\t1. Cliccare su \"Usa questa cartella\" per selezionare la cartella.
+    <string name="folder_selector_hints">Suggerimenti per selezionare le cartelle:
+\n
+\n\t1. Cliccare su \"Usa questa cartella\" per selezionare la cartella
+\n
 \n\t2. Selezionare sempre un file sul dispositivo
-\n\t(Scorrere dalla destra dello schermo per aprire i file locali)</string>
+\n
+\n\t(Scorrere da destra nello schermo per aprire i file locali)</string>
     <string name="hidden_toast">Nascosto. Cock-a-doodle-do~!</string>
     <string name="unhidden_toast">Non Nascosto. Fai attenzione.</string>
     <string name="show_debug_info">Informazioni di debug</string>
@@ -47,16 +50,16 @@
     <string name="never">Mai</string>
     <string name="no_update_ava">È in esecuzione l\'ultima versione.</string>
     <string name="manually_set_path">Scegliere manualmente</string>
-    <string name="manually_set_path_description">Attenzione: Assicurarsi che ciò che si seleziona manualmente esista effettivamente, poiché non viene convalidato.</string>
-    <string name="view_github_repo">GitHub repository</string>
+    <string name="manually_set_path_description">Attenzione: Assicurati che ciò che selezioni manualmente esista effettivamente, poiché verrà convalidato.</string>
+    <string name="view_github_repo">GitHub Repository</string>
     <string name="not_local_storage_description">Assicurarsi che si tratti di un file locale e non virtuale.</string>
     <string name="help">Aiuto</string>
     <string name="path_duplicated">Cartella nascosta in loop</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
 \ncontiene
 \n
-\n<u>\'%s\'</u></string>
+\n<u>\'%2$s\'</u></string>
     <string name="no_apphider">Per favore selezionare la modalità di nascondimento dell\'app in \"Altre impostazioni\".</string>
     <string name="check_update_on_start">Aggiornamenti automatico</string>
     <string name="check_update_on_start_description">Verificare nuovi updates all\'avvio dell\'app.</string>
@@ -117,7 +120,7 @@
     <string name="confirm_password">Conferma la password</string>
     <string name="dhizuku_not_init">Dhizuku: Servizio non disponibile. Assicurati di aver installato e attivato Dhizuku.</string>
     <string name="apphider_shizuku">Modalità Shizuku (Sui)</string>
-    <string name="shizuku_not_working">Shizuku: Servizio non disponibile. Avete installato Shizuku/Sui sul vostro dispositivo?</string>
+    <string name="shizuku_not_working">Shizuku: Servizio non disponibile. Avete installato Shizuku/Sei sul tuo dispositivo?</string>
     <string name="apphider_dhizuku_description">[Sperimentale] Nascondere le app con Dhizuku.
 \nUna soluzione moderna e migliorata per nascondere le app su dispositivi non-rootati. Sono necessarie l\'installazione e l\'attivazione dell\'applicazione Dhizuku.</string>
     <string name="apphider_none">Disabilitato</string>

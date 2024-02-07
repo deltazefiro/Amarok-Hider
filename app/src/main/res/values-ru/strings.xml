@@ -89,17 +89,17 @@
     <string name="invalid_dsm_provider">DSM: недействительный поставщик DSM. Вы установили и активировали поставщика DSM на своем устройстве\?</string>
     <string name="hide_app_failed_admin_inactive">Не удалось скрыть приложение: поставщик DSM не активен.</string>
     <string name="path_duplicated">Зациклить скрытую папку</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
 \nсодержит
 \n
-\n<u>\'%s\'</u></string>
+\n<u>\'%2$s\'</u></string>
     <string name="shizuku_permission_denied">Shizuku: В доступе отказано</string>
     <string name="apphider_not_ava_title">Недоступный режим скрытия приложения</string>
     <string name="alert_permission_denied">Отказано в разрешении на отображение поверх других приложений.</string>
     <string name="alert_permission_request_title">Требуется разрешение на создание всплывающих окон</string>
     <string name="workmode">Режим работы</string>
-    <string name="misc">Разное</string>
+    <string name="misc">Разное.</string>
     <string name="security">Безопасность</string>
     <string name="panic_button">Плавающая кнопка (Boss key)</string>
     <string name="in_app_update_failed">Доступна новая версия, но ее не удалось получить. Пожалуйста, обновите вручную.</string>
@@ -118,4 +118,62 @@
     <string name="password">Пароль</string>
     <string name="confirm_password">Подтвердить пароль</string>
     <string name="set_password">Установить пароль</string>
+    <string name="show_about">О приложении</string>
+    <string name="option_unava_when_hidden">Настройки доступны только после отключения скрытия.</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="force_unhide">Принудительно убрать скрытие</string>
+    <string name="performing_force_unhide">Производится принудительное удаление скрытия. Сядьте поудобнее.</string>
+    <string name="filter">Фильтр</string>
+    <string name="display_system_apps">Отображать системные приложения</string>
+    <string name="app_lock_description">Требует пароль для доступа к Amarok.</string>
+    <string name="password_mismatch_error">Пароли не совпадают.</string>
+    <string name="language">Язык</string>
+    <string name="follow_system">(Следовать системе)</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Неподдерживаемая версия Dhizuku. Пожалуйста, обновите Dhizuku до версии 5 или выше.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Доступ запрещен</string>
+    <string name="participate_translation_description">Помогите нам перевести Amarok на ваш язык.</string>
+    <string name="participate_translation">Поучаствовать в переводе</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Некоторые пользователи Samsung сообщали, что использование скрытия файлов при помощи режима Chmod приводит к сбоям в загрузке их устройств.</font> Посмотрите задачу (issue) #105 для более детальной информации. Используйте на свой страх и риск.</b></string>
+    <string name="warning">ВНИМАНИЕ</string>
+    <string name="disguise_description">Маскировать Amarok под календарь.</string>
+    <string name="calendar_about">Чистый Календарь | от @koramA</string>
+    <string name="disguise">Маскировка приложения</string>
+    <string name="enable_dynamic_color">Динамический цвет</string>
+    <string name="dynamic_color_description">Включить динамическую цветовую тему.</string>
+    <string name="password_incorrect">Неверный пароль.</string>
+    <string name="app_lock">Блокировка приложения</string>
+    <string name="apphider_dhizuku">Режим Dhizuku</string>
+    <string name="force_unhide_description">Попытаться восстановить всё. Используйте, только если столкнулись с проблемами.</string>
+    <string name="spotlight_do_not_show_again">НЕ ПОКАЗЫВАТЬ СНОВА</string>
+    <string name="filehider_not_ava_title">Скрытие файлов недоступно</string>
+    <string name="filehider_none">Отключено</string>
+    <string name="filehider_none_description">Отключить скрытие файлов.</string>
+    <string name="filehider_obfuscate">Режим Обфускации</string>
+    <string name="filehider_chmod">Режим Chmod</string>
+    <string name="filehider_nomedia_description">Только добавлять к папкам .nomedia. Не требуется рут доступ.</string>
+    <string name="welcome_title">Добро пожаловать</string>
+    <string name="unlock">Разблокировать</string>
+    <string name="biometric_auth_description">Используйте биометрическую аутентификацию устройства для доступа к Amarok, если она доступна.</string>
+    <string name="unlock_required">Требуется разблокировка</string>
+    <string name="dhizuku_not_init">Dhizuku: Сервис недоступен. Пожалуйста, убедитесь в том, что вы установили и активировали Dhizuku.</string>
+    <string name="apphider_dhizuku_description">[Экспериментально] Скрытие приложений при помощи Dhizuku.
+\nСовременный и продвинутый способ скрытия приложений на устройствах без рут. Требует установленное и активированное приложение Dhizuku.</string>
+    <string name="force_unhide_confirm_msg">Попытаться восстановить всё.
+\n
+\n<b>ВНИМАНИЕ: </b>Эта опция может повредить ваши файлы. Используйте, только если столкнулись с проблемами и не можете нормально убрать скрытие.</string>
+    <string name="invalid_path">Неверный путь.</string>
+    <string name="close_disguise_spotlight_tip">Зажмите <font fgcolor="#FCCA3E"><b>Номер Года</b></font> для доступа к Amarok.</string>
+    <string name="password_length_error">Пароль должен содержать от 3 до 15 символов.</string>
+    <string name="biometric_auth">Биометрическая аутентификация</string>
+    <string name="app_name_calendar">Календарь</string>
+    <string name="filehider_obfuscate_description">Обфусцировать названия файлов и их сигнатуры. Не требуется рут доступ. Может потребовать время на обработку.</string>
+    <string name="welcome_msg">Amarok — это бесплатный и свободный инструмент для скрытия приватных файлов &amp; приложений.
+\n
+\nПожалуйста, имейте ввиду, что Amarok — это не приложение для шифрования, а скорее инструмент для скрытия всякого. Мы настоятельно не рекомендуем использовать Amarok для защиты конфиденциальных файлов и приложений.
+\n
+\n<u>Дисклеймер: Amarok предоставляется без каких-либо гаррантий и условий. Пользователь всецело несёт ответственность за любой вред или последствия, которые могут последовать за использованием Amarok.</u></string>
+    <string name="filehider_chmod_description">Изменить права доступа к файлам, чтобы сделать их нечитаемыми. Требуется рут доступ. Процедура выполняется немедленно.</string>
+    <string name="filehider_nomedia">Режим NoMedia</string>
 </resources>
