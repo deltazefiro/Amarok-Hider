@@ -22,8 +22,9 @@ public class AboutCategory extends BaseCategory {
         setTitle(R.string.about);
 
         var analyticsPref = new MaterialSwitchPreference(activity);
-        analyticsPref.setTitle(R.string.check_update_on_start);
-        analyticsPref.setSummary(R.string.check_update_on_start_description);
+        analyticsPref.setTitle(R.string.enable_analytics);
+        analyticsPref.setIcon(R.drawable.feedback_black_24dp);
+        analyticsPref.setSummary(R.string.analytics_description);
         analyticsPref.setEnabled(AppCenterUtil.isAvailable());
         analyticsPref.setChecked(AppCenterUtil.isAnalyticsEnabled());
         analyticsPref.setOnPreferenceClickListener(preference -> {
@@ -35,6 +36,7 @@ public class AboutCategory extends BaseCategory {
 
         var forceUnhidePref = new Preference(activity);
         forceUnhidePref.setTitle(R.string.force_unhide);
+        forceUnhidePref.setIcon(R.drawable.settings_backup_restore_black_24dp);
         forceUnhidePref.setSummary(R.string.force_unhide_description);
         forceUnhidePref.setOnPreferenceClickListener(preference -> {
             new MaterialAlertDialogBuilder(activity)
@@ -53,6 +55,7 @@ public class AboutCategory extends BaseCategory {
 
         var githubRepoPref = new Preference(activity);
         githubRepoPref.setTitle(R.string.view_github_repo);
+        githubRepoPref.setIcon(R.drawable.code_black_24dp);
         githubRepoPref.setSummary(R.string.view_github_repo_description);
         githubRepoPref.setIntent(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://github.com/deltazefiro/Amarok-Hider")));
@@ -60,6 +63,7 @@ public class AboutCategory extends BaseCategory {
 
         var telegramGroupPref = new Preference(activity);
         telegramGroupPref.setTitle(R.string.join_developer_channel);
+        telegramGroupPref.setIcon(R.drawable.forum_black_24dp);
         telegramGroupPref.setSummary(R.string.developer_channel_telegram);
         telegramGroupPref.setIntent(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://t.me/amarok_dev")));
@@ -67,6 +71,7 @@ public class AboutCategory extends BaseCategory {
 
         var usagePref = new Preference(activity);
         usagePref.setTitle(R.string.usage);
+        usagePref.setIcon(R.drawable.help_outline_black_24dp);
         usagePref.setSummary(R.string.usage_description);
         usagePref.setIntent(new Intent(Intent.ACTION_VIEW,
                 Uri.parse(activity.getString(R.string.doc_url))));

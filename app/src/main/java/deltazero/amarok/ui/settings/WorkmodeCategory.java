@@ -27,7 +27,7 @@ public class WorkmodeCategory extends BaseCategory {
             preference.setSummary(activity.getString(R.string.current_mode, PrefMgr.getAppHider(activity).getName()));
             return true;
         });
-        switchAppHiderPref.setIcon(R.drawable.ic_app);
+        switchAppHiderPref.setIcon(R.drawable.apps_black_24dp);
         addPreference(switchAppHiderPref);
 
         switchFileHiderPref = new Preference(activity);
@@ -38,7 +38,7 @@ public class WorkmodeCategory extends BaseCategory {
             preference.setSummary(activity.getString(R.string.current_mode, PrefMgr.getFileHider(activity).getName()));
             return true;
         });
-        switchFileHiderPref.setIcon(R.drawable.ic_folder);
+        switchFileHiderPref.setIcon(R.drawable.folder_black_24dp);
         addPreference(switchFileHiderPref);
     }
 

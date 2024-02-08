@@ -21,6 +21,7 @@ public class AppearanceCategory extends BaseCategory {
 
         var dynamicColorPref = new MaterialSwitchPreference(activity);
         dynamicColorPref.setKey(PrefMgr.ENABLE_DYNAMIC_COLOR);
+        dynamicColorPref.setIcon(R.drawable.palette_black_24dp);
         dynamicColorPref.setTitle(R.string.enable_dynamic_color);
         dynamicColorPref.setSummary(R.string.dynamic_color_description);
         dynamicColorPref.setChecked(PrefMgr.getEnableDynamicColor());
@@ -32,6 +33,7 @@ public class AppearanceCategory extends BaseCategory {
 
         var languagePref = new Preference(activity);
         languagePref.setTitle(R.string.language);
+        languagePref.setIcon(R.drawable.ic_language);
         languagePref.setSummary(R.string.language_description);
         languagePref.setOnPreferenceClickListener(preference -> {
             SwitchLocaleUtil.switchLocale(activity);
@@ -41,6 +43,7 @@ public class AppearanceCategory extends BaseCategory {
 
         var participateTranslationPref = new Preference(activity);
         participateTranslationPref.setTitle(R.string.participate_translation);
+        participateTranslationPref.setIcon(R.drawable.translate_black_24dp);
         participateTranslationPref.setSummary(R.string.participate_translation_description);
         participateTranslationPref.setIntent(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://hosted.weblate.org/engage/amarok-hider/")));
