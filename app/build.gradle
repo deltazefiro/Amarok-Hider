@@ -111,6 +111,8 @@ dependencies {
     appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 
+    implementation 'dev.rikka.rikkax.material:material-preference:2.0.0'
+    implementation 'dev.rikka.rikkax.appcompat:appcompat:1.6.1'
     implementation 'io.github.iamr0s:Dhizuku-API:2.4'
     implementation 'com.github.getActivity:XXPermissions:18.5'
     implementation 'com.github.getActivity:EasyWindow:10.6'
@@ -122,10 +124,14 @@ dependencies {
     implementation 'com.kizitonwose.calendar:view:2.4.1'
     implementation 'nl.dionsegijn:konfetti-xml:2.0.4'
     implementation 'androidx.biometric:biometric:1.1.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
+    implementation 'androidx.preference:preference:1.2.1'
+}
+
+configurations.configureEach {
+    exclude group: 'androidx.appcompat', module: 'appcompat'
 }
 
 apply plugin: 'dev.rikka.tools.autoresconfig'

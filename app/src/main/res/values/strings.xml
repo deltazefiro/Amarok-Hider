@@ -165,4 +165,5 @@
     <string name="welcome_msg">Amarok is a free and freedom tool for hiding private files &amp; applications.\n\nPlease note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.\n\n<u>Disclaimers: Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.</u></string>
     <string name="warning">WARNING</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Some Samsung users have reported that using ChmodFileHider caused their devices to fail to boot.</font> Refer to GitHub issue #105 for more information. Use at your own risk.</b></string>
+    <string name="appearance">Appearance</string>
 </resources>

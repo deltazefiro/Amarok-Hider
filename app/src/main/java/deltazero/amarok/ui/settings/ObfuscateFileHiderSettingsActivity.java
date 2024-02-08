@@ -1,4 +1,4 @@
-package deltazero.amarok.ui;
+package deltazero.amarok.ui.settings;
 
 import android.os.Bundle;
 

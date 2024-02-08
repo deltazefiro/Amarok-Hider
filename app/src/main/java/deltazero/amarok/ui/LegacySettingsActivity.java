@@ -24,6 +24,8 @@ import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.QuickHideService;
 import deltazero.amarok.R;
+import deltazero.amarok.ui.settings.SwitchAppHiderActivity;
+import deltazero.amarok.ui.settings.SwitchFileHiderActivity;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.HashUtil;
 import deltazero.amarok.utils.LauncherIconController;
@@ -31,7 +33,7 @@ import deltazero.amarok.utils.PermissionUtil;
 import deltazero.amarok.utils.SecurityUtil;
 import deltazero.amarok.utils.SwitchLocaleUtil;
 
-public class SettingsActivity extends AmarokActivity {
+public class LegacySettingsActivity extends AmarokActivity {
 
     private Context context;
     private String appVersionName;
@@ -45,7 +47,7 @@ public class SettingsActivity extends AmarokActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_settings_legacy);
 
         context = this;
 
