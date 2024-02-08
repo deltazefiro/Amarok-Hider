@@ -51,7 +51,7 @@ public class PermissionUtil {
     }
 
     public static void requestNotificationPermission(Context context, OnPermissionCallback callback) {
-        if (XXPermissions.isGranted(context, Permission.SYSTEM_ALERT_WINDOW)) {
+        if (XXPermissions.isGranted(context, Permission.NOTIFICATION_SERVICE)) {
             callback.onGranted(List.of(), true);
             return;
         }
