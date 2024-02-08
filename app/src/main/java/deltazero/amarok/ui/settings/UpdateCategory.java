@@ -29,6 +29,7 @@ public class UpdateCategory extends BaseCategory {
 
         var checkUpdatePref = new Preference(activity);
         checkUpdatePref.setTitle(R.string.check_update);
+        checkUpdatePref.setIcon(R.drawable.update_black_24dp);
         checkUpdatePref.setSummary(activity.getString(R.string.check_update_description, appVersionName));
         checkUpdatePref.setOnPreferenceClickListener(preference -> {
             if (AppCenterUtil.isAvailable())
@@ -42,6 +43,7 @@ public class UpdateCategory extends BaseCategory {
 
         var autoUpdatePref = new MaterialSwitchPreference(activity);
         autoUpdatePref.setKey(PrefMgr.IS_ENABLE_AUTO_UPDATE);
+        autoUpdatePref.setIcon(R.drawable.autorenew_black_24dp);
         autoUpdatePref.setTitle(R.string.check_update_on_start);
         autoUpdatePref.setSummary(R.string.check_update_on_start_description);
         autoUpdatePref.setEnabled(AppCenterUtil.isAvailable());

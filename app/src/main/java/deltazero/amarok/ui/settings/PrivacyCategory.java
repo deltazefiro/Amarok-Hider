@@ -23,6 +23,7 @@ public class PrivacyCategory extends BaseCategory {
 
         var appLockPref = new MaterialSwitchPreference(activity);
         appLockPref.setTitle(R.string.app_lock);
+        appLockPref.setIcon(R.drawable.lock_black_24dp);
         appLockPref.setSummary(R.string.app_lock_description);
         appLockPref.setChecked(PrefMgr.getAmarokPassword() != null);
         appLockPref.setOnPreferenceClickListener(preference -> {
@@ -45,6 +46,7 @@ public class PrivacyCategory extends BaseCategory {
 
         biometricPref = new MaterialSwitchPreference(activity);
         biometricPref.setKey(PrefMgr.ENABLE_AMAROK_BIOMETRIC_AUTH);
+        biometricPref.setIcon(R.drawable.ic_fingerprint);
         biometricPref.setTitle(R.string.biometric_auth);
         biometricPref.setSummary(R.string.biometric_auth_description);
         biometricPref.setChecked(PrefMgr.getEnableAmarokBiometricAuth());
@@ -53,6 +55,7 @@ public class PrivacyCategory extends BaseCategory {
 
         var disguisePref = new MaterialSwitchPreference(activity);
         disguisePref.setKey(PrefMgr.ENABLE_DISGUISE);
+        disguisePref.setIcon(R.drawable.hide_source_black_24dp);
         disguisePref.setTitle(R.string.disguise);
         disguisePref.setSummary(R.string.disguise_description);
         disguisePref.setChecked(PrefMgr.getEnableDisguise());

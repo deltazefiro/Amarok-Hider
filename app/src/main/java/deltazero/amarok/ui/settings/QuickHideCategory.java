@@ -27,6 +27,7 @@ public class QuickHideCategory extends BaseCategory {
 
         var servicePref = new MaterialSwitchPreference(activity);
         servicePref.setKey(PrefMgr.ENABLE_QUICK_HIDE_SERVICE);
+        servicePref.setIcon(R.drawable.notifications_black_24dp);
         servicePref.setTitle(R.string.notification);
         servicePref.setSummary(R.string.quick_hide_notification_description);
         servicePref.setChecked(PrefMgr.getEnableQuickHideService());
@@ -60,6 +61,7 @@ public class QuickHideCategory extends BaseCategory {
 
         panicButtonPref = new MaterialSwitchPreference(activity);
         panicButtonPref.setKey(PrefMgr.ENABLE_PANIC_BUTTON);
+        panicButtonPref.setIcon(R.drawable.crisis_alert_black_24dp);
         panicButtonPref.setTitle(R.string.panic_button);
         panicButtonPref.setSummary(R.string.panic_button_description);
         panicButtonPref.setEnabled(PrefMgr.getEnableQuickHideService());
