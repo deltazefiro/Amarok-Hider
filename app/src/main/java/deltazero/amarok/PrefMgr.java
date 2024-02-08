@@ -27,6 +27,7 @@ public final class PrefMgr {
 
     private static SharedPreferences mPrefs;
     private static SharedPreferences.Editor mPrefEditor;
+    public static final String SHARED_PREF_FILENAME = "deltazero.amarok.prefs";
     public static boolean initialized = false;
 
     /**
@@ -35,17 +36,39 @@ public final class PrefMgr {
      * @param context Application context
      */
     public static void init(Context context) {
-        mPrefs = context.getSharedPreferences("deltazero.amarok.prefs", MODE_PRIVATE);
+        mPrefs = context.getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
         initialized = true;
     }
 
+    public static SharedPreferences getPrefs() {
+        return mPrefs;
+    }
+
+    public static final String HIDE_FILE_PATH = "hideFilePath";
+    public static final String IS_HIDDEN = "isHidden";
+    public static final String HIDE_PKG_NAMES = "hidePkgNames";
+    public static final String APP_HIDER_MODE = "appHiderMode";
+    public static final String FILE_HIDER_MODE = "fileHiderMode";
+    public static final String IS_ENABLE_AUTO_UPDATE = "isEnableAutoUpdate";
+    public static final String ENABLE_OBFUSCATE_FILE_HEADER = "enableObfuscateFileHeader";
+    public static final String ENABLE_OBFUSCATE_TEXT_FILE = "enableObfuscateTextFile";
+    public static final String ENABLE_OBFUSCATE_TEXT_FILE_ENHANCED = "enableObfuscateTextFileEnhanced";
+    public static final String ENABLE_QUICK_HIDE_SERVICE = "enableQuickHideService";
+    public static final String ENABLE_PANIC_BUTTON = "enablePanicButton";
+    public static final String AMAROK_PASSWORD = "amarokPassword";
+    public static final String ENABLE_AMAROK_BIOMETRIC_AUTH = "enableAmarokBiometricAuth";
+    public static final String ENABLE_DYNAMIC_COLOR = "enableDynamicColor";
+    public static final String ENABLE_DISGUISE = "enableDisguise";
+    public static final String DO_SHOW_QUIT_DISGUISE_INSTRUCT = "doShowQuitDisguiseInstuct";
+    public static final String SHOW_WELCOME = "showWelcome";
+
     public static Set<String> getHideFilePath() {
-        return mPrefs.getStringSet("hideFilePath", new HashSet<>());
+        return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
     }
 
     public static void setHideFilePath(Set<String> path) {
-        mPrefEditor.putStringSet("hideFilePath", path);
+        mPrefEditor.putStringSet(HIDE_FILE_PATH, path);
         mPrefEditor.apply();
     }
 
@@ -54,25 +77,25 @@ public final class PrefMgr {
      * Use {@link Hider#getState()} instead.
      */
     public static boolean getIsHidden() {
-        return mPrefs.getBoolean("isHidden", false);
+        return mPrefs.getBoolean(IS_HIDDEN, false);
     }
 
     public static void setIsHidden(boolean isHidden) {
-        mPrefEditor.putBoolean("isHidden", isHidden);
+        mPrefEditor.putBoolean(IS_HIDDEN, isHidden);
         mPrefEditor.apply();
     }
 
     public static Set<String> getHideApps() {
-        return mPrefs.getStringSet("hidePkgNames", new HashSet<>());
+        return mPrefs.getStringSet(HIDE_PKG_NAMES, new HashSet<>());
     }
 
     public static void setHideApps(Set<String> pkgNames) {
-        mPrefEditor.putStringSet("hidePkgNames", pkgNames);
+        mPrefEditor.putStringSet(HIDE_PKG_NAMES, pkgNames);
         mPrefEditor.apply();
     }
 
     public static BaseAppHider getAppHider(Context context) {
-        return switch (mPrefs.getInt("appHiderMode", 0)) {
+        return switch (mPrefs.getInt(APP_HIDER_MODE, 0)) {
             case 0 -> new NoneAppHider(context);
             case 1 -> new RootAppHider(context);
             case 2 -> new DsmAppHider(context);
@@ -96,12 +119,12 @@ public final class PrefMgr {
             modeCode = 4;
         else
             throw new IndexOutOfBoundsException("Should not reach here");
-        mPrefEditor.putInt("appHiderMode", modeCode);
+        mPrefEditor.putInt(APP_HIDER_MODE, modeCode);
         mPrefEditor.apply();
     }
 
     public static BaseFileHider getFileHider(Context context) {
-        return switch (mPrefs.getInt("fileHiderMode", 1)) {
+        return switch (mPrefs.getInt(FILE_HIDER_MODE, 1)) {
             case 0 -> new NoneFileHider(context);
             case 1 -> new ObfuscateFileHider(context);
             case 2 -> new NoMediaFileHider(context);
@@ -122,121 +145,117 @@ public final class PrefMgr {
             modeCode = 3;
         else
             throw new IndexOutOfBoundsException("Should not reach here");
-        mPrefEditor.putInt("fileHiderMode", modeCode);
+        mPrefEditor.putInt(FILE_HIDER_MODE, modeCode);
         mPrefEditor.apply();
     }
 
-    public static int getAppHiderCode() {
-        return mPrefs.getInt("appHiderMode", 0);
-    }
-
     public static boolean getEnableAutoUpdate() {
-        return mPrefs.getBoolean("isEnableAutoUpdate", true);
+        return mPrefs.getBoolean(IS_ENABLE_AUTO_UPDATE, true);
     }
 
     public static void setEnableAutoUpdate(boolean isEnable) {
-        mPrefEditor.putBoolean("isEnableAutoUpdate", isEnable);
+        mPrefEditor.putBoolean(IS_ENABLE_AUTO_UPDATE, isEnable);
         mPrefEditor.apply();
     }
 
     public static boolean getEnableObfuscateFileHeader() {
-        return mPrefs.getBoolean("enableObfuscateFileHeader", false);
+        return mPrefs.getBoolean(ENABLE_OBFUSCATE_FILE_HEADER, false);
     }
 
     public static void setEnableObfuscateFileHeader(boolean ifObfuscateFileHeader) {
-        mPrefEditor.putBoolean("enableObfuscateFileHeader", ifObfuscateFileHeader);
+        mPrefEditor.putBoolean(ENABLE_OBFUSCATE_FILE_HEADER, ifObfuscateFileHeader);
         mPrefEditor.apply();
     }
 
     public static boolean getEnableObfuscateTextFile() {
-        return mPrefs.getBoolean("enableObfuscateTextFile", false);
+        return mPrefs.getBoolean(ENABLE_OBFUSCATE_TEXT_FILE, false);
     }
 
     public static void setEnableObfuscateTextFile(boolean ifObfuscateTextFile) {
-        mPrefEditor.putBoolean("enableObfuscateTextFile", ifObfuscateTextFile);
+        mPrefEditor.putBoolean(ENABLE_OBFUSCATE_TEXT_FILE, ifObfuscateTextFile);
         mPrefEditor.apply();
     }
 
     public static boolean getEnableObfuscateTextFileEnhanced() {
-        return mPrefs.getBoolean("enableObfuscateTextFileEnhanced", false);
+        return mPrefs.getBoolean(ENABLE_OBFUSCATE_TEXT_FILE_ENHANCED, false);
     }
 
     public static void setEnableObfuscateTextFileEnhanced(boolean ifObfuscateTextFileEnhanced) {
-        mPrefEditor.putBoolean("enableObfuscateTextFileEnhanced", ifObfuscateTextFileEnhanced);
+        mPrefEditor.putBoolean(ENABLE_OBFUSCATE_TEXT_FILE_ENHANCED, ifObfuscateTextFileEnhanced);
         mPrefEditor.apply();
     }
 
     public static boolean getEnableQuickHideService() {
-        return mPrefs.getBoolean("enableQuickHideService", false);
+        return mPrefs.getBoolean(ENABLE_QUICK_HIDE_SERVICE, false);
     }
 
     public static void setEnableQuickHideService(boolean isEnableQuickHideService) {
-        mPrefEditor.putBoolean("enableQuickHideService", isEnableQuickHideService);
+        mPrefEditor.putBoolean(ENABLE_QUICK_HIDE_SERVICE, isEnableQuickHideService);
         mPrefEditor.apply();
     }
 
     public static boolean getEnablePanicButton() {
-        return mPrefs.getBoolean("enablePanicButton", false);
+        return mPrefs.getBoolean(ENABLE_PANIC_BUTTON, false);
     }
 
     public static void setEnablePanicButton(boolean isEnablePanicButton) {
-        mPrefEditor.putBoolean("enablePanicButton", isEnablePanicButton);
+        mPrefEditor.putBoolean(ENABLE_PANIC_BUTTON, isEnablePanicButton);
         mPrefEditor.apply();
     }
 
     @Nullable
     public static String getAmarokPassword() {
-        return mPrefs.getString("amarokPassword", null);
+        return mPrefs.getString(AMAROK_PASSWORD, null);
     }
 
     public static void setAmarokPassword(String password) {
-        mPrefEditor.putString("amarokPassword", password);
+        mPrefEditor.putString(AMAROK_PASSWORD, password);
         mPrefEditor.apply();
     }
 
     public static boolean getEnableAmarokBiometricAuth() {
-        return mPrefs.getBoolean("enableAmarokBiometricAuth", false);
+        return mPrefs.getBoolean(ENABLE_AMAROK_BIOMETRIC_AUTH, false);
     }
 
     public static void setEnableAmarokBiometricAuth(boolean enableAmarokBiometricAuth) {
-        mPrefEditor.putBoolean("enableAmarokBiometricAuth", enableAmarokBiometricAuth);
+        mPrefEditor.putBoolean(ENABLE_AMAROK_BIOMETRIC_AUTH, enableAmarokBiometricAuth);
         mPrefEditor.apply();
     }
 
     public static boolean getEnableDynamicColor() {
-        return mPrefs.getBoolean("enableDynamicColor",
+        return mPrefs.getBoolean(ENABLE_DYNAMIC_COLOR,
                 (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU));
     }
 
     public static void setEnableDynamicColor(boolean enableDynamicColor) {
-        mPrefEditor.putBoolean("enableDynamicColor", enableDynamicColor);
+        mPrefEditor.putBoolean(ENABLE_DYNAMIC_COLOR, enableDynamicColor);
         mPrefEditor.apply();
     }
 
     public static boolean getEnableDisguise() {
-        return mPrefs.getBoolean("enableDisguise", false);
+        return mPrefs.getBoolean(ENABLE_DISGUISE, false);
     }
 
     public static void setEnableDisguise(boolean enableDisguise) {
-        mPrefEditor.putBoolean("enableDisguise", enableDisguise);
+        mPrefEditor.putBoolean(ENABLE_DISGUISE, enableDisguise);
         mPrefEditor.apply();
     }
 
     public static boolean getDoShowQuitDisguiseInstuct() {
-        return mPrefs.getBoolean("doShowQuitDisguiseInstuct", true);
+        return mPrefs.getBoolean(DO_SHOW_QUIT_DISGUISE_INSTRUCT, true);
     }
 
     public static void setDoShowQuitDisguiseInstuct(boolean doShowQuitDisguiseInstuct) {
-        mPrefEditor.putBoolean("doShowQuitDisguiseInstuct", doShowQuitDisguiseInstuct);
+        mPrefEditor.putBoolean(DO_SHOW_QUIT_DISGUISE_INSTRUCT, doShowQuitDisguiseInstuct);
         mPrefEditor.apply();
     }
 
     public static boolean getShowWelcome() {
-        return mPrefs.getBoolean("showWelcome", true);
+        return mPrefs.getBoolean(SHOW_WELCOME, true);
     }
 
     public static void setShowWelcome(boolean showWelcome) {
-        mPrefEditor.putBoolean("showWelcome", showWelcome);
+        mPrefEditor.putBoolean(SHOW_WELCOME, showWelcome);
         mPrefEditor.apply();
     }
 }

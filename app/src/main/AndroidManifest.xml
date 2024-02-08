@@ -63,7 +63,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-
         <activity-alias
             android:name=".launcher.default"
             android:enabled="true"
@@ -79,19 +78,19 @@
         </activity-alias>
 
         <activity
-            android:name=".ui.SwitchFileHiderActivity"
+            android:name=".ui.settings.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.ObfuscateFileHiderSettingsActivity"
+            android:name=".ui.settings.SwitchFileHiderActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SwitchAppHiderActivity"
+            android:name=".ui.settings.ObfuscateFileHiderSettingsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.settings.SwitchAppHiderActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SetHideFilesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.SettingsActivity"
             android:exported="false" />
         <activity
             android:name=".ui.SetHideAppActivity"
