@@ -63,7 +63,7 @@ public class AboutCategory extends BaseCategory {
 
         var telegramGroupPref = new Preference(activity);
         telegramGroupPref.setTitle(R.string.join_developer_channel);
-        telegramGroupPref.setIcon(R.drawable.forum_black_24dp);
+        telegramGroupPref.setIcon(R.drawable.ic_telegram);
         telegramGroupPref.setSummary(R.string.developer_channel_telegram);
         telegramGroupPref.setIntent(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://t.me/amarok_dev")));
