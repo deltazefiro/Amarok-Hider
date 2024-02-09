@@ -26,7 +26,7 @@ public class SettingsActivity extends AmarokActivity implements
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        getTheme().applyStyle(rikka.material.preference.R.style.ThemeOverlay_Rikka_Material3_Preference, true);
+        getTheme().applyStyle(R.style.Theme_Amarok_Preference, true);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
