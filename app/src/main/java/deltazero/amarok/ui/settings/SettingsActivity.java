@@ -31,7 +31,7 @@ public class SettingsActivity extends AmarokActivity implements
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.settings, new SettingsFragment())
+                    .replace(R.id.setting_container, new SettingsFragment())
                     .commit();
         } else {
             setTitle(savedInstanceState.getCharSequence(TITLE_TAG));
@@ -69,7 +69,7 @@ public class SettingsActivity extends AmarokActivity implements
         fragment.setTargetFragment(caller, 0);
 
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.settings, fragment)
+                .replace(R.id.setting_container, fragment)
                 .addToBackStack(null)
                 .commit();
 
