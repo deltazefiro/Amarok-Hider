@@ -7,7 +7,7 @@ import android.content.IntentFilter;
 import com.google.android.material.color.DynamicColors;
 import com.rosan.dhizuku.api.Dhizuku;
 
-import deltazero.amarok.receivers.ScreenLockReceiver;
+import deltazero.amarok.receivers.ScreenStatusReceiver;
 import deltazero.amarok.utils.AppCenterUtil;
 import jonathanfinerty.once.Once;
 
@@ -25,7 +25,11 @@ public class AmarokApplication extends Application {
         if (PrefMgr.getEnableDynamicColor())
             DynamicColors.applyToActivitiesIfAvailable(this);
 
-        registerReceiver(new ScreenLockReceiver(), new IntentFilter(Intent.ACTION_SCREEN_OFF));
+        // Register ScreenStatusReceiver
+        var screenStatusIntentFilter = new IntentFilter();
+        screenStatusIntentFilter.addAction(Intent.ACTION_SCREEN_ON);
+        screenStatusIntentFilter.addAction(Intent.ACTION_SCREEN_OFF);
+        registerReceiver(new ScreenStatusReceiver(), screenStatusIntentFilter);
 
         // Start PanicButton service
         QuickHideService.startService(this);
