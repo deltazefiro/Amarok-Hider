@@ -161,4 +161,8 @@
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">有报告称三星用户使用此模式可能导致设备无法启动。</font> 详见 GitHub #105。请谨慎使用。</b></string>
     <string name="warning">警告</string>
     <string name="appearance">外观</string>
+    <string name="auto_hide">自动隐藏</string>
+    <string name="auto_hide_description">关闭屏幕后自动隐藏。</string>
+    <string name="auto_hide_delay">自动隐藏延迟</string>
+    <string name="auto_hide_delay_description">息屏多少分钟后自动隐藏。</string>
 </resources>

@@ -62,6 +62,8 @@ public final class PrefMgr {
     public static final String ENABLE_DISGUISE = "enableDisguise";
     public static final String DO_SHOW_QUIT_DISGUISE_INSTRUCT = "doShowQuitDisguiseInstuct";
     public static final String SHOW_WELCOME = "showWelcome";
+    public static final String ENABLE_AUTO_HIDE = "enableAutoHide";
+    public static final String AUTO_HIDE_DELAY = "autoHideDelay";
 
     public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
@@ -256,6 +258,24 @@ public final class PrefMgr {
 
     public static void setShowWelcome(boolean showWelcome) {
         mPrefEditor.putBoolean(SHOW_WELCOME, showWelcome);
+        mPrefEditor.apply();
+    }
+
+    public static boolean getEnableAutoHide() {
+        return mPrefs.getBoolean(ENABLE_AUTO_HIDE, false);
+    }
+
+    public static void setEnableAutoHide(boolean enableAutoHide) {
+        mPrefEditor.putBoolean(ENABLE_AUTO_HIDE, enableAutoHide);
+        mPrefEditor.apply();
+    }
+
+    public static int getAutoHideDelay() {
+        return mPrefs.getInt(AUTO_HIDE_DELAY, 0);
+    }
+
+    public static void setAutoHideDelay(int autoHideDelay) {
+        mPrefEditor.putInt(AUTO_HIDE_DELAY, autoHideDelay);
         mPrefEditor.apply();
     }
 }
