@@ -16,7 +16,7 @@ import com.microsoft.appcenter.distribute.UpdateAction;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
-import deltazero.amarok.ui.SettingsActivity;
+import deltazero.amarok.ui.settings.SettingsActivity;
 
 public class AppCenterUtil {
 
