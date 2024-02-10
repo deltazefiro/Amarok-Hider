@@ -1,0 +1,3 @@
+v0.8.7a1
+- Support automatic hiding after screen off
+- New settings UI (for better maintainability)
