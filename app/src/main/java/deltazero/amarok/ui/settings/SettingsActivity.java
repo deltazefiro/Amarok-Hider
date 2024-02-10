@@ -2,7 +2,6 @@ package deltazero.amarok.ui.settings;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
