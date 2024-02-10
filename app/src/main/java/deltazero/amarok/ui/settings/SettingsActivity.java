@@ -2,6 +2,7 @@ package deltazero.amarok.ui.settings;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -9,6 +10,8 @@ import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
+
+import com.google.android.material.appbar.MaterialToolbar;
 
 import java.util.Objects;
 
@@ -45,6 +48,8 @@ public class SettingsActivity extends AmarokActivity implements
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) actionBar.setDisplayHomeAsUpEnabled(true);
 
+        MaterialToolbar toolbar = findViewById(R.id.settings_tb_toolbar);
+        toolbar.setNavigationOnClickListener(v -> finish());
     }
 
     @Override
