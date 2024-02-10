@@ -1,0 +1,10 @@
+v0.8.6b1
+- Translations update: Portuguese, Russian, Italian, Spanish, Serbian, Persian, Slovak
+
+v0.8.6 alphas
+- **Breaking**: Discontinued support for decoding legacy obfuscated filenames (prior to v0.8.2b1)
+- Fix crash issue with QuickSetting Tile on Android 14
+- Fix panic button not starting when the app lock is enabled
+- Apply MD3 dynamic color by default on Android 13+
+- Support locking Amarok up when the screen off
+- Fix vulnerability in ActionReceiver allowing Amarok lock bypass
