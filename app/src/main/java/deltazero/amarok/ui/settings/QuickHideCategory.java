@@ -6,6 +6,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SeekBarPreference;
 
 import com.hjq.permissions.OnPermissionCallback;
 
@@ -19,7 +20,8 @@ import rikka.material.preference.MaterialSwitchPreference;
 
 public class QuickHideCategory extends BaseCategory {
 
-    private MaterialSwitchPreference panicButtonPref;
+    private MaterialSwitchPreference panicButtonPref, autoHideAfterScreenOffPref;
+    private SeekBarPreference autoHideDelayPref;
 
     public QuickHideCategory(@NonNull FragmentActivity activity, @NonNull PreferenceScreen screen) {
         super(activity, screen);
@@ -54,7 +56,10 @@ public class QuickHideCategory extends BaseCategory {
         });
         servicePref.setOnPreferenceChangeListener((preference, newValue) -> {
             panicButtonPref.setEnabled((boolean) newValue);
-            if (!(boolean) newValue) panicButtonPref.setChecked(false);
+            autoHideAfterScreenOffPref.setEnabled((boolean) newValue);
+            autoHideDelayPref.setEnabled((boolean) newValue && autoHideAfterScreenOffPref.isChecked());
+            if (!(boolean) newValue)
+                panicButtonPref.setChecked(false); // Avoid enabling panic button without requesting the permission
             return true;
         });
         addPreference(servicePref);
@@ -88,5 +93,30 @@ public class QuickHideCategory extends BaseCategory {
             return true;
         });
         addPreference(panicButtonPref);
+
+        autoHideAfterScreenOffPref = new MaterialSwitchPreference(activity);
+        autoHideAfterScreenOffPref.setKey(PrefMgr.ENABLE_AUTO_HIDE);
+        autoHideAfterScreenOffPref.setIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24);
+        autoHideAfterScreenOffPref.setTitle(R.string.auto_hide);
+        autoHideAfterScreenOffPref.setSummary(R.string.auto_hide_description);
+        autoHideAfterScreenOffPref.setEnabled(PrefMgr.getEnableQuickHideService());
+        autoHideAfterScreenOffPref.setChecked(PrefMgr.getEnableAutoHide());
+        autoHideAfterScreenOffPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            autoHideDelayPref.setEnabled((boolean) newValue);
+            return true;
+        });
+        addPreference(autoHideAfterScreenOffPref);
+
+        autoHideDelayPref = new SeekBarPreference(activity);
+        autoHideDelayPref.setKey(PrefMgr.AUTO_HIDE_DELAY);
+        autoHideDelayPref.setIcon(R.drawable.timer_fill0_wght400_grad0_opsz24);
+        autoHideDelayPref.setTitle(R.string.auto_hide_delay);
+        autoHideDelayPref.setSummary(R.string.auto_hide_delay_description);
+        autoHideDelayPref.setEnabled(autoHideAfterScreenOffPref.isEnabled() && autoHideAfterScreenOffPref.isChecked());
+        autoHideDelayPref.setValue(PrefMgr.getAutoHideDelay());
+        autoHideDelayPref.setShowSeekBarValue(true);
+        autoHideDelayPref.setMin(0);
+        autoHideDelayPref.setMax(30);
+        addPreference(autoHideDelayPref);
     }
 }

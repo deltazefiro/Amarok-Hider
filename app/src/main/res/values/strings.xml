@@ -166,4 +166,8 @@
     <string name="warning">WARNING</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Some Samsung users have reported that using ChmodFileHider caused their devices to fail to boot.</font> Refer to GitHub issue #105 for more information. Use at your own risk.</b></string>
     <string name="appearance">Appearance</string>
+    <string name="auto_hide">Auto hide</string>
+    <string name="auto_hide_description">Automatically hides after the screen turns off.</string>
+    <string name="auto_hide_delay">Auto hide delay</string>
+    <string name="auto_hide_delay_description">The number of minutes to delay before hiding after the screen turns off.</string>
 </resources>
