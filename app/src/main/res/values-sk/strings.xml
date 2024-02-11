@@ -176,4 +176,6 @@
     <string name="enable_dynamic_color">Dynamická farba</string>
     <string name="invalid_dsm_provider">DSM: Neplatný poskytovateľ DSM. Nainštalovali ste a aktivovali ste poskytovateľa DSM vo vašom zariadení?</string>
     <string name="view_github_repo">Repozitár GitHub</string>
+    <string name="appearance">Personalizácia</string>
+    <string name="auto_hide">Automaticky skrývať</string>
 </resources>
