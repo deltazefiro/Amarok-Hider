@@ -1,0 +1,3 @@
+v0.8.7a2
+- Soporta la ocultación automática después de apagar la pantalla
+- Nueva interfaz de configuración (para un mejor mantenimiento)
