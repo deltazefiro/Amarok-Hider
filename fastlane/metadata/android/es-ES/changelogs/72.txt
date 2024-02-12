@@ -1,0 +1,10 @@
+v0.8.6b1
+- Actualización de traducciones: portugués, ruso, italiano, español, serbio, persa, eslovaco
+
+v0.8.6 alfa
+- **Última hora**: Se suspendió el soporte para decodificar nombres de archivos ofuscados heredados (antes de v0.8.2b1)
+- Soluciona el problema de bloqueo con QuickSetting Tile en Android 14
+- Arreglar el botón de pánico que no se inicia cuando el bloqueo de la aplicación está habilitado
+- Aplique el color dinámico MD3 de forma predeterminada en Android 13+
+- Soporte para bloquear Amarok cuando la pantalla está apagada
+- Se corrigió la vulnerabilidad en ActionReceiver que permitía omitir el bloqueo de Amarok.
