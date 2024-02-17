@@ -167,4 +167,5 @@
     <string name="auto_hide_delay_description">息屏多少分钟后自动隐藏。</string>
     <string name="block_screenshots">禁用截图</string>
     <string name="block_screenshots_description">在 Amarok 内禁用截图，同时将 Amarok 从多任务视图中模糊。</string>
+    <string name="xposed_desc">Amarok 应用隐藏增强模块</string>
 </resources>
