@@ -121,6 +121,7 @@ dependencies {
     implementation 'com.github.getActivity:XXPermissions:18.5'
     implementation 'com.github.getActivity:EasyWindow:10.6'
     implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
+    implementation 'com.github.kyuubiran:EzXHelper:2.0.8'
     implementation 'com.github.takusemba:spotlight:2.0.5'
     implementation 'com.github.topjohnwu.libsu:core:5.2.2'
     implementation 'com.google.android.material:material:1.11.0'
@@ -133,6 +134,8 @@ dependencies {
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.work:work-runtime:2.9.0'
+
+    compileOnly 'de.robv.android.xposed:api:82'
 }
 
 configurations.configureEach {
