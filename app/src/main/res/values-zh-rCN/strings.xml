@@ -165,4 +165,5 @@
     <string name="auto_hide_description">关闭屏幕后自动隐藏。</string>
     <string name="auto_hide_delay">自动隐藏延迟</string>
     <string name="auto_hide_delay_description">息屏多少分钟后自动隐藏。</string>
+    <string name="xposed_desc">Amarok 应用隐藏增强模块</string>
 </resources>
