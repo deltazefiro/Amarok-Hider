@@ -47,7 +47,6 @@ android {
             }
         }
         debug {
-            applicationIdSuffix ".debug"
             versionNameSuffix "-${getGitHash()}"
             debuggable true
         }
