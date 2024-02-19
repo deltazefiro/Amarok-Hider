@@ -9,6 +9,7 @@ import com.rosan.dhizuku.api.Dhizuku;
 
 import deltazero.amarok.receivers.ScreenStatusReceiver;
 import deltazero.amarok.utils.AppCenterUtil;
+import deltazero.amarok.utils.XHideUtil;
 import jonathanfinerty.once.Once;
 
 public class AmarokApplication extends Application {
@@ -30,6 +31,9 @@ public class AmarokApplication extends Application {
         screenStatusIntentFilter.addAction(Intent.ACTION_SCREEN_ON);
         screenStatusIntentFilter.addAction(Intent.ACTION_SCREEN_OFF);
         registerReceiver(new ScreenStatusReceiver(), screenStatusIntentFilter);
+
+        // Initialise XHideUtil
+        XHideUtil.init(this);
 
         // Start PanicButton service
         QuickHideService.startService(this);
