@@ -4,17 +4,21 @@ import static com.github.kyuubiran.ezxhelper.ClassUtils.loadClass;
 import static com.github.kyuubiran.ezxhelper.ClassUtils.newInstanceBestMatch;
 import static com.github.kyuubiran.ezxhelper.ObjectUtils.invokeMethodBestMatch;
 
+import com.github.kyuubiran.ezxhelper.Log;
+
 import java.util.List;
 
 public class ParceledListSliceUtil {
     private static Class<?> parceledListSliceClass;
 
     public static void init() {
+        Log.d("Initializing ParceledListSliceUtil...", null);
         try {
             parceledListSliceClass = loadClass("android.content.pm.ParceledListSlice", null);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        Log.d("ParceledListSliceUtil initialized.", null);
     }
 
     /**
