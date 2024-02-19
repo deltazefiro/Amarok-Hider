@@ -71,7 +71,7 @@ public class XHideUtil {
             xprefEditor.commit();
         });
 
-        Log.i(TAG, "Xposed module activated.");
+        Log.i(TAG, "XHide initialized.");
         isAvailable = true;
     }
 }
