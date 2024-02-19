@@ -43,7 +43,7 @@ public class XposedEntry implements IXposedHookLoadPackage, IXposedHookZygoteIni
     }
 
     private void loadSystemHooks() {
-        Log.i("Loading system hooks...", null);
+        Log.d("Loading system hooks...", null);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             new HookTarget33().init();
         } else {
@@ -53,7 +53,7 @@ public class XposedEntry implements IXposedHookLoadPackage, IXposedHookZygoteIni
     }
 
     public void loadSelfHooks(XC_LoadPackage.LoadPackageParam lpparam) {
-        Log.i("Loading self hooks...", null);
+        Log.d("Loading self hooks...", null);
         var c = XposedHelpers.findClass("deltazero.amarok.utils.XHideUtil", lpparam.classLoader);
         XposedHelpers.setStaticBooleanField(c, "isModuleActive", true);
         XposedHelpers.setStaticIntField(c, "xposedVersion", XposedBridge.getXposedVersion());

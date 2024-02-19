@@ -15,6 +15,7 @@ import com.github.kyuubiran.ezxhelper.Log;
 import com.github.kyuubiran.ezxhelper.finders.MethodFinder;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import de.robv.android.xposed.XC_MethodHook;
 import deltazero.amarok.xposed.utils.ParceledListSliceUtil;
@@ -31,7 +32,7 @@ public class HookTarget33 extends BaseHook {
     @Override
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     public void init() {
-        Log.i("HookTarget33 init", null);
+        Log.d("Loading HookTarget33", null);
 
         try {
             // parceledListSliceClass = ClassUtils.loadClass("android.content.pm.ParceledListSlice", null);
@@ -47,18 +48,20 @@ public class HookTarget33 extends BaseHook {
 
             unhook1 = HookFactory.createMethodHook(m1, hookFactory -> hookFactory.after(param -> {
                 try {
-                    boolean isXHideActive = isXHideActive();
-                    long flags = (Long) param.args[0];
-                    Log.i("getInstalledPackages called: flags = " + flags
-                            + ", isXHideActive = " + isXHideActive, null);
-
-                    if (!isXHideActive) return;
+                    if (!isXHideActive()) return;
 
                     List<PackageInfo> packages = ParceledListSliceUtil.sliceToList(param.getResult());
+                    AtomicInteger filteredCount = new AtomicInteger();
+
                     var filteredPackages = packages.stream()
-                            .filter(pkg -> !shouldHide(pkg.packageName))
+                            .filter(pkg -> {
+                                boolean shouldHide = shouldHide(pkg.packageName);
+                                if (shouldHide) filteredCount.getAndIncrement();
+                                return !shouldHide;
+                            })
                             .collect(java.util.stream.Collectors.toList());
 
+                    Log.i("Filtered getInstalledPackages. Filtered " + filteredCount.get() + " packages.", null);
                     param.setResult(ParceledListSliceUtil.listToSlice(filteredPackages));
                 } catch (Exception e) {
                     Log.e("Error in getInstalledPackages hook", e);
@@ -76,16 +79,20 @@ public class HookTarget33 extends BaseHook {
 
             unhook2 = HookFactory.createMethodHook(m2, hookFactory -> hookFactory.after(param -> {
                 try {
-                    boolean isXHideActive = isXHideActive();
-                    long flags = (Long) param.args[0];
-                    Log.i("getInstalledApplications called: flags = " + flags
-                            + ", isXHideActive = " + isXHideActive, null);
+                    if (!isXHideActive()) return;
 
                     List<ApplicationInfo> apps = ParceledListSliceUtil.sliceToList(param.getResult());
+                    AtomicInteger filteredCount = new AtomicInteger();
+
                     var filteredApps = apps.stream()
-                            .filter(app -> !shouldHide(app.packageName))
+                            .filter(app -> {
+                                boolean shouldHide = shouldHide(app.packageName);
+                                if (shouldHide) filteredCount.getAndIncrement();
+                                return !shouldHide;
+                            })
                             .collect(java.util.stream.Collectors.toList());
 
+                    Log.i("Filtered getInstalledApplications. Filtered " + filteredCount.get() + " apps.", null);
                     param.setResult(ParceledListSliceUtil.listToSlice(filteredApps));
                 } catch (Exception e) {
                     Log.e("Error in getInstalledApplications hook", e);
@@ -94,9 +101,9 @@ public class HookTarget33 extends BaseHook {
             }));
 
         } catch (Exception e) {
-            Log.e("Error initializing HookTarget33", e);
+            Log.e("Error loading HookTarget33", e);
         } finally {
-            Log.i("HookTarget33 initialized.", null);
+            Log.i("HookTarget33 loaded.", null);
         }
     }
 }
