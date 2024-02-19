@@ -173,4 +173,10 @@
     <string name="block_screenshots">Block screenshots</string>
     <string name="block_screenshots_description">Block screenshots in Amarok and blur it in the recent apps list.</string>
     <string name="xposed_desc">Amarok enhanced app-hiding module</string>
+    <string name="x_hide" translatable="false">XHide</string>
+    <string name="x_hide_description">Utilizing Xposed module to enhance app hiding. Hidden apps will no longer be visible in settings or other apps. Xposed API ≥ 93 Required.</string>
+    <string name="enable_x_hide">Enable XHide</string>
+    <string name="enable_x_hide_description">Status: %s</string>
+    <string name="xposed_active">Active, Xposed API %d</string>
+    <string name="xposed_inactive">Module inactive. Check Xposed manager?</string>
 </resources>
