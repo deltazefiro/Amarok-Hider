@@ -1,6 +1,6 @@
 package deltazero.amarok.xposed.hooks;
 
-import static deltazero.amarok.xposed.utils.XPref.isXHideEnabled;
+import static deltazero.amarok.xposed.utils.XPref.isXHideActive;
 import static deltazero.amarok.xposed.utils.XPref.shouldHide;
 
 import android.content.pm.ApplicationInfo;
@@ -47,10 +47,12 @@ public class HookTarget33 extends BaseHook {
 
             unhook1 = HookFactory.createMethodHook(m1, hookFactory -> hookFactory.after(param -> {
                 try {
-                    if (!isXHideEnabled()) return;
+                    boolean isXHideActive = isXHideActive();
                     long flags = (Long) param.args[0];
-                    int userId = (Integer) param.args[1];
-                    Log.i("getInstalledPackages called: flags = " + flags + ", userId = " + userId, null);
+                    Log.i("getInstalledPackages called: flags = " + flags
+                            + ", isXHideActive = " + isXHideActive, null);
+
+                    if (!isXHideActive) return;
 
                     List<PackageInfo> packages = ParceledListSliceUtil.sliceToList(param.getResult());
                     var filteredPackages = packages.stream()
@@ -74,10 +76,10 @@ public class HookTarget33 extends BaseHook {
 
             unhook2 = HookFactory.createMethodHook(m2, hookFactory -> hookFactory.after(param -> {
                 try {
-                    if (!isXHideEnabled()) return;
+                    boolean isXHideActive = isXHideActive();
                     long flags = (Long) param.args[0];
-                    int userId = (Integer) param.args[1];
-                    Log.i("getInstalledApplications called: flags = " + flags + ", userId = " + userId, null);
+                    Log.i("getInstalledApplications called: flags = " + flags
+                            + ", isXHideActive = " + isXHideActive, null);
 
                     List<ApplicationInfo> apps = ParceledListSliceUtil.sliceToList(param.getResult());
                     var filteredApps = apps.stream()
