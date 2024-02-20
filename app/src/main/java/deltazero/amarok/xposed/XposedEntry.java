@@ -5,13 +5,19 @@ import android.os.Build;
 import com.github.kyuubiran.ezxhelper.EzXHelper;
 import com.github.kyuubiran.ezxhelper.Log;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Set;
+
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import deltazero.amarok.BuildConfig;
-import deltazero.amarok.xposed.hooks.HookTarget33;
+import deltazero.amarok.xposed.hooks.FilterHooks;
+import deltazero.amarok.xposed.hooks.IHook;
 import deltazero.amarok.xposed.utils.ParceledListSliceUtil;
 import deltazero.amarok.xposed.utils.XPref;
 
@@ -43,13 +49,23 @@ public class XposedEntry implements IXposedHookLoadPackage, IXposedHookZygoteIni
     }
 
     private void loadSystemHooks() {
-        Log.d("Loading system hooks...", null);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            new HookTarget33().init();
-        } else {
+        Log.d("Initializing system hooks...", null);
+        List<IHook> hooks = new ArrayList<>();
+
+        if (Build.VERSION.SDK_INT > 35) {
             Log.e("Unsupported Android version. Skip loading hooks.", null);
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            hooks.addAll(FilterHooks.target33());
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            hooks.addAll(FilterHooks.target31());
+        } else if (Build.VERSION.SDK_INT == Build.VERSION_CODES.P) {
+            hooks.addAll(FilterHooks.target29());
+        } else {
+            hooks.addAll(FilterHooks.legacy());
         }
-        Log.i("System hooks loaded.", null);
+
+        Log.d("Loading system hooks...", null);
+        hooks.forEach(IHook::load);
     }
 
     public void loadSelfHooks(XC_LoadPackage.LoadPackageParam lpparam) {
