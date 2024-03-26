@@ -3,7 +3,7 @@
     <string name="about">Om</string>
     <string name="confirm">Bekreft</string>
     <string name="view_github_repo">Vis GitHub-kodelager</string>
-    <string name="learn_more">Lær mer</string>
+    <string name="learn_more">Oppsettsveivisning</string>
     <string name="unhide">Vis igjen</string>
     <string name="hide">Skjul</string>
     <string name="visible_status">Synlig</string>
@@ -129,4 +129,5 @@
     <string name="password_mismatch_error">Passordene samsvarer ikke.</string>
     <string name="search">Søk</string>
     <string name="apphider_dhizuku">Dhizuku-modus</string>
+    <string name="language">Språk</string>
 </resources>
