@@ -30,7 +30,7 @@
     <string name="alert_permission_request_title">Se requiere permiso para generar ventanas emergentes</string>
     <string name="workmode">Modo de trabajo</string>
     <string name="security">Seguridad</string>
-    <string name="panic_button">Botón flotante (tecla Boss)</string>
+    <string name="panic_button">Botón del pánico</string>
     <string name="panic_button_description">Muestra un botón flotante para ocultar aplicaciones y archivos en caso de emergencia. Se muestra sobre todas las demás aplicaciones. El botón sólo se muestra en estado no oculto.</string>
     <string name="in_app_update_failed">Nueva versión disponible, pero no se ha podido descargar. Actualícela manualmente.</string>
     <string name="failed_to_open_doc_tree">No se ha podido abrir el selector de archivos del sistema</string>
@@ -176,4 +176,9 @@
     <string name="filehider_chmod">Modo Chmod</string>
     <string name="warning">ADVERTENCIA</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Algunos usuarios de Samsung han informado de que el uso de ChmodFileHider hizo que sus dispositivos no arrancaran.</font> Consulta el tema #105 de GitHub para obtener más información. Utilízalo bajo tu propia responsabilidad.</b></string>
+    <string name="appearance">Apariencia</string>
+    <string name="auto_hide">Ocultar automáticamente</string>
+    <string name="auto_hide_delay">Retardo al ocultar automáticamente</string>
+    <string name="auto_hide_description">Se oculta automáticamente cuando se apaga la pantalla.</string>
+    <string name="auto_hide_delay_description">El número de minutos de retraso antes de ocultar, después de que la pantalla se apaga.</string>
 </resources>
