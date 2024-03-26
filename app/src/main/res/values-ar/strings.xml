@@ -176,4 +176,9 @@
     <string name="filehider_chmod">وضع Chmod</string>
     <string name="warning">تحذير</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">أبلغ بعض مستخدمي Samsung أن استخدام وضع Chmod تسبب في فشل أجهزتهم في التمهيد (بوتلوب).</font> راجع مشكلة جيثب 105# لمزيد من المعلومات. الاستخدام على مسؤوليتك الخاصة.</b></string>
+    <string name="auto_hide">إخفاء تلقائ</string>
+    <string name="auto_hide_delay">تأخير الإخفاء التلقائي</string>
+    <string name="auto_hide_delay_description">عدد الدقائق التي يجب الانتظار قبل الإخفاء قبل إطفاء الشاشة.</string>
+    <string name="appearance">المظهر</string>
+    <string name="auto_hide_description">إخفاء تلقائ بعد إطفاء الشاشة</string>
 </resources>

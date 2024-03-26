@@ -20,7 +20,7 @@
     <string name="unhidden_toast">Не скрыто. Будь осторожен.</string>
     <string name="show_debug_info">Отладочная информация</string>
     <string name="enable_analytics">Анонимная аналитика</string>
-    <string name="switch_app_hider">Выбрать режим скрытия приложений</string>
+    <string name="switch_app_hider">Переключить режим скрытия приложений</string>
     <string name="current_mode">Текущий режим: %s</string>
     <string name="analytics_description">Отправлять разработчикам анонимные отчеты о сбоях для анализа.</string>
     <string name="about_description">Показать информацию о приложении.</string>
@@ -101,7 +101,7 @@
     <string name="workmode">Режим работы</string>
     <string name="misc">Разное.</string>
     <string name="security">Безопасность</string>
-    <string name="panic_button">Плавающая кнопка (Boss key)</string>
+    <string name="panic_button">Кнопка паники</string>
     <string name="in_app_update_failed">Доступна новая версия, но ее не удалось получить. Пожалуйста, обновите вручную.</string>
     <string name="failed_to_open_doc_tree">Не удалось открыть системный файл-пикер</string>
     <string name="failed_to_open_doc_tree_description">Ой! В вашей системе нет файлового менеджера по умолчанию. Нажмите и удерживайте кнопку «Добавить скрытую папку» и введите путь вручную.</string>
@@ -127,7 +127,7 @@
     <string name="performing_force_unhide">Производится принудительное удаление скрытия. Сядьте поудобнее.</string>
     <string name="filter">Фильтр</string>
     <string name="display_system_apps">Отображать системные приложения</string>
-    <string name="app_lock_description">Требует пароль для доступа к Amarok.</string>
+    <string name="app_lock_description">Требовать пароль для доступа к Amarok.</string>
     <string name="password_mismatch_error">Пароли не совпадают.</string>
     <string name="language">Язык</string>
     <string name="follow_system">(Следовать системе)</string>
@@ -176,4 +176,9 @@
 \n<u>Дисклеймер: Amarok предоставляется без каких-либо гаррантий и условий. Пользователь всецело несёт ответственность за любой вред или последствия, которые могут последовать за использованием Amarok.</u></string>
     <string name="filehider_chmod_description">Изменить права доступа к файлам, чтобы сделать их нечитаемыми. Требуется рут доступ. Процедура выполняется немедленно.</string>
     <string name="filehider_nomedia">Режим NoMedia</string>
+    <string name="appearance">Внешний вид</string>
+    <string name="auto_hide">Автоматическое скрытие</string>
+    <string name="auto_hide_description">Автоматически скрывает после того, как экран был отключён.</string>
+    <string name="auto_hide_delay">Задержка автоматического скрытия</string>
+    <string name="auto_hide_delay_description">Длительность задержки в минутах до скрытия после отключения экрана.</string>
 </resources>
