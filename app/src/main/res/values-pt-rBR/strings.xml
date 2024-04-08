@@ -168,7 +168,7 @@
     <string name="obfuscate_text_file_description">Recurso experimental. Ofuscar cabeçalhos de arquivos não tem efeito em arquivos de texto. Habilitar essa função irá ofuscar completamente arquivos de texto. Isso irá atrasar o processo de ocultação em certa medida.</string>
     <string name="remove_hide_path_description">Remover a pasta \'%s\' da ocultação\?</string>
     <string name="switch_app_hider">Mudar modo de ocultação de aplicativos</string>
-    <string name="panic_button">Botão flutuante (Boss key)</string>
+    <string name="panic_button">Botão de pânico</string>
     <string name="calendar_about">Pure Calendar | por @koramA</string>
     <string name="display_system_apps">Exibir aplicativos do sistema</string>
     <string name="filehider_chmod">Modo Chmod</string>
@@ -176,4 +176,9 @@
     <string name="invalid_dsm_provider">DSM: Provedor DSM inválido. Você instalou e ativou o provedor DSM em seu dispositivo\?</string>
     <string name="warning">ATENÇÃO</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Alguns usuários da Samsung relataram que o uso do ChmodFileHider fazia com que seus dispositivos não inicializassem.</font> Consulte a edição #105 do GitHub para obter mais informações. Use por sua conta e risco.</b></string>
+    <string name="appearance">Aparência</string>
+    <string name="auto_hide">Ocultar automaticamente</string>
+    <string name="auto_hide_description">Oculta automaticamente depois que a tela estiver desligada.</string>
+    <string name="auto_hide_delay">Atraso para ocultar automaticamente</string>
+    <string name="auto_hide_delay_description">Número em minutos de atraso antes de ocultar depois que a tela estiver desligada.</string>
 </resources>

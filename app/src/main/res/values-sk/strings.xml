@@ -168,7 +168,7 @@
     <string name="obfuscate_text_file_description">Experimentálna funkcia. Zakrývanie hlavičiek súborov nemá žiadny vplyv na textové súbory. Zapnutím tejto funkcie sa úplne zakryjú textové súbory. Do určitej miery to spomalí proces skrývania.</string>
     <string name="remove_hide_path_description">Odstrániť priečinok \'%s\' zo skrývania\?</string>
     <string name="switch_app_hider">Prepnutie režimu skrývania aplikácií</string>
-    <string name="panic_button">Plávajúce tlačidlo (tlačidlo Šéf)</string>
+    <string name="panic_button">Tlačidlo paniky</string>
     <string name="update_description">Amarok %s (%d) je k dispozícii na stiahnutie a inštaláciu.</string>
     <string name="calendar_about">Čistý kalendár | od @koramA</string>
     <string name="display_system_apps">Zobraziť systémové aplikácie</string>
@@ -176,4 +176,9 @@
     <string name="enable_dynamic_color">Dynamická farba</string>
     <string name="invalid_dsm_provider">DSM: Neplatný poskytovateľ DSM. Nainštalovali ste a aktivovali ste poskytovateľa DSM vo vašom zariadení?</string>
     <string name="view_github_repo">Repozitár GitHub</string>
+    <string name="appearance">Personalizácia</string>
+    <string name="auto_hide">Automaticky skrývať</string>
+    <string name="auto_hide_description">Po vypnutí obrazovky sa automaticky skryje.</string>
+    <string name="auto_hide_delay">Oneskorenie automatického skrývania</string>
+    <string name="auto_hide_delay_description">Počet minút oneskorenia pred skrytím po vypnutí obrazovky.</string>
 </resources>

@@ -152,7 +152,7 @@
     <string name="obfuscate_text_file_description">Експериментална функција. Замагљивање заглавља фајлова нема утицаја на текстуалне фајлове. Омогућавање ове функције ће у потпуности сакрити текстуалне фајлове. То ће, донекле, успорити процес сакривања.</string>
     <string name="remove_hide_path_description">Уклонити фолдер „%s“ из сакривања\?</string>
     <string name="switch_app_hider">Промени режим сакривања апликација</string>
-    <string name="panic_button">Плутајуће дугме (Boss тастер)</string>
+    <string name="panic_button">Паник дугме</string>
     <string name="update_description">Amarok %s (%d) је доступан за преузимање и инсталирање.</string>
     <string name="calendar_about">Pure Calendar | од @koramA</string>
     <string name="display_system_apps">Прикажи системске апликације</string>
@@ -176,4 +176,9 @@
     <string name="filehider_chmod">Chmod режим</string>
     <string name="warning">УПОЗОРЕЊЕ</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Неки корисници Samsung уређаја су пријавили да је коришћење режима „ChmodFileHider“ довело до неуспешног покретања њихових уређаја.</font> Погледајте GitHub издање #105 за више информација. Користите на властиту одговорност.</b></string>
+    <string name="appearance">Изглед</string>
+    <string name="auto_hide">Аутоматски сакриј</string>
+    <string name="auto_hide_description">Аутоматско сакривање након што се екран искључи.</string>
+    <string name="auto_hide_delay">Кашњење аутоматског сакривања</string>
+    <string name="auto_hide_delay_description">Број минута за кашњење пре сакривања након што се екран искључи.</string>
 </resources>
