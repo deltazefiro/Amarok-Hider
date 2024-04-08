@@ -95,7 +95,7 @@
     <string name="workmode">工作模式</string>
     <string name="misc">杂项。</string>
     <string name="security">安全</string>
-    <string name="panic_button">悬浮球（老板键）</string>
+    <string name="panic_button">老板键</string>
     <string name="panic_button_description">在界面上方显示一个悬浮球用于紧急隐藏。悬浮球仅在非隐藏状态下可见。</string>
     <string name="in_app_update_failed">新更新可用但自动更新失败。请手动更新。</string>
     <string name="failed_to_open_doc_tree">无法打开文件选择器</string>

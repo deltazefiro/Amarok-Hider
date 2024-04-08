@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hide">Skrýt</string>
+    <string name="hidden_status">Skrytý</string>
+    <string name="about">O aplikaci</string>
+    <string name="cancel">Zrušit</string>
+    <string name="storage_permission_request_title">Povolení k úložišti je vyžadováno</string>
+    <string name="storage_permission_denied">Povolení k úložišti odepřeno. Skrývání souborů není k dispozici</string>
+    <string name="set_hide_files">Nastavit Skryté Soubory</string>
+    <string name="unhide">Odkrýt</string>
+    <string name="visible_status">Viditelný</string>
+    <string name="ok">Ok</string>
+    <string name="set_hide_apps">Nastavit skryté aplikace</string>
+    <string name="setting_not_ava_when_hidden">Toto nastavení je k dispozici pouze po odkyrtí</string>
+    <string name="storage_permission_request_message">Udělení přístupu Amaroku k externímu úložišti za účelem skrytí souborů.</string>
+    <string name="apphider_not_ava">Skrývání aplikací nedostupné. Zkontroluj \"More Settings\" → \"Switch app-hiding mode\".</string>
+    <string name="show_about">Zobrazit o aplikaci</string>
+    <string name="enable_analytics">Anonymní analytiky</string>
+    <string name="analytics_description">Odesílejte vývojářům anonymní hlášení o nehodách k analýze.</string>
+</resources>

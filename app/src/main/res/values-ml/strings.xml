@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="set_hide_apps">മറഞ്ഞിരിക്കുന്ന ആപ്പുകൾ സജ്ജമാക്കുക</string>
+    <string name="storage_permission_request_title">സംഭരണ അനുമതി ആവശ്യമാണ്</string>
+    <string name="apphider_not_ava">ആപ്പ് മറയ്ക്കൽ ലഭ്യമല്ല. \"കൂടുതൽ ക്രമീകരണങ്ങൾ\" → \"ആപ്പ്-ഹൈഡിംഗ് മോഡ് മാറുക\" പരിശോധിക്കുക.</string>
+    <string name="usage">ഉപയോഗം</string>
+    <string name="setting_not_ava_when_hidden">ഈ ക്രമീകരണം മറച്ചതിന് ശേഷം മാത്രമേ ലഭ്യമാകൂ</string>
+    <string name="storage_permission_denied">സംഭരണ അനുമതി നിരസിച്ചു. ഫയൽ മറയ്ക്കൽ ലഭ്യമല്ല</string>
+    <string name="analytics_description">വിശകലനത്തിനായി ഡവലപ്പർമാർക്ക് അജ്ഞാത ക്രാഷ് റിപ്പോർട്ടുകൾ അയയ്ക്കുക.</string>
+    <string name="about_description">ആപ്പിനെ കുറിച്ചുള്ള വിവരങ്ങൾ കാണിക്കുന്നു.</string>
+    <string name="hidden_status">മറച്ചിരിക്കുന്നു</string>
+    <string name="cancel">റദ്ദാക്കുക</string>
+</resources>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="cancel">ரத்து செய்</string>
+    <string name="hide">மறை</string>
+    <string name="visible_status">தெரியும்</string>
+    <string name="hidden_status">மறைக்கப்பட்டுள்ளது</string>
+    <string name="ok">சரி</string>
+    <string name="about">பற்றி</string>
+    <string name="set_hide_apps">மறைக்கப்படவேண்டிய பயன்பாடுகளை அமைக்கவும்</string>
+    <string name="unhide">காட்டு</string>
+    <string name="storage_permission_request_title">சேமிப்பக அனுமதி தேவைப்டுகிறது</string>
+    <string name="show_about">பற்றிக்காட்டு</string>
+    <string name="enable_analytics">அநாமதேய பகுப்பாய்வு</string>
+    <string name="about_description">செயலியை பற்றிய தகவலைக் காட்டுகிறது.</string>
+    <string name="usage">பயன்பாடு</string>
+    <string name="usage_description">உதவி மையத்தைத் திறக்கவும்.</string>
+    <string name="more_settings">மேலும் அமைப்புகள்</string>
+    <string name="storage_permission_denied">சேமிப்பக அனுமதி மறுக்கப்பட்டது. கோப்பு மறைக்கப்படாது</string>
+    <string name="analytics_description">பகுப்பாய்வுக்காக டெவலப்பர்களுக்கு அநாமதேய செயலிழப்பு அறிக்கைகளை அனுப்பவும்.</string>
+    <string name="switch_app_hider">செயலியை மறைக்கும் பயன்முறைக்கு மாற்றவும்</string>
+    <string name="storage_permission_request_message">கோப்புகளை மறைக்க வெளிப்புற சேமிப்பகத்திற்கான அணுகலை அமரோக்கிற்கு வழங்கவும்.</string>
+    <string name="set_hide_files">மறைந்த கோப்புகளை அமைக்கவும்</string>
+    <string name="current_mode">தற்போதைய பயன்முறை: %s</string>
+    <string name="apply_on_restart">புதிய மாற்றங்களைப் பயன்படுத்த, பயன்பாட்டை மறுதொடக்கம் செய்யவும்.</string>
+    <string name="hidden_toast">மறைக்கப்பட்டது.Cock-a-doodle-do~!</string>
+    <string name="unhidden_toast">மறைக்கப்படாதது. கவனமாக இருங்கள்.</string>
+    <string name="show_debug_info">பிழைத்திருத்தத் தகவல்</string>
+    <string name="debug_info_description">சிக்கல்களைத் தீர்க்க உதவும் தகவலைக் காட்டுகிறது.</string>
+    <string name="invalid_dsm_provider">DSM: தவறான DSM வழங்குநர். உங்கள் சாதனத்தில் DSM வழங்குநரை நிறுவி செயல்படுத்தியுள்ளீர்களா?</string>
+    <string name="hide_app_failed_admin_inactive">செயலியை மறைக்க முடியவில்லை: DSM வழங்குநர் செயலில் இல்லை.</string>
+</resources>
