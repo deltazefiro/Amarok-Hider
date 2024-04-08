@@ -23,6 +23,7 @@ import com.hjq.permissions.XXPermissions;
 import com.hjq.window.EasyWindow;
 import com.hjq.window.draggable.SpringBackDraggable;
 
+import deltazero.amarok.receivers.ActionReceiver;
 import deltazero.amarok.ui.MainActivity;
 
 public class QuickHideService extends LifecycleService {
@@ -31,6 +32,7 @@ public class QuickHideService extends LifecycleService {
     private ImageView ivPanicButton;
 
     private PendingIntent activityPendingIntent;
+    private NotificationCompat.Action action;
     private static final String CHANNEL_ID = "QUICK_HIDE_CHANNEL";
     private static final int NOTIFICATION_ID = 1;
 
@@ -44,6 +46,14 @@ public class QuickHideService extends LifecycleService {
         NotificationChannel channel = new NotificationChannel(CHANNEL_ID,
                 getString(R.string.notification_channel_name), NotificationManager.IMPORTANCE_DEFAULT);
         getSystemService(NotificationManager.class).createNotificationChannel(channel);
+
+        Intent actionIntent = new Intent(this, ActionReceiver.class);
+        actionIntent.setAction("deltazero.amarok.HIDE");
+        PendingIntent actionPendingIntent = PendingIntent.getBroadcast(this, 1,
+                actionIntent, PendingIntent.FLAG_IMMUTABLE);
+        action = new NotificationCompat.Action.Builder(
+                R.drawable.ic_paw,
+                getString(R.string.hide), actionPendingIntent).build();
 
         activityPendingIntent = PendingIntent.getActivity(this, 0,
                 new Intent(this, MainActivity.class), PendingIntent.FLAG_IMMUTABLE);
@@ -70,6 +80,7 @@ public class QuickHideService extends LifecycleService {
                         .setSmallIcon(R.drawable.ic_paw)
                         .setContentIntent(activityPendingIntent)
                         .setOngoing(true)
+                        .addAction(action)
                         .build();
 
         if (Build.VERSION.SDK_INT >= 34) {
