@@ -6,6 +6,7 @@ import com.github.kyuubiran.ezxhelper.Log;
 import com.github.kyuubiran.ezxhelper.ObjectUtils;
 
 import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -21,8 +22,8 @@ public class FilterUtils {
                 .filter(appOrPkg -> {
                     boolean shouldHide;
                     try {
-                        shouldHide = XPref.shouldHide(
-                                ObjectUtils.getObjectOrNullAs(appOrPkg, "packageName"));
+                        shouldHide = XPref.shouldHide(ObjectUtils.getObjectOrNullUntilSuperclassAs(
+                                appOrPkg, "packageName", null));
                     } catch (NoSuchFieldException e) {
                         throw new RuntimeException(e);
                     }
@@ -31,7 +32,9 @@ public class FilterUtils {
                 })
                 .collect(java.util.stream.Collectors.toList());
 
-        Log.i(String.format("Filtered %d packages: %s", filteredCount.get(), m.getName()), null);
+        Log.d(String.format("%s$%s(%s): Filtered %d packages",
+                m.getDeclaringClass().getSimpleName(), m.getName(), Arrays.toString(m.getParameterTypes()),
+                filteredCount.get()), null);
         return filteredPackages;
     }
 
