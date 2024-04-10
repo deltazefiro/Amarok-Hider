@@ -22,10 +22,6 @@ public class XHideUtil {
     public static boolean isAvailable = false;
     public static int xposedVersion = 0; /* Hooked by module */
 
-    public static boolean isXHideAvailable() {
-        return isAvailable;
-    }
-
     @SuppressLint("WorldReadableFiles")
     public static void init(Context context) {
 
@@ -48,27 +44,26 @@ public class XHideUtil {
 
         // Initialize the XPref with the current values
         xprefEditor.putStringSet(XPref.HIDE_PKG_NAMES, PrefMgr.getHideApps());
-        xprefEditor.putBoolean(XPref.IS_HIDDEN, Hider.getState() == Hider.State.HIDDEN);
-        xprefEditor.putBoolean(XPref.ENABLE_X_HIDE, PrefMgr.isXHideEnabled());
-        xprefEditor.commit();
+        xprefEditor.putBoolean(XPref.IS_ACTIVE, Hider.getState() == Hider.State.HIDDEN && PrefMgr.isXHideEnabled());
+        xprefEditor.apply();
 
         // Setup listeners for changes in the preferences
         hidePkgNamesChangeListener = (sharedPreferences, key) -> {
             if (Objects.equals(key, PrefMgr.HIDE_PKG_NAMES)) {
                 Log.d(TAG, "Hide package name changed.");
                 xprefEditor.putStringSet(XPref.HIDE_PKG_NAMES, PrefMgr.getHideApps());
-                xprefEditor.commit();
+                xprefEditor.apply();
             } else if (Objects.equals(key, PrefMgr.ENABLE_X_HIDE)) {
                 Log.d(TAG, "XHide enabled changed.");
-                xprefEditor.putBoolean(XPref.ENABLE_X_HIDE, PrefMgr.isXHideEnabled());
-                xprefEditor.commit();
+                xprefEditor.putBoolean(XPref.IS_ACTIVE, Hider.getState() == Hider.State.HIDDEN && PrefMgr.isXHideEnabled());
+                xprefEditor.apply();
             }
         };
         PrefMgr.getPrefs().registerOnSharedPreferenceChangeListener(hidePkgNamesChangeListener);
         Hider.state.observeForever(state -> {
-            Log.d(TAG, "Hider state changed.");
-            xprefEditor.putBoolean(XPref.IS_HIDDEN, state == Hider.State.HIDDEN);
-            xprefEditor.commit();
+            if (state != Hider.State.PROCESSING) Log.d(TAG, "Hider state changed.");
+            xprefEditor.putBoolean(XPref.IS_ACTIVE, state == Hider.State.HIDDEN && PrefMgr.isXHideEnabled());
+            xprefEditor.apply();
         });
 
         Log.i(TAG, "XHide initialized.");

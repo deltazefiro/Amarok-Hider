@@ -1,12 +1,7 @@
 package deltazero.amarok.xposed.utils;
 
-import android.content.SharedPreferences;
-
-import androidx.annotation.Nullable;
-
 import com.github.kyuubiran.ezxhelper.Log;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 
@@ -14,56 +9,43 @@ import de.robv.android.xposed.XSharedPreferences;
 import deltazero.amarok.BuildConfig;
 
 public class XPref {
-    public static final String XPREF_PATH = "deltazero.amarok.xposed.prefs";
     private static XSharedPreferences xPref;
-    /** @noinspection FieldCanBeLocal*/
-    private static SharedPreferences.OnSharedPreferenceChangeListener xPrefListener;
 
+    public static final String XPREF_PATH = "deltazero.amarok.xposed.prefs";
     public static final String HIDE_PKG_NAMES = "hidePkgNames";
-    public static final String IS_HIDDEN = "isHidden";
-    public static final String ENABLE_X_HIDE = "enableXHide";
+    public static final String IS_ACTIVE = "isActive";
 
-    public static Set<String> hidePkgNamesCache = Collections.emptySet();
-    public static boolean isHiddenCache = false;
-    public static boolean enableXHideCache = false;
+    private static boolean isActiveCache = false;
+    private static Set<String> hidePkgNamesCache = Collections.emptySet();
 
     public static void init() {
         Log.d("Initializing XPref...", null);
 
-        try {
-            xPref = new XSharedPreferences(BuildConfig.APPLICATION_ID, XPREF_PATH);
-            xPref.makeWorldReadable();
-        } catch (Exception e) {
-            Log.w("Failed to make XPref world readable.", e);
-        }
+        xPref = new XSharedPreferences(BuildConfig.APPLICATION_ID, XPREF_PATH);
+        Log.d("xPref path: " + xPref.getFile().getAbsolutePath(), null);
 
-        if (!xPref.getFile().canRead()) {
-            Log.w("No XPref found. Launch Amarok once and reboot to activate XHide.", null);
-            xPref = null;
-            return;
-        }
-
-        xPrefListener = (sharedPreferences, ignored) -> {
-            // Note that by design it is not possible to determine which particular preference changed
-            // and thus preference key in listener's callback invocation will always be null.
+        if (xPref.getFile().canRead()) {
             xPref.reload();
-            enableXHideCache = xPref.getBoolean(ENABLE_X_HIDE, false);
-            isHiddenCache = xPref.getBoolean(IS_HIDDEN, false);
-            hidePkgNamesCache = xPref.getStringSet(HIDE_PKG_NAMES, Collections.emptySet());
-            Log.i("XPref cache refreshed. isXHideActive = " + isXHideActive() +
-                    ", hidePkgNames = " + Arrays.toString(hidePkgNamesCache.toArray()), null);
-        };
-        //noinspection deprecation /* Supported since API 93 by LSPosed & EdXposed */
-        xPref.registerOnSharedPreferenceChangeListener(xPrefListener);
+            Log.d("xPref content: " + xPref.getAll(), null);
+        } else {
+            Log.w("No XPref found. Launch Amarok once to activate XHide.", null);
+        }
 
         Log.i("XPref initialized.", null);
     }
 
+    public static void refreshCache() {
+        xPref.reload();
+        if (!xPref.getFile().canRead()) return;
+        isActiveCache = xPref.getBoolean(IS_ACTIVE, false);
+        hidePkgNamesCache = xPref.getStringSet(HIDE_PKG_NAMES, Collections.emptySet());
+    }
+
     public static boolean isXHideActive() {
-        return isHiddenCache && enableXHideCache;
+        return isActiveCache;
     }
 
     public static boolean shouldHide(String pkgName) {
-        return isHiddenCache && enableXHideCache && hidePkgNamesCache.contains(pkgName);
+        return hidePkgNamesCache.contains(pkgName);
     }
 }
