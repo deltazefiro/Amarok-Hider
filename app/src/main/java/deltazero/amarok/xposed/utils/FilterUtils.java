@@ -1,8 +1,5 @@
 package deltazero.amarok.xposed.utils;
 
-import static deltazero.amarok.xposed.utils.XPref.isXHideActive;
-import static deltazero.amarok.xposed.utils.XPref.shouldHide;
-
 import android.annotation.SuppressLint;
 
 import com.github.kyuubiran.ezxhelper.Log;
@@ -14,16 +11,18 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class FilterUtils {
 
+    // NOTE: This method will not refresh XPref cache. Call refreshCache() before calling this method
     @SuppressLint("DefaultLocale")
     public static List<Object> filterAppsOrPkgs(List<Object> appsOrPkgs, Method m) {
-        if (!isXHideActive()) return appsOrPkgs;
+        if (!XPref.isXHideActive()) return appsOrPkgs;
 
         AtomicInteger filteredCount = new AtomicInteger();
         var filteredPackages = appsOrPkgs.stream()
                 .filter(appOrPkg -> {
                     boolean shouldHide;
                     try {
-                        shouldHide = shouldHide(ObjectUtils.getObjectOrNullAs(appOrPkg, "packageName"));
+                        shouldHide = XPref.shouldHide(
+                                ObjectUtils.getObjectOrNullAs(appOrPkg, "packageName"));
                     } catch (NoSuchFieldException e) {
                         throw new RuntimeException(e);
                     }
@@ -36,6 +35,7 @@ public class FilterUtils {
         return filteredPackages;
     }
 
+    // NOTE: This method will not refresh XPref cache. Call refreshCache() before calling this method
     public static Object filterAppsOrPkgsInSlices(Object /* ParceledListSlice<*> */ appsOrPkgs, Method m) {
         List<Object> slice = ParceledListSliceUtil.sliceToList(appsOrPkgs);
         return ParceledListSliceUtil.listToSlice(filterAppsOrPkgs(slice, m));

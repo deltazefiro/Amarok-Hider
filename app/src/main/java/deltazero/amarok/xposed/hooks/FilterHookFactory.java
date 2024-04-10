@@ -8,10 +8,10 @@ import com.github.kyuubiran.ezxhelper.finders.MethodFinder;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import de.robv.android.xposed.XC_MethodHook;
 import deltazero.amarok.xposed.utils.FilterUtils;
+import deltazero.amarok.xposed.utils.XPref;
 
 public class FilterHookFactory {
     public static List<IHook> build(String className, String methodName, boolean isSlice) {
@@ -47,6 +47,7 @@ public class FilterHookFactory {
                     try {
                         unhook = HookFactory.createMethodHook(m, hookFactory -> hookFactory.after(param -> {
                             try {
+                                XPref.refreshCache();
                                 param.setResult(isSlice
                                         ? FilterUtils.filterAppsOrPkgsInSlices(param.getResult(), m)
                                         : FilterUtils.filterAppsOrPkgs((List<Object>) param.getResult(), m));
