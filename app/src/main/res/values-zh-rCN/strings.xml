@@ -167,7 +167,7 @@
     <string name="auto_hide_delay_description">息屏多少分钟后自动隐藏。</string>
     <string name="block_screenshots">禁用截图</string>
     <string name="block_screenshots_description">在 Amarok 内禁用截图，同时将 Amarok 从多任务视图中模糊。</string>
-    <string name="xposed_desc">Amarok 应用隐藏增强模块</string>
+    <string name="xposed_desc">Amarok 应用隐藏增强</string>
     <string name="x_hide_description">使用 Xposed 模块增强应用隐藏。启用后隐藏的应用在系统菜单与其他应用中不可见。需要 Xposed API ≥ 93。</string>
     <string name="enable_x_hide">启用 XHide</string>
     <string name="enable_x_hide_description">状态：%s</string>
