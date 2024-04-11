@@ -64,6 +64,7 @@ public final class PrefMgr {
     public static final String SHOW_WELCOME = "showWelcome";
     public static final String ENABLE_AUTO_HIDE = "enableAutoHide";
     public static final String AUTO_HIDE_DELAY = "autoHideDelay";
+    public static final String BLOCK_SCREENSHOTS = "blockScreenshots";
 
     public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
@@ -276,6 +277,15 @@ public final class PrefMgr {
 
     public static void setAutoHideDelay(int autoHideDelay) {
         mPrefEditor.putInt(AUTO_HIDE_DELAY, autoHideDelay);
+        mPrefEditor.apply();
+    }
+
+    public static boolean getBlockScreenshots() {
+        return mPrefs.getBoolean(BLOCK_SCREENSHOTS, false);
+    }
+
+    public static void setBlockScreenshots(boolean blockScreenshots) {
+        mPrefEditor.putBoolean(BLOCK_SCREENSHOTS, blockScreenshots);
         mPrefEditor.apply();
     }
 }
