@@ -1,6 +1,8 @@
 package deltazero.amarok.ui.settings;
 
 
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.PreferenceScreen;
@@ -66,5 +68,17 @@ public class PrivacyCategory extends BaseCategory {
             return true;
         });
         addPreference(disguisePref);
+
+        var allowScreenshotPref = new MaterialSwitchPreference(activity);
+        allowScreenshotPref.setKey(PrefMgr.BLOCK_SCREENSHOTS);
+        allowScreenshotPref.setIcon(R.drawable.screenshot_region_24px);
+        allowScreenshotPref.setTitle(R.string.block_screenshots);
+        allowScreenshotPref.setSummary(R.string.block_screenshots_description);
+        allowScreenshotPref.setChecked(PrefMgr.getBlockScreenshots());
+        allowScreenshotPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            Toast.makeText(activity, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
+            return true;
+        });
+        addPreference(allowScreenshotPref);
     }
 }
