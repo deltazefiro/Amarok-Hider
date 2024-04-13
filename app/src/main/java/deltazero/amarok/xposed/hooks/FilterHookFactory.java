@@ -19,13 +19,13 @@ public class FilterHookFactory {
         try {
             c = ClassUtils.loadClass(className, null);
         } catch (ClassNotFoundException e) {
-            Log.e(String.format("Error when initializing: %s$%s", className, methodName), e);
+            Log.ex(String.format("Error when initializing: %s$%s", className, methodName), e);
             return Collections.emptyList();
         }
 
         var methods = MethodFinder.fromClass(c).filterByName(methodName).toSet();
         if (methods.isEmpty()) {
-            Log.e(String.format("Method not found: %s$%s", methodName, c), null);
+            Log.ex(String.format("Method not found: %s$%s", methodName, c), null);
             return Collections.emptyList();
         }
 
@@ -52,14 +52,14 @@ public class FilterHookFactory {
                                         ? FilterUtils.filterAppsOrPkgsInSlices(param.getResult(), m)
                                         : FilterUtils.filterAppsOrPkgs((List<Object>) param.getResult(), m));
                             } catch (Exception e) {
-                                Log.e(String.format("Error while hooking %s", m), e);
+                                Log.ex(String.format("Error while hooking %s", m), e);
                                 unhook.unhook();
                             }
                         }));
                     } catch (Exception e) {
-                        Log.e(String.format("Hooked failed: %s", m), e);
+                        Log.ex(String.format("Hooked failed: %s", m), e);
                     } finally {
-                        Log.i(String.format("Method hooked: %s", m), null);
+                        Log.ix(String.format("Method hooked: %s", m), null);
                     }
                 }
 

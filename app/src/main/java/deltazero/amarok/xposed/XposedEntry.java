@@ -6,9 +6,7 @@ import com.github.kyuubiran.ezxhelper.EzXHelper;
 import com.github.kyuubiran.ezxhelper.Log;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 
 import de.robv.android.xposed.IXposedHookLoadPackage;
 import de.robv.android.xposed.IXposedHookZygoteInit;
@@ -53,7 +51,7 @@ public class XposedEntry implements IXposedHookLoadPackage, IXposedHookZygoteIni
         List<IHook> hooks = new ArrayList<>();
 
         if (Build.VERSION.SDK_INT > 35) {
-            Log.e("Unsupported Android version. Skip loading hooks.", null);
+            Log.ex("Unsupported Android version. Skip loading hooks.", null);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             hooks.addAll(FilterHooks.target33());
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -73,6 +71,6 @@ public class XposedEntry implements IXposedHookLoadPackage, IXposedHookZygoteIni
         var c = XposedHelpers.findClass("deltazero.amarok.utils.XHideUtil", lpparam.classLoader);
         XposedHelpers.setStaticBooleanField(c, "isModuleActive", true);
         XposedHelpers.setStaticIntField(c, "xposedVersion", XposedBridge.getXposedVersion());
-        Log.i("Self hooks loaded.", null);
+        Log.ix("Self hooks loaded.", null);
     }
 }

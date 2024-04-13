@@ -28,10 +28,10 @@ public class XPref {
             xPref.reload();
             Log.d("xPref content: " + xPref.getAll(), null);
         } else {
-            Log.w("No XPref found. Launch Amarok once to activate XHide.", null);
+            Log.wx("No XPref found. Launch Amarok once to activate XHide.", null);
         }
 
-        Log.i("XPref initialized.", null);
+        Log.ix("XPref initialized.", null);
     }
 
     public static void refreshCache() {
