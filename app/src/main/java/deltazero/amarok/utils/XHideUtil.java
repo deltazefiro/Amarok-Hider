@@ -49,24 +49,27 @@ public class XHideUtil {
 
         // Setup listeners for changes in the preferences
         hidePkgNamesChangeListener = (sharedPreferences, key) -> {
-            if (Objects.equals(key, PrefMgr.HIDE_PKG_NAMES)) {
-                Log.d(TAG, "Hide package name changed.");
-                xprefEditor.putStringSet(XPref.HIDE_PKG_NAMES, PrefMgr.getHideApps());
-                xprefEditor.apply();
-            } else if (Objects.equals(key, PrefMgr.ENABLE_X_HIDE)) {
-                Log.d(TAG, "XHide enabled changed.");
-                xprefEditor.putBoolean(XPref.IS_ACTIVE, Hider.getState() == Hider.State.HIDDEN && PrefMgr.isXHideEnabled());
-                xprefEditor.apply();
+            // Avoid listening to HIDE_PKG_NAMES changes. SharedPrefs trends to write Set<String>
+            // in memory first, then write to disk asynchronously.
+            if (Objects.equals(key, PrefMgr.ENABLE_X_HIDE)) {
+                commitNewValues();
             }
         };
         PrefMgr.getPrefs().registerOnSharedPreferenceChangeListener(hidePkgNamesChangeListener);
+
         Hider.state.observeForever(state -> {
-            if (state != Hider.State.PROCESSING) Log.d(TAG, "Hider state changed.");
-            xprefEditor.putBoolean(XPref.IS_ACTIVE, state == Hider.State.HIDDEN && PrefMgr.isXHideEnabled());
-            xprefEditor.apply();
+            if (state == Hider.State.PROCESSING) return;
+            commitNewValues();
         });
 
         Log.i(TAG, "XHide initialized.");
         isAvailable = true;
+    }
+
+    private static void commitNewValues() {
+        Log.d(TAG, "Committing new values to XPref");
+        xprefEditor.putStringSet(XPref.HIDE_PKG_NAMES, PrefMgr.getHideApps());
+        xprefEditor.putBoolean(XPref.IS_ACTIVE, Hider.getState() == Hider.State.HIDDEN && PrefMgr.isXHideEnabled());
+        xprefEditor.commit();
     }
 }
