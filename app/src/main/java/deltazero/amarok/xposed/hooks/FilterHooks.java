@@ -14,7 +14,7 @@ public class FilterHooks {
                    @PackageManager.PackageInfoFlagsBits long flags, int userId)
      */
     public static List<IHook> target33() {
-        Log.d("Loading target33 FilterHooks", null);
+        Log.ix("Loading target33 FilterHooks", null);
         List<IHook> hooks = new ArrayList<>();
         hooks.addAll(FilterHookFactory.build("com.android.server.pm.IPackageManagerBase",
                 "getInstalledApplications", true));
@@ -31,7 +31,7 @@ public class FilterHooks {
      - public final ParceledListSlice<PackageInfo> getInstalledPackages(int flags, int userId)
      */
     public static List<IHook> target31() {
-        Log.d("Loading target31 FilterHooks", null);
+        Log.ix("Loading target31 FilterHooks", null);
         List<IHook> hooks = new ArrayList<>();
         hooks.addAll(FilterHookFactory.build("com.android.server.pm.PackageManagerService",
                 "getInstalledApplicationsListInternal", false));
@@ -46,7 +46,7 @@ public class FilterHooks {
     - public ParceledListSlice<PackageInfo> getInstalledPackages(int flags, int userId)
      */
     public static List<IHook> target29() {
-        Log.d("Loading target29 FilterHooks", null);
+        Log.ix("Loading target29 FilterHooks", null);
         List<IHook> hooks = new ArrayList<>();
         hooks.addAll(FilterHookFactory.build("com.android.server.pm.PackageManagerService",
                 "getInstalledApplicationsListInternal", false));
@@ -61,7 +61,7 @@ public class FilterHooks {
     - public ParceledListSlice<PackageInfo> getInstalledPackages(int flags, int userId)
      */
     public static List<IHook> legacy() {
-        Log.d("Loading legacy FilterHooks", null);
+        Log.ix("Loading legacy FilterHooks", null);
         List<IHook> hooks = new ArrayList<>();
         hooks.addAll(FilterHookFactory.build("com.android.server.pm.PackageManagerService",
                 "getInstalledApplications", true));
