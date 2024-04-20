@@ -1,6 +1,7 @@
 package deltazero.amarok.filehider;
 
 import android.content.Context;
+import android.media.MediaScannerConnection;
 import android.util.Log;
 
 import com.topjohnwu.superuser.Shell;
@@ -18,17 +19,21 @@ public class ChmodFileHider extends BaseFileHider {
 
     @Override
     protected void process(Set<String> targetDirs, ProcessMethod method) throws InterruptedException {
-
         var processDirs = new HashSet<String>();
         for (var d : targetDirs) {
             if (d.startsWith("/storage/emulated/0/"))
                 processDirs.add(d.replace("/storage/emulated/", "/data/media/"));
-            else
-                Log.w("ChmodFileHider", String.format("Unsupported path: %s", d));
+            else Log.w("ChmodFileHider", String.format("Unsupported path: %s", d));
         }
 
-        for (String d : processDirs)
-            Shell.cmd(String.format("chmod -R %s %s", method == ProcessMethod.HIDE ? 0 : 2770, d)).submit();
+        Shell.Job processJob = Shell.getShell().newJob();
+
+        processDirs.stream()
+                .map(d -> String.format("chmod -R %s %s", method == ProcessMethod.HIDE ? 0 : 2770, d))
+                .forEach(processJob::add);
+
+        processJob.submit(result -> MediaScannerConnection.scanFile(context, targetDirs.toArray(new String[0]), null,
+                (ignore, ignore2) -> Log.d("ChmodFileHider", "MediaStore cache refreshed")));
     }
 
     @Override

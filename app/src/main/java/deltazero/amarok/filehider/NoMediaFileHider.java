@@ -1,6 +1,7 @@
 package deltazero.amarok.filehider;
 
 import android.content.Context;
+import android.media.MediaScannerConnection;
 import android.util.Log;
 
 import java.nio.file.Paths;
@@ -48,6 +49,9 @@ public class NoMediaFileHider extends BaseFileHider {
                 Log.w(TAG, String.format("Error while processing %s: ", dir), e);
             }
         }
+
+        MediaScannerConnection.scanFile(context, targetDirs.toArray(new String[0]), null,
+                (ignore, ignore2) -> Log.d(TAG, "MediaStore cache refreshed"));
     }
 
     @Override
