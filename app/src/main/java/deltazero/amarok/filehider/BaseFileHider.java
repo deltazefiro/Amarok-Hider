@@ -6,7 +6,7 @@ import java.util.Set;
 
 public abstract class BaseFileHider {
 
-    private final Context context;
+    protected final Context context;
 
     public BaseFileHider(Context context) {
         this.context = context;
