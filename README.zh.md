@@ -64,8 +64,6 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 
 ## 感谢
 
-- ~~[heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License~~
-- ~~[Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License~~
 - [aistra0528/Hail](https://github.com/aistra0528/Hail), for providing code reference for the app hider.
 - [Icongeek26](https://www.flaticon.com/authors/icongeek26) & 
 [Freepik](), for the icons
@@ -74,11 +72,7 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 - [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku)
 - [kizitonwose/Calendar](https://github.com/kizitonwose/Calendar)
 
-... 以及所有的贡献者！  
-
-<a href="https://github.com/deltazefiro/Amarok-Hider/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=deltazefiro/Amarok-Hider&anon=1" />
-</a>  
+... 以及所有的[贡献者](https://github.com/deltazefiro/Amarok-Hider/graphs/contributors)！  
 
 
 ## 免责声明
