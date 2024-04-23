@@ -12,7 +12,7 @@
     <string name="ok">OK</string>
     <string name="set_hide_apps">Versteckte Apps einstellen</string>
     <string name="storage_permission_request_title">Speichererlaubnis erforderlich</string>
-    <string name="storage_permission_request_message">Amarok benötigt Zugriff auf externen Speicher, um Ihre Dateien zu verstecken.</string>
+    <string name="storage_permission_request_message">Gewähre Amarok Zugriff auf externen Speicher, um Dateien zu verstecken.</string>
     <string name="set_hide_files">Versteckte Dateien einstellen</string>
     <string name="usage_description">Offene Verwendung.</string>
     <string name="apphider_not_ava">AppHider nicht verfügbar. Überprüfen Sie WeitereEinstellungen -&gt; AppHider wechseln.</string>
@@ -29,16 +29,16 @@
     <string name="hidden_toast">Versteckt. Hahn-ein-Gekritzel-tun~!</string>
     <string name="unhidden_toast">Unversteckt. Seien Sie vorsichtig.</string>
     <string name="show_debug_info">Debug-Informationen</string>
-    <string name="debug_info_description">Debug-Informationen anzeigen</string>
+    <string name="debug_info_description">Informationen anzeigen, um bei der Problemlösung zu helfen.</string>
     <string name="invalid_dsm_provider">DSM: Ungültiger DSM Provider. Haben Sie den DSM Provider auf Ihrem Gerät installiert und aktiviert\?</string>
     <string name="folder_selector_hints">Hinweise zur Ordnerauswahl:
 \n\t 1. Klicken Sie auf \"Diesen Ordner verwenden\", um den Ordner auszuwählen
 \n\t 2. Wählen Sie immer die Datei aus dem lokalen Speicher
 \n\t(Sie können von der rechten Seite des Bildschirms schieben, um lokale Dateien zu öffnen)</string>
     <string name="check_update_on_start">Automatische Aktualisierung</string>
-    <string name="apphider_shizuku_description">HideApp mit Shizuku (oder Sui).
-\nEmpfohlen, wenn Ihr Gerät mit Android 11+ oder mit Xposed Verschalung läuft. Sie müssen Shizuku oder Sui installieren und aktivieren, um diesen Modus zu verwenden.
-\n<i><b>* DeepHide</b>: Versteckte Anwendungen werden in diesem Modus nicht im Systemmenü angezeigt.</i></string>
+    <string name="apphider_shizuku_description">App-Verstecken mit Shizuku (oder Sui).
+\nEmpfohlen, wenn Ihr Gerät mit Android 11+ läuft oder das Xposed-Framework hat. Installiertes und aktives Shizuku oder Sui erforderlich.
+\n</string>
     <string name="hide_app_failed_admin_inactive">App ausblenden fehlgeschlagen: Admin nicht aktiv.</string>
     <string name="apphider_dsm">DSM-Modus [Veraltet]</string>
     <string name="obfuscate_filename">Dateiname verschleiern</string>
@@ -53,7 +53,7 @@
     <string name="update_description">Amarok %s (%d) ist zum Herunterladen und Installieren verfügbar.</string>
     <string name="manually_set_path_description">Achtung! Der manuell eingegebene Pfad **überspringt** die Validierung. Bitte stellen Sie sicher, dass der Pfad gültig ist.</string>
     <string name="apphider_none_description">Deaktivieren Sie die HideApp-Funktion.</string>
-    <string name="update_ava">Aktualisierung verfügbar!</string>
+    <string name="update_ava">Neue Version verfügbar</string>
     <string name="never">Niemals</string>
     <string name="no_update_ava">Noch keine Aktualisierung verfügbar.</string>
     <string name="manually_set_path">Pfad manuell festlegen</string>
@@ -72,7 +72,7 @@
 \nEmpfohlen, wenn Ihr Gerät verwurzelt ist, aber ohne Xposed-Verschalung. Root-Erlaubnis ist erforderlich.</string>
     <string name="apphider_shizuku">Shizuku (Sui) Modus - <font fgcolor="#de5f1b">DeepHide</font></string>
     <string name="filename_only">Nur Dateiname</string>
-    <string name="panic_button">Schwebeknopf</string>
+    <string name="panic_button">Panik-Taste</string>
     <string name="learn_more">Setup-Lernprogramm</string>
     <string name="option_unava_when_hidden">Optionen sind bis zum Einblenden nicht verfügbar.</string>
     <string name="obfuscate_text_file">Textdatei vollständig verschleiern</string>
@@ -82,8 +82,8 @@
     <string name="obfuscate_text_file_description_enhanced">Nicht empfohlen. Eine erweiterte Version von \"Vollständige Verschleierung von Textdateien\". Verwenden Sie diese Option nur, wenn sich die Standardmethode als unwirksam erweist. Sie verlangsamt den Verbergungsprozess drastisch.</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="workmode">Arbeitsmodus</string>
-    <string name="processing">Verarbeitung</string>
-    <string name="misc">Sonstiges</string>
+    <string name="processing">Verarbeite…</string>
+    <string name="misc">Sonst.</string>
     <string name="panic_button_description">Zeigen Sie eine schwebende Schaltfläche \"Notfall - Ausblenden\" über anderen Anwendungen an. Die Schaltfläche wird nur im eingeblendeten Zustand angezeigt.</string>
     <string name="failed_to_open_doc_tree">Systemdateiauswahl konnte nicht geöffnet werden</string>
     <string name="in_app_update_failed">Neues Aktualisierung verfügbar, konnte aber nicht abgerufen werden. Bitte aktualisieren Sie manuell.</string>
@@ -95,11 +95,11 @@
     <string name="not_local_storage_description">Bitte stellen Sie sicher, dass es sich um einen lokalen Pfad handelt und nicht um einen virtuellen.</string>
     <string name="help">Hilfe</string>
     <string name="path_duplicated">Duplizierter Pfad</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
-\n enthält
+\nenthält
 \n
-\n<u>\'%s\'</u></string>
+\n<u>\'%2$s\'</u></string>
     <string name="obfuscate_text_file_description">Experimentelle Funktion. Die Obfuskierung von Dateiköpfen hat keine Auswirkungen auf Textdateien. Wenn Sie diese Funktion aktivieren, werden Textdateien vollständig verschleiert. Sie verlangsamt den Verbergungsprozess bis zu einem gewissen Grad.</string>
     <string name="obfuscate_text_file_enhanced">Textdatei vollständig verschleiern - Erweitert</string>
     <string name="join_developer_channel">Entwickler-Kanal beitreten</string>
@@ -114,17 +114,17 @@
     <string name="filter">Filter</string>
     <string name="display_system_apps">System-Apps anzeigen</string>
     <string name="biometric_auth">Biometrische Entsperrung</string>
-    <string name="app_lock_description">Passwort erforderlich, um Amarok zu starten.</string>
-    <string name="biometric_auth_description">Wenn möglich, biometrische Funktionen des Gerätes verwenden um Amarok zu öffnen</string>
+    <string name="app_lock_description">Passwort notwendig um Amarok zu öffen.</string>
+    <string name="biometric_auth_description">Biometrische Funktionen des Gerätes verwenden um Amarok zu öffnen, falls verfügbar.</string>
     <string name="quick_hide_notification_title">Privatsphäre nicht versteckt</string>
-    <string name="quick_hide_notification_content">Ihre Privatsphäre ist nicht versteckt. Zum Verstecken drücken.</string>
-    <string name="notification_channel_name">Rascher Verstecken Dienst</string>
+    <string name="quick_hide_notification_content">Ihre Privatsphäre ist nicht geschützt. Zum Verstecken drücken.</string>
+    <string name="notification_channel_name">Dienst für schnelles Verstecken</string>
     <string name="language">Sprache</string>
     <string name="invalid_path">Pfad ungültig.</string>
     <string name="dhizuku_permission_denied">Dhizuku: Berechtigung abgelehnt</string>
     <string name="participate_translation">Helfen Sie bei der Übersetzung</string>
     <string name="participate_translation_description">Helfen Sie uns, Amarok in Ihre Sprache zu übersetzen.</string>
-    <string name="quick_hide">Rasch verstecken</string>
+    <string name="quick_hide">Schnelles Verstecken</string>
     <string name="search">Suche</string>
     <string name="notification_permission_request_title">Berechtigung für Benachrichtigungen erforderlich</string>
     <string name="notification_permission_denied">Berechtigung für Benachrichtigungen abgelehnt.</string>
@@ -134,15 +134,53 @@
     <string name="force_unhide_confirm_msg">Alles wiederherstellen\?
 \n
 \n<b>ACHTUNG:</b> Diese Funktion kann Ihre Dateien beschädigen. Verwenden Sie sie nur, wenn Probleme auftreten und Sie die \"Einblenden\"-Funktion nicht normal ausführen können.</string>
-    <string name="notification_permission_request_message">Der Rasche-Versteck-Dienst braucht die Berechtigung für Benachrichtigungen.</string>
+    <string name="notification_permission_request_message">Der Dienst zum schnellen Verstecken benötigt die Berechtigung für Benachrichtigungen.</string>
     <string name="unlock">Entsperren</string>
     <string name="password_incorrect">Falsches Passwort.</string>
     <string name="confirm_password">Passwort bestätigen</string>
     <string name="app_lock">App gesperrt</string>
     <string name="set_password">Passwort festlegen</string>
-    <string name="password_length_error">Das Passwort muss aus 3 bis 15 Zeichen bestehen.</string>
+    <string name="password_length_error">Passwort muss aus 3 bis 15 Zeichen bestehen.</string>
     <string name="password_mismatch_error">Die Passwörter sind nicht gleich.</string>
     <string name="force_unhide">Einblenden erzwingen</string>
     <string name="enable_dynamic_color">Dynamische Farbe</string>
     <string name="dynamic_color_description">Dynamisches Farb Thema einschalten.</string>
+    <string name="follow_system">(An das System anpassen)</string>
+    <string name="block_screenshots">Screenshots blockieren</string>
+    <string name="block_screenshots_description">Screenshots in Amarok blockieren und in der Liste der letzten Anwendungen verbergen.</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Die Dhizuku-Version wird nicht unterstützt. Bitte aktualisieren Sie Dhizuku auf Version 5 oder höher.</string>
+    <string name="apphider_dhizuku">Dhizuku-Modus</string>
+    <string name="invalid_action">Ungültigen Intent erhalten: %s</string>
+    <string name="warning">WARNUNG</string>
+    <string name="auto_hide">automatisches Verstecken</string>
+    <string name="apphider_dhizuku_description">[Experimentell] App-Verstecken mit Dhizuku.
+\nEine moderne und verbesserte Lösung zum Verstecken von Apps auf nicht gerooteten Geräten. Die Installation und Aktivierung der Dhizuku-App sind erforderlich.</string>
+    <string name="app_name_calendar">Kalender</string>
+    <string name="disguise">App tarnen</string>
+    <string name="disguise_description">Tarnt Amarok als Kalender.</string>
+    <string name="quick_hide_notification_description">Zeige dauerhafte Benachrichtigung um Benutzer zu informieren wenn es nicht versteckt ist.</string>
+    <string name="calendar_about">Pure Calendar | von @koramA</string>
+    <string name="dhizuku_not_init">Dhizuku: Der Dienst ist nicht verfügbar. Bitte stellen Sie sicher, dass Sie Dhizuku installiert und aktiviert haben.</string>
+    <string name="filehider_obfuscate_description">Verschleierung von Dateinamen und Dateisignaturen. Es ist kein Root-Zugriff erforderlich. Die Verarbeitung kann einige Zeit in Anspruch nehmen.</string>
+    <string name="welcome_msg">Amarok ist ein kostenloses und freies Tool zum Verstecken privater Dateien &amp; Anwendungen.
+\n
+\nBitte beachten Sie, dass Amarok keine Verschlüsselungssoftware ist, sondern eher ein Werkzeug zum Verstecken von Dingen. Wir raten dringend davon ab, Amarok zum Schutz vertraulicher Dateien und Anwendungen zu verwenden.
+\n
+\n<u>Haftungsausschlüsse: Amarok wird ohne jegliche Garantien oder Bedingungen zur Verfügung gestellt. Der Benutzer trägt die volle Verantwortung für jegliche Schäden oder Konsequenzen, die aus der Verwendung von Amarok entstehen können.</u></string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Einige Samsung-Benutzer haben berichtet, dass die Verwendung von ChmodFileHider dazu führt, dass ihre Geräte nicht mehr booten.</font> Weitere Informationen finden Sie in GitHub issue #105. Die Verwendung erfolgt auf eigene Gefahr.</b></string>
+    <string name="appearance">Aussehen</string>
+    <string name="auto_hide_description">Automatisches Ausblenden, nachdem der Bildschirm ausgeschaltet wurde.</string>
+    <string name="auto_hide_delay">Verzögerung für automatisches Ausblenden</string>
+    <string name="auto_hide_delay_description">Die Anzahl der Minuten, die das Ausblenden nach dem Ausschalten des Bildschirms verzögert werden soll.</string>
+    <string name="close_disguise_spotlight_tip"><font fgcolor="#FCCA3E"><b>Jahreszahl</b></font> lange drücken, um auf Amarok zuzugreifen.</string>
+    <string name="spotlight_do_not_show_again">NICHT MEHR ANZEIGEN</string>
+    <string name="filehider_not_ava_title">Dateiausblendung nicht möglich</string>
+    <string name="filehider_none">Deaktiviert</string>
+    <string name="filehider_none_description">Ausblenden von Dateien deaktivieren.</string>
+    <string name="filehider_obfuscate">Verschleierungsmodus</string>
+    <string name="filehider_chmod">Chmod Modus</string>
+    <string name="filehider_chmod_description">Dateiberechtigung ändern, um sie unlesbar zu machen. Root-Zugriff ist erforderlich. Der Vorgang wird sofort ausgeführt.</string>
+    <string name="filehider_nomedia">Kein-Medium-Modus</string>
+    <string name="filehider_nomedia_description">Fügen Sie nur .nomedia zu Ordnern hinzu. Es ist kein Root-Zugriff erforderlich.</string>
+    <string name="welcome_title">Willkommen</string>
 </resources>
