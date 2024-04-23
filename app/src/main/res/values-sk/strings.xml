@@ -181,4 +181,6 @@
     <string name="auto_hide_description">Po vypnutí obrazovky sa automaticky skryje.</string>
     <string name="auto_hide_delay">Oneskorenie automatického skrývania</string>
     <string name="auto_hide_delay_description">Počet minút oneskorenia pred skrytím po vypnutí obrazovky.</string>
+    <string name="block_screenshots">Zablokovať snímky obrazovky</string>
+    <string name="block_screenshots_description">Blokovanie snímok obrazovky v aplikácii Amarok a jej rozmazanie v zozname posledných aplikácií.</string>
 </resources>

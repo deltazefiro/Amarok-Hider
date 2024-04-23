@@ -181,4 +181,6 @@
     <string name="auto_hide_delay">Retardo al ocultar automáticamente</string>
     <string name="auto_hide_description">Se oculta automáticamente cuando se apaga la pantalla.</string>
     <string name="auto_hide_delay_description">El número de minutos de retraso antes de ocultar, después de que la pantalla se apaga.</string>
+    <string name="block_screenshots">Bloquear capturas de pantalla</string>
+    <string name="block_screenshots_description">Bloquea capturas de pantalla en Amarok y difumínalas en la lista de aplicaciones recientes.</string>
 </resources>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name_calendar">Kalendarz</string>
-    <string name="not_local_storage">Niewspierany katalog</string>
+    <string name="not_local_storage">Nieobsługiwany katalog</string>
     <string name="filter">Filtr</string>
     <string name="manually_set_path">Wybierz ręcznie</string>
     <string name="password">Hasło</string>
-    <string name="apphider_root">Tryb root</string>
+    <string name="apphider_root">Tryb roota</string>
     <string name="unlock">Odblokuj</string>
     <string name="storage_permission_request_message">Przyznaj Amarok dostępu do pamięci wewnętrznej aby móc ukrywać pliki.</string>
     <string name="show_about">Pokaż informacje</string>
@@ -21,7 +21,7 @@
     <string name="set_hide_files">Ustaw ukryte pliki</string>
     <string name="help">Pomoc</string>
     <string name="ok">OK</string>
-    <string name="setting_not_ava_when_hidden">To ustawienie jest dostępne tylko po cofnięciu ukrycia</string>
+    <string name="setting_not_ava_when_hidden">To ustawienie jest dostępne dopiero po odkryciu aplikacji</string>
     <string name="about">O aplikacji</string>
     <string name="workmode">Tryb pracy</string>
     <string name="cancel">Anuluj</string>
@@ -40,4 +40,60 @@
     <string name="unhide">Odkryj</string>
     <string name="hide">Ukryj</string>
     <string name="hidden_status">Ukryte</string>
+    <string name="usage_description">Otwórz centrum pomocy.</string>
+    <string name="apply_on_restart">Aby zastosować zmiany, zrestartuj aplikację.</string>
+    <string name="invalid_dsm_provider">DSM: Nieprawidłowy dostawca DSM. Czy zainstalowano i aktywowano dostawcę DSM na Twoim urządzeniu?</string>
+    <string name="folder_selector_hints">Wskazówki dotyczące wyboru folderu:
+\n\t 1. Kliknij \"Użyj tego folderu\", aby wybrać folder
+\n\t 2. Zawsze wybieraj plik na urządzeniu
+\n\t(Przesuń palcem od prawej krawędzi ekranu, aby otworzyć pliki lokalne)</string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
+\n
+\nzawiera
+\n
+\n<u>\'%2$s\'</u></string>
+    <string name="update_ava">Dostępna jest nowa wersja</string>
+    <string name="manually_set_path_description">Uwaga: Upewnij się, że ręcznie wybrany element faktycznie istnieje, ponieważ wybór nie jest weryfikowany.</string>
+    <string name="apphider_root_description">Ukrywanie aplikacji z dostępem do roota.
+\nZalecane, jeśli Twoje urządzenie jest zrootowane, ale nie posiada frameworka Xposed. Wymagane są uprawnienia roota.</string>
+    <string name="apphider_dsm_description">Ukrywanie aplikacji z Delegated-Scopes-Manager.
+\nNie jest zalecane, chyba że Twoje urządzenie działa z sustemem Android 10 lub starszym i nie jest zrootowane. Może działać niestabilnie i niepoprawnie. Wymagana jest instalacja aplikacji Icebox (lub StopAPP) oraz ustawienie jej jako właściciela urządzenia.</string>
+    <string name="storage_permission_request_title">Do działania Amaroka wymagany jest dostęp do pamięci</string>
+    <string name="storage_permission_denied">Odmówiono dostępu do pamięci. Funkcja ukrywania plików jest niedostępna</string>
+    <string name="apphider_not_ava">Funkcja ukrywania aplikacji niedostępna. Sprawdź w \"Więcej ustawień\" → \"Przełącz tryb ukrywania aplikacji\".</string>
+    <string name="analytics_description">Wyślij anonimowe raporty awarii do deweloperów w celu analizy.</string>
+    <string name="about_description">Pokazuje informacje o aplikacji.</string>
+    <string name="switch_app_hider">Przełącz tryb ukrywania aplikacji</string>
+    <string name="current_mode">Aktualny tryb: %s</string>
+    <string name="shizuku_pre_v11">Nieobsługiwana wersja Shizuku. Zainstaluj wersję Shizuku v11 lub nowszą.</string>
+    <string name="shizuku_permission_denied">Shizuku: Odmówiono uprawnień</string>
+    <string name="shizuku_not_working">Shizuku: Usługa niedostępna. Czy zainstalowałeś Shizuku/Sui na swoim urządzeniu?</string>
+    <string name="shizuku_hidden_api_error">Nie udało się ukryć aplikacji: brak dostępu do API IPackageManager.</string>
+    <string name="shizuku_service_not_running">Shizuku: Usługa nie jest uruchomiona.</string>
+    <string name="apphider_not_ava_title">Niedostępny tryb ukrywania aplikacji.</string>
+    <string name="switch_file_hider">Zmień tryb ukrywania plików</string>
+    <string name="hidden_toast">Ukryte. Kukurykuuuu!</string>
+    <string name="unhidden_toast">Odkryte. Bądź ostrożny.</string>
+    <string name="show_debug_info">Pokaż informacje</string>
+    <string name="debug_info_description">Pokazuje informacje pomocne w rozwiązywaniu problemów.</string>
+    <string name="hide_app_failed_admin_inactive">Nie udało się ukryć aplikacji: dostawca DSM jest nieaktywny.</string>
+    <string name="add_hide_files">Dodaj ukryty folder</string>
+    <string name="remove_hide_path">Usunąć ukryty folder?</string>
+    <string name="remove_hide_path_description">Usunąć folder\"%s\" z ukrycia?</string>
+    <string name="not_local_storage_description">Upewnij się, że to lokalny plik, a nie plik wirtualny.</string>
+    <string name="path_duplicated">Zapętl ukryty folder</string>
+    <string name="no_apphider">Wybierz tryb ukrywania w zakładce \"Więcej ustawień\".</string>
+    <string name="root_not_ava">Nie udało się uzyskać dostępu do uprawnień roota.</string>
+    <string name="check_update_on_start_description">Automatycznie sprawdzaj aktualizacje Amaroka przy uruchomieniu aplikacji.</string>
+    <string name="check_update">Sprawdź aktualizacje</string>
+    <string name="check_update_description">Aktualna wersja: %s</string>
+    <string name="update_description">Nowa wersja Amaroka %s (%d) jest dostępna do pobrania i zainstalowania.</string>
+    <string name="no_update_ava">Używasz najnowszej wersji Amaroka.</string>
+    <string name="dsm_permission_denied">DSM: Odmówiono uprawnień</string>
+    <string name="apphider_none_description">Wyłącz ukrywanie aplikacji.</string>
+    <string name="apphider_shizuku">Shizuku (Sui)</string>
+    <string name="apphider_shizuku_description">Ukrywanie aplikacji z Shizuku (lub Sui).
+\nZalecane, jeśli Twoje urządzenie ma conajmniej system Android 11 lub posiada framework Xposed. Wymaga zainstalowanej i aktywnej aplikacji Shizuku lub Sui.
+\n</string>
+    <string name="learn_more">Instrukcja konfiguracji</string>
 </resources>
