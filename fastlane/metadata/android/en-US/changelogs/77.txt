@@ -1,0 +1,9 @@
+v0.8.7b1
+- Add a "hide" button on notification (#140)
+- Support blocking screenshots in Amarok (#14)
+- Auto refresh media cache after hiding (#146)
+- Update community translations: Spanish, Japanese, Portuguese, Hebrew, Polish, Indonesian, Nepali, Norwegian Bokmål, Tamil, Czech, Malayalam
+
+v0.8.7 alphas
+- Support automatic hiding after screen off
+- New settings UI (for better maintainability)
