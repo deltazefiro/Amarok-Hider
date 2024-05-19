@@ -34,11 +34,11 @@
 \n← 2. حدد دائما ملفا على الجهاز
 \n← (مرر من يمين الشاشة لفتح الملفات المحلية)</string>
     <string name="biometric_auth_description">استخدم المصادقة البيومترية للجهاز للوصول إلى أماروك عند توفره.</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
-\n
-\nيحتوي
-\n
-\n<u>\'%s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u> 
+\n 
+\nيحتوي 
+\n 
+\n<u>\'%2$s\'</u></string>
     <string name="shizuku_hidden_api_error">تعذر إخفاء التطبيق: تعذر الوصول إلى واجهة برمجة( API)تطبيقات نظام مدير الحزم.</string>
     <string name="dynamic_color_description">تمكين نسق الألوان الديناميكي.</string>
     <string name="password">‪كلمة مرور</string>
