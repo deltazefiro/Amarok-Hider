@@ -170,4 +170,6 @@
     <string name="auto_hide_description">Automatically hides after the screen turns off.</string>
     <string name="auto_hide_delay">Auto hide delay</string>
     <string name="auto_hide_delay_description">The number of minutes to delay before hiding after the screen turns off.</string>
+    <string name="block_screenshots">Block screenshots</string>
+    <string name="block_screenshots_description">Block screenshots in Amarok and blur it in the recent apps list.</string>
 </resources>

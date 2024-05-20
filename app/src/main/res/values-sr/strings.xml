@@ -181,4 +181,6 @@
     <string name="auto_hide_description">Аутоматско сакривање након што се екран искључи.</string>
     <string name="auto_hide_delay">Кашњење аутоматског сакривања</string>
     <string name="auto_hide_delay_description">Број минута за кашњење пре сакривања након што се екран искључи.</string>
+    <string name="block_screenshots">Блокирај снимке екрана</string>
+    <string name="block_screenshots_description">Блокирајте снимке екрана у Amarok-у и замаглите их на листи недавних апликација.</string>
 </resources>

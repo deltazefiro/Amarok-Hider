@@ -76,12 +76,11 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 <img src="https://hosted.weblate.org/widgets/amarok-hider/-/multi-auto.svg" alt="Translation status" />
 </a>
 
+
 ## Credits
 
 Many thanks to:
 
-- ~~[heruoxin/Icebox-SDK](https://github.com/heruoxin/IceBox-SDK), Unknown License~~
-- ~~[Sheep-y/Base85](https://github.com/Sheep-y/Base85/), [Apache v2](https://github.com/Sheep-y/Base85/blob/master/LICENSE) License~~
 - [aistra0528/Hail](https://github.com/aistra0528/Hail), for providing code reference for the app hider.
 - [Icongeek26](https://www.flaticon.com/authors/icongeek26) & 
 [Freepik](), for the icons
@@ -90,11 +89,7 @@ Many thanks to:
 - [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku)
 - [kizitonwose/Calendar](https://github.com/kizitonwose/Calendar)
 
-... and all the dedicated contributors!  
-
-<a href="https://github.com/deltazefiro/Amarok-Hider/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=deltazefiro/Amarok-Hider" />
-</a>  
+... and all the dedicated [contributors](https://github.com/deltazefiro/Amarok-Hider/graphs/contributors)!
 
 
 ## Disclaimers
