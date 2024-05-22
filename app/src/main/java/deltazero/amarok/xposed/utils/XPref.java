@@ -48,4 +48,10 @@ public class XPref {
     public static boolean shouldHide(String pkgName) {
         return hidePkgNamesCache.contains(pkgName);
     }
+
+    public static String getXPrefDir() {
+        // This function can be called without initializing XPref
+        return new XSharedPreferences(BuildConfig.APPLICATION_ID, XPREF_PATH)
+                .getFile().getParentFile().getAbsolutePath();
+    }
 }

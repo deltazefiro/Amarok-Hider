@@ -87,7 +87,7 @@ public class SettingsActivity extends AmarokActivity implements
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            getPreferenceManager().setSharedPreferencesName(PrefMgr.SHARED_PREF_FILENAME);
+            getPreferenceManager().setSharedPreferencesName(PrefMgr.MAIN_PREF_FILENAME);
             Context context = getPreferenceManager().getContext();
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
 
