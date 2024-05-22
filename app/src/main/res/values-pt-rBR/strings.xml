@@ -181,4 +181,6 @@
     <string name="auto_hide_description">Oculta automaticamente depois que a tela estiver desligada.</string>
     <string name="auto_hide_delay">Atraso para ocultar automaticamente</string>
     <string name="auto_hide_delay_description">Número em minutos de atraso antes de ocultar depois que a tela estiver desligada.</string>
+    <string name="block_screenshots_description">Bloquear captura de tela no Amarok e ofuscar na lista de aplicativos recentes.</string>
+    <string name="block_screenshots">Bloquear captura de tela</string>
 </resources>

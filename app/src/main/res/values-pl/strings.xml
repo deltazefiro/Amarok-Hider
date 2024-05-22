@@ -70,7 +70,7 @@
     <string name="shizuku_not_working">Shizuku: Usługa niedostępna. Czy zainstalowałeś Shizuku/Sui na swoim urządzeniu?</string>
     <string name="shizuku_hidden_api_error">Nie udało się ukryć aplikacji: brak dostępu do API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku: Usługa nie jest uruchomiona.</string>
-    <string name="apphider_not_ava_title">Niedostępny tryb ukrywania aplikacji.</string>
+    <string name="apphider_not_ava_title">Niedostępny tryb ukrywania aplikacji</string>
     <string name="switch_file_hider">Zmień tryb ukrywania plików</string>
     <string name="hidden_toast">Ukryte. Kukurykuuuu!</string>
     <string name="unhidden_toast">Odkryte. Bądź ostrożny.</string>
