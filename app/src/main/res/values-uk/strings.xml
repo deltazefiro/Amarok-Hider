@@ -91,11 +91,11 @@
     <string name="usage_description">Відкрити довідковий центр.</string>
     <string name="apphider_not_ava">Приховування застосунків недоступне. Перевірте \"Додаткові налаштування\" → \"Увімкнути режим приховування застосунків\".</string>
     <string name="path_duplicated">Приховати дублювання шляхів</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
-\n
-\nмістить
-\n
-\n<u>\'%s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u> 
+\n 
+\nмістить 
+\n 
+\n<u>\'%2$s\'</u></string>
     <string name="update_ava">Доступна нова версія</string>
     <string name="notification_permission_denied">У дозволі на сповіщення відмовлено.</string>
     <string name="debug_info_description">Показує інформацію, яка допоможе виправити проблеми.</string>

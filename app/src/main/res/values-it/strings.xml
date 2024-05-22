@@ -27,11 +27,8 @@
     <string name="about_description">Mostra informazioni sull\'app.</string>
     <string name="switch_file_hider">Cambia la modalità di nascondimento dei file</string>
     <string name="folder_selector_hints">Suggerimenti per selezionare le cartelle:
-\n
 \n\t1. Cliccare su \"Usa questa cartella\" per selezionare la cartella
-\n
 \n\t2. Selezionare sempre un file sul dispositivo
-\n
 \n\t(Scorrere da destra nello schermo per aprire i file locali)</string>
     <string name="hidden_toast">Nascosto. Cock-a-doodle-do~!</string>
     <string name="unhidden_toast">Non Nascosto. Fai attenzione.</string>
@@ -179,4 +176,7 @@
     <string name="display_system_apps">Mostra le app di sistema</string>
     <string name="filehider_chmod">Modalità Chmod</string>
     <string name="enable_dynamic_color">Colore dinamico</string>
+    <string name="appearance">Aspetto</string>
+    <string name="auto_hide">Nascondi automaticamente</string>
+    <string name="auto_hide_description">Nasconde automaticamente quando si spegne lo schermo.</string>
 </resources>

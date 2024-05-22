@@ -12,7 +12,7 @@
     <string name="about_description">Vis «Om».</string>
     <string name="usage">Bruk</string>
     <string name="more_settings">Flere innstillinger</string>
-    <string name="debug_info_description">Vis avlusingsinfo</string>
+    <string name="debug_info_description">Vis avlusingsinfo.</string>
     <string name="current_mode">Nåværende modus: %s</string>
     <string name="apply_on_restart">Endringer vil tre i kraft ved neste oppstart.</string>
     <string name="show_debug_info">Avlusningsinfo</string>
@@ -24,16 +24,16 @@
     <string name="join_developer_channel">Ta del i utviklerkanalen</string>
     <string name="ok">OK</string>
     <string name="cancel">Avbryt</string>
-    <string name="path_duplicated_description"><u>«%s»</u>
-\n
-\n inneholder
-\n
-\n<u>«%s»</u></string>
+    <string name="path_duplicated_description"><u>«%1$s»</u> 
+\n 
+\n inneholder 
+\n 
+\n<u>«%2$s»</u></string>
     <string name="unhidden_toast">Vist igjen. Vær forsiktig.</string>
     <string name="invalid_dsm_provider">DSM: Ugyldig DSM-tilbyder. Har du installert og aktivert DSM-tilbyderen på enheten din\?</string>
     <string name="storage_permission_request_title">Lagringstilgang kreves</string>
     <string name="storage_permission_request_message">Amarok trenger tilgang til eksternlagring for å skjule filene dine.</string>
-    <string name="storage_permission_denied">Lagringstilgang nektet. Filskjuling utilgjengelig.</string>
+    <string name="storage_permission_denied">Lagringstilgang nektet. Filskjuling utilgjengelig</string>
     <string name="set_hide_apps">Sett skjulte programmer</string>
     <string name="setting_not_ava_when_hidden">Innstillingen er kun tilgjengelig etter å ha opphevet skjuling</string>
     <string name="check_update_description">Nåværende versjon: %s</string>
@@ -42,7 +42,7 @@
     <string name="not_local_storage">Ustøttet mappe</string>
     <string name="check_update_on_start_description">Let etter nye versjoner når Amarok starter.</string>
     <string name="check_update">Let etter nye versjoner</string>
-    <string name="update_ava">Ny versjon tilgjengelig.</string>
+    <string name="update_ava">Ny versjon tilgjengelig</string>
     <string name="update_description">Amarok %s (%d) kan lastes ned og installeres.</string>
     <string name="shizuku_permission_denied">Shizuku: Tilgang nektet</string>
     <string name="filename_and_header">Filnavn + hode</string>
@@ -56,7 +56,7 @@
     <string name="usage_description">Åpne «Bruk».</string>
     <string name="switch_app_hider">Bytt programskjulingsmodus</string>
     <string name="switch_file_hider">Bytt arbeidsmetode for filskjuling</string>
-    <string name="hidden_toast">Borte. Hei duuuuu.</string>
+    <string name="hidden_toast">Borte. Hei duuuuu!</string>
     <string name="hide_app_failed_admin_inactive">Kunne ikke skjule programmet. Administrering er ikke aktiv.</string>
     <string name="add_hide_files">Programskjulingsmappe</string>
     <string name="apphider_not_ava">Programskjuler er ikke tilgjengelig. Sjekk «Flere innstillinger» → «Bytt programskjuler».</string>
@@ -89,7 +89,7 @@
     <string name="processing">Behandler …</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="alert_permission_denied">Tilgang til visning over programmer nektet.</string>
-    <string name="alert_permission_request_title">Tilgang til åpning av oppsprettsvinduer kreves.</string>
+    <string name="alert_permission_request_title">Tilgang til åpning av oppsprettsvinduer kreves</string>
     <string name="alert_permission_request_message">Panikk-knappen trenger tilgang til åpning av oppsprettsvinduer. Finn Amarok i innstillingsmenyen og innvilg den tilgangen.</string>
     <string name="in_app_update_failed">Ny oppdatering tilgjengelig, men klarte ikke å hente. Oppdater manuelt.</string>
     <string name="workmode">Modus</string>
@@ -111,7 +111,7 @@
     <string name="obfuscate_text_file_description">Eksperimentell funksjon. Tilsløring av filhoder har ingen effekt på tekstfiler. Å skru på denne funksjonen tilslører tekstfiler helt, men gjør det tregere.</string>
     <string name="quick_hide_notification_description">Vis vedvarende merknad for å vise brukere når ikke skjult.</string>
     <string name="notification_permission_request_title">Merknadstilgang kreves</string>
-    <string name="notification_permission_denied">Merknadstilgang nektet</string>
+    <string name="notification_permission_denied">Merknadstilgang nektet.</string>
     <string name="notification_permission_request_message">Hurtigskjulingstjeneste trenger merknadstilgang for å virke.</string>
     <string name="quick_hide_notification_content">Personvernet ditt er ikke skjult. Klikk for å skjule.</string>
     <string name="notification_channel_name">Hurtigskjulingstjeneste</string>
