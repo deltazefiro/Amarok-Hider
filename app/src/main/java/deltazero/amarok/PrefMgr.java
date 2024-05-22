@@ -27,7 +27,7 @@ public final class PrefMgr {
 
     private static SharedPreferences mPrefs;
     private static SharedPreferences.Editor mPrefEditor;
-    public static final String SHARED_PREF_FILENAME = "deltazero.amarok.prefs";
+    public static final String MAIN_PREF_FILENAME = "deltazero.amarok.prefs";
     public static boolean initialized = false;
 
     /**
@@ -36,7 +36,7 @@ public final class PrefMgr {
      * @param context Application context
      */
     public static void init(Context context) {
-        mPrefs = context.getSharedPreferences(SHARED_PREF_FILENAME, MODE_PRIVATE);
+        mPrefs = context.getSharedPreferences(MAIN_PREF_FILENAME, MODE_PRIVATE);
         mPrefEditor = mPrefs.edit();
         initialized = true;
     }

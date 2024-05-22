@@ -68,9 +68,12 @@ public class XposedEntry implements IXposedHookLoadPackage, IXposedHookZygoteIni
 
     public void loadSelfHooks(XC_LoadPackage.LoadPackageParam lpparam) {
         Log.d("Loading self hooks...", null);
-        var c = XposedHelpers.findClass("deltazero.amarok.utils.XHideUtil", lpparam.classLoader);
+
+        var c = XposedHelpers.findClass("deltazero.amarok.utils.XHidePrefBridge", lpparam.classLoader);
         XposedHelpers.setStaticBooleanField(c, "isModuleActive", true);
         XposedHelpers.setStaticIntField(c, "xposedVersion", XposedBridge.getXposedVersion());
+        XposedHelpers.setStaticObjectField(c, "xPrefDir", XPref.getXPrefDir());
+
         Log.ix("Self hooks loaded.", null);
     }
 }
