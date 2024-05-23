@@ -2,16 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="false" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission
         android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission
-        android:name="android.permission.BIND_QUICK_SETTINGS_TILE"
-        tools:ignore="ProtectedPermissions" />
     <uses-permission
         android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
@@ -25,10 +24,6 @@
             <action android:name="android.intent.action.MAIN" />
         </intent>
     </queries>
-
-    <uses-feature
-        android:name="android.hardware.touchscreen"
-        android:required="false" />
 
     <application
         android:name=".AmarokApplication"
@@ -45,7 +40,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -59,7 +53,6 @@
             android:targetActivity=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
@@ -72,7 +65,6 @@
             android:targetActivity=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
@@ -137,7 +129,7 @@
             android:foregroundServiceType="specialUse">
             <property
                 android:name="deltazero.amarok.SPECIAL_USE_QUICK_HIDE"
-                android:value="foreground_service_for_panic_button" />
+                android:value="For the display of a system-wide panic button" />
         </service>
         <service
             android:name="androidx.appcompat.app.AppLocalesMetadataHolderService"
