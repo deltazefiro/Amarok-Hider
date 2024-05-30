@@ -54,6 +54,9 @@ android {
 
     productFlavors {
         flavorDimensions = ['version']
+        playstore {
+            dimension 'version'
+        }
         appcenter {
             dimension 'version'
         }
@@ -64,6 +67,9 @@ android {
     }
 
     sourceSets {
+        playstore {
+            java.srcDirs = ['src/playstore/java']
+        }
         appcenter {
             java.srcDirs = ['src/appcenter/java']
         }
@@ -111,6 +117,7 @@ dependencies {
     implementation "dev.rikka.shizuku:provider:${shizukuVersion}"
 
     def appCenterSdkVersion = '5.0.4'
+    playstoreImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
