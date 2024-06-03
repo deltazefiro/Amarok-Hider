@@ -183,4 +183,10 @@
     <string name="auto_hide_delay_description">Број минута за кашњење пре сакривања након што се екран искључи.</string>
     <string name="block_screenshots">Блокирај снимке екрана</string>
     <string name="block_screenshots_description">Блокирајте снимке екрана у Amarok-у и замаглите их на листи недавних апликација.</string>
+    <string name="enable_x_hide">Омогући XHide</string>
+    <string name="xposed_active">Активан, Xposed API %d</string>
+    <string name="xposed_desc">Омогућите Amarok-у да сакрије апликације из системских менија.</string>
+    <string name="x_hide_description">Коришћење Xposed модула за побољшање сакривања апликација. Скривене апликације више неће бити видљиве у подешавањима или другим апликацијама. Неопходан Xposed API ≥ 93.</string>
+    <string name="enable_x_hide_description">Статус: %s</string>
+    <string name="xposed_inactive">Модул неактиван. Проверити Xposed менаџер?</string>
 </resources>
