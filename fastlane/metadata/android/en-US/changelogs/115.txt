@@ -1,0 +1,7 @@
+v0.9.0
+- Translation update: Spanish (by gallegonovato), French (by @jay-tau), Serbian (by @nexiRS), Slovak (by @padi-sk), Chinese (Simplified) (by 大王叫我来巡山)
+
+v0.9.0 alphas & betas
+- <b>Introduce XHide: Enhanced applications hiding with Xposed. Hide apps
+thoroughly from system menus & other apps.</b>
+- Translations update: Portuguese (by Undisclosed), Greek (@Xori71), Ukrainian (@Lauritz-Tieste), Hungarian (@Lauritz-Tieste), Polish (@Lauritz-Tieste), Italian (@Lauritz-Tieste, pastic cerre), Arabic (@Lauritz-Tieste, @savoie7304WS), French (by 3 people), Norwegian Nynorsk (@Lauritz-Tieste)
