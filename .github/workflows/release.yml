@@ -40,9 +40,15 @@ jobs:
         with:
           path: |
               ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
-      - name: Upload release asset
+      - name: Upload release asset (AppCenter)
         if: success()
         uses: shogo82148/actions-upload-release-asset@v1
         with:
          upload_url: ${{ github.event.release.upload_url }}
-         asset_path: ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
+         asset_path: ${{ github.workspace }}/app/build/outputs/apk/appcenter/**/*.apk
+      - name: Upload release asset (FOSS)
+        if: success()
+        uses: shogo82148/actions-upload-release-asset@v1
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ${{ github.workspace }}/app/build/outputs/apk/foss/**/*.apk
