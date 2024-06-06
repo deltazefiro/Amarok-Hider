@@ -183,4 +183,10 @@
     <string name="auto_hide_delay_description">El número de minutos de retraso antes de ocultar, después de que la pantalla se apaga.</string>
     <string name="block_screenshots">Bloquear capturas de pantalla</string>
     <string name="block_screenshots_description">Bloquea capturas de pantalla en Amarok y difumínalas en la lista de aplicaciones recientes.</string>
+    <string name="enable_x_hide_description">Estado: %s</string>
+    <string name="xposed_active">Activar la API de Xposed %d</string>
+    <string name="xposed_desc">Habilite Amarok para ocultar aplicaciones de los menús del sistema.</string>
+    <string name="x_hide_description">Utilizando el módulo Xposed para mejorar la ocultación de aplicaciones. Las aplicaciones ocultas ya no serán visibles en la configuración ni en otras aplicaciones. API Xposed ≥ 93 requerida.</string>
+    <string name="enable_x_hide">Habilitar XOcultar</string>
+    <string name="xposed_inactive">Módulo inactivo. ¿Marcar el administrador de Xposed?</string>
 </resources>

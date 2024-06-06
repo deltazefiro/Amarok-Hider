@@ -183,4 +183,10 @@
     <string name="auto_hide_delay_description">Počet minút oneskorenia pred skrytím po vypnutí obrazovky.</string>
     <string name="block_screenshots">Zablokovať snímky obrazovky</string>
     <string name="block_screenshots_description">Blokovanie snímok obrazovky v aplikácii Amarok a jej rozmazanie v zozname posledných aplikácií.</string>
+    <string name="xposed_desc">Umožňuje Amaroku skryť aplikácie zo systémových ponúk.</string>
+    <string name="x_hide_description">Využitie modulu Xposed na zlepšenie skrývania aplikácií. Skryté aplikácie už nebudú viditeľné v nastaveniach ani v iných aplikáciách. Rozhranie Xposed API ≥ 93 je potrebné.</string>
+    <string name="enable_x_hide">Zapnutie funkcie XHide</string>
+    <string name="enable_x_hide_description">Stav: %s</string>
+    <string name="xposed_active">Aktívne, Xposed API %d</string>
+    <string name="xposed_inactive">Modul je neaktívny. Skontrolujte správcu Xposed?</string>
 </resources>
