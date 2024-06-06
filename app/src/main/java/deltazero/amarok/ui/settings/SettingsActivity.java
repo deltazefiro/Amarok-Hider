@@ -87,7 +87,7 @@ public class SettingsActivity extends AmarokActivity implements
 
         @Override
         public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-            getPreferenceManager().setSharedPreferencesName(PrefMgr.SHARED_PREF_FILENAME);
+            getPreferenceManager().setSharedPreferencesName(PrefMgr.MAIN_PREF_FILENAME);
             Context context = getPreferenceManager().getContext();
             PreferenceScreen screen = getPreferenceManager().createPreferenceScreen(context);
 
@@ -95,6 +95,7 @@ public class SettingsActivity extends AmarokActivity implements
                     new WorkmodeCategory(requireActivity(), screen),
                     new PrivacyCategory(requireActivity(), screen),
                     new QuickHideCategory(requireActivity(), screen),
+                    new XHideCategory(requireActivity(), screen),
                     new AppearanceCategory(requireActivity(), screen),
                     new UpdateCategory(requireActivity(), screen),
                     new AboutCategory(requireActivity(), screen),

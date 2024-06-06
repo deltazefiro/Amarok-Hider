@@ -20,7 +20,7 @@
     <string name="switch_app_hider">Changer le mode de dissimulation des applications</string>
     <string name="current_mode">Mode actuel : %s</string>
     <string name="usage_description">Ouvrir le centre d\'aide.</string>
-    <string name="hide_app_failed_admin_inactive">Impossible de masquer l\'application: Le fournisseur DSM n\'est pas actif.</string>
+    <string name="hide_app_failed_admin_inactive">Impossible de masquer l\'application : Le fournisseur DSM n\'est pas actif.</string>
     <string name="add_hide_files">Ajouter un dossier à cacher</string>
     <string name="remove_hide_path_description">Supprimer le dossier \'%s\' de la dissimulation ?</string>
     <string name="no_apphider">Veuillez sélectionner le mode de dissimulation des applications dans \"Plus de paramètres\".</string>
@@ -28,12 +28,12 @@
     <string name="check_update_on_start_description">Recherchez les nouvelles versions d\'Amarok lors de l\'ouverture de l\'application.</string>
     <string name="check_update_on_start">Mise à jour automatique</string>
     <string name="view_github_repo">Dêpot GitHub</string>
-    <string name="shizuku_permission_denied">Shizuku: Autorisation refusée</string>
-    <string name="shizuku_not_working">Shizuku: Service indisponible. Avez-vous installé Shizuku/Sui sur votre appareil ?</string>
-    <string name="shizuku_hidden_api_error">Impossible de masquer l\'application: Impossible d\'accéder à l\'API IPackageManager.</string>
-    <string name="shizuku_service_not_running">Shizuku: Le service n\'est pas en fonction.</string>
+    <string name="shizuku_permission_denied">Shizuku : Autorisation refusée</string>
+    <string name="shizuku_not_working">Shizuku : Service indisponible. Avez-vous installé Shizuku/Sui sur votre appareil ?</string>
+    <string name="shizuku_hidden_api_error">Impossible de masquer l\'application : Impossible d\'accéder à l\'API IPackageManager.</string>
+    <string name="shizuku_service_not_running">Shizuku : Le service n\'est pas en fonction.</string>
     <string name="apphider_not_ava_title">Mode de dissimulation d\'application indisponible</string>
-    <string name="dsm_permission_denied">DSM: Autorisation refusée</string>
+    <string name="dsm_permission_denied">DSM : Autorisation refusée</string>
     <string name="apphider_none_description">Désactivez le masquage des applications.</string>
     <string name="apphider_root">Mode Super-Utilisateur</string>
     <string name="apphider_none">Désactivé</string>
@@ -44,7 +44,7 @@
     <string name="apphider_dsm_description">Masquage d\'applications avec Delegated-Scopes-Manager.
 \nNon recommandé, sauf si votre appareil fonctionne sous Android 10 ou une version antérieure et n\'est pas rooté. Peut avoir des bugs et fonctionner de manière inattendue. Icebox installé (ou StopAPP) défini comme propriétaire de l\'appareil requis.</string>
     <string name="obfuscate_file_header">Obfusquer les en-têtes de fichiers</string>
-    <string name="filename_only">Noms de fichers seulement.</string>
+    <string name="filename_only">Noms de fichers seulement</string>
     <string name="filename_and_header">Noms de fichiers + En-tête</string>
     <string name="obfuscate_text_file">Masquer complètement les fichiers texte</string>
     <string name="join_developer_channel">Groupe Telegram</string>
@@ -82,23 +82,23 @@
     <string name="password_mismatch_error">Les mots de passe ne correspondent pas.</string>
     <string name="biometric_auth">Authentification Biométrique</string>
     <string name="invalid_path">Chemin invalide.</string>
-    <string name="dhizuku_permission_denied">Dhizuku: Autorisation refusée</string>
-    <string name="dhizuku_not_init">Dhizuku: Service indisponible. Veuillez vous assurer que vous avez installé et activé Dhizuku.</string>
+    <string name="dhizuku_permission_denied">Dhizuku : Autorisation refusée</string>
+    <string name="dhizuku_not_init">Dhizuku : Service indisponible. Veuillez vous assurer que vous avez installé et activé Dhizuku.</string>
     <string name="participate_translation">Participer à la traduction</string>
     <string name="participate_translation_description">Aidez-nous à traduire Amarok dans votre langue.</string>
     <string name="warning">ATTENTION</string>
     <string name="app_name_calendar">Calendrier</string>
     <string name="disguise">Déguisement de l\'application</string>
     <string name="filehider_obfuscate_description">Masquer les noms de fichiers et les signatures de fichiers. Aucun accès Super-Utilisateur n\'est requis. Le traitement peut prendre un certain temps.</string>
-    <string name="invalid_dsm_provider">DSM: Fournisseur DSM non valide. Avez-vous installé et activé le fournisseur DSM sur votre appareil ?</string>
+    <string name="invalid_dsm_provider">DSM : Fournisseur DSM non valide. Avez-vous installé et activé le fournisseur DSM sur votre appareil ?</string>
     <string name="more_settings">Plus de paramètres</string>
     <string name="switch_file_hider">Changer le mode de dissimulation des fichiers</string>
     <string name="apply_on_restart">Redémarrer l\'application pour appliquer les changements.</string>
-    <string name="hidden_toast">Caché. Cock-a-doodle-do~!</string>
+    <string name="hidden_toast">Caché. Cock-a-doodle-do~ !</string>
     <string name="not_local_storage">Répertoire non pris en charge</string>
     <string name="help">Aide</string>
     <string name="no_update_ava">Vous utilisez la dernière version.</string>
-    <string name="manually_set_path_description">Attention: Assurez-vous que ce que vous sélectionnez manuellement existe réellement, car cela n\'est pas validé.</string>
+    <string name="manually_set_path_description">Attention : Assurez-vous que ce que vous sélectionnez manuellement existe réellement, car cela n\'est pas validé.</string>
     <string name="apphider_shizuku_description">Dissimulation avec Shizuku (ou Sui)
 \nRecommandé si votre appareil fonctionne sous Android 11+ ou dispose du framework Xposed. Shizuku ou Sui installé et actif requis.
 \n</string>
@@ -107,13 +107,13 @@
     <string name="misc">Divers.</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
     <string name="panic_button_description">Affichez un bouton flottant utilisé pour masquer les applications et les fichiers en cas d\'urgence. Il est affiché sur toutes les autres applications. Le bouton ne s\'affiche qu\'à l\'état non masqué.</string>
-    <string name="dhizuku_pre_v5">Dhizuku: Version Dhizuku non prise en charge. Veuillez mettre à jour Dhizuku vers la version 5 ou supérieure.</string>
+    <string name="dhizuku_pre_v5">Dhizuku : Version Dhizuku non prise en charge. Veuillez mettre à jour Dhizuku vers la version 5 ou supérieure.</string>
     <string name="apphider_dhizuku">Mode Dhizuku</string>
     <string name="apphider_dhizuku_description">[Expérimental] Dissimulation d\'applications avec Dhizuku.
 \nUne solution moderne et améliorée pour masquer les applications sur les appareils non rootés. L\'installation et l\'activation de l\'application Dhizuku sont requises.</string>
-    <string name="force_unhide_confirm_msg">Essayer de tout restaurer ?
-\n
-\n<b>AVERTISSEMENT: </b>Cette option peut corrompre vos fichiers. Utilisez-le uniquement lorsque vous rencontrez des problèmes et que vous ne pouvez pas exécuter normalement la fonction \"afficher\".</string>
+    <string name="force_unhide_confirm_msg">Essayer de tout restaurer ? 
+\n 
+\n<b>AVERTISSEMENT : </b>Cette option peut corrompre vos fichiers. Utilisez-le uniquement lorsque vous rencontrez des problèmes et que vous ne pouvez pas exécuter normalement la fonction \"afficher\".</string>
     <string name="set_password">Définir un mot de passe</string>
     <string name="app_lock_description">Password requis pour accéder à Amarok.</string>
     <string name="confirm_password">Confirmer le mot de passe</string>
@@ -133,7 +133,7 @@
 \n\t 2. Sélectionnez toujours un fichier sur l\'appareil
 \n\t (Faites glisser vers la droite de l\'écran pour ouvrir les fichiers locaux)</string>
     <string name="remove_hide_path">Retirer le dossier caché ?</string>
-    <string name="enable_dynamic_color">Couleurs dynamiques.</string>
+    <string name="enable_dynamic_color">Couleurs dynamiques</string>
     <string name="appearance">Apparence</string>
     <string name="auto_hide_description">Se cache automatiquement une fois l\'écran éteint.</string>
     <string name="auto_hide">Dissimulation automatique</string>
@@ -154,13 +154,13 @@
     <string name="not_local_storage_description">Veuillez vous assurer qu\'il s\'agit d\'un fichier local et non virtuel.</string>
     <string name="path_duplicated">Dossier caché en boucle</string>
     <string name="check_update">Recherchez des mises à jour</string>
-    <string name="check_update_description">Version actuelle: %s</string>
+    <string name="check_update_description">Version actuelle : %s</string>
     <string name="update_ava">Nouvelle version disponible</string>
     <string name="update_description">Amarok %s (%d) est disponible au téléchargement et à l\'installation.</string>
     <string name="update">Mise à jour</string>
     <string name="never">Jamais</string>
     <string name="manually_set_path">Choisir manuellement</string>
-    <string name="shizuku_pre_v11">Version Shizuku non prise en charge: Pre-v11. Veuillez installer Shizuku v11 ou version ultérieure.</string>
+    <string name="shizuku_pre_v11">Version Shizuku non prise en charge : Pre-v11. Veuillez installer Shizuku v11 ou version ultérieure.</string>
     <string name="apphider_dsm">Mode DSM</string>
     <string name="option_unava_when_hidden">Les options ne sont pas disponibles tant qu\'elles ne sont pas masquées.</string>
     <string name="obfuscate_filename">Dissimuler les noms de fichiers</string>
@@ -169,7 +169,7 @@
     <string name="processing">En cours…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="in_app_update_failed">Nouvelle version disponible, mais échec de communication. Veuillez mettre à jour manuellement.</string>
-    <string name="failed_to_open_doc_tree_description">Oops! Votre système ne dispose pas de gestionnaire de fichiers par défaut. Veuillez appuyer longuement sur le bouton \"Ajouter un dossier caché\" et saisir le chemin manuellement.</string>
+    <string name="failed_to_open_doc_tree_description">Oops ! Votre système ne dispose pas de gestionnaire de fichiers par défaut. Veuillez appuyer longuement sur le bouton \"Ajouter un dossier caché\" et saisir le chemin manuellement.</string>
     <string name="notification_permission_denied">Autorisation de notification refusée.</string>
     <string name="quick_hide_notification_title">La confidentialité n\'est pas privé</string>
     <string name="quick_hide_notification_content">Votre confidentialité n\'est pas caché. Cliquer pour cacher.</string>
@@ -182,4 +182,12 @@
     <string name="filehider_nomedia">Mode NoMedia</string>
     <string name="filehider_nomedia_description">Ajoute seulement .nomedia aux dossiers. Super-Utilisateur n\'est pas requis.</string>
     <string name="welcome_title">Bienvenue</string>
+    <string name="block_screenshots_description">Bloquer les captures d\'écran dans Amarok et flouter dans la liste d\'applis récentes.</string>
+    <string name="block_screenshots">Bloquer captures d\'écran</string>
+    <string name="xposed_desc">Activez Amarok pour masquer les applications des menus système.</string>
+    <string name="x_hide_description">Utilisation du module Xposed pour améliorer le masquage des applications. Les applications masquées ne seront plus visibles dans les paramètres ou dans d\'autres applications. API Xposed ≥ 93 requis.</string>
+    <string name="xposed_active">API Xposed active %d</string>
+    <string name="enable_x_hide">Activer XHide</string>
+    <string name="enable_x_hide_description">Statut : %s</string>
+    <string name="xposed_inactive">Module inactif. Vérifier le gestionnaire Xposed ?</string>
 </resources>

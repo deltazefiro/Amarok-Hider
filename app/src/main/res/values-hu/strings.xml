@@ -40,11 +40,11 @@
     <string name="not_local_storage_description">Győződj meg róla, hogy helyi fájlról van szó, nem pedig virtuálisról.</string>
     <string name="help">Súgó</string>
     <string name="path_duplicated">Rejtett mappa zárolása</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
-\n
-\ntartalmazza
-\n
-\n<u>\'%s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u> 
+\n 
+\ntartalmazza 
+\n 
+\n<u>\'%2$s\'</u></string>
     <string name="no_apphider">Válassza ki az alkalmazás elrejtési módot a \"További beállítások\" menüben.</string>
     <string name="root_not_ava">Root hozzáférés nem sikerült.</string>
     <string name="check_update_on_start">Automata frissítés</string>

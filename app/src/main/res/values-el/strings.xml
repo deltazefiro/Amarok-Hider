@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visible_status">Ορατό</string>
+    <string name="hidden_status">Κρυμμένο</string>
+    <string name="about">Σχετικά</string>
+    <string name="set_hide_apps">Ορισμός Κρυμμένων Εφαρμογών</string>
+    <string name="storage_permission_request_title">Απαιτείται άδεια πρόσβασης του αποθηκευτικού χώρου</string>
+    <string name="apphider_not_ava">Η απόκρυψη εφαρμογών είναι μη διαθέσιμη. Βλέπε \"Περεταίρω ρυθμίσεις\" → \"Αλλαγή λειτουργίας απόκρυψης εφαρμογών\".</string>
+    <string name="set_hide_files">Ορισμός Κρυμμένων Αρχείων</string>
+    <string name="enable_analytics">Ανώνυμα αναλυτικά στοιχεία</string>
+    <string name="about_description">Εμφανίζει πληροφορίες σχετικά με την εφαρμογή.</string>
+    <string name="usage">Χρήση</string>
+    <string name="switch_app_hider">Αλλαγή λειτουργίας απόκρυψης αρχείων</string>
+    <string name="current_mode">Λειτουργία υπό χρήση: %s</string>
+    <string name="switch_file_hider">Αλλαγή λειτουργίας απόκρυψης αρχείων</string>
+    <string name="hidden_toast">Κρυμμένα. Κι-κιρί-κου~!</string>
+    <string name="unhidden_toast">Εμφανή. Πρόσεχε.</string>
+    <string name="hide_app_failed_admin_inactive">Η απόκρυψη της εφαρμογής είναι αδύνατη: Ο πάροχος DSM είναι ανενεργός.</string>
+    <string name="add_hide_files">Προσθήκη κρυμμένου φακέλου</string>
+    <string name="remove_hide_path">Αφαίρεση κρυμμένου φακέλου;</string>
+    <string name="remove_hide_path_description">Αφαίρεση του φακέλου \'%s\' από τα κρυμμένα;</string>
+    <string name="confirm">Επιβεβαίωση</string>
+    <string name="not_local_storage">Μη υποστηριζόμενο directory</string>
+    <string name="help">Βοήθεια</string>
+    <string name="path_duplicated">Λούπα κρυμμένου φακέλου</string>
+    <string name="root_not_ava">Η πρόσβαση root δεν μπόρεσε να ληφθεί.</string>
+    <string name="check_update">Έλεγχος για ενημερώσεις</string>
+    <string name="check_update_description">Τρέχουσα έκδοση: %s</string>
+    <string name="update">Ενημέρωση</string>
+    <string name="view_github_repo">Αποθετήριο στο GitHub</string>
+    <string name="shizuku_permission_denied">Shizuku: Η άδεια απορρίφθηκε</string>
+    <string name="shizuku_not_working">Shizuku: Η υπηρεσία είναι μια διαθέσιμη. Έχεις εγκαταστήσει το Shizuku/Sui στην συσκευή σου;</string>
+    <string name="shizuku_service_not_running">Shizuku: Η υπηρεσία δεν τρέχει.</string>
+    <string name="apphider_not_ava_title">Μη διαθέσιμη λειτουργία απόκρυψης εφαρμογών</string>
+    <string name="dsm_permission_denied">DSM: Η άδεια απορρίφθηκε</string>
+    <string name="unhide">Εμφάνιση</string>
+    <string name="hide">Απόκρυψη</string>
+    <string name="ok">Εντάξει</string>
+    <string name="cancel">Ακύρωση</string>
+    <string name="setting_not_ava_when_hidden">Αυτή η ρύθμιση είναι διαθέσιμη μόνο μετά την εμφάνιση</string>
+    <string name="storage_permission_request_message">Παραχώρηση πρόσβασης του Amarok στον εξωτερικό χώρο αποθήκευσης για απόκρυψη εφαρμογών.</string>
+    <string name="storage_permission_denied">Η άδεια πρόσβασης στον αποθηκευτικό χώρο απορρίφθηκε. Η απόκρυψη εφαρμογών είναι μη διαθέσιμη</string>
+    <string name="show_about">Εμφάνισε σχετικά</string>
+    <string name="analytics_description">Αποστολή ανωνύμων αναφορών σχετικά με διακοπές λειτουργίας της εφαρμογής στους δημιουργούς για ανάλυση.</string>
+    <string name="usage_description">Άνοιγμα κέντρου υποστήριξης.</string>
+    <string name="more_settings">Περαιτέρω ρυθμίσεις</string>
+    <string name="apply_on_restart">Κάντε επανεκκίνηση για να αποθηκευτούν οι αλλαγές σας.</string>
+    <string name="show_debug_info">Πληροφορίες εκσφαλμάτωσης</string>
+    <string name="debug_info_description">Εμφανίσεις πληροφορίες που βοηθούν στην επιδιόρθωση προβλημάτων.</string>
+    <string name="invalid_dsm_provider">DSM: Μη έγκυρος πάροχος DSM. Έχεις εγκαταστήσει και ενεργοποιήσει τον πάροχο DSM στην συσκευή σου;</string>
+    <string name="folder_selector_hints">Συμβουλές για την επιλογή φακέλων:
+\n\t 1. Πάτα \"Χρήση Αυτού του Φακέλου\" για να επιλέξεις τον φάκελο
+\n\t 2. Πάντα να χρησιμοποιείς αρχεία που είναι αποθηκευμένα στην συσκευή
+\n\t(Κάνε ολίσθηση από τα δεξιά της οθόνης για να ανοίξεις τα τοπικά αρχεία)</string>
+    <string name="not_local_storage_description">Παρακαλώ βεβαιώσου πως είναι τοπικό αρχείο και όχι κάποιο εικονικό.</string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
+\n
+\nπεριέχει
+\n
+\n<u>\'%2$s\'</u></string>
+    <string name="no_apphider">Παρακαλώ επίλεξε την λειτουργία απόκρυψης εφαρμογών που βρίσκεται στις \"Περεταίρω ρυθμίσεις\".</string>
+    <string name="check_update_on_start">Αυτόματη ενημέρωση</string>
+    <string name="check_update_on_start_description">Έλεγξε για νέες εκδόσεις του Amarok με το άνοιγμα της εφαρμογής.</string>
+    <string name="update_ava">Νέα έκδοση διαθέσιμη</string>
+    <string name="update_description">Το Amarok %s (%d) είναι διαθέσιμο για λήψη και εγκατάσταση.</string>
+    <string name="never">Ποτέ</string>
+    <string name="no_update_ava">Χρησιμοποιείς την πιο πρόσφατη έκδοση.</string>
+    <string name="manually_set_path">Χειροκίνητη επιλογή</string>
+    <string name="manually_set_path_description">Προσοχή: Βεβαιώσου πως αυτό που επιλέγεις χειροκίνητα υπάρχει όντως, μιας και δεν είναι επιβεβαιωμένο.</string>
+    <string name="shizuku_pre_v11">Μη υποστηριγμένη έκδοση του Shizuku: Προ-εκδ.11. Παρακαλώ εγκατάστησε την έκδοση 11 ή αργότερα του Shizuku.</string>
+    <string name="shizuku_hidden_api_error">Η απόκρυψη της εφαρμογής ήταν αδύνατη: Δεν μπορούσε να γίνει πρόσβαση στο IPackageManager API.</string>
+    <string name="apphider_none">Απενεργοποιημένη</string>
+    <string name="apphider_none_description">Απενεργοποίηση της λειτουργίας απόκρυψης εφαρμογών.</string>
+    <string name="apphider_root">Λειτουργία root</string>
+    <string name="apphider_root_description">Απόκρυψη εφαρμογών με πρόσβαση root.
+\nΠροτεινόμενη εάν έχεις πρόσβαση root στην συσκευή σου, αλλά λείπει το Xposed framework. Απαιτείται πρόσβαση root.</string>
+    <string name="apphider_shizuku">Λειτουργία Shizuku (Sui)</string>
+</resources>
