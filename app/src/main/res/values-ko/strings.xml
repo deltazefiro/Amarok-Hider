@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">보이기</string>
+    <string name="hide">숨기기</string>
+    <string name="visible_status">보임</string>
+    <string name="hidden_status">숨김</string>
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="set_hide_apps">숨기는 앱 설정하기</string>
+    <string name="setting_not_ava_when_hidden">이 설정은 숨었을 때 변경할 수 없습니다.</string>
+    <string name="storage_permission_request_title">저장소 권한 필요</string>
+    <string name="storage_permission_request_message">Amarok이 파일을 숨길 수 있게 외부 저장소 권한을 허용하십시오.</string>
+    <string name="storage_permission_denied">저장소 권한 거절함. 파일을 숨길 수 없습니다</string>
+    <string name="set_hide_files">숨길 파일 정하기</string>
+    <string name="enable_analytics">익명 정보</string>
+    <string name="analytics_description">크래시 정보를 익명으로 개발자에게 보내기.</string>
+    <string name="about_description">앱의 소개를 보여줍니다.</string>
+    <string name="usage">사용법</string>
+    <string name="usage_description">도움 센터 열기.</string>
+    <string name="switch_app_hider">앱 숨김 모드 바꾸기</string>
+    <string name="current_mode">현재 모드: %s</string>
+    <string name="more_settings">더 많은 설정</string>
+    <string name="switch_file_hider">파일 숨김 모드 바꾸기</string>
+    <string name="apply_on_restart">새 변경을 적용하려면 앱을 재시작하세요.</string>
+    <string name="add_hide_files">숨길 폴더 추가</string>
+    <string name="remove_hide_path">숨길 파일 목록에서 삭제하시겠습니까?</string>
+    <string name="remove_hide_path_description">\'%s\' 폴더를 보이게 하시겠습니까?</string>
+    <string name="confirm">확인</string>
+    <string name="not_local_storage">디렉토리 지원하지 않음</string>
+    <string name="not_local_storage_description">파일이 존재하는지 확인해 주세요.</string>
+    <string name="help">도움말</string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
+\n
+\n는 다음을 포함하고 있습니다:
+\n
+\n<u>\'%2$s\'</u></string>
+    <string name="root_not_ava">루트 엑세스 없음.</string>
+    <string name="check_update_on_start">자동 업데이트</string>
+    <string name="update_description">Amarok %s (%d) 버전으로 다운로드 및 업데이트 가능</string>
+    <string name="manually_set_path_description">주의: 파일이 존재하는지 검사를 하지 않으니 꼭 확인해 주십시오.</string>
+    <string name="view_github_repo">GitHub repository</string>
+    <string name="shizuku_pre_v11">Pre-v11의 Shizuku 버전을 지원하지 않습니다. Shizuku v11 또는 이상을 설치해 주십시오.</string>
+    <string name="hidden_toast">파일 숨겨짐. 히힛!</string>
+    <string name="unhidden_toast">파일 보임. 주의하세요.</string>
+    <string name="show_debug_info">디버그 정보</string>
+    <string name="debug_info_description">버그를 고칠 수 있는 정보를 보여 줌.</string>
+    <string name="hide_app_failed_admin_inactive">앱 숨길 수 없음: DSM 공급자 비활성화</string>
+    <string name="invalid_dsm_provider">DSM: DSM 공급자 정보가 맞지 않습니다. DSM을 설치하고 활성화 하였는지 확인하여 주십시오.</string>
+    <string name="check_update_on_start_description">Amarok 앱을 열 때 자동으로 업데이트를 확인합니다.</string>
+    <string name="check_update">업데이트 확인하기</string>
+    <string name="update">업데이트</string>
+    <string name="never">거절</string>
+    <string name="manually_set_path">직접 선택</string>
+    <string name="check_update_description">현재 버전: %s</string>
+    <string name="update_ava">업데이트 가능</string>
+    <string name="no_update_ava">최신 버전입니다.</string>
+    <string name="apphider_none_description">‘</string>
+    <string name="folder_selector_hints">폴더 선택기 팁:</string>
+</resources>
