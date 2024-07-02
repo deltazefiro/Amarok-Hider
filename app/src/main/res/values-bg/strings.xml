@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">Покажи</string>
+    <string name="ok">ОК</string>
+    <string name="storage_permission_request_title">Нужен е достъп до хранилището</string>
+    <string name="storage_permission_denied">Достъпът до хранилището отказан. Скриването на файловете е недостъпно</string>
+    <string name="set_hide_files">Задайте Скрити Файлове</string>
+    <string name="show_about">Покажи \"Относно\"</string>
+    <string name="about_description">Показва информация относно приложението.</string>
+    <string name="usage">Документация</string>
+    <string name="current_mode">Текущ режим: %s</string>
+    <string name="switch_file_hider">Промяна на режим за файлове</string>
+    <string name="apply_on_restart">Рестартирайте Amarok, за да приложите новите промени.</string>
+    <string name="hidden_toast">Скрити. Ку-ку-ригууу!</string>
+    <string name="show_debug_info">Информация за отстраняване на грешки</string>
+    <string name="hide_app_failed_admin_inactive">Не успяхме да скрием приложението: DSM доставчикът не е активен.</string>
+    <string name="add_hide_files">Добавяне на скрита папка</string>
+    <string name="hide">Скрий</string>
+    <string name="visible_status">Видими</string>
+    <string name="about">Относно</string>
+    <string name="cancel">Отмени</string>
+    <string name="set_hide_apps">Настройте скрити приложения</string>
+    <string name="hidden_status">Скрити</string>
+    <string name="setting_not_ava_when_hidden">Тази настройка е налична само след Показване</string>
+    <string name="storage_permission_request_message">Разрешете достъп до хранилището, за да скриете файлове.</string>
+    <string name="apphider_not_ava">Скриването на приложения е недостъпно. Моля, проверете \"Още Настройки\" → \"Промяна на режим за Приложения\".</string>
+    <string name="enable_analytics">Анонимно споделяне на данни</string>
+    <string name="analytics_description">При сривове, изпращайте анонимни данни до разработчиците за анализ.</string>
+    <string name="usage_description">Отвори помощния център.</string>
+    <string name="switch_app_hider">Промяна на режим за приложения</string>
+    <string name="more_settings">Още Настройки</string>
+    <string name="unhidden_toast">Видими. Бъдете предпазливи.</string>
+    <string name="debug_info_description">Показва информация за отстраняване на грешки.</string>
+    <string name="invalid_dsm_provider">DSM: Невалиден DSM доставчик. Моля, проверете дали DSM доставчикът е успешно инсталиран и активиран на устройството.</string>
+</resources>
