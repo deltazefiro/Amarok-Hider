@@ -9,7 +9,7 @@
     <string name="about">このアプリについて</string>
     <string name="hidden_status">非表示中</string>
     <string name="visible_status">表示中</string>
-    <string name="switch_app_hider">アプリの非表示方法を切り替え</string>
+    <string name="switch_app_hider">アプリの非表示方法を切り替える</string>
     <string name="switch_file_hider">ファイルの非表示方法を切り替える</string>
     <string name="enable_analytics">匿名のアナリティクス</string>
     <string name="usage">使用方法</string>
@@ -29,7 +29,7 @@
     <string name="biometric_auth">生体認証</string>
     <string name="biometric_auth_description">可能な場合、アプリロックに生体認証を使用する。</string>
     <string name="force_unhide_description">問題が発生した場合に、全ての復元を試みる。</string>
-    <string name="force_unhide">強制非表示解除</string>
+    <string name="force_unhide">強制的に非表示を解除</string>
     <string name="language">言語</string>
     <string name="participate_translation_description">あなたの言語へのAmarokの翻訳に協力してください。</string>
     <string name="ok">OK</string>
@@ -108,4 +108,12 @@
     <string name="remove_hide_path_description">「%s」を非表示フォルダから削除しますか？</string>
     <string name="update_description">Amarok %s (%d) をダウンロードしてインストールできます。</string>
     <string name="invalid_dsm_provider">DSM: 無効な DSM プロバイダーです。このデバイスに DSM プロバイダーをインストールし、有効化しましたか？</string>
+    <string name="app_name_calendar">カレンダー</string>
+    <string name="disguise">アプリを偽装</string>
+    <string name="block_screenshots_description">Amarokでのスクリーンショットを阻止し、履歴画面でぼかしを入れる。</string>
+    <string name="block_screenshots">スクリーンショットを阻止</string>
+    <string name="disguise_description">Amarokをカレンダーとして偽装する。</string>
+    <string name="participate_translation">翻訳に参加</string>
+    <string name="appearance">外観</string>
+    <string name="dynamic_color_description">アプリの色にダイナミックカラーを利用する。</string>
 </resources>
