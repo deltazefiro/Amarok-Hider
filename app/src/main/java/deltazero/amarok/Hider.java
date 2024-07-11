@@ -70,7 +70,8 @@ public final class Hider {
             Log.i(TAG, "Process 'hide' finish.");
             state.postValue(State.HIDDEN);
 
-            Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
+            if (!PrefMgr.getDisableToasts())
+                Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
 
             QuickHideService.stopService(context);
 
@@ -95,7 +96,8 @@ public final class Hider {
             Log.i(TAG, "Process 'unhide' finish.");
             state.postValue(State.VISIBLE);
 
-            Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
+            if (!PrefMgr.getDisableToasts())
+                Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
 
             // Important: The startService() method of QuickHideService must be invoked on the main thread.
             // If it's called from a background thread, the service might not get the most recent value from Hider.getState() in time.

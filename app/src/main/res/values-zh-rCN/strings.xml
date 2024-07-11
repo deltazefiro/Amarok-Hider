@@ -173,4 +173,6 @@
     <string name="enable_x_hide_description">状态：%s</string>
     <string name="xposed_active">已激活，Xposed API %d</string>
     <string name="xposed_inactive">模块未激活，请检查 Xposed 管理器。</string>
+    <string name="disable_toasts">禁用提示</string>
+    <string name="disable_toasts_description">禁用隐藏或接触隐藏时的提示。</string>
 </resources>
