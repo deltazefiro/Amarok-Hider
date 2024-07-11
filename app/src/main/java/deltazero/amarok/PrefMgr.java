@@ -66,6 +66,7 @@ public final class PrefMgr {
     public static final String AUTO_HIDE_DELAY = "autoHideDelay";
     public static final String BLOCK_SCREENSHOTS = "blockScreenshots";
     public static final String ENABLE_X_HIDE = "enableXHide";
+    public static final String DISABLE_TOASTS = "disableToasts";
 
     public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
@@ -296,6 +297,15 @@ public final class PrefMgr {
 
     public static void setXHideEnabled(boolean enableXHide) {
         mPrefEditor.putBoolean(ENABLE_X_HIDE, enableXHide);
+        mPrefEditor.apply();
+    }
+
+    public static boolean getDisableToasts() {
+        return mPrefs.getBoolean(DISABLE_TOASTS, false);
+    }
+
+    public static void setDisableToasts(boolean disableToasts) {
+        mPrefEditor.putBoolean(DISABLE_TOASTS, disableToasts);
         mPrefEditor.apply();
     }
 }

@@ -80,5 +80,13 @@ public class PrivacyCategory extends BaseCategory {
             return true;
         });
         addPreference(allowScreenshotPref);
+
+        var disableToastsPref = new MaterialSwitchPreference(activity);
+        disableToastsPref.setKey(PrefMgr.DISABLE_TOASTS);
+        disableToastsPref.setIcon(R.drawable.speaker_notes_off_24dp);
+        disableToastsPref.setTitle(R.string.disable_toasts);
+        disableToastsPref.setSummary(R.string.disable_toasts_description);
+        disableToastsPref.setChecked(PrefMgr.getDisableToasts());
+        addPreference(disableToastsPref);
     }
 }
