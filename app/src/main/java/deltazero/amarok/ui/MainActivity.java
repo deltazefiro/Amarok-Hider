@@ -22,10 +22,7 @@ import deltazero.amarok.filehider.NoneFileHider;
 import deltazero.amarok.ui.settings.SettingsActivity;
 import deltazero.amarok.ui.settings.SwitchAppHiderActivity;
 import deltazero.amarok.ui.settings.SwitchFileHiderActivity;
-import deltazero.amarok.utils.EasterEggUtil;
 import deltazero.amarok.utils.PermissionUtil;
-import deltazero.amarok.utils.SecurityUtil;
-import jonathanfinerty.once.Once;
 import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class MainActivity extends AmarokActivity {
@@ -118,7 +115,13 @@ public class MainActivity extends AmarokActivity {
         }
 
         if (PrefMgr.getAppHider(this) instanceof NoneAppHider) {
-            Toast.makeText(this, R.string.no_apphider, Toast.LENGTH_LONG).show();
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.apphider_not_activated_title)
+                    .setMessage(R.string.apphider_not_activated_msg)
+                    .setPositiveButton(R.string.switch_app_hider, (dialog, which)
+                            -> startActivity(new Intent(this, SwitchAppHiderActivity.class)))
+                    .setNegativeButton(getString(R.string.cancel), null)
+                    .show();
             return;
         }
 
