@@ -181,4 +181,6 @@
     <string name="xposed_inactive">Module inactive. Check Xposed manager?</string>
     <string name="disable_toasts">Disable toasts</string>
     <string name="disable_toasts_description">Do not show toasts during hide or unhide actions.</string>
+    <string name="apphider_not_activated_title">App hiding inactive</string>
+    <string name="apphider_not_activated_msg">Activate an app hiding mode to enable this feature.</string>
 </resources>

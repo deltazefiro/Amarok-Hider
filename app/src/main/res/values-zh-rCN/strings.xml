@@ -175,4 +175,6 @@
     <string name="xposed_inactive">模块未激活，请检查 Xposed 管理器。</string>
     <string name="disable_toasts">禁用提示</string>
     <string name="disable_toasts_description">禁用隐藏或解除隐藏时的提示。</string>
+    <string name="apphider_not_activated_title">应用隐藏未激活</string>
+    <string name="apphider_not_activated_msg">请选择一个应用隐藏模式以启用此功能。</string>
 </resources>
