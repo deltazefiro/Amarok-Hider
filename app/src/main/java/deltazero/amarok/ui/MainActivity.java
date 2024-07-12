@@ -189,18 +189,6 @@ public class MainActivity extends AmarokActivity {
     @Override
     protected void onResume() {
         refreshUi(Hider.getState());
-
-        // Show easter egg
-        var onceTag = "MAIN_ACTIVITY_EASTER_EGG";
-        var moto = "Welcome to 2024!"; /* Suppress i18n warning */
-        if (!SecurityUtil.isUnlockRequired() && !SecurityUtil.isDisguiseNeeded()
-                && !Once.beenDone(Once.THIS_APP_SESSION, onceTag)
-                && EasterEggUtil.is2024NewYear()) {
-            konfettiView.start(EasterEggUtil.explodeParty);
-            tvMoto.setText(moto);
-            Once.markDone(onceTag);
-        }
-
         super.onResume();
     }
 }
