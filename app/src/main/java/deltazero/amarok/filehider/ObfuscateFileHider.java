@@ -5,7 +5,6 @@ import static deltazero.amarok.filehider.BaseFileHider.ProcessMethod.HIDE;
 import static deltazero.amarok.filehider.BaseFileHider.ProcessMethod.UNHIDE;
 
 import android.content.Context;
-import android.media.MediaScannerConnection;
 import android.util.Base64;
 import android.util.Log;
 
@@ -24,6 +23,7 @@ import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.utils.FileHiderUtil;
+import deltazero.amarok.utils.MediaStoreHelper;
 
 public class ObfuscateFileHider extends BaseFileHider {
     private final static String TAG = "FileHider";
@@ -58,8 +58,7 @@ public class ObfuscateFileHider extends BaseFileHider {
                 Log.w(TAG, String.format("Failed to process %s: ", dir), e);
             }
         }
-        MediaScannerConnection.scanFile(context, targetDirs.toArray(new String[0]), null,
-                (ignore, ignore2) -> Log.d(TAG, "MediaStore cache refreshed"));
+        MediaStoreHelper.scan(context, targetDirs);
     }
 
     @Override

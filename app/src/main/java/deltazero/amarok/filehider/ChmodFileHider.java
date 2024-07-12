@@ -1,7 +1,6 @@
 package deltazero.amarok.filehider;
 
 import android.content.Context;
-import android.media.MediaScannerConnection;
 import android.util.Log;
 
 import com.topjohnwu.superuser.Shell;
@@ -10,6 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import deltazero.amarok.R;
+import deltazero.amarok.utils.MediaStoreHelper;
 
 public class ChmodFileHider extends BaseFileHider {
 
@@ -32,8 +32,7 @@ public class ChmodFileHider extends BaseFileHider {
                 .map(d -> String.format("chmod -R %s %s", method == ProcessMethod.HIDE ? 0 : 2770, d))
                 .forEach(processJob::add);
 
-        processJob.submit(result -> MediaScannerConnection.scanFile(context, targetDirs.toArray(new String[0]), null,
-                (ignore, ignore2) -> Log.d("ChmodFileHider", "MediaStore cache refreshed")));
+        processJob.submit(result -> MediaStoreHelper.scan(context, processDirs));
     }
 
     @Override
