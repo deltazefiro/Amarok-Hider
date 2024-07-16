@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="visible_status">ظاهر</string>
-    <string name="storage_permission_request_message">أعطي أماروك صلاحية الوصول للذاكرة الخارجية لإخفاء الملفات.</string>
+    <string name="storage_permission_request_message">أعطي Amarok إذن الوصول للذاكرة الخارجية لإخفاء الملفات.</string>
     <string name="ok">حسنًا</string>
     <string name="setting_not_ava_when_hidden">هذا الإعداد متوفر بعد الإظهار فقط</string>
     <string name="about">حول</string>
@@ -11,7 +11,7 @@
     <string name="cancel">إلغاء</string>
     <string name="set_hide_apps">حدد التطبيقات لإخفائها</string>
     <string name="hidden_status">مخفي</string>
-    <string name="dhizuku_not_init">ديزوكو: الخدمة غير متوفرة. يرجى التأكد من تثبيت وتنشيط Dhizuku.</string>
+    <string name="dhizuku_not_init">Dhizuku: الخدمة غير متوفرة. يرجى التأكد من تثبيت وتنشيط Dhizuku.</string>
     <string name="unhidden_toast">تم الاظهار. انتبه.</string>
     <string name="performing_force_unhide">تنفيذ الإظهار بالقوة. فضلا على رسلك.</string>
     <string name="debug_info_description">عرض معلومات للمساعدة في حل المشاكل.</string>
@@ -20,20 +20,20 @@
     <string name="hidden_toast">تم الاخفاء. انت-ماذا-تفعل~!</string>
     <string name="obfuscate_filename_description">اجعل اسم الملف غير قابل للقراءة من قبل الإنسان. الميزة الأساسية لإخفاء الملفات. لا يمكن إيقاف تشغيلها.</string>
     <string name="quick_hide_notification_title">الخصوصية ليست مخفية</string>
-    <string name="apphider_shizuku">وضع شيزوكو (Sui)</string>
+    <string name="apphider_shizuku">وضع Shizuku (Sui)</string>
     <string name="notification_permission_request_title">إذن الإخطار مطلوب</string>
     <string name="update_ava">نسخة جديدة متاحة</string>
     <string name="no_apphider">يرجى تحديد وضع إخفاء التطبيق في \"المزيد من الإعدادات\".</string>
     <string name="not_local_storage">دليل غير مدعوم</string>
     <string name="filter">فلتر</string>
-    <string name="notification_permission_denied">تم رفض إذن الإخطار.</string>
+    <string name="notification_permission_denied">تم رفض إذن الإشعار.</string>
     <string name="add_hide_files">إضافة مجلد مخفي</string>
-    <string name="manually_set_path">اختر يدويا</string>
+    <string name="manually_set_path">اختر يدوياً</string>
     <string name="folder_selector_hints">تلميحات لمحدد المجلد:
 \n← 1. انقر فوق \"استخدام هذا المجلد\" لتحديد المجلد
 \n← 2. حدد دائما ملفا على الجهاز
 \n← (مرر من يمين الشاشة لفتح الملفات المحلية)</string>
-    <string name="biometric_auth_description">استخدم المصادقة البيومترية للجهاز للوصول إلى أماروك عند توفره.</string>
+    <string name="biometric_auth_description">استخدم المصادقة الحيوية للجهاز للوصول إلى Amarok عند توفره.</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u> 
 \n 
 \nيحتوي 
@@ -42,42 +42,42 @@
     <string name="shizuku_hidden_api_error">تعذر إخفاء التطبيق: تعذر الوصول إلى واجهة برمجة( API)تطبيقات نظام مدير الحزم.</string>
     <string name="dynamic_color_description">تمكين نسق الألوان الديناميكي.</string>
     <string name="password">‪كلمة مرور</string>
-    <string name="shizuku_pre_v11">إصدار شيزوكو غير مدعوم: ما قبل الإصدار 11. الرجاء تثبيت شيزوكو ن11 أو إصدار أحدث.</string>
+    <string name="shizuku_pre_v11">إصدار Shizuku غير مدعوم: ما قبل الإصدار 11. الرجاء تثبيت شيزوكو ن11 أو إصدار أحدث.</string>
     <string name="show_debug_info">معلومات التصحيح</string>
-    <string name="apphider_root">وضع الجذر</string>
+    <string name="apphider_root">وضع الروت</string>
     <string name="apphider_not_ava">إخفاء التطبيق غير متوفر. حدد \"مزيد من الإعدادات\" ← \"تبديل وضع إخفاء التطبيق\".</string>
     <string name="unlock">إلغاء القفل</string>
     <string name="storage_permission_denied">تم رفض إذن التخزين. إخفاء الملف غير متوفر</string>
     <string name="hide_app_failed_admin_inactive">تعذر إخفاء التطبيق: موفر DSM غير نشط.</string>
     <string name="show_about">عرض المزيد عن</string>
-    <string name="processing">تجهيز…</string>
-    <string name="obfuscate_file_header_description">تشويش توقيع الملف في رأس الملف لجعل الملف \"تالفا\". يمنع فتح الملف بواسطة \"فتح باستخدام\" يدويا ، ولكنه قد يبطئ عملية إخفاء الملف.</string>
+    <string name="processing">يتم المعالجة…</string>
+    <string name="obfuscate_file_header_description">تشويش توقيع الملف في رأس الملف لجعل الملف \"تالفاً\". يمنع فتح الملف بواسطة \"فتح باستخدام\" يدوياً، ولكنه قد يبطئ عملية إخفاء الملف.</string>
     <string name="obfuscate_text_file">تشويش الملفات النصية بالكامل</string>
-    <string name="app_lock_description">طلب كلمة مرور للوصول إلى أماروك.</string>
-    <string name="dhizuku_permission_denied">ديزوكو: تم رفض الإذن</string>
+    <string name="app_lock_description">طلب كلمة مرور للوصول إلى Amarok.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: تم رفض الإذن</string>
     <string name="misc">متفرقات.</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
-    <string name="close_disguise_spotlight_tip">اضغط لفترة طويلة على <font fgcolor="#FCCA3E"> <b>رقم السنة</b></font> للوصول إلى أماروك.</string>
-    <string name="shizuku_service_not_running">شيزوكو: الخدمة لا تعمل.</string>
+    <string name="close_disguise_spotlight_tip">اضغط لفترة طويلة على <font fgcolor="#FCCA3E"> <b>رقم السنة</b></font> للوصول إلى Amarok.</string>
+    <string name="shizuku_service_not_running">Shizuku: الخدمة لا تعمل.</string>
     <string name="panic_button_description">عرض زر عائم يستخدم لإخفاء التطبيقات والملفات في حالات الطوارئ. يتم عرضه على جميع التطبيقات الأخرى. يظهر الزر فقط في حالة غير مخفية.</string>
     <string name="disguise">تمويه التطبيق</string>
     <string name="quick_hide">إخفاء سريع</string>
     <string name="apphider_none">معطّل</string>
     <string name="learn_more">البرنامج التعليمي للإعداد</string>
     <string name="failed_to_open_doc_tree">تعذر فتح منتقي ملفات النظام</string>
-    <string name="root_not_ava">لا يمكن الحصول على الوصول إلى الجذر.</string>
+    <string name="root_not_ava">لا يمكن الحصول على صلاحيات الروت.</string>
     <string name="dhizuku_pre_v5">Dhizuku: إصدار Dhizuku غير مدعوم. يرجى تحديث Dhizuku إلى الإصدار 5 أو أعلى.</string>
     <string name="filename_only">أسماء الملفات فقط</string>
     <string name="more_settings">المزيد من الإعدادات</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
-    <string name="join_developer_channel">مجموعة تيليجرام</string>
+    <string name="join_developer_channel">مجموعة Telegram</string>
     <string name="current_mode">الوضع الحالي: %s</string>
     <string name="update">تحديث</string>
     <string name="notification">الاشعارات</string>
     <string name="confirm_password">تأكيد كلمة المرور</string>
     <string name="obfuscate_text_file_enhanced">تشويش الملفات النصية بالكامل - محسن</string>
     <string name="invalid_action">تم استلام نية او نشاط غير صالحة: %s</string>
-    <string name="check_update_on_start">التحديث التلقائي</string>
+    <string name="check_update_on_start">التحديث تلقائياً</string>
     <string name="force_unhide_confirm_msg">محاولة لاستعادة كل شيء؟
 \n
 \n<b>تحذير: </b> قد يؤدي هذا الخيار إلى إتلاف ملفاتك. استخدمه فقط عندما تواجه مشكلة ولا يمكنك أداء وظيفة \"الإظهار\" بشكل طبيعي.</string>
@@ -87,30 +87,30 @@
     <string name="apply_on_restart">أعد تشغيل التطبيق لتطبيق التغييرات الحديثة.</string>
     <string name="help">المساعدة</string>
     <string name="unlock_required">إلغاء القفل مطلوب</string>
-    <string name="biometric_auth">المصادقة البيومترية</string>
-    <string name="check_update_on_start_description">تحقق من وجود إصدارات أماروك جديدة عند فتح التطبيق.</string>
+    <string name="biometric_auth">المصادقة الحيوية</string>
+    <string name="check_update_on_start_description">تحقق من وجود إصدارات Amarok جديدة عند فتح التطبيق.</string>
     <string name="invalid_path">مسار غير صالح.</string>
     <string name="analytics_description">إرسال تقارير الأعطال المجهولة إلى المطورين لتحليلها.</string>
     <string name="option_unava_when_hidden">الخيارات غير متوفرة في وضع الإخفاء.</string>
     <string name="quick_hide_notification_description">اعرض إشعار دائما لإعلام المستخدمين عندما لا يكون مخفيا.</string>
     <string name="quick_hide_notification_content">خصوصيتك ليست مخفية. انقر للاخفاء.</string>
     <string name="obfuscate_file_header">تشويش رؤوس الملفات</string>
-    <string name="apphider_root_description">إخفاء التطبيق مع الوصول إلى الجذر.
-\nيوصى به إذا كان جهازك متجذرا ، ولكنه يحتاج إلى إطار عمل Xposed. مطلوب إذن الجذر.</string>
+    <string name="apphider_root_description">إخفاء التطبيق من خلال صلاحيات الروت.
+\nيوصى به إذا كان جهازك به روت، ولكنه يحتاج إلى إطار عمل Xposed. مطلوب صلاحيات الروت.</string>
     <string name="switch_file_hider">تبديل وضع إخفاء الملفات</string>
-    <string name="apphider_shizuku_description">إخفاء التطبيق مع شيزوكو (أو Sui).
-\nموصى به إذا كان جهازك يعمل بنظام أندرويد 11+ أو يحتوي على إطار عمل Xposed. مطلوب شيزوكو أو Sui مثبت ونشط.
+    <string name="apphider_shizuku_description">إخفاء التطبيق مع Shizuku (أو Sui).
+\nموصى به إذا كان جهازك يعمل بنظام أندرويد 11+ أو يحتوي على إطار عمل Xposed. مطلوب Shizuku أو Sui مثبت ونشط.
 \n</string>
     <string name="apphider_dsm_description">إخفاء التطبيق مع مدير النطاقات المفوض.
-\nلا ينصح به إلا إذا كان جهازك يعمل بنظام Android 10 أو إصدار أقدم ولم يكن مجذرا. ربما تحدث مشاكل ويعمل بشكل غير متوقع. مطلوب (Icebox) تم تعيينه و تثبيته (أو StopAPP) كمالك للجهاز.</string>
+\nلا ينصح به إلا إذا كان جهازك يعمل بنظام أندرويد 10 أو إصدار أقدم ولم يكن به روت ربما تحدث مشاكل ويعمل بشكل غير متوقع. مطلوب (Icebox) تم تعيينه و تثبيته (أو StopAPP) كمالك للجهاز.</string>
     <string name="apphider_none_description">أوقف إخفاء التطبيقات.</string>
     <string name="spotlight_do_not_show_again">عدم الظهور مرة أخرى</string>
-    <string name="shizuku_permission_denied">شيزوكو: تم رفض الإذن</string>
-    <string name="manually_set_path_description">تنبيه: تأكد من أن ما تحدده يدويا موجود بالفعل، حيث لم يتم التحقق من صحة ذلك.</string>
+    <string name="shizuku_permission_denied">Shizuku: تم رفض الإذن</string>
+    <string name="manually_set_path_description">تنبيه: تأكد من أن ما تحدده يدوياً موجود بالفعل، حيث لم يتم التحقق من صحة ذلك.</string>
     <string name="filename_and_header">اسم الملف + الرأس</string>
     <string name="obfuscate_filename">تعتيم أسماء الملفات</string>
     <string name="notification_channel_name">خدمة الإخفاء السريع</string>
-    <string name="shizuku_not_working">شيزوكو: الخدمة غير متوفرة. هل قمت بتثبيت Shizuku / Sui على جهازك؟</string>
+    <string name="shizuku_not_working">Shizuku: الخدمة غير متوفرة. هل قمت بتثبيت Shizuku / Sui على جهازك؟</string>
     <string name="workmode">وضع العمل</string>
     <string name="usage">استخدام</string>
     <string name="alert_permission_denied">تم رفض إذن العرض فوق التطبيقات الأخرى.</string>
@@ -121,28 +121,28 @@
     <string name="notification_permission_request_message">تحتاج خدمة الإخفاء السريع إلى إذن إعلام للعمل.</string>
     <string name="confirm">تأكيد</string>
     <string name="follow_system">(اتبع النظام)</string>
-    <string name="apphider_dhizuku">وضع ديزوكو</string>
+    <string name="apphider_dhizuku">وضع Dhizuku</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="password_incorrect">كلمة المرور غير صحيحة.</string>
     <string name="language">اللغة</string>
-    <string name="alert_permission_request_message">يحتاج الزر العائم إلى إذن لإنتاج النوافذ المنبثقة. يرجى العثور على أماروك في قائمة الإعدادات ومنحها.</string>
+    <string name="alert_permission_request_message">يحتاج الزر العائم إلى إذن لإنتاج النوافذ المنبثقة. يرجى العثور على Amarok في قائمة الإعدادات ومنحها.</string>
     <string name="search">البحث</string>
     <string name="failed_to_open_doc_tree_description">عفوا! لا يحتوي نظامك على مدير ملفات افتراضي. يرجى الضغط لفترة طويلة على زر \"إضافة مجلد مخفي\" وإدخال المسار يدويا.</string>
     <string name="participate_translation">المشاركة في الترجمة</string>
     <string name="enable_analytics">تحليلات مجهولة المصدر</string>
     <string name="force_unhide">فرض الإظهار</string>
     <string name="apphider_dhizuku_description">[تجريبي] إخفاء التطبيق مع Dhizuku.
-\nحل حديث ومحسن لإخفاء التطبيقات على الأجهزة غير الجذر. يلزم تثبيت وتفعيل تطبيق Dhizuku.</string>
+\nحل حديث ومحسن لإخفاء التطبيقات على الأجهزة التي ليس بها روت. يلزم تثبيت وتفعيل تطبيق Dhizuku.</string>
     <string name="alert_permission_request_title">مطلوب إذن لفرز النوافذ المنبثقة</string>
     <string name="password_length_error">يجب أن تكون كلمة المرور بين 3 و 15 حرفا.</string>
     <string name="usage_description">فتح مركز المساعدة.</string>
-    <string name="never">أبدا</string>
-    <string name="in_app_update_failed">يتوفر إصدار جديد ، لكنه فشل في جلبه. يرجى التحديث يدويا.</string>
+    <string name="never">أبداً</string>
+    <string name="in_app_update_failed">يتوفر إصدار جديد، لكنه فشل في جلبه. يرجى التحديث يدوياً.</string>
     <string name="participate_translation_description">ساعدنا في ترجمة \t  إلى لغتك.</string>
     <string name="password_mismatch_error">كلمات المرور غير متطابقة.</string>
     <string name="check_update_description">الإصدار الحالي: %s</string>
     <string name="apphider_not_ava_title">وضع إخفاء التطبيق غير متوفر</string>
-    <string name="disguise_description">تمويه أماروك كتقويم.</string>
+    <string name="disguise_description">تمويه Amarok كتقويم.</string>
     <string name="security">الأمن</string>
     <string name="apphider_dsm">وضع DSM</string>
     <string name="app_lock">قفل التطبيق</string>
@@ -152,33 +152,41 @@
     <string name="obfuscate_text_file_description">ميزة تجريبية. تشويش رؤوس الملفات ليس له أي تأثير على الملفات النصية. سيؤدي تمكين هذه الوظيفة إلى تشويش الملفات النصية بالكامل. سوف يبطئ عملية الإخفاء إلى حد ما.</string>
     <string name="remove_hide_path_description">إزالة المجلد \"%s\" من الاخفاء؟</string>
     <string name="switch_app_hider">تبديل وضع إخفاء التطبيق</string>
-    <string name="panic_button">‌الزر العائم (مفتاح المدير)</string>
-    <string name="update_description">أماروك %s (%d) متاح للتنزيل والتثبيت.</string>
+    <string name="panic_button">زر الذعر</string>
+    <string name="update_description">Amarok %s (%d) متاح للتنزيل والتثبيت.</string>
     <string name="calendar_about">التقويم النقي | بواسطة @koramA</string>
     <string name="display_system_apps">عرض تطبيقات النظام</string>
     <string name="enable_dynamic_color">لون ديناميكي</string>
     <string name="invalid_dsm_provider">DSM: موفر DSM غير صالح. هل قمت بتثبيت وتفعيل موفر DSM على جهازك؟</string>
-    <string name="view_github_repo">مستودع جيثب</string>
-    <string name="filehider_nomedia_description">أضف فقط .نوميديا إلى المجلدات. لا يلزم الوصول إلى الجذر(الروت ).</string>
+    <string name="view_github_repo">مستودع Github</string>
+    <string name="filehider_nomedia_description">أضف فقط .nomedia إلى المجلدات. لا يتطلب صلاحيات الروت.</string>
     <string name="filehider_none_description">تعطيل إخفاء الملفات.</string>
-    <string name="filehider_chmod_description">تغيير أذونات الملفات لجعلها غير قابلة للقراءة. مطلوب الوصول إلى الجذر( الروت). الإجراء فوري.</string>
-    <string name="filehider_obfuscate_description">تشويش أسماء الملفات وتوقيعات الملفات. لا يلزم الوصول إلى الجذر( الروت). قد يستغرق بعض الوقت للمعالجة.</string>
+    <string name="filehider_chmod_description">تغيير أذونات الملفات لجعلها غير قابلة للقراءة. يتطلب صلاحيات الروت. الإجراء فوري.</string>
+    <string name="filehider_obfuscate_description">تشويش أسماء الملفات وتوقيعات الملفات. لا يتطلب صلاحيات الروت. قد يستغرق بعض الوقت للمعالجة.</string>
     <string name="filehider_nomedia">وضع لا وسائط</string>
     <string name="filehider_none">معطّل</string>
-    <string name="welcome_msg">اماروك هي أداة مجانية وحرة لإخفاء الملفات والتطبيقات الخاصة.
-\n
-\nيرجى ملاحظة أن أماروك ليس برنامج تشفير ، بل أداة لإخفاء الأشياء. ننصح بشدة بعدم استخدام Amarok لحماية الملفات والتطبيقات السرية.
-\n
-\n<u>إخلاء المسؤولية: يتم توفير أماروك دون أي ضمانات أو شروط. يتحمل المستخدم المسؤولية الكاملة عن أي ضرر أو عواقب قد تنشأ عن استخدام أماروك.</u></string>
-    <string name="welcome_title">مرحبا</string>
+    <string name="welcome_msg">Amarok هي أداة مجانية وحرة لإخفاء الملفات والتطبيقات الخاصة. 
+\n 
+\nيرجى ملاحظة أن Amarok ليس برنامج تشفير، بل أداة لإخفاء الأشياء. ننصح بشدة بعدم استخدام Amarok لحماية الملفات والتطبيقات السرية. 
+\n 
+\n<u>إخلاء المسؤولية: يتم توفير Amarok دون أي ضمانات أو شروط. يتحمل المستخدم المسؤولية الكاملة عن أي ضرر أو عواقب قد تنشأ عن استخدام Amarok.</u></string>
+    <string name="welcome_title">مرحباً</string>
     <string name="filehider_obfuscate">وضع التشويش</string>
     <string name="filehider_not_ava_title">إخفاء الملف غير متوفر</string>
     <string name="filehider_chmod">وضع Chmod</string>
     <string name="warning">تحذير</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">أبلغ بعض مستخدمي Samsung أن استخدام وضع Chmod تسبب في فشل أجهزتهم في التمهيد (بوتلوب).</font> راجع مشكلة جيثب 105# لمزيد من المعلومات. الاستخدام على مسؤوليتك الخاصة.</b></string>
-    <string name="auto_hide">إخفاء تلقائ</string>
+    <string name="auto_hide">إخفاء تلقائي</string>
     <string name="auto_hide_delay">تأخير الإخفاء التلقائي</string>
-    <string name="auto_hide_delay_description">عدد الدقائق التي يجب الانتظار قبل الإخفاء قبل إطفاء الشاشة.</string>
+    <string name="auto_hide_delay_description">عدد دقائق التأخير قبل الإخفاء بعد إطفاء الشاشة.</string>
     <string name="appearance">المظهر</string>
-    <string name="auto_hide_description">إخفاء تلقائ بعد إطفاء الشاشة</string>
+    <string name="auto_hide_description">إخفاء تلقائي بعد إطفاء الشاشة</string>
+    <string name="block_screenshots_description">حظر لقطات الشاشة في Amarok وطمسها في قائمة التطبيقات الحديثة.</string>
+    <string name="xposed_desc">تمكين Amarok لإخفاء التطبيقات من قوائم النظام.</string>
+    <string name="xposed_active">نشط، Xposed API %d</string>
+    <string name="x_hide_description">استخدام إضافة Xposed لتعزيز إخفاء التطبيق. لن تكون التطبيقات المخفية مرئية بعد الآن في الإعدادات أو التطبيقات الأخرى. واجهة برمجة تطبيقات Xpose ≥ 93 مطلوبة.</string>
+    <string name="xposed_inactive">الإضافة غير نشطة. تحقق من مدير Xposed؟</string>
+    <string name="block_screenshots">منع لقطات الشاشة</string>
+    <string name="enable_x_hide">تمكين XHide</string>
+    <string name="enable_x_hide_description">الحالة: %s</string>
 </resources>
