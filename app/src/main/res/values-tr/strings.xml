@@ -27,7 +27,7 @@
     <string name="hide_app_failed_admin_inactive">Uygulama gizlenemedi: DSM sağlayıcısı etkin değil.</string>
     <string name="add_hide_files">Gizli klasör ekle</string>
     <string name="remove_hide_path">Gizli klasörü kaldırmak istiyor musunuz\?</string>
-    <string name="remove_hide_path_description">‘%s’ klasörünün gizlenmesi kaldırılsın mı\?</string>
+    <string name="remove_hide_path_description">‘%s’ klasörünün gizlenmesi kaldırılsın mı?</string>
     <string name="confirm">Onayla</string>
     <string name="not_local_storage_description">Seçtiğiniz dosyanın yerel hafızada olduğundan ve sanal bir dosya olmadığından emin olun.</string>
     <string name="help">Yardım</string>

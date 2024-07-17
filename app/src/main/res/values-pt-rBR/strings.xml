@@ -166,7 +166,7 @@
     <string name="app_lock">Bloqueio de app</string>
     <string name="obfuscate_text_file_description_enhanced">Não recomendado. Uma versão aprimorada de \"Ofuscar completamente arquivos de texto\". Utilize esta opção apenas se o método padrão se mostrar ineficaz. Diminui drasticamente a velocidade do processo de ocultação.</string>
     <string name="obfuscate_text_file_description">Recurso experimental. Ofuscar cabeçalhos de arquivos não tem efeito em arquivos de texto. Habilitar essa função irá ofuscar completamente arquivos de texto. Isso irá atrasar o processo de ocultação em certa medida.</string>
-    <string name="remove_hide_path_description">Remover a pasta \'%s\' da ocultação\?</string>
+    <string name="remove_hide_path_description">Remover a pasta \'%s\' da ocultação?</string>
     <string name="switch_app_hider">Mudar modo de ocultação de aplicativos</string>
     <string name="panic_button">Botão de pânico</string>
     <string name="calendar_about">Pure Calendar | por @koramA</string>

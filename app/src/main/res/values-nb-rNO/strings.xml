@@ -62,7 +62,7 @@
     <string name="apphider_not_ava">Programskjuler er ikke tilgjengelig. Sjekk «Flere innstillinger» → «Bytt programskjuler».</string>
     <string name="shizuku_not_working">Shizuku: Tjenesten er ikke gyldig. Har du installert Shizuku/Sui på enheten din?</string>
     <string name="remove_hide_path">Fjern skjulingssti\?</string>
-    <string name="remove_hide_path_description">Fjern stien «%s» fra skjuling\?</string>
+    <string name="remove_hide_path_description">Fjern stien «%s» fra skjuling?</string>
     <string name="not_local_storage_description">Forsikre deg om at det er en mappe som finnes.</string>
     <string name="path_duplicated">Duplisert sti</string>
     <string name="no_apphider">Velg programskjulingsmodus i «Flere innstillinger».</string>

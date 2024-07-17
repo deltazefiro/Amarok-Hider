@@ -75,7 +75,7 @@
 \n\t 2. Seleccione siempre un archivo del dispositivo
 \n\t(Deslice desde la derecha de la pantalla para abrir archivos locales)</string>
     <string name="remove_hide_path">¿Quitar carpeta oculta\?</string>
-    <string name="remove_hide_path_description">¿Quitar la carpeta \'%s\' de las carpetas ocultas\?</string>
+    <string name="remove_hide_path_description">¿Quitar la carpeta \'%s\' de las carpetas ocultas?</string>
     <string name="not_local_storage">Directorio no soportado</string>
     <string name="confirm">Confirmar</string>
     <string name="not_local_storage_description">Por favor, asegúrese de que es un archivo local y no virtual.</string>

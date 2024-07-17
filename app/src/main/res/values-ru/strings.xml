@@ -46,7 +46,7 @@
 \n\t 2. Всегда выбирайте файл на устройстве
 \n\t(Проведите пальцем от правого края экрана, чтобы открыть локальные файлы)</string>
     <string name="remove_hide_path">Убрать папку из скрытия\?</string>
-    <string name="remove_hide_path_description">Удалить папку \'%s\' из скрытия\?</string>
+    <string name="remove_hide_path_description">Удалить папку \'%s\' из скрытия?</string>
     <string name="confirm">Подтвердить</string>
     <string name="not_local_storage">Папка не поддерживается</string>
     <string name="not_local_storage_description">Убедитесь, что это локальный файл, а не виртуальный.</string>

@@ -166,7 +166,7 @@
     <string name="check_update">Skontrolujte, či je k dispozícii aktualizácia</string>
     <string name="remove_hide_path">Odstrániť skrytý priečinok\?</string>
     <string name="obfuscate_text_file_description">Experimentálna funkcia. Zakrývanie hlavičiek súborov nemá žiadny vplyv na textové súbory. Zapnutím tejto funkcie sa úplne zakryjú textové súbory. Do určitej miery to spomalí proces skrývania.</string>
-    <string name="remove_hide_path_description">Odstrániť priečinok \'%s\' zo skrývania\?</string>
+    <string name="remove_hide_path_description">Odstrániť priečinok \'%s\' zo skrývania?</string>
     <string name="switch_app_hider">Prepnutie režimu skrývania aplikácií</string>
     <string name="panic_button">Tlačidlo paniky</string>
     <string name="update_description">Amarok %s (%d) je k dispozícii na stiahnutie a inštaláciu.</string>

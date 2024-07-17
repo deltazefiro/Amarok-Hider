@@ -36,7 +36,7 @@
 \n\t 2. Mindig válasszon ki egy fájlt az eszközön
 \n\t(A helyi fájlok megnyitásához csúsztassd a képernyő jobb oldalát)</string>
     <string name="remove_hide_path">Rejtett mappa eltávolítása\?</string>
-    <string name="remove_hide_path_description">Eltávolítja a \'%s\' mappát a rejtésből\?</string>
+    <string name="remove_hide_path_description">Eltávolítja a \'%s\' mappát a rejtésből?</string>
     <string name="not_local_storage_description">Győződj meg róla, hogy helyi fájlról van szó, nem pedig virtuálisról.</string>
     <string name="help">Súgó</string>
     <string name="path_duplicated">Rejtett mappa zárolása</string>

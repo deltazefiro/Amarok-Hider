@@ -150,7 +150,7 @@
     <string name="check_update">Провери ажурирање</string>
     <string name="remove_hide_path">Уклонити скривени фолдер\?</string>
     <string name="obfuscate_text_file_description">Експериментална функција. Замагљивање заглавља фајлова нема утицаја на текстуалне фајлове. Омогућавање ове функције ће у потпуности сакрити текстуалне фајлове. То ће, донекле, успорити процес сакривања.</string>
-    <string name="remove_hide_path_description">Уклонити фолдер „%s“ из сакривања\?</string>
+    <string name="remove_hide_path_description">Уклонити фолдер „%s“ из сакривања?</string>
     <string name="switch_app_hider">Промени режим сакривања апликација</string>
     <string name="panic_button">Паник дугме</string>
     <string name="update_description">Amarok %s (%d) је доступан за преузимање и инсталирање.</string>
