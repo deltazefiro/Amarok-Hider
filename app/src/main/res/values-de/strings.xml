@@ -89,7 +89,7 @@
     <string name="in_app_update_failed">Neues Aktualisierung verfügbar, konnte aber nicht abgerufen werden. Bitte aktualisieren Sie manuell.</string>
     <string name="obfuscate_file_header">Dateiköpf verschleiern</string>
     <string name="obfuscate_file_header_description">Verschleiern Sie die Dateisignatur in der Dateiköpf, um die Datei \"beschädigt\" zu machen. Dies verhindert, dass die Datei durch die manuelle Auswahl von \"Öffnen mit\" geöffnet wird, kann aber den Prozess des Ausblendens der Datei verlangsamen.</string>
-    <string name="remove_hide_path_description">Sind Sie sicher, dass Sie den Pfad \'%s\' aus dem Versteck entfernen müssen\?</string>
+    <string name="remove_hide_path_description">Sind Sie sicher, dass Sie den Pfad \'%s\' aus dem Versteck entfernen müssen?</string>
     <string name="confirm">Bestätigen</string>
     <string name="not_local_storage">Nicht unterstütztes Verzeichnis</string>
     <string name="not_local_storage_description">Bitte stellen Sie sicher, dass es sich um einen lokalen Pfad handelt und nicht um einen virtuellen.</string>
@@ -108,7 +108,7 @@
     <string name="alert_permission_denied">Display-over-apps-Erlaubnis verweigert.</string>
     <string name="alert_permission_request_title">Erlaubnis für Popup-Fenster erforderlich</string>
     <string name="alert_permission_request_message">Der Schwebe-Button benötigt die Berechtigung \"Popout-Fenster\", um zu funktionieren. Bitte finden Sie Amarok im Einstellungsmenü und erteilen Sie die Erlaubnis.</string>
-    <string name="failed_to_open_doc_tree_description">Huch! Es scheint, dass Ihr System keinen Standard-Dateimanager hat\? Bitte drücken Sie lange auf die Schaltfläche \"Versteckter-Ordner hinzufügen\" und legen Sie den Pfad manuell fest.</string>
+    <string name="failed_to_open_doc_tree_description">Huch! Es scheint, dass Ihr System keinen Standard-Dateimanager hat? Bitte drücken Sie lange auf die Schaltfläche \"Versteckter-Ordner hinzufügen\" und legen Sie den Pfad manuell fest.</string>
     <string name="notification">Benachrichtigung</string>
     <string name="performing_force_unhide">Erzwinge das Einblenden. Bleiben Sie ruhig.</string>
     <string name="filter">Filter</string>
