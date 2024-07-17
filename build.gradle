@@ -7,7 +7,7 @@ buildscript {
         jcenter() // For providing `de.robv.android.xposed:api:82`
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.4.1'
+        classpath 'com.android.tools.build:gradle:8.5.1'
         classpath 'dev.rikka.tools.autoresconfig:gradle-plugin:1.2.2'
     }
 }
