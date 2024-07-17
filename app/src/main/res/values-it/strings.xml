@@ -39,7 +39,7 @@
     <string name="hide_app_failed_admin_inactive">Impossibile nascondere l\'applicazione: Il provider DSM non è attivo.</string>
     <string name="add_hide_files">Aggiungi una cartella nascosta</string>
     <string name="remove_hide_path">Rimuovere la cartella nascosta\?</string>
-    <string name="remove_hide_path_description">Rimuovere la cartella \'%s\' dal nascondimento\?</string>
+    <string name="remove_hide_path_description">Rimuovere la cartella \'%s\' dal nascondimento?</string>
     <string name="not_local_storage">Directory non supportata</string>
     <string name="update_ava">Nuova versione disponibile</string>
     <string name="update_description">Amarok %s (%d) è disponibile per il download e l\'installazione.</string>

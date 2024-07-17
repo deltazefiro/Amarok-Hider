@@ -40,7 +40,7 @@
     <string name="not_local_storage_description">请确认您选择的文件位于本地储存，且不是虚拟文件夹。</string>
     <string name="not_local_storage">不支持此文件夹</string>
     <string name="confirm">确定</string>
-    <string name="remove_hide_path_description">确认将 \'%s\' 从文件隐藏中移除？</string>
+    <string name="remove_hide_path_description">确认将 \'%s\' 从文件隐藏列表中移除？</string>
     <string name="no_apphider">请在\"更多设置\"中选择工作模式。</string>
     <string name="root_not_ava">无法获取root权限。</string>
     <string name="check_update_on_start">自动更新</string>
@@ -82,8 +82,8 @@
     <string name="filename_and_header">混淆文件名与文件头</string>
     <string name="obfuscate_text_file">文本文档完全混淆</string>
     <string name="obfuscate_text_file_enhanced">文本文档完全混淆 - 增强</string>
-    <string name="obfuscate_text_file_description">实验性功能。由于仅混淆文件头对文本文件无效，启用此选项将会对文本文件进行完全混淆。会影响隐藏速度。</string>
-    <string name="obfuscate_text_file_description_enhanced">实验性功能，不建议使用。增强版本的混淆文本文件，对许多疑似文本的文件也进行混淆。可能明显减慢隐藏速度。</string>
+    <string name="obfuscate_text_file_description">由于仅混淆文件头对文本文件无效，启用此选项将会对文本文件进行完全混淆。会影响隐藏速度。</string>
+    <string name="obfuscate_text_file_description_enhanced">不建议使用。增强版本的混淆文本文件，对许多疑似文本的文件也进行混淆。可能明显减慢隐藏速度。</string>
     <string name="join_developer_channel">开发群组</string>
     <string name="processing">运行中…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/</string>
@@ -96,7 +96,7 @@
     <string name="misc">杂项。</string>
     <string name="security">安全</string>
     <string name="panic_button">老板键</string>
-    <string name="panic_button_description">在界面上方显示一个悬浮球用于紧急隐藏。悬浮球仅在非隐藏状态下可见。</string>
+    <string name="panic_button_description">显示悬浮球用于快速隐藏。悬浮球仅在非隐藏状态下可见。</string>
     <string name="in_app_update_failed">新更新可用但自动更新失败。请手动更新。</string>
     <string name="failed_to_open_doc_tree">无法打开文件选择器</string>
     <string name="failed_to_open_doc_tree_description">您的系统似乎没有默认文件管理器？请长按 “选择隐藏文件夹” 按键手动设置路径。</string>
@@ -143,7 +143,7 @@
     <string name="dynamic_color_description">启用动态配色主题。</string>
     <string name="app_name_calendar">日历</string>
     <string name="disguise">应用伪装</string>
-    <string name="disguise_description">将 Amarok 伪装成日历。</string>
+    <string name="disguise_description">将 Amarok 伪装成日历应用。</string>
     <string name="calendar_about">极简日历 | by @koramA</string>
     <string name="close_disguise_spotlight_tip">长按<font fgcolor="#FCCA3E"><b>年份数字</b></font>进入 Amarok。</string>
     <string name="spotlight_do_not_show_again">不再提示</string>
@@ -155,7 +155,7 @@
     <string name="filehider_chmod">权限更改模式</string>
     <string name="filehider_chmod_description">通过更改文件权限隐藏。需要 Root。可瞬间完成隐藏。</string>
     <string name="filehider_nomedia">.nomedia 模式</string>
-    <string name="filehider_nomedia_description">仅仅在需隐藏的文件夹中加入 .nomedia 文件。不需要 Root。</string>
+    <string name="filehider_nomedia_description">仅在需隐藏的文件夹中加入 .nomedia 文件。不需要 Root。</string>
     <string name="welcome_title">欢迎</string>
     <string name="welcome_msg">Amarok 是一款轻量级隐私保护工具，一键隐藏你的隐私文件和应用。本程序完全免费开源。\n\n请注意 Amarok 并非加密程序，而只是隐藏程序。请勿使用 Amarok 保护机密文件与应用。\n\n<u>免责声明：切勿将 Amaork 用于重要文件或应用的隐藏。您使用 Amaork 导致的一切损失和后果均由您自行承担。</u></string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">有报告称三星用户使用此模式可能导致设备无法启动。</font> 详见 GitHub #105。请谨慎使用。</b></string>
@@ -168,13 +168,13 @@
     <string name="block_screenshots">禁用截图</string>
     <string name="block_screenshots_description">在 Amarok 内禁用截图，同时将 Amarok 从多任务视图中模糊。</string>
     <string name="xposed_desc">允许 Amarok 让应用不出现在系统菜单中。</string>
-    <string name="x_hide_description">使用 Xposed 模块增强应用隐藏。启用后隐藏的应用在系统菜单与其他应用中不可见。需要 Xposed API ≥ 93。</string>
+    <string name="x_hide_description">使用 Xposed 增强应用隐藏。启用后隐藏的应用在系统菜单与其他应用中不可见。需要 Xposed API ≥ 93。</string>
     <string name="enable_x_hide">启用 XHide</string>
     <string name="enable_x_hide_description">状态：%s</string>
     <string name="xposed_active">已激活，Xposed API %d</string>
     <string name="xposed_inactive">模块未激活，请检查 Xposed 管理器。</string>
     <string name="disable_toasts">禁用提示</string>
-    <string name="disable_toasts_description">禁用隐藏或解除隐藏时的提示。</string>
+    <string name="disable_toasts_description">禁用隐藏或解除隐藏时的提示（Toast）。</string>
     <string name="apphider_not_activated_title">应用隐藏未激活</string>
     <string name="apphider_not_activated_msg">请选择一个应用隐藏模式以启用此功能。</string>
 </resources>
