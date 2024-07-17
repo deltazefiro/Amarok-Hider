@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visible_status">Hiện</string>
+    <string name="hidden_status">Ẩn</string>
+    <string name="ok">Được rồi</string>
+    <string name="about">Giới thiệu</string>
+    <string name="set_hide_apps">Đặt ứng dụng bị ẩn</string>
+    <string name="storage_permission_request_title">Cần quyền truy cập vào bộ nhớ</string>
+    <string name="storage_permission_denied">Quyền truy cập vào bộ nhớ bị từ chối. Tính năng Ẩn tệp tin không khả dụng</string>
+    <string name="set_hide_files">Đặt tệp bị ẩn</string>
+    <string name="enable_analytics">Dữ liệu phân tích ẩn danh</string>
+    <string name="analytics_description">Gửi các báo cáo sự cố ẩn danh đến những nhà phát triển để phân tích.</string>
+    <string name="usage_description">Mở trung tâm trợ giúp.</string>
+    <string name="switch_app_hider">Chuyển đổi chế độ ẩn ứng dụng</string>
+    <string name="current_mode">Chế độ hiện tại: %s</string>
+    <string name="more_settings">Thiết đặt khác</string>
+    <string name="switch_file_hider">Chuyển đổi chế độ ẩn tệp tin</string>
+    <string name="apply_on_restart">Khởi động lại ứng dụng để áp dụng các thay đổi mới.</string>
+    <string name="hidden_toast">Đã ẩn. Gà gáy té le té sáng rồi ai ơi!</string>
+    <string name="unhidden_toast">Đã bỏ ẩn. Cẩn thận.</string>
+    <string name="show_debug_info">Thông tin gỡ lỗi</string>
+    <string name="unhide">Bỏ ẩn</string>
+    <string name="setting_not_ava_when_hidden">Thiết đặt này chỉ có thể dùng sau khi bỏ ẩn</string>
+    <string name="cancel">Hủy bỏ</string>
+    <string name="storage_permission_request_message">Cấp quyền cho Amarok truy cập vào bộ nhớ ngoài để làm ẩn tệp.</string>
+    <string name="hide">Ẩn</string>
+    <string name="apphider_not_ava">Tính năng Ẩn ứng dụng không khả dụng. Kiểm tra \"Thiết đặt khác\" → \"Chuyển đổi chế độ ẩn ứng dụng\".</string>
+</resources>
