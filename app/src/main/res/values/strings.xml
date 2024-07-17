@@ -32,13 +32,13 @@
     <string name="hidden_toast">Hidden. Cock-a-doodle-do~!</string>
     <string name="unhidden_toast">Unhidden. Be careful.</string>
     <string name="show_debug_info">Debug info</string>
-    <string name="debug_info_description">Shows info to help fix problems.</string>
+    <string name="debug_info_description">Displays information to help troubleshoot issues.</string>
     <string name="invalid_dsm_provider">DSM: Invalid DSM provider. Have you installed and activated the DSM provider on your device?</string>
     <string name="hide_app_failed_admin_inactive">Could not hide app: DSM provider not active.</string>
     <string name="add_hide_files">Add hidden folder</string>
     <string name="folder_selector_hints">Hints for folder selector: \n\t 1. Click \"Use This Folder\" to select the folder\n\t 2. Always select a file on the device \n\t(Slide from the right of the screen to open local files)</string>
     <string name="remove_hide_path">Remove hidden folder?</string>
-    <string name="remove_hide_path_description">Remove folder \'%s\' from hiding?</string>
+    <string name="remove_hide_path_description">Remove folder \'%s\' from hidden list?</string>
     <string name="confirm">Confirm</string>
     <string name="not_local_storage">Unsupported directory</string>
     <string name="not_local_storage_description">Please ensure it is local file and not a virtual one.</string>
@@ -46,7 +46,7 @@
     <string name="path_duplicated">Loop hidden folder</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\ncontains\n\n<u>\'%2$s\'</u></string>
     <string name="no_apphider">Please select app-hiding mode in \"More settings\".</string>
-    <string name="root_not_ava">Could not get root access.</string>
+    <string name="root_not_ava">Could not gain root access.</string>
     <string name="check_update_on_start">Auto update</string>
     <string name="check_update_on_start_description">Check for new Amarok versions when opening the app.</string>
     <string name="check_update">Check for update</string>
@@ -65,7 +65,7 @@
     <string name="shizuku_not_working">Shizuku: Service unavailable. Have you installed Shizuku/Sui on your device?</string>
     <string name="shizuku_hidden_api_error">Could not hide app: Could not access IPackageManager API.</string>
     <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
-    <string name="apphider_not_ava_title">Unavailable hide-app mode</string>
+    <string name="apphider_not_ava_title">App hiding inactive</string>
     <string name="dsm_permission_denied">DSM: Permission denied</string>
     <string name="apphider_none">Disabled</string>
     <string name="apphider_none_description">Turn off app-hiding.</string>
@@ -78,15 +78,15 @@
     <string name="learn_more">Setup tutorial</string>
     <string name="option_unava_when_hidden">Options are unavailable until unhidden.</string>
     <string name="obfuscate_filename">Obfuscate filenames</string>
-    <string name="obfuscate_filename_description">Make the filename human-unreadable. The basic feature of file-hiding. Can not be turned off.</string>
+    <string name="obfuscate_filename_description">Makes the filename human-unreadable. Basic file-hiding feature that cannot be turned off.</string>
     <string name="obfuscate_file_header">Obfuscate file headers</string>
-    <string name="obfuscate_file_header_description">Obfuscate the file signature in the file header to make the file \"corrupted\". Prevents the file from being opened by \"Open With\" manually, but may slow down the file-hiding process.</string>
+    <string name="obfuscate_file_header_description">Obfuscates the file signature in the file header to make the file appear corrupted. Prevents the file from being opened manually with \"Open With\", but may slow down the hiding process.</string>
     <string name="filename_only">Filenames only</string>
     <string name="filename_and_header">Filename + Header</string>
     <string name="obfuscate_text_file">Fully obfuscate text files</string>
-    <string name="obfuscate_text_file_description">Experimental feature. Obfuscating file headers have no effect on text files. Enabling this function will fully obfuscate text files. It will slow down the hiding process to some extent.</string>
+    <string name="obfuscate_text_file_description">Obfuscating file headers has no effect on text files. Enabling this function will fully obfuscate text files.</string>
     <string name="obfuscate_text_file_enhanced">Fully obfuscate text files - Enhanced</string>
-    <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully obfuscate text files\". Utilize this option only if the standard method proves ineffective. Slows down the hiding process dramatically.</string>
+    <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully obfuscate text files\". Use this option only if the standard method proves ineffective. Significantly slows down the hiding process.</string>
     <string name="join_developer_channel">Telegram group</string>
     <string name="developer_channel_telegram" translatable="false">Telegram @amarok_dev</string>
     <string name="processing">Processing…</string>
@@ -95,22 +95,22 @@
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="alert_permission_denied">Permission to display over other apps denied.</string>
     <string name="alert_permission_request_title">Permission to spawn pop-up windows required</string>
-    <string name="alert_permission_request_message">Floating button needs permission to spawn pop-up windows. Please find Amarok in the settings menu and grant it.</string>
+    <string name="alert_permission_request_message">The floating button needs permission to spawn pop-up windows. Please grant this permission in the settings menu under Amarok.</string>
     <string name="workmode">Workmode</string>
     <string name="misc">Misc.</string>
     <string name="security">Security</string>
     <string name="panic_button">Panic button</string>
-    <string name="panic_button_description">Display an floating button used to hide apps &amp; files in emergency. It is shown over all other apps. The button only shows in unhidden state.</string>
-    <string name="in_app_update_failed">New version available, but failed to fetch. Please update manually.</string>
+    <string name="panic_button_description">Displays a floating button to quickly hide apps and files in an emergency. This button appears over all other apps when Amarok is unhidden.</string>
+    <string name="in_app_update_failed">New version available, but download failed. Please update manually.</string>
     <string name="failed_to_open_doc_tree">Could not open the system file picker</string>
-    <string name="failed_to_open_doc_tree_description">Oops! Your system does not have a default filemanager. Please long-press the \"Add hidden folder\" button and input the path manually.</string>
+    <string name="failed_to_open_doc_tree_description">Oops! Your system lacks a default file manager. Please long-press the \"Add Hidden Folder\" button and manually input the path.</string>
     <string name="search">Search</string>
     <string name="notification_channel_name">Quick Hide Service</string>
     <string name="quick_hide">Quick Hide</string>
     <string name="notification">Notification</string>
-    <string name="quick_hide_notification_description">Show a permanent notification to notify users when not hidden.</string>
+    <string name="quick_hide_notification_description">Displays a persistent notification to notify users when not hidden.</string>
     <string name="notification_permission_request_title">Notification permission required</string>
-    <string name="notification_permission_request_message">QuickHide service need notification permission to work.</string>
+    <string name="notification_permission_request_message">The QuickHide service needs notification permission to function.</string>
     <string name="notification_permission_denied">Notification permission denied.</string>
     <string name="quick_hide_notification_title">Privacy not hidden</string>
     <string name="quick_hide_notification_content">Your privacy is not hidden. Click to hide.</string>
@@ -126,7 +126,7 @@
     <string name="password_length_error">Password must be between 3 and 15 characters.</string>
     <string name="password_mismatch_error">Passwords do not match.</string>
     <string name="biometric_auth">Biometric authentication</string>
-    <string name="biometric_auth_description">Use biometric authentication of the device to access Amarok when available.</string>
+    <string name="biometric_auth_description">Use the device\'s biometric authentication to access Amarok, when available.</string>
     <string name="dhizuku_permission_denied">Dhizuku: Permission denied</string>
     <string name="dhizuku_pre_v5">Dhizuku: Unsupported Dhizuku version. Please update Dhizuku to version 5 or higher.</string>
     <string name="dhizuku_not_init">Dhizuku: Service unavailable. Please ensure that you have installed and activated Dhizuku.</string>
@@ -148,7 +148,7 @@
     <string name="dynamic_color_description">Enable dynamic color theming.</string>
     <string name="app_name_calendar">Calendar</string>
     <string name="disguise">App disguise</string>
-    <string name="disguise_description">Disguise Amarok as a calendar.</string>
+    <string name="disguise_description">Disguise Amarok as a calendar app.</string>
     <string name="calendar_about">Pure Calendar | by @koramA</string>
     <string name="close_disguise_spotlight_tip">Long press the <font fgcolor="#FCCA3E"><b>Year Number</b></font> to access Amarok.</string>
     <string name="spotlight_do_not_show_again">DON\'T SHOW AGAIN</string>
@@ -156,11 +156,11 @@
     <string name="filehider_none">Disabled</string>
     <string name="filehider_none_description">Disable file hiding.</string>
     <string name="filehider_obfuscate">Obfuscation Mode</string>
-    <string name="filehider_obfuscate_description">Obfuscate filenames and file signatures. No root access is required. May take some time to process.</string>
+    <string name="filehider_obfuscate_description">Obfuscate filenames and file signatures. No root access required. May take some time to process.</string>
     <string name="filehider_chmod">Chmod Mode</string>
-    <string name="filehider_chmod_description">Change file permissions to make them unreadable. Root access is required. The procedure is immediate.</string>
+    <string name="filehider_chmod_description">Change file permissions to make them unreadable. Root access required. The procedure is immediate.</string>
     <string name="filehider_nomedia">NoMedia Mode</string>
-    <string name="filehider_nomedia_description">Only add .nomedia to folders. No root access is required.</string>
+    <string name="filehider_nomedia_description">Simply adds .nomedia to folders. No root access required.</string>
     <string name="welcome_title">Welcome</string>
     <string name="welcome_msg">Amarok is a free and freedom tool for hiding private files &amp; applications.\n\nPlease note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.\n\n<u>Disclaimers: Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.</u></string>
     <string name="warning">WARNING</string>
@@ -174,13 +174,13 @@
     <string name="block_screenshots_description">Block screenshots in Amarok and blur it in the recent apps list.</string>
     <string name="xposed_desc">Enable Amarok to hide applications from system menus.</string>
     <string name="x_hide" translatable="false">XHide</string>
-    <string name="x_hide_description">Utilizing Xposed module to enhance app hiding. Hidden apps will no longer be visible in settings or other apps. Xposed API ≥ 93 Required.</string>
+    <string name="x_hide_description">Utilizing Xposed to enhance app hiding. Hidden apps will no longer be visible in settings or other apps. Xposed API ≥ 93 required.</string>
     <string name="enable_x_hide">Enable XHide</string>
     <string name="enable_x_hide_description">Status: %s</string>
     <string name="xposed_active">Active, Xposed API %d</string>
     <string name="xposed_inactive">Module inactive. Check Xposed manager?</string>
     <string name="disable_toasts">Disable toasts</string>
-    <string name="disable_toasts_description">Do not show toasts during hide or unhide actions.</string>
+    <string name="disable_toasts_description">Do not show toast notifications during hide or unhide actions.</string>
     <string name="apphider_not_activated_title">App hiding inactive</string>
     <string name="apphider_not_activated_msg">Activate an app hiding mode to enable this feature.</string>
 </resources>
