@@ -96,4 +96,9 @@
 \nZalecane, jeśli Twoje urządzenie ma conajmniej system Android 11 lub posiada framework Xposed. Wymaga zainstalowanej i aktywnej aplikacji Shizuku lub Sui.
 \n</string>
     <string name="learn_more">Instrukcja konfiguracji</string>
+    <string name="filename_only">Tylko nazwy plików</string>
+    <string name="apphider_not_activated_msg">Aktywuj tryb ukrycia aplikacji by włączyć tą funkcję.</string>
+    <string name="apphider_not_activated_title">Ukrywanie aplikacji nie jest aktywne.</string>
+    <string name="password_incorrect">Hasło nie prawidłowe</string>
+    <string name="unlock_required">Wymagane odblokowanie</string>
 </resources>

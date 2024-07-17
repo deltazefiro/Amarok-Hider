@@ -144,7 +144,7 @@
     <string name="password_mismatch_error">Die Passwörter sind nicht gleich.</string>
     <string name="force_unhide">Einblenden erzwingen</string>
     <string name="enable_dynamic_color">Dynamische Farbe</string>
-    <string name="dynamic_color_description">Dynamisches Farb Thema einschalten.</string>
+    <string name="dynamic_color_description">Dynamisches Farbthema einschalten.</string>
     <string name="follow_system">(An das System anpassen)</string>
     <string name="block_screenshots">Screenshots blockieren</string>
     <string name="block_screenshots_description">Screenshots in Amarok blockieren und in der Liste der letzten Anwendungen verbergen.</string>
@@ -152,7 +152,7 @@
     <string name="apphider_dhizuku">Dhizuku-Modus</string>
     <string name="invalid_action">Ungültigen Intent erhalten: %s</string>
     <string name="warning">WARNUNG</string>
-    <string name="auto_hide">automatisches Verstecken</string>
+    <string name="auto_hide">Automatisches Verstecken</string>
     <string name="apphider_dhizuku_description">[Experimentell] App-Verstecken mit Dhizuku.
 \nEine moderne und verbesserte Lösung zum Verstecken von Apps auf nicht gerooteten Geräten. Die Installation und Aktivierung der Dhizuku-App sind erforderlich.</string>
     <string name="app_name_calendar">Kalender</string>
@@ -183,4 +183,10 @@
     <string name="filehider_nomedia">Kein-Medium-Modus</string>
     <string name="filehider_nomedia_description">Fügen Sie nur .nomedia zu Ordnern hinzu. Es ist kein Root-Zugriff erforderlich.</string>
     <string name="welcome_title">Willkommen</string>
+    <string name="enable_x_hide">XHide aktivieren</string>
+    <string name="enable_x_hide_description">Status: %s</string>
+    <string name="xposed_desc">Amarok aktivieren, um Anwendungen aus den Systemmenüs auszublenden.</string>
+    <string name="x_hide_description">Verwendung des Xposed-Moduls zur Verbesserung des Ausblendens von Apps. Versteckte Apps sind nicht mehr in den Einstellungen oder anderen Apps sichtbar. Xposed API ≥ 93 Erforderlich.</string>
+    <string name="xposed_active">Aktiv, Xposed API %d</string>
+    <string name="xposed_inactive">Modul inaktiv. Xposed Manager überprüfen?</string>
 </resources>

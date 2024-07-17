@@ -10,4 +10,7 @@
     <string name="about_description">ആപ്പിനെ കുറിച്ചുള്ള വിവരങ്ങൾ കാണിക്കുന്നു.</string>
     <string name="hidden_status">മറച്ചിരിക്കുന്നു</string>
     <string name="cancel">റദ്ദാക്കുക</string>
+    <string name="unhide">മറയ്ക്കുക</string>
+    <string name="visible_status">ദൃശ്യമാണ്</string>
+    <string name="ok">ശരി</string>
 </resources>

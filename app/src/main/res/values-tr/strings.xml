@@ -159,4 +159,34 @@
     <string name="calendar_about">Pure Calendar | @koramA tarafından yapıldı</string>
     <string name="display_system_apps">Sistem uygulamalarını göster</string>
     <string name="enable_dynamic_color">Dinamik renk</string>
+    <string name="block_screenshots">Ekran resimlerini engelle</string>
+    <string name="warning">UYARI</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Bazı Samsung kullanıcıları ChmodFileHider kullanmanın cihazlarının önyüklemede başarısız olmasına neden olduğunu bildirdi.</font> Daha fazla bilgi için GitHub sayı #105\'e bakın. Riski size ait olmak üzere kullanın</b></string>
+    <string name="filehider_not_ava_title">Dosya gizleme kullanılamıyor</string>
+    <string name="appearance">Görünüm</string>
+    <string name="auto_hide">Otomatik gizle</string>
+    <string name="auto_hide_description">Ekran kapandığında otomatik olarak gizler.</string>
+    <string name="auto_hide_delay">Otomatik gizleme gecikmesi</string>
+    <string name="filehider_obfuscate_description">Dosya isimlerini ve imzalarını boz. Root erişimi gerektirmez. İşlenmesi biraz zaman alabilir.</string>
+    <string name="welcome_title">Hoşgeldiniz</string>
+    <string name="filehider_chmod_description">Okunamaz olmaları için dosyaların izinlerini değiştir. Root erişimi gerektirir. İşleme anlık gerçekleşir.</string>
+    <string name="filehider_nomedia">NoMedia Modu</string>
+    <string name="filehider_nomedia_description">Sadece klasörlere .nomedia ekle. Root erişimi gerektirmez.</string>
+    <string name="welcome_msg">Amarok, özel dosyaları ve uygulamaları gizlemek için ücretsiz ve özgürlük sağlayan bir araçtır.
+\n
+\nAmarok\'un bir şifreleme yazılımı değil, bir şeyleri gizlemeye yönelik bir araç olduğunu lütfen unutmayın. Gizli dosyaları ve uygulamaları korumak için Amarok\'u kullanmamanızı önemle tavsiye ederiz.
+\n
+\n<u>Sorumluluk reddi beyanları: Amarok herhangi bir garanti veya koşul olmaksızın sağlanır. Kullanıcı her türlü sorumluluktan tamamen sorumludur.</u></string>
+    <string name="auto_hide_delay_description">Ekran kapandığında gizlemeden önceki dakika gecikmesi.</string>
+    <string name="block_screenshots_description">Amarok\'ta ekran resimlerini engelle ve son uygulamalarda bulanıklaştır.</string>
+    <string name="xposed_desc">Uygulamaları sistem menülerinde gizlemek için Amarok\'u etkinleştir.</string>
+    <string name="x_hide_description">Uygulama gizlemeyi geliştirmek için Xposed modülünü kullanma. Gizli uygulamalar artık ayarlarda veya diğer uygulamalarda görünmeyecek. Xposed API ≥ 93 Gerekli.</string>
+    <string name="enable_x_hide">Xhide\'ı etkinleştir</string>
+    <string name="enable_x_hide_description">Durum: %s</string>
+    <string name="xposed_active">Aktif, Xposed API %d</string>
+    <string name="xposed_inactive">Modül aktif değil. Xposed Manager\'ı kontrol ettin mi?</string>
+    <string name="filehider_none">Devre dışı</string>
+    <string name="filehider_none_description">Dosya gizlemeyi devre dışı bırak.</string>
+    <string name="filehider_obfuscate">Şaşırtma Modu</string>
+    <string name="filehider_chmod">Chmod Modu</string>
 </resources>
