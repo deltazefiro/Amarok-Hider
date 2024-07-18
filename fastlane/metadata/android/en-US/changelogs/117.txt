@@ -1,0 +1,5 @@
+v0.9.2
+- Allow disabling the hide or unhide toast notifications (#172)
+- Fix file hiding crash on OxygenOS 11 (#171)
+- Reorganize the settings categories
+- Translation updates (see GitHub for the full list)
