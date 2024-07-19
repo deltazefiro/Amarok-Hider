@@ -1,5 +1,5 @@
 
-<!-- ![poster](https://raw.githubusercontent.com/deltazefiro/ImageHost/master/amarok-169-poster.png) -->
+![poseter](https://github.com/user-attachments/assets/63a8fc76-30a0-4460-85be-4264b1f69334)
 
 # Amarok-Hider
 
