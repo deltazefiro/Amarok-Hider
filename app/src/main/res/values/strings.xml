@@ -183,4 +183,6 @@
     <string name="disable_toasts_description">Do not show toast notifications during hide or unhide actions.</string>
     <string name="apphider_not_activated_title">App hiding inactive</string>
     <string name="apphider_not_activated_msg">Activate an app hiding mode to enable this feature.</string>
+    <string name="invert_tile_color">Invert tile color</string>
+    <string name="invert_tile_color_description">By default, the quick settings tile appears activated when your privacy is visible. Toggle this option to reverse the behavior.</string>
 </resources>

@@ -67,6 +67,7 @@ public final class PrefMgr {
     public static final String BLOCK_SCREENSHOTS = "blockScreenshots";
     public static final String ENABLE_X_HIDE = "enableXHide";
     public static final String DISABLE_TOASTS = "disableToasts";
+    public static final String INVERT_TILE_COLOR = "invertTileColor";
 
     public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
@@ -306,6 +307,15 @@ public final class PrefMgr {
 
     public static void setDisableToasts(boolean disableToasts) {
         mPrefEditor.putBoolean(DISABLE_TOASTS, disableToasts);
+        mPrefEditor.apply();
+    }
+
+    public static boolean getInvertTileColor() {
+        return mPrefs.getBoolean(INVERT_TILE_COLOR, false);
+    }
+
+    public static void setInvertTileColor(boolean invertTileColor) {
+        mPrefEditor.putBoolean(INVERT_TILE_COLOR, invertTileColor);
         mPrefEditor.apply();
     }
 }
