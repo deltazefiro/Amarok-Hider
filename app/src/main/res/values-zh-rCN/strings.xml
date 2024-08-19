@@ -177,4 +177,6 @@
     <string name="disable_toasts_description">禁用隐藏或解除隐藏时的提示（Toast）。</string>
     <string name="apphider_not_activated_title">应用隐藏未激活</string>
     <string name="apphider_not_activated_msg">请选择一个应用隐藏模式以启用此功能。</string>
+    <string name="invert_tile_color">翻转磁贴颜色</string>
+    <string name="invert_tile_color_description">默认隐藏时控制中心开关为激活状态。启用开关以反转此行为。</string>
 </resources>

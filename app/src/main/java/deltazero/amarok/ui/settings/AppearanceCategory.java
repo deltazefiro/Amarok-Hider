@@ -48,5 +48,17 @@ public class AppearanceCategory extends BaseCategory {
         participateTranslationPref.setIntent(new Intent(Intent.ACTION_VIEW,
                 Uri.parse("https://hosted.weblate.org/engage/amarok-hider/")));
         addPreference(participateTranslationPref);
+
+        var invertTileColorPref = new MaterialSwitchPreference(activity);
+        invertTileColorPref.setKey(PrefMgr.INVERT_TILE_COLOR);
+        invertTileColorPref.setIcon(R.drawable.invert_colors_24dp_5f6368_fill0_wght400_grad0_opsz24);
+        invertTileColorPref.setTitle(R.string.invert_tile_color);
+        invertTileColorPref.setSummary(R.string.invert_tile_color_description);
+        invertTileColorPref.setChecked(PrefMgr.getInvertTileColor());
+        invertTileColorPref.setOnPreferenceClickListener(preference -> {
+            Toast.makeText(activity, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
+            return true;
+        });
+        addPreference(invertTileColorPref);
     }
 }

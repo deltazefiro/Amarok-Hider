@@ -30,13 +30,13 @@ public class QSTileService extends TileService {
             }
             case VISIBLE -> {
                 tile.setLabel(getString(R.string.app_name));
-                tile.setState(Tile.STATE_ACTIVE);
+                tile.setState(determineTileState(false));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
                     tile.setStateDescription(getString(R.string.visible_status));
             }
             case HIDDEN -> {
                 tile.setLabel(getString(R.string.app_name));
-                tile.setState(Tile.STATE_INACTIVE);
+                tile.setState(determineTileState(true));
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R)
                     tile.setStateDescription(getString(R.string.hidden_status));
             }
@@ -88,5 +88,11 @@ public class QSTileService extends TileService {
         } else {
             startActivityAndCollapse(intent);
         }
+    }
+
+    private int determineTileState(boolean isHidden) {
+        if (PrefMgr.getInvertTileColor())
+            return isHidden ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE;
+        return isHidden ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE;
     }
 }
