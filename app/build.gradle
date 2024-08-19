@@ -54,12 +54,12 @@ android {
 
     productFlavors {
         flavorDimensions = ['version']
-        playstore {
-            dimension 'version'
-            applicationIdSuffix '.foss'
-        }
         appcenter {
             dimension 'version'
+        }
+        playstore {
+            dimension 'version'
+            applicationIdSuffix '.app'
         }
         foss {
             dimension 'version'
