@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="unhidden_toast">Tampak. Hati-hati.</string>
+    <string name="unhidden_toast">Terlihat. Hati-hati.</string>
     <string name="debug_info_description">Tampilkan info untuk membantu perbaikan masalah.</string>
     <string name="about_description">Tampilan informasi aplikasi.</string>
-    <string name="hidden_toast">Tersembunyi. cukurukuk kugruu~!</string>
-    <string name="update_ava">Tersedia versi terbaru</string>
+    <string name="hidden_toast">Tersembunyi. Kukuruyuk~!</string>
+    <string name="update_ava">Versi terbaru tersedia</string>
     <string name="no_apphider">Pilih Mode Sembunyikan Aplikasi di \"Pengaturan Lainnya\".</string>
     <string name="not_local_storage">Direktori tak didukung</string>
     <string name="add_hide_files">Tambah folder tersembunyi</string>
-    <string name="folder_selector_hints">Petunjuk untuk pemilihan folder:
+    <string name="folder_selector_hints">Petunjuk pemilihan folder:
 \n\t 1. Klik \"Pilih Folder Ini\" untuk memilih folder
-\n\t 2. Selalu memilih berkas tersedia di gawai
-\n\t(Geser dari kanan layar untuk akses ke berkas lokal)</string>
+\n\t 2. Pilih berkas yang tersedia pada gawai
+\n\t(Geser dari arah kanan layar untuk membuka berkas-berkas lokal)</string>
     <string name="visible_status">Tampak</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
@@ -20,15 +20,15 @@
 \n<u>\'%2$s\'</u></string>
     <string name="show_debug_info">Info awakutu</string>
     <string name="apphider_not_ava">Fungsi Sembunyikan Aplikasi tidak tersedia . Cek ke \"Pengaturan Lainnya\" → \"Mode Sembunyikan Aplikasi\".</string>
-    <string name="storage_permission_denied">Akses ke tempat penyimpanan ditolak. Tidak dapat menyembunyikan berkas</string>
-    <string name="storage_permission_request_message">Berikan akses ke penyimpanan eksternal untuk sembunyikan berkas.</string>
+    <string name="storage_permission_denied">Izin tempat penyimpanan ditolak. Tidak dapat menyembunyikan berkas</string>
+    <string name="storage_permission_request_message">Berikan akses ke penyimpanan eksternal untuk menyembunyikan berkas.</string>
     <string name="hide_app_failed_admin_inactive">Tidak dapat menyembunyikan aplikasi: Penyedia DSM tidak aktif.</string>
     <string name="show_about">Tampilkan Tentang</string>
-    <string name="root_not_ava">Akses Root tidak diperoleh.</string>
+    <string name="root_not_ava">Akses root tidak diperoleh.</string>
     <string name="more_settings">Pengaturan Lainnya</string>
     <string name="current_mode">Mode aktif: %s</string>
-    <string name="check_update_on_start">Membarui otomatis</string>
-    <string name="set_hide_files">Set Berkas Tersembunyi</string>
+    <string name="check_update_on_start">Perbarui secara otomatis</string>
+    <string name="set_hide_files">Pasang Berkas Tersembunyi</string>
     <string name="apply_on_restart">Mulai ulang aplikasi untuk menerapkan perubahan.</string>
     <string name="help">Bantuan</string>
     <string name="check_update_on_start_description">Cek versi terbaru setiap mengakses aplikasi.</string>
@@ -46,151 +46,147 @@
     <string name="path_duplicated">Folder tersembunyi berulang</string>
     <string name="confirm">Konfirmasi</string>
     <string name="enable_analytics">Analitik anonim</string>
-    <string name="usage_description">Buka pusat pertolongan.</string>
-    <string name="set_hide_apps">Set Aplikasi Tersembunyi</string>
+    <string name="usage_description">Buka pusat bantuan.</string>
+    <string name="set_hide_apps">Pasang Aplikasi Tersembunyi</string>
     <string name="check_update_description">Versi sekarang: %s</string>
     <string name="hidden_status">Tersembunyi</string>
-    <string name="check_update">Cek untuk pembaruan</string>
+    <string name="check_update">Cek untuk lihat pembaruan aplikasi</string>
     <string name="remove_hide_path">Hapus folder tersembunyi?</string>
-    <string name="remove_hide_path_description">Tampilkan folder \'%s\'?</string>
+    <string name="remove_hide_path_description">Hapus folder \'%s\' dari daftar tersembunyi?</string>
     <string name="switch_app_hider">Mode Sembunyikan Aplikasi</string>
-    <string name="update_description">Amarok %s (%d) dapat diunduh dan diinstal.</string>
-    <string name="invalid_dsm_provider">DSM: Penyedia DSM invalid. Apakah kamu telah menginstal dan mengaktivasikan DSM pada gawaimu?</string>
-    <string name="dhizuku_not_init">Dhizuku: Layanan tidak tersedia. Pastikan sudah menginstal dan mengaktivasi Dhizuku.</string>
-    <string name="performing_force_unhide">Sedang melaksanakan \"Tampilakn Paksa\". Silahkan tunggu.</string>
-    <string name="app_name_calendar">Kalendar</string>
-    <string name="obfuscate_filename_description">Membuat nama berkas tidak terbaca. Fitur dasar untuk menyembunyikan berkas. Tidak dapat dimatikan.</string>
-    <string name="filehider_nomedia_description">Hanya tambahkan .nomedia ke folder. Tidak memerlukan akses root.</string>
+    <string name="update_description">Amarok %s (%d) kini tersedia untuk diunduh dan diinstal.</string>
+    <string name="invalid_dsm_provider">DSM: Penyedia DSM takvalid. Sudahkah penyedia DSM terinstal dan teraktivasi pada gawaimu?</string>
+    <string name="dhizuku_not_init">Dhizuku: Layanan tidak tersedia. Pastikan bahwa kamu sudah menginstal dan mengaktivasi Dhizuku.</string>
+    <string name="performing_force_unhide">Sedang menjalankan mode \"Tampilkan Secara Paksa\". Silakan tunggu.</string>
+    <string name="app_name_calendar">Kalender</string>
+    <string name="obfuscate_filename_description">Membuat nama berkas tidak terbaca. Fitur ini merupakan fitur dasar penyembunyian berkas yang tidak dapat dimatikan.</string>
+    <string name="filehider_nomedia_description">Hanya tambahkan .nomedia ke dalam folder. Akses root tidak diperlukan.</string>
     <string name="quick_hide_notification_title">Privasi tidak tersembunyi</string>
     <string name="apphider_shizuku">Mode Shizuku (Sui)</string>
-    <string name="notification_permission_request_title">Dibutuhkan akses atas notifikasi</string>
+    <string name="notification_permission_request_title">Izin mengakses notifikasi dibutuhkan</string>
     <string name="filter">Penyaring</string>
-    <string name="notification_permission_denied">Ditolak akses atas notifikasi.</string>
+    <string name="notification_permission_denied">Izin mengakses notifikasi ditolak.</string>
     <string name="manually_set_path">Pilih secara manual</string>
-    <string name="biometric_auth_description">Akses menggunakan auntentikasi biometrik yang tersedia pada gawai.</string>
-    <string name="shizuku_hidden_api_error">Tidak bisa menyembunyikan aplikasi: IPackageManager API tidak terakses.</string>
+    <string name="biometric_auth_description">Gunakan auntentikasi biometrik yang tersedia pada gawai.</string>
+    <string name="shizuku_hidden_api_error">Tidak dapat menyembunyikan aplikasi: IPackageManager API tidak terakses.</string>
     <string name="dynamic_color_description">Aktifkan tema warna dinamis.</string>
     <string name="warning">PERINGATAN</string>
     <string name="password">Kata sandi</string>
-    <string name="filehider_none_description">Nonaktifkan penyembunyian file.</string>
-    <string name="shizuku_pre_v11">Versi Shizuku tak didukung: Sebelum v11.Instal Shizuku v11 atau terbaru.</string>
+    <string name="filehider_none_description">Takaktifkan penyembunyian berkas.</string>
+    <string name="shizuku_pre_v11">Versi Shizuku tidak didukung: Pra-v11. Mohon instal Shizuku v11 atau versi yang lebih baru.</string>
     <string name="apphider_root">Mode root</string>
     <string name="unlock">Buka</string>
     <string name="processing">Memproses…</string>
-    <string name="obfuscate_file_header_description">Mengaburkan signature pada header berkas untuk membuat berkas menjadi \"rusak\". Berkas tidak dapat diakses melalui \"Buka dengan .. \", tapi memperlambat proses penyembunyian file.</string>
-    <string name="obfuscate_text_file">Mengaburkan penuh teks berkas</string>
+    <string name="obfuscate_file_header_description">Mengaburkan signatur pada tajuk berkas agar berkas tampak rusak. Mencegah berkas agar tidak dapat diakses secara manual dengan \"Buka Dengan ... \", tetapi dapat memperlambat proses penyembunyian berkas.</string>
+    <string name="obfuscate_text_file">Kaburkan teks berkas secara utuh</string>
     <string name="app_lock_description">Akses membutuhkan kata sandi.</string>
-    <string name="filehider_chmod_description">Ganti akses untuk membuat berkas tidak terbaca. Perlu akses root. Proses seketika.</string>
-    <string name="dhizuku_permission_denied">Dhizuku: Izin di tolak</string>
-    <string name="misc">Lain.</string>
+    <string name="filehider_chmod_description">Ganti akses agar berkas takterbaca. Akses root dibutuhkan. Proses terjadi secara seketika.</string>
+    <string name="dhizuku_permission_denied">Dhizuku: Izin ditolak</string>
+    <string name="misc">Lain-lain.</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
-    <string name="close_disguise_spotlight_tip">Tekan lama <font fgcolor="#FCCA3E"><b>Angka Tahun</b></font>-nya untuk mengakses Amarok.</string>
+    <string name="close_disguise_spotlight_tip">Tekan lama <font fgcolor="#FCCA3E"><b>Angka Tahun</b></font>- untuk mengakses Amarok.</string>
     <string name="shizuku_service_not_running">Shizuku: Layanan tidak berjalan.</string>
-    <string name="panic_button_description">Tampilkan tombol melayang untuk menyembunyikan aplikasi &amp; berkas saat darurat. Ditampilkan di atas aplikasi lain. Tombol hanya terlihat saat kondisi \"terlihat\".</string>
+    <string name="panic_button_description">Tampilkan tombol kambang untuk menyembunyikan aplikasi &amp; berkas dalam keaadan darurat. Tombol ini akan muncul menimpa aplikasi lain saat kondisi Amarok \"terlihat\".</string>
     <string name="disguise">Aplikasi samaran</string>
-    <string name="quick_hide">QuickHide</string>
+    <string name="quick_hide">Sembunyi Cepat</string>
     <string name="apphider_none">Dimatikan</string>
     <string name="learn_more">Tutorial pengaturan</string>
     <string name="failed_to_open_doc_tree">Tidak dapat mengakses pemilih berkas bawaan</string>
-    <string name="dhizuku_pre_v5">Dhizuku: Versi tidak didukung. Silakan perbarui ke versi 5 atau terbaru.</string>
-    <string name="filename_only">Hanya nama berkas</string>
+    <string name="dhizuku_pre_v5">Dhizuku: Versi ini tidak didukung. Silakan perbarui Dhizuku ke versi 5 atau versi terbaru.</string>
+    <string name="filename_only">Nama berkas saja</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="join_developer_channel">Grup Telegram</string>
-    <string name="filehider_obfuscate_description">Mengaburkan nama dan signature berkas. Tidak perlu akses root. Proses membutuhkan beberapa saat.</string>
+    <string name="filehider_obfuscate_description">Mengaburkan nama dan signatur berkas. Tidak perlu akses root. Proses ini membutuhkan waktu selama beberapa saat.</string>
     <string name="update">Perbarui</string>
     <string name="notification">Notifikasi</string>
-    <string name="confirm_password">Konfirmasi kata sandi</string>
-    <string name="obfuscate_text_file_enhanced">Menggaburkan file teks sepenuhnya - Peningkatan</string>
-    <string name="invalid_action">Intent invalid diperoleh: %s</string>
-    <string name="force_unhide_confirm_msg">Kembalikan semuanya?
-\n
-\n<b>PERINGATAN: </b>Opsi ini dapat merusak berkas. Hanya digunakan ketika mengalami masalah dan tidak dapat \"memperlihatkan\" secara normal.</string>
-    <string name="set_password">Set Kata sandi</string>
-    <string name="dsm_permission_denied">DSM: Izinan ditolak</string>
+    <string name="confirm_password">Konfirmasikan kata sandi</string>
+    <string name="obfuscate_text_file_enhanced">Pengaburan berkas teks secara sepenuhnya - Ditingkatkan</string>
+    <string name="invalid_action">Intent takvalid diperoleh: %s</string>
+    <string name="force_unhide_confirm_msg">Coba mengembalikan semuanya?\n\n<b>PERINGATAN: </b>Pilihan ini dapat merusak berkas-berkasmu. Hanya pergunakan pilihan ini jika kamu mengalami masalah dan fungsi \"tampilkan\" tidak berjalan secara normal.</string>
+    <string name="set_password">Pasang kata sandi</string>
+    <string name="dsm_permission_denied">DSM: Izin ditolak</string>
     <string name="unlock_required">Perlu dibuka</string>
     <string name="biometric_auth">Autentikasi Biometrik</string>
     <string name="filehider_nomedia">Mode NoMedia</string>
-    <string name="invalid_path">Jalur invalid.</string>
-    <string name="option_unava_when_hidden">Opsi sedang tidak tersedia hingga diperlihatkan.</string>
-    <string name="quick_hide_notification_description">Membuat notifikasi permanen untuk beritahu saat kondisi tidak tersembunyi.</string>
-    <string name="quick_hide_notification_content">Privasimu tidak tersembunyi. Klik untuk menyembunyikan.</string>
-    <string name="obfuscate_file_header">Mengaburkan header berkas</string>
+    <string name="invalid_path">Jalur takvalid.</string>
+    <string name="option_unava_when_hidden">Pilihan tidak tersedia hingga penyembunyian berkas dimatikan.</string>
+    <string name="quick_hide_notification_description">Membuat notifikasi permanen untuk memberitahu saat kondisi sedang tidak tersembunyi.</string>
+    <string name="quick_hide_notification_content">Privasimu tidak tersembunyi. Klik agar tersembunyi.</string>
+    <string name="obfuscate_file_header">Kaburkan tajuk berkas</string>
     <string name="apphider_root_description">Penyembunyian aplikasi dengan akses root.
-\nDirekomendasikan untuk gawai dengan akses root dan tidak memiliki Xposed/LSPosed. Dibutuhkan akses root.</string>
+\nDirekomendasikan untuk gawai dengan akses root dan tidak memiliki Xposed/LSPosed. Akses root dibutuhkan.</string>
     <string name="apphider_shizuku_description">Penyembunyian aplikasi dengan Shizuku (or Sui).
-\nDirekomendasikan untuk gawai dengan Android 11+ atau menginstal Xposed/LSPosed. Dibutuhkan Shizuku (atau Sui) aktif .
+\nDirekomendasikan untuk gawai dengan Android 11+ atau Xposed/LSPosed terinstal. Dibutuhkan Shizuku (atau Sui) yang terinstal dan aktif.
 \n</string>
     <string name="apphider_dsm_description">Penyembunyian aplikasi dengan Delegated-Scopes-Manager.
-\nTidak direkomendasikan kecuali untuk gawai dengan Android 10- dan tidak memiliki akses root. Dapat berfungsi abnormal. Dibutuhkan Icebox (atau StopAPP) terinstal dan sebagai pemilik perangkat.</string>
+\nTidak direkomendasikan kecuali untuk gawai dengan Android 10 atau versi sebelumnya dan tidak memiliki akses root. Fitur dapat berfungsi secara abnormal. Icebox (atau StopAPP) dibutuhkan terinstal pada gawai dan pasang sebagai pemilik perangkat.</string>
     <string name="apphider_none_description">Nonaktifkan penyembunyian aplikasi.</string>
-    <string name="filehider_none">Nonaktif</string>
+    <string name="filehider_none">Takaktif</string>
     <string name="spotlight_do_not_show_again">JANGAN TAMPILKAN LAGI</string>
-    <string name="welcome_msg">Amarok adalah aplikasi bersifat bebas dan gratis berfungsi untuk menyembunyikan berkas &amp; aplikasi.
-\n
-\nPerhatian bahwa Amarok bukan aplikasi untuk mengenkripsi, tapi untuk menyembunyikan berkas. Kami tidak menganjurkan penggunaan Amarok untuk melindungi berkas dan aplikasi penting.
-\n
-\n<u>Pernyataan: Amarok disediakan tanpa jaminan atau ketentuan apa pun. Atas penggunaan Amarok, pengguna bertanggungjawab penuh atas resiko dan konsequensinya.</u></string>
+    <string name="welcome_msg">Amarok adalah aplikasi yang bebas dan gratis untuk menyembunyikan berkas &amp; aplikasi.\n\nMohon perhatikan bahwa Amarok bukanlah aplikasi pengenkripsi, melainkan penyembunyi berkas. Kami sangat tidak menganjurkan pengguna Amarok untuk melindungi berkas dan aplikasi yang bersifat rahasia dan/atau penting.\n\n<u>Pernyataan: Amarok disediakan tanpa jaminan atau ketentuan apa pun. Pengguna bertanggung jawab penuh atas risiko dan akibat yang dapat muncul dari penggunaan Amarok.</u></string>
     <string name="shizuku_permission_denied">Shizuku: Izin ditolak</string>
-    <string name="manually_set_path_description">Perhatian: Pastikan ketersediaan berkas yang dipilih manual, tidak divalidasai lagi.</string>
+    <string name="manually_set_path_description">Perhatian: Pastikan bahwa ketersediaan berkas yang dipilih manual memang ada, sebab pemilihan ini tidak divalidasi lagi.</string>
     <string name="filename_and_header">Nama + Header berkas</string>
-    <string name="obfuscate_filename">Mengaburkan nama berkas</string>
-    <string name="notification_channel_name">Layanan QuickHide</string>
+    <string name="obfuscate_filename">Kaburkan nama berkas</string>
+    <string name="notification_channel_name">Layanan Sembunyi Cepat</string>
     <string name="welcome_title">Selamat datang</string>
-    <string name="shizuku_not_working">Shizuku: Layanan tidak ada. Sudahkah anda menginstal Shizuku/Sui di gawaimu?</string>
-    <string name="workmode">Mode-kerja</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Pengguna samsung sudah melaporkan bahwa menggunakan ChmodFileHider menyebabkan perangkat mereka untuk gagal but.</font> Lihat Github issue #105 untuk lebih lanjut. Resiko ditanggung sendiri.</b></string>
-    <string name="alert_permission_denied">Ditolak izin untuk menampilkan di atas aplikasi lainnya.</string>
-    <string name="filehider_obfuscate">Mode Mengaburkan</string>
-    <string name="force_unhide_description">Kembalikan ke pengaturan semula. Hanya digunakan jika mengalami masalah.</string>
-    <string name="no_update_ava">Kamu berada pada versi terbaru.</string>
-    <string name="notification_permission_request_message">Layanan QuickHide membutuhkan akses atas notifikasi untuk berfungsi.</string>
+    <string name="shizuku_not_working">Shizuku: Layanan tidak ada. Sudahkah kamu menginstal Shizuku/Sui pada gawaimu?</string>
+    <string name="workmode">Mode kerja</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Pengguna Samsung telah melaporkan bahwa menggunakan ChmodFileHider menyebabkan perangkat gagal boot.</font> Lihat Github issue #105 untuk informasi lebih lanjut. Risiko ditanggung sendiri.</b></string>
+    <string name="alert_permission_denied">Izin untuk menimpa tampilan aplikasi di atas aplikasi lainnya ditolak.</string>
+    <string name="filehider_obfuscate">Mode Pengaburan</string>
+    <string name="force_unhide_description">Mengembalikan ke pengaturan semula. Hanya dipergunakan jika kamu mengalami masalah.</string>
+    <string name="no_update_ava">Kamu sedang menjalankan aplikasi versi terbaru.</string>
+    <string name="notification_permission_request_message">Layanan Semubyi Cepat membutuhkan izin notifikasi agar dapat berfungsi.</string>
     <string name="follow_system">(Ikuti Sistem)</string>
     <string name="apphider_dhizuku">Mode Dhizuku</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="password_incorrect">Kata sandi salah.</string>
     <string name="language">Bahasa</string>
-    <string name="alert_permission_request_message">Tombol melayang butuh izin untuk menampilkan jendela pop-up. Cari Amarok di menu pengaturan dan izinkan.</string>
+    <string name="alert_permission_request_message">Tombol kambang butuh izin untuk menampilkan jendela sembulan. Mohon cari Amarok di menu pengaturan dan berikan izin atas penampilan jendela.</string>
     <string name="search">Cari</string>
-    <string name="failed_to_open_doc_tree_description">Oops! Sistem tidak memiliki filemanager bawaan. Tekan dan tahan tombol \"Tambah folder tersembunyi\" dan masukkan jalur secara manual.</string>
-    <string name="participate_translation">Partisipasi dalam menerjermahkan</string>
-    <string name="force_unhide">Tampilkan paksa</string>
+    <string name="failed_to_open_doc_tree_description">Aduh! Sistem tidak memiliki manajer berkas bawaan. Tekan dan tahan tombol \"Tambah folder tersembunyi\" dan masukkan jalur secara manual.</string>
+    <string name="participate_translation">Ayo ikut serta dalam penerjemahan Amarok</string>
+    <string name="force_unhide">Tampilkan secara paksa</string>
     <string name="apphider_dhizuku_description">[Percobaan] Penyembunyian aplikasi dengan Dhizuku.
-\nSolusi modern untuk menyembunyikan aplikasi di gawai yang memiliki akses root. Dibutuhkan Dhizuku terinstal dan aktif.</string>
-    <string name="alert_permission_request_title">Dibutuhkan izin untuk menampilkan jendela pop-up</string>
-    <string name="password_length_error">Kata sandi minimal 3 - 15 karakter.</string>
+\nSolusi modern menyembunyikan aplikasi gawai yang tidak memiliki akses root. Dibutuhkan Dhizuku yang sudah terinstal dan teraktivasi.</string>
+    <string name="alert_permission_request_title">Dibutuhkan izin untuk menampilkan jendela sembulan</string>
+    <string name="password_length_error">Kata sandi harus terdiri atas 3 s.d. 15 karakter.</string>
     <string name="filehider_not_ava_title">Penyembunyian berkas tidak tersedia</string>
     <string name="never">Tidak pernah</string>
-    <string name="in_app_update_failed">Tersedia versi terbaru, tetapi gagal mengunduh. Silahkan perbarui secara manual.</string>
-    <string name="participate_translation_description">Bantu untuk mentranslasikan Amarok ke bahasamu.</string>
+    <string name="in_app_update_failed">Versi terbaru tersedia, tetapi pengunduhannya gagal. Silakan perbarui aplikasi secara manual.</string>
+    <string name="participate_translation_description">Bantu kami menerjemahkan Amarok ke dalam bahasamu.</string>
     <string name="password_mismatch_error">Kata sandi tidak sama.</string>
-    <string name="apphider_not_ava_title">Mode Sembunyikan Aplikasi tidak tersedia</string>
-    <string name="disguise_description">Samarkan Amarok sebagai kalendar.</string>
+    <string name="apphider_not_ava_title">Penyembunyian aplikasi takaktif</string>
+    <string name="disguise_description">Samarkan Amarok sebagai aplikasi kalender.</string>
     <string name="security">Keamanan</string>
     <string name="apphider_dsm">Mode DSM</string>
     <string name="app_lock">Pengunci aplikasi</string>
-    <string name="obfuscate_text_file_description_enhanced">Tidak direkomendasikan. Versi peningkatan dari \"Mengaburkan penuh file teks\". Digunakan hanya jika metode standar tidak berfungsi efektif. Memperlambat proses penyembunyian secara dramatis.</string>
-    <string name="obfuscate_text_file_description">[Percobaan] Mengaburkan header berkas tanpa merubah teks berkas. Aktikan fitur ini akan mengaburkan semua isi berkas. Memperlambat prosess penyembunyian file sampai batas tertentu.</string>
+    <string name="obfuscate_text_file_description_enhanced">Tidak direkomendasikan. Merupakan versi peningkatan dari \"Kaburkan berkas teks secara utuh\". Gunakan pilihan ini hanya jika metode standar tidak berfungsi secara efektif. Pilihan ini dapat memperlambat proses penyembunyian secara signifikan.</string>
+    <string name="obfuscate_text_file_description">[Percobaan] Mengaburkan panji berkas tanpa merubah teks berkas. Mengaktivasi fitur ini akan mengaburkan semua isi berkas dan memperlambat proses penyembunyian berkas sampai batas tertentu.</string>
     <string name="panic_button">Tombol Panik</string>
-    <string name="calendar_about">Kalender | dari @koramA</string>
+    <string name="calendar_about">Kalender | oleh @koramA</string>
     <string name="display_system_apps">Tampilkan aplikasi sistem</string>
     <string name="filehider_chmod">Mode Chmod</string>
     <string name="enable_dynamic_color">Warna dinamis</string>
     <string name="view_github_repo">Repositori GitHub</string>
     <string name="enable_x_hide_description">Status: %s</string>
     <string name="enable_x_hide">Aktifkan XHide</string>
-    <string name="block_screenshots">Halang tangkapan layar</string>
-    <string name="block_screenshots_description">Halang tangkapan layar di Amarok dan kaburkan pada daftar \"recent apps\".</string>
+    <string name="block_screenshots">Halangi tangkapan layar</string>
+    <string name="block_screenshots_description">Menghalagi penangkapan layar aplikasi Amarok dan mengaburkan tampilan aplikasi pada daftar aplikasi terkini.</string>
     <string name="appearance">Tampilan</string>
-    <string name="auto_hide">AutoHide</string>
-    <string name="auto_hide_description">Sembunyikan berkas otomatis saat layar mati.</string>
-    <string name="auto_hide_delay">Jeda AutoHide</string>
-    <string name="auto_hide_delay_description">Menit yang dibutuhkan untuk jeda sebelum menyembunyikan setelah layar mati.</string>
-    <string name="xposed_desc">Aktifkan Amarok untuk menyembunyikan aplikasi dari menu sistem.</string>
-    <string name="x_hide_description">Gunakan modul Xposed/LSPosed untuk meningkatkan fungsi. Aplikasi yg disembunyikan tidak terdeteksi oleh aplikasi lain. Dibutuhkan Xposed API ≥ 93.</string>
+    <string name="auto_hide">AutoSembunyikan</string>
+    <string name="auto_hide_description">Sembunyikan berkas secara otomatis saat layar mati.</string>
+    <string name="auto_hide_delay">Jeda AutoSembunyikan</string>
+    <string name="auto_hide_delay_description">Jumlah menit yang dibutuhkan untuk berjeda sebelum masuk mode \"Sembunyikan\" setelah layar mati.</string>
+    <string name="xposed_desc">Memungkinkan Amarok agar menyembunyikan aplikasi dari menu sistem.</string>
+    <string name="x_hide_description">Gunakan modul Xposed/LSPosed untuk meningkatkan fungsi penyembunyian aplikasi. Aplikasi yg disembunyikan tidak akan terdeteksi oleh pengaturan atau aplikasi lain. Dibutuhkan Xposed API ≥ 93.</string>
     <string name="xposed_active">Aktif, Xposed API %d</string>
-    <string name="xposed_inactive">Module nonaktif. Cek Xposed manajer?</string>
-    <string name="disable_toasts">Nonaktif notifikasi</string>
-    <string name="apphider_not_activated_title">Fungsi sembunyi nonaktif</string>
-    <string name="apphider_not_activated_msg">Aktifkan mode sembunyi untuk gunakan fitur ini.</string>
-    <string name="disable_toasts_description">Tidak memberikan notifkasi saat beraksi.</string>
+    <string name="xposed_inactive">Modul takktif. Cek manajer Xposed?</string>
+    <string name="disable_toasts">Takaktifkan notifikasi</string>
+    <string name="apphider_not_activated_title">Fungsi sembunyi takaktif</string>
+    <string name="apphider_not_activated_msg">Aktifkan mode sembunyi untuk menggunakan fitur ini.</string>
+    <string name="disable_toasts_description">Tidak menampilkan notifikasi saat mode \"sembunyikan\" atau \"tampilkan\" bekerja.</string>
+    <string name="invert_tile_color">Balikkan warna tile</string>
+    <string name="invert_tile_color_description">Secara bawaan, tile aturan cepat tampak aktif ketika privasi Anda adalah terlihat. Alihkan opsi ini untuk mengatur sebaliknya.</string>
 </resources>

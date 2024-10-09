@@ -7,7 +7,7 @@
     <string name="app_name_calendar">Календар</string>
     <string name="about_description">Приказује информације о апликацији.</string>
     <string name="hidden_toast">Сакривено. Ку-ку-ри-ку~!</string>
-    <string name="obfuscate_filename_description">Учините име фајла нечитљивим за људе. Основна функција сакривања фајлова. Не може се искључити.</string>
+    <string name="obfuscate_filename_description">Чини називе фајлова нечитљивим за људе. Основна функција сакривања фајлова која се не може искључити.</string>
     <string name="quick_hide_notification_title">Приватност није сакривена</string>
     <string name="apphider_shizuku">Shizuku (Sui) режим</string>
     <string name="notification_permission_request_title">Потребна је дозвола за обавештења</string>
@@ -22,7 +22,7 @@
 \n\t1. Кликните на „Користи овај фолдер“ да бисте изабрали фолдер
 \n\t2. Увек изаберите фајл на уређају
 \n\t(Превуците с десне стране екрана да бисте отворили локалне фајлове)</string>
-    <string name="biometric_auth_description">Користите биометријску аутентификацију уређаја за приступ Amarok-у, када је доступно.</string>
+    <string name="biometric_auth_description">Користите биометријску аутентификацију за приступ Amarok-у, када је доступно.</string>
     <string name="visible_status">Видљиво</string>
     <string name="path_duplicated_description"><u>„%1$s“</u>
 \n
@@ -42,7 +42,7 @@
     <string name="hide_app_failed_admin_inactive">Није могуће сакрити апликацију: DSM пружалац није активан.</string>
     <string name="show_about">Показати „О апликацији“</string>
     <string name="processing">Обрада…</string>
-    <string name="obfuscate_file_header_description">Замаглите потпис фајла у заглављу фајла, како би фајл био „оштећен“. Спречава ручно отварање фајла преко „Отвори помоћу“, али може успорити процес сакривања фајла.</string>
+    <string name="obfuscate_file_header_description">Замаглите потпис фајла у заглављу фајла, како би фајл био оштећен. Спречава ручно отварање фајла преко „Отвори помоћу“, али може успорити процес сакривања.</string>
     <string name="obfuscate_text_file">Потпуно замагли текстуалне фајлове</string>
     <string name="app_lock_description">Захтевајтe лозинку за приступ Amarok-у.</string>
     <string name="dhizuku_permission_denied">Dhizuku: Дозвола одбијена</string>
@@ -50,7 +50,7 @@
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
     <string name="close_disguise_spotlight_tip">Притисните и задржите <font fgcolor="#FCCA3E"><b>број године</b></font> да бисте приступили Amarok-у.</string>
     <string name="shizuku_service_not_running">Shizuku: Услуга не ради.</string>
-    <string name="panic_button_description">Прикажите плутајуће дугме коришћено за сакривање апликација и фајлова у хитним случајевима. Приказује се преко свих других апликација. Дугме се приказује само у откривеном стању.</string>
+    <string name="panic_button_description">Приказује плутајуће дугме за брзо сакривање апликација и фајлова у хитним случајевима. Ово дугме се појављује изнад свих других апликација када је Amarok нескривен.</string>
     <string name="disguise">Прерушавање апликације</string>
     <string name="quick_hide">Брзо сакривање</string>
     <string name="apphider_none">Онемогућено</string>
@@ -85,7 +85,7 @@
     <string name="ok">ОК</string>
     <string name="setting_not_ava_when_hidden">Ово подешавање је доступно само након откривања</string>
     <string name="option_unava_when_hidden">Опције су недоступне док не откријете.</string>
-    <string name="quick_hide_notification_description">Приказивање трајног обавештења да би корисници били обавештени када нису сакривени.</string>
+    <string name="quick_hide_notification_description">Приказује трајно обавештење за обавештавање корисника када није скривено.</string>
     <string name="quick_hide_notification_content">Ваша приватност није сакривена. Кликните да бисте сакрили.</string>
     <string name="obfuscate_file_header">Замагли заглавља фајлова</string>
     <string name="apphider_root_description">Сакривање апликација с root приступом.
@@ -123,9 +123,9 @@
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="password_incorrect">Нетачна лозинка.</string>
     <string name="language">Језик</string>
-    <string name="alert_permission_request_message">Плутајућем дугмету је потребна дозвола за покретање искачућих прозора. Пронађите Amarok у менију подешавања и одобрите га.</string>
+    <string name="alert_permission_request_message">Плутајућем дугмету је потребна дозвола за покретање искачућих прозора. Дајте ову дозволу у менију подешавања за Amarok.</string>
     <string name="search">Претрага</string>
-    <string name="failed_to_open_doc_tree_description">Упс! Ваш систем нема подразумевани менаџер фајлова. Притисните и задржите дугме „Додај скривени фолдер“ и ручно унесите путању.</string>
+    <string name="failed_to_open_doc_tree_description">Упс! Вашем систему недостаје подразумевани менаџер фајлова. Дуго притисните дугме „Додај скривени фолдер“ и ручно унесите путању.</string>
     <string name="participate_translation">Учествуј у превођењу</string>
     <string name="enable_analytics">Анонимна аналитика</string>
     <string name="force_unhide">Присилно откриј</string>
@@ -135,13 +135,13 @@
     <string name="password_length_error">Лозинка мора бити између 3 и 15 знакова.</string>
     <string name="usage_description">Отворите центар за помоћ.</string>
     <string name="never">Никада</string>
-    <string name="in_app_update_failed">Нова верзија је доступна, али није успела да се преузме. Ажурирајте ручно.</string>
+    <string name="in_app_update_failed">Нова верзија је доступна, али преузимање није успело. Ажурирајте ручно.</string>
     <string name="participate_translation_description">Помозите нам да преведемо Amarok на Ваш језик.</string>
     <string name="password_mismatch_error">Лозинке се не подударају.</string>
     <string name="set_hide_apps">Подеси скривене апликације</string>
     <string name="check_update_description">Тренутна верзија: %s</string>
-    <string name="apphider_not_ava_title">Недоступан режим сакривања апликације</string>
-    <string name="disguise_description">Прерушите Amarok као календар.</string>
+    <string name="apphider_not_ava_title">Сакривање апликација неактивно</string>
+    <string name="disguise_description">Прерушите Amarok као апликацију календара.</string>
     <string name="security">Безбедност</string>
     <string name="hidden_status">Сакривено</string>
     <string name="apphider_dsm">DSM режим</string>
@@ -149,8 +149,8 @@
     <string name="obfuscate_text_file_description_enhanced">Није препоручено. Побољшана верзија опције „Потпуно замагли текстуалне фајлове“. Користите ову опцију само ако се стандардни метод покаже неефикасним. Драматично успорава процес сакривања.</string>
     <string name="check_update">Провери ажурирање</string>
     <string name="remove_hide_path">Уклонити скривени фолдер\?</string>
-    <string name="obfuscate_text_file_description">Експериментална функција. Замагљивање заглавља фајлова нема утицаја на текстуалне фајлове. Омогућавање ове функције ће у потпуности сакрити текстуалне фајлове. То ће, донекле, успорити процес сакривања.</string>
-    <string name="remove_hide_path_description">Уклонити фолдер „%s“ из сакривања?</string>
+    <string name="obfuscate_text_file_description">Замагљивање заглавља фајлова нема ефекта на текстуалне фајлове. Омогућавање ове функције ће у потпуности сакрити текстуалне фајлове.</string>
+    <string name="remove_hide_path_description">Уклонити фолдер „%s“ са листе скривеног?</string>
     <string name="switch_app_hider">Промени режим сакривања апликација</string>
     <string name="panic_button">Паник дугме</string>
     <string name="update_description">Amarok %s (%d) је доступан за преузимање и инсталирање.</string>
@@ -159,9 +159,9 @@
     <string name="enable_dynamic_color">Динамичка боја</string>
     <string name="invalid_dsm_provider">DSM: Неважећи DSM пружалац. Да ли сте инсталирали и активирали DSM пружаоца на свом уређају\?</string>
     <string name="view_github_repo">GitHub репозиторијум</string>
-    <string name="filehider_nomedia_description">Додајте само .nomedia у фолдере. Није потребан root приступ.</string>
+    <string name="filehider_nomedia_description">Једноставно додаје .nomedia у фолдере. Није потребан root приступ.</string>
     <string name="filehider_none_description">Онемогућите сакривање фајлова.</string>
-    <string name="filehider_chmod_description">Промените дозволе за фајлове да бисте их учинили нечитљивим. Потребан је root приступ. Процедура је моментална.</string>
+    <string name="filehider_chmod_description">Промените дозволе за фајлове да бисте их учинили нечитљивим. Потребан root приступ. Процедура је моментална.</string>
     <string name="filehider_obfuscate_description">Замаглите имена фајлова и потписе фајлова. Није потребан root приступ. Може потрајати неко време због обраде.</string>
     <string name="filehider_nomedia">NoMedia режим</string>
     <string name="filehider_none">Онемогућено</string>
@@ -193,4 +193,6 @@
     <string name="disable_toasts_description">Без приказивања искачућих порука током радњи скривања или откривања.</string>
     <string name="apphider_not_activated_title">Сакривање апликација неактивно</string>
     <string name="apphider_not_activated_msg">Активирајте режим сакривања апликација да бисте омогућили ову функцију.</string>
+    <string name="invert_tile_color">Обрни боју плочице</string>
+    <string name="invert_tile_color_description">Подразумевано, плочица за брза подешавања се појављује активирана када је ваша приватност видљива. Укључите/искључите ову опцију да бисте преокренули понашање.</string>
 </resources>

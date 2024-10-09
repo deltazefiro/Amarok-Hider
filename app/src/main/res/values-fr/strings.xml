@@ -190,4 +190,5 @@
     <string name="enable_x_hide">Activer XHide</string>
     <string name="enable_x_hide_description">Statut : %s</string>
     <string name="xposed_inactive">Module inactif. Vérifier le gestionnaire Xposed ?</string>
+    <string name="apphider_not_activated_msg">Activer un mode de dissimulation pour activer cette fonctionnalité.</string>
 </resources>
