@@ -46,7 +46,7 @@
     <string name="more_settings">Περαιτέρω ρυθμίσεις</string>
     <string name="apply_on_restart">Κάντε επανεκκίνηση για να αποθηκευτούν οι αλλαγές σας.</string>
     <string name="show_debug_info">Πληροφορίες εκσφαλμάτωσης</string>
-    <string name="debug_info_description">Εμφανίσεις πληροφορίες που βοηθούν στην επιδιόρθωση προβλημάτων.</string>
+    <string name="debug_info_description">Εμφανίζει πληροφορίες που βοηθούν στην επιδιόρθωση προβλημάτων.</string>
     <string name="invalid_dsm_provider">DSM: Μη έγκυρος πάροχος DSM. Έχεις εγκαταστήσει και ενεργοποιήσει τον πάροχο DSM στην συσκευή σου;</string>
     <string name="folder_selector_hints">Συμβουλές για την επιλογή φακέλων:
 \n\t 1. Πάτα \"Χρήση Αυτού του Φακέλου\" για να επιλέξεις τον φάκελο
