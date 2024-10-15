@@ -9,4 +9,12 @@
     <string name="cancel">रद्द</string>
     <string name="set_hide_apps">लुकाउने एप तय गर्नुहोस</string>
     <string name="hidden_status">लुकाईएको</string>
+    <string name="usage_description">मद्दत केन्द्र खोल्नुहोस्।</string>
+    <string name="more_settings">थप सेटिङहरु</string>
+    <string name="unhidden_toast">लुकाइएको छैन। सावधान रहनुहोस्।</string>
+    <string name="show_debug_info">डिबग जानकारी</string>
+    <string name="add_hide_files">लुकेको फोल्डर थप्नुहोस्</string>
+    <string name="remove_hide_path">लुकेको फोल्डर हटाउने हो?</string>
+    <string name="remove_hide_path_description">लुकेको सूचीबाट \'%s\' फोल्डर हटाउने हो?</string>
+    <string name="confirm">पुष्टि गर्नुहोस्</string>
 </resources>
