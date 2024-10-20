@@ -6,7 +6,7 @@ buildscript {
         maven { url 'https://api.xposed.info'}
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.5.1'
+        classpath 'com.android.tools.build:gradle:8.5.2'
         classpath 'dev.rikka.tools.autoresconfig:gradle-plugin:1.2.2'
     }
 }
