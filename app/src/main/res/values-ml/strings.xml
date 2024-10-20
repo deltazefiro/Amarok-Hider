@@ -13,4 +13,26 @@
     <string name="unhide">മറയ്ക്കുക</string>
     <string name="visible_status">ദൃശ്യമാണ്</string>
     <string name="ok">ശരി</string>
+    <string name="more_settings">കൂടുതൽ ക്രമീകരണങ്ങൾ</string>
+    <string name="apply_on_restart">പുതിയ മാറ്റങ്ങൾ പ്രയോഗിക്കാൻ ആപ്പ് റീസ്‌റ്റാർട്ട് ചെയ്യുക.</string>
+    <string name="about">കുറിച്ച്</string>
+    <string name="storage_permission_request_message">ഫയലുകൾ മറയ്ക്കാൻ Amarok എക്‌സ്‌റ്റേണൽ സ്റ്റോറേജിലേക്ക് ആക്‌സസ് അനുവദിക്കുക.</string>
+    <string name="set_hide_files">മറഞ്ഞിരിക്കുന്ന ഫയലുകൾ സജ്ജമാക്കുക</string>
+    <string name="enable_analytics">അജ്ഞാത വിശകലനം</string>
+    <string name="usage_description">സഹായ കേന്ദ്രം തുറക്കുക.</string>
+    <string name="switch_app_hider">ആപ്പ്-ഹൈഡിംഗ് മോഡ് മാറുക</string>
+    <string name="current_mode">നിലവിലെ മോഡ്: %s</string>
+    <string name="switch_file_hider">ഫയൽ മറയ്ക്കൽ മോഡ് മാറുക</string>
+    <string name="hidden_toast">മറച്ചിരിക്കുന്നു. കോക്ക്-എ-ഡൂഡിൽ-ഡൂ~!</string>
+    <string name="unhidden_toast">മറച്ചിട്ടില്ല. ശ്രദ്ധാലുവായിരിക്കുക.</string>
+    <string name="show_debug_info">ഡീബഗ് വിവരം</string>
+    <string name="debug_info_description">പ്രശ്‌നങ്ങൾ പരിഹരിക്കാൻ സഹായിക്കുന്ന വിവരങ്ങൾ പ്രദർശിപ്പിക്കുന്നു.</string>
+    <string name="remove_hide_path_description">മറഞ്ഞിരിക്കുന്ന പട്ടികയിൽ നിന്ന് ഫോൾഡർ നീക്കം ചെയ്യണോ?</string>
+    <string name="invalid_dsm_provider">DSM: അസാധുവായ DSM ദാതാവ്. നിങ്ങളുടെ ഉപകരണത്തിൽ DSM ദാതാവ് ഇൻസ്റ്റാൾ ചെയ്യുകയും സജീവമാക്കുകയും ചെയ്തിട്ടുണ്ടോ?</string>
+    <string name="hide_app_failed_admin_inactive">ആപ്പ് മറയ്ക്കാൻ കഴിഞ്ഞില്ല: DSM ദാതാവ് സജീവമല്ല.</string>
+    <string name="add_hide_files">മറഞ്ഞിരിക്കുന്ന ഫോൾഡർ ചേർക്കുക</string>
+    <string name="remove_hide_path">മറഞ്ഞിരിക്കുന്ന ഫോൾഡർ നീക്കം ചെയ്യണോ?</string>
+    <string name="confirm">സ്ഥിരീകരിക്കുക</string>
+    <string name="not_local_storage_description">ഇത് പ്രാദേശിക ഫയലാണെന്നും വെർച്വൽ അല്ലെന്നും ഉറപ്പാക്കുക.</string>
+    <string name="help">സഹായം</string>
 </resources>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="apphider_none">Malŝaltita</string>
+    <string name="unhide">Malkaŝi</string>
+    <string name="hide">Kaŝi</string>
+    <string name="cancel">Nuligi</string>
+    <string name="usage">Uzado</string>
+    <string name="confirm">Konfirmi</string>
+    <string name="help">Helpo</string>
+    <string name="more_settings">Pliaj agordoj</string>
+    <string name="check_update_on_start">Aŭtomate ĝisdatigi</string>
+    <string name="never">Neniam</string>
+    <string name="view_github_repo">GitHub-deponejo</string>
+    <string name="enable_x_hide">Ŝalti XHide</string>
+    <string name="enable_x_hide_description">Stato: %s</string>
+    <string name="auto_hide">Aŭtomate kaŝi</string>
+    <string name="follow_system">(laŭ sistemo)</string>
+    <string name="enable_dynamic_color">Dinamika koloro</string>
+    <string name="visible_status">Malkaŝita</string>
+    <string name="ok">Bone</string>
+    <string name="update">Ĝisdatigi</string>
+    <string name="hidden_status">Kaŝita</string>
+    <string name="about">Pri</string>
+    <string name="processing">Traktante…</string>
+    <string name="security">Sekureco</string>
+    <string name="search">Serĉi</string>
+    <string name="unlock">Malŝlosi</string>
+    <string name="filter">Filtri</string>
+    <string name="language">Lingvo</string>
+    <string name="warning">AVERTO</string>
+    <string name="appearance">Aspekto</string>
+    <string name="notification">Sciigo</string>
+    <string name="password">Pasvorto</string>
+    <string name="app_name_calendar">Kalendaro</string>
+    <string name="filehider_none">Malŝaltita</string>
+    <string name="welcome_title">Bonvenon</string>
+</resources>

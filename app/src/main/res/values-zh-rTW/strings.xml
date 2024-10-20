@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hide">隱藏</string>
+    <string name="unhide">取消隱藏</string>
+    <string name="about">關於</string>
+    <string name="cancel">取消</string>
+    <string name="set_hide_apps">設定隱藏應用程式</string>
+    <string name="setting_not_ava_when_hidden">此設定僅在取消隱藏後可用</string>
+    <string name="ok">確認</string>
+    <string name="storage_permission_denied">儲存權限被拒絕。文件隱藏不可用</string>
+    <string name="apphider_not_ava">應用程式隱藏不可用。檢查「更多設定」→「切換套用隱藏模式」。</string>
+    <string name="show_about">顯示關於</string>
+    <string name="enable_analytics">匿名分析</string>
+    <string name="analytics_description">向開發人員發送匿名崩潰報告進行分析。</string>
+    <string name="usage">使用方法</string>
+    <string name="switch_app_hider">切換應用程式的隱藏模式</string>
+    <string name="current_mode">目前模式 : %s</string>
+    <string name="more_settings">更多設定</string>
+    <string name="switch_file_hider">切換文件隱藏模式</string>
+    <string name="hidden_toast">隱藏了。咕咕咕~！</string>
+    <string name="show_debug_info">偵錯資訊</string>
+    <string name="debug_info_description">顯示有助於解決問題的資訊。</string>
+    <string name="unhidden_toast">注意。未隱藏。</string>
+    <string name="add_hide_files">選擇隱藏資料夾</string>
+    <string name="not_local_storage_description">請確認您選擇的檔案位於本機儲存，且不是虛擬資料夾。</string>
+    <string name="help">幫助</string>
+    <string name="path_duplicated">隱藏路徑重複</string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>
+\n
+\n 包含
+\n
+\n<u>\'%2$s\'</u></string>
+    <string name="no_apphider">請在\"更多設定\"中選擇工作模式。</string>
+    <string name="root_not_ava">無法取得root權限。</string>
+    <string name="check_update">檢查更新</string>
+    <string name="check_update_description">目前版本: Amarok %s</string>
+    <string name="update_ava">有可用更新</string>
+    <string name="update_description">發現新版本: Amarok %s (%d)。</string>
+    <string name="no_update_ava">無可用更新。</string>
+    <string name="manually_set_path">手動設定隱藏路徑</string>
+    <string name="manually_set_path_description">注意：手動輸入路徑將跳過可用性偵測。請確保您輸入的位置存在且有權存取。</string>
+    <string name="view_github_repo">Github 倉庫</string>
+    <string name="shizuku_pre_v11">Shizuku 版本過低: 請升級您的 Shizuku 到至少 v11。</string>
+    <string name="shizuku_not_working">Shizuku 服務不可用。請在您的設備上安裝 Shizuku 或 Sui。</string>
+    <string name="shizuku_hidden_api_error">隱藏應用程式失敗: 無法取得 IPackageManager 介面。</string>
+    <string name="apphider_not_ava_title">應用隱藏器無效</string>
+    <string name="dsm_permission_denied">DSM: 權限請求被拒絕</string>
+    <string name="apphider_none">停用</string>
+    <string name="apphider_none_description">停用應用程式隱藏功能。</string>
+    <string name="apphider_root">Root 模式</string>
+    <string name="apphider_root_description">透過 Root 隱藏應用程式。
+\n若您的裝置已 Root 但未安裝 Xposed 框架（如 LSPosed、EdXposed 等），則建議使用此模式。需要 Root 權限。</string>
+    <string name="apphider_shizuku">Shizuku (Shu) 模式</string>
+    <string name="apphider_shizuku_description">透過 Shizuku(或 Sui) API 隱藏應用程式。
+\n若您的裝置使用 Android 11+ 或已安裝了 Xposed 框架，則建議使用此模式。您需要先安裝並啟動 Shizuku 或 Sui 以使用此模式。
+\n</string>
+    <string name="apphider_dsm">DSM 模式 [已停止開發]</string>
+    <string name="obfuscate_filename">混淆檔案名稱</string>
+    <string name="obfuscate_file_header">混淆文件頭</string>
+    <string name="obfuscate_file_header_description">透過混淆文件頭部內容使文件損壞，即使文件透過手動選擇開啟方式仍無法開啟。對壓縮檔案與文字檔案無效。開啟此可能將降低隱藏速度。</string>
+    <string name="filename_and_header">混淆檔案名稱與檔案頭</string>
+    <string name="obfuscate_text_file">文字文檔完全混淆</string>
+    <string name="obfuscate_text_file_description">由於僅混淆文件頭對文字檔案無效，啟用此選項將對文字檔案進行完全混淆。會影響隱藏速度。</string>
+    <string name="obfuscate_text_file_description_enhanced">不建議使用。增強版本的混淆文字文件，對許多疑似文字的文件也進行混淆。可能明顯減慢隱藏速度。</string>
+    <string name="join_developer_channel">Telegram 群組</string>
+    <string name="processing">運行中…</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="alert_permission_denied">懸浮窗權限取得失敗。</string>
+    <string name="alert_permission_request_title">懸浮窗權限請求</string>
+    <string name="alert_permission_request_message">需要懸浮窗權限。請在設定中找到 Amarok 並授予其權限。</string>
+    <string name="misc">雜項。</string>
+    <string name="security">安全</string>
+    <string name="panic_button">老闆鍵</string>
+    <string name="panic_button_description">顯示懸浮球用於快速隱藏。懸浮球僅在非隱藏狀態下可見。</string>
+    <string name="failed_to_open_doc_tree">無法開啟文件選擇器</string>
+    <string name="failed_to_open_doc_tree_description">您的系統似乎沒有預設檔案管理器？請長按 “選擇隱藏資料夾” 按鍵手動設定路徑。</string>
+    <string name="search">搜尋</string>
+    <string name="notification_channel_name">快速隱藏服務</string>
+    <string name="quick_hide">快速隱藏</string>
+    <string name="notification">通知</string>
+    <string name="quick_hide_notification_description">在未隱藏狀態下顯示通知用來提醒使用者。</string>
+    <string name="notification_permission_request_title">需要通知權限</string>
+    <string name="notification_permission_request_message">快速隱藏服務需要通知權限來運作。</string>
+    <string name="notification_permission_denied">取得通知權限失敗。</string>
+    <string name="quick_hide_notification_title">未隱藏</string>
+    <string name="invalid_action">無效的 Intent: %s</string>
+    <string name="password">密碼</string>
+    <string name="unlock_required">應用鎖</string>
+    <string name="app_lock">應用鎖</string>
+    <string name="app_lock_description">打開 Amarok 時需輸入密碼解鎖。</string>
+    <string name="confirm_password">確認密碼</string>
+    <string name="set_password">設定密碼</string>
+    <string name="password_length_error">密碼長度需在 3 ~ 15 個字元之間。</string>
+    <string name="password_mismatch_error">密碼不符。</string>
+    <string name="biometric_auth_description">採用裝置的生物驗證（指紋感應器或人臉辨識）來解鎖 Amarok。</string>
+    <string name="dhizuku_pre_v5">Dhizuku: 版本过低。请将 Dhizuku 升级到 v5.0 以上。</string>
+    <string name="dhizuku_not_init">Dhizuku: 服務無效。請確定您的設備已安裝 Dhizuku 並成功啟用。</string>
+    <string name="apphider_dhizuku">Dhizuku 模式</string>
+    <string name="apphider_dhizuku_description">[實驗性功能] 透過 Dhizuku API 隱藏應用。
+\nDhizuku 透過共享裝置管理員權限，賦予無 Root 裝置應用隱藏的能力。需要安裝並啟動 Dhizuku。</string>
+    <string name="force_unhide">強制取消隱藏</string>
+    <string name="force_unhide_description">嘗試恢復所有隱藏的檔案與應用程式。僅在出現問題時使用。</string>
+    <string name="performing_force_unhide">正在嘗試取消隱藏。請稍後。</string>
+    <string name="filter">篩選</string>
+    <string name="display_system_apps">顯示系統應用</string>
+    <string name="language">語言</string>
+    <string name="follow_system">（跟隨系統）</string>
+    <string name="invalid_path">無效路徑。</string>
+    <string name="participate_translation_description">幫我們翻譯 Amarok。</string>
+    <string name="enable_dynamic_color">動態取色</string>
+    <string name="dynamic_color_description">啟用動態取色主題。</string>
+    <string name="app_name_calendar">日曆</string>
+    <string name="disguise">應用偽裝</string>
+    <string name="calendar_about">極簡日曆 | by @koramA</string>
+    <string name="spotlight_do_not_show_again">不再提示</string>
+    <string name="filehider_not_ava_title">無效的文件隱藏器</string>
+    <string name="filehider_none">停用</string>
+    <string name="filehider_none_description">停用檔案隱藏功能。</string>
+    <string name="filehider_obfuscate">混淆模式</string>
+    <string name="filehider_chmod">權限變更模式</string>
+    <string name="filehider_chmod_description">透過更改檔案權限隱藏。需要 Root。可瞬間完成隱藏。</string>
+    <string name="filehider_nomedia">NoMedia 模式</string>
+    <string name="welcome_title">歡迎</string>
+    <string name="welcome_msg">Amarok 是一款輕量級隱私保護工具，一鍵隱藏你的隱私文件和應用程式。本程式完全免費開源。
+\n
+\n請注意 Amarok 並非加密程序，而只是隱藏程序。請勿使用 Amarok 保護機密文件與應用程式。
+\n
+\n<u>免責聲明：切勿將 Amaork 用於重要文件或應用的隱藏。您使用 Amaork 所導致的一切損失和後果均由您自行承擔。 </u></string>
+    <string name="warning">警告</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">有報告指出三星用戶使用此模式可能導致裝置無法啟動。 </font> 詳見 GitHub #105。請謹慎使用。 </b></string>
+    <string name="auto_hide">自動隱藏</string>
+    <string name="auto_hide_description">关闭屏幕后自动隐藏。</string>
+    <string name="auto_hide_delay">自動隱藏延遲</string>
+    <string name="auto_hide_delay_description">息屏多少分鐘後自動隱藏。</string>
+    <string name="block_screenshots">停用截圖</string>
+    <string name="enable_x_hide">啟用 XHide</string>
+    <string name="enable_x_hide_description">狀態：%s</string>
+    <string name="xposed_active">已激活，Xposed API %d</string>
+    <string name="xposed_inactive">模組未激活，請檢查 Xposed 管理器。</string>
+    <string name="disable_toasts">禁用提示</string>
+    <string name="disable_toasts_description">停用隱藏或解除隱藏時的提示（Toast）。</string>
+    <string name="apphider_not_activated_title">應用程式隱藏未激活</string>
+    <string name="apphider_not_activated_msg">請選擇一個套用隱藏模式以啟用此功能。</string>
+    <string name="hidden_status">隱藏的</string>
+    <string name="storage_permission_request_title">需要儲存權限</string>
+    <string name="visible_status">可見的</string>
+    <string name="set_hide_files">設定隱藏文件</string>
+    <string name="storage_permission_request_message">授予 Amarok 存取外部儲存的權限以隱藏檔案。</string>
+    <string name="about_description">顯示有關應用程式的資訊。</string>
+    <string name="usage_description">打開幫助中心。</string>
+    <string name="apply_on_restart">重新啟動應用程式以應用新的配置。</string>
+    <string name="invalid_dsm_provider">DSM: DSM 管理員無效。您是否在裝置上安裝了 DSM 管理員應用程式並以裝置管理員身分啟動它？</string>
+    <string name="hide_app_failed_admin_inactive">隱藏應用程式失敗：DSM 管理員未啟動。</string>
+    <string name="folder_selector_hints">文件選擇器使用說明：
+\n\t1. 點選 \'使用此資料夾\' 以選擇隱藏此資料夾
+\n\t2. Amarok僅支援隱藏本地儲存中的文件
+\n\t（您可以在選擇器中從螢幕左端右滑開啟本機儲存）</string>
+    <string name="remove_hide_path">移除隱藏資料夾？</string>
+    <string name="remove_hide_path_description">確認將 \'%s\' 從文件隱藏清單中移除？</string>
+    <string name="confirm">確定</string>
+    <string name="not_local_storage">不支援此資料夾</string>
+    <string name="check_update_on_start">自動更新</string>
+    <string name="check_update_on_start_description">啟動時檢查更新。</string>
+    <string name="update">更新</string>
+    <string name="never">不再提示</string>
+    <string name="shizuku_permission_denied">Shizuku: 權限請求被拒絕</string>
+    <string name="shizuku_service_not_running">Shizuku 服務未運作。</string>
+    <string name="obfuscate_text_file_enhanced">文字文件完全混淆 - 增強</string>
+    <string name="apphider_dsm_description">透過共享設備管理員（DSM）隱藏應用程式。
+\n若您的裝置使用 Android 10 或以下且未 Root，則建議使用此模式。此模式已經停止開發，可能無法正常運作。您需要先安裝 冰箱 或 小黑屋 並使用設備管理員模式將其啟動以使用此模式。</string>
+    <string name="learn_more">詳細指南</string>
+    <string name="filename_only">僅混淆檔案名稱</string>
+    <string name="option_unava_when_hidden">請先取消隱藏以變更此設定。</string>
+    <string name="obfuscate_filename_description">混淆檔案名稱以及檔案後綴使檔案無法打開，但若指定開啟方式後仍可開啟。此為檔案隱藏的基礎功能，無法停用。</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="quick_hide_notification_content">您的隱私未隱藏。點擊進行隱藏。</string>
+    <string name="workmode">工作模式</string>
+    <string name="in_app_update_failed">新更新可用但自動更新失敗。請手動更新。</string>
+    <string name="unlock">解鎖</string>
+    <string name="password_incorrect">密碼錯誤。</string>
+    <string name="biometric_auth">生物驗證</string>
+    <string name="dhizuku_permission_denied">Dhizuku: 權限請求被拒絕</string>
+    <string name="force_unhide_confirm_msg">嘗試恢復所有隱藏的文件與應用？
+\n
+\n<b>警告：</b>此功能可能導致檔案損壞。請僅在無法正常取消隱藏時使用。</string>
+    <string name="participate_translation">參與翻譯</string>
+    <string name="disguise_description">將 Amarok 偽裝成日曆應用。</string>
+    <string name="close_disguise_spotlight_tip">長按<font fgcolor="#FCCA3E"><b>年份數字</b></font>進入 Amarok。</string>
+    <string name="filehider_obfuscate_description">透過混淆檔案名稱和檔案簽名隱藏。不需要 Root。處理可能需要一些時間。</string>
+    <string name="filehider_nomedia_description">僅在需隱藏的資料夾中加入 .nomedia 檔案。不需要 Root。</string>
+    <string name="appearance">外觀</string>
+    <string name="block_screenshots_description">在 Amarok 內停用截圖，同時將 Amarok 從多任務視圖中模糊。</string>
+    <string name="xposed_desc">允許 Amarok 讓應用程式不出現在系統選單中。</string>
+    <string name="x_hide_description">使用 Xposed 增強應用程式隱藏。啟用後隱藏的應用程式在系統選單與其他應用程式中不可見。需要 Xposed API ≥ 93。</string>
+</resources>

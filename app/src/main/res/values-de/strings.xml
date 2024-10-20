@@ -43,7 +43,7 @@
     <string name="apphider_dsm">DSM-Modus [Veraltet]</string>
     <string name="obfuscate_filename">Dateiname verschleiern</string>
     <string name="add_hide_files">Versteckter-Ordner hinzufügen</string>
-    <string name="apphider_not_ava_title">Nicht verfügbar AppHider</string>
+    <string name="apphider_not_ava_title">Verstecken von Apps inaktiv</string>
     <string name="dsm_permission_denied">DSM: Erlaubnis verweigert</string>
     <string name="remove_hide_path">Pfad verbergen entfernen\?</string>
     <string name="root_not_ava">Root-Zugriff nicht möglich.</string>
@@ -77,7 +77,7 @@
     <string name="option_unava_when_hidden">Optionen sind bis zum Einblenden nicht verfügbar.</string>
     <string name="obfuscate_text_file">Textdatei vollständig verschleiern</string>
     <string name="filename_and_header">Dateiname + Köpfzeile</string>
-    <string name="obfuscate_filename_description">Den Dateinamen für Menschen unlesbar machen. Die Grundfunktion von FileHider. Kann nicht deaktiviert werden.</string>
+    <string name="obfuscate_filename_description">Macht den Dateinamen für Menschen unlesbar. Eine Grundfunktion zum Verstecken von Dateien, die nicht deaktiviert werden kann.</string>
     <string name="security">Sicherheit</string>
     <string name="obfuscate_text_file_description_enhanced">Nicht empfohlen. Eine erweiterte Version von \"Vollständige Verschleierung von Textdateien\". Verwenden Sie diese Option nur, wenn sich die Standardmethode als unwirksam erweist. Sie verlangsamt den Verbergungsprozess drastisch.</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
@@ -89,7 +89,7 @@
     <string name="in_app_update_failed">Neues Aktualisierung verfügbar, konnte aber nicht abgerufen werden. Bitte aktualisieren Sie manuell.</string>
     <string name="obfuscate_file_header">Dateiköpf verschleiern</string>
     <string name="obfuscate_file_header_description">Verschleiern Sie die Dateisignatur in der Dateiköpf, um die Datei \"beschädigt\" zu machen. Dies verhindert, dass die Datei durch die manuelle Auswahl von \"Öffnen mit\" geöffnet wird, kann aber den Prozess des Ausblendens der Datei verlangsamen.</string>
-    <string name="remove_hide_path_description">Sind Sie sicher, dass Sie den Pfad \'%s\' aus dem Versteck entfernen müssen?</string>
+    <string name="remove_hide_path_description">Soll der Pfad \'%s\' aus dem Versteck entfernt werden?</string>
     <string name="confirm">Bestätigen</string>
     <string name="not_local_storage">Nicht unterstütztes Verzeichnis</string>
     <string name="not_local_storage_description">Bitte stellen Sie sicher, dass es sich um einen lokalen Pfad handelt und nicht um einen virtuellen.</string>
@@ -100,7 +100,7 @@
 \nenthält
 \n
 \n<u>\'%2$s\'</u></string>
-    <string name="obfuscate_text_file_description">Experimentelle Funktion. Die Obfuskierung von Dateiköpfen hat keine Auswirkungen auf Textdateien. Wenn Sie diese Funktion aktivieren, werden Textdateien vollständig verschleiert. Sie verlangsamt den Verbergungsprozess bis zu einem gewissen Grad.</string>
+    <string name="obfuscate_text_file_description">Das Verschleiern von Dateiheadern hat keine Auswirkungen auf Textdateien. Wenn Sie diese Funktion aktivieren, werden Textdateien vollständig verschleiert.</string>
     <string name="obfuscate_text_file_enhanced">Textdatei vollständig verschleiern - Erweitert</string>
     <string name="join_developer_channel">Entwickler-Kanal beitreten</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
@@ -189,4 +189,10 @@
     <string name="x_hide_description">Verwendung des Xposed-Moduls zur Verbesserung des Ausblendens von Apps. Versteckte Apps sind nicht mehr in den Einstellungen oder anderen Apps sichtbar. Xposed API ≥ 93 Erforderlich.</string>
     <string name="xposed_active">Aktiv, Xposed API %d</string>
     <string name="xposed_inactive">Modul inaktiv. Xposed Manager überprüfen?</string>
+    <string name="disable_toasts">Benachrichtigungen deaktivieren</string>
+    <string name="disable_toasts_description">Zeige keine Pop-Up-Benachrichtigungen während des Versteckens oder Aufdeckens.</string>
+    <string name="apphider_not_activated_title">Verstecken von Apps inaktiv</string>
+    <string name="apphider_not_activated_msg">Aktivieren Sie das Verstecken von Apps, um dieses Feature zu benutzen.</string>
+    <string name="invert_tile_color">Kachelfarbe umkehren</string>
+    <string name="invert_tile_color_description">Standardmäßig wird die Kachel für die Schnelleinstellungen aktiviert, wenn Ihre Privatsphäre sichtbar ist. Schalten Sie diese Option um, um das Verhalten umzukehren.</string>
 </resources>
