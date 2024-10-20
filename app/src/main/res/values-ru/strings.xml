@@ -37,22 +37,22 @@
     <string name="apphider_dsm_description">Скрытие с помощью Delegated-Scopes-Manager.
 \nРекомендуется только при наличии Android 10 или старее и отсутствии root-прав. Может работать со сбоями. Необходим Icebox (или StopAPP) в режиме администратора устройства.</string>
     <string name="filename_only">Только имена файлов</string>
-    <string name="obfuscate_text_file_description">Экспериментальная функция. Запутывание заголовка файла не даёт нужного эффекта на текстовых файлах. Эта функция полностью запутывает текстовый файл. Замедляет процесс скрытия.</string>
-    <string name="obfuscate_text_file_description_enhanced">Не рекомендуется. Расширенная версия \"Полной обфускации текстовых файлов\". Используйте эту функцию, если обычный метод недостаточно эффективен. Очень сильно замедляет скрытие.</string>
-    <string name="debug_info_description">Показывает информацию, помогающую устранить проблемы.</string>
+    <string name="obfuscate_text_file_description">Обфускация заголовков файлов не влияет на текстовые файлы. Включение этой функции приведет к полной обфускации текстовых файлов.</string>
+    <string name="obfuscate_text_file_description_enhanced">Не рекомендуется. Расширенная версия опции \"Полностью обфусцировать текстовые файлы\". Используйте эту опцию только в том случае, если стандартный метод оказался неэффективным. Значительно замедляет процесс скрытия.</string>
+    <string name="debug_info_description">Отображает информацию, помогающую устранить неполадки.</string>
     <string name="add_hide_files">Добавить папку для скрытия</string>
     <string name="folder_selector_hints">Подсказки:
 \n\t 1. Нажмите «Использовать эту папку», чтобы выбрать папку.
 \n\t 2. Всегда выбирайте файл на устройстве
 \n\t(Проведите пальцем от правого края экрана, чтобы открыть локальные файлы)</string>
     <string name="remove_hide_path">Убрать папку из скрытия\?</string>
-    <string name="remove_hide_path_description">Удалить папку \'%s\' из скрытия?</string>
+    <string name="remove_hide_path_description">Удалить папку \'%s\' из списка скрытых?</string>
     <string name="confirm">Подтвердить</string>
     <string name="not_local_storage">Папка не поддерживается</string>
     <string name="not_local_storage_description">Убедитесь, что это локальный файл, а не виртуальный.</string>
     <string name="help">Помощь</string>
     <string name="no_apphider">Выберите режим скрытия приложений в настройках.</string>
-    <string name="root_not_ava">Невозможно получить рут-доступ.</string>
+    <string name="root_not_ava">Не удалось получить root-доступ.</string>
     <string name="check_update_on_start">Автоматическое обновление</string>
     <string name="check_update_on_start_description">Проверять наличие новых версий Amarok при открытии приложения.</string>
     <string name="check_update">Проверить наличие обновлений</string>
@@ -75,17 +75,17 @@
     <string name="apphider_dsm">Режим DSM</string>
     <string name="learn_more">Руководство по настройке</string>
     <string name="obfuscate_filename">Обфускация имён файлов</string>
-    <string name="obfuscate_filename_description">Делает названия файлов нечитаемым для человека. Базовая функция скрытия файлов. Невозможно отключить.</string>
+    <string name="obfuscate_filename_description">Делает название файла нечитаемым. Основная функция скрытия файлов, которую нельзя отключить.</string>
     <string name="obfuscate_file_header">Обфускация заголовков файлов</string>
-    <string name="obfuscate_file_header_description">Запутывает подпись файла в заголовке, чтобы файл выглядел как повреждённый. Предотвращает открытие файла через \"Открыть с помощью...\", но замедляет процесс скрытия файлов.</string>
+    <string name="obfuscate_file_header_description">Обфусцирует подпись файла в его заголовке, чтобы файл казался поврежденным. Предотвращает открытие файла вручную с помощью \"Открыть с помощью\", но может замедлить процесс скрытия.</string>
     <string name="filename_and_header">Имя файла + Заголовок</string>
     <string name="obfuscate_text_file">Полная обфускация текстовых файлов</string>
     <string name="obfuscate_text_file_enhanced">Полная обфускация текстовых файлов - Расширенная</string>
     <string name="join_developer_channel">Группа в Telegram</string>
     <string name="processing">Обработка…</string>
     <string name="search">Поиск</string>
-    <string name="alert_permission_request_message">Плавающей кнопке требуется разрешение на создание всплывающих окон. Пожалуйста, найдите Amarok в меню настроек и предоставьте это разрешение.</string>
-    <string name="panic_button_description">Отображение плавающей кнопки, используемой для скрытия приложений и файлов в экстренных случаях. Она отображается поверх всех других приложений. Кнопка отображается только в нескрытом состоянии.</string>
+    <string name="alert_permission_request_message">Плавающей кнопке требуется разрешение на создание всплывающих окон. Пожалуйста, дайте это разрешение в меню настроек Amarok.</string>
+    <string name="panic_button_description">Отображает плавающую кнопку для быстрого скрытия приложений и файлов в экстренных случаях. Эта кнопка отображается поверх всех остальных приложений, когда Amarok не скрыт.</string>
     <string name="invalid_dsm_provider">DSM: недействительный поставщик DSM. Вы установили и активировали поставщика DSM на своем устройстве\?</string>
     <string name="hide_app_failed_admin_inactive">Не удалось скрыть приложение: поставщик DSM не активен.</string>
     <string name="path_duplicated">Зациклить скрытую папку</string>
@@ -95,22 +95,22 @@
 \n
 \n<u>\'%2$s\'</u></string>
     <string name="shizuku_permission_denied">Shizuku: В доступе отказано</string>
-    <string name="apphider_not_ava_title">Недоступный режим скрытия приложения</string>
+    <string name="apphider_not_ava_title">Приложение скрывает неактивность</string>
     <string name="alert_permission_denied">Отказано в разрешении на отображение поверх других приложений.</string>
     <string name="alert_permission_request_title">Требуется разрешение на создание всплывающих окон</string>
     <string name="workmode">Режим работы</string>
     <string name="misc">Разное.</string>
     <string name="security">Безопасность</string>
     <string name="panic_button">Кнопка паники</string>
-    <string name="in_app_update_failed">Доступна новая версия, но ее не удалось получить. Пожалуйста, обновите вручную.</string>
+    <string name="in_app_update_failed">Доступна новая версия, но загрузка не удалась. Пожалуйста, обновите вручную.</string>
     <string name="failed_to_open_doc_tree">Не удалось открыть системный файл-пикер</string>
-    <string name="failed_to_open_doc_tree_description">Ой! В вашей системе нет файлового менеджера по умолчанию. Нажмите и удерживайте кнопку «Добавить скрытую папку» и введите путь вручную.</string>
+    <string name="failed_to_open_doc_tree_description">Упс! В вашей системе отсутствует файловый менеджер по умолчанию. Пожалуйста, нажмите кнопку \"Добавить скрытую папку\" и введите путь вручную.</string>
     <string name="notification_channel_name">Служба быстрого скрытия</string>
     <string name="quick_hide">Быстрое скрытие</string>
     <string name="notification">Уведомление</string>
-    <string name="quick_hide_notification_description">Показывать постоянное уведомление для оповещения пользователей, когда скрытие отключено.</string>
+    <string name="quick_hide_notification_description">Отображает постоянное уведомление для оповещения пользователей, когда оно не скрыто.</string>
     <string name="notification_permission_request_title">Требуется разрешение на уведомления</string>
-    <string name="notification_permission_request_message">Для работы службы быстрого скрытия необходимо разрешение на уведомление.</string>
+    <string name="notification_permission_request_message">Для работы службы QuickHide необходимо разрешение на уведомление.</string>
     <string name="notification_permission_denied">В разрешении на уведомление отказано.</string>
     <string name="quick_hide_notification_title">Конфиденциальность не защищена</string>
     <string name="quick_hide_notification_content">Ваша конфиденциальность не скрыта. Нажмите, чтобы скрыть.</string>
@@ -137,7 +137,7 @@
     <string name="participate_translation">Поучаствовать в переводе</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Некоторые пользователи Samsung сообщали, что использование скрытия файлов при помощи режима Chmod приводит к сбоям в загрузке их устройств.</font> Посмотрите задачу (issue) #105 для более детальной информации. Используйте на свой страх и риск.</b></string>
     <string name="warning">ВНИМАНИЕ</string>
-    <string name="disguise_description">Маскировать Amarok под календарь.</string>
+    <string name="disguise_description">Замаскируйте Amarok под приложение-календарь.</string>
     <string name="calendar_about">Чистый Календарь | от @koramA</string>
     <string name="disguise">Маскировка приложения</string>
     <string name="enable_dynamic_color">Динамический цвет</string>
@@ -152,7 +152,7 @@
     <string name="filehider_none_description">Отключить скрытие файлов.</string>
     <string name="filehider_obfuscate">Режим Обфускации</string>
     <string name="filehider_chmod">Режим Chmod</string>
-    <string name="filehider_nomedia_description">Только добавлять к папкам .nomedia. Не требуется рут доступ.</string>
+    <string name="filehider_nomedia_description">Просто добавляет .nomedia в папки. Не требуется корневой доступ.</string>
     <string name="welcome_title">Добро пожаловать</string>
     <string name="unlock">Разблокировать</string>
     <string name="biometric_auth_description">Используйте биометрическую аутентификацию устройства для доступа к Amarok, если она доступна.</string>
@@ -168,17 +168,31 @@
     <string name="password_length_error">Пароль должен содержать от 3 до 15 символов.</string>
     <string name="biometric_auth">Биометрическая аутентификация</string>
     <string name="app_name_calendar">Календарь</string>
-    <string name="filehider_obfuscate_description">Обфусцировать названия файлов и их сигнатуры. Не требуется рут доступ. Может потребовать время на обработку.</string>
+    <string name="filehider_obfuscate_description">Обфусцируйте названия и сигнатуры файлов. Не требуется root-доступ. Может потребоваться некоторое время для обработки.</string>
     <string name="welcome_msg">Amarok — это бесплатный и свободный инструмент для скрытия приватных файлов &amp; приложений.
 \n
 \nПожалуйста, имейте ввиду, что Amarok — это не приложение для шифрования, а скорее инструмент для скрытия всякого. Мы настоятельно не рекомендуем использовать Amarok для защиты конфиденциальных файлов и приложений.
 \n
 \n<u>Дисклеймер: Amarok предоставляется без каких-либо гаррантий и условий. Пользователь всецело несёт ответственность за любой вред или последствия, которые могут последовать за использованием Amarok.</u></string>
-    <string name="filehider_chmod_description">Изменить права доступа к файлам, чтобы сделать их нечитаемыми. Требуется рут доступ. Процедура выполняется немедленно.</string>
+    <string name="filehider_chmod_description">Измените права доступа к файлам, чтобы сделать их нечитаемыми. Требуется корневой доступ. Процедура выполняется немедленно.</string>
     <string name="filehider_nomedia">Режим NoMedia</string>
     <string name="appearance">Внешний вид</string>
     <string name="auto_hide">Автоматическое скрытие</string>
     <string name="auto_hide_description">Автоматически скрывает после того, как экран был отключён.</string>
     <string name="auto_hide_delay">Задержка автоматического скрытия</string>
     <string name="auto_hide_delay_description">Длительность задержки в минутах до скрытия после отключения экрана.</string>
+    <string name="block_screenshots">Скриншоты блокировки</string>
+    <string name="block_screenshots_description">Блокируйте скриншоты в Amarok и размывайте их в списке недавних приложений.</string>
+    <string name="invert_tile_color">Инвертировать цвет плитки</string>
+    <string name="invert_tile_color_description">По умолчанию плитка быстрых настроек отображается активированной, когда видна ваша конфиденциальность. Переключите этот параметр, чтобы изменить поведение.</string>
+    <string name="x_hide_description">Использование Xposed для улучшения скрытия приложений. Скрытые приложения больше не будут видны в настройках и других приложениях. Требуется Xposed API ≥ 93.</string>
+    <string name="enable_x_hide">Включить XHide</string>
+    <string name="enable_x_hide_description">Статус: %s</string>
+    <string name="xposed_active">Активно, Xposed API %d</string>
+    <string name="xposed_inactive">Модуль неактивен. Проверьте менеджер Xposed?</string>
+    <string name="disable_toasts">Отключить тосты</string>
+    <string name="disable_toasts_description">Не показывать уведомления о тостах во время действий по скрытию или снятию с экрана.</string>
+    <string name="xposed_desc">Включите в Amarok функцию скрытия приложений из системных меню.</string>
+    <string name="apphider_not_activated_title">Приложение скрывает неактивность</string>
+    <string name="apphider_not_activated_msg">Активируйте режим скрытия приложений, чтобы включить эту функцию.</string>
 </resources>
