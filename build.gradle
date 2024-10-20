@@ -3,8 +3,7 @@ buildscript {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        // noinspection JcenterRepositoryObsolete
-        jcenter() // For providing `de.robv.android.xposed:api:82`
+        maven { url 'https://api.xposed.info'}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.5.1'
@@ -17,8 +16,7 @@ allprojects {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
-        // noinspection JcenterRepositoryObsolete
-        jcenter() // For providing `de.robv.android.xposed:api:82`
+        maven { url 'https://api.xposed.info'}
     }
 }
 
