@@ -10,7 +10,7 @@
     <string name="about_description">ആപ്പിനെ കുറിച്ചുള്ള വിവരങ്ങൾ കാണിക്കുന്നു.</string>
     <string name="hidden_status">മറച്ചിരിക്കുന്നു</string>
     <string name="cancel">റദ്ദാക്കുക</string>
-    <string name="unhide">മറയ്ക്കുക</string>
+    <string name="unhide">പ്രദർശിപ്പിക്കുക</string>
     <string name="visible_status">ദൃശ്യമാണ്</string>
     <string name="ok">ശരി</string>
     <string name="more_settings">കൂടുതൽ ക്രമീകരണങ്ങൾ</string>
@@ -35,4 +35,15 @@
     <string name="confirm">സ്ഥിരീകരിക്കുക</string>
     <string name="not_local_storage_description">ഇത് പ്രാദേശിക ഫയലാണെന്നും വെർച്വൽ അല്ലെന്നും ഉറപ്പാക്കുക.</string>
     <string name="help">സഹായം</string>
+    <string name="check_update_on_start_description">അപ്ലിക്കേഷൻ തുറക്കുമ്പോൾ പുതിയ അമരോക്ക് പതിപ്പുകൾക്കായി പരിശോധിക്കുക.</string>
+    <string name="check_update_description">ഇപ്പോഴത്തെ പതിപ്പ്: %s</string>
+    <string name="update_ava">പുതിയ പതിപ്പ് ലഭ്യമാണ്</string>
+    <string name="update_description">അമരോക്ക് %s (%d) ഡൗൺലോഡ് ചെയ്യാനും ഇൻസ്റ്റാൾ ചെയ്യാനും ലഭ്യമാണ്.</string>
+    <string name="manually_set_path_description">കരുതല്‍: നിങ്ങൾ കയ്യായി തിരഞ്ഞെടുക്കുന്നതായി ഉറപ്പുവരുത്തുക, കാരണം ഇത് സ്ഥിരീകരിച്ചിട്ടില്ല.</string>
+    <string name="view_github_repo">GitHub റെപ്പോസിറ്ററി</string>
+    <string name="shizuku_hidden_api_error">അപ്ലിക്കേഷൻ മറയ്ക്കാൻ കഴിയുന്നില്ല: IPackageManager API പ്രാപ്തമാക്കാനായില്ല.</string>
+    <string name="apphider_not_ava_title">അപ്ലിക്കേഷൻ മറയ്ക്കൽ സജീവമല്ല</string>
+    <string name="check_update">പുതുക്കലുകൾക്കായി പരിശോധിക്കുക</string>
+    <string name="no_update_ava">നിങ്ങൾ ഏറ്റവും പുതിയ പതിപ്പാണ് ഉപയോഗിക്കുന്നത്.</string>
+    <string name="shizuku_service_not_running">ഷിസുകു : സേവനം പ്രവർത്തിക്കുന്നില്ല.</string>
 </resources>
