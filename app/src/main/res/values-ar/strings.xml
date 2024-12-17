@@ -3,7 +3,7 @@
     <string name="visible_status">ظاهر</string>
     <string name="storage_permission_request_message">أعطي Amarok إذن الوصول للذاكرة الخارجية لإخفاء الملفات.</string>
     <string name="ok">حسنًا</string>
-    <string name="setting_not_ava_when_hidden">هذا الإعداد متوفر بعد الإظهار فقط</string>
+    <string name="setting_not_ava_when_hidden">هذا الإعداد متاح فقط بعد إلغاء إخفاء التطبيقات</string>
     <string name="about">حول</string>
     <string name="storage_permission_request_title">مطلوب أذن الوصول للذاكرة</string>
     <string name="unhide">إظهار</string>
