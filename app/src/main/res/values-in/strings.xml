@@ -57,7 +57,7 @@
     <string name="update_description">Amarok %s (%d) kini tersedia untuk diunduh dan diinstal.</string>
     <string name="invalid_dsm_provider">DSM: Penyedia DSM takvalid. Sudahkah penyedia DSM terinstal dan teraktivasi pada gawaimu?</string>
     <string name="dhizuku_not_init">Dhizuku: Layanan tidak tersedia. Pastikan bahwa kamu sudah menginstal dan mengaktivasi Dhizuku.</string>
-    <string name="performing_force_unhide">Sedang menjalankan mode \"Tampilkan Secara Paksa\". Silakan tunggu.</string>
+    <string name="performing_force_unhide">Sedang menjalankan mode \"Perlihatkan Secara Paksa\". Silakan tunggu.</string>
     <string name="app_name_calendar">Kalender</string>
     <string name="obfuscate_filename_description">Membuat nama berkas tidak terbaca. Fitur ini merupakan fitur dasar penyembunyian berkas yang tidak dapat dimatikan.</string>
     <string name="filehider_nomedia_description">Hanya tambahkan .nomedia ke dalam folder. Akses root tidak diperlukan.</string>
@@ -102,7 +102,7 @@
     <string name="confirm_password">Konfirmasikan kata sandi</string>
     <string name="obfuscate_text_file_enhanced">Pengaburan berkas teks secara sepenuhnya - Ditingkatkan</string>
     <string name="invalid_action">Intent takvalid diperoleh: %s</string>
-    <string name="force_unhide_confirm_msg">Coba mengembalikan semuanya?\n\n<b>PERINGATAN: </b>Pilihan ini dapat merusak berkas-berkasmu. Hanya pergunakan pilihan ini jika kamu mengalami masalah dan fungsi \"tampilkan\" tidak berjalan secara normal.</string>
+    <string name="force_unhide_confirm_msg">Ingin mencoba mengembalikan semuanya?\n\n<b>PERINGATAN: </b>Pilihan ini dapat merusak berkas-berkasmu. Hanya pergunakan pilihan ini jika kamu mengalami masalah dan fungsi \"perlihatkan\" tidak berjalan secara normal.</string>
     <string name="set_password">Pasang kata sandi</string>
     <string name="dsm_permission_denied">DSM: Izin ditolak</string>
     <string name="unlock_required">Perlu dibuka</string>
@@ -135,7 +135,7 @@
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Pengguna Samsung telah melaporkan bahwa menggunakan ChmodFileHider menyebabkan perangkat gagal boot.</font> Lihat Github issue #105 untuk informasi lebih lanjut. Risiko ditanggung sendiri.</b></string>
     <string name="alert_permission_denied">Izin untuk menimpa tampilan aplikasi di atas aplikasi lainnya ditolak.</string>
     <string name="filehider_obfuscate">Mode Pengaburan</string>
-    <string name="force_unhide_description">Mengembalikan ke pengaturan semula. Hanya dipergunakan jika kamu mengalami masalah.</string>
+    <string name="force_unhide_description">Sedang mencoba untuk mengembalikan ke pengaturan semula. Hanya dipergunakan jika kamu mengalami masalah.</string>
     <string name="no_update_ava">Kamu sedang menjalankan aplikasi versi terbaru.</string>
     <string name="notification_permission_request_message">Layanan Semubyi Cepat membutuhkan izin notifikasi agar dapat berfungsi.</string>
     <string name="follow_system">(Ikuti Sistem)</string>
@@ -147,7 +147,7 @@
     <string name="search">Cari</string>
     <string name="failed_to_open_doc_tree_description">Aduh! Sistem tidak memiliki manajer berkas bawaan. Tekan dan tahan tombol \"Tambah folder tersembunyi\" dan masukkan jalur secara manual.</string>
     <string name="participate_translation">Ayo ikut serta dalam penerjemahan Amarok</string>
-    <string name="force_unhide">Tampilkan secara paksa</string>
+    <string name="force_unhide">Perlihatkan secara paksa</string>
     <string name="apphider_dhizuku_description">[Percobaan] Penyembunyian aplikasi dengan Dhizuku.
 \nSolusi modern menyembunyikan aplikasi gawai yang tidak memiliki akses root. Dibutuhkan Dhizuku yang sudah terinstal dan teraktivasi.</string>
     <string name="alert_permission_request_title">Dibutuhkan izin untuk menampilkan jendela sembulan</string>
@@ -186,7 +186,7 @@
     <string name="disable_toasts">Takaktifkan notifikasi</string>
     <string name="apphider_not_activated_title">Fungsi sembunyi takaktif</string>
     <string name="apphider_not_activated_msg">Aktifkan mode sembunyi untuk menggunakan fitur ini.</string>
-    <string name="disable_toasts_description">Tidak menampilkan notifikasi saat mode \"sembunyikan\" atau \"tampilkan\" bekerja.</string>
+    <string name="disable_toasts_description">Tidak menampilkan notifikasi saat mode \"sembunyikan\" atau \"perlihatkan\" sedang berjalan.</string>
     <string name="invert_tile_color">Balikkan warna tile</string>
     <string name="invert_tile_color_description">Secara bawaan, tile aturan cepat tampak aktif ketika privasi Anda adalah terlihat. Alihkan opsi ini untuk mengatur sebaliknya.</string>
 </resources>
