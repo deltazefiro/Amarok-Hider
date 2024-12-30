@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="unhidden_toast">مخفی نشده. مواظب باشید.</string>
-    <string name="debug_info_description">اطلاعاتی برای حل مشکل ها را نشان می‌دهد.</string>
+    <string name="debug_info_description">اطلاعاتی را برای کمک و رفع اشکال نمایش می‌دهد.</string>
     <string name="about_description">اطلاعات برنامه را نشان می‌دهد.</string>
     <string name="hidden_toast">مخفی شده. اجی مجی‌لاترجی !</string>
     <string name="visible_status">آشکار</string>
@@ -29,4 +29,30 @@
     <string name="set_hide_apps">تنظیم برنامه های پنهان</string>
     <string name="hidden_status">مخفی شده</string>
     <string name="switch_app_hider">تغییر روش مخفی سازی برنامه</string>
+    <string name="invalid_dsm_provider">DSM: ارائه دهنده DSM نامعتبر است. آیا ارائه دهنده DSM را روی دستگاه خود نصب و فعال کرده‌اید؟</string>
+    <string name="hide_app_failed_admin_inactive">عدم امکان مخفی کردن برنامه: ارائه دهنده DSM فعال نیست.</string>
+    <string name="add_hide_files">افزودن پوشه مخفی</string>
+    <string name="folder_selector_hints">"نکاتی برای انتخاب پوشه:\n    1. روی \"استفاده از این پوشه\" کلیک کنید تا پوشه انتخاب شود\n    2. همیشه یک فایل را روی دستگاه انتخاب کنید\n    (از سمت راست صفحه به سمت چپ بکشید تا فایل‌های محلی باز شوند)"</string>
+    <string name="remove_hide_path">حذف پوشه مخفی؟</string>
+    <string name="remove_hide_path_description">حذف پوشه \'%s\' از لیست مخفی؟</string>
+    <string name="confirm">تایید</string>
+    <string name="not_local_storage">دایرکتوری پشتیبانی‌نشده</string>
+    <string name="not_local_storage_description">لطفاً مطمئن شوید که فایل محلی است و نه یک فایل مجازی.</string>
+    <string name="help">راهنما</string>
+    <string name="path_duplicated">پوشه مخفی تکرار شود</string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nحاوی\n\n<u>\'%2$s\'</u></string>
+    <string name="no_apphider">لطفاً حالت مخفی‌سازی برنامه را در \"تنظیمات بیشتر\" انتخاب کنید.</string>
+    <string name="root_not_ava">عدم دسترسی به روت، امکان‌پذیر نیست.</string>
+    <string name="check_update_on_start">به‌روزرسانی خودکار</string>
+    <string name="apphider_shizuku_description">مخفی کردن برنامه با Shizuku (یا Sui).\nتوصیه می‌شود اگر دستگاه شما Android 11+ دارد یا فریم‌ورک Xposed را دارد. نصب و فعال بودن Shizuku یا Sui لازم است.\n</string>
+    <string name="apphider_dsm">حالت DSM</string>
+    <string name="learn_more">آموزش تنظیمات</string>
+    <string name="option_unava_when_hidden">گزینه‌ها تا زمانی که از حالت مخفی خارج شوند، در دسترس نیستند.</string>
+    <string name="password_length_error">رمز عبور باید بین ۳ تا ۱۵ کاراکتر باشد.</string>
+    <string name="language">زبان</string>
+    <string name="force_unhide_confirm_msg">تلاش کنید همه چیز را بازیابی کنید؟\n\n<b>هشدار: </b>این گزینه ممکن است فایل‌های شما را خراب کند. فقط زمانی از آن استفاده کنید که با مشکل مواجه شدید و نتوانستید عملکرد \"آشکارسازی\" را به‌صورت عادی انجام دهید.</string>
+    <string name="panic_button_description">دکمه‌ای شناور برای پنهان کردن سریع برنامه‌ها و فایل‌ها در مواقع اضطراری نمایش می‌دهد. این دکمه وقتی Amarok آشکار است، بر روی تمام برنامه‌های دیگر ظاهر می‌شود.</string>
+    <string name="apphider_dsm_description">مخفی کردن برنامه با Delegated-Scopes-Manager.\nتوصیه نمی‌شود مگر اینکه دستگاه شما دارای Android 10 یا نسخه‌های قبلی باشد و روت نشده باشد. ممکن است دارای اشکال بوده و به طور غیرمنتظره کار کند. نصب Icebox (یا StopAPP) به عنوان مالک دستگاه الزامی است.</string>
+    <string name="invert_tile_color_description">به‌طور پیش‌فرض، کاشی تنظیمات سریع وقتی حریم خصوصی شما قابل مشاهده است، فعال است. این گزینه را تغییر دهید تا رفتار را معکوس کنید.</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">بعضی از کاربران Samsung گزارش کرده‌اند که استفاده از ChmodFileHider باعث شد دستگاه‌هایشان نتوانستند شروع شوند.</font> برای اطلاعات بیشتر، به مشکل #105 در GitHub مراجعه کنید. استفاده با خطر خودتان کنید.</b></string>
 </resources>
