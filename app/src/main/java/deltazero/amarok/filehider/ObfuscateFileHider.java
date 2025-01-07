@@ -105,7 +105,6 @@ public class ObfuscateFileHider extends BaseFileHider {
                         endingMark = FILENAME_FULL_PROCESS_MARK;
 
                     // Process filename
-                    // TODO: 2023/1/9 Handle long filename that invalid to android after Base64 encode
                     Path newPath = processFilename(path, method, endingMark);
 
                     // Process file content
