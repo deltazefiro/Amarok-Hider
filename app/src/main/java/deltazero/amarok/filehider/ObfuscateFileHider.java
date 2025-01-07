@@ -28,6 +28,7 @@ import deltazero.amarok.utils.MediaStoreHelper;
 public class ObfuscateFileHider extends BaseFileHider {
     private final static String TAG = "FileHider";
 
+    private static final int MAX_FILENAME_LENGTH = 255;
     private final static int MAX_PROCESS_WHOLE_FILE_SIZE_KB = 10 * 1024; // In KB.
     private final static int MAX_PROCESS_ENHANCED_WHOLE_FILE_SIZE_KB = 30 * 1024;
     private final static int BASE64_TAG = Base64.URL_SAFE | Base64.NO_WRAP | Base64.NO_PADDING;
@@ -148,52 +149,26 @@ public class ObfuscateFileHider extends BaseFileHider {
      */
     @Nullable
     private Path processFilename(Path path, ProcessMethod method, String extraEndingMark) {
-        String filename = path.getFileName().toString();
-        String newFilename = null;
-        Path newPath;
-
-        boolean hasEncoded = FileHiderUtil.checkIsMarkInFilename(filename);
-
-        if (method == HIDE) {
-            if (hasEncoded) {
-                Log.d(TAG, "Found encoded name: " + filename + ", skip...");
-                return null;
+        String originalFilename = path.getFileName().toString();
+        String encodedFilename = Base64.encodeToString(originalFilename.getBytes(StandardCharsets.UTF_8), Base64.URL_SAFE | Base64.NO_WRAP);
+        if (encodedFilename.length() > MAX_FILENAME_LENGTH) {
+            String truncatedFilename = encodedFilename.substring(0, MAX_FILENAME_LENGTH - endingMark.length()) + endingMark;
+            String fileExtension = "";
+            int extIndex = originalFilename.lastIndexOf('.');
+            if (extIndex > 0) {
+                fileExtension = originalFilename.substring(extIndex);
             }
 
-            newFilename = "." + Base64.encodeToString(filename.getBytes(UTF_8), BASE64_TAG) + extraEndingMark;
-            Log.d(TAG, "Encode: " + path + " -> " + newFilename);
+            Path parentDir = path.getParent();
+            Path newPath = parentDir.resolve(truncatedFilename + fileExtension);
 
-        } else if (method == UNHIDE) {
-            if (!hasEncoded) {
-                Log.w(TAG, "Found not coded name: " + filename + ", skip...");
-                return null;
-            }
-
-            try {
-                newFilename = new String(
-                        Base64.decode(FileHiderUtil.stripFilenameExtras(filename), BASE64_TAG), UTF_8
-                );
-            } catch (IllegalArgumentException e) {
-                Log.w(TAG, "Unable to decode: " + filename);
-                return null;
-            }
-
-            Log.d(TAG, "Decode: " + path + " -> " + newFilename);
-        }
-
-        // Try to rename.
-
-        assert newFilename != null;
-        newPath = Paths.get(path.getParent().toString(), newFilename);
-
-        boolean is_succeeded = path.toFile().renameTo(newPath.toFile());
-
-        if (!is_succeeded) {
-            Log.w(TAG, "Error when renaming file: " + path + " -> " + newPath);
-            return null;
-        } else {
+            Log.i(TAG, "Filename exceeded limit, truncated to: " + newPath);
             return newPath;
         }
+
+        Path parentDir = path.getParent();
+        Path newPath = parentDir.resolve(encodedFilename + endingMark);
+        return newPath;
     }
 
     private void processFileHeader(Path path) {
