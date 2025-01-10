@@ -22,7 +22,7 @@
     <string name="usage_description">Ouvrir le centre d\'aide.</string>
     <string name="hide_app_failed_admin_inactive">Impossible de masquer l\'application : Le fournisseur DSM n\'est pas actif.</string>
     <string name="add_hide_files">Ajouter un dossier à cacher</string>
-    <string name="remove_hide_path_description">Supprimer le dossier \'%s\' de la dissimulation ?</string>
+    <string name="remove_hide_path_description">Supprimer le dossier \'%s\' de la liste de dissimulation?</string>
     <string name="no_apphider">Veuillez sélectionner le mode de dissimulation des applications dans \"Plus de paramètres\".</string>
     <string name="root_not_ava">Impossible d\'obtenir l\'accès Super-Utilisateur.</string>
     <string name="check_update_on_start_description">Recherchez les nouvelles versions d\'Amarok lors de l\'ouverture de l\'application.</string>
@@ -32,7 +32,7 @@
     <string name="shizuku_not_working">Shizuku : Service indisponible. Avez-vous installé Shizuku/Sui sur votre appareil ?</string>
     <string name="shizuku_hidden_api_error">Impossible de masquer l\'application : Impossible d\'accéder à l\'API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku : Le service n\'est pas en fonction.</string>
-    <string name="apphider_not_ava_title">Mode de dissimulation d\'application indisponible</string>
+    <string name="apphider_not_ava_title">Masquage de l\'application inactive</string>
     <string name="dsm_permission_denied">DSM : Autorisation refusée</string>
     <string name="apphider_none_description">Désactivez le masquage des applications.</string>
     <string name="apphider_root">Mode Super-Utilisateur</string>
@@ -102,7 +102,7 @@
     <string name="apphider_shizuku_description">Dissimulation avec Shizuku (ou Sui)
 \nRecommandé si votre appareil fonctionne sous Android 11+ ou dispose du framework Xposed. Shizuku ou Sui installé et actif requis.
 \n</string>
-    <string name="obfuscate_filename_description">Rendre le nom du fichier illisible par l\'homme. La fonctionnalité de base de dissimulation. Ne peut pas être désactivé.</string>
+    <string name="obfuscate_filename_description">Rend le nom du fichier illisible par un humain. Fonctionnalité de base de protection des fichiers qui ne peut pas être désactivée.</string>
     <string name="obfuscate_text_file_description">Fonctionnalité expérimentale. Les en-têtes de fichiers obfusquées n\'ont aucun effet sur les fichiers texte. L\'activation de cette fonction masquera complètement les fichiers texte. Cela ralentira dans une certaine mesure le processus de dissimulation.</string>
     <string name="misc">Divers.</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
@@ -191,4 +191,6 @@
     <string name="enable_x_hide_description">Statut : %s</string>
     <string name="xposed_inactive">Module inactif. Vérifier le gestionnaire Xposed ?</string>
     <string name="apphider_not_activated_msg">Activer un mode de dissimulation pour activer cette fonctionnalité.</string>
+    <string name="invert_tile_color">Inverser la couleur des tuiles</string>
+    <string name="apphider_not_activated_title">Masquage de l\'application inactive</string>
 </resources>
