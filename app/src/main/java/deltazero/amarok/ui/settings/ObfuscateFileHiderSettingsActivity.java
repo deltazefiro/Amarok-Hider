@@ -11,7 +11,7 @@ import deltazero.amarok.R;
 
 public class ObfuscateFileHiderSettingsActivity extends AmarokActivity {
 
-    private MaterialSwitch swObfuscateFileHeader, swObfuscateTextFile, swObfuscateTextFileEnhanced;
+    private MaterialSwitch swObfuscateFileHeader, swObfuscateTextFile, swObfuscateTextFileEnhanced, swTruncateFileNames;
     private MaterialToolbar tbToolBar;
 
     @Override
