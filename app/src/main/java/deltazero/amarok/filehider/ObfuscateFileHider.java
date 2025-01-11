@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Set;
+import java.nio.charset.StandardCharsets;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.utils.FileHiderUtil;
