@@ -23,7 +23,7 @@
     <string name="invalid_dsm_provider">DSM: Недійсний постачальник DSM. Ви встановили та активували постачальника DSM на своєму пристрої\?</string>
     <string name="add_hide_files">Додати приховану папку</string>
     <string name="remove_hide_path">Видалити приховану папку\?</string>
-    <string name="remove_hide_path_description">Видалити папку \'%s\' з приховуваного?</string>
+    <string name="remove_hide_path_description">Видалити папку \"%s\" із прихованого списку?</string>
     <string name="confirm">Підтвердити</string>
     <string name="not_local_storage">Непідтримуваний каталог</string>
     <string name="not_local_storage_description">Будь ласка, переконайтеся, що це локальний файл, а не віртуальний.</string>
@@ -52,16 +52,16 @@
     <string name="learn_more">Посібник з встановлення</string>
     <string name="option_unava_when_hidden">Опції недоступні, поки їх не буде приховано.</string>
     <string name="obfuscate_filename">Приховувати ім\'я файлів</string>
-    <string name="obfuscate_filename_description">Зробити ім\'я файлу нечитабельним для людини. Основна функція приховування файлів. Не може бути вимкнена.</string>
+    <string name="obfuscate_filename_description">Робить назву файлу нечитабельною людиною. Основна функція приховування файлів, яку не можна вимкнути.</string>
     <string name="obfuscate_file_header">Приховати заголовки файлів</string>
     <string name="filename_only">Тільки імена файлів</string>
     <string name="filename_and_header">Ім\'я файлу + заголовок</string>
     <string name="unhide">Показати</string>
     <string name="hide">Приховати</string>
     <string name="obfuscate_text_file">Повністю приховувати текстові файли</string>
-    <string name="obfuscate_text_file_description">Експериментальна можливість. Приховання заголовків файлів не впливає на текстові файли. Увімкнення цієї функції повністю приховає текстові файли. Це дещо сповільнить процес приховування.</string>
+    <string name="obfuscate_text_file_description">Обфускація заголовків файлів не впливає на текстові файли. Увімкнення цієї функції призведе до повної обфускації текстових файлів.</string>
     <string name="obfuscate_text_file_enhanced">Повне приховування текстових файлів - Покращено</string>
-    <string name="obfuscate_text_file_description_enhanced">Не рекомендується. Розширена версія \"Повністю приховати текстові файли\". Використовуйте цю опцію, тільки якщо стандартний метод виявився неефективним. Значно уповільнює процес приховування.</string>
+    <string name="obfuscate_text_file_description_enhanced">Не рекомендується. Покращена версія «Повної обфускації текстових файлів». Використовуйте цей варіант, лише якщо стандартний метод виявиться неефективним. Істотно уповільнює процес укриття.</string>
     <string name="join_developer_channel">Telegram група</string>
     <string name="processing">Обробка…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
@@ -71,16 +71,16 @@
     <string name="workmode">Режим роботи</string>
     <string name="misc">Різне.</string>
     <string name="security">Безпека</string>
-    <string name="panic_button">Плаваюча кнопка (кнопка боса)</string>
-    <string name="in_app_update_failed">Нова версія доступна, але її не вдалося завантажити. Будь ласка, оновіть вручну.</string>
+    <string name="panic_button">Тривожна кнопка</string>
+    <string name="in_app_update_failed">Доступна нова версія, але не вдалося завантажити. Будь ласка, оновіть вручну.</string>
     <string name="failed_to_open_doc_tree">Не вдалося відкрити засіб вибору системних файлів</string>
     <string name="search">Пошук</string>
     <string name="quick_hide">Швидко приховати</string>
     <string name="notification">Сповіщення</string>
-    <string name="quick_hide_notification_description">Показувати постійне сповіщення, щоб сповіщати користувачів, коли його не приховано.</string>
+    <string name="quick_hide_notification_description">Відображає постійне сповіщення для сповіщення користувачів, коли воно не приховано.</string>
     <string name="notification_permission_request_title">Потрібен дозвіл на сповіщення</string>
     <string name="notification_channel_name">Служба швидкого приховування</string>
-    <string name="notification_permission_request_message">Для запуску служби швидкого приховування потрібні дозволи на сповіщення.</string>
+    <string name="notification_permission_request_message">Для роботи служби QuickHide потрібен дозвіл на сповіщення.</string>
     <string name="quick_hide_notification_title">Конфіденційність не прихована</string>
     <string name="quick_hide_notification_content">Ваша конфіденційність не прихована. Натисніть, щоб приховати.</string>
     <string name="invalid_action">Отримано недійсний намір: %s</string>
@@ -91,14 +91,10 @@
     <string name="usage_description">Відкрити довідковий центр.</string>
     <string name="apphider_not_ava">Приховування застосунків недоступне. Перевірте \"Додаткові налаштування\" → \"Увімкнути режим приховування застосунків\".</string>
     <string name="path_duplicated">Приховати дублювання шляхів</string>
-    <string name="path_duplicated_description"><u>\'%1$s\'</u> 
-\n 
-\nмістить 
-\n 
-\n<u>\'%2$s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nмістить\n\n<u>\'%2$s\'</u></string>
     <string name="update_ava">Доступна нова версія</string>
     <string name="notification_permission_denied">У дозволі на сповіщення відмовлено.</string>
-    <string name="debug_info_description">Показує інформацію, яка допоможе виправити проблеми.</string>
+    <string name="debug_info_description">Відображає інформацію, яка допоможе вирішити проблеми.</string>
     <string name="folder_selector_hints">Підказки для селектора папок:
 \n\t 1. Натисніть \"Використовувати цю папку\", щоб вибрати папку
 \n\t 2. Завжди вибирайте файл на пристрої
@@ -106,20 +102,20 @@
     <string name="shizuku_permission_denied">Shizuku: У дозволі відмовлено</string>
     <string name="hide_app_failed_admin_inactive">Не вдалося приховати застосунок: Провайдер DSM не активний.</string>
     <string name="manually_set_path_description">Увага: Переконайтеся, що те, що ви вибрали вручну, дійсно існує, оскільки це не перевіряється.</string>
-    <string name="apphider_not_ava_title">Недоступний режим приховування застосунку</string>
+    <string name="apphider_not_ava_title">Приховування програми неактивне</string>
     <string name="check_update_description">Поточна версія: %s</string>
     <string name="apphider_root_description">Приховування застосунків з root-доступом.
 \nРекомендується, якщо на вашому пристрої є root, але відсутній фреймворк Xposed. Потрібен root-дозвіл.</string>
-    <string name="obfuscate_file_header_description">Приховати підпис файлу в заголовку файлу, щоб зробити його \"пошкодженим\". Запобігає відкриттю файлу за допомогою \"Відкрити за допомогою\" вручну, але може сповільнити процес приховування файлу.</string>
+    <string name="obfuscate_file_header_description">Приховує підпис файлу в заголовку, щоб файл виглядав пошкодженим. Запобігає відкриванню файлу вручну за допомогою «Відкрити за допомогою», але може сповільнити процес приховування.</string>
     <string name="apphider_shizuku_description">Приховування застосунків за допомогою Shizuku (або Sui).
 \nРекомендується, якщо ваш пристрій працює на Android 11+ або має фреймворк Xposed. Потрібен встановлений та активний Shizuku або Sui.
 \n</string>
     <string name="apphider_dsm_description">Приховування застосунків за допомогою Delegated-Scopes-Manager.
 \nНе рекомендується, якщо ваш пристрій працює під управлінням Android 10 або новішої версії і не є рутованим. Може мати баги і працювати несподівано. Встановлений Icebox (або StopAPP), налаштований як власник пристрою.</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
-    <string name="panic_button_description">Відображати плаваючу кнопку для екстреного приховування застосунків і файлів. Відображається над усіма іншими застосунками. Кнопка відображається лише у неприхованому стані.</string>
-    <string name="failed_to_open_doc_tree_description">Упс! У вашій системі немає файлового менеджера за замовчуванням. Будь ласка, натисніть і утримуйте кнопку \"Додати приховану папку\" та введіть шлях до неї вручну.</string>
-    <string name="alert_permission_request_message">Плаваюча кнопка потребує дозволу на створення спливаючих вікон. Будь ласка, знайдіть Amarok у меню налаштувань і надайте дозвіл.</string>
+    <string name="panic_button_description">Відображає плаваючу кнопку, щоб швидко приховати програми та файли в екстреній ситуації. Ця кнопка відображається над усіма іншими програмами, коли Amarok відкрито.</string>
+    <string name="failed_to_open_doc_tree_description">Ой! У вашій системі відсутній файловий менеджер за замовчуванням. Натисніть і утримуйте кнопку «Додати приховану папку» та вручну введіть шлях.</string>
+    <string name="alert_permission_request_message">Плаваюча кнопка потребує дозволу на створення спливаючих вікон. Будь ласка, надайте цей дозвіл у меню налаштувань Amarok.</string>
     <string name="password_incorrect">Неправильний пароль.</string>
     <string name="app_lock">Блокування застосунку</string>
     <string name="app_lock_description">Для доступу до Amarok потрібен пароль.</string>
@@ -131,7 +127,7 @@
     <string name="unlock_required">Потрібно розблокувати</string>
     <string name="unlock">Розблокувати</string>
     <string name="set_password">Встановити пароль</string>
-    <string name="biometric_auth_description">Використовувати біометричну автентифікацію пристрою для доступу до Amarok, коли це можливо.</string>
+    <string name="biometric_auth_description">Використовуйте біометричну автентифікацію пристрою для доступу до Amarok, якщо вона доступна.</string>
     <string name="dhizuku_permission_denied">Dhizuku: Дозвіл відхилено</string>
     <string name="dhizuku_pre_v5">Dhizuku: Непідтримувана версія Dhizuku. Будь ласка, оновіть Dhizuku до версії 5 або новішої.</string>
     <string name="dhizuku_not_init">Dhizuku: Сервіс недоступний. Будь ласка, переконайтеся, що ви встановили та активували Dhizuku.</string>
@@ -153,4 +149,42 @@
     <string name="participate_translation_description">Допоможіть нам перевести Amarok на вашу мову.</string>
     <string name="enable_dynamic_color">Динамічні кольори</string>
     <string name="dynamic_color_description">Увімкнути динамічну кольорову тему.</string>
+    <string name="filehider_obfuscate_description">Обфускація імен файлів і підписів файлів. Не потрібен доступ root. Обробка може зайняти деякий час.</string>
+    <string name="filehider_nomedia_description">Просто додає .nomedia до папок. Не потрібен доступ root.</string>
+    <string name="filehider_none">Вимкнено</string>
+    <string name="block_screenshots_description">Блокуйте знімки екрана в Amarok і розмивайте їх у списку останніх програм.</string>
+    <string name="spotlight_do_not_show_again">БІЛЬШЕ НЕ ПОКАЗУВАТИ</string>
+    <string name="close_disguise_spotlight_tip">Утримуйте <font fgcolor="#FCCA3E"><b>номер року</b></font>, щоб отримати доступ до Amarok.</string>
+    <string name="filehider_not_ava_title">Приховування файлів недоступне</string>
+    <string name="filehider_chmod">Режим Chmod</string>
+    <string name="welcome_title">Ласкаво просимо</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Деякі користувачі Samsung повідомили, що використання ChmodFileHider призвело до збою завантаження їхніх пристроїв.</font> Додаткову інформацію дивіться у випуску GitHub №105. Використовуйте на свій страх і ризик.</b></string>
+    <string name="xposed_desc">Увімкніть Amarok, щоб приховати програми в системних меню.</string>
+    <string name="x_hide_description">Використання Xposed для покращення приховування програм. Приховані програми більше не відображатимуться в налаштуваннях або інших програмах. Потрібно API Xposed ≥ 93.</string>
+    <string name="block_screenshots">Блокувати скріншоти</string>
+    <string name="invert_tile_color">Інвертувати колір плитки</string>
+    <string name="warning">УВАГА</string>
+    <string name="app_name_calendar">Календар</string>
+    <string name="disguise">Маскування програми</string>
+    <string name="calendar_about">Чистий календар | від @koramA</string>
+    <string name="auto_hide_delay">Затримка автоматичного приховування</string>
+    <string name="auto_hide_delay_description">Кількість хвилин для затримки перед приховуванням після вимкнення екрана.</string>
+    <string name="appearance">Зовнішній вигляд</string>
+    <string name="auto_hide">Автоматичне приховування</string>
+    <string name="auto_hide_description">Автоматично ховається після вимкнення екрана.</string>
+    <string name="enable_x_hide">Увімкніть XHide</string>
+    <string name="enable_x_hide_description">Статус: %s</string>
+    <string name="xposed_active">Активний, Xposed API %d</string>
+    <string name="xposed_inactive">Модуль неактивний. Перевірити менеджер Xposed?</string>
+    <string name="filehider_none_description">Вимкнути приховування файлів.</string>
+    <string name="filehider_obfuscate">Режим обфускації</string>
+    <string name="filehider_chmod_description">Змініть права доступу до файлів, щоб зробити їх нечитабельними. Необхідний доступ root. Процедура невідкладна.</string>
+    <string name="filehider_nomedia">Режим NoMedia</string>
+    <string name="disable_toasts">Вимкнути тости</string>
+    <string name="apphider_not_activated_title">Приховування програми неактивне</string>
+    <string name="disguise_description">Маскуйте Amarok як програму календаря.</string>
+    <string name="welcome_msg">Amarok — це безкоштовний інструмент для приховування особистих файлів і файлів. програми. \n\nЗауважте, що Amarok — це не програма для шифрування, а радше інструмент для приховування речей. Ми наполегливо не рекомендуємо використовувати Amarok для захисту конфіденційних файлів і програм. \n\n<u>Відмова від відповідальності: Amarok надається без будь-яких гарантій чи умов. Користувач несе повну відповідальність за будь-яку шкоду або наслідки, які можуть виникнути в результаті використання Amarok.</u></string>
+    <string name="disable_toasts_description">Не показувати сповіщення під час приховування або відображення.</string>
+    <string name="apphider_not_activated_msg">Щоб увімкнути цю функцію, активуйте режим приховування програми.</string>
+    <string name="invert_tile_color_description">За замовчуванням плитка швидких налаштувань відображається активованою, коли відображається ваша конфіденційність. Увімкніть цей параметр, щоб змінити поведінку.</string>
 </resources>

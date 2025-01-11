@@ -138,6 +138,7 @@
     <string name="performing_force_unhide">Executing force unhide. Please sit tight.</string>
     <string name="filter">Filter</string>
     <string name="display_system_apps">Display system apps</string>
+    <string name="display_root_apps">Display root-related apps</string>
     <string name="language">Language</string>
     <string name="follow_system">(Follow system)</string>
     <string name="language_description" translatable="false">Language | 语言 | Langue | Sprache | 言語</string>
@@ -185,4 +186,6 @@
     <string name="apphider_not_activated_msg">Activate an app hiding mode to enable this feature.</string>
     <string name="invert_tile_color">Invert tile color</string>
     <string name="invert_tile_color_description">By default, the quick settings tile appears activated when your privacy is visible. Toggle this option to reverse the behavior.</string>
+    <string name="warning_system_apps">Hiding system apps may cause system bootloop. Please be cautious when hiding system apps.</string>
+    <string name="warning_root_apps">Amarok is not designed for hiding root-related apps. It may cause root access loss. Consider using Dr-TSNG/Hide-My-Applist instead.</string>
 </resources>
