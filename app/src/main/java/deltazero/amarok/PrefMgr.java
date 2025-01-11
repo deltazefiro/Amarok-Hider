@@ -52,6 +52,7 @@ public final class PrefMgr {
     public static final String FILE_HIDER_MODE = "fileHiderMode";
     public static final String IS_ENABLE_AUTO_UPDATE = "isEnableAutoUpdate";
     public static final String ENABLE_OBFUSCATE_FILE_HEADER = "enableObfuscateFileHeader";
+    public static final String ENABLE_TRUNCATE_FILE_NAMES = "enableTruncateFileName";
     public static final String ENABLE_OBFUSCATE_TEXT_FILE = "enableObfuscateTextFile";
     public static final String ENABLE_OBFUSCATE_TEXT_FILE_ENHANCED = "enableObfuscateTextFileEnhanced";
     public static final String ENABLE_QUICK_HIDE_SERVICE = "enableQuickHideService";
@@ -137,6 +138,11 @@ public final class PrefMgr {
             case 3 -> new ChmodFileHider(context);
             default -> throw new IndexOutOfBoundsException("Should not reach here");
         };
+    }
+
+    public static void setTruncate(boolean shouldTruncate) {
+        mPrefEditor.putBoolean(ENABLE_TRUNCATE_FILE_NAMES, shouldTruncate);
+        mPrefEditor.apply();
     }
 
     public static void setFileHiderMode(Class<? extends BaseFileHider> mode) {
