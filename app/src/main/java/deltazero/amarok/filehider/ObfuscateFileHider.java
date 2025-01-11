@@ -152,7 +152,7 @@ public class ObfuscateFileHider extends BaseFileHider {
         String originalFilename = path.getFileName().toString();
         String encodedFilename = Base64.encodeToString(originalFilename.getBytes(StandardCharsets.UTF_8), Base64.URL_SAFE | Base64.NO_WRAP);
         if (encodedFilename.length() > MAX_FILENAME_LENGTH) {
-            String truncatedFilename = encodedFilename.substring(0, MAX_FILENAME_LENGTH - endingMark.length()) + endingMark;
+            String truncatedFilename = encodedFilename.substring(0, MAX_FILENAME_LENGTH - extraEndingMark.length()) + extraEndingMark;
             String fileExtension = "";
             int extIndex = originalFilename.lastIndexOf('.');
             if (extIndex > 0) {
@@ -167,7 +167,7 @@ public class ObfuscateFileHider extends BaseFileHider {
         }
 
         Path parentDir = path.getParent();
-        Path newPath = parentDir.resolve(encodedFilename + endingMark);
+        Path newPath = parentDir.resolve(encodedFilename + extraEndingMark);
         return newPath;
     }
 
