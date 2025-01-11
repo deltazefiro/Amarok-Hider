@@ -18,6 +18,9 @@
                 <item
                     android:id="@+id/display_system_apps"
                     android:title="@string/display_system_apps" />
+                <item
+                    android:id="@+id/display_root_apps"
+                    android:title="@string/display_root_apps" />
             </group>
         </menu>
     </item>

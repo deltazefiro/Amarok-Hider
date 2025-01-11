@@ -8,36 +8,43 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
+import deltazero.amarok.R;
 
 public class AppInfoUtil {
     private final PackageManager pkgMgr;
     private final List<AppInfo> appInfoList = new ArrayList<>();
+    private final Set<String> predefinedRootApps;
 
     public AppInfoUtil(Context context) {
         pkgMgr = context.getPackageManager();
+        predefinedRootApps = new HashSet<>(Arrays.asList(context.getResources().getStringArray(R.array.root_app_packages)));
     }
 
     private static boolean containsIgnoreCase(String str, String searchStr) {
-        if (str == null || searchStr == null) return false;
-
-        final int length = searchStr.length();
-        if (length == 0)
+        if (str == null || searchStr == null)
+            return false;
+        if (searchStr.isEmpty())
             return true;
+        return str.toLowerCase().contains(searchStr.toLowerCase());
+    }
 
-        for (int i = str.length() - length; i >= 0; i--) {
-            if (str.regionMatches(true, i, searchStr, 0, length))
-                return true;
-        }
-        return false;
+    private boolean isRootApp(ApplicationInfo appInfo) {
+        boolean isXposedModule = appInfo.metaData != null && appInfo.metaData.containsKey("xposedmodule");
+        return isXposedModule || predefinedRootApps.contains(appInfo.packageName);
+    }
+
+    private boolean isSystemApp(ApplicationInfo appInfo) {
+        return (appInfo.flags & ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM;
     }
 
     public void refresh() {
@@ -56,14 +63,15 @@ public class AppInfoUtil {
             var appInfo = new AppInfo(
                     applicationInfo.packageName,
                     pkgMgr.getApplicationLabel(applicationInfo).toString(),
-                    (applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == ApplicationInfo.FLAG_SYSTEM,
+                    isSystemApp(applicationInfo),
+                    isRootApp(applicationInfo),
                     pkgMgr.getApplicationIcon(applicationInfo)
             );
 
             appInfoList.add(appInfo);
         }
 
-        // Sort with app name, and stick the hidden apps to the top
+        // Sort with app name, with the hidden apps always on the top
         appInfoList.sort((o1, o2) -> {
             if (hiddenApps.contains(o1.packageName) && !hiddenApps.contains(o2.packageName))
                 return -1;
@@ -73,38 +81,28 @@ public class AppInfoUtil {
         });
     }
 
-    public List<AppInfo> getFilteredApps(String query, boolean includeSystemApps) {
+    public List<AppInfo> getFilteredApps(String query, boolean includeSystemApps, boolean includeRootApps) {
+        List<AppInfo> filtered = new ArrayList<>();
         Set<String> hiddenApps = PrefMgr.getHideApps();
-        Log.d("AppInfoUtil", "Hidden apps: " + hiddenApps.toString());
-        List<AppInfo> queryAppInfoList = new ArrayList<>();
+
         for (AppInfo appInfo : appInfoList) {
+            boolean query_filter_result = query == null || containsIgnoreCase(appInfo.label, query) || containsIgnoreCase(appInfo.packageName, query);
+            boolean system_filter_result = includeSystemApps || !appInfo.isSystemApp;
+            boolean root_filter_result = includeRootApps || !appInfo.isRootApp;
 
-            boolean query_filter_result = (query == null || query.isEmpty())
-                    || containsIgnoreCase(appInfo.packageName, query) || containsIgnoreCase(appInfo.label, query);
-
-            boolean system_filter_result = hiddenApps.contains(appInfo.packageName) /* If the app is hidden, show it regardless of whether it is a system app or not. */
-                    || includeSystemApps /* Skip this filter if user enable `Display system apps` */
-                    || !appInfo.isSystemApp;
-
-            if (query_filter_result && system_filter_result)
-                queryAppInfoList.add(appInfo);
+            if (hiddenApps.contains(appInfo.packageName) /* If the app is hidden, show it anyway. */
+                    || (query_filter_result && system_filter_result && root_filter_result))
+                filtered.add(appInfo);
         }
-        return queryAppInfoList;
+        return filtered;
     }
 
-    public static class AppInfo {
-        @NonNull
-        public String packageName;
-        @NonNull
-        public String label;
-        public boolean isSystemApp;
-        public Drawable icon;
-
-        public AppInfo(@NonNull String packageName, @NonNull String label, boolean isSystemApp, Drawable icon) {
-            this.packageName = packageName;
-            this.label = label;
-            this.isSystemApp = isSystemApp;
-            this.icon = icon;
-        }
+    public record AppInfo(
+            @NonNull String packageName,
+            @NonNull String label,
+            boolean isSystemApp,
+            boolean isRootApp,
+            Drawable icon
+    ) {
     }
 }
