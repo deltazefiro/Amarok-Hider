@@ -145,6 +145,10 @@ public final class PrefMgr {
         mPrefEditor.apply();
     }
 
+    public static boolean getTruncate() {
+        return mPrefs.getBoolean(ENABLE_TRUNCATE_FILE_NAMES, false);
+    }
+    
     public static void setFileHiderMode(Class<? extends BaseFileHider> mode) {
         int modeCode;
         if (mode == NoneFileHider.class)
