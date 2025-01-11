@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="root_app_packages" translatable="false">
+        <!-- Root managers -->
+        <item>com.topjohnwu.magisk</item>           <!-- Magisk -->
+        <item>io.github.vvb2060.magisk</item>       <!-- Magisk Delta -->
+        <item>me.weishu.kernelsu</item>             <!-- KernelSU Manager -->
+        <item>com.noshufou.android.su</item>        <!-- SuperUser -->
+        <item>eu.chainfire.supersu</item>           <!-- SuperSU -->
+
+        <!-- Xposed frameworks -->
+        <item>org.lsposed.manager</item>             <!-- LSPosed -->
+        <item>de.robv.android.xposed.installer</item> <!-- Xposed Installer -->
+        <item>org.meowcat.edxposed.manager</item>    <!-- EdXposed Manager -->
+        <item>com.solohsu.android.edxp.manager</item> <!-- EdXposed Manager (Old) -->
+        <item>me.weishu.exp</item>                   <!-- TaiChi -->
+    </string-array>
+</resources> 
