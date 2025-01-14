@@ -177,4 +177,7 @@
     <string name="apphider_not_activated_msg">Ενεργοποίησει λειτουργίας απόκρυψης εφαρμογής για ενεργοποιήσει αυτής της δυνατότητας.</string>
     <string name="apphider_not_activated_title">Η απόκρυψη εφαρμογής είναι ανενεργή</string>
     <string name="filehider_obfuscate_description">Θολώνει τα ονόματα αρχείων και τις υπογραφές αρχείων. Δεν απαιτείται πρόσβαση root. Μπορεί να χρειαστεί λίγος χρόνος για την επεξεργασία.</string>
+    <string name="display_root_apps">Εμφάνιση εφαρμογών που σχετίζονται με το root</string>
+    <string name="warning_system_apps">Η απόκρυψη εφαρμογών συστήματος μπορεί να προκαλέσει βρόχο εκκίνησης συστήματος. Να είστε προσεκτικοί κατά την απόκρυψη εφαρμογών συστήματος.</string>
+    <string name="warning_root_apps">Το Amarok δεν έχει σχεδιαστεί για την απόκρυψη εφαρμογών που σχετίζονται με το root. Μπορεί να προκαλέσει απώλεια πρόσβασης root. Εξετάστε το ενδεχόμενο να χρησιμοποιήσετε το Dr-TSNG/Hide-My-Applist.</string>
 </resources>
