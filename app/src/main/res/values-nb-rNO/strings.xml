@@ -100,9 +100,7 @@
 \n\t 2. Alltid velg en fil som er lagret på selve enheten du bruker.
 \n\t(Du kan dra fra høyre av skjermen for å åpne lokale filer)</string>
     <string name="option_unava_when_hidden">Alternativer er tilgjengelig til skjuling opphører.</string>
-    <string name="apphider_shizuku_description">HideApp med Shizuku (eller Sui).
-\nAnbefalt hvis enheten din kjører Android 11+, eller med Xposed-rammeverket. Du må installere og aktivere Shizuku eller Sui for å bruke dette.
-\n<i><b>* DeepHide</b>: Skjulte programmer vises ikke i systemmenyen.</i></string>
+    <string name="apphider_shizuku_description">HideApp med Shizuku (eller Sui). \nAnbefalt hvis enheten din kjører Android 11+, eller med Xposed-rammeverket. Du må installere og aktivere Shizuku eller Sui for å bruke dette. \n<i><b>* DeepHide</b>: Skjulte programmer vises ikke i systemmenyen.</i></string>
     <string name="obfuscate_file_header_description">Tilslør filsignaturen i filhodet for å gjøre filen «skadet». Dette forhindrer den fra åpning eller å bli valgt med «Åpne i …» manuelt, men kan gjøre filskjulingsprosessen tregere.</string>
     <string name="apphider_dsm_description">HideApp med Delegated-Scopes-Manager.
 \nIkke anbefalt med mindre enheten din kjører Android 10 eller tidligere, og ikke har rot-tilgang. Det kan være feilaktig og fungere dårlig. Du må installere Icebox eller StopAPP og sette dem som enhetshåndterer for å bruke dette.</string>
