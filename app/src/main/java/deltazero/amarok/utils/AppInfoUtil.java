@@ -87,11 +87,9 @@ public class AppInfoUtil {
 
         for (AppInfo appInfo : appInfoList) {
             boolean query_filter_result = query == null || containsIgnoreCase(appInfo.label, query) || containsIgnoreCase(appInfo.packageName, query);
-            boolean system_filter_result = includeSystemApps || !appInfo.isSystemApp;
-            boolean root_filter_result = includeRootApps || !appInfo.isRootApp;
-
-            if (hiddenApps.contains(appInfo.packageName) /* If the app is hidden, show it anyway. */
-                    || (query_filter_result && system_filter_result && root_filter_result))
+            boolean system_filter_result = includeSystemApps || !appInfo.isSystemApp || hiddenApps.contains(appInfo.packageName);
+            boolean root_filter_result = includeRootApps || !appInfo.isRootApp || hiddenApps.contains(appInfo.packageName);
+            if (query_filter_result && system_filter_result && root_filter_result)
                 filtered.add(appInfo);
         }
         return filtered;
