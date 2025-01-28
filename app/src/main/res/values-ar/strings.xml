@@ -195,4 +195,7 @@
     <string name="apphider_not_activated_title">وضع إخفاء التطبيق غير نشط</string>
     <string name="invert_tile_color">عكس لون البلاط</string>
     <string name="invert_tile_color_description">افتراضيًا، يظهر مربع الإعدادات السريعة نشطًا عندما تكون خصوصيتك مرئية. قم بتبديل هذا الخيار لعكس السلوك.</string>
+    <string name="warning_system_apps">قد يؤدي إخفاء تطبيقات النظام إلى حدوث حلقة إعادة تشغيل للنظام. يرجى توخي الحذر عند إخفاء تطبيقات النظام.</string>
+    <string name="display_root_apps">عرض التطبيقات المتعلقة بالجذر</string>
+    <string name="warning_root_apps">Amarok ليس مصممًا لإخفاء التطبيقات المتعلقة بالروت. قد يؤدي إلى فقدان صلاحيات الروت. يُفضل استخدام Dr-TSNG/Hide-My-Applist بدلاً من ذلك.</string>
 </resources>

@@ -195,4 +195,7 @@
     <string name="apphider_not_activated_msg">Активирајте режим сакривања апликација да бисте омогућили ову функцију.</string>
     <string name="invert_tile_color">Обрни боју плочице</string>
     <string name="invert_tile_color_description">Подразумевано, плочица за брза подешавања се појављује активирана када је ваша приватност видљива. Укључите/искључите ову опцију да бисте преокренули понашање.</string>
+    <string name="display_root_apps">Прикажи апликације повезане с root приступом</string>
+    <string name="warning_system_apps">Сакривање системских апликација може довести до покретања система. Будите пажљиви када сакривате системске апликације.</string>
+    <string name="warning_root_apps">Amarok није дизајниран за сакривање апликација повезаних с root приступом. То може узроковати губитак root приступа. Уместо тога, размислите о коришћењу Dr-TSNG/Hide-My-Applist.</string>
 </resources>
