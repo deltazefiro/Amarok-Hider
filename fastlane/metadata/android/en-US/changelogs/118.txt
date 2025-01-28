@@ -1,0 +1,4 @@
+v0.9.3
+- Support invert tile color (#167)
+- Add warning when user attempts to hide root related apps
+- Community translations update (see GitHub for the full list)
