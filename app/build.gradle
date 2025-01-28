@@ -143,7 +143,10 @@ dependencies {
     implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.work:work-runtime:2.9.1'
 
-    compileOnly 'de.robv.android.xposed:api:82'
+    // F-Droid disallow `api.xposed.info` since it's not a "Trusted Maven Repository".
+    // So we create a mirror GitHub repository and obtain the library from `jitpack.io` instead.
+    // Equivalent to `implementation 'de.robv.android.xposed:api:82'`.
+    compileOnly 'com.github.deltazefiro:XposedBridge:main-SNAPSHOT'
 }
 
 configurations.configureEach {
