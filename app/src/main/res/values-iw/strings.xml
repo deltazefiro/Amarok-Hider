@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="unhide">בטל הסתרה</string>
-    <string name="hide">הסתר</string>
+    <string name="unhide">ביטול הסתרה</string>
+    <string name="hide">הסתרה</string>
+    <string name="visible_status">נראה</string>
+    <string name="hidden_status">חבוי</string>
+    <string name="ok">בסדר</string>
+    <string name="about">אודות</string>
+    <string name="cancel">ביטול</string>
+    <string name="set_hide_apps">בחירת יישומים מוסתרים</string>
+    <string name="storage_permission_request_title">הרשאת איחסון נדרשת</string>
+    <string name="storage_permission_denied">הרשאת איחסון נדחתה. הסתרת קבצים לא זמינה</string>
+    <string name="setting_not_ava_when_hidden">האפשרות הזאת זמינה רק אחרי ביטול ההסתרה</string>
+    <string name="apphider_not_ava">החבאת קבצים לא זמינה. נא לבדוק \"הגדרות נוספות\" ← \"שינוי מצב הסתרת יישומים\".</string>
+    <string name="set_hide_files">בחירת קבצים מוסתרים</string>
+    <string name="show_about">הצגת אודות</string>
+    <string name="usage">שימוש</string>
+    <string name="analytics_description">שליחת נתוני שימוש אנונימיים למפתחים לשם ניתוח.</string>
+    <string name="switch_app_hider">החלפת מצב הסתרת קבצים</string>
+    <string name="more_settings">הגדרות נוספות</string>
+    <string name="hidden_toast">מוסתר.</string>
+    <string name="unhidden_toast">לא מוסתר. היזהר.</string>
+    <string name="storage_permission_request_message">נא להעניק לAmarok גישה לאחסון חיצוני על מנת להסתיר קבצים.</string>
+    <string name="current_mode">מצב נוכחי:%s</string>
+    <string name="enable_analytics">נתוני שימוש אנונימיים</string>
+    <string name="about_description">מציג מידע אודות היישום.</string>
+    <string name="debug_info_description">מציג מידע כדי לעזור לפתור בעיות.</string>
+    <string name="usage_description">פתיחת מרכז עזרה.</string>
+    <string name="apply_on_restart">צריך לאתחל את היישום כדי להחיל את השינויים.</string>
+    <string name="switch_file_hider">החלפת מצב הסתרת קבצים</string>
+    <string name="show_debug_info">מידע לניפוי באגים</string>
 </resources>
