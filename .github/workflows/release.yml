@@ -36,7 +36,7 @@ jobs:
           ./gradlew assembleRelease
       - name: Upload built apk
         if: success()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: |
               ${{ github.workspace }}/app/build/outputs/apk/**/*.apk
