@@ -1,0 +1,103 @@
+---
+description: Understanding the basic project structure and architecture.
+globs: 
+---
+# Amarok Project Overview
+
+## Introduction
+
+Amarok is a lightweight Android app that quickly hides files and applications — ideal for casual privacy needs. Instead of encryption, it manages file and app visibility using various techniques.
+
+Core Features
+
+- **File Hiding:** Obfuscation and Chmod modes.
+- **App Hiding:** Supports Root, Shizuku, Dhizuku, and DSM modes.
+- **XHide Module:** Uses Xposed to filter hidden apps from system queries.
+- **Panic Button:** Floating button to trigger hide operations.
+- **Quick Settings Tile:** Direct access for quick hide/unhide.
+- **App Lock:** Protects with password/fingerprint.
+
+## Functional Index
+
+### 1. Hiding Management
+
+**File:** `app/src/main/java/deltazero/amarok/Hider.java`
+
+The `Hider` class serves as the central management system for both file and app hiding operations.
+
+- **Retrieve State:** `Hider.getState()` returns one of three states: `HIDDEN`, `VISIBLE`, `PROCESSING`.
+
+> NOTE: Calling this method on a background thread does not guarantee that the latest value set will be received. Call it on the main thread.
+
+- **Trigger Processing:** `Hider.hide(context)` and `Hider.unhide(context)` trigger hiding/unhiding operations.
+
+### 2. File Hiding Implementations
+
+**Directory:** `app/src/main/java/deltazero/amarok/filehider/`
+
+- **Implementations (all extend `BaseFileHider`):**
+  - **Obfuscation:** Implemented in `ObfuscateFileHider`
+  - **Chmod Mode:** Implemented in `ChmodFileHider`
+
+### 3. App Hiding Implementations
+
+**Directory:** `app/src/main/java/deltazero/amarok/apphider/`
+
+- **Implementations (all extend `BaseAppHider`):**
+  - **Root Mode:** `RootAppHider.java`
+  - **Shizuku Mode:** `ShizukuAppHider.java`
+  - **DSM Mode:** `DsmAppHider.java`
+  - **Dhizuku Mode:** `DhizukuAppHider.java`
+
+### 4. Settings and Preferences
+
+- Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/PrefMgr.java`) with SharedPreferences.
+- UI is implemented under `app/src/main/java/deltazero/amarok/ui/settings/` with each setting grouped by category.
+
+#### Preference Categories
+
+- Privacy: `PrivacyCategory.java`
+- Quick Hide: `QuickHideCategory.java`
+- Appearance: `AppearanceCategory.java`
+- Work Mode: `WorkModeCategory.java`
+- XHide: `XHideCategory.java`
+
+#### To Add a New Setting
+
+1. Update `PrefMgr.java` with the new preference.
+2. Add the setting UI under the appropriate category.
+3. Access it via `PrefMgr.getXXX()` or update it with `PrefMgr.setXXX()`.
+
+### 5. XHide
+
+**Directory:** `app/src/main/java/deltazero/amarok/xposed/`
+
+Amarok is both an Android app and an Xposed module. The Xposed part is implemented in the `xposed` package.
+
+- **Purpose:** Provides system-level app hiding by intercepting Android’s PackageManager queries.
+- **Limitations:** Does not hide apps from launchers; use with other app hiding modes.
+
+#### Key Components
+
+- **XposedEntry:** Module’s main entry point.
+- **FilterHooks:** Contains version-specific implementations.
+
+#### Communication and Preference Management
+
+The main app and the module run in different processes, so they communicate with each other through `XHidePrefBridge`.
+
+- **XHidePrefBridge:**
+  - Receives module status/version (`isModuleActive`, `xposedVersion`)
+  - Sends updated app settings with `commitNewValues()`
+- **XPref:** Manages module-side cached preferences.
+
+When a hide/unhide operation is triggered, the main app will call `XHidePrefBridge.commitNewValues()` to activate the module for system queries filtering.
+
+### 6. Quick Hide
+
+Provides multiple triggers for instant hide/unhide operations:
+
+- **Quick Settings Tile:** `QSTileService.java`
+- **Quick Hide Service:** `QuickHideService.java` (includes notification and panic button functionality)
+- **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.java` and `AutoHideUtil.java`
+- **Intent API:** Managed by `ActionReceiver.java`
