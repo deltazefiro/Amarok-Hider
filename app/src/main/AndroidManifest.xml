@@ -163,6 +163,17 @@
                 <action android:name="deltazero.amarok.UNHIDE" />
             </intent-filter>
         </receiver>
+        <receiver
+            android:name=".widget.ToggleWidget"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="deltazero.amarok.widget.ACTION_TOGGLE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/toggle_widget_info" />
+        </receiver>
 
         <provider
             android:name="rikka.shizuku.ShizukuProvider"
