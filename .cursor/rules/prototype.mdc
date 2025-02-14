@@ -1,0 +1,11 @@
+---
+description: Apply when you are explicitly asked to implement a quick prototype.
+globs: 
+---
+# Prototype Guidelines
+
+1. Use `debugPref` in `ui/settings/AboutCategory.java` as your prototype entry point:
+    - For feature testing: Trigger your new code when `debugPref` is clicked
+    - For UI testing: Launch your test view when `debugPref` is clicked
+2. Use `R.drawable.ic_null` instead of creating new drawable assets
+3. Keep changes minimal and prefer adding new code over modifying existing code
