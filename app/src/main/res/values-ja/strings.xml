@@ -27,7 +27,7 @@
     <string name="app_lock">アプリロック</string>
     <string name="app_lock_description">Amarokへのアクセスにパスワードを要求する。</string>
     <string name="biometric_auth">生体認証</string>
-    <string name="biometric_auth_description">可能な場合、アプリロックに生体認証を使用する。</string>
+    <string name="biometric_auth_description">利用可能な場合、生体認証を使用してAmarokにアクセスする。</string>
     <string name="force_unhide_description">問題が発生した場合に、全ての復元を試みる。</string>
     <string name="force_unhide">強制的に非表示を解除</string>
     <string name="language">言語</string>
@@ -51,24 +51,21 @@
 \n\t 1. 「このフォルダを使用」をタップしてフォルダを選択します
 \n\t 2. デバイス上のファイルを選択します
 \n\t(画面右からスライドしてローカルファイルを開きます)</string>
-    <string name="path_duplicated_description"><u>「%s」</u>
-\nには
-\n<u>「%s」</u>
-\nが含まれます</string>
+    <string name="path_duplicated_description"><u>「%s」</u> \nには \n<u>「%s」</u> \nが含まれます</string>
     <string name="shizuku_hidden_api_error">アプリを非表示できません: IPackageManager API にアクセスできません。</string>
     <string name="shizuku_pre_v11">サポートされない Shizuku のバージョン: Shizuku v11 以降をインストールしてください。</string>
     <string name="show_debug_info">デバッグ情報</string>
     <string name="apphider_root">Root モード</string>
     <string name="apphider_not_ava">アプリの非表示は利用できません。「その他の設定」→「アプリの非表示方法を切り替え」を確認してください。</string>
     <string name="hide_app_failed_admin_inactive">アプリを非表示できません: DSM プロバイダーが有効化されていません。</string>
-    <string name="processing">処理中</string>
+    <string name="processing">処理中…</string>
     <string name="obfuscate_file_header_description">ファイルヘッダーのファイル署名を難読化し、ファイルを「破損」させます。手動で「〜で開く」をしてファイルを開くことを防ぎますが、ファイル非表示の処理が遅くなる可能性があります。</string>
     <string name="obfuscate_text_file">テキストファイルを完全に難読化</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
     <string name="shizuku_service_not_running">Shizuku: サービスが実行されていません。</string>
     <string name="apphider_none">無効</string>
     <string name="learn_more">設定チュートリアル</string>
-    <string name="root_not_ava">Root アクセスを取得できませんでした。</string>
+    <string name="root_not_ava">Root 権限を取得できませんでした。</string>
     <string name="filename_only">ファイル名のみ</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="join_developer_channel">Telegram グループ</string>
@@ -104,7 +101,7 @@
     <string name="apphider_dsm">DSM モード</string>
     <string name="obfuscate_text_file_description_enhanced">非推奨。「テキストファイルを完全に難読化」の拡張版。このオプションは、標準の方法では効果がない場合にのみ使用してください。処理が劇的に遅くなります。</string>
     <string name="remove_hide_path">非表示フォルダを削除しますか？</string>
-    <string name="obfuscate_text_file_description">実験的な機能です。ファイルヘッダーの難読化はテキストファイルには効果がありません。この機能を有効にすると、テキストファイルは完全に難読化されます。難読化処理はある程度遅くなります。</string>
+    <string name="obfuscate_text_file_description">ファイルヘッダーの難読化はテキストファイルには効果がありません。この機能を有効にすると、テキストファイルは完全に難読化されます。</string>
     <string name="remove_hide_path_description">「%s」を非表示フォルダから削除しますか？</string>
     <string name="update_description">Amarok %s (%d) をダウンロードしてインストールできます。</string>
     <string name="invalid_dsm_provider">DSM: 無効な DSM プロバイダーです。このデバイスに DSM プロバイダーをインストールし、有効化しましたか？</string>
@@ -116,4 +113,24 @@
     <string name="participate_translation">翻訳に参加</string>
     <string name="appearance">外観</string>
     <string name="dynamic_color_description">アプリの色にダイナミックカラーを利用する。</string>
+    <string name="enable_x_hide">XHideの有効化</string>
+    <string name="x_hide_description">Xposedを活用してアプリの非表示を強化。非表示アプリが設定や他のアプリで表示されなくなる。Xposed API93以上が必要。</string>
+    <string name="xposed_inactive">モジュールが無効。Xposed managerをチェックしてください。</string>
+    <string name="disable_toasts">トーストの非表示</string>
+    <string name="disable_toasts_description">非表示/非表示解除のトースト通知を表示しない。</string>
+    <string name="invert_tile_color">タイルの色を反転させる</string>
+    <string name="warning_system_apps">システムアプリを非表示にすると、システムが起動しなくなる可能性があります。システムアプリを非表示にする際はご注意ください。</string>
+    <string name="about_description">アプリの情報を表示する。</string>
+    <string name="panic_button_description">緊急時にアプリやファイルをすばやく隠すためのフローティングボタンを表示します。このボタンは、Amarokを非表示にすると、他のすべてのアプリの上に表示されます。</string>
+    <string name="in_app_update_failed">新しいバージョンが利用可能ですが、ダウンロードに失敗しました。手動でアップデートしてください。</string>
+    <string name="failed_to_open_doc_tree">システムのファイルピッカーを開けませんでした</string>
+    <string name="failed_to_open_doc_tree_description">おっと！お使いのシステムにはデフォルトのファイルマネージャがありません。「＋非表示フォルダーを追加」ボタンを長押しして、手動でパスを入力してください。</string>
+    <string name="search">検索</string>
+    <string name="invert_tile_color_description">デフォルトでは、クイック設定タイルは、あなたのプライバシーが表示されているときにアクティブに表示されます。このオプションを切り替えると、動作が逆になります。</string>
+    <string name="warning_root_apps">Amarokはroot関連アプリを隠すようには設計されていません。rootアクセスを失う可能性があります。代替としてDr-TSNG/Hide-My-Applistの使用をご検討ください。</string>
+    <string name="panic_button">パニックボタン</string>
+    <string name="notification">お知らせ</string>
+    <string name="quick_hide_notification_description">非表示になっていないときにユーザーに知らせるための永続的な通知を表示します。</string>
+    <string name="notification_permission_request_title">通知の許可が必要</string>
+    <string name="notification_permission_denied">通知が許可されていません。</string>
 </resources>
