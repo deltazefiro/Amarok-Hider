@@ -43,7 +43,7 @@
     <string name="hidden_toast">파일 숨겨짐. 히힛!</string>
     <string name="unhidden_toast">파일 보임. 주의하세요.</string>
     <string name="show_debug_info">디버그 정보</string>
-    <string name="debug_info_description">버그를 고칠 수 있는 정보를 보여 줌.</string>
+    <string name="debug_info_description">문제 해결에 도움이 되는 정보 표시.</string>
     <string name="hide_app_failed_admin_inactive">앱 숨길 수 없음: DSM 공급자 비활성화</string>
     <string name="invalid_dsm_provider">DSM: DSM 공급자 정보가 맞지 않습니다. DSM을 설치하고 활성화 하였는지 확인하여 주십시오.</string>
     <string name="check_update_on_start_description">Amarok 앱을 열 때 자동으로 업데이트를 확인합니다.</string>
@@ -56,4 +56,7 @@
     <string name="no_update_ava">최신 버전입니다.</string>
     <string name="apphider_none_description">‘</string>
     <string name="folder_selector_hints">폴더 선택기 팁:</string>
+    <string name="show_about">정보 보기</string>
+    <string name="apphider_not_ava">앱 숨기기를 사용할 수 없습니다. \'추가 설정\' → \'앱 숨김 모드 전환\'을 확인하세요.</string>
+    <string name="about">정보</string>
 </resources>

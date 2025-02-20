@@ -174,7 +174,7 @@
     <string name="xposed_inactive">Η ενότητα είναι ανενεργή. Έλεγχος Xposed manager;</string>
     <string name="disable_toasts_description">Μη εμφάνιση ειδοποιήσεων toast κατά τη διάρκεια ενεργειών απόκρυψης ή αναίρεση απόκρυψης.</string>
     <string name="disable_toasts">Απενεργοποίηση toasts</string>
-    <string name="apphider_not_activated_msg">Ενεργοποίησει λειτουργίας απόκρυψης εφαρμογής για ενεργοποιήσει αυτής της δυνατότητας.</string>
+    <string name="apphider_not_activated_msg">Ενεργοποίηση λειτουργίας απόκρυψης εφαρμογής για ενεργοποίηση αυτής της δυνατότητας.</string>
     <string name="apphider_not_activated_title">Η απόκρυψη εφαρμογής είναι ανενεργή</string>
     <string name="filehider_obfuscate_description">Θολώνει τα ονόματα αρχείων και τις υπογραφές αρχείων. Δεν απαιτείται πρόσβαση root. Μπορεί να χρειαστεί λίγος χρόνος για την επεξεργασία.</string>
     <string name="display_root_apps">Εμφάνιση εφαρμογών που σχετίζονται με το root</string>
