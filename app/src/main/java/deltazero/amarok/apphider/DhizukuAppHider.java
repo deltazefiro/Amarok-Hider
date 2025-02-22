@@ -65,13 +65,23 @@ public class DhizukuAppHider extends BaseAppHider {
         Dhizuku.requestPermission(new DhizukuRequestPermissionListener() {
             @Override
             public void onRequestPermission(int grantResult) {
-                if (grantResult == PackageManager.PERMISSION_GRANTED) {
-                    Log.d("DhizukuHider", "Permission granted.");
-                    activationCallbackListener.onActivateCallback(DhizukuAppHider.class, true, 0);
-                } else {
+                if (grantResult != PackageManager.PERMISSION_GRANTED) {
                     Log.d("DhizukuHider", "Permission denied.");
                     activationCallbackListener.onActivateCallback(DhizukuAppHider.class, false, R.string.dhizuku_permission_denied);
+                    return;
                 }
+                Log.d("DhizukuHider", "Permission granted.");
+
+                // SetDelegatedScopes may throw an SecurityException for some reason.
+                try {
+                    setDelegatedScopes();
+                } catch (Exception e) {
+                    Log.w("DhizukuHider", "Failed to set delegated scopes.", e);
+                    activationCallbackListener.onActivateCallback(DhizukuAppHider.class, false, R.string.dhizuku_failed_to_set_delegated_scopes);
+                    return;
+                }
+
+                activationCallbackListener.onActivateCallback(DhizukuAppHider.class, true, 0);
             }
         });
     }
