@@ -182,4 +182,5 @@
     <string name="invert_tile_color_description">默认隐藏时控制中心开关为激活状态。启用开关以反转此行为。</string>
     <string name="warning_system_apps">隐藏系统应用可能在部分设备上导致系统持续重启。请谨慎隐藏系统应用。</string>
     <string name="warning_root_apps">Amarok 并非隐藏 Root 隐藏工具。使用其隐藏高权限应用可能导致 Root 权限丢失。如果您希望隐藏 Root，请考虑使用 Dr-TSNG/Hide-My-Applist 或其他类似工具。</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: 无法获取 `DELEGATION_PACKAGE_ACCESS`。请尝试重新激活 Dhizuku。</string>
 </resources>
