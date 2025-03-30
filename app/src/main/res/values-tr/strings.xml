@@ -100,11 +100,7 @@
 \n\t(Yerel dosyalara erişmek için ekranın sağından kaydırın)</string>
     <string name="not_local_storage">Desteklenmeyen dizin</string>
     <string name="check_update_on_start">Otomatik güncelleme</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u>
-\n
-\niçeriyor
-\n
-\n<u>\'%s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%s\'</u> \n \niçeriyor \n \n<u>\'%s\'</u></string>
     <string name="check_update">Güncellemeleri kontrol et</string>
     <string name="apphider_root_description">Root (kök) erişimi ile uygulama gizleme.
 \nCihazınızda root erişimi varsa ve Xposed Framework etkin değilse bu yöntem önerilir. Root izni gereklidir.</string>
