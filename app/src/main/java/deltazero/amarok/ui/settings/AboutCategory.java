@@ -76,5 +76,11 @@ public class AboutCategory extends BaseCategory {
         usagePref.setIntent(new Intent(Intent.ACTION_VIEW,
                 Uri.parse(activity.getString(R.string.doc_url))));
         addPreference(usagePref);
+
+        var debugPref = new Preference(activity);
+        debugPref.setTitle(R.string.show_debug_info);
+        debugPref.setIcon(R.drawable.ic_null);
+        debugPref.setSummary(R.string.debug_info_description);
+        addPreference(debugPref);
     }
 }
