@@ -190,4 +190,5 @@
     <string name="display_root_apps">Відображати програми, пов\'язані з root-додатками</string>
     <string name="warning_root_apps">Amarok не призначений для приховування кореневих програм. Це може призвести до втрати кореневого доступу. Натомість подумайте про використання Dr-TSNG/Hide-My-Applist.</string>
     <string name="warning_system_apps">Приховування системних програм може призвести до завантаження системи. Будьте обережні, приховуючи системні програми.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: не вдалося надати `DELEGATION_PACKAGE_ACCESS`. Будь ласка, спробуйте повторно активувати Dhizuku.</string>
 </resources>
