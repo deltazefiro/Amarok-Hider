@@ -198,4 +198,5 @@
     <string name="display_root_apps">Прикажи апликације повезане с root приступом</string>
     <string name="warning_system_apps">Сакривање системских апликација може довести до покретања система. Будите пажљиви када сакривате системске апликације.</string>
     <string name="warning_root_apps">Amarok није дизајниран за сакривање апликација повезаних с root приступом. То може узроковати губитак root приступа. Уместо тога, размислите о коришћењу Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Додељивање „DELEGATION_PACKAGE_ACCESS“ није успело. Покушајте поново да активирате Dhizuku.</string>
 </resources>
