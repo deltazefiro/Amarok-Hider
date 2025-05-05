@@ -179,9 +179,10 @@
     <string name="apphider_not_activated_title">Fungsi sembunyi takaktif</string>
     <string name="apphider_not_activated_msg">Aktifkan mode sembunyi untuk menggunakan fitur ini.</string>
     <string name="disable_toasts_description">Tidak menampilkan notifikasi saat mode \"sembunyikan\" atau \"perlihatkan\" sedang berjalan.</string>
-    <string name="invert_tile_color">Balikkan warna tile</string>
-    <string name="invert_tile_color_description">Secara bawaan, tile aturan cepat tampak aktif ketika privasi Anda adalah terlihat. Alihkan opsi ini untuk mengatur sebaliknya.</string>
+    <string name="invert_tile_color">Balikkan warna ubin</string>
+    <string name="invert_tile_color_description">Secara bawaan, ubin aturan cepat tampak aktif ketika privasi Anda adalah terlihat. Alihkan opsi ini untuk mengatur sebaliknya.</string>
     <string name="display_root_apps">Menampilkan aplikasi terkait root</string>
     <string name="warning_system_apps">Menyembunyikan aplikasi sistem dapat menyebabkan sistem mengalami bootloop. Harap berhati-hati saat menyembunyikan aplikasi sistem.</string>
     <string name="warning_root_apps">Amarok tidak dirancang untuk menyembunyikan aplikasi terkait root. Aplikasi ini dapat menyebabkan hilangnya akses root. Pertimbangkan untuk menggunakan Dr-TSNG/Hide-My-Applist sebagai gantinya.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Gagal memberikan `DELEGATION_PACKAGE_ACCESS`. Tolong coba aktifkan kembali Dhizuku.</string>
 </resources>
