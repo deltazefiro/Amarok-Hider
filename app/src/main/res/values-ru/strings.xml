@@ -195,4 +195,8 @@
     <string name="xposed_desc">Включите в Amarok функцию скрытия приложений из системных меню.</string>
     <string name="apphider_not_activated_title">Приложение скрывает неактивность</string>
     <string name="apphider_not_activated_msg">Активируйте режим скрытия приложений, чтобы включить эту функцию.</string>
+    <string name="display_root_apps">Отображать программы, связанные с root-приложениями</string>
+    <string name="warning_root_apps">Amarok не предназначен для скрытия приложений связанных с корневым доступом root. Это может привести к потере корневого доступа root. Рассмотрите возможность использования Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Не удалось предоставить `DELEGATION_PACKAGE_ACCESS`. Попробуйте повторно активировать Dhizuku.</string>
+    <string name="warning_system_apps">Скрытие системных приложений может привести к циклической загрузке системы. Будьте осторожны при скрытии системных приложений.</string>
 </resources>
