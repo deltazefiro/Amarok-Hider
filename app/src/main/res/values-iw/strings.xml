@@ -178,4 +178,7 @@
     <string name="filehider_nomedia_description">פשוט להוסיף .nomedia לתיקיות. אין צורך בגישת שורש.</string>
     <string name="x_hide_description">שימוש בXposed כדי לשפר את הסתרת היישומים. יישומים מוסתרים לא יוצגו יותר בהגדרות או יישומים אחרים. Xposed API ≥ 93 דרוש.</string>
     <string name="disable_toasts_description">לא להראות הודעות קופצות בזמן פעולות הסתרה או ביטול הסתרה.</string>
+    <string name="participate_translation">לקיחת חלק בתרגום</string>
+    <string name="warning_root_apps">Amarok לא מעוצב להסתרת יישומים קשורי־שורש. הוא עלול לגרום לאובדן גישת שורש. מומלץ לשקול שימוש בDr-TSNG/Hide-My-Applist במקום זאת.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: נכשל בהענקת `DELEGATION_PACKAGE_ACCESS` (האצלת גישה לחבילות). נא נסו להפעיל את Dhizuku.</string>
 </resources>
