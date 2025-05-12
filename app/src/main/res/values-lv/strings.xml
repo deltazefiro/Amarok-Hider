@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="visible_status">Redzams</string>
+    <string name="enable_analytics">Anonīmā analītika</string>
+    <string name="hide">Paslēpt</string>
+    <string name="usage">Lietojums</string>
+    <string name="current_mode">Pašreizējais režīms: %s</string>
+    <string name="unhide">Parādīt</string>
+    <string name="about">Par lietotni</string>
+    <string name="cancel">Atcelt</string>
+    <string name="set_hide_apps">Iestatīt paslēpjamās lietotnes</string>
+    <string name="set_hide_files">Iestatīt paslēpjamās datnes</string>
+    <string name="ok">Labi</string>
+    <string name="hidden_status">Paslēpts</string>
+</resources>
