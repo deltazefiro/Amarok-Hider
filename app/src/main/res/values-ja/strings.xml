@@ -133,4 +133,7 @@
     <string name="quick_hide_notification_description">非表示になっていないときにユーザーに知らせるための永続的な通知を表示します。</string>
     <string name="notification_permission_request_title">通知の許可が必要</string>
     <string name="notification_permission_denied">通知が許可されていません。</string>
+    <string name="show_about">このアプリについて</string>
+    <string name="confirm_password">パスワード認証</string>
+    <string name="filter">フィルター</string>
 </resources>
