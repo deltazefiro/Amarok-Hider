@@ -79,7 +79,6 @@ public class MainActivity extends AmarokActivity {
         // Check Hiders availability
         PrefMgr.getAppHider(this).tryToActivate((appHiderClass, succeed, msg) -> {
             if (succeed) return;
-            PrefMgr.setAppHiderMode(NoneAppHider.class);
             new MaterialAlertDialogBuilder(this)
                     .setTitle(R.string.apphider_not_ava_title)
                     .setMessage(msg)
