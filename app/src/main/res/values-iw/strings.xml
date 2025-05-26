@@ -3,7 +3,7 @@
     <string name="unhide">ביטול הסתרה</string>
     <string name="hide">הסתרה</string>
     <string name="visible_status">גלוי</string>
-    <string name="hidden_status">חבוי</string>
+    <string name="hidden_status">מוסתר</string>
     <string name="ok">בסדר</string>
     <string name="about">אודות</string>
     <string name="cancel">ביטול</string>
@@ -33,7 +33,7 @@
     <string name="add_hide_files">הוספת תיקייה מוסתרת</string>
     <string name="folder_selector_hints">רמזים לבחור התיקיות: \n\t1. לחץ \"השתמש בתיקייה הזאת\" כדי לבחור את התיקייה\n\t2. תמיד בחר קובץ מהמכשיר \n\t(החלק מימין המסך כדי לפתוח קבצים מקומיים)</string>
     <string name="remove_hide_path">להסיר תיקייה מוסתרת?</string>
-    <string name="remove_hide_path_description">להסיר תיקייה \'%s\' מרשימת החבויים?</string>
+    <string name="remove_hide_path_description">להסיר תיקייה \'%s\' מרשימת המוסתרים?</string>
     <string name="confirm">אישור</string>
     <string name="not_local_storage">תיקייה לא נתמכת</string>
     <string name="help">עזרה</string>
@@ -91,7 +91,7 @@
     <string name="quick_hide">הסתרה מהירה</string>
     <string name="in_app_update_failed">גרסה חדשה זמינה, אבל ההורדה נכשלה. נא לעדכן באופן ידני.</string>
     <string name="notification">התראה</string>
-    <string name="quick_hide_notification_description">מציג התראה מתמדת כדי להודיע למשתמש כשלא חבוי.</string>
+    <string name="quick_hide_notification_description">מציג התראה מתמדת כדי להודיע למשתמש כשלא מוסתר.</string>
     <string name="notification_permission_request_message">שירות ההסתרה המהירה צריך הרשאת התראות כדי לתפקד.</string>
     <string name="quick_hide_notification_title">פרטיות לא מוסתרת</string>
     <string name="quick_hide_notification_content">הפרטיות שלך לא מוסתרת. לחץ כדי להסתיר.</string>
@@ -178,4 +178,7 @@
     <string name="filehider_nomedia_description">פשוט להוסיף .nomedia לתיקיות. אין צורך בגישת שורש.</string>
     <string name="x_hide_description">שימוש בXposed כדי לשפר את הסתרת היישומים. יישומים מוסתרים לא יוצגו יותר בהגדרות או יישומים אחרים. Xposed API ≥ 93 דרוש.</string>
     <string name="disable_toasts_description">לא להראות הודעות קופצות בזמן פעולות הסתרה או ביטול הסתרה.</string>
+    <string name="participate_translation">לקיחת חלק בתרגום</string>
+    <string name="warning_root_apps">Amarok לא מעוצב להסתרת יישומים קשורי־שורש. הוא עלול לגרום לאובדן גישת שורש. מומלץ לשקול שימוש בDr-TSNG/Hide-My-Applist במקום זאת.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: נכשל בהענקת `DELEGATION_PACKAGE_ACCESS` (האצלת גישה לחבילות). נא נסו להפעיל את Dhizuku.</string>
 </resources>
