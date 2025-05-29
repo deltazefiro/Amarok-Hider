@@ -1,5 +1,6 @@
 package deltazero.amarok;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -62,7 +63,10 @@ public final class Hider {
                 processHide(context);
                 return;
             }
-            showNoHiderDialog(context, msg);
+            if (context instanceof Activity)
+                showNoHiderDialog(context, msg);
+            else
+                showNoHiderToast(context, msg);
         });
     }
 
@@ -98,7 +102,10 @@ public final class Hider {
                 processUnhide(context);
                 return;
             }
-            showNoHiderDialog(context, msg);
+            if (context instanceof Activity)
+                showNoHiderDialog(context, msg);
+            else
+                showNoHiderToast(context, msg);
         });
     }
 
@@ -146,6 +153,10 @@ public final class Hider {
                         -> context.startActivity(new Intent(context, SwitchAppHiderActivity.class)))
                 .setNegativeButton(context.getString(R.string.ok), null)
                 .show();
+    }
+
+    private static void showNoHiderToast(Context context, int message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
 }
