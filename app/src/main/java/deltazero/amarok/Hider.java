@@ -1,6 +1,8 @@
 package deltazero.amarok;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -8,6 +10,9 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import deltazero.amarok.ui.settings.SwitchAppHiderActivity;
 
 
 public final class Hider {
@@ -53,6 +58,19 @@ public final class Hider {
     }
 
     public static void hide(Context context) {
+        PrefMgr.getAppHider(context).tryToActivate((appHiderClass, succeed, msg) -> {
+            if (succeed) {
+                processHide(context);
+                return;
+            }
+            if (context instanceof Activity)
+                showNoHiderDialog(context, msg);
+            else
+                showNoHiderToast(context, msg);
+        });
+    }
+
+    private static void processHide(Context context) {
 
         threadHandler.post(() -> {
 
@@ -79,6 +97,19 @@ public final class Hider {
     }
 
     public static void unhide(Context context) {
+        PrefMgr.getAppHider(context).tryToActivate((appHiderClass, succeed, msg) -> {
+            if (succeed) {
+                processUnhide(context);
+                return;
+            }
+            if (context instanceof Activity)
+                showNoHiderDialog(context, msg);
+            else
+                showNoHiderToast(context, msg);
+        });
+    }
+
+    private static void processUnhide(Context context) {
 
         threadHandler.post(() -> {
 
@@ -112,6 +143,20 @@ public final class Hider {
             hiderThread.interrupt();
         PrefMgr.setIsHidden(true);
         unhide(context);
+    }
+
+    public static void showNoHiderDialog(Context context, int message) {
+        new MaterialAlertDialogBuilder(context)
+                .setTitle(R.string.apphider_not_ava_title)
+                .setMessage(message)
+                .setPositiveButton(R.string.switch_app_hider, (dialog, which)
+                        -> context.startActivity(new Intent(context, SwitchAppHiderActivity.class)))
+                .setNegativeButton(context.getString(R.string.ok), null)
+                .show();
+    }
+
+    private static void showNoHiderToast(Context context, int message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
 }
