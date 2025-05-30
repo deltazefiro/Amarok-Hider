@@ -79,14 +79,7 @@ public class MainActivity extends AmarokActivity {
         // Check Hiders availability
         PrefMgr.getAppHider(this).tryToActivate((appHiderClass, succeed, msg) -> {
             if (succeed) return;
-            PrefMgr.setAppHiderMode(NoneAppHider.class);
-            new MaterialAlertDialogBuilder(this)
-                    .setTitle(R.string.apphider_not_ava_title)
-                    .setMessage(msg)
-                    .setPositiveButton(R.string.switch_app_hider, (dialog, which)
-                            -> startActivity(new Intent(this, SwitchAppHiderActivity.class)))
-                    .setNegativeButton(getString(R.string.ok), null)
-                    .show();
+            Hider.showNoHiderDialog(this, msg);
         });
 
         PrefMgr.getFileHider(this).tryToActive((fileHiderClass, succeed, msg) -> {
