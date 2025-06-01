@@ -25,7 +25,8 @@ public class DhizukuAppHider extends BaseAppHider {
     }
 
     @Override
-    public void hide(Set<String> pkgNames) {
+    public void hide(Set<String> pkgNames, boolean disableOnly) {
+        // Dhizuku only supports setApplicationHidden, so disableOnly parameter is ignored
         setDelegatedScopes();
         for (var pkgName : pkgNames) {
             devicePolicyManager.setApplicationHidden(null, pkgName, true);

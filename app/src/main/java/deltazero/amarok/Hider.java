@@ -78,7 +78,10 @@ public final class Hider {
             state.postValue(State.PROCESSING);
 
             try {
-                PrefMgr.getAppHider(context).hide(PrefMgr.getHideApps());
+                // Determine if we should only disable apps (skip hide step) when XHide is enabled
+                boolean disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide();
+                
+                PrefMgr.getAppHider(context).hide(PrefMgr.getHideApps(), disableOnly);
                 PrefMgr.getFileHider(context).hide(PrefMgr.getHideFilePath());
             } catch (InterruptedException e) {
                 Log.w(TAG, "Process 'hide' interrupted.");

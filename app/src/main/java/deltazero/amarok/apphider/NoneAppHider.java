@@ -14,7 +14,7 @@ public class NoneAppHider extends BaseAppHider {
     }
 
     @Override
-    public void hide(Set<String> pkgNames) {
+    public void hide(Set<String> pkgNames, boolean disableOnly) {
         Log.w("AppHider", "Skip app hiding: hider disabled");
     }
 
