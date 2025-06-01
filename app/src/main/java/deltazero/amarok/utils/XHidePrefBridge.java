@@ -43,7 +43,8 @@ public class XHidePrefBridge {
         var localPrefFile = new File(LOCAL_PREF_DIR, MAIN_PREF_FILENAME);
         var xPrefFile = new File(xPrefDir, MAIN_PREF_FILENAME);
 
-        if (!isModuleActive || xPrefFile.exists() || !localPrefFile.exists()) return;
+        if (!isModuleActive || xPrefFile.exists() || !localPrefFile.exists())
+            return;
 
         Log.w(TAG, String.format("Try to migrate ordinary preferences to XPref directory: " +
                 "%s -> %s", LOCAL_PREF_DIR, xPrefDir));
@@ -90,10 +91,7 @@ public class XHidePrefBridge {
         };
         PrefMgr.getPrefs().registerOnSharedPreferenceChangeListener(hidePkgNamesChangeListener);
 
-        Hider.state.observeForever(state -> {
-            if (state == Hider.State.PROCESSING) return;
-            commitNewValues();
-        });
+        Hider.state.observeForever(state -> commitNewValues());
 
         Log.i(TAG, "XHide initialized.");
         isAvailable = true;
