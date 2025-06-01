@@ -30,5 +30,20 @@ public class XHideCategory extends BaseCategory {
                 : activity.getString(R.string.xposed_inactive));
         enableXHide.setEnabled(XHidePrefBridge.isAvailable);
         addPreference(enableXHide);
+
+        var disableOnlyWithXHide = new MaterialSwitchPreference(activity);
+        disableOnlyWithXHide.setKey(PrefMgr.DISABLE_ONLY_WITH_XHIDE);
+        disableOnlyWithXHide.setTitle(R.string.disable_only_with_xhide);
+        disableOnlyWithXHide.setIcon(R.drawable.visibility_off_24dp);
+        disableOnlyWithXHide.setSummary(R.string.disable_only_with_xhide_description);
+        disableOnlyWithXHide.setEnabled(XHidePrefBridge.isAvailable && PrefMgr.isXHideEnabled());
+        disableOnlyWithXHide.setChecked(PrefMgr.getDisableOnlyWithXHide());
+        addPreference(disableOnlyWithXHide);
+
+        // Update the skip hide step preference when XHide is toggled
+        enableXHide.setOnPreferenceChangeListener((preference, newValue) -> {
+            disableOnlyWithXHide.setEnabled(XHidePrefBridge.isAvailable && (boolean) newValue);
+            return true;
+        });
     }
 }

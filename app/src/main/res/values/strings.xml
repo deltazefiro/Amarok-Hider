@@ -180,6 +180,8 @@
     <string name="enable_x_hide_description">Status: %s</string>
     <string name="xposed_active">Active, Xposed API %d</string>
     <string name="xposed_inactive">Module inactive. Check Xposed manager?</string>
+    <string name="disable_only_with_xhide">Disable apps only</string>
+    <string name="disable_only_with_xhide_description">Only disable apps and let XHide handle the hiding exclusively. May reduce lag during the hiding.</string>
     <string name="disable_toasts">Disable toasts</string>
     <string name="disable_toasts_description">Do not show toast notifications during hide or unhide actions.</string>
     <string name="apphider_not_activated_title">App hiding inactive</string>

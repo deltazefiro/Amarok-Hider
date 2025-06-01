@@ -27,9 +27,10 @@ public class DsmAppHider extends BaseAppHider {
     }
 
     @Override
-    public void hide(Set<String> pkgNames) {
+    public void hide(Set<String> pkgNames, boolean disableOnly) {
+        // DSM only supports setApplicationHidden, so disableOnly parameter is ignored
         if (!dpm.isAdminActive(admin)) {
-            Log.w("DsmAppHider", "Admin not active. Failed to unhide apps.");
+            Log.w("DsmAppHider", "Admin not active. Failed to hide apps.");
             Toast.makeText(context, R.string.hide_app_failed_admin_inactive, Toast.LENGTH_LONG).show();
         }
         for (String p : pkgNames) {

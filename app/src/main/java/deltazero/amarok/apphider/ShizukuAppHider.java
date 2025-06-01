@@ -111,13 +111,16 @@ public class ShizukuAppHider extends BaseAppHider {
     }
 
     @Override
-    public void hide(Set<String> pkgNames) {
+    public void hide(Set<String> pkgNames, boolean disableOnly) {
         if (!Shizuku.pingBinder()) {
             Log.w("ShizukuHider", "Binder not available.");
             return;
         }
+        
         setAppDisabled(true, pkgNames);
-        setAppHidden(true, pkgNames);
+        if (!disableOnly) {
+            setAppHidden(true, pkgNames);
+        }
     }
 
     @Override

@@ -66,6 +66,7 @@ public final class PrefMgr {
     public static final String AUTO_HIDE_DELAY = "autoHideDelay";
     public static final String BLOCK_SCREENSHOTS = "blockScreenshots";
     public static final String ENABLE_X_HIDE = "enableXHide";
+    public static final String DISABLE_ONLY_WITH_XHIDE = "disableOnlyWithXHide";
     public static final String DISABLE_TOASTS = "disableToasts";
     public static final String INVERT_TILE_COLOR = "invertTileColor";
 
@@ -298,6 +299,15 @@ public final class PrefMgr {
 
     public static void setXHideEnabled(boolean enableXHide) {
         mPrefEditor.putBoolean(ENABLE_X_HIDE, enableXHide);
+        mPrefEditor.apply();
+    }
+
+    public static boolean getDisableOnlyWithXHide() {
+        return mPrefs.getBoolean(DISABLE_ONLY_WITH_XHIDE, false);
+    }
+
+    public static void setDisableOnlyWithXHide(boolean disableOnlyWithXHide) {
+        mPrefEditor.putBoolean(DISABLE_ONLY_WITH_XHIDE, disableOnlyWithXHide);
         mPrefEditor.apply();
     }
 

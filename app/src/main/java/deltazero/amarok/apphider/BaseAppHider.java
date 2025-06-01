@@ -11,7 +11,12 @@ public abstract class BaseAppHider {
         this.context = context;
     }
 
-    public abstract void hide(Set<String> pkgNames);
+    /**
+     * Hide apps with option to only disable them (skip the hide step)
+     * @param pkgNames Package names to hide
+     * @param disableOnly If true, only disable apps without hiding them from system
+     */
+    public abstract void hide(Set<String> pkgNames, boolean disableOnly);
 
     public abstract void unhide(Set<String> pkgNames);
 
