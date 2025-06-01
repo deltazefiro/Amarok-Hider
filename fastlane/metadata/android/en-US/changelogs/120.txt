@@ -1,0 +1,9 @@
+v0.10.0-beta1
+- Added new launcher widget for quick hide
+- Fixed crash when Dhizuku fails to set delegated scopes
+- Added ability to hide apps directly by clicking notifications (#154)
+- Prevent hiding/unhiding when configured hider is unavailable (#213, by @warleysr)
+- Fixed issue where apps would lose account and permission data with XHide (#203, by @notaLonelyDay)
+- Added option to only disable apps and let XHide handle the hiding exclusively
+- Support bypassing security checks when unhidden
+- Disabled automatic updates due to AppCenter retirement
