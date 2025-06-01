@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import deltazero.amarok.ui.settings.SwitchAppHiderActivity;
+import deltazero.amarok.utils.SecurityUtil;
 
 
 public final class Hider {
@@ -68,6 +70,12 @@ public final class Hider {
             else
                 showNoHiderToast(context, msg);
         });
+
+        // Avoid password or disguise right after hide
+        if (PrefMgr.getDisableSecurityWhenUnhidden()) {
+            SecurityUtil.unlock();
+            SecurityUtil.dismissDisguise();
+        }
     }
 
     private static void processHide(Context context) {
@@ -80,7 +88,7 @@ public final class Hider {
             try {
                 // Determine if we should only disable apps (skip hide step) when XHide is enabled
                 boolean disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide();
-                
+
                 PrefMgr.getAppHider(context).hide(PrefMgr.getHideApps(), disableOnly);
                 PrefMgr.getFileHider(context).hide(PrefMgr.getHideFilePath());
             } catch (InterruptedException e) {

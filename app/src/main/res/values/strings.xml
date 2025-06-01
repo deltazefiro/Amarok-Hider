@@ -150,6 +150,8 @@
     <string name="app_name_calendar">Calendar</string>
     <string name="disguise">App disguise</string>
     <string name="disguise_description">Disguise Amarok as a calendar app.</string>
+    <string name="disable_security_when_unhidden">Disable security when unhidden</string>
+    <string name="disable_security_when_unhidden_description">Disable disguise and app lock when not hidden.</string>
     <string name="calendar_about">Pure Calendar | by @koramA</string>
     <string name="close_disguise_spotlight_tip">Long press the <font fgcolor="#FCCA3E"><b>Year Number</b></font> to access Amarok.</string>
     <string name="spotlight_do_not_show_again">DON\'T SHOW AGAIN</string>
