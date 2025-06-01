@@ -63,7 +63,8 @@ public class PrivacyCategory extends BaseCategory {
         disguisePref.setChecked(PrefMgr.getEnableDisguise());
         disguisePref.setOnPreferenceChangeListener((preference, newValue) -> {
             PrefMgr.setDoShowQuitDisguiseInstuct(true);
-            if ((boolean) newValue) SecurityUtil.lockAndDisguise();
+            if ((boolean) newValue)
+                SecurityUtil.lockAndDisguise();
             LauncherIconController.switchDisguise(activity, (boolean) newValue);
             return true;
         });
@@ -80,6 +81,14 @@ public class PrivacyCategory extends BaseCategory {
             return true;
         });
         addPreference(allowScreenshotPref);
+
+        var disableSecurityWhenUnhiddenPref = new MaterialSwitchPreference(activity);
+        disableSecurityWhenUnhiddenPref.setKey(PrefMgr.DISABLE_SECURITY_WHEN_UNHIDDEN);
+        disableSecurityWhenUnhiddenPref.setIcon(R.drawable.encrypted_off_24dp);
+        disableSecurityWhenUnhiddenPref.setTitle(R.string.disable_security_when_unhidden);
+        disableSecurityWhenUnhiddenPref.setSummary(R.string.disable_security_when_unhidden_description);
+        disableSecurityWhenUnhiddenPref.setChecked(PrefMgr.getDisableSecurityWhenUnhidden());
+        addPreference(disableSecurityWhenUnhiddenPref);
 
         var disableToastsPref = new MaterialSwitchPreference(activity);
         disableToastsPref.setKey(PrefMgr.DISABLE_TOASTS);

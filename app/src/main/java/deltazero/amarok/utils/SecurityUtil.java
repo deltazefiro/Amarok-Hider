@@ -1,5 +1,6 @@
 package deltazero.amarok.utils;
 
+import deltazero.amarok.Hider;
 import deltazero.amarok.PrefMgr;
 
 public class SecurityUtil {
@@ -20,10 +21,14 @@ public class SecurityUtil {
     }
 
     public static boolean isDisguiseNeeded() {
+        if (PrefMgr.getDisableSecurityWhenUnhidden() && Hider.getState() == Hider.State.VISIBLE)
+            return false;
         return PrefMgr.getEnableDisguise() && disguised;
     }
 
     public static boolean isUnlockRequired() {
+        if (PrefMgr.getDisableSecurityWhenUnhidden() && Hider.getState() == Hider.State.VISIBLE)
+            return false;
         return PrefMgr.getAmarokPassword() != null && locked;
     }
 }
