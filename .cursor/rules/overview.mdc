@@ -1,6 +1,6 @@
 ---
 description: Understanding the basic project structure and architecture.
-globs: 
+globs:
 ---
 # Amarok Project Overview
 
@@ -65,7 +65,7 @@ The `Hider` class serves as the central management system for both file and app 
 #### To Add a New Setting
 
 1. Update `PrefMgr.java` with the new preference.
-2. Add the setting UI under the appropriate category.
+2. Add the setting UI under the appropriate category. Use `R.drawable.ic_null` as placeholder icon for new options.
 3. Access it via `PrefMgr.getXXX()` or update it with `PrefMgr.setXXX()`.
 
 ### 5. XHide
