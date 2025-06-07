@@ -89,11 +89,7 @@
     <string name="invalid_dsm_provider">DSM: недействительный поставщик DSM. Вы установили и активировали поставщика DSM на своем устройстве\?</string>
     <string name="hide_app_failed_admin_inactive">Не удалось скрыть приложение: поставщик DSM не активен.</string>
     <string name="path_duplicated">Зациклить скрытую папку</string>
-    <string name="path_duplicated_description"><u>\'%1$s\'</u>
-\n
-\nсодержит
-\n
-\n<u>\'%2$s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nсодержит\n\n<u>\'%2$s\'</u></string>
     <string name="shizuku_permission_denied">Shizuku: В доступе отказано</string>
     <string name="apphider_not_ava_title">Приложение скрывает неактивность</string>
     <string name="alert_permission_denied">Отказано в разрешении на отображение поверх других приложений.</string>
@@ -195,4 +191,8 @@
     <string name="xposed_desc">Включите в Amarok функцию скрытия приложений из системных меню.</string>
     <string name="apphider_not_activated_title">Приложение скрывает неактивность</string>
     <string name="apphider_not_activated_msg">Активируйте режим скрытия приложений, чтобы включить эту функцию.</string>
+    <string name="display_root_apps">Отображать программы, связанные с root-приложениями</string>
+    <string name="warning_root_apps">Amarok не предназначен для скрытия приложений связанных с корневым доступом root. Это может привести к потере корневого доступа root. Рассмотрите возможность использования Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Не удалось предоставить `DELEGATION_PACKAGE_ACCESS`. Попробуйте повторно активировать Dhizuku.</string>
+    <string name="warning_system_apps">Скрытие системных приложений может привести к циклической загрузке системы. Будьте осторожны при скрытии системных приложений.</string>
 </resources>
