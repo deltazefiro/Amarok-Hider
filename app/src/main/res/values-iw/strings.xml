@@ -3,7 +3,7 @@
     <string name="unhide">ביטול הסתרה</string>
     <string name="hide">הסתרה</string>
     <string name="visible_status">גלוי</string>
-    <string name="hidden_status">חבוי</string>
+    <string name="hidden_status">מוסתר</string>
     <string name="ok">בסדר</string>
     <string name="about">אודות</string>
     <string name="cancel">ביטול</string>
@@ -33,7 +33,7 @@
     <string name="add_hide_files">הוספת תיקייה מוסתרת</string>
     <string name="folder_selector_hints">רמזים לבחור התיקיות: \n\t1. לחץ \"השתמש בתיקייה הזאת\" כדי לבחור את התיקייה\n\t2. תמיד בחר קובץ מהמכשיר \n\t(החלק מימין המסך כדי לפתוח קבצים מקומיים)</string>
     <string name="remove_hide_path">להסיר תיקייה מוסתרת?</string>
-    <string name="remove_hide_path_description">להסיר תיקייה \'%s\' מרשימת החבויים?</string>
+    <string name="remove_hide_path_description">להסיר תיקייה \'%s\' מרשימת המוסתרים?</string>
     <string name="confirm">אישור</string>
     <string name="not_local_storage">תיקייה לא נתמכת</string>
     <string name="help">עזרה</string>
@@ -44,8 +44,8 @@
     <string name="shizuku_service_not_running">Shizuku: השירות לא פעיל.</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nמכילה את\n\n<u>\'%2$s\'</u></string>
     <string name="check_update_on_start">עדכון אוטומטי</string>
-    <string name="check_update_on_start_description">בדוק אם יש גרסאות חדשות של amarok כשפותחים את האפליקציה.</string>
-    <string name="check_update">בדוק אם יש עדכונים</string>
+    <string name="check_update_on_start_description">בדיקה אם יש גרסאות amarok חדשות כשפותחים את האפליקציה.</string>
+    <string name="check_update">בדיקה אם יש עדכונים</string>
     <string name="update_ava">גרסה חדשה זמינה</string>
     <string name="update_description">Amarok %s (%d) זמין להורדה והתקנה.</string>
     <string name="update">עדכון</string>
@@ -58,7 +58,7 @@
     <string name="shizuku_hidden_api_error">לא יכל להסתיר את היישום: לא יכל לגשת לAPI של IPackageManager.</string>
     <string name="apphider_not_ava_title">הסתרת יישומים לא פעילה</string>
     <string name="dsm_permission_denied">DSM: ההרשאה נדחתה</string>
-    <string name="apphider_none">מנוטרל</string>
+    <string name="apphider_none">מושבת</string>
     <string name="apphider_none_description">כיבוי הסתרת היישומים.</string>
     <string name="apphider_root">מצב שורש</string>
     <string name="apphider_root_description">הסתרת יישומים עם גישת שורש.\nמומלצת אם מכשירך משורש אך לא מכיל את מסגרת הXposed. הרשאת שורש נדרשת.</string>
@@ -72,7 +72,7 @@
     <string name="obfuscate_file_header">בלבול כותרות קבצים</string>
     <string name="filename_only">שמות קובץ בלבד</string>
     <string name="filename_and_header">שם קובץ + כותרת</string>
-    <string name="obfuscate_text_file">בלבול קבצי טקסט לגמרי</string>
+    <string name="obfuscate_text_file">בלבול קבצי טקסט מלא</string>
     <string name="obfuscate_text_file_description">בלבול כותרות לא משפיע על קבצי טקסט. הפעלת האפשרות הזאת תבלבל קבצי טקסט באופן מלא.</string>
     <string name="join_developer_channel">קבוצת טלגרם</string>
     <string name="processing">מעבד…</string>
@@ -82,7 +82,7 @@
     <string name="alert_permission_denied">ההרשאה להציג מעל יישומים אחרים נדחתה.</string>
     <string name="alert_permission_request_title">ההרשאה לפתוח חלונות קופצים נדרשת</string>
     <string name="misc">שונות.</string>
-    <string name="workmode">מצב עבודה</string>
+    <string name="workmode">מצב פעולה</string>
     <string name="panic_button">לחצן מצוקה</string>
     <string name="security">אבטחה</string>
     <string name="failed_to_open_doc_tree">לא יכל לפתוח את בוחר הקבצים של המערכת</string>
@@ -91,11 +91,11 @@
     <string name="quick_hide">הסתרה מהירה</string>
     <string name="in_app_update_failed">גרסה חדשה זמינה, אבל ההורדה נכשלה. נא לעדכן באופן ידני.</string>
     <string name="notification">התראה</string>
-    <string name="quick_hide_notification_description">מציג התראה מתמדת כדי להודיע למשתמש כשלא חבוי.</string>
+    <string name="quick_hide_notification_description">הצגת התראה מתמדת כדי להודיע למשתמש כשלא מוסתר.</string>
     <string name="notification_permission_request_message">שירות ההסתרה המהירה צריך הרשאת התראות כדי לתפקד.</string>
     <string name="quick_hide_notification_title">פרטיות לא מוסתרת</string>
     <string name="quick_hide_notification_content">הפרטיות שלך לא מוסתרת. לחץ כדי להסתיר.</string>
-    <string name="panic_button_description">מציג לחצן צף להסתרת אפליקציות וקבצים מהר במצב חירום. הלחצן מופיע מעל כל היישומים כשAmarok במצב לא מוסתר.</string>
+    <string name="panic_button_description">הצגת לחצן צף להסתרת אפליקציות וקבצים מהר במצב חירום. הלחצן מופיע מעל כל היישומים כשAmarok במצב לא מוסתר.</string>
     <string name="apphider_shizuku_description">הסתרת יישומים באמצעות Shizuku (או Sui).\nמומלצת אם מכשירך מריץ אנדרואיד 11+ או מכיל את מסגרת הXposed. Shizuku או Sui מותקן ופעיל נדרש.\n</string>
     <string name="obfuscate_text_file_enhanced">בלבול קבצי טקסט מלא - משופר</string>
     <string name="alert_permission_request_message">הלחצן הצף צריך הרשאה לפתוח חלונות קופצים. נא להעניק את ההרשאה הזאת בתפריט ההגדרות מתחת לAmarok.</string>
@@ -113,7 +113,7 @@
     <string name="unlock">פתיחה</string>
     <string name="unlock_required">פתיחה נדרשת</string>
     <string name="password_incorrect">סיסמה שגויה.</string>
-    <string name="app_lock_description">דרשית סיסמה לשימוש בAmarok.</string>
+    <string name="app_lock_description">דרישת סיסמה לשימוש בAmarok.</string>
     <string name="confirm_password">אישור סיסמה</string>
     <string name="set_password">קביעת סיסמה</string>
     <string name="app_lock">נעילת יישום</string>
@@ -125,7 +125,7 @@
     <string name="dhizuku_pre_v5">Dhizuku: גרסה לא נתמכת. נא לעדכן לגרסה 5 או אחרי.</string>
     <string name="dhizuku_not_init">Dhizuku: שירות לא זמין. נא לוודא שהתקנת והפעלת את Dhizuku.</string>
     <string name="apphider_dhizuku">מצב Dhizuku</string>
-    <string name="force_unhide">אילוץ של ביטול ההסתרה</string>
+    <string name="force_unhide">אילוץ ביטול ההסתרה</string>
     <string name="force_unhide_description">ניסיון לשחזר את הכל. לשימוש רק אם נתקלים בבעיות.</string>
     <string name="force_unhide_confirm_msg">לנסות לשחזר הכל?\n\n<b>אזהרה:</b>האפשרות הזאת עלולה להרוס את הקבצים שלך. לשימוש רק אם נתקלים בבעיות ולא יכולים לבצע ביטול הסתרה בדרך הרגילה.</string>
     <string name="performing_force_unhide">ביטול הסתרה בכח מתבצע. נא לחכות בסבלנות.</string>
@@ -144,10 +144,10 @@
     <string name="dynamic_color_description">הפעלת ערכת נושא דינמית.</string>
     <string name="app_name_calendar">לוח שנה</string>
     <string name="disguise">הסוואת יישום</string>
-    <string name="disguise_description">להסוות את Amarok היישום לוח שנה.</string>
+    <string name="disguise_description">הסוואת Amarok כאפליקציית לוח שנה.</string>
     <string name="filehider_not_ava_title">הסתרת קבצים לא זמינה</string>
-    <string name="filehider_none">לא פעילה</string>
-    <string name="filehider_none_description">כיבוי הסתרת קבצים.</string>
+    <string name="filehider_none">מושבת</string>
+    <string name="filehider_none_description">השבתת הסתרת קבצים.</string>
     <string name="filehider_obfuscate">מצב בלבול</string>
     <string name="filehider_chmod">מצב Chmod</string>
     <string name="filehider_nomedia">מצב NoMedia</string>
@@ -156,12 +156,12 @@
     <string name="auto_hide">הסתרה אוטומטית</string>
     <string name="auto_hide_description">מסתיר באופן אוטומטי לאחר כיבוי המסך.</string>
     <string name="auto_hide_delay">עיכוב הסתרה אוטומטית</string>
-    <string name="auto_hide_delay_description">מספר השעות להתעכב לפני הסתרה אחרי שהמסך כבה.</string>
+    <string name="auto_hide_delay_description">מספר הדקות להתעכב לפני הסתרה אחרי שהמסך כבה.</string>
     <string name="block_screenshots_description">חוסם צילומי מסך בAmarok ומטשטש אותו ברשימת היישומים.</string>
     <string name="enable_x_hide_description">מצב:%s</string>
     <string name="xposed_active">פעיל, Xposed API %d</string>
     <string name="xposed_inactive">מודול לא פעיל. לבדוק במנהל הXposed?</string>
-    <string name="disable_toasts">כיבוי הודעות קופצות</string>
+    <string name="disable_toasts">השבתת הודעות קופצות</string>
     <string name="apphider_not_activated_msg">צריך להפעיל מצב הסתרת יישומים כדי לאפשר את האפשרות הזאת.</string>
     <string name="invert_tile_color_description">בברית המחדל, אריח ההגדרות המהירות מוצג פעיל כשהפרטיות שלך מוצגת. הצג את האפשרות הזאת כדי להפוך את ההתנהגות הזאת.</string>
     <string name="close_disguise_spotlight_tip">יש ללחוץ לחיצה ארוכה על <font fgcolor="#FCCA3E"><b>מספר השנה</b></font> כדי לגשת לAmarok.</string>
@@ -173,9 +173,16 @@
     <string name="block_screenshots">חסימת צילומי מסך</string>
     <string name="invert_tile_color">היפוך צבע האריח</string>
     <string name="xposed_desc">אפשר לAmarok להסתיר יישומים מתפריטי מערכת.</string>
-    <string name="enable_x_hide">אפשר Xhide</string>
+    <string name="enable_x_hide">הפעלת Xhide</string>
     <string name="apphider_not_activated_title">הסתרת יישומים לא פעילה</string>
     <string name="filehider_nomedia_description">פשוט להוסיף .nomedia לתיקיות. אין צורך בגישת שורש.</string>
     <string name="x_hide_description">שימוש בXposed כדי לשפר את הסתרת היישומים. יישומים מוסתרים לא יוצגו יותר בהגדרות או יישומים אחרים. Xposed API ≥ 93 דרוש.</string>
     <string name="disable_toasts_description">לא להראות הודעות קופצות בזמן פעולות הסתרה או ביטול הסתרה.</string>
+    <string name="participate_translation">לקיחת חלק בתרגום</string>
+    <string name="warning_root_apps">Amarok לא מעוצב להסתרת יישומים קשורי־שורש. הוא עלול לגרום לאובדן גישת שורש. מומלץ לשקול שימוש בDr-TSNG/Hide-My-Applist במקום זאת.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: נכשל בהענקת `DELEGATION_PACKAGE_ACCESS` (האצלת גישה לחבילות). נא נסו להפעיל את Dhizuku.</string>
+    <string name="disable_security_when_unhidden_description">השבתת הסוואה ונעילת אפליקציה כשלא מוסתר.</string>
+    <string name="disable_security_when_unhidden">השבתת אבטחה כשלא מוסתר</string>
+    <string name="disable_only_with_xhide">השבתת אפליקציות בלבד</string>
+    <string name="disable_only_with_xhide_description">רק להשבית אפליקציות ולתת לXHide לדאוג להסתרה בלבד. עשוי להפחית האטה בזמן הסתרה.</string>
 </resources>
