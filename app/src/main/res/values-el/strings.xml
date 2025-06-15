@@ -180,4 +180,9 @@
     <string name="display_root_apps">Εμφάνιση εφαρμογών που σχετίζονται με το root</string>
     <string name="warning_system_apps">Η απόκρυψη εφαρμογών συστήματος μπορεί να προκαλέσει βρόχο εκκίνησης συστήματος. Να είστε προσεκτικοί κατά την απόκρυψη εφαρμογών συστήματος.</string>
     <string name="warning_root_apps">Το Amarok δεν έχει σχεδιαστεί για την απόκρυψη εφαρμογών που σχετίζονται με το root. Μπορεί να προκαλέσει απώλεια πρόσβασης root. Εξετάστε το ενδεχόμενο να χρησιμοποιήσετε το Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Αποτυχία παραχώρησης `DELEGATION_PACKAGE_ACCESS`. Δοκιμάστε να ενεργοποιήσετε ξανά το Dhizuku.</string>
+    <string name="disable_only_with_xhide_description">Απενεργοποίηση μόνο εφαρμογών και αφήστε το XHide να χειριστεί αποκλειστικά την απόκρυψη. Ενδέχεται να μειώσει την καθυστέρηση κατά την απόκρυψη.</string>
+    <string name="disable_only_with_xhide">Απενεργοποίηση μόνο εφαρμογών</string>
+    <string name="disable_security_when_unhidden">Απενεργοποίηση ασφάλειας όταν δεν είναι κρυμμένη</string>
+    <string name="disable_security_when_unhidden_description">Απενεργοποίηση μεταμφίεσης και κλειδώματος εφαρμογών όταν δεν είναι κρυμμένα.</string>
 </resources>
