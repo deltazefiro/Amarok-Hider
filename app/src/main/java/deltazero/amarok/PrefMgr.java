@@ -60,6 +60,7 @@ public final class PrefMgr {
     public static final String ENABLE_AMAROK_BIOMETRIC_AUTH = "enableAmarokBiometricAuth";
     public static final String ENABLE_DYNAMIC_COLOR = "enableDynamicColor";
     public static final String ENABLE_DISGUISE = "enableDisguise";
+    public static final String HIDE_AMAROK_ICON = "hideAmarokIcon";
     public static final String DO_SHOW_QUIT_DISGUISE_INSTRUCT = "doShowQuitDisguiseInstuct";
     public static final String SHOW_WELCOME = "showWelcome";
     public static final String ENABLE_AUTO_HIDE = "enableAutoHide";
@@ -246,6 +247,15 @@ public final class PrefMgr {
 
     public static void setEnableDisguise(boolean enableDisguise) {
         mPrefEditor.putBoolean(ENABLE_DISGUISE, enableDisguise);
+        mPrefEditor.apply();
+    }
+
+    public static boolean getHideAmarokIcon() {
+        return mPrefs.getBoolean(HIDE_AMAROK_ICON, false);
+    }
+
+    public static void setHideAmarokIcon(boolean hideAmarokIcon) {
+        mPrefEditor.putBoolean(HIDE_AMAROK_ICON, hideAmarokIcon);
         mPrefEditor.apply();
     }
 

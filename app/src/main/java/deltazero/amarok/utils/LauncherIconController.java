@@ -4,20 +4,44 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.pm.PackageManager;
 
+import deltazero.amarok.BuildConfig;
+
 public class LauncherIconController {
-    public static void switchDisguise(Activity activity, boolean enableDisguise) {
-        activity.getPackageManager().setComponentEnabledSetting(
-                new ComponentName(activity.getPackageName(), "deltazero.amarok.launcher.calendar"),
-                enableDisguise ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
-                PackageManager.DONT_KILL_APP);
-        activity.getPackageManager().setComponentEnabledSetting(
-                new ComponentName(activity.getPackageName(), "deltazero.amarok.launcher.default"),
-                enableDisguise ? PackageManager.COMPONENT_ENABLED_STATE_DISABLED : PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
-                PackageManager.DONT_KILL_APP);
+    private static final String LAUNCHER_DEFAULT = "deltazero.amarok.launcher.default";
+    private static final String LAUNCHER_CALENDAR = "deltazero.amarok.launcher.calendar";
+
+    public enum IconState {
+        VISIBLE,    // Normal Amarok icon visible
+        DISGUISED,  // Calendar icon visible (disguised)
+        HIDDEN      // No icon visible
     }
 
-    public static boolean checkIsDisguised(Activity activity) {
-        var status = activity.getPackageManager().getComponentEnabledSetting(new ComponentName(activity.getPackageName(), "deltazero.amarok.launcher.calendar"));
-        return status == PackageManager.COMPONENT_ENABLED_STATE_ENABLED;
+    public static void setIconState(Activity activity, IconState state) {
+        PackageManager pm = activity.getPackageManager();
+
+        switch (state) {
+            case VISIBLE -> {
+                // Show normal Amarok icon
+                setComponentState(pm, LAUNCHER_DEFAULT, true);
+                setComponentState(pm, LAUNCHER_CALENDAR, false);
+            }
+            case DISGUISED -> {
+                // Show calendar icon (disguised)
+                setComponentState(pm, LAUNCHER_CALENDAR, true);
+                setComponentState(pm, LAUNCHER_DEFAULT, false);
+            }
+            case HIDDEN -> {
+                // Hide all icons
+                setComponentState(pm, LAUNCHER_DEFAULT, false);
+                setComponentState(pm, LAUNCHER_CALENDAR, false);
+            }
+        }
+    }
+
+    private static void setComponentState(PackageManager pm, String componentName, boolean enabled) {
+        pm.setComponentEnabledSetting(
+                new ComponentName(BuildConfig.APPLICATION_ID, componentName),
+                enabled ? PackageManager.COMPONENT_ENABLED_STATE_ENABLED : PackageManager.COMPONENT_ENABLED_STATE_DISABLED,
+                PackageManager.DONT_KILL_APP);
     }
 }
