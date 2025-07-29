@@ -1,6 +1,5 @@
 ---
-description: Understanding the basic project structure and architecture.
-globs:
+alwaysApply: true
 ---
 # Amarok Project Overview
 

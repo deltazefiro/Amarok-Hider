@@ -40,7 +40,6 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
@@ -173,6 +172,17 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/toggle_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".receivers.DialerReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
+                <!-- 262765 is AMAROK in T9 -->
+                <data
+                    android:host="262765"
+                    android:scheme="android_secret_code" />
+            </intent-filter>
         </receiver>
 
         <provider

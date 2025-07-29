@@ -150,6 +150,8 @@
     <string name="app_name_calendar">Calendar</string>
     <string name="disguise">App disguise</string>
     <string name="disguise_description">Disguise Amarok as a calendar app.</string>
+    <string name="hide_amarok_icon">Hide icon</string>
+    <string name="hide_amarok_icon_description">Hide Amarok from the launcher. Dial *#*#262765#*#* to open the Amarok.</string>
     <string name="disable_security_when_unhidden">Disable security when unhidden</string>
     <string name="disable_security_when_unhidden_description">Disable disguise and app lock when not hidden.</string>
     <string name="calendar_about">Pure Calendar | by @koramA</string>

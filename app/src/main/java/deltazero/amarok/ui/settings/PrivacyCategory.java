@@ -62,13 +62,39 @@ public class PrivacyCategory extends BaseCategory {
         disguisePref.setSummary(R.string.disguise_description);
         disguisePref.setChecked(PrefMgr.getEnableDisguise());
         disguisePref.setOnPreferenceChangeListener((preference, newValue) -> {
+            boolean enableDisguise = (boolean) newValue;
             PrefMgr.setDoShowQuitDisguiseInstuct(true);
-            if ((boolean) newValue)
+            if (enableDisguise)
                 SecurityUtil.lockAndDisguise();
-            LauncherIconController.switchDisguise(activity, (boolean) newValue);
+            LauncherIconController.setIconState(activity,
+                    enableDisguise ? LauncherIconController.IconState.DISGUISED : LauncherIconController.IconState.VISIBLE);
             return true;
         });
         addPreference(disguisePref);
+
+        var hideAmarokIconPref = new MaterialSwitchPreference(activity);
+        hideAmarokIconPref.setKey(PrefMgr.HIDE_AMAROK_ICON);
+        hideAmarokIconPref.setIcon(R.drawable.ic_null);
+        hideAmarokIconPref.setTitle(R.string.hide_amarok_icon);
+        hideAmarokIconPref.setSummary(R.string.hide_amarok_icon_description);
+        hideAmarokIconPref.setChecked(PrefMgr.getHideAmarokIcon());
+        hideAmarokIconPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            boolean hideIcon = (boolean) newValue;
+            if (hideIcon) {
+                // When hiding icon, disable disguise and turn it off
+                disguisePref.setChecked(false);
+                disguisePref.setEnabled(false);
+                LauncherIconController.setIconState(activity, LauncherIconController.IconState.HIDDEN);
+            } else {
+                // When showing icon, re-enable disguise option
+                disguisePref.setEnabled(true);
+                LauncherIconController.setIconState(activity, LauncherIconController.IconState.VISIBLE);
+            }
+            return true;
+        });
+        // Set initial state: if icon is hidden, disable disguise option
+        disguisePref.setEnabled(!PrefMgr.getHideAmarokIcon());
+        addPreference(hideAmarokIconPref);
 
         var allowScreenshotPref = new MaterialSwitchPreference(activity);
         allowScreenshotPref.setKey(PrefMgr.BLOCK_SCREENSHOTS);
