@@ -46,4 +46,10 @@
     <string name="check_update">പുതുക്കലുകൾക്കായി പരിശോധിക്കുക</string>
     <string name="no_update_ava">നിങ്ങൾ ഏറ്റവും പുതിയ പതിപ്പാണ് ഉപയോഗിക്കുന്നത്.</string>
     <string name="shizuku_service_not_running">ഷിസുകു : സേവനം പ്രവർത്തിക്കുന്നില്ല.</string>
+    <string name="join_developer_channel">ടെലിഗ്രാം ഗ്രൂപ്പ്</string>
+    <string name="processing">പ്രോസസ്സ് ചെയ്യുന്നു…</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="alert_permission_denied">മറ്റ് ആപ്പുകൾക്ക് മുകളിൽ പ്രദർശിപ്പിക്കാനുള്ള അനുമതി നിരസിച്ചു.</string>
 </resources>
