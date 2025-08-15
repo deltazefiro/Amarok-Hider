@@ -198,4 +198,11 @@
     <string name="warning_system_apps">قد يؤدي إخفاء تطبيقات النظام إلى حدوث حلقة إعادة تشغيل للنظام. يرجى توخي الحذر عند إخفاء تطبيقات النظام.</string>
     <string name="display_root_apps">عرض التطبيقات المتعلقة بالجذر</string>
     <string name="warning_root_apps">Amarok ليس مصممًا لإخفاء التطبيقات المتعلقة بالروت. قد يؤدي إلى فقدان صلاحيات الروت. يُفضل استخدام Dr-TSNG/Hide-My-Applist بدلاً من ذلك.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: فشل في المنح `DELEGATION_PACKAGE_ACCESS`. يرجى محاولة إعادة تنشيط Dhizuku.</string>
+    <string name="disable_security_when_unhidden">تعطيل الحماية عند الإظهار</string>
+    <string name="disable_security_when_unhidden_description">تعطيل التنكر وقفل التطبيق عند عدم الإخفاء.</string>
+    <string name="disable_only_with_xhide">تعطيل التطبيقات فقط</string>
+    <string name="disable_only_with_xhide_description">قم فقط بتعطيل التطبيقات ودَع XHide يتولى الإخفاء بشكل حصري. قد يقلل ذلك من التباطؤ أثناء عملية الإخفاء.</string>
+    <string name="hide_amarok_icon">إخفاء الأيقونة</string>
+    <string name="hide_amarok_icon_description">إخفاء Amarok من المشغل. اطلب *#*#262765#*#* لفتح Amarok.</string>
 </resources>
