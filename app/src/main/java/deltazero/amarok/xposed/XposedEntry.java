@@ -50,7 +50,7 @@ public class XposedEntry implements IXposedHookLoadPackage, IXposedHookZygoteIni
         Log.d("Initializing system hooks...", null);
         List<IHook> hooks = new ArrayList<>();
 
-        if (Build.VERSION.SDK_INT > 35) {
+        if (Build.VERSION.SDK_INT > 36) {
             Log.ex("Unsupported Android version. Skip loading hooks.", null);
         } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             hooks.addAll(FilterHooks.target33());
