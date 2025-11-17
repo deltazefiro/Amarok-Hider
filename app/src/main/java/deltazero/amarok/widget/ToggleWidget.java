@@ -11,6 +11,8 @@ import android.widget.RemoteViews;
 
 import deltazero.amarok.Hider;
 import deltazero.amarok.R;
+import deltazero.amarok.ui.SecurityAuthForQSActivity;
+import deltazero.amarok.utils.SecurityUtil;
 
 public class ToggleWidget extends AppWidgetProvider {
     private static final String TAG = "ToggleWidget";
@@ -51,9 +53,21 @@ public class ToggleWidget extends AppWidgetProvider {
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
         if (ACTION_TOGGLE.equals(intent.getAction())) {
-            // Toggle hide/unhide state
+            Log.i(TAG, "Widget toggle action received.");
+
+            if (Hider.getState() == Hider.State.PROCESSING) {
+                Log.w(TAG, "Already processing. Ignoring toggle action.");
+                return;
+            }
+
             if (Hider.getState() == Hider.State.HIDDEN) {
-                Hider.unhide(context);
+                if (SecurityUtil.isUnlockRequired()) {
+                    Log.i(TAG, "Security unlock required. Launching authentication activity.");
+                    context.startActivity(new Intent(context, SecurityAuthForQSActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                } else {
+                    Hider.unhide(context);
+                }
             } else if (Hider.getState() == Hider.State.VISIBLE) {
                 Hider.hide(context);
             }
@@ -78,13 +92,13 @@ public class ToggleWidget extends AppWidgetProvider {
 
             // Set the icon and background based on current state
             int iconResource = isHidden
-                    ? R.drawable.dark_mode_24dp_ffffff_fill0_wght400_grad0_opsz24
-                    : R.drawable.brightness_empty_24dp_1f1f1f_fill0_wght400_grad0_opsz24;
+                    ? R.drawable.brightness_empty_24dp_1f1f1f_fill0_wght400_grad0_opsz24
+                    : R.drawable.dark_mode_24dp_ffffff_fill0_wght400_grad0_opsz24;
             views.setImageViewResource(R.id.widget_toggle_button, iconResource);
 
             int backgroundResource = isHidden
-                    ? R.drawable.widget_fab_background_black
-                    : R.drawable.widget_fab_background_white;
+                    ? R.drawable.widget_fab_background_white
+                    : R.drawable.widget_fab_background_black;
             views.setInt(R.id.widget_toggle_button, "setBackgroundResource", backgroundResource);
         }
 
