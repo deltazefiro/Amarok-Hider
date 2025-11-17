@@ -10,6 +10,7 @@ import com.rosan.dhizuku.api.Dhizuku;
 import deltazero.amarok.receivers.ScreenStatusReceiver;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.XHidePrefBridge;
+import deltazero.amarok.widget.ToggleWidget;
 import jonathanfinerty.once.Once;
 
 public class AmarokApplication extends Application {
@@ -23,6 +24,7 @@ public class AmarokApplication extends Application {
         PrefMgr.init(this);
         Hider.init();
         QSTileService.init(getApplicationContext());
+        ToggleWidget.init(getApplicationContext());
 
         if (PrefMgr.getEnableDynamicColor())
             DynamicColors.applyToActivitiesIfAvailable(this);
