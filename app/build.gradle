@@ -15,8 +15,8 @@ android {
     defaultConfig {
         applicationId "deltazero.amarok"
         minSdkVersion 26
-        targetSdkVersion 34
-        compileSdk 34
+        targetSdkVersion 36
+        compileSdk = 36
         versionCode 120
         versionName "0.10.0-beta1"
 
