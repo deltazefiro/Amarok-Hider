@@ -22,6 +22,7 @@ import deltazero.amarok.filehider.ChmodFileHider;
 import deltazero.amarok.filehider.NoMediaFileHider;
 import deltazero.amarok.filehider.NoneFileHider;
 import deltazero.amarok.filehider.ObfuscateFileHider;
+import deltazero.amarok.utils.UpdateUtil;
 
 public final class PrefMgr {
 
@@ -72,6 +73,7 @@ public final class PrefMgr {
     public static final String INVERT_TILE_COLOR = "invertTileColor";
     public static final String DISABLE_SECURITY_WHEN_UNHIDDEN = "disableSecurityWhenUnhidden";
     public static final String HIDE_FROM_RECENTS = "hideFromRecents";
+    public static final String UPDATE_CHANNEL = "updateChannel";
 
     public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
@@ -356,6 +358,16 @@ public final class PrefMgr {
 
     public static void setHideFromRecents(boolean hideFromRecents) {
         mPrefEditor.putBoolean(HIDE_FROM_RECENTS, hideFromRecents);
+        mPrefEditor.apply();
+    }
+
+    public static UpdateUtil.UpdateChannel getUpdateChannel() {
+        String value = mPrefs.getString(UPDATE_CHANNEL, UpdateUtil.UpdateChannel.RELEASE.name());
+        return UpdateUtil.UpdateChannel.fromString(value);
+    }
+
+    public static void setUpdateChannel(UpdateUtil.UpdateChannel channel) {
+        mPrefEditor.putString(UPDATE_CHANNEL, channel.name());
         mPrefEditor.apply();
     }
 }

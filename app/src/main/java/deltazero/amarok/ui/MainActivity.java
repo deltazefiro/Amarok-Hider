@@ -23,6 +23,7 @@ import deltazero.amarok.ui.settings.SettingsActivity;
 import deltazero.amarok.ui.settings.SwitchAppHiderActivity;
 import deltazero.amarok.ui.settings.SwitchFileHiderActivity;
 import deltazero.amarok.utils.PermissionUtil;
+import deltazero.amarok.utils.UpdateUtil;
 import nl.dionsegijn.konfetti.xml.KonfettiView;
 
 public class MainActivity extends AmarokActivity {
@@ -93,6 +94,11 @@ public class MainActivity extends AmarokActivity {
                     .setNegativeButton(getString(R.string.ok), null)
                     .show();
         });
+
+        // Check for updates
+        if (PrefMgr.getEnableAutoUpdate()) {
+            UpdateUtil.checkAndNotify(this, true);
+        }
     }
 
     public void changeStatus(View view) {
