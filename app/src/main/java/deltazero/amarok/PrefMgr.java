@@ -71,6 +71,7 @@ public final class PrefMgr {
     public static final String DISABLE_TOASTS = "disableToasts";
     public static final String INVERT_TILE_COLOR = "invertTileColor";
     public static final String DISABLE_SECURITY_WHEN_UNHIDDEN = "disableSecurityWhenUnhidden";
+    public static final String HIDE_FROM_RECENTS = "hideFromRecents";
 
     public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
@@ -346,6 +347,15 @@ public final class PrefMgr {
 
     public static void setDisableSecurityWhenUnhidden(boolean disableSecurityWhenUnhidden) {
         mPrefEditor.putBoolean(DISABLE_SECURITY_WHEN_UNHIDDEN, disableSecurityWhenUnhidden);
+        mPrefEditor.apply();
+    }
+
+    public static boolean getHideFromRecents() {
+        return mPrefs.getBoolean(HIDE_FROM_RECENTS, false);
+    }
+
+    public static void setHideFromRecents(boolean hideFromRecents) {
+        mPrefEditor.putBoolean(HIDE_FROM_RECENTS, hideFromRecents);
         mPrefEditor.apply();
     }
 }
