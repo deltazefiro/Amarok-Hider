@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageButton xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/widget_toggle_button"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/transparent"
-    android:contentDescription="@string/app_name"
-    android:scaleType="fitCenter"
-    android:src="@drawable/ic_null" /> 
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="4dp">
+
+    <ImageButton
+        android:id="@+id/widget_toggle_button"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="center"
+        android:elevation="6dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_null" />
+
+    <ProgressBar
+        android:id="@+id/widget_toggle_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:elevation="8dp"
+        android:visibility="gone"
+        android:indeterminate="true" />
+</FrameLayout>
