@@ -16,6 +16,7 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import com.kizitonwose.calendar.core.CalendarDay;
 import com.kizitonwose.calendar.core.CalendarMonth;
@@ -55,6 +56,10 @@ public class CalendarActivity extends AppCompatActivity {
             overridePendingTransition(0, 0);
 
         super.onCreate(savedInstanceState);
+        
+        // Enable edge-to-edge (CalendarActivity doesn't extend AmarokActivity)
+        WindowCompat.enableEdgeToEdge(getWindow());
+        
         setContentView(R.layout.activity_calendar);
 
         calendarView = findViewById(R.id.calendar_view);

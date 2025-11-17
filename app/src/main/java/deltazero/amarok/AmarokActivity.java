@@ -3,9 +3,11 @@ package deltazero.amarok;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import java.util.List;
 
@@ -14,6 +16,14 @@ import deltazero.amarok.ui.SecurityAuthActivity;
 import deltazero.amarok.utils.SecurityUtil;
 
 public class AmarokActivity extends AppCompatActivity {
+    
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Enable edge-to-edge display
+        WindowCompat.enableEdgeToEdge(getWindow());
+    }
+    
     @Override
     protected void onStart() {
         if (PrefMgr.getBlockScreenshots())
