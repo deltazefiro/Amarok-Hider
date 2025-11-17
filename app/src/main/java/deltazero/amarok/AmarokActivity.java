@@ -1,9 +1,13 @@
 package deltazero.amarok;
 
+import android.app.ActivityManager;
+import android.content.Context;
 import android.content.Intent;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.List;
 
 import deltazero.amarok.ui.CalendarActivity;
 import deltazero.amarok.ui.SecurityAuthActivity;
@@ -15,6 +19,17 @@ public class AmarokActivity extends AppCompatActivity {
         if (PrefMgr.getBlockScreenshots())
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
                     WindowManager.LayoutParams.FLAG_SECURE);
+
+        if (PrefMgr.getHideFromRecents()) {
+            ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+            if (am != null) {
+                List<ActivityManager.AppTask> tasks = am.getAppTasks();
+                if (!tasks.isEmpty()) {
+                    tasks.get(0).setExcludeFromRecents(true);
+                }
+            }
+        }
+
         super.onStart();
     }
 

@@ -48,7 +48,7 @@ public class PrivacyCategory extends BaseCategory {
 
         biometricPref = new MaterialSwitchPreference(activity);
         biometricPref.setKey(PrefMgr.ENABLE_AMAROK_BIOMETRIC_AUTH);
-        biometricPref.setIcon(R.drawable.ic_fingerprint);
+        biometricPref.setIcon(R.drawable.fingerprint_24dp_1f1f1f_fill0_wght400_grad0_opsz24);
         biometricPref.setTitle(R.string.biometric_auth);
         biometricPref.setSummary(R.string.biometric_auth_description);
         biometricPref.setChecked(PrefMgr.getEnableAmarokBiometricAuth());
@@ -57,7 +57,7 @@ public class PrivacyCategory extends BaseCategory {
 
         var disguisePref = new MaterialSwitchPreference(activity);
         disguisePref.setKey(PrefMgr.ENABLE_DISGUISE);
-        disguisePref.setIcon(R.drawable.hide_source_black_24dp);
+        disguisePref.setIcon(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24);
         disguisePref.setTitle(R.string.disguise);
         disguisePref.setSummary(R.string.disguise_description);
         disguisePref.setChecked(PrefMgr.getEnableDisguise());
@@ -74,7 +74,7 @@ public class PrivacyCategory extends BaseCategory {
 
         var hideAmarokIconPref = new MaterialSwitchPreference(activity);
         hideAmarokIconPref.setKey(PrefMgr.HIDE_AMAROK_ICON);
-        hideAmarokIconPref.setIcon(R.drawable.ic_null);
+        hideAmarokIconPref.setIcon(R.drawable.hide_source_black_24dp);
         hideAmarokIconPref.setTitle(R.string.hide_amarok_icon);
         hideAmarokIconPref.setSummary(R.string.hide_amarok_icon_description);
         hideAmarokIconPref.setChecked(PrefMgr.getHideAmarokIcon());
@@ -96,9 +96,21 @@ public class PrivacyCategory extends BaseCategory {
         disguisePref.setEnabled(!PrefMgr.getHideAmarokIcon());
         addPreference(hideAmarokIconPref);
 
+        var hideFromRecentsPref = new MaterialSwitchPreference(activity);
+        hideFromRecentsPref.setKey(PrefMgr.HIDE_FROM_RECENTS);
+        hideFromRecentsPref.setIcon(R.drawable.search_activity_24dp_1f1f1f_fill0_wght400_grad0_opsz24);
+        hideFromRecentsPref.setTitle(R.string.hide_from_recents);
+        hideFromRecentsPref.setSummary(R.string.hide_from_recents_description);
+        hideFromRecentsPref.setChecked(PrefMgr.getHideFromRecents());
+        hideFromRecentsPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            Toast.makeText(activity, R.string.apply_on_restart, Toast.LENGTH_SHORT).show();
+            return true;
+        });
+        addPreference(hideFromRecentsPref);
+
         var allowScreenshotPref = new MaterialSwitchPreference(activity);
         allowScreenshotPref.setKey(PrefMgr.BLOCK_SCREENSHOTS);
-        allowScreenshotPref.setIcon(R.drawable.screenshot_region_24px);
+        allowScreenshotPref.setIcon(R.drawable.cancel_presentation_24dp_1f1f1f_fill0_wght400_grad0_opsz24);
         allowScreenshotPref.setTitle(R.string.block_screenshots);
         allowScreenshotPref.setSummary(R.string.block_screenshots_description);
         allowScreenshotPref.setChecked(PrefMgr.getBlockScreenshots());

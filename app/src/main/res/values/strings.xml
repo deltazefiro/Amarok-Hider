@@ -195,4 +195,6 @@
     <string name="warning_system_apps">Hiding system apps may cause system bootloop. Please be cautious when hiding system apps.</string>
     <string name="warning_root_apps">Amarok is not designed for hiding root-related apps. It may cause root access loss. Consider using Dr-TSNG/Hide-My-Applist instead.</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Failed to grant `DELEGATION_PACKAGE_ACCESS`. Please try reactivating Dhizuku.</string>
+    <string name="hide_from_recents">Hide from Recents</string>
+    <string name="hide_from_recents_description">Hide Amarok from the recent apps screen.</string>
 </resources>
