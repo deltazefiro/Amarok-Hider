@@ -100,3 +100,4 @@ Provides multiple triggers for instant hide/unhide operations:
 - **Quick Hide Service:** `QuickHideService.java` (includes notification and panic button functionality)
 - **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.java` and `AutoHideUtil.java`
 - **Intent API:** Managed by `ActionReceiver.java`
+- **Widget:** `ToggleWidget.java`
