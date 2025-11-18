@@ -52,7 +52,6 @@
     <string name="never">不再提示</string>
     <string name="update_description">发现新版本: Amarok %s (%d)。</string>
     <string name="update_channel">更新频道</string>
-    <string name="update_channel_description">选择接收更新的类型</string>
     <string name="update_channel_release">稳定版本</string>
     <string name="update_channel_beta">Beta 测试版本</string>
     <string name="update_available_title">发现更新</string>
