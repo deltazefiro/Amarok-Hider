@@ -1,0 +1,8 @@
+v0.10.0-beta3
+- Add experimental support for hiding Amarok icon from launcher (#49)
+- Add security check for launcher widget toggle action (#222)
+- Add support for hiding Amarok from recents
+- Add XHide support for Android 16
+- Add auto check update feature
+- Improve launcher widget UI
+- Update target SDK versions to Android 16
