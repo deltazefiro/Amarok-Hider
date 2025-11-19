@@ -8,7 +8,7 @@
     <string name="unhide">Показать</string>
     <string name="visible_status">Не скрыто</string>
     <string name="ok">ОК</string>
-    <string name="about">О приложении</string>
+    <string name="about">О Приложении</string>
     <string name="cancel">Отмена</string>
     <string name="setting_not_ava_when_hidden">Этот параметр доступен только после отключения скрытия</string>
     <string name="set_hide_apps">Выбрать приложения для скрытия</string>
@@ -89,11 +89,7 @@
     <string name="invalid_dsm_provider">DSM: недействительный поставщик DSM. Вы установили и активировали поставщика DSM на своем устройстве\?</string>
     <string name="hide_app_failed_admin_inactive">Не удалось скрыть приложение: поставщик DSM не активен.</string>
     <string name="path_duplicated">Зациклить скрытую папку</string>
-    <string name="path_duplicated_description"><u>\'%1$s\'</u>
-\n
-\nсодержит
-\n
-\n<u>\'%2$s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nсодержит\n\n<u>\'%2$s\'</u></string>
     <string name="shizuku_permission_denied">Shizuku: В доступе отказано</string>
     <string name="apphider_not_ava_title">Приложение скрывает неактивность</string>
     <string name="alert_permission_denied">Отказано в разрешении на отображение поверх других приложений.</string>
@@ -118,7 +114,7 @@
     <string name="password">Пароль</string>
     <string name="confirm_password">Подтвердить пароль</string>
     <string name="set_password">Установить пароль</string>
-    <string name="show_about">О приложении</string>
+    <string name="show_about">Показать о</string>
     <string name="option_unava_when_hidden">Настройки доступны только после отключения скрытия.</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
@@ -195,4 +191,14 @@
     <string name="xposed_desc">Включите в Amarok функцию скрытия приложений из системных меню.</string>
     <string name="apphider_not_activated_title">Приложение скрывает неактивность</string>
     <string name="apphider_not_activated_msg">Активируйте режим скрытия приложений, чтобы включить эту функцию.</string>
+    <string name="display_root_apps">Отображать программы, связанные с root-приложениями</string>
+    <string name="warning_root_apps">Amarok не предназначен для скрытия приложений связанных с корневым доступом root. Это может привести к потере корневого доступа root. Рассмотрите возможность использования Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Не удалось предоставить `DELEGATION_PACKAGE_ACCESS`. Попробуйте повторно активировать Dhizuku.</string>
+    <string name="warning_system_apps">Скрытие системных приложений может привести к циклической загрузке системы. Будьте осторожны при скрытии системных приложений.</string>
+    <string name="disable_security_when_unhidden">Отключить защиту, когда не скрыто</string>
+    <string name="disable_security_when_unhidden_description">Отключить маскировку и блокировку приложений, когда не скрыто.</string>
+    <string name="disable_only_with_xhide">Отключать только приложения</string>
+    <string name="disable_only_with_xhide_description">Отключать только приложения и позволить XHide обрабатывать скрытие исключительно. Может уменьшить задержку во время скрытия.</string>
+    <string name="hide_amarok_icon">Скрыть иконку</string>
+    <string name="hide_amarok_icon_description">Скройте Amarok из пусковой установки. Наберите *#*#262765#*#*, чтобы открыть Amarok.</string>
 </resources>
