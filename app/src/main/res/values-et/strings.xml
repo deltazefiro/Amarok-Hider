@@ -106,4 +106,26 @@
     <string name="apphider_not_ava_title">Rakenduste peitmine pole kasutusel</string>
     <string name="dsm_permission_denied">DSM: õigused on puudu</string>
     <string name="folder_selector_hints">Soovituse kaustade valimiseks: \n\t 1. Kausta valimiseks klõpsi „Kasuta seda kausta“\n\t 2. Alati vali seadmes asuv fail \n\t(Kohalike failide avamiseks viipa ekraanil paremalt vasakule)</string>
+    <string name="invalid_path">Vigane asukoht.</string>
+    <string name="alert_permission_request_message">Ujuv nupp eeldab õigust avada hüpikaknaid. Palun luba see õigus süsteemi seadistustest rakenduste õiguste valikust Amaroki andmetest.</string>
+    <string name="display_root_apps">Näita juurkasutajaga seotud rakendusi</string>
+    <string name="alert_permission_denied">Puudu on õigus kuvada rakendust teiste rakenduste peal.</string>
+    <string name="apphider_root_description">Rakenduste peitmine peakasutaja õigustes.\nSoovitatav lahendus, kui nutiseadmes on juurkasutaja kasutusele võetud, aga puudub Xposedi raamistik.</string>
+    <string name="apphider_shizuku">Shizuku (Sui) režiim</string>
+    <string name="apphider_shizuku_description">Rakenduste peitmine Shizuku (või Sui) abil.\nSoovituslik, kui nutiseadmes on olemas Xposedi raamistik või kasutusel on Androidi versioon alates 11-st. Eelduseks on paigaldatud ja sisselülitatud Shizuku või Sui olemasolu.\n</string>
+    <string name="participate_translation">Osale tõlkimisel</string>
+    <string name="password_length_error">Salasõna pikkus peab jääma 3 ja 15 tähemärgi vahele.</string>
+    <string name="password_mismatch_error">Salasõnad ei klapi omavahel.</string>
+    <string name="option_unava_when_hidden">Enne peitmise lõppu pole valikud saadaval.</string>
+    <string name="obfuscate_text_file">Hägusta tekstifailid täies mahus</string>
+    <string name="obfuscate_text_file_description">Failipäise hägustamisest pole tekstifaili puhul kasu. Selle funktsionaalsuse kasutamisel hägustatakse tekstifailid tervikuna.</string>
+    <string name="alert_permission_request_title">Puudu on õigus avada hüpikaknaid</string>
+    <string name="app_lock_description">Ligipääsuks Amarokile eelda salasõna sisestamist.</string>
+    <string name="display_system_apps">Näita süsteemirakendusi</string>
+    <string name="follow_system">(Järgi süsteemi seadistusi)</string>
+    <string name="participate_translation_description">Aita meil Amarokki tõlkida oma keelde.</string>
+    <string name="enable_dynamic_color">Dünaamilised värvid</string>
+    <string name="dynamic_color_description">Kasuta dünaamiliste värvidega kujundust.</string>
+    <string name="filehider_not_ava_title">Failide peitmine pole saadaval</string>
+    <string name="filehider_none_description">Lülita failide peitmise võimalus välja.</string>
 </resources>
