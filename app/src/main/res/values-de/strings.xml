@@ -95,11 +95,7 @@
     <string name="not_local_storage_description">Bitte stellen Sie sicher, dass es sich um einen lokalen Pfad handelt und nicht um einen virtuellen.</string>
     <string name="help">Hilfe</string>
     <string name="path_duplicated">Duplizierter Pfad</string>
-    <string name="path_duplicated_description"><u>\'%1$s\'</u>
-\n
-\nenthält
-\n
-\n<u>\'%2$s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nenthält\n\n<u>\'%2$s\'</u></string>
     <string name="obfuscate_text_file_description">Das Verschleiern von Dateiheadern hat keine Auswirkungen auf Textdateien. Wenn Sie diese Funktion aktivieren, werden Textdateien vollständig verschleiert.</string>
     <string name="obfuscate_text_file_enhanced">Textdatei vollständig verschleiern - Erweitert</string>
     <string name="join_developer_channel">Entwickler-Kanal beitreten</string>
