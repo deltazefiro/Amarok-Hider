@@ -51,7 +51,7 @@
 \n\t 1. 「このフォルダを使用」をタップしてフォルダを選択します
 \n\t 2. デバイス上のファイルを選択します
 \n\t(画面右からスライドしてローカルファイルを開きます)</string>
-    <string name="path_duplicated_description"><u>「%s」</u> \nには \n<u>「%s」</u> \nが含まれます</string>
+    <string name="path_duplicated_description"><u>「%1$s」</u>\nは\n<u>「%2$s」</u>\nを含みます</string>
     <string name="shizuku_hidden_api_error">アプリを非表示できません: IPackageManager API にアクセスできません。</string>
     <string name="shizuku_pre_v11">サポートされない Shizuku のバージョン: Shizuku v11 以降をインストールしてください。</string>
     <string name="show_debug_info">デバッグ情報</string>
@@ -83,7 +83,7 @@
 \n</string>
     <string name="apphider_dsm_description">Delegated-Scopes-Manager でのアプリ非表示。
 \nAndroid 10 以前を搭載し、root 化されていないデバイスでない限り推奨されません。バグや予期せぬ動作が発生する可能性があります。デバイスの所有者として設定されたIcebox (または StopAPP) のインストールが必要です。</string>
-    <string name="apphider_none_description">アプリの非表示をオフにする。</string>
+    <string name="apphider_none_description">アプリの非表示機能を無効にする。</string>
     <string name="shizuku_permission_denied">Shizuku: 権限が拒否されました</string>
     <string name="manually_set_path_description">警告: 手動で選択したものが実際に存在することを確認してください。</string>
     <string name="filename_and_header">ファイル名 + ヘッダー</string>
@@ -97,7 +97,7 @@
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="alert_permission_request_message">フローティングボタンは他のアプリに重ねて表示するための権限が必要です。設定から Amarok を許可してください。</string>
     <string name="alert_permission_request_title">ポップアップウィンドウを表示するために必要です</string>
-    <string name="apphider_not_ava_title">アプリ非表示モードが利用できません</string>
+    <string name="apphider_not_ava_title">アプリ非表示 無効</string>
     <string name="apphider_dsm">DSM モード</string>
     <string name="obfuscate_text_file_description_enhanced">非推奨。「テキストファイルを完全に難読化」の拡張版。このオプションは、標準の方法では効果がない場合にのみ使用してください。処理が劇的に遅くなります。</string>
     <string name="remove_hide_path">非表示フォルダを削除しますか？</string>
@@ -126,11 +126,70 @@
     <string name="failed_to_open_doc_tree">システムのファイルピッカーを開けませんでした</string>
     <string name="failed_to_open_doc_tree_description">おっと！お使いのシステムにはデフォルトのファイルマネージャがありません。「＋非表示フォルダーを追加」ボタンを長押しして、手動でパスを入力してください。</string>
     <string name="search">検索</string>
-    <string name="invert_tile_color_description">デフォルトでは、クイック設定タイルは、あなたのプライバシーが表示されているときにアクティブに表示されます。このオプションを切り替えると、動作が逆になります。</string>
+    <string name="invert_tile_color_description">デフォルトでは、プライバシーが見えている状態のときにクイック設定タイルが有効になります。\nこのオプションを切り替えると、動作を反転できます。</string>
     <string name="warning_root_apps">Amarokはroot関連アプリを隠すようには設計されていません。rootアクセスを失う可能性があります。代替としてDr-TSNG/Hide-My-Applistの使用をご検討ください。</string>
     <string name="panic_button">パニックボタン</string>
     <string name="notification">お知らせ</string>
     <string name="quick_hide_notification_description">非表示になっていないときにユーザーに知らせるための永続的な通知を表示します。</string>
     <string name="notification_permission_request_title">通知の許可が必要</string>
     <string name="notification_permission_denied">通知が許可されていません。</string>
+    <string name="show_about">このアプリについて</string>
+    <string name="confirm_password">パスワード（確認用）</string>
+    <string name="filter">フィルター</string>
+    <string name="close_disguise_spotlight_tip"><font fgcolor="#FCCA3E"><b>年の数字</b></font>を長押しすると、Amarokにアクセスできます。</string>
+    <string name="spotlight_do_not_show_again">今後表示しない</string>
+    <string name="calendar_about">ピュアカレンダー | by @koramA</string>
+    <string name="display_root_apps">root関連アプリを表示</string>
+    <string name="invalid_path">無効なパスです。</string>
+    <string name="enable_x_hide_description">状態：%s</string>
+    <string name="path_duplicated">非表示フォルダをループ</string>
+    <string name="notification_channel_name">QuickHideサービス</string>
+    <string name="password">パスワード</string>
+    <string name="quick_hide_notification_title">プライバシーが保護されていません</string>
+    <string name="quick_hide_notification_content">非表示にするにはクリックしてください。</string>
+    <string name="invalid_action">無効な操作要求を受け取りました: %s</string>
+    <string name="password_mismatch_error">パスワードが一致しません。</string>
+    <string name="password_length_error">パスワードは3~15文字以下である必要があります。</string>
+    <string name="dhizuku_permission_denied">Dhizuku：権限がありません</string>
+    <string name="dhizuku_pre_v5">Dhizuku：対応していないバージョンです。Dhizukuをバージョン5以上にアップデートしてください。</string>
+    <string name="dhizuku_not_init">Dhizuku：サービスが利用できません。Dhizukuがインストールされ、有効になっていることを確認してください。</string>
+    <string name="apphider_dhizuku">Dhizukuモード</string>
+    <string name="follow_system">（システム設定を使用）</string>
+    <string name="disable_security_when_unhidden_description">非表示中のときに偽装とアプリロックを無効にします。</string>
+    <string name="disable_security_when_unhidden">無効化中はセキュリティを無効化する</string>
+    <string name="filehider_not_ava_title">ファイルは利用できません</string>
+    <string name="filehider_none">無効</string>
+    <string name="filehider_none_description">ファイルの非表示を無効にします。</string>
+    <string name="filehider_obfuscate">難読化モード</string>
+    <string name="filehider_chmod">Chmodモード</string>
+    <string name="filehider_nomedia">Nomediaモード</string>
+    <string name="welcome_title">ようこそ！</string>
+    <string name="warning">警告</string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">一部のSamsungユーザーから、ChmodFileHiderの使用によって端末が起動不能になったとの報告があります。</font> GitHubのIssue #105をご参照ください。ご利用は自己責任でお願いします。</b></string>
+    <string name="auto_hide">自動非表示</string>
+    <string name="auto_hide_description">画面がオフになると自動的に非表示になります。</string>
+    <string name="auto_hide_delay">自動非表示の遅延時間</string>
+    <string name="auto_hide_delay_description">画面がオフになってから非表示になるまでの遅延時間（分）。</string>
+    <string name="xposed_active">有効（Xposed API %d）</string>
+    <string name="disable_only_with_xhide">アプリのみ無効化</string>
+    <string name="disable_only_with_xhide_description">アプリのみを無効化し、非表示はXHideに任せます。\nこれにより、非表示時の動作遅延が軽減される場合があります。</string>
+    <string name="xposed_desc">Amarokを有効にすると、アプリをシステムメニューから非表示にできます。</string>
+    <string name="apphider_not_activated_title">アプリ非表示 無効</string>
+    <string name="apphider_not_activated_msg">この機能を使うには、アプリ非表示モードを有効にしてください。</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku：DELEGATION_PACKAGE_ACCESS の付与に失敗しました。\nDhizukuを再度有効化してみてください。</string>
+    <string name="welcome_msg">Amarokは、個人ファイルやアプリを隠すための、無料かつ自由に使えるツールです。\n\nご注意：Amarokは暗号化ソフトではなく、「隠す」ためのツールです。機密性の高いファイルやアプリの保護には使用しないことを強く推奨します。\n\n<u>免責事項：Amarokは、いかなる保証も条件もなく提供されます。使用によって生じたいかなる損害や影響についても、責任はすべて利用者にあります。</u></string>
+    <string name="quick_hide">Quick Hide</string>
+    <string name="never">一度もない</string>
+    <string name="unlock">解除</string>
+    <string name="unlock_required">ロックされています</string>
+    <string name="password_incorrect">パスワードが正しくありません。</string>
+    <string name="notification_permission_request_message">QuickHideサービスを使用するには、通知の許可が必要です。</string>
+    <string name="set_password">パスワードを設定</string>
+    <string name="apphider_dhizuku_description">【実験的機能】Dhizukuを使ったアプリ非表示機能\n非root端末でも使える、より新しく改良されたアプリの非表示方法です。\nDhizukuアプリのインストールと有効化が必要です。</string>
+    <string name="force_unhide_confirm_msg">すべてを復元しますか？\n\n<b>＜警告＞</b>\nこのオプションはファイルを破損する恐れがあります。\n問題が発生し、通常の「非表示解除」機能が使えない場合のみ使用してください。</string>
+    <string name="performing_force_unhide">強制的に非表示解除中です。しばらくお待ちください。</string>
+    <string name="display_system_apps">システムアプリを表示</string>
+    <string name="filehider_nomedia_description">.nomediaをフォルダに追加するだけです。ルートアクセスは必要ありません。</string>
+    <string name="filehider_obfuscate_description">ファイル名とファイル署名を難読化します。ルートアクセスは不要です。処理には時間がかかる場合があります。</string>
+    <string name="filehider_chmod_description">ファイルを読み取れないように権限を変更します。ルート権限が必要です。処理は即時に行われます。</string>
 </resources>
