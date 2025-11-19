@@ -190,4 +190,21 @@
     <string name="display_root_apps">Відображати програми, пов\'язані з root-додатками</string>
     <string name="warning_root_apps">Amarok не призначений для приховування кореневих програм. Це може призвести до втрати кореневого доступу. Натомість подумайте про використання Dr-TSNG/Hide-My-Applist.</string>
     <string name="warning_system_apps">Приховування системних програм може призвести до завантаження системи. Будьте обережні, приховуючи системні програми.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: не вдалося надати `DELEGATION_PACKAGE_ACCESS`. Будь ласка, спробуйте повторно активувати Dhizuku.</string>
+    <string name="disable_only_with_xhide">Вимкнути лише програми</string>
+    <string name="disable_security_when_unhidden">Вимкнути безпеку, коли відображено</string>
+    <string name="disable_security_when_unhidden_description">Вимкнути маскування та блокування програми, коли вона не прихована.</string>
+    <string name="disable_only_with_xhide_description">Вимикайте лише програми та дозвольте XHide виключно займатися приховуванням. Це може зменшити затримку під час приховування.</string>
+    <string name="hide_amarok_icon">Приховати значок</string>
+    <string name="hide_amarok_icon_description">Приховати Amarok від панелі запуску. Наберіть *#*#262765#*#*, щоб відкрити Amarok.</string>
+    <string name="hide_from_recents">Приховати від нещодавніх</string>
+    <string name="hide_from_recents_description">Приховати Amarok на екрані останніх програм.</string>
+    <string name="update_channel">Оновити канал</string>
+    <string name="update_channel_release">Стабільні релізи</string>
+    <string name="update_channel_beta">Бета-попередні релізи</string>
+    <string name="update_available_title">Доступне оновлення</string>
+    <string name="update_available_message">Версія %s тепер доступна для оновлення.</string>
+    <string name="view_on_github">Переглянути на GitHub</string>
+    <string name="checking_update">Перевірка оновлень…</string>
+    <string name="update_check_failed">Не вдалося перевірити наявність оновлень</string>
 </resources>
