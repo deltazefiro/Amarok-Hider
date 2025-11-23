@@ -23,17 +23,35 @@ public class ActionReceiver extends BroadcastReceiver {
             return;
         }
 
-        if (Objects.equals(intent.getAction(), "deltazero.amarok.HIDE")) {
-            Hider.hide(context);
-        } else if (Objects.equals(intent.getAction(), "deltazero.amarok.UNHIDE")) {
-            if (SecurityUtil.isUnlockRequired())
-                context.startActivity(new Intent(context, SecurityAuthForQSActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            else Hider.unhide(context);
-        } else {
-            Log.w("ActionReceiver", "Invalid action: " + intent.getAction());
-            Toast.makeText(context, context.getString(R.string.invalid_action, intent.getAction()),
-                    Toast.LENGTH_LONG).show();
-        }
+        String action = intent.getAction();
+        if (action != null)
+            switch (action) {
+                case "deltazero.amarok.HIDE":
+                    Hider.hide(context);
+                    return;
+                case "deltazero.amarok.UNHIDE":
+                    if (SecurityUtil.isUnlockRequired())
+                        context.startActivity(new Intent(context, SecurityAuthForQSActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    else
+                        Hider.unhide(context);
+                    return;
+                case "deltazero.amarok.TOGGLE":
+                    if (Hider.getState() == Hider.State.VISIBLE)
+                        Hider.hide(context);
+                    else {
+                        if (SecurityUtil.isUnlockRequired())
+                            context.startActivity(new Intent(context, SecurityAuthForQSActivity.class)
+                                    .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                        else
+                            Hider.unhide(context);
+                    }
+                    return;
+            }
+
+        Log.w("ActionReceiver", "Invalid action: " + intent.getAction());
+        Toast.makeText(context, context.getString(R.string.invalid_action, intent.getAction()),
+                Toast.LENGTH_LONG).show();
+
     }
 }
