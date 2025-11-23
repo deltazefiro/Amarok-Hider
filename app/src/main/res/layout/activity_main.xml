@@ -132,6 +132,24 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <Button
+                android:id="@+id/main_bt_amarok_ai"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="50dp"
+                android:layout_marginTop="35dp"
+                android:background="@drawable/ai_button_gradient"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:onClick="showAmarokAi"
+                android:text="✨ Try Amarok AI ✨"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="35dp"
+                app:iconGravity="textStart"
+                tools:ignore="HardcodedText" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/main_bt_set_hide_files"
                 style="@style/Widget.Material3.Button.TextButton.Icon"

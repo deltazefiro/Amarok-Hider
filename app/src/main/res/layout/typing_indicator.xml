@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/typing_indicator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="48dp"
+    android:background="@drawable/ai_message_bubble"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:visibility="gone">
+
+    <View
+        android:id="@+id/dot1"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/typing_dot" />
+
+    <View
+        android:id="@+id/dot2"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/typing_dot" />
+
+    <View
+        android:id="@+id/dot3"
+        android:layout_width="8dp"
+        android:layout_height="8dp"
+        android:background="@drawable/typing_dot" />
+
+</LinearLayout>
+

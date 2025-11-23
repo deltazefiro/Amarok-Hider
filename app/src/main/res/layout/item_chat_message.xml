@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="50dp"
+    android:orientation="vertical"
+    android:paddingVertical="6dp">
+
+    <!-- User message (right side) -->
+    <LinearLayout
+        android:id="@+id/user_message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_user_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/user_message_bubble"
+            android:elevation="3dp"
+            android:maxWidth="260dp"
+            android:text="User message"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+    <!-- AI message (left side) -->
+    <LinearLayout
+        android:id="@+id/ai_message_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/ai_avatar"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/ai_avatar_background"
+            android:gravity="center"
+            android:text="✨"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_ai_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/ai_message_bubble"
+            android:elevation="3dp"
+            android:text="AI message"
+            android:textColor="#1A1A1A"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+</LinearLayout>
+

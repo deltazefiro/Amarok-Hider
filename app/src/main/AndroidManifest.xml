@@ -43,6 +43,10 @@
                 <action android:name="android.service.quicksettings.action.QS_TILE_PREFERENCES" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ui.AmarokAiActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
 
         <activity-alias
             android:name=".launcher.calendar"

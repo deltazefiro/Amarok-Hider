@@ -134,6 +134,10 @@ public class MainActivity extends AmarokActivity {
 
     }
 
+    public void showAmarokAi(View view) {
+        startActivity(new Intent(this, AmarokAiActivity.class));
+    }
+
     public void setHideFile(View view) {
 
         if (!XXPermissions.isGranted(this, com.hjq.permissions.Permission.MANAGE_EXTERNAL_STORAGE)) {
