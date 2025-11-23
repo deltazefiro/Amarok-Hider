@@ -198,4 +198,11 @@
     <string name="display_root_apps">Прикажи апликације повезане с root приступом</string>
     <string name="warning_system_apps">Сакривање системских апликација може довести до покретања система. Будите пажљиви када сакривате системске апликације.</string>
     <string name="warning_root_apps">Amarok није дизајниран за сакривање апликација повезаних с root приступом. То може узроковати губитак root приступа. Уместо тога, размислите о коришћењу Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Додељивање „DELEGATION_PACKAGE_ACCESS“ није успело. Покушајте поново да активирате Dhizuku.</string>
+    <string name="disable_security_when_unhidden">Онемогући безбедност када је откривено</string>
+    <string name="disable_security_when_unhidden_description">Онемогућите прикривање и закључавање апликације када није сакривено.</string>
+    <string name="disable_only_with_xhide">Онемогући само апликације</string>
+    <string name="disable_only_with_xhide_description">Онемогућите само апликације и дозволите XHide-у да се искључиво бави сакривањем. Може смањити кашњење током сакривања.</string>
+    <string name="hide_amarok_icon">Сакриј иконицу</string>
+    <string name="hide_amarok_icon_description">Сакријте Amarok из покретача. Позовите *#*#262765#*#* да бисте отворили Amarok.</string>
 </resources>

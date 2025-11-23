@@ -195,4 +195,13 @@
     <string name="disable_toasts_description">Pri skrývaní alebo odhaľovaní nezobrazí vyskakovacie oznámenia.</string>
     <string name="apphider_not_activated_title">Skrytie aplikácie neaktívne</string>
     <string name="apphider_not_activated_msg">Aktiváciou režimu skrývania aplikácií túto funkciu povolíte.</string>
+    <string name="display_root_apps">Zobraziť root aplikácie</string>
+    <string name="warning_system_apps">Skrytie systémových aplikácií môže spôsobiť štartovaciu slučku systému. Pri skrývaní systémových aplikácií buďte opatrní.</string>
+    <string name="warning_root_apps">Amarok nie je určený na skrývanie aplikácií súvisiacich s rootom. Môže spôsobiť stratu prístupu root. Zvážte radšej použitie Dr-TSNG/Hide-My-Applist.</string>
+    <string name="disable_only_with_xhide">Zakázať iba aplikácie</string>
+    <string name="disable_security_when_unhidden_description">Zakázať maskovanie a uzamknutie aplikácie, keď nie je skrytá.</string>
+    <string name="disable_security_when_unhidden">Vypnúť zabezpečenie, keď ste neskrytý</string>
+    <string name="disable_only_with_xhide_description">Zakáže iba aplikácie a nechá XHide, aby sa postaral výlučne o skrývanie. Môže sa znížiť oneskorenie počas skrývania.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Nepodarilo sa udeliť `DELEGATION_PACKAGE_ACCESS`. Skúste prosím znovu aktivovať Dhizuku.</string>
+    <string name="hide_amarok_icon">Skryť ikonu</string>
 </resources>

@@ -4,30 +4,30 @@
     <string name="not_local_storage">Nem támogatott mappa</string>
     <string name="hide">Elrejtés</string>
     <string name="hidden_status">Láthatatlan</string>
-    <string name="ok">OK</string>
+    <string name="ok">Rendben</string>
     <string name="about">Az alkalmazásról</string>
     <string name="cancel">Mégsem</string>
     <string name="set_hide_apps">Rejtett alkalmazások valasztása</string>
     <string name="setting_not_ava_when_hidden">Ez az opció csak felfedés után érhető el</string>
-    <string name="storage_permission_request_title">A tárolhelyhez való hozzáférés engedély szükséges</string>
-    <string name="storage_permission_request_message">Adjon az Amaroknak tárolhely hozzáférés engedélyt a fájlok elrejtéséhez.</string>
+    <string name="storage_permission_request_title">Tárhely hozzáférés engedély szükséges</string>
+    <string name="storage_permission_request_message">Adj engedélyt az Amaroknak külső tárolóhely hozzáféréshez a fájlok elrejtéséhez.</string>
     <string name="storage_permission_denied">A tárolóhoz való hozzáférés megtagadva. A fájlrejtés nem elérhető</string>
     <string name="set_hide_files">Rejtett fájlok valasztása</string>
-    <string name="show_about">\'Az alkalmazásról\' mutatása</string>
+    <string name="show_about">Az \'alkalmazásról\' mutatása</string>
     <string name="enable_analytics">Névtelen analitika</string>
-    <string name="analytics_description">Küldje el a fejlesztőknek elemzésre a névtelen hibajelentéseket.</string>
+    <string name="analytics_description">Küldj névtelen hibajelentéseket a fejlesztőknek elemzésre.</string>
     <string name="about_description">Megjelenít az alkalmazásról információkat.</string>
-    <string name="switch_app_hider">Alkalmazáselrejtési mód</string>
+    <string name="switch_app_hider">Alkalmazáselrejtési mód kiválasztása</string>
     <string name="usage">Használat</string>
     <string name="usage_description">Súgóközpont megnyitása.</string>
     <string name="current_mode">Jelenlegi mód: %s</string>
     <string name="more_settings">További beállítások</string>
     <string name="switch_file_hider">Fájlelrejtési mód</string>
-    <string name="apply_on_restart">Indítsa újra az alkalmazást az új módosítások alkalmazásához.</string>
+    <string name="apply_on_restart">Indítsd újra az alkalmazást az új módosítások alkalmazásához.</string>
     <string name="hidden_toast">Elrejtve. Ku-ku-ri-kú~!</string>
     <string name="unhidden_toast">Felfedve. Légy óvatos.</string>
     <string name="show_debug_info">Hibakeresési információ</string>
-    <string name="debug_info_description">Mutat probléma megoldását segítő információkat.</string>
+    <string name="debug_info_description">Probléma megoldását segítő információ megjelenítése.</string>
     <string name="invalid_dsm_provider">DSM: Érvénytelen DSM szolgáltató. Telepítette és aktiválta a DSM szolgáltatót a készülékén\?</string>
     <string name="hide_app_failed_admin_inactive">Az alkalmazás elrejtése sikertelen: DSM szolgáltató nem aktív.</string>
     <string name="add_hide_files">Rejtett mappa hozzáadása</string>
@@ -36,7 +36,7 @@
 \n\t 2. Mindig válasszon ki egy fájlt az eszközön
 \n\t(A helyi fájlok megnyitásához csúsztassd a képernyő jobb oldalát)</string>
     <string name="remove_hide_path">Rejtett mappa eltávolítása\?</string>
-    <string name="remove_hide_path_description">Eltávolítja a \'%s\' mappát a rejtésből?</string>
+    <string name="remove_hide_path_description">Eltávolítja a \'%s\' mappát a rejtendők listájából?</string>
     <string name="not_local_storage_description">Győződj meg róla, hogy helyi fájlról van szó, nem pedig virtuálisról.</string>
     <string name="help">Súgó</string>
     <string name="path_duplicated">Rejtett mappa zárolása</string>
@@ -45,7 +45,7 @@
 \ntartalmazza 
 \n 
 \n<u>\'%2$s\'</u></string>
-    <string name="no_apphider">Válassza ki az alkalmazás elrejtési módot a \"További beállítások\" menüben.</string>
+    <string name="no_apphider">Válaszd ki az alkalmazás elrejtési módot a \"További beállítások\" menüben.</string>
     <string name="root_not_ava">Root hozzáférés nem sikerült.</string>
     <string name="check_update_on_start">Automata frissítés</string>
     <string name="check_update_on_start_description">Az alkalmazás megnyitásakor ellenőrizze az új Amarok verziók meglétét.</string>
@@ -57,7 +57,7 @@
     <string name="shizuku_permission_denied">Shizuku: Engedély megtagadva</string>
     <string name="shizuku_not_working">Shizuku: A szolgáltatás nem elérhető. Telepítette a Shizuku/Sui-t a készülékére?</string>
     <string name="shizuku_service_not_running">Shizuku: A szolgáltatás nem fut.</string>
-    <string name="apphider_not_ava_title">Nem elérhető alkalmazásrejtés mód</string>
+    <string name="apphider_not_ava_title">Alkalmazás elrejtés inaktív</string>
     <string name="apphider_none">Hatástalanítva</string>
     <string name="apphider_root">Root mód</string>
     <string name="apphider_root_description">Alkalmazás-elrejtés root hozzáféréssel.
@@ -69,16 +69,16 @@
     <string name="obfuscate_filename">Fájlnevek elfedése</string>
     <string name="obfuscate_file_header">Fájlfejlécek elfedése</string>
     <string name="filename_only">Csak fájlnevek</string>
-    <string name="filename_and_header">Fájlnév + fájlfejléc</string>
+    <string name="filename_and_header">Fájlnév + fejléc</string>
     <string name="obfuscate_text_file">Szövegfájlok teljes elfedése</string>
-    <string name="obfuscate_text_file_description">Kísérleti funkció. A fájlfejlécek elfedése nincs hatással a szöveges fájlokra. A funkció engedélyezése teljes mértékben elfedi a szöveges fájlokat. Ez némileg lelassítja a rejtési folyamatot.</string>
+    <string name="obfuscate_text_file_description">A fejlécek elfedése nincs hatással a szöveges fájlokra. A funkció engedélyezése teljes mértékben elfedi a szöveges fájlokat. Ez némileg lelassítja a rejtési folyamatot.</string>
     <string name="obfuscate_text_file_enhanced">Szövegfájlok teljes elfedése - Továbbfejlesztett</string>
-    <string name="obfuscate_text_file_description_enhanced">Nem ajánlott. A \"Szövegfájlok teljes elfedése\" továbbfejlesztett változata. Csak akkor használja ezt az opciót, ha a másik módszer hatástalannak bizonyul. Drámaian lelassítja a rejtési folyamatot.</string>
+    <string name="obfuscate_text_file_description_enhanced">Nem ajánlott. A \"Szövegfájlok teljes elfedése\" továbbfejlesztett változata. Csak akkor használja ezt az opciót, ha a másik módszer hatástalannak bizonyul. Jelentősen lelassítja a rejtési folyamatot.</string>
     <string name="join_developer_channel">Telegram csoport</string>
-    <string name="alert_permission_request_message">A lebegő gombhoz engedélyre van szükség a felugró ablakok létrehozásához. Kérjük, keresse meg az Amarokot a beállítások menüben, és adja meg.</string>
+    <string name="alert_permission_request_message">A lebegő gombhoz engedélyre van szükség a felugró ablakok létrehozásához. Kérjük, add meg az Anaroknak a hozzáférést a beállításoknál.</string>
     <string name="workmode">Munkamód</string>
     <string name="security">Biztonság</string>
-    <string name="in_app_update_failed">Új verzió elérhető, de nem sikerült lekérni. Kérjük, frissítsen manuálisan.</string>
+    <string name="in_app_update_failed">Új verzió elérhető, de nem sikerült letölteni. Kérjük, frissíts manuálisan.</string>
     <string name="failed_to_open_doc_tree">Nem tudta megnyitni a rendszer fájlválasztót</string>
     <string name="search">Keresés</string>
     <string name="notification_channel_name">Gyorsrejtés szolgáltatás</string>
@@ -107,7 +107,7 @@
     <string name="unhide">Felfedés</string>
     <string name="visible_status">Látható</string>
     <string name="confirm">Megerősítés</string>
-    <string name="check_update">Frissítés ellenőrzése</string>
+    <string name="check_update">Frissítés keresése</string>
     <string name="check_update_description">Jelenlegi verzió: %s</string>
     <string name="update">Frissítés</string>
     <string name="manually_set_path_description">Vigyázat! Győződjön meg róla, hogy a manuálisan kiválasztott fájl valóban létezik, mivel ez nem kerül hitelesítésre.</string>
@@ -115,14 +115,11 @@
     <string name="shizuku_pre_v11">Nem támogatott Shizuku verzió: V11 előtti. Kérjük, telepítse a Shizuku v11 vagy újabb verzióját.</string>
     <string name="shizuku_hidden_api_error">Nem lehetett elrejteni az alkalmazást: Nem lehet elérni az IPackageManager API-t.</string>
     <string name="dsm_permission_denied">DSM: Engedély megtagadva</string>
-    <string name="apphider_none_description">Kapcsolja ki az alkalmazások elrejtését.</string>
-    <string name="apphider_shizuku_description">Alkalmazásrejtés Shizukuval (vagy Suival).
-\nAjánlott, ha a készülékeden Android 11+ fut, vagy rendelkezik az Xposed keretrendszerrel. Telepített és aktív Shizuku vagy Sui szükséges.
-\n</string>
-    <string name="apphider_dsm_description">Alkalmazásrejtés a Delegated-Scopes-Managerrel.
-\nNem ajánlott, kivéve, ha a készülékeden Android 10 vagy korábbi Android 10 fut, és nincs rootolva. Lehet, hogy hibás és váratlanul működik. Telepített Icebox (vagy StopAPP) beállítása eszközadminisztrátorként szükséges.</string>
-    <string name="obfuscate_filename_description">A fájlnevet ember által olvashatatlanná teszi. A fájlrejtés alapvető funkciója. Nem kapcsolható ki.</string>
-    <string name="obfuscate_file_header_description">A fájlfejlécben lévő fájlaláírás elfedése, hogy a fájl \"sérült\" legyen. Megakadályozza, hogy a fájlt a \"Nyitás ezzel\" paranccsal manuálisan megnyissák, de lassíthatja a fájlrejtés folyamatát.</string>
+    <string name="apphider_none_description">Alkalmazás elrejtés kikapcsolása.</string>
+    <string name="apphider_shizuku_description">Alkalmazásrejtés Shizukuval (vagy Suival). \nAjánlott, ha a készülékeden Android 11+ fut, vagy rendelkezel az Xposed keretrendszerrel. Telepített és aktív Shizuku vagy Sui szükséges.\n</string>
+    <string name="apphider_dsm_description">Alkalmazásrejtés a Delegated-Scopes-Managerrel. \nNem ajánlott, kivéve, ha a készülékeden Android 10 vagy annál régibb rendszer fut, és nincs rootolva. Lehet, hogy hibás és váratlanul működik. Telepített Icebox (vagy StopAPP) beállítása eszközadminisztrátorként szükséges.</string>
+    <string name="obfuscate_filename_description">A fájlnevet ember által olvashatatlanná teszi. A fájlrejtés alapvető funkciója, ami nem kapcsolható ki.</string>
+    <string name="obfuscate_file_header_description">A fejlécben lévő fájlaláírás elfedése, hogy a fájl sérültnek látsszon. Megakadályozza, hogy a fájlt a \"Nyitás ezzel\" manuálisan megnyissák, de lassíthatja a fájlrejtés folyamatát.</string>
     <string name="processing">Feldolgozás…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
@@ -130,9 +127,9 @@
     <string name="alert_permission_denied">Más alkalmazások feletti megjelenítés engedély megtagadva.</string>
     <string name="alert_permission_request_title">Engedély szükséges a felugró ablakok létrehozásához</string>
     <string name="misc">Egyéb</string>
-    <string name="panic_button">Lebegő gomb (Boss key)</string>
-    <string name="panic_button_description">Vészhelyzetben az alkalmazások és fájlok elrejtésére használt lebegő gomb megjelenítése. Minden más alkalmazás fölött jelenik meg. A gomb csak elrejtetlen állapotban jelenik meg.</string>
-    <string name="failed_to_open_doc_tree_description">Hoppá! Az rendszer nem rendelkezik alapértelmezett fájlkezelővel. Kérjük, nyomja meg hosszan a \"Rejtett mappa hozzáadása\" gombot, és adja meg az elérési utat kézzel.</string>
+    <string name="panic_button">Pánik gomb</string>
+    <string name="panic_button_description">Vészhelyzetben az alkalmazások és fájlok elrejtésére használt lebegő gomb megjelenítése. Minden más alkalmazás fölött megjelenik elrejtetlen állapotban.</string>
+    <string name="failed_to_open_doc_tree_description">Hoppá! Az rendszer nem rendelkezik alapértelmezett fájlkezelővel. Kérjük, nyomd meg hosszan a \"Rejtett mappa hozzáadása\" gombot, és add meg kezzel az elérési utat.</string>
     <string name="notification_permission_request_message">A gyorsrejtés szolgáltatásnak értesítés engedélyre van szüksége a működéshez.</string>
     <string name="invalid_action">Érvénytelen intent érkezett: %s</string>
     <string name="unlock_required">Feloldás szükséges</string>
@@ -140,7 +137,7 @@
     <string name="confirm_password">Jelszó megerősítése</string>
     <string name="password_length_error">A jelszónak 3 és 15 karakter között kell lennie.</string>
     <string name="biometric_auth">Biometrikus hitelesítés</string>
-    <string name="biometric_auth_description">Használja az eszköz biometrikus hitelesítését az Amarok hozzáféréshez, ha rendelkezésre áll.</string>
+    <string name="biometric_auth_description">Használd az eszköz biometrikus hitelesítését az Amarok hozzáféréshez, ha rendelkezésre áll.</string>
     <string name="dhizuku_permission_denied">Dhizuku: Engedély megtagadva</string>
     <string name="apphider_dhizuku">Dhizuku mód</string>
     <string name="apphider_dhizuku_description">[Kísérleti] Alkalmazás-elrejtés Dhizukuval.
@@ -151,6 +148,37 @@
     <string name="performing_force_unhide">Kényszerfeloldás végrehajtása. Kérem, várjon.</string>
     <string name="display_system_apps">Rendszeralkalmazások megjelenítése</string>
     <string name="invalid_path">Érvénytelen elérési út.</string>
-    <string name="apphider_not_ava">Alkalmazás-elrejtés nem elérhető. Ellenőrizze a \"További beállítások\" → \"Alkalmazáselrejtési mód\" lehetőséget.</string>
+    <string name="apphider_not_ava">Alkalmazás-elrejtés nem elérhető. Ellenőrizd a \"További beállítások\" → \"Alkalmazáselrejtési mód\" lehetőséget.</string>
     <string name="participate_translation">Vegyen részt a fordításban</string>
+    <string name="app_name_calendar">Naptár</string>
+    <string name="disguise">Alkalmazás álcázása</string>
+    <string name="disguise_description">Az Amarokot naptár alkalmazásnak álcázza.</string>
+    <string name="calendar_about">Pure Calendar | by @koramA</string>
+    <string name="close_disguise_spotlight_tip">Nyomd hosszan az <font fgcolor="#FCCA3E"><b>Évszámot</b></font> , hogy hozzáférj az Amarokhoz.</string>
+    <string name="spotlight_do_not_show_again">NE MUTASD ÚJRA</string>
+    <string name="filehider_not_ava_title">Fájlrejtés nem elérhető</string>
+    <string name="filehider_none">Letiltva</string>
+    <string name="filehider_none_description">Fájlrejtés letiltása.</string>
+    <string name="filehider_obfuscate">Álcázó mód</string>
+    <string name="filehider_obfuscate_description">Fájlnevek és aláírások álcázása. Nem szükséges root hozzáférés. Időigényes folyamat.</string>
+    <string name="filehider_chmod">Chmod mód</string>
+    <string name="filehider_nomedia">NoMedia mód</string>
+    <string name="welcome_title">Üdvözlünk</string>
+    <string name="warning">FIGYELEM</string>
+    <string name="block_screenshots">Képernyőkép megakadályozása</string>
+    <string name="enable_x_hide">XHide engedélyezése</string>
+    <string name="block_screenshots_description">Képernyőképek megakadályozása az Amarokban és az utoljára használt alkalmazások nézetben.</string>
+    <string name="appearance">Megjelenés</string>
+    <string name="auto_hide">Automatikus elrejtés</string>
+    <string name="auto_hide_description">Automatikusan elindítja az elrejtést ha a képernyő kikapcsol.</string>
+    <string name="auto_hide_delay">Automatikus elrejtés késleltetése</string>
+    <string name="auto_hide_delay_description">A képernyő kikapcsolása után ennyi perccel késleltesse az elrejtést.</string>
+    <string name="filehider_nomedia_description">Egyszerűen egy .nomedia -t ad a könyvtárakhoz. Nem szükséges root hozzáférés.</string>
+    <string name="filehider_chmod_description">A fájlok engedélyeinek megváltoztatásával olvashatatlanokká teszi őket. Root hozzáférés szükaéges. Az eljárás azonnal lefut.</string>
+    <string name="apphider_not_activated_title">Alkalmazásrejtés inaktív</string>
+    <string name="apphider_not_activated_msg">Aktiválj egy alkalmazásrejtési módot a funkció engedélyezéséhez.</string>
+    <string name="warning_system_apps">Rendszeralkalmások elrejtése bootloopot okozhat. Kérjük légy körültekintő, ha rendszeralkalmazást rejtesz el.</string>
+    <string name="invert_tile_color">Csempe színének invertálása</string>
+    <string name="invert_tile_color_description">alapértelmezetten a gyorsbeállítás csempe aktívnak látszik, ha az adataid láthatók. A funkció bekapcsolásával ez a viselkedés megfordítható.</string>
+    <string name="xposed_desc">Engedélyezd az Amaroknak, hogy alkalmazásokat rejtsen el a rendszer menükből.</string>
 </resources>
