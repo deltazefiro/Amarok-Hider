@@ -161,6 +161,7 @@
             <intent-filter>
                 <action android:name="deltazero.amarok.HIDE" />
                 <action android:name="deltazero.amarok.UNHIDE" />
+                <action android:name="deltazero.amarok.TOGGLE" />
             </intent-filter>
         </receiver>
         <receiver

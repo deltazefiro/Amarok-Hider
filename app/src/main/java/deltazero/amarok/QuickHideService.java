@@ -46,7 +46,7 @@ public class QuickHideService extends LifecycleService {
         getSystemService(NotificationManager.class).createNotificationChannel(channel);
 
         Intent actionIntent = new Intent(this, ActionReceiver.class);
-        actionIntent.setAction("deltazero.amarok.HIDE");
+        actionIntent.setAction(ActionReceiver.ACTION_HIDE);
         activityPendingIntent = PendingIntent.getBroadcast(this, 1, actionIntent, PendingIntent.FLAG_IMMUTABLE);
     }
 

@@ -6,14 +6,17 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.Objects;
-
 import deltazero.amarok.Hider;
 import deltazero.amarok.R;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
 import deltazero.amarok.utils.SecurityUtil;
 
 public class ActionReceiver extends BroadcastReceiver {
+
+    public static final String ACTION_HIDE = "deltazero.amarok.HIDE";
+    public static final String ACTION_UNHIDE = "deltazero.amarok.UNHIDE";
+    public static final String ACTION_TOGGLE = "deltazero.amarok.TOGGLE";
+
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.i("ActionReceiver", "New action received.");
@@ -26,17 +29,17 @@ public class ActionReceiver extends BroadcastReceiver {
         String action = intent.getAction();
         if (action != null)
             switch (action) {
-                case "deltazero.amarok.HIDE":
+                case ACTION_HIDE:
                     Hider.hide(context);
                     return;
-                case "deltazero.amarok.UNHIDE":
+                case ACTION_UNHIDE:
                     if (SecurityUtil.isUnlockRequired())
                         context.startActivity(new Intent(context, SecurityAuthForQSActivity.class)
                                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     else
                         Hider.unhide(context);
                     return;
-                case "deltazero.amarok.TOGGLE":
+                case ACTION_TOGGLE:
                     if (Hider.getState() == Hider.State.VISIBLE)
                         Hider.hide(context);
                     else {
