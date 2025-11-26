@@ -40,6 +40,7 @@
     <string name="remove_hide_path">Remove hidden folder?</string>
     <string name="remove_hide_path_description">Remove folder \'%s\' from hidden list?</string>
     <string name="confirm">Confirm</string>
+    <string name="confirm_with_countdown">Confirm (%1$ds)</string>
     <string name="not_local_storage">Unsupported directory</string>
     <string name="not_local_storage_description">Please ensure it is local file and not a virtual one.</string>
     <string name="help">Help</string>
@@ -205,4 +206,6 @@
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Failed to grant `DELEGATION_PACKAGE_ACCESS`. Please try reactivating Dhizuku.</string>
     <string name="hide_from_recents">Hide from Recents</string>
     <string name="hide_from_recents_description">Hide Amarok from the recent apps screen.</string>
+    <string name="hide_amarok_icon_dialog_title">Hide Amarok Icon</string>
+    <string name="hide_amarok_icon_dialog_message">This action will hide Amarok from the launcher. You can dial *#*#262765#*#*  (262765 spells \"amarok\" on T9 keypad) to access Amarok again.</string>
 </resources>

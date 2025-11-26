@@ -9,6 +9,7 @@ import androidx.preference.PreferenceScreen;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
+import deltazero.amarok.ui.CountdownConfirmDialog;
 import deltazero.amarok.ui.SetPasswordFragment;
 import deltazero.amarok.utils.HashUtil;
 import deltazero.amarok.utils.LauncherIconController;
@@ -81,16 +82,30 @@ public class PrivacyCategory extends BaseCategory {
         hideAmarokIconPref.setOnPreferenceChangeListener((preference, newValue) -> {
             boolean hideIcon = (boolean) newValue;
             if (hideIcon) {
-                // When hiding icon, disable disguise and turn it off
-                disguisePref.setChecked(false);
-                disguisePref.setEnabled(false);
-                LauncherIconController.setIconState(activity, LauncherIconController.IconState.HIDDEN);
+                // Show countdown dialog before hiding icon
+                new CountdownConfirmDialog.Builder(activity)
+                        .setTitle(R.string.hide_amarok_icon_dialog_title)
+                        .setMessage(R.string.hide_amarok_icon_dialog_message)
+                        .setCountdownSeconds(10)
+                        .setOnConfirmAction(() -> {
+                            // When hiding icon, disable disguise and turn it off
+                            disguisePref.setChecked(false);
+                            disguisePref.setEnabled(false);
+                            LauncherIconController.setIconState(activity, LauncherIconController.IconState.HIDDEN);
+                            hideAmarokIconPref.setChecked(true);
+                        })
+                        .setOnCancelAction(() -> {
+                            // User cancelled, revert the switch state
+                            hideAmarokIconPref.setChecked(false);
+                        })
+                        .show();
+                return false; // Don't change the preference yet
             } else {
                 // When showing icon, re-enable disguise option
                 disguisePref.setEnabled(true);
                 LauncherIconController.setIconState(activity, LauncherIconController.IconState.VISIBLE);
+                return true;
             }
-            return true;
         });
         // Set initial state: if icon is hidden, disable disguise option
         disguisePref.setEnabled(!PrefMgr.getHideAmarokIcon());
