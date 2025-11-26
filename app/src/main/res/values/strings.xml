@@ -29,8 +29,8 @@
     <string name="more_settings">More Settings</string>
     <string name="switch_file_hider">Switch file-hiding mode</string>
     <string name="apply_on_restart">Restart the app to apply the new changes.</string>
-    <string name="hidden_toast">Hidden. Cock-a-doodle-do~!</string>
-    <string name="unhidden_toast">Unhidden. Be careful.</string>
+    <string name="hidden_toast">Hidden</string>
+    <string name="unhidden_toast">Unhidden</string>
     <string name="show_debug_info">Debug info</string>
     <string name="debug_info_description">Displays information to help troubleshoot issues.</string>
     <string name="invalid_dsm_provider">DSM: Invalid DSM provider. Have you installed and activated the DSM provider on your device?</string>
@@ -49,7 +49,7 @@
     <string name="no_apphider">Please select app-hiding mode in \"More settings\".</string>
     <string name="root_not_ava">Could not gain root access.</string>
     <string name="check_update_on_start">Auto update</string>
-    <string name="check_update_on_start_description">Check for new Amarok versions when opening the app.</string>
+    <string name="check_update_on_start_description">Check for new versions on startup.</string>
     <string name="check_update">Check for update</string>
     <string name="check_update_description">Current version: %s</string>
     <string name="update_ava">New version available</string>
@@ -74,7 +74,7 @@
     <string name="shizuku_not_working">Shizuku: Service unavailable. Have you installed Shizuku/Sui on your device?</string>
     <string name="shizuku_hidden_api_error">Could not hide app: Could not access IPackageManager API.</string>
     <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
-    <string name="apphider_not_ava_title">App hiding inactive</string>
+    <string name="apphider_not_ava_title">Service unavailable</string>
     <string name="dsm_permission_denied">DSM: Permission denied</string>
     <string name="apphider_none">Disabled</string>
     <string name="apphider_none_description">Turn off app-hiding.</string>
@@ -140,7 +140,7 @@
     <string name="dhizuku_pre_v5">Dhizuku: Unsupported Dhizuku version. Please update Dhizuku to version 5 or higher.</string>
     <string name="dhizuku_not_init">Dhizuku: Service unavailable. Please ensure that you have installed and activated Dhizuku.</string>
     <string name="apphider_dhizuku">Dhizuku mode</string>
-    <string name="apphider_dhizuku_description">[Experimental] App-hiding with Dhizuku.\nA modern and improved solution for hiding apps on non-rooted devices. Installation and activation of the Dhizuku app are required.</string>
+    <string name="apphider_dhizuku_description">App-hiding with Dhizuku.\nA modern and improved solution for hiding apps on non-rooted devices. Installation and activation of the Dhizuku app are required.</string>
     <string name="force_unhide">Force unhide</string>
     <string name="force_unhide_description">Try to restore everything. Use this option only when you run into troubles.</string>
     <string name="force_unhide_confirm_msg">Try to restore everything?\n\n<b>WARNING: </b>This option may corrupt your files. Only use it when you encounter trouble and cannot perform the \"unhide\" function normally.</string>
@@ -150,7 +150,7 @@
     <string name="display_root_apps">Display root-related apps</string>
     <string name="language">Language</string>
     <string name="follow_system">(Follow system)</string>
-    <string name="language_description" translatable="false">Language | 语言 | Langue | Sprache | 言語</string>
+    <string name="language_description" translatable="false">Language / 语言 / Langue / Sprache / 言語</string>
     <string name="invalid_path">Invalid path.</string>
     <string name="participate_translation">Participate in translation</string>
     <string name="participate_translation_description">Help us translate Amarok into your language.</string>
@@ -178,7 +178,7 @@
     <string name="welcome_title">Welcome</string>
     <string name="welcome_msg">Amarok is a free and freedom tool for hiding private files &amp; applications.\n\nPlease note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.\n\n<u>Disclaimers: Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.</u></string>
     <string name="warning">WARNING</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Some Samsung users have reported that using ChmodFileHider caused their devices to fail to boot.</font> Refer to GitHub issue #105 for more information. Use at your own risk.</b></string>
+    <string name="chmod_samsung_warning">Some Samsung users have reported that using ChmodFileHider caused their devices to fail to boot. Refer to GitHub issue #105 for more information. Use at your own risk.</string>
     <string name="appearance">Appearance</string>
     <string name="auto_hide">Auto hide</string>
     <string name="auto_hide_description">Automatically hides after the screen turns off.</string>
@@ -207,5 +207,5 @@
     <string name="hide_from_recents">Hide from Recents</string>
     <string name="hide_from_recents_description">Hide Amarok from the recent apps screen.</string>
     <string name="hide_amarok_icon_dialog_title">Hide Amarok Icon</string>
-    <string name="hide_amarok_icon_dialog_message">This action will hide Amarok from the launcher. You can dial *#*#262765#*#*  (262765 spells \"amarok\" on T9 keypad) to access Amarok again.</string>
+    <string name="hide_amarok_icon_dialog_message">This option will hide Amarok from the launcher. You can dial *#*#262765#*#*  (262765 spells \"amarok\" on T9 keypad) to access Amarok again.</string>
 </resources>
