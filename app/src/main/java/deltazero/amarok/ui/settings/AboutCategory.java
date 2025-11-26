@@ -11,6 +11,7 @@ import androidx.preference.PreferenceScreen;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
+import deltazero.amarok.BuildConfig;
 import deltazero.amarok.Hider;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.AppCenterUtil;
@@ -77,10 +78,12 @@ public class AboutCategory extends BaseCategory {
                 Uri.parse(activity.getString(R.string.doc_url))));
         addPreference(usagePref);
 
-        var debugPref = new Preference(activity);
-        debugPref.setTitle(R.string.show_debug_info);
-        debugPref.setIcon(R.drawable.ic_null);
-        debugPref.setSummary(R.string.debug_info_description);
-        addPreference(debugPref);
+        if (BuildConfig.DEBUG) {
+            var debugPref = new Preference(activity);
+            debugPref.setTitle(R.string.show_debug_info);
+            debugPref.setIcon(R.drawable.ic_null);
+            debugPref.setSummary(R.string.debug_info_description);
+            addPreference(debugPref);
+        }
     }
 }
