@@ -1,0 +1,23 @@
+v0.10.0
+- Add countdown confirmation for hide icon feature
+- Add intent API for toggling Amarok hiding state (#232)
+- Minor UI tweaks
+
+v0.10.0-beta3
+- Add experimental support for hiding Amarok icon from launcher (#49)
+- Add security check for launcher widget toggle action (#222)
+- Add support for hiding Amarok from recents
+- Add XHide support for Android 16
+- Add auto check update feature
+- Improve launcher widget UI
+- Update target SDK versions to Android 16
+
+v0.10.0-beta1
+- Added new launcher widget for quick hide
+- Fixed crash when Dhizuku fails to set delegated scopes
+- Added ability to hide apps directly by clicking notifications (#154)
+- Prevent hiding/unhiding when configured hider is unavailable (#213, by @warleysr)
+- Fixed issue where apps would lose account and permission data with XHide (#203, by @notaLonelyDay)
+- Added option to only disable apps and let XHide handle the hiding exclusively
+- Support bypassing security checks when unhidden
+- Disabled automatic updates due to AppCenter retirement
