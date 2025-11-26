@@ -191,4 +191,12 @@
     <string name="warning_system_apps">隐藏系统应用可能在部分设备上导致系统持续重启。请谨慎隐藏系统应用。</string>
     <string name="warning_root_apps">Amarok 并非隐藏 Root 隐藏工具。使用其隐藏高权限应用可能导致 Root 权限丢失。如果您希望隐藏 Root，请考虑使用 Dr-TSNG/Hide-My-Applist 或其他类似工具。</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: 无法获取 `DELEGATION_PACKAGE_ACCESS`。请尝试重新激活 Dhizuku。</string>
+    <string name="disable_only_with_xhide">只停用应用</string>
+    <string name="disable_only_with_xhide_description">只停用应用，让 XHide 单独处理隐藏。可能会降低隐藏期间的延迟。</string>
+    <string name="disable_security_when_unhidden_description">非隐藏时停用伪装和应用锁。</string>
+    <string name="disable_security_when_unhidden">非隐藏时停用安全措施</string>
+    <string name="hide_amarok_icon">隐藏图标</string>
+    <string name="hide_amarok_icon_description">在启动器中不显示 Amarok 。输入 *#*#262765#*#* 打开 Amarok。</string>
+    <string name="hide_from_recents">不出现在最近使用的应用中</string>
+    <string name="hide_from_recents_description">最近用过的应用屏幕中看不到 Amarok。</string>
 </resources>

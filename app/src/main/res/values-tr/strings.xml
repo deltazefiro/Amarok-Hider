@@ -22,12 +22,12 @@
     <string name="apply_on_restart">Yeni değişikliklerin etkili olabilmesi için uygulamayı yeniden başlatın.</string>
     <string name="unhidden_toast">Gizleme kaldırıldı. Dikkatli ol.</string>
     <string name="show_debug_info">Hata ayıklama bilgisi</string>
-    <string name="debug_info_description">Sorunları çözmeye yardımcı olacak bilgi gösterir.</string>
+    <string name="debug_info_description">Sorunları çözmeye yardımcı olacak bilgileri gösterir.</string>
     <string name="invalid_dsm_provider">DSM: Geçersiz DSM sağlayıcısı. DSM sağlayıcısını cihazınıza yükleyip etkinleştirdiniz mi\?</string>
     <string name="hide_app_failed_admin_inactive">Uygulama gizlenemedi: DSM sağlayıcısı etkin değil.</string>
     <string name="add_hide_files">Gizli klasör ekle</string>
     <string name="remove_hide_path">Gizli klasörü kaldırmak istiyor musunuz\?</string>
-    <string name="remove_hide_path_description">‘%s’ klasörünün gizlenmesi kaldırılsın mı?</string>
+    <string name="remove_hide_path_description">‘%s’ klasörü gizlenenlerden kaldırılsın mı?</string>
     <string name="confirm">Onayla</string>
     <string name="not_local_storage_description">Seçtiğiniz dosyanın yerel hafızada olduğundan ve sanal bir dosya olmadığından emin olun.</string>
     <string name="help">Yardım</string>
@@ -47,7 +47,7 @@
     <string name="shizuku_permission_denied">Shizuku: İzin reddedildi</string>
     <string name="shizuku_not_working">Shizuku: Servis kullanılamıyor. Shizuku/Sui cihazınızda kurulu mu?</string>
     <string name="shizuku_hidden_api_error">Uygulama gizlenemedi: IPackageManager API erişimi sağlanamadı.</string>
-    <string name="apphider_not_ava_title">Uygulama gizleme yöntemi kullanılamıyor</string>
+    <string name="apphider_not_ava_title">Uygulama gizleme devre dışı</string>
     <string name="dsm_permission_denied">DSM: İzin reddedildi</string>
     <string name="apphider_none">Devre dışı bırakıldı</string>
     <string name="apphider_none_description">Uygulama gizlemeyi kapat.</string>
@@ -60,7 +60,7 @@
     <string name="learn_more">Kurulum eğitimi</string>
     <string name="option_unava_when_hidden">Gizleme kapatılmadığı sürece seçenekler kullanılamıyor.</string>
     <string name="obfuscate_filename">Dosya adlarını gizle</string>
-    <string name="obfuscate_filename_description">Dosya adını okunamaz hale getirir. Dosya gizlemenin temel özelliği olduğundan kapatılamaz.</string>
+    <string name="obfuscate_filename_description">Dosya adını okunamaz hale getirir. Dosya gizlemenin kapatılamaz temel özelliği.</string>
     <string name="obfuscate_file_header">Dosya başlıklarını gizle</string>
     <string name="filename_only">Sadece dosya adları</string>
     <string name="filename_and_header">Dosya adları + Başlıklar</string>
@@ -76,7 +76,7 @@
     <string name="workmode">Çalışma yöntemi</string>
     <string name="misc">Çeşitli</string>
     <string name="security">Güvenlik</string>
-    <string name="panic_button">Yüzen buton (Patron tuşu)</string>
+    <string name="panic_button">Panik Butonu</string>
     <string name="in_app_update_failed">Yeni sürüm mevcut ancak otomatik olarak güncellenemedi. Lütfen manuel olarak güncelleyin.</string>
     <string name="failed_to_open_doc_tree">Sistem dosya seçici açılamadı</string>
     <string name="failed_to_open_doc_tree_description">Hata! Sisteminizde varsayılan bir dosya yöneticisi yok. Lütfen \"Gizli klasör ekle\" düğmesine basılı tutun ve ardından yolu manuel olarak girin.</string>
@@ -100,7 +100,7 @@
 \n\t(Yerel dosyalara erişmek için ekranın sağından kaydırın)</string>
     <string name="not_local_storage">Desteklenmeyen dizin</string>
     <string name="check_update_on_start">Otomatik güncelleme</string>
-    <string name="path_duplicated_description"><u>\'%s\'</u> \n \niçeriyor \n \n<u>\'%s\'</u></string>
+    <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\niçerir\n\n<u>\'%2$s\'</u></string>
     <string name="check_update">Güncellemeleri kontrol et</string>
     <string name="apphider_root_description">Root (kök) erişimi ile uygulama gizleme.
 \nCihazınızda root erişimi varsa ve Xposed Framework etkin değilse bu yöntem önerilir. Root izni gereklidir.</string>
@@ -108,7 +108,7 @@
     <string name="shizuku_service_not_running">Shizuku: Hizmet çalışmıyor.</string>
     <string name="apphider_dsm_description">Yetkilendirilmiş Cihaz Yöneticisi yöntemini kullanarak uygulama gizleme.
 \nCihazınız Android 10 veya öncesi ise ve root erişimi yoksa kullanılabilir fakat önerilen bir yöntem değildir. Hatalı ve beklenmedik şekilde çalışabilir. Icebox (veya StopAPP) yüklü ve cihaz yöneticisi olarak ayarlanmış olmalıdır.</string>
-    <string name="panic_button_description">Acil durumlarda uygulamaları ve dosyaları gizlemek için kullanılan yüzen bir buton görüntüler. Diğer tüm uygulamaların üzerinde gösterilir. Buton yalnızca gizlemenin kapalı olduğu durumda görünür haldedir.</string>
+    <string name="panic_button_description">Acil durumlarda uygulamaları ve dosyaları gizlemek için kullanılan yüzen bir buton görüntüler. Amarok gizli değilken diğer tüm uygulamaların üzerinde gösterilir.</string>
     <string name="obfuscate_file_header_description">Dosyayı “bozulmuş” olarak göstermek için dosya başlığındaki imzayı gizler. Dosyanın “birlikte aç” ile açılmasını engellemeye yarar ancak dosya gizleme işlemini yavaşlatabilir.</string>
     <string name="obfuscate_text_file_description_enhanced">Tavsiye edilmez. “Metin dosyalarını tamamen gizle”nin geliştirilmiş halidir. Bu seçeneği yalnızca normal yöntem hiçbir işe yaramazsa kullanın. Gizleme işlemini önemli ölçüde yavaşlatır.</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
@@ -151,7 +151,7 @@
     <string name="participate_translation">Çeviriye destek ol</string>
     <string name="force_unhide">Görünür kılmaya zorla</string>
     <string name="participate_translation_description">Amarok\'u senin diline çevirmemize yardım et.</string>
-    <string name="disguise_description">Amarok\'u takvim olarak göstererek sakla.</string>
+    <string name="disguise_description">Amarok\'u bir takvim uygulaması olarak göstererek sakla.</string>
     <string name="calendar_about">Pure Calendar | @koramA tarafından yapıldı</string>
     <string name="display_system_apps">Sistem uygulamalarını göster</string>
     <string name="enable_dynamic_color">Dinamik renk</string>
@@ -176,7 +176,7 @@
     <string name="auto_hide_delay_description">Ekran kapandığında gizlemeden önceki dakika gecikmesi.</string>
     <string name="block_screenshots_description">Amarok\'ta ekran resimlerini engelle ve son uygulamalarda bulanıklaştır.</string>
     <string name="xposed_desc">Uygulamaları sistem menülerinde gizlemek için Amarok\'u etkinleştir.</string>
-    <string name="x_hide_description">Uygulama gizlemeyi geliştirmek için Xposed modülünü kullanma. Gizli uygulamalar artık ayarlarda veya diğer uygulamalarda görünmeyecek. Xposed API ≥ 93 Gerekli.</string>
+    <string name="x_hide_description">Uygulama gizlemeyi geliştirmek için Xposed modülünü kullan. Gizli uygulamalar artık ayarlarda veya diğer uygulamalarda görünmeyecek. Xposed API ≥ 93 Gerekli.</string>
     <string name="enable_x_hide">Xhide\'ı etkinleştir</string>
     <string name="enable_x_hide_description">Durum: %s</string>
     <string name="xposed_active">Aktif, Xposed API %d</string>
@@ -185,4 +185,20 @@
     <string name="filehider_none_description">Dosya gizlemeyi devre dışı bırak.</string>
     <string name="filehider_obfuscate">Şaşırtma Modu</string>
     <string name="filehider_chmod">Chmod Modu</string>
+    <string name="display_root_apps">Kök erişimi (Root) ile alakalı uygulamaları göster</string>
+    <string name="hide_amarok_icon">ikonu gizle</string>
+    <string name="hide_amarok_icon_description">Amarok\'u başlatıcıdan gizle. Amarok\'u geri açmak için *#*#262765#*#* numarasını ara.</string>
+    <string name="disable_security_when_unhidden">Gizli değilken güvenliği devre dışı bırak</string>
+    <string name="disable_security_when_unhidden_description">Gizli değilken uygulama kilidi ve saklanmayı devre dışı bırak</string>
+    <string name="disable_only_with_xhide">Sadece uygulamaları devre dışı bırak</string>
+    <string name="disable_only_with_xhide_description">Sadece uygulamaları devre dışı bırak ve XHide\'ın gizlemeyi özel olarak ele almasına izin ver. Gizleme sırasında gecikmeyi düşürebilir.</string>
+    <string name="disable_toasts">Toast\'ları devre dışı bırak</string>
+    <string name="disable_toasts_description">\"gizle\" ve \"göster\" aksiyonları sırasında bildirim gösterme.</string>
+    <string name="apphider_not_activated_title">Uygulama gizleme devre dışı</string>
+    <string name="apphider_not_activated_msg">Bu özelliği etkinleştirmek için bir uygulama gizleme modu aktifleştirin.</string>
+    <string name="invert_tile_color">Rengi ters çevir</string>
+    <string name="invert_tile_color_description">Normalde, gizlilik gözükürken hızlı ayarlar sekmesi gözükür. Davranışı tersine çevirmek için bu seçeneği etkinleştirin.</string>
+    <string name="warning_system_apps">Sistem uygulamalarını gizlemek önyükleme döngüsüne (bootloop) yol açabilir. Sistem uygulamalarını gizlerken lütfen dikkatli olun.</string>
+    <string name="warning_root_apps">Amarok Kök erişimi (Root) ile alakalı uygulamaları gizlemek için tasarlanmamıştır. Root erişimi kaybına yol açabilir. \"Dr-TSNG\" ya da \"Hide-My-Applist\" kullanmayı düşünün.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: `DELEGATION_PACKAGE_ACCESS` erişimi verilemedi. Lütfen Dhizuku\'yu yeniden aktifleştirmeyi deneyin.</string>
 </resources>
