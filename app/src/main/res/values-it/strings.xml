@@ -5,7 +5,7 @@
     <string name="cancel">Cancella</string>
     <string name="storage_permission_request_message">Concedere ad Amarok l\'accesso all\'archivio esterno per nascondere i file.</string>
     <string name="hide">Nascondi</string>
-    <string name="root_not_ava">Impossibile ottenere l\'accesso root.</string>
+    <string name="root_not_ava">Non sono riuscito a ottenere l\'accesso Root.</string>
     <string name="visible_status">Visibile</string>
     <string name="ok">Ok</string>
     <string name="switch_app_hider">Cambiare la modalità di nascondimento</string>
@@ -26,10 +26,7 @@
     <string name="current_mode">Modalità Corrente: %s</string>
     <string name="about_description">Mostra informazioni sull\'app.</string>
     <string name="switch_file_hider">Cambia la modalità di nascondimento dei file</string>
-    <string name="folder_selector_hints">Suggerimenti per selezionare le cartelle:
-\n\t1. Cliccare su \"Usa questa cartella\" per selezionare la cartella
-\n\t2. Selezionare sempre un file sul dispositivo
-\n\t(Scorrere da destra nello schermo per aprire i file locali)</string>
+    <string name="folder_selector_hints">Suggerimenti per selezionare le cartelle: \n\t1. Cliccare su \"Usa questa cartella\" per selezionare la cartella \n\t2. Selezionare sempre un file sul dispositivo\n\t(Scorri da destra sullo schermo per aprire i file locali)</string>
     <string name="hidden_toast">Nascosto. Cock-a-doodle-do~!</string>
     <string name="unhidden_toast">Non Nascosto. Fai attenzione.</string>
     <string name="show_debug_info">Informazioni di debug</string>
@@ -39,15 +36,15 @@
     <string name="hide_app_failed_admin_inactive">Impossibile nascondere l\'applicazione: Il provider DSM non è attivo.</string>
     <string name="add_hide_files">Aggiungi una cartella nascosta</string>
     <string name="remove_hide_path">Rimuovere la cartella nascosta\?</string>
-    <string name="remove_hide_path_description">Rimuovere la cartella \'%s\' dal nascondimento?</string>
+    <string name="remove_hide_path_description">Rimuovere la cartella \'%s\' dalla lista nascoste?</string>
     <string name="not_local_storage">Directory non supportata</string>
     <string name="update_ava">Nuova versione disponibile</string>
     <string name="update_description">Amarok %s (%d) è disponibile per il download e l\'installazione.</string>
     <string name="update">Aggiornamento</string>
     <string name="never">Mai</string>
     <string name="no_update_ava">È in esecuzione l\'ultima versione.</string>
-    <string name="manually_set_path">Scegliere manualmente</string>
-    <string name="manually_set_path_description">Attenzione: Assicurati che ciò che selezioni manualmente esista effettivamente, poiché verrà convalidato.</string>
+    <string name="manually_set_path">Scegli manualmente</string>
+    <string name="manually_set_path_description">Attenzione: Assicurati che ciò che selezioni manualmente esista effettivamente, poiché non verrà convalidato.</string>
     <string name="view_github_repo">GitHub Repository</string>
     <string name="not_local_storage_description">Assicurarsi che si tratti di un file locale e non virtuale.</string>
     <string name="help">Aiuto</string>
@@ -65,14 +62,14 @@
     <string name="shizuku_pre_v11">Versione di Shizuku non supportata: Pre-v11. Installare Shizuku v11 o successivo.</string>
     <string name="shizuku_permission_denied">Shizuku: Permesso negato</string>
     <string name="shizuku_hidden_api_error">Impossibile nascondere l\'applicazione: Impossibile accedere all\'API IPackageManager.</string>
-    <string name="shizuku_service_not_running">Shizuku: Servizio non funzionante.</string>
-    <string name="apphider_not_ava_title">Modalità nascondimento non disponibile</string>
+    <string name="shizuku_service_not_running">Shizuku: Servizio non in funzione.</string>
+    <string name="apphider_not_ava_title">Nascondimento app non attivo</string>
     <string name="dsm_permission_denied">DSM: Autorizzazione negata</string>
     <string name="learn_more">Tutorial di configurazione</string>
     <string name="option_unava_when_hidden">Le opzioni non sono disponibili finché non vengono nascoste.</string>
-    <string name="obfuscate_filename">Offuscamento dei nomi di file</string>
-    <string name="obfuscate_filename_description">Rendere il nome del file illeggibile. È la caratteristica di base del nascondimento dei file. Non può essere disattivata.</string>
-    <string name="obfuscate_file_header">Offuscamento delle intestazioni dei file</string>
+    <string name="obfuscate_filename">Offusca i nomi dei file</string>
+    <string name="obfuscate_filename_description">Rendi il nome del file illeggibile. Caratteristica di base del nascondimento dei file. Questa funzione non può essere disattivata.</string>
+    <string name="obfuscate_file_header">Offusca le intestazioni dei file</string>
     <string name="obfuscate_file_header_description">Offusca la firma del file nell\'intestazione del file per renderlo \"corrotto\". Impedisce che il file venga aperto manualmente da \"Apri con\", ma può rallentare il processo di nascondimento del file.</string>
     <string name="filename_only">Solo nomi di file</string>
     <string name="filename_and_header">Nome file + intestazione</string>
@@ -83,13 +80,13 @@
     <string name="processing">Elaborazione…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/it-IT/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
-    <string name="alert_permission_denied">Autorizzazione alla visualizzazione su altre applicazioni negata.</string>
+    <string name="alert_permission_denied">Permesso sulla visualizzazione su altre applicazioni negata.</string>
     <string name="alert_permission_request_title">È richiesta l\'autorizzazione delle finestre pop-up</string>
     <string name="workmode">Modalità di lavoro</string>
     <string name="misc">Varie.</string>
     <string name="security">Sicurezza</string>
-    <string name="panic_button">Tasto fluttuante (tasto Boss)</string>
-    <string name="in_app_update_failed">Nuova versione disponibile, ma non è stato possibile recuperarla. Aggiornare manualmente.</string>
+    <string name="panic_button">Pulsante antipanico</string>
+    <string name="in_app_update_failed">Nuova versione disponibile, ma il download è fallito. Aggiornare manualmente.</string>
     <string name="password_incorrect">Password errata.</string>
     <string name="app_lock">Blocco app</string>
     <string name="set_password">Imposta la password</string>
@@ -111,9 +108,9 @@
     <string name="unlock">Sbloccare</string>
     <string name="password_mismatch_error">Le password non corrispondono.</string>
     <string name="unlock_required">Sblocco richiesto</string>
-    <string name="app_lock_description">Richiesta una password per accedere ad Amarok.</string>
+    <string name="app_lock_description">Richiedi una password per accedere ad Amarok.</string>
     <string name="dhizuku_permission_denied">Dhizuku: Permesso negato</string>
-    <string name="obfuscate_text_file_description">Funzione sperimentale. L\'offuscamento delle intestazioni dei file non ha effetto sui file di testo. Abilitando questa funzione, i file di testo vengono completamente offuscati. Il processo di nascondimento risulterà rallentato.</string>
+    <string name="obfuscate_text_file_description">L\'offuscamento delle intestazioni dei file non ha effetto sui file di testo. Abilitando questa funzione i file di testo vengono completamente offuscati.</string>
     <string name="confirm_password">Conferma la password</string>
     <string name="dhizuku_not_init">Dhizuku: Servizio non disponibile. Assicurati di aver installato e attivato Dhizuku.</string>
     <string name="apphider_shizuku">Modalità Shizuku (Sui)</string>
@@ -124,7 +121,7 @@
     <string name="apphider_root">Modalità root</string>
     <string name="apphider_root_description">Nascondere le app con accesso root.
 \nConsigliato se il dispositivo è rootato, ma non dispone del framework Xposed. Sono necessari i permessi di root.</string>
-    <string name="apphider_none_description">Disattivare il nascondimento app.</string>
+    <string name="apphider_none_description">Disattiva il nascondimento app.</string>
     <string name="apphider_dsm">Modalità DSM</string>
     <string name="apphider_shizuku_description">Nascondere le app con Shizuku (o Sui).
 \nConsigliato se il dispositivo è dotato di Android 11 o del framework Xposed. È necessario che Shizuku o Sui siano installati e attivi.
@@ -132,9 +129,9 @@
     <string name="apphider_dsm_description">Nascondere le app con Delegated-Scopes-Manager.
 \nNon è consigliato a meno che il dispositivo non abbia Android 10 o versioni precedenti e non sia rootato. Potrebbe essere difettoso e funzionare in modo imprevisto. È necessario installare Icebox (o StopAPP) impostato come proprietario del dispositivo.</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/it-IT/hideapp.html</string>
-    <string name="alert_permission_request_message">Il pulsante fluttuante ha bisogno di un permesso per le finestre pop-up. Cercare Amarok nel menu delle impostazioni e concederlo.</string>
-    <string name="panic_button_description">Visualizza un pulsante fluttuante utilizzato per nascondere applicazioni e file in caso di emergenza. Viene visualizzato sopra tutte le altre app. Il pulsante viene visualizzato solo se non è nascosto.</string>
-    <string name="failed_to_open_doc_tree_description">Oops! Il sistema non dispone di un gestore di file predefinito. Premere a lungo il pulsante \"Aggiungi cartella nascosta\" e inserire manualmente il percorso.</string>
+    <string name="alert_permission_request_message">Il pulsante fluttuante ha bisogno di un permesso per le finestre pop-up. Cerca Amarok nel menu delle impostazioni e concedi il permesso.</string>
+    <string name="panic_button_description">Mostra un pulsante fluttuante per nascondere rapidamente app e file in caso di emergenza. Questo pulsante appare sopra tutte le altre app quando Amarok non è nascosto.</string>
+    <string name="failed_to_open_doc_tree_description">Oops! Il sistema non dispone di un gestore di file predefinito. Premere a lungo il pulsante \"Aggiungi cartella nascosta\" e inserisci manualmente il percorso.</string>
     <string name="performing_force_unhide">Esecuzione della rimozione modalità nascosta. Attendere.</string>
     <string name="app_name_calendar">Calendario</string>
     <string name="filehider_nomedia_description">Aggiunge solo un file .nomedia alle cartelle. Non è richiesto l\'accesso root.</string>
@@ -171,7 +168,7 @@
     <string name="participate_translation">Partecipa alla traduzione</string>
     <string name="filehider_not_ava_title">Nascondimento file non disponibile</string>
     <string name="participate_translation_description">Aiutaci a tradurre Amarok nella tua lingua.</string>
-    <string name="disguise_description">Camuffa Amarok come calendario.</string>
+    <string name="disguise_description">Camuffa Amarok come l\'app calendario.</string>
     <string name="calendar_about">Calendario | by @koramA</string>
     <string name="display_system_apps">Mostra le app di sistema</string>
     <string name="filehider_chmod">Modalità Chmod</string>
@@ -179,4 +176,24 @@
     <string name="appearance">Aspetto</string>
     <string name="auto_hide">Nascondi automaticamente</string>
     <string name="auto_hide_description">Nasconde automaticamente quando si spegne lo schermo.</string>
+    <string name="auto_hide_delay">Ritardo Auto Nascondimento</string>
+    <string name="enable_x_hide">Abilita XHide</string>
+    <string name="enable_x_hide_description">Stato: %s</string>
+    <string name="xposed_active">Attivo, API Xposed %d</string>
+    <string name="auto_hide_delay_description">Numero di minuti di attesa prima di nascondersi dopo lo spegnimento dello schermo.</string>
+    <string name="xposed_inactive">Modulo inattivo. Controllare il manager Xposed?</string>
+    <string name="warning_system_apps">Nascondere le app di sistema potrebbe causare un bootloop. Per favore sii attento quando nascondi le app di sistema.</string>
+    <string name="warning_root_apps">Amarok non è progettato per nascondere app correlate al root. Potrebbe causare la perdita dell\'accesso root. Considera usare Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Impossibile concedere `DELEGATION_PACKAGE_ACCESS`. Prova a riattivare Dhizuku.</string>
+    <string name="block_screenshots">Blocca gli screenshot</string>
+    <string name="invert_tile_color">Inverti colore tile</string>
+    <string name="x_hide_description">Utilizza Xposed per migliorare il nascondimento delle app. Le app nascoste non saranno più visibili nelle impostazioni o in altre app. È richiesta l\'API Xposed ≥ 93.</string>
+    <string name="invert_tile_color_description">Per impostazione predefinita, il riquadro delle impostazioni rapide appare attivato quando la tua privacy è visibile. Attiva questa opzione per invertire il comportamento.</string>
+    <string name="display_root_apps">Mostra applicazioni di root</string>
+    <string name="block_screenshots_description">Blocca gli screenshot in Amarok e Sfocala dalla lista delle app recenti.</string>
+    <string name="xposed_desc">Abilita Amarok per nascondere le app dal menu del sistema.</string>
+    <string name="disable_toasts">Disabilita toast</string>
+    <string name="apphider_not_activated_title">Nascondimento app inattivo</string>
+    <string name="apphider_not_activated_msg">Per abilitare questa funzionalità, attiva la modalità di nascondimento delle app.</string>
+    <string name="disable_toasts_description">Non mostrare le notifiche toast durante le azioni di nascondimento o di ri-visualizzazione.</string>
 </resources>

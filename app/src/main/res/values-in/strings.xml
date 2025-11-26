@@ -157,7 +157,7 @@
     <string name="obfuscate_text_file_description_enhanced">Tidak direkomendasikan. Versi yang disempurnakan dari \"Mengaburkan file teks sepenuhnya\". Gunakan opsi ini hanya jika metode standar terbukti tidak efektif. Memperlambat proses penyembunyian secara signifikan.</string>
     <string name="obfuscate_text_file_description">Mengaburkan header file tidak akan berpengaruh pada berkas teks. Mengaktifkan fungsi ini akan sepenuhnya mengaburkan file teks.</string>
     <string name="panic_button">Tombol Panik</string>
-    <string name="calendar_about">Kalender Asli | oleh @koramA</string>
+    <string name="calendar_about">Kalender Asli | dari @koramA</string>
     <string name="display_system_apps">Tampilkan aplikasi sistem</string>
     <string name="filehider_chmod">Mode Chmod</string>
     <string name="enable_dynamic_color">Warna dinamis</string>
@@ -175,13 +175,18 @@
     <string name="x_hide_description">Gunakan modul Xposed/LSPosed untuk meningkatkan fungsi penyembunyian aplikasi. Aplikasi yg disembunyikan tidak akan terdeteksi oleh pengaturan atau aplikasi lain. Dibutuhkan Xposed API ≥ 93.</string>
     <string name="xposed_active">Aktif, Xposed API %d</string>
     <string name="xposed_inactive">Modul takktif. Cek manajer Xposed?</string>
-    <string name="disable_toasts">Takaktifkan notifikasi</string>
+    <string name="disable_toasts">Matikan notifikasi</string>
     <string name="apphider_not_activated_title">Fungsi sembunyi takaktif</string>
     <string name="apphider_not_activated_msg">Aktifkan mode sembunyi untuk menggunakan fitur ini.</string>
     <string name="disable_toasts_description">Tidak menampilkan notifikasi saat mode \"sembunyikan\" atau \"perlihatkan\" sedang berjalan.</string>
-    <string name="invert_tile_color">Balikkan warna tile</string>
-    <string name="invert_tile_color_description">Secara bawaan, tile aturan cepat tampak aktif ketika privasi Anda adalah terlihat. Alihkan opsi ini untuk mengatur sebaliknya.</string>
+    <string name="invert_tile_color">Balikkan warna ubin</string>
+    <string name="invert_tile_color_description">Secara bawaan, ubin aturan cepat tampak aktif ketika privasi Anda adalah terlihat. Alihkan opsi ini untuk mengatur sebaliknya.</string>
     <string name="display_root_apps">Menampilkan aplikasi terkait root</string>
     <string name="warning_system_apps">Menyembunyikan aplikasi sistem dapat menyebabkan sistem mengalami bootloop. Harap berhati-hati saat menyembunyikan aplikasi sistem.</string>
     <string name="warning_root_apps">Amarok tidak dirancang untuk menyembunyikan aplikasi terkait root. Aplikasi ini dapat menyebabkan hilangnya akses root. Pertimbangkan untuk menggunakan Dr-TSNG/Hide-My-Applist sebagai gantinya.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Gagal memberikan `DELEGATION_PACKAGE_ACCESS`. Tolong coba aktifkan kembali Dhizuku.</string>
+    <string name="disable_only_with_xhide">Hanya matikan aplikasi</string>
+    <string name="disable_security_when_unhidden_description">Matikan penyamaran dan kunci aplikasi saat tidak tersembunyi.</string>
+    <string name="disable_security_when_unhidden">Matikan keamanan saat ditampilkan</string>
+    <string name="disable_only_with_xhide_description">Hanya matikan aplikasi dan biakan XHide melakukan penyembunyian exklusif. Dapat meredakan lag saat penyembunyian.</string>
 </resources>

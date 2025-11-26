@@ -175,4 +175,23 @@
     <string name="enable_dynamic_color">Cores dinâmicas</string>
     <string name="invalid_dsm_provider">DSM: Provedor DSM inválido. Instalou e ativou o provedor DSM no seu dispositivo?</string>
     <string name="view_github_repo">Repositório GitHub</string>
+    <string name="display_root_apps">Mostrar apps relacionados a root</string>
+    <string name="hide_amarok_icon">Ocultar ícone</string>
+    <string name="auto_hide">Ocultar automaticamente</string>
+    <string name="auto_hide_description">Oculta automaticamente depois do ecrã desligar.</string>
+    <string name="auto_hide_delay">Atraso para ocultar automaticamente</string>
+    <string name="auto_hide_delay_description">Quantidade de minutos de atraso antes de ocultar depois do ecrã desligar.</string>
+    <string name="block_screenshots">Bloquear captura de ecrã</string>
+    <string name="block_screenshots_description">Bloquear captura de ecrã no Amarok e ofuscar na lista de apps recentes.</string>
+    <string name="xposed_desc">Ativar o Amarok de ocultar aplicações nos menus do sistema.</string>
+    <string name="x_hide_description">A utilizar o Xposed para aprimorar a ocultar apps. As apps ocultas já não estarão visíveis nas configurações ou em outras apps. É necessário no ≥ 93 da API do Xposed.</string>
+    <string name="enable_x_hide">Ativar XHide</string>
+    <string name="enable_x_hide_description">Estado: %s</string>
+    <string name="disable_only_with_xhide">Somente desativar apps</string>
+    <string name="apphider_not_activated_title">Ocultar apps desativado</string>
+    <string name="apphider_not_activated_msg">Ativar um modo de ocultação de apps para ativar esse recurso.</string>
+    <string name="invert_tile_color_description">Por padrão, o bloco de configurações rápidas aparece ativado quando a sua privacidade está visível. Alterne esta opção para reverter o comportamento.</string>
+    <string name="warning_system_apps">Ocultar apps do sistema pode causar o bootloop do sistema. Tenha cuidado ao ocultar apps do sistema.</string>
+    <string name="warning_root_apps">O Amarok não foi feito para ocultar apps relacionados ao root. Isso pode causar perda de acesso root. Considere usar Dr-TSNG/Hide-My-Applist.</string>
+    <string name="appearance">Aparência</string>
 </resources>

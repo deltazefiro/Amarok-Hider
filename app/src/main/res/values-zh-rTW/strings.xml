@@ -193,4 +193,10 @@
     <string name="block_screenshots_description">在 Amarok 內停用截圖，同時將 Amarok 從多任務視圖中模糊。</string>
     <string name="xposed_desc">允許 Amarok 讓應用程式不出現在系統選單中。</string>
     <string name="x_hide_description">使用 Xposed 增強應用程式隱藏。啟用後隱藏的應用程式在系統選單與其他應用程式中不可見。需要 Xposed API ≥ 93。</string>
+    <string name="display_root_apps">顯示 Root 應用程式</string>
+    <string name="disable_security_when_unhidden">非隱藏時停用安全措施</string>
+    <string name="invert_tile_color_description">當您未啟用Amarok時，會在快捷控制欄出現一個激活的磁鐵。切換此選項以反轉磁鐵激活行為。</string>
+    <string name="disable_security_when_unhidden_description">在未隐藏时禁用Amarok伪装和Amarok锁。</string>
+    <string name="disable_only_with_xhide">仅禁用软件</string>
+    <string name="invert_tile_color">反轉磁鐵顏色</string>
 </resources>

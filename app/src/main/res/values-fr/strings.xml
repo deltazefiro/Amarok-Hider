@@ -22,7 +22,7 @@
     <string name="usage_description">Ouvrir le centre d\'aide.</string>
     <string name="hide_app_failed_admin_inactive">Impossible de masquer l\'application : Le fournisseur DSM n\'est pas actif.</string>
     <string name="add_hide_files">Ajouter un dossier à cacher</string>
-    <string name="remove_hide_path_description">Supprimer le dossier \'%s\' de la liste de dissimulation?</string>
+    <string name="remove_hide_path_description">Retirer le dossier \'%s\' de la liste cachée ?</string>
     <string name="no_apphider">Veuillez sélectionner le mode de dissimulation des applications dans \"Plus de paramètres\".</string>
     <string name="root_not_ava">Impossible d\'obtenir l\'accès Super-Utilisateur.</string>
     <string name="check_update_on_start_description">Recherchez les nouvelles versions d\'Amarok lors de l\'ouverture de l\'application.</string>
@@ -54,16 +54,16 @@
     <string name="alert_permission_request_title">Autorisation de générer des fenêtres pop-up requise</string>
     <string name="workmode">Fonctionnement</string>
     <string name="security">Sécurité</string>
-    <string name="alert_permission_request_message">Le bouton flottant nécessite une autorisation pour générer des fenêtres contextuelles. Veuillez autoriser Amarok dans le menu des paramètres et l\'accorder.</string>
+    <string name="alert_permission_request_message">Le bouton flottant a besoin d’une autorisation pour faire apparaître des fenêtres contextuelles. Veuillez accorder cette autorisation dans le menu des paramètres sous Amarok.</string>
     <string name="panic_button">Bouton Panique</string>
     <string name="failed_to_open_doc_tree">Impossible d\'ouvrir le sélecteur de fichiers système</string>
     <string name="search">Rechercher</string>
     <string name="quick_hide">Dissimulation rapide</string>
     <string name="notification_channel_name">Service de dissimulation rapide</string>
     <string name="notification">Notification</string>
-    <string name="quick_hide_notification_description">Afficher une notification permanente pour avertir les utilisateurs lorsqu\'ils ne sont pas caché.</string>
+    <string name="quick_hide_notification_description">Affiche une notification persistante pour avertir les utilisateurs lorsqu’elle n’est pas masquée.</string>
     <string name="notification_permission_request_title">Autorisation de notification requise</string>
-    <string name="notification_permission_request_message">Le service de dissimulation rapide a besoin d’une autorisation de notification pour fonctionner.</string>
+    <string name="notification_permission_request_message">Le service QuickHide a besoin d’une autorisation de notification pour fonctionner.</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
 \nContient
@@ -103,10 +103,10 @@
 \nRecommandé si votre appareil fonctionne sous Android 11+ ou dispose du framework Xposed. Shizuku ou Sui installé et actif requis.
 \n</string>
     <string name="obfuscate_filename_description">Rend le nom du fichier illisible par un humain. Fonctionnalité de base de protection des fichiers qui ne peut pas être désactivée.</string>
-    <string name="obfuscate_text_file_description">Fonctionnalité expérimentale. Les en-têtes de fichiers obfusquées n\'ont aucun effet sur les fichiers texte. L\'activation de cette fonction masquera complètement les fichiers texte. Cela ralentira dans une certaine mesure le processus de dissimulation.</string>
+    <string name="obfuscate_text_file_description">L’obscurcissement des en-têtes de fichier n’a aucun effet sur les fichiers texte. Activer cette fonction obscurcira complètement les fichiers texte.</string>
     <string name="misc">Divers.</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
-    <string name="panic_button_description">Affichez un bouton flottant utilisé pour masquer les applications et les fichiers en cas d\'urgence. Il est affiché sur toutes les autres applications. Le bouton ne s\'affiche qu\'à l\'état non masqué.</string>
+    <string name="panic_button_description">Affiche un bouton flottant pour masquer rapidement les apps et fichiers en cas d’urgence. Ce bouton apparaît sur toutes les autres apps lorsque Amarok est démasqué.</string>
     <string name="dhizuku_pre_v5">Dhizuku : Version Dhizuku non prise en charge. Veuillez mettre à jour Dhizuku vers la version 5 ou supérieure.</string>
     <string name="apphider_dhizuku">Mode Dhizuku</string>
     <string name="apphider_dhizuku_description">[Expérimental] Dissimulation d\'applications avec Dhizuku.
@@ -118,7 +118,7 @@
     <string name="app_lock_description">Password requis pour accéder à Amarok.</string>
     <string name="confirm_password">Confirmer le mot de passe</string>
     <string name="language">Langage</string>
-    <string name="biometric_auth_description">Utilisez l\'authentification biométrique de l\'appareil pour accéder à Amarok lorsqu\'elle est disponible.</string>
+    <string name="biometric_auth_description">Utilisez l\'authentification biométrique de l\'appareil pour accéder à Amarok, lorsqu\'elle est disponible.</string>
     <string name="close_disguise_spotlight_tip">Appuyez longement sur<font fgcolor="#FCCA3E"><b>l\'année</b></font>pour accéder à Amarok.</string>
     <string name="auto_hide_delay_description">Le nombre de minutes à attendre avant de se cacher une fois l\'écran éteint.</string>
     <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Certains utilisateurs de Samsung ont signalé que l\'utilisation de chmod entraînait l\'échec du démarrage de leurs appareils.</font> Reportez-vous au problème GitHub n°105 pour plus d\'informations. Utilisez à vos propres risques.</b></string>
@@ -128,10 +128,7 @@
 \n
 \n<u>Avertissements : Amarok est fourni sans aucune garantie ni condition.
 \nL\'utilisateur est entièrement responsable de tout préjudice ou conséquence pouvant découler de l\'utilisation d\'Amarok.</u></string>
-    <string name="folder_selector_hints">Conseils pour sélectionner un dossier:
-\n\t 1. Cliquez sur \"Utiliser ce dossier\" pour sélectionner le dossier
-\n\t 2. Sélectionnez toujours un fichier sur l\'appareil
-\n\t (Faites glisser vers la droite de l\'écran pour ouvrir les fichiers locaux)</string>
+    <string name="folder_selector_hints">Conseils pour sélectionner un dossier : \n\t 1. Cliquez sur \"Utiliser ce dossier\" pour sélectionner le dossier \n\t 2. Sélectionnez toujours un fichier sur l\'appareil \n\t (Faites glisser vers la droite de l\'écran pour ouvrir les fichiers locaux)</string>
     <string name="remove_hide_path">Retirer le dossier caché ?</string>
     <string name="enable_dynamic_color">Couleurs dynamiques</string>
     <string name="appearance">Apparence</string>
@@ -140,7 +137,7 @@
     <string name="auto_hide_delay">Délai de dissimulation auto</string>
     <string name="follow_system">(Identique au système)</string>
     <string name="dynamic_color_description">Activez les thèmes de couleurs dynamiques.</string>
-    <string name="disguise_description">Déguiser Amarok comme calendrier.</string>
+    <string name="disguise_description">Déguiser Amarok en tant que app calendrier.</string>
     <string name="calendar_about">Pure Calendar | par @koramA</string>
     <string name="spotlight_do_not_show_again">NE PLUS AFFICHER</string>
     <string name="filehider_not_ava_title">Dissimulation de fichiers indisponible</string>
@@ -164,28 +161,28 @@
     <string name="apphider_dsm">Mode DSM</string>
     <string name="option_unava_when_hidden">Les options ne sont pas disponibles tant qu\'elles ne sont pas masquées.</string>
     <string name="obfuscate_filename">Dissimuler les noms de fichiers</string>
-    <string name="obfuscate_file_header_description">Masquez la signature du fichier dans l\'en-tête du fichier pour rendre le fichier \"corrompu\". Empêche l\'ouverture manuelle du fichier par \"Ouvrir avec\", mais peut ralentir le processus de dissimulation de fichiers.</string>
+    <string name="obfuscate_file_header_description">Masquez la signature du fichier dans l\'en-tête du fichier pour rendre le fichier \"apparemment corrompu\". Empêche le fichier d\'être ouvert manuellement par \"Ouvrir avec\", mais peut ralentir le processus de dissimulation.</string>
     <string name="obfuscate_text_file_enhanced">Dissimulation complète des fichiers texte – Avancé</string>
     <string name="processing">En cours…</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
-    <string name="in_app_update_failed">Nouvelle version disponible, mais échec de communication. Veuillez mettre à jour manuellement.</string>
+    <string name="in_app_update_failed">Nouvelle version disponible, mais téléchargement échoué. Veuillez mettre à jour manuellement.</string>
     <string name="failed_to_open_doc_tree_description">Oops ! Votre système ne dispose pas de gestionnaire de fichiers par défaut. Veuillez appuyer longuement sur le bouton \"Ajouter un dossier caché\" et saisir le chemin manuellement.</string>
     <string name="notification_permission_denied">Autorisation de notification refusée.</string>
     <string name="quick_hide_notification_title">La confidentialité n\'est pas privé</string>
     <string name="quick_hide_notification_content">Votre confidentialité n\'est pas caché. Cliquer pour cacher.</string>
-    <string name="invalid_action">Intention non valide reçue:%s</string>
+    <string name="invalid_action">Intention non valide reçue : %s</string>
     <string name="performing_force_unhide">Forcement de l\'affichage en cours. S\'il vous plaît, restez assis.</string>
     <string name="filehider_none_description">Désactivez la dissimulation de fichiers.</string>
     <string name="filehider_obfuscate">Mode d\'Obfuscation</string>
     <string name="filehider_chmod">Mode chmod</string>
-    <string name="filehider_chmod_description">Modifiez les autorisations des fichiers pour les rendre illisibles. Un accès Super-Utilisateur est requis. La procédure est immédiate.</string>
+    <string name="filehider_chmod_description">Modifiez les autorisations des fichiers pour les rendre illisibles. Accès Super-Utilisateur requis. La procédure est immédiate.</string>
     <string name="filehider_nomedia">Mode NoMedia</string>
     <string name="filehider_nomedia_description">Ajoute seulement .nomedia aux dossiers. Super-Utilisateur n\'est pas requis.</string>
     <string name="welcome_title">Bienvenue</string>
     <string name="block_screenshots_description">Bloquer les captures d\'écran dans Amarok et flouter dans la liste d\'applis récentes.</string>
     <string name="block_screenshots">Bloquer captures d\'écran</string>
     <string name="xposed_desc">Activez Amarok pour masquer les applications des menus système.</string>
-    <string name="x_hide_description">Utilisation du module Xposed pour améliorer le masquage des applications. Les applications masquées ne seront plus visibles dans les paramètres ou dans d\'autres applications. API Xposed ≥ 93 requis.</string>
+    <string name="x_hide_description">Utilisation de Xposed pour améliorer le masquage des apps. Les apps masquées ne seront plus visibles dans les paramètres ou dans d\'autres apps. API Xposed ≥ 93 requis.</string>
     <string name="xposed_active">API Xposed active %d</string>
     <string name="enable_x_hide">Activer XHide</string>
     <string name="enable_x_hide_description">Statut : %s</string>
@@ -193,4 +190,17 @@
     <string name="apphider_not_activated_msg">Activer un mode de dissimulation pour activer cette fonctionnalité.</string>
     <string name="invert_tile_color">Inverser la couleur des tuiles</string>
     <string name="apphider_not_activated_title">Masquage de l\'application inactive</string>
+    <string name="display_root_apps">Afficher les applications liées à root</string>
+    <string name="hide_amarok_icon">Masquer icône</string>
+    <string name="hide_amarok_icon_description">Masquer Amarok du lanceur. Composer *#*#262765#*#* pour ouvrir Amarok.</string>
+    <string name="disable_security_when_unhidden">Désactiver sécurité lorsque démasquée</string>
+    <string name="disable_security_when_unhidden_description">Désactiver déguisement et verrouillage de l’app lorsque non caché.</string>
+    <string name="disable_only_with_xhide">Désactiver uniquement apps</string>
+    <string name="disable_only_with_xhide_description">Désactiver que les applications et laisser XHide gérer exclusivement le masquage. Peut réduire le décalage pendant le masquage.</string>
+    <string name="disable_toasts">Désactiver toasts</string>
+    <string name="disable_toasts_description">Ne pas afficher les notifications toast lors des actions de masquage ou de révélation.</string>
+    <string name="invert_tile_color_description">Par défaut, la tuile des paramètres rapides apparaît activée lorsque votre confidentialité est visible. Activez cette option pour inverser le comportement.</string>
+    <string name="warning_system_apps">Le fait de cacher des apps système peut provoquer une boucle d’amorçage du système. Veuillez être prudent lorsque vous cachez des apps système.</string>
+    <string name="warning_root_apps">Amarok n’est pas conçu pour cacher les applications liées à root. Cela peut entraîner une perte d’accès à root. Envisagez plutôt d’utiliser Dr-TSNG/Hide-My-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku : échec de l’octroi `DELEGATION_PACKAGE_ACCESS`. Veuillez essayer de réactiver Dhizuku.</string>
 </resources>
