@@ -9,7 +9,7 @@
 
 🌐 **ENGLISH** | [简体中文](https://github.com/deltazefiro/Amarok-Hider/blob/main/README.zh.md)
 
-## 🐾 What is Amarok?
+## What is Amarok?
 
 Amarok is a lightweight Android privacy tool designed to keep your personal files & apps away from prying eyes without the hassle of heavy encryption.
 
@@ -19,7 +19,7 @@ Traditional encryption tools are secure but slow — decrypting a 4GB movie or u
 > **Amarok is NOT an encryption tool.**
 > It hides files by scrambling file headers and names. While this stops file managers from seeing them, it **does not** cryptographically secure the data. Do not use Amarok to protect high-value secrets or sensitive data.
 
-## ✨ Features
+## Features
 
 * **One-Click Privacy**: Instantly hide or unhide your selected files and apps.
 * **High-Speed Performance**: Hides large files instantly by altering signatures (Non-root) or adjusting file permissions (Root).
@@ -31,7 +31,7 @@ Traditional encryption tools are secure but slow — decrypting a 4GB movie or u
 * **Secure Access**: Protect Amarok itself with a Password or Fingerprint lock.
 * **Camouflage Mode**: Disguise Amarok as a Calendar app.
 
-## 📸 Screenshots
+## Screenshots
 
 <table>
   <tr>
@@ -46,19 +46,19 @@ Traditional encryption tools are secure but slow — decrypting a 4GB movie or u
   </tr>
 </table>
 
-## 📥 Download
+## Download
 
 [![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases)  
 [![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) (FOSS)  
 [![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)  (FOSS) (Pre-release channel)
 
-## 📚 Documentation & Usage
+## Documentation & Usage
 
 New to Amarok? Check out our documentation for setup guides on Root, Shizuku, Dhizuku, and other app hiders.
 
 [![](https://img.shields.io/badge/AmarokDocs-ClickToView-brightgreen)](https://deltazefiro.github.io/Amarok-doc/en-US/)  
 
-## 🤝 Contributing
+## Contributing
 
 Thank you for dedicating your time to contribute to this project!
 Contributions in all forms are welcomed, including reporting bugs, proposing new features, performing language translations, and submitting code development PRs.
@@ -72,7 +72,7 @@ We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translatio
 <img src="https://hosted.weblate.org/widgets/amarok-hider/-/multi-auto.svg" alt="Translation status" />
 </a>
 
-## ❤️ Credits
+## Credits
 
 A massive thank you to the open-source community:
 
@@ -83,7 +83,7 @@ A massive thank you to the open-source community:
 
 ... and all the dedicated [contributors](https://github.com/deltazefiro/Amarok-Hider/graphs/contributors)!
 
-## ⚖️ Disclaimers
+## Disclaimers
 
 **Amarok is provided "as is" without any warranties or conditions.**
 The user is fully responsible for any harm, data loss, or consequences that may arise from using Amarok. Please backup important data before using hiding tools.
