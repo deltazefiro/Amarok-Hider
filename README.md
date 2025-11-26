@@ -1,43 +1,37 @@
 
-![poseter](https://github.com/user-attachments/assets/63a8fc76-30a0-4460-85be-4264b1f69334)
+![banner](https://github.com/user-attachments/assets/63a8fc76-30a0-4460-85be-4264b1f69334)
 
 # Amarok-Hider
 
-[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public) 
-[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases) 
-[![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) 
-[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss) 
+[![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases)
+[![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/)
+[![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)
 
 🌐 **ENGLISH** | [简体中文](https://github.com/deltazefiro/Amarok-Hider/blob/main/README.zh.md)
 
-## What is Amarok?
+## 🐾 What is Amarok?
 
+Amarok is a lightweight Android privacy tool designed to keep your personal files & apps away from prying eyes without the hassle of heavy encryption.
 
-Amarok is an Android application which enables you to hide your private files & apps with a single click.
+Traditional encryption tools are secure but slow — decrypting a 4GB movie or unlocking an encrypted app takes time. Amarok takes a different approach: it uses **file obfuscation** and **app hiding** to make your content effectively invisible to the casual snoopers, all without the performance penalty of heavy encryption.
 
-> Often, we resort to complex encryptors to secure our files and apps, aiming to shield them from prying eyes. These encryptors, while effective, tend to be slow and resource-intensive, making the encryption of large files such as videos and music a daunting task. Despite their robust security, these methods are often overkill for the average user who simply wish to keep their private files and apps out of unintentional reach.  
+> [!WARNING]
+> **Amarok is NOT an encryption tool.**
+> It hides files by scrambling file headers and names. While this stops file managers from seeing them, it **does not** cryptographically secure the data. Do not use Amarok to protect high-value secrets or sensitive data.
 
-Amarok is designed to be a light-weight hider for files and applications:
-- It disguises file names and headers, causing them to seem "corrupted" and unopenable.
-- Amarok deactivates applications, rendering them invisible in the launcher and system menu.
+## ✨ Features
 
+* **One-Click Privacy**: Instantly hide or unhide your selected files and apps.
+* **High-Speed Performance**: Hides large files instantly by altering signatures (Non-root) or adjusting file permissions (Root).
+* **Versatile App Hiding**:
+  * **Root-Free Support**: Hides apps from the launcher (supports Shizuku, Dhizuku, and DSM modes).
+  * **Root Support**: Leverages Xposed to *thoroughly* scrub apps from system menus and 3rd-party detection.
+* **Panic Button**: A discreet floating button to instantly hide everything.
+* **Quick Settings Tile**: Toggle visibility directly from your control center without opening the main app.
+* **Secure Access**: Protect Amarok itself with a Password or Fingerprint lock.
+* **Camouflage Mode**: Disguise Amarok as a Calendar app.
 
-## Features
-
-- **User-Friendly**: Easily hide files and applications with a single click.
-- **Rapid and Efficient Large File Hiding**: Hides by altering only file name and signature, unaffected by file size.
-- **Root-Free Application Hiding**: Makes apps vanish from the launcher. Compatible with Root, Shizuku, Dhizuku, and DSM modes.
-- **Panic button**: Use a floating button to quickly hide applications and files in urgent scenarios.
-- **Quick Settings Tile**: A control center toggle for immediate hiding, bypassing the need to launch the app.
-- **App Lock**: Secure Amarok access with a password or fingerprint.
-- **Pleasant Interface**: Clean and attractive Material3 design.  
-
-
-> [!IMPORTANT]  
-> Please aware that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.
-
-
-## Screenshots
+## 📸 Screenshots
 
 <table>
   <tr>
@@ -52,45 +46,44 @@ Amarok is designed to be a light-weight hider for files and applications:
   </tr>
 </table>
 
+## 📥 Download
 
-## Download
-
-
-[![](https://img.shields.io/visual-studio-app-center/releases/version/deltazefiro/Amarok/2e57e3f726f6bdf0b9bd5e3791bd2c5d1ab1dbe2?color=blue&label=AppCenter)](https://install.appcenter.ms/users/deltazefiro/apps/amarok/distribution_groups/public)  
 [![](https://img.shields.io/github/v/release/deltazefiro/Amarok-Hider?label=GithubRelease)](https://github.com/deltazefiro/Amarok-Hider/releases)  
 [![](https://img.shields.io/f-droid/v/deltazero.amarok.foss?color=blue)](https://f-droid.org/zh_Hans/packages/deltazero.amarok.foss/) (FOSS)  
 [![](https://img.shields.io/endpoint?url=https://apt.izzysoft.de/fdroid/api/v1/shield/deltazero.amarok.foss&color=orange)](https://apt.izzysoft.de/fdroid/index/apk/deltazero.amarok.foss)  (FOSS) (Pre-release channel)
 
+## 📚 Documentation & Usage
 
-## Usage
+New to Amarok? Check out our documentation for setup guides on Root, Shizuku, Dhizuku, and other app hiders.
+
 [![](https://img.shields.io/badge/AmarokDocs-ClickToView-brightgreen)](https://deltazefiro.github.io/Amarok-doc/en-US/)  
 
+## 🤝 Contributing
 
-## Contributing
-Thank you for dedicating your time in contributing to this project!
+Thank you for dedicating your time to contribute to this project!
 Contributions in all forms are welcomed, including reporting bugs, proposing new features, performing language translations, and submitting code development PRs.
 
-We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translations.  
+> 🏗️ **Project Structure**  
+> Please consult `.cursor/rules` for a detailed overview of the project structure. This file is designed to guide both **human contributors** and **AI assistants** in navigating the codebase effectively.
+
+We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translations.
 
 <a href="https://hosted.weblate.org/engage/amarok-hider/">
 <img src="https://hosted.weblate.org/widgets/amarok-hider/-/multi-auto.svg" alt="Translation status" />
 </a>
 
+## ❤️ Credits
 
-## Credits
+A massive thank you to the open-source community:
 
-Many thanks to:
-
-- [aistra0528/Hail](https://github.com/aistra0528/Hail), for providing code reference for the app hider.
-- [Icongeek26](https://www.flaticon.com/authors/icongeek26) & 
-[Freepik](), for the icons
-- [Jetbrains](https://www.jetbrains.com/community/opensource/#support), provides IDE support for open source projects
-- [RikkaApps/Shizuku](https://github.com/RikkaApps/Shizuku)
-- [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku)
-- [kizitonwose/Calendar](https://github.com/kizitonwose/Calendar)
+* **[aistra0528/Hail](https://github.com/aistra0528/Hail):** Core reference for the app hiding logic.
+* **[RikkaApps/Shizuku](https://github.com/RikkaApps/Shizuku) & [iamr0s/Dhizuku](https://github.com/iamr0s/Dhizuku):** For enabling root-less permissions.
+* **[Icongeek26](https://www.flaticon.com/authors/icongeek26) & [Freepik](https://www.freepik.com):** For the beautiful iconography.
+* **[Jetbrains](https://www.jetbrains.com/community/opensource/#support):** For providing IDE support.
 
 ... and all the dedicated [contributors](https://github.com/deltazefiro/Amarok-Hider/graphs/contributors)!
 
+## ⚖️ Disclaimers
 
-## Disclaimers
-<u>**Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.**</u>
+**Amarok is provided "as is" without any warranties or conditions.**
+The user is fully responsible for any harm, data loss, or consequences that may arise from using Amarok. Please backup important data before using hiding tools.
