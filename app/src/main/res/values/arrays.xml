@@ -10,8 +10,7 @@
 
         <!-- Non-root privilege escalation managers -->
         <item>moe.shizuku.privileged.api</item>     <!-- Shizuku -->
-        <item>com.rosan.dhizuku.api</item>           <!-- Dhizuku -->
-        <item>com.github.heruoxin.Delegated-Scopes-Manager</item> <!-- Delegated-Scopes-Manager -->
+        <item>com.rosan.dhizuku</item>           <!-- Dhizuku -->
 
         <!-- Xposed frameworks -->
         <item>org.lsposed.manager</item>             <!-- LSPosed -->
