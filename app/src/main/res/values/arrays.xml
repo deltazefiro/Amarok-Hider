@@ -8,6 +8,11 @@
         <item>com.noshufou.android.su</item>        <!-- SuperUser -->
         <item>eu.chainfire.supersu</item>           <!-- SuperSU -->
 
+        <!-- Non-root privilege escalation managers -->
+        <item>moe.shizuku.privileged.api</item>     <!-- Shizuku -->
+        <item>com.rosan.dhizuku.api</item>           <!-- Dhizuku -->
+        <item>com.github.heruoxin.Delegated-Scopes-Manager</item> <!-- Delegated-Scopes-Manager -->
+
         <!-- Xposed frameworks -->
         <item>org.lsposed.manager</item>             <!-- LSPosed -->
         <item>de.robv.android.xposed.installer</item> <!-- Xposed Installer -->
