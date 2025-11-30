@@ -144,8 +144,7 @@
     <string name="participate_translation">Podieľať sa na preklade</string>
     <string name="enable_analytics">Anonymné analýzy</string>
     <string name="force_unhide">Vynútiť odtajnenie</string>
-    <string name="apphider_dhizuku_description">[Experimentálne] Skrývanie aplikácií pomocou Dhizuku.
-\nModerné a vylepšené riešenie na skrývanie aplikácií na zariadeniach bez koreňového systému. Vyžaduje sa inštalácia a aktivácia aplikácie Dhizuku.</string>
+    <string name="apphider_dhizuku_description">[Experimentálne] Skrývanie aplikácií pomocou Dhizuku. \nModerné a vylepšené riešenie na skrývanie aplikácií na zariadeniach bez koreňového systému. Vyžaduje sa inštalácia a aktivácia aplikácie Dhizuku.</string>
     <string name="alert_permission_request_title">Vyžaduje sa povolenie na vytváranie vyskakovacích okien</string>
     <string name="password_length_error">Heslo musí mať 3 až 15 znakov.</string>
     <string name="filehider_not_ava_title">Skrývanie súborov nie je k dispozícii</string>
