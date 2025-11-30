@@ -132,8 +132,7 @@
     <string name="app_lock_description">Amarok\'a erişmek için parola girmeyi gerektir.</string>
     <string name="biometric_auth_description">Amarok\'a erişmek için mümkünse cihazın biyometrik kimlik doğrulama verilerini kullan.</string>
     <string name="dhizuku_pre_v5">Dhizuku: Desteklenmeyen Dhizuku sürümü. Lütfen Dhizuku\'yu 5 ya da daha yüksek bir sürüme güncelleyin.</string>
-    <string name="apphider_dhizuku_description">[Deneysel] Dhizuku ile uygulama gizleme.
-\nRoot erişimi olmayan cihazlarda uygulamaları gizlemek için modern ve geliştirilmiş bir çözüm. Dhizuku uygulamasının yüklenmesi ve aktif edilmesi gereklidir.</string>
+    <string name="apphider_dhizuku_description">[Deneysel] Dhizuku ile uygulama gizleme. \nRoot erişimi olmayan cihazlarda uygulamaları gizlemek için modern ve geliştirilmiş bir çözüm. Dhizuku uygulamasının yüklenmesi ve aktif edilmesi gereklidir.</string>
     <string name="performing_force_unhide">Görünür kılmaya zorlanıyor, lütfen bekleyiniz.</string>
     <string name="app_name_calendar">Takvim</string>
     <string name="filter">Filtre</string>

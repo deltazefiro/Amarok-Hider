@@ -94,7 +94,7 @@
     <string name="more_settings">Plus de paramètres</string>
     <string name="switch_file_hider">Changer le mode de dissimulation des fichiers</string>
     <string name="apply_on_restart">Redémarrer l\'application pour appliquer les changements.</string>
-    <string name="hidden_toast">Caché. Cock-a-doodle-do~ !</string>
+    <string name="hidden_toast">Caché. Cock-a-doodle-do~ !</string>
     <string name="not_local_storage">Répertoire non pris en charge</string>
     <string name="help">Aide</string>
     <string name="no_update_ava">Vous utilisez la dernière version.</string>
@@ -109,8 +109,7 @@
     <string name="panic_button_description">Affiche un bouton flottant pour masquer rapidement les apps et fichiers en cas d’urgence. Ce bouton apparaît sur toutes les autres apps lorsque Amarok est démasqué.</string>
     <string name="dhizuku_pre_v5">Dhizuku : Version Dhizuku non prise en charge. Veuillez mettre à jour Dhizuku vers la version 5 ou supérieure.</string>
     <string name="apphider_dhizuku">Mode Dhizuku</string>
-    <string name="apphider_dhizuku_description">[Expérimental] Dissimulation d\'applications avec Dhizuku.
-\nUne solution moderne et améliorée pour masquer les applications sur les appareils non rootés. L\'installation et l\'activation de l\'application Dhizuku sont requises.</string>
+    <string name="apphider_dhizuku_description">[Expérimental] Dissimulation d\'applications avec Dhizuku. \nUne solution moderne et améliorée pour masquer les applications sur les appareils non rootés. L\'installation et l\'activation de l\'application Dhizuku sont requises.</string>
     <string name="force_unhide_confirm_msg">Essayer de tout restaurer ? 
 \n 
 \n<b>AVERTISSEMENT : </b>Cette option peut corrompre vos fichiers. Utilisez-le uniquement lorsque vous rencontrez des problèmes et que vous ne pouvez pas exécuter normalement la fonction \"afficher\".</string>
