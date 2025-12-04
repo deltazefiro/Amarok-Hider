@@ -25,7 +25,7 @@
     <string name="remove_hide_path_description">Retirer le dossier \'%s\' de la liste cachée ?</string>
     <string name="no_apphider">Veuillez sélectionner le mode de dissimulation des applications dans \"Plus de paramètres\".</string>
     <string name="root_not_ava">Impossible d\'obtenir l\'accès Super-Utilisateur.</string>
-    <string name="check_update_on_start_description">Recherchez les nouvelles versions d\'Amarok lors de l\'ouverture de l\'application.</string>
+    <string name="check_update_on_start_description">Vérifier si une mise à jour d\'Amarok est disponible dès l\'ouverture.</string>
     <string name="check_update_on_start">Mise à jour automatique</string>
     <string name="view_github_repo">Dêpot GitHub</string>
     <string name="shizuku_permission_denied">Shizuku : Autorisation refusée</string>
@@ -94,7 +94,7 @@
     <string name="more_settings">Plus de paramètres</string>
     <string name="switch_file_hider">Changer le mode de dissimulation des fichiers</string>
     <string name="apply_on_restart">Redémarrer l\'application pour appliquer les changements.</string>
-    <string name="hidden_toast">Caché. Cock-a-doodle-do~ !</string>
+    <string name="hidden_toast">Caché. Cock-a-doodle-do~ !</string>
     <string name="not_local_storage">Répertoire non pris en charge</string>
     <string name="help">Aide</string>
     <string name="no_update_ava">Vous utilisez la dernière version.</string>
@@ -109,8 +109,7 @@
     <string name="panic_button_description">Affiche un bouton flottant pour masquer rapidement les apps et fichiers en cas d’urgence. Ce bouton apparaît sur toutes les autres apps lorsque Amarok est démasqué.</string>
     <string name="dhizuku_pre_v5">Dhizuku : Version Dhizuku non prise en charge. Veuillez mettre à jour Dhizuku vers la version 5 ou supérieure.</string>
     <string name="apphider_dhizuku">Mode Dhizuku</string>
-    <string name="apphider_dhizuku_description">[Expérimental] Dissimulation d\'applications avec Dhizuku.
-\nUne solution moderne et améliorée pour masquer les applications sur les appareils non rootés. L\'installation et l\'activation de l\'application Dhizuku sont requises.</string>
+    <string name="apphider_dhizuku_description">[Expérimental] Dissimulation d\'applications avec Dhizuku. \nUne solution moderne et améliorée pour masquer les applications sur les appareils non rootés. L\'installation et l\'activation de l\'application Dhizuku sont requises.</string>
     <string name="force_unhide_confirm_msg">Essayer de tout restaurer ? 
 \n 
 \n<b>AVERTISSEMENT : </b>Cette option peut corrompre vos fichiers. Utilisez-le uniquement lorsque vous rencontrez des problèmes et que vous ne pouvez pas exécuter normalement la fonction \"afficher\".</string>
@@ -151,7 +150,7 @@
     <string name="not_local_storage_description">Veuillez vous assurer qu\'il s\'agit d\'un fichier local et non virtuel.</string>
     <string name="path_duplicated">Dossier caché en boucle</string>
     <string name="check_update">Recherchez des mises à jour</string>
-    <string name="check_update_description">Version actuelle : %s</string>
+    <string name="check_update_description">Version actuelle : %s</string>
     <string name="update_ava">Nouvelle version disponible</string>
     <string name="update_description">Amarok %s (%d) est disponible au téléchargement et à l\'installation.</string>
     <string name="update">Mise à jour</string>
@@ -203,4 +202,8 @@
     <string name="warning_system_apps">Le fait de cacher des apps système peut provoquer une boucle d’amorçage du système. Veuillez être prudent lorsque vous cachez des apps système.</string>
     <string name="warning_root_apps">Amarok n’est pas conçu pour cacher les applications liées à root. Cela peut entraîner une perte d’accès à root. Envisagez plutôt d’utiliser Dr-TSNG/Hide-My-Applist.</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku : échec de l’octroi `DELEGATION_PACKAGE_ACCESS`. Veuillez essayer de réactiver Dhizuku.</string>
+    <string name="update_channel">Canal de mise à jour.</string>
+    <string name="update_channel_release">Canal stable</string>
+    <string name="update_channel_beta">Canal beta</string>
+    <string name="update_available_title">Mise à jour disponible</string>
 </resources>
