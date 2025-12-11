@@ -11,13 +11,13 @@
 
 ## What is Amarok?
 
-Amarok is a lightweight Android privacy tool designed to keep your personal files & apps away from prying eyes without the hassle of heavy encryption.
+Amarok is a lightweight Android privacy tool that shields your files and apps from prying eyes without the overhead of encryption.
 
-Traditional encryption tools are secure but slow — decrypting a 4GB movie or unlocking an encrypted app takes time. Amarok takes a different approach: it uses **file obfuscation** and **app hiding** to make your content effectively invisible to the casual snoopers, all without the performance penalty of heavy encryption.
+Traditional encryption tools are secure but slow — decrypting a large movie file or unlocking an app takes time. Amarok acts instantly. It conceals files by obfuscating signatures or adjusting permissions, and hides apps by disabling them or using Xposed hooks. This makes your content invisible to casual snoopers without any performance penalty.  
 
 > [!WARNING]
-> **Amarok is NOT an encryption tool.**
-> It hides files by scrambling file headers and names. While this stops file managers from seeing them, it **does not** cryptographically secure the data. Do not use Amarok to protect high-value secrets or sensitive data.
+> **Amarok is NOT an encryption tool.**  
+> Amarok hides data but does not cryptographically secure it. Do not use this tool for high-value secrets.
 
 ## Features
 
@@ -63,8 +63,8 @@ New to Amarok? Check out our documentation for setup guides on Root, Shizuku, Dh
 Thank you for dedicating your time to contribute to this project!
 Contributions in all forms are welcomed, including reporting bugs, proposing new features, performing language translations, and submitting code development PRs.
 
-> 🏗️ **Project Structure**  
-> Please consult `.cursor/rules` for a detailed overview of the project structure. This file is designed to guide both **human contributors** and **AI assistants** in navigating the codebase effectively.
+> 🤖 **Tips for AI Assistants**  
+> Please consult `.cursor/rules` for a overview of the project structure.
 
 We use [weblate](https://hosted.weblate.org/engage/amarok-hider/) for translations.
 
