@@ -76,7 +76,7 @@
     <string name="obfuscate_text_file_description">בלבול כותרות לא משפיע על קבצי טקסט. הפעלת האפשרות הזאת תבלבל קבצי טקסט באופן מלא.</string>
     <string name="join_developer_channel">קבוצת טלגרם</string>
     <string name="processing">מעבד…</string>
-    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/he-IL/</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/he-IL/hideapp.html#common-errors</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/he-IL/hideapp.html</string>
     <string name="alert_permission_denied">ההרשאה להציג מעל יישומים אחרים נדחתה.</string>

@@ -131,8 +131,7 @@
     <string name="participate_translation">المشاركة في الترجمة</string>
     <string name="enable_analytics">تحليلات مجهولة المصدر</string>
     <string name="force_unhide">فرض الإظهار</string>
-    <string name="apphider_dhizuku_description">[تجريبي] إخفاء التطبيق مع Dhizuku.
-\nحل حديث ومحسن لإخفاء التطبيقات على الأجهزة التي ليس بها روت. يلزم تثبيت وتفعيل تطبيق Dhizuku.</string>
+    <string name="apphider_dhizuku_description">[تجريبي] إخفاء التطبيق مع Dhizuku. \nحل حديث ومحسن لإخفاء التطبيقات على الأجهزة التي ليس بها روت. يلزم تثبيت وتفعيل تطبيق Dhizuku.</string>
     <string name="alert_permission_request_title">مطلوب إذن لفرز النوافذ المنبثقة</string>
     <string name="password_length_error">يجب أن تكون كلمة المرور بين 3 و 15 حرفا.</string>
     <string name="usage_description">فتح مركز المساعدة.</string>
