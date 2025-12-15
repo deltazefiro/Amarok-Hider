@@ -152,8 +152,7 @@
     <string name="failed_to_open_doc_tree_description">Oops! Seu sistema não possui um gerenciador de arquivos padrão. Por favor, mantenha pressionado o botão \"Adicionar pasta oculta\" e insira o caminho manualmente.</string>
     <string name="participate_translation">Participe na tradução</string>
     <string name="force_unhide">Forçar desocultação</string>
-    <string name="apphider_dhizuku_description">[Experimental] Ocultação de aplicativos com Dhizuku.
-\nUma solução moderna e aprimorada para ocultar aplicativos em dispositivos sem root. A instalação e ativação do aplicativo Dhizuku são necessárias.</string>
+    <string name="apphider_dhizuku_description">[Experimental] Ocultação de aplicativos com Dhizuku. \nUma solução moderna e aprimorada para ocultar aplicativos em dispositivos sem root. A instalação e ativação do aplicativo Dhizuku são necessárias.</string>
     <string name="alert_permission_request_title">Permissão para abrir janelas pop-up necessária</string>
     <string name="password_length_error">A senha deve ter entre 3 e 15 caracteres.</string>
     <string name="filehider_not_ava_title">Ocultação de arquivo indisponível</string>
