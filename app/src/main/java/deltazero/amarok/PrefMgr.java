@@ -74,6 +74,7 @@ public final class PrefMgr {
     public static final String DISABLE_SECURITY_WHEN_UNHIDDEN = "disableSecurityWhenUnhidden";
     public static final String HIDE_FROM_RECENTS = "hideFromRecents";
     public static final String UPDATE_CHANNEL = "updateChannel";
+    public static final String PANIC_BUTTON_COLOR = "panicButtonColor";
 
     public static Set<String> getHideFilePath() {
         return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
@@ -368,6 +369,15 @@ public final class PrefMgr {
 
     public static void setUpdateChannel(UpdateUtil.UpdateChannel channel) {
         mPrefEditor.putString(UPDATE_CHANNEL, channel.name());
+        mPrefEditor.apply();
+    }
+
+    public static int getPanicButtonColor() {
+        return mPrefs.getInt(PANIC_BUTTON_COLOR, 0xFFD1D1D1); // Default: light_grey (#d1d1d1)
+    }
+
+    public static void setPanicButtonColor(int color) {
+        mPrefEditor.putInt(PANIC_BUTTON_COLOR, color);
         mPrefEditor.apply();
     }
 }

@@ -110,6 +110,10 @@
     <string name="security">Security</string>
     <string name="panic_button">Panic button</string>
     <string name="panic_button_description">Displays a floating button to quickly hide apps and files in an emergency. This button appears over all other apps when Amarok is unhidden.</string>
+    <string name="panic_button_color">Panic button color</string>
+    <string name="panic_button_color_description">Customize the panic button color to make it more visible.</string>
+    <string name="panic_button_color_hex_hint">Hex color (e.g., FFFFFF)</string>
+    <string name="panic_button_color_invalid_hex">Invalid hex color code.</string>
     <string name="in_app_update_failed">New version available, but download failed. Please update manually.</string>
     <string name="failed_to_open_doc_tree">Could not open the system file picker</string>
     <string name="failed_to_open_doc_tree_description">Oops! Your system lacks a default file manager. Please long-press the \"Add Hidden Folder\" button and manually input the path.</string>

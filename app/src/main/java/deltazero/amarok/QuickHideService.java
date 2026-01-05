@@ -89,7 +89,7 @@ public class QuickHideService extends LifecycleService {
                         (EasyWindow.OnClickListener<ImageView>) (xToast, view) -> Hider.hide(this));
 
         ivPanicButton = panicButton.findViewById(R.id.dialog_iv_panic_button);
-        ivPanicButton.setColorFilter(getColor(R.color.light_grey),
+        ivPanicButton.setColorFilter(PrefMgr.getPanicButtonColor(),
                 PorterDuff.Mode.SRC_IN);
 
         Hider.state.observe(this, state -> updatePanicButton());
@@ -146,7 +146,7 @@ public class QuickHideService extends LifecycleService {
             } else {
                 showPanicButton();
             }
-            ivPanicButton.setColorFilter(getApplication().getColor(R.color.light_grey),
+            ivPanicButton.setColorFilter(PrefMgr.getPanicButtonColor(),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(true);
         }

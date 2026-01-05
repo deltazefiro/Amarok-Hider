@@ -1,10 +1,12 @@
 package deltazero.amarok.ui.settings;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SeekBarPreference;
 
@@ -15,6 +17,7 @@ import java.util.List;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.QuickHideService;
 import deltazero.amarok.R;
+import deltazero.amarok.ui.ColorPickerDialog;
 import deltazero.amarok.utils.PermissionUtil;
 import rikka.material.preference.MaterialSwitchPreference;
 
@@ -22,6 +25,7 @@ public class QuickHideCategory extends BaseCategory {
 
     private MaterialSwitchPreference panicButtonPref, autoHideAfterScreenOffPref;
     private SeekBarPreference autoHideDelayPref;
+    private Preference panicButtonColorPref;
 
     public QuickHideCategory(@NonNull FragmentActivity activity, @NonNull PreferenceScreen screen) {
         super(activity, screen);
@@ -56,6 +60,7 @@ public class QuickHideCategory extends BaseCategory {
         });
         servicePref.setOnPreferenceChangeListener((preference, newValue) -> {
             panicButtonPref.setEnabled((boolean) newValue);
+            panicButtonColorPref.setEnabled((boolean) newValue && panicButtonPref.isChecked());
             autoHideAfterScreenOffPref.setEnabled((boolean) newValue);
             autoHideDelayPref.setEnabled((boolean) newValue && autoHideAfterScreenOffPref.isChecked());
             if (!(boolean) newValue)
@@ -92,7 +97,31 @@ public class QuickHideCategory extends BaseCategory {
             }
             return true;
         });
+        panicButtonPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            panicButtonColorPref.setEnabled((boolean) newValue);
+            return true;
+        });
         addPreference(panicButtonPref);
+
+        // Panic button color preference
+        panicButtonColorPref = new Preference(activity);
+        panicButtonColorPref.setKey(PrefMgr.PANIC_BUTTON_COLOR);
+        panicButtonColorPref.setIcon(R.drawable.ic_null);
+        panicButtonColorPref.setTitle(R.string.panic_button_color);
+        panicButtonColorPref.setSummary(R.string.panic_button_color_description);
+        panicButtonColorPref.setEnabled(PrefMgr.getEnableQuickHideService() && PrefMgr.getEnablePanicButton());
+        panicButtonColorPref.setOnPreferenceClickListener(preference -> {
+            new ColorPickerDialog.Builder(activity)
+                    .setTitle(R.string.panic_button_color)
+                    .setCurrentColor(PrefMgr.getPanicButtonColor())
+                    .setOnColorSelectedListener(color -> {
+                        PrefMgr.setPanicButtonColor(color);
+                        QuickHideService.startService(activity); // Restart service to apply color
+                    })
+                    .show();
+            return true;
+        });
+        addPreference(panicButtonColorPref);
 
         autoHideAfterScreenOffPref = new MaterialSwitchPreference(activity);
         autoHideAfterScreenOffPref.setKey(PrefMgr.ENABLE_AUTO_HIDE);
