@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__mobile__*",
+      "Bash(adb:*)",
+      "Bash(emulator:*)",
+      "Bash(./gradlew:*)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "excludedCommands": ["avdmanager:*", "./gradlew:*", "adb:*", "emulator:*"]
+  }
+}
