@@ -5,9 +5,12 @@ import android.net.Uri;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.R;
@@ -30,6 +33,18 @@ public class AppearanceCategory extends BaseCategory {
             return true;
         });
         addPreference(dynamicColorPref);
+
+        // Theme mode preference
+        var themeModePref = new Preference(activity);
+        themeModePref.setKey(PrefMgr.THEME_MODE);
+        themeModePref.setIcon(R.drawable.ic_null);
+        themeModePref.setTitle(R.string.theme_mode);
+        themeModePref.setSummary(getThemeModeLabel(activity, PrefMgr.getThemeMode()));
+        themeModePref.setOnPreferenceClickListener(preference -> {
+            showThemeSelectionDialog(activity, themeModePref);
+            return true;
+        });
+        addPreference(themeModePref);
 
         var languagePref = new Preference(activity);
         languagePref.setTitle(R.string.language);
@@ -60,5 +75,52 @@ public class AppearanceCategory extends BaseCategory {
             return true;
         });
         addPreference(invertTileColorPref);
+    }
+
+    private void showThemeSelectionDialog(FragmentActivity activity, Preference themeModePref) {
+        String[] themeOptions = {
+                activity.getString(R.string.theme_mode_system),
+                activity.getString(R.string.theme_mode_light),
+                activity.getString(R.string.theme_mode_dark)
+        };
+
+        int currentThemeMode = PrefMgr.getThemeMode();
+        // Convert AppCompatDelegate constants to array index
+        int currentSelection;
+        if (currentThemeMode == AppCompatDelegate.MODE_NIGHT_NO) {
+            currentSelection = 1; // Light
+        } else if (currentThemeMode == AppCompatDelegate.MODE_NIGHT_YES) {
+            currentSelection = 2; // Dark
+        } else {
+            currentSelection = 0; // System default
+        }
+
+        new MaterialAlertDialogBuilder(activity)
+                .setTitle(R.string.theme_mode)
+                .setSingleChoiceItems(themeOptions, currentSelection, (dialog, which) -> {
+                    int newThemeMode;
+                    switch (which) {
+                        case 1 -> newThemeMode = AppCompatDelegate.MODE_NIGHT_NO; // Light
+                        case 2 -> newThemeMode = AppCompatDelegate.MODE_NIGHT_YES; // Dark
+                        default -> newThemeMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM; // System
+                    }
+
+                    PrefMgr.setThemeMode(newThemeMode);
+                    AppCompatDelegate.setDefaultNightMode(newThemeMode);
+                    themeModePref.setSummary(getThemeModeLabel(activity, newThemeMode));
+                    dialog.dismiss();
+                })
+                .setNegativeButton(R.string.cancel, null)
+                .show();
+    }
+
+    private String getThemeModeLabel(FragmentActivity activity, int themeMode) {
+        if (themeMode == AppCompatDelegate.MODE_NIGHT_NO) {
+            return activity.getString(R.string.theme_mode_light);
+        } else if (themeMode == AppCompatDelegate.MODE_NIGHT_YES) {
+            return activity.getString(R.string.theme_mode_dark);
+        } else {
+            return activity.getString(R.string.theme_mode_system);
+        }
     }
 }

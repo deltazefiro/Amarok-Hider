@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.IntentFilter;
 
+import androidx.appcompat.app.AppCompatDelegate;
+
 import com.google.android.material.color.DynamicColors;
 import com.rosan.dhizuku.api.Dhizuku;
 
@@ -25,6 +27,9 @@ public class AmarokApplication extends Application {
         Hider.init();
         QSTileService.init(getApplicationContext());
         ToggleWidget.init(getApplicationContext());
+
+        // Apply theme mode
+        AppCompatDelegate.setDefaultNightMode(PrefMgr.getThemeMode());
 
         if (PrefMgr.getEnableDynamicColor())
             DynamicColors.applyToActivitiesIfAvailable(this);
