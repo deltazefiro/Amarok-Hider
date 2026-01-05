@@ -27,7 +27,8 @@ Note: `./gradlew build` includes lint checks (mostly missing translations warnin
     ```
 2. Install the latest build of the app with adb.
 3. Spawn agent `mobile-e2e-tester` to test the app.
-    - **Note**: Each agent invocation should test one simple, focused scenario. For complex test plans, decompose into multiple simple tasks and run agents sequentially. The agent only test user-facing behavior (black-box approach).
+    - **Package name**: Use `deltazero.amarok.foss` for FOSS flavor builds (not `deltazero.amarok`)
+    - **Note**: Each agent invocation should test **one** simple, focused task. For complex test plans, decompose into multiple simple tasks and run agents sequentially. The agent only test user-facing behavior (black-box approach).
 
 ## Agent Rules
 - Update @.cursor/rules/overview.mdc to reflect structural changes. Keep it as a concise index.
