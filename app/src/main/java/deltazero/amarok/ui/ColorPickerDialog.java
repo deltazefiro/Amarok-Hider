@@ -66,15 +66,43 @@ public class ColorPickerDialog {
         // Create the color picker layout
         LinearLayout mainLayout = new LinearLayout(context);
         mainLayout.setOrientation(LinearLayout.VERTICAL);
-        mainLayout.setPadding(48, 24, 48, 24);
+
+        // Use responsive padding
+        int horizontalPadding = (int) (24 * context.getResources().getDisplayMetrics().density);
+        int verticalPadding = (int) (16 * context.getResources().getDisplayMetrics().density);
+        mainLayout.setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding);
+
+        // Calculate responsive grid parameters
+        int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
+        int availableWidth = screenWidth - (2 * horizontalPadding);
+
+        // Calculate optimal swatch size and columns
+        int minSwatchSize = (int) (40 * context.getResources().getDisplayMetrics().density);
+        int maxSwatchSize = (int) (56 * context.getResources().getDisplayMetrics().density);
+        int margin = (int) (8 * context.getResources().getDisplayMetrics().density);
+
+        // Determine number of columns (try 5, then 4, then 3 if needed)
+        int columns = 5;
+        int size = (availableWidth - (columns + 1) * margin) / columns;
+
+        if (size < minSwatchSize) {
+            columns = 4;
+            size = (availableWidth - (columns + 1) * margin) / columns;
+        }
+        if (size < minSwatchSize) {
+            columns = 3;
+            size = (availableWidth - (columns + 1) * margin) / columns;
+        }
+
+        // Cap at maximum size for very large screens
+        if (size > maxSwatchSize) {
+            size = maxSwatchSize;
+        }
 
         // Create grid for color swatches
         GridLayout colorGrid = new GridLayout(context);
-        colorGrid.setColumnCount(5);
-        colorGrid.setRowCount((int) Math.ceil(PRESET_COLORS.length / 5.0));
-
-        int size = (int) (48 * context.getResources().getDisplayMetrics().density);
-        int margin = (int) (8 * context.getResources().getDisplayMetrics().density);
+        colorGrid.setColumnCount(columns);
+        colorGrid.setRowCount((int) Math.ceil(PRESET_COLORS.length / (double) columns));
 
         final int[] selectedColor = {currentColor};
 
