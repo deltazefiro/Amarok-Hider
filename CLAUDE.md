@@ -10,8 +10,9 @@ See @.cursor/rules/overview.mdc
 
 Requires JDK 17+:
 ```bash
-./gradlew assemble  # Build APKs (requires dangerouslyDisableSandbox: true for Gradle wrapper)
-# Output: app/build/outputs/apk/{flavor}/{debug|release}/*.apk
+./gradlew assemble  # Build APKs
+# Output: app/build/outputs/apk/{flavor}/{debug|release}/Amarok-v{version}+{commit}-{flavor}.apk
+# Example (foss debug): app/build/outputs/apk/foss/debug/Amarok-v0.10.0+caa1716-foss.apk
 ```
 
 Note: `./gradlew build` includes lint checks (mostly missing translations warnings), use `assemble` instead.
@@ -19,15 +20,13 @@ Note: `./gradlew build` includes lint checks (mostly missing translations warnin
 ## E2E Test
 
 1. Launch AVD (if not already running)
+    Check if device running with mcp `mobile_list_available_devices` (more reliable than `adb devices`). If not, start AVD with:
     ```bash
-    adb devices  # Check if emulator-5554 already exists
-    # If not running:
-    emulator -avd android_16_avd -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect &
-    # Wait ~30s until "mobile_list_available_devices" shows "emulator-5554"
+    emulator -avd android_16_avd -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
+    # Runs in background, wait ~30s until "mobile_list_available_devices" shows "emulator-*"
     ```
-2. Get device ID: `mobile_list_available_devices` → `"emulator-5554"` (more reliable than `adb devices`)
-3. Use this device ID in all mobile MCP tools (screenshot, launch app, click, swipe, etc.)
-4. Use `mobile_list_elements_on_screen(device)` to find coordinates for clicking
+2. Install the latest build of the app with adb.
+3. Spawn agent `mobile-e2e-tester` to test the app.
 
 ## Agent Rules
 - Update @.cursor/rules/overview.mdc to reflect structural changes. Keep it as a concise index.
