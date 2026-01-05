@@ -3,10 +3,10 @@
     <string-array name="root_app_packages" translatable="false">
         <!-- Root managers -->
         <item>com.topjohnwu.magisk</item>           <!-- Magisk -->
-        <item>io.github.vvb2060.magisk</item>       <!-- Magisk Delta -->
+        <item>io.github.vvb2060.magisk</item>       <!-- Magisk Alpha -->
         <item>me.weishu.kernelsu</item>             <!-- KernelSU Manager -->
-        <item>com.noshufou.android.su</item>        <!-- SuperUser -->
-        <item>eu.chainfire.supersu</item>           <!-- SuperSU -->
+        <item>com.sukisu.ultra</item>               <!-- SukiSU-Ultra -->
+        <item>com.rifsxd.ksunext</item>             <!-- KernelSU Next -->
 
         <!-- Non-root privilege escalation managers -->
         <item>moe.shizuku.privileged.api</item>     <!-- Shizuku -->
