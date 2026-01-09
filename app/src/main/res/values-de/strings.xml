@@ -149,8 +149,7 @@
     <string name="invalid_action">Ungültigen Intent erhalten: %s</string>
     <string name="warning">WARNUNG</string>
     <string name="auto_hide">Automatisches Verstecken</string>
-    <string name="apphider_dhizuku_description">[Experimentell] App-Verstecken mit Dhizuku.
-\nEine moderne und verbesserte Lösung zum Verstecken von Apps auf nicht gerooteten Geräten. Die Installation und Aktivierung der Dhizuku-App sind erforderlich.</string>
+    <string name="apphider_dhizuku_description">[Experimentell] App-Verstecken mit Dhizuku. \nEine moderne und verbesserte Lösung zum Verstecken von Apps auf nicht gerooteten Geräten. Die Installation und Aktivierung der Dhizuku-App sind erforderlich.</string>
     <string name="app_name_calendar">Kalender</string>
     <string name="disguise">App tarnen</string>
     <string name="disguise_description">Tarnt Amarok als Kalender.</string>
