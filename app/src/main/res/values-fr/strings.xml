@@ -25,14 +25,14 @@
     <string name="remove_hide_path_description">Retirer le dossier \'%s\' de la liste cachée ?</string>
     <string name="no_apphider">Veuillez sélectionner le mode de dissimulation des applications dans \"Plus de paramètres\".</string>
     <string name="root_not_ava">Impossible d\'obtenir l\'accès Super-Utilisateur.</string>
-    <string name="check_update_on_start_description">Recherchez les nouvelles versions d\'Amarok lors de l\'ouverture de l\'application.</string>
+    <string name="check_update_on_start_description">Vérifier si une mise à jour d\'Amarok est disponible dès l\'ouverture.</string>
     <string name="check_update_on_start">Mise à jour automatique</string>
     <string name="view_github_repo">Dêpot GitHub</string>
     <string name="shizuku_permission_denied">Shizuku : Autorisation refusée</string>
     <string name="shizuku_not_working">Shizuku : Service indisponible. Avez-vous installé Shizuku/Sui sur votre appareil ?</string>
     <string name="shizuku_hidden_api_error">Impossible de masquer l\'application : Impossible d\'accéder à l\'API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku : Le service n\'est pas en fonction.</string>
-    <string name="apphider_not_ava_title">Masquage de l\'application inactive</string>
+    <string name="apphider_not_ava_title">Service indisponible</string>
     <string name="dsm_permission_denied">DSM : Autorisation refusée</string>
     <string name="apphider_none_description">Désactivez le masquage des applications.</string>
     <string name="apphider_root">Mode Super-Utilisateur</string>
@@ -94,7 +94,7 @@
     <string name="more_settings">Plus de paramètres</string>
     <string name="switch_file_hider">Changer le mode de dissimulation des fichiers</string>
     <string name="apply_on_restart">Redémarrer l\'application pour appliquer les changements.</string>
-    <string name="hidden_toast">Caché. Cock-a-doodle-do~ !</string>
+    <string name="hidden_toast">Caché</string>
     <string name="not_local_storage">Répertoire non pris en charge</string>
     <string name="help">Aide</string>
     <string name="no_update_ava">Vous utilisez la dernière version.</string>
@@ -109,8 +109,7 @@
     <string name="panic_button_description">Affiche un bouton flottant pour masquer rapidement les apps et fichiers en cas d’urgence. Ce bouton apparaît sur toutes les autres apps lorsque Amarok est démasqué.</string>
     <string name="dhizuku_pre_v5">Dhizuku : Version Dhizuku non prise en charge. Veuillez mettre à jour Dhizuku vers la version 5 ou supérieure.</string>
     <string name="apphider_dhizuku">Mode Dhizuku</string>
-    <string name="apphider_dhizuku_description">[Expérimental] Dissimulation d\'applications avec Dhizuku.
-\nUne solution moderne et améliorée pour masquer les applications sur les appareils non rootés. L\'installation et l\'activation de l\'application Dhizuku sont requises.</string>
+    <string name="apphider_dhizuku_description">Dissimulation d\'applications avec Dhizuku. \nUne solution moderne et améliorée pour masquer les applications sur les appareils non rootés. L\'installation et l\'activation de l\'application Dhizuku sont requises.</string>
     <string name="force_unhide_confirm_msg">Essayer de tout restaurer ? 
 \n 
 \n<b>AVERTISSEMENT : </b>Cette option peut corrompre vos fichiers. Utilisez-le uniquement lorsque vous rencontrez des problèmes et que vous ne pouvez pas exécuter normalement la fonction \"afficher\".</string>
@@ -121,7 +120,7 @@
     <string name="biometric_auth_description">Utilisez l\'authentification biométrique de l\'appareil pour accéder à Amarok, lorsqu\'elle est disponible.</string>
     <string name="close_disguise_spotlight_tip">Appuyez longement sur<font fgcolor="#FCCA3E"><b>l\'année</b></font>pour accéder à Amarok.</string>
     <string name="auto_hide_delay_description">Le nombre de minutes à attendre avant de se cacher une fois l\'écran éteint.</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Certains utilisateurs de Samsung ont signalé que l\'utilisation de chmod entraînait l\'échec du démarrage de leurs appareils.</font> Reportez-vous au problème GitHub n°105 pour plus d\'informations. Utilisez à vos propres risques.</b></string>
+    <string name="chmod_samsung_warning">Certains utilisateurs de Samsung ont signalé que l’utilisation de ChmodFileHider a empêché leurs appareils de démarrer. Consultez le ticket GitHub numéro #105 pour plus d’informations. Utilisez à vos risques et périls.</string>
     <string name="welcome_msg">Amarok est un outil gratuit et gratuit pour dissimuler des fichiers et des applications privés.
 \n
 \nVeuillez noter qu\'Amarok n\'est pas un logiciel de cryptage, mais plutôt un outil permettant de cacher des choses. Nous vous déconseillons fortement d\'utiliser Amarok pour protéger des fichiers et des applications confidentiels.
@@ -151,7 +150,7 @@
     <string name="not_local_storage_description">Veuillez vous assurer qu\'il s\'agit d\'un fichier local et non virtuel.</string>
     <string name="path_duplicated">Dossier caché en boucle</string>
     <string name="check_update">Recherchez des mises à jour</string>
-    <string name="check_update_description">Version actuelle : %s</string>
+    <string name="check_update_description">Version actuelle : %s</string>
     <string name="update_ava">Nouvelle version disponible</string>
     <string name="update_description">Amarok %s (%d) est disponible au téléchargement et à l\'installation.</string>
     <string name="update">Mise à jour</string>
@@ -203,4 +202,17 @@
     <string name="warning_system_apps">Le fait de cacher des apps système peut provoquer une boucle d’amorçage du système. Veuillez être prudent lorsque vous cachez des apps système.</string>
     <string name="warning_root_apps">Amarok n’est pas conçu pour cacher les applications liées à root. Cela peut entraîner une perte d’accès à root. Envisagez plutôt d’utiliser Dr-TSNG/Hide-My-Applist.</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku : échec de l’octroi `DELEGATION_PACKAGE_ACCESS`. Veuillez essayer de réactiver Dhizuku.</string>
+    <string name="update_channel">Canal de mise à jour.</string>
+    <string name="update_channel_release">Canal stable</string>
+    <string name="update_channel_beta">Canal beta</string>
+    <string name="update_available_title">Mise à jour disponible</string>
+    <string name="confirm_with_countdown">Confirmer (%1$ds)</string>
+    <string name="update_available_message">Version %s maintenant disponible pour mise à jour.</string>
+    <string name="view_on_github">Voir sur GitHub</string>
+    <string name="checking_update">Vérification des mises à jour…</string>
+    <string name="update_check_failed">Échec de la vérification des mises à jour</string>
+    <string name="hide_from_recents">Masquer dans Récents</string>
+    <string name="hide_from_recents_description">Masquer Amarok de l’écran des applications récentes.</string>
+    <string name="hide_amarok_icon_dialog_title">Masquer l’icône d\'Amarok</string>
+    <string name="hide_amarok_icon_dialog_message">Cette option cachera Amarok du lanceur. Vous pouvez composer *#*#262765##* (262765 épelle \"amarok\" sur le clavier T9) pour accéder à nouveau à Amarok.</string>
 </resources>
