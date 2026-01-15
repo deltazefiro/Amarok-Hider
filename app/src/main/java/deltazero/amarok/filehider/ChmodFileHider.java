@@ -21,7 +21,7 @@ public class ChmodFileHider extends BaseFileHider {
     protected void process(Set<String> targetDirs, ProcessMethod method) throws InterruptedException {
         var processDirs = new HashSet<String>();
         for (var d : targetDirs) {
-            if (d.startsWith("/storage/emulated/0/"))
+            if (d.startsWith("/storage/emulated/"))
                 processDirs.add(d.replace("/storage/emulated/", "/data/media/"));
             else Log.w("ChmodFileHider", String.format("Unsupported path: %s", d));
         }
