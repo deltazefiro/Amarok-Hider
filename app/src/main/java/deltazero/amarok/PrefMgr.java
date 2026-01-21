@@ -76,7 +76,8 @@ public final class PrefMgr {
     public static final String UPDATE_CHANNEL = "updateChannel";
 
     public static Set<String> getHideFilePath() {
-        return mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>());
+        // Return a defensive copy to avoid SharedPreferences caching issues
+        return new HashSet<>(mPrefs.getStringSet(HIDE_FILE_PATH, new HashSet<>()));
     }
 
     public static void setHideFilePath(Set<String> path) {
@@ -98,7 +99,8 @@ public final class PrefMgr {
     }
 
     public static Set<String> getHideApps() {
-        return mPrefs.getStringSet(HIDE_PKG_NAMES, new HashSet<>());
+        // Return a defensive copy to avoid SharedPreferences caching issues
+        return new HashSet<>(mPrefs.getStringSet(HIDE_PKG_NAMES, new HashSet<>()));
     }
 
     public static void setHideApps(Set<String> pkgNames) {
