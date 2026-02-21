@@ -13,11 +13,13 @@ import androidx.annotation.Nullable;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.file.AtomicMoveNotSupportedException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
+import java.nio.file.StandardCopyOption;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Set;
 
@@ -190,13 +192,18 @@ public class ObfuscateFileHider extends BaseFileHider {
         assert newFilename != null;
         newPath = path.resolveSibling(newFilename);
 
-        boolean is_succeeded = path.toFile().renameTo(newPath.toFile());
-
-        if (!is_succeeded) {
-            Log.w(TAG, "Error when renaming file: " + path + " -> " + newPath);
+        try {
+            try {
+                return Files.move(path, newPath, StandardCopyOption.ATOMIC_MOVE);
+            } catch (AtomicMoveNotSupportedException e) {
+                return Files.move(path, newPath);
+            }
+        } catch (IOException e) {
+            Log.w(TAG, "Error when renaming file: " + path + " -> " + newPath, e);
             return null;
-        } else {
-            return newPath;
+        } catch (RuntimeException e) {
+            Log.w(TAG, "Error when renaming file: " + path + " -> " + newPath, e);
+            return null;
         }
     }
 
