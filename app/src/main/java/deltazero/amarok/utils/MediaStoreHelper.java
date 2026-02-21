@@ -4,12 +4,20 @@ import android.content.Context;
 import android.media.MediaScannerConnection;
 import android.util.Log;
 
+import androidx.annotation.VisibleForTesting;
+
 import java.util.Set;
 
 public class MediaStoreHelper {
     private static final String TAG = "MediaStoreHelper";
 
+    @VisibleForTesting
+    public static volatile boolean disableScanForTesting = false;
+
     public static void scan(Context context, Set<String> dirs) {
+        if (disableScanForTesting) {
+            return;
+        }
         try {
             MediaScannerConnection.scanFile(context, dirs.toArray(new String[0]), null,
                     (ignore, ignore2) -> Log.d(TAG, "MediaStore cache refreshed"));
