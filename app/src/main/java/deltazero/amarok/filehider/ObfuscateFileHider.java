@@ -153,15 +153,18 @@ public class ObfuscateFileHider extends BaseFileHider {
         Path newPath;
 
         boolean hasEncoded = FileHiderUtil.checkIsMarkInFilename(filename);
+        boolean logDebug = Log.isLoggable(TAG, Log.DEBUG);
 
         if (method == HIDE) {
             if (hasEncoded) {
-                Log.d(TAG, "Found encoded name: " + filename + ", skip...");
+                if (logDebug)
+                    Log.d(TAG, "Found encoded name: " + filename + ", skip...");
                 return null;
             }
 
             newFilename = "." + Base64.encodeToString(filename.getBytes(UTF_8), BASE64_TAG) + extraEndingMark;
-            Log.d(TAG, "Encode: " + path + " -> " + newFilename);
+            if (logDebug)
+                Log.d(TAG, "Encode: " + path + " -> " + newFilename);
 
         } else if (method == UNHIDE) {
             if (!hasEncoded) {
@@ -178,7 +181,8 @@ public class ObfuscateFileHider extends BaseFileHider {
                 return null;
             }
 
-            Log.d(TAG, "Decode: " + path + " -> " + newFilename);
+            if (logDebug)
+                Log.d(TAG, "Decode: " + path + " -> " + newFilename);
         }
 
         // Try to rename.
@@ -197,7 +201,8 @@ public class ObfuscateFileHider extends BaseFileHider {
     }
 
     private void processFileHeader(Path path) {
-        Log.d(TAG, "Processing file header: " + path);
+        if (Log.isLoggable(TAG, Log.DEBUG))
+            Log.d(TAG, "Processing file header: " + path);
 
         try {
 
@@ -232,7 +237,8 @@ public class ObfuscateFileHider extends BaseFileHider {
     }
 
     private void processWholeFile(Path path) {
-        Log.d(TAG, "Processing whole file: " + path);
+        if (Log.isLoggable(TAG, Log.DEBUG))
+            Log.d(TAG, "Processing whole file: " + path);
 
         byte[] buffer = new byte[1024];
         long numReadLoops = 0;
