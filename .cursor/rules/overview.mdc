@@ -101,3 +101,8 @@ Provides multiple triggers for instant hide/unhide operations:
 - **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.java` and `AutoHideUtil.java`
 - **Intent API:** Managed by `ActionReceiver.java`
 - **Widget:** `ToggleWidget.java`
+
+### 7. Testing / Benchmarks
+
+- **Benchmark Harness:** `app/src/androidTest/java/deltazero/amarok/benchmark/ObfuscateFileHiderBenchmarkTest.java`
+- **Test-only Flag:** `MediaStoreHelper.disableScanForTesting` disables MediaStore scans during tests.
