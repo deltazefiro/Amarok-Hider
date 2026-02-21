@@ -188,7 +188,7 @@ public class ObfuscateFileHider extends BaseFileHider {
         // Try to rename.
 
         assert newFilename != null;
-        newPath = Paths.get(path.getParent().toString(), newFilename);
+        newPath = path.resolveSibling(newFilename);
 
         boolean is_succeeded = path.toFile().renameTo(newPath.toFile());
 
