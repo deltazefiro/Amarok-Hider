@@ -94,6 +94,21 @@ public class ObfuscateFileHider extends BaseFileHider {
                     if (path.getFileName().toString().equals(".nomedia"))
                         return FileVisitResult.CONTINUE;
 
+                    if (method == HIDE && !processHeader && !processTextFile) {
+                        // Rename-only mode: skip header/text checks and processing.
+                        processFilename(path, method, FILENAME_NO_PROCESS_MARK);
+                        return FileVisitResult.CONTINUE;
+                    }
+
+                    if (method == UNHIDE) {
+                        String filename = path.getFileName().toString();
+                        if (!filename.endsWith(FILENAME_FULL_PROCESS_MARK)
+                                && !filename.endsWith(FILENAME_HEADER_PROCESS_MARK)) {
+                            processFilename(path, method, FILENAME_NO_PROCESS_MARK);
+                            return FileVisitResult.CONTINUE;
+                        }
+                    }
+
                     // Check whether the whole file should be processed before renaming (processFilename).
                     boolean shouldProcessHeader = checkShouldProcessHeader(path, method);
                     boolean shouldProcessWhole = checkShouldProcessWhole(path, method);
