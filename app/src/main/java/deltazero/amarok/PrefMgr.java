@@ -77,6 +77,7 @@ public final class PrefMgr {
     public static final String PANIC_BUTTON_COLOR = "panicButtonColor";
     public static final String PANIC_BUTTON_Y = "panicButtonY";
     public static final String PANIC_BUTTON_LEFT_EDGE = "panicButtonLeftEdge";
+    public static final String DARK_THEME = "darkTheme";
 
     public static Set<String> getHideFilePath() {
         // Return a defensive copy to avoid SharedPreferences caching issues
@@ -406,6 +407,15 @@ public final class PrefMgr {
     public static void resetPanicButtonPosition() {
         mPrefEditor.remove(PANIC_BUTTON_Y);
         mPrefEditor.remove(PANIC_BUTTON_LEFT_EDGE);
+        mPrefEditor.apply();
+    }
+
+    public static int getDarkTheme() {
+        return mPrefs.getInt(DARK_THEME, -1); // Default: follow system (-1)
+    }
+
+    public static void setDarkTheme(int mode) {
+        mPrefEditor.putInt(DARK_THEME, mode);
         mPrefEditor.apply();
     }
 }

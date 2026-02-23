@@ -158,6 +158,11 @@
     <string name="participate_translation_description">Help us translate Amarok into your language.</string>
     <string name="enable_dynamic_color">Dynamic color</string>
     <string name="dynamic_color_description">Enable dynamic color theming.</string>
+    <string name="dark_theme">Dark theme</string>
+    <string name="dark_theme_description">Select app theme</string>
+    <string name="dark_theme_follow_system">Follow System</string>
+    <string name="dark_theme_light">Light</string>
+    <string name="dark_theme_dark">Dark</string>
     <string name="app_name_calendar">Calendar</string>
     <string name="disguise">App disguise</string>
     <string name="disguise_description">Disguise Amarok as a calendar app.</string>
