@@ -4,7 +4,10 @@
       "mcp__mobile__*",
       "Bash(adb:*)",
       "Bash(emulator:*)",
-      "Bash(./gradlew:*)"
+      "Bash(logcat:*)",
+      "Bash(./gradlew:*)",
+      "Edit(/tmp/**)",
+      "Write(/tmp/**)"
     ]
   },
   "sandbox": {

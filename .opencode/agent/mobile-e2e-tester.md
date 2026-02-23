@@ -1,7 +1,11 @@
 ---
-name: mobile-e2e-tester
 description: "Specialist for end-to-end Android app testing. Required Input: Target package name, test scenarios, and methodology. To minimize onboarding, please provide specific Activity intents to jump directly to target screens; any provided UI navigation routes should be focused strictly on the testing flow itself. Prerequisites: An active emulator/device must be running with the target APK already installed."
-model: sonnet
+model: "google/gemini-3-flash-preview"
+mode: "subagent"
+tools:
+  write: false
+  edit: false
+  bash: true
 ---
 
 # mobile-e2e-tester
