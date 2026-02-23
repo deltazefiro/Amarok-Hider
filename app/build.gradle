@@ -134,6 +134,7 @@ dependencies {
     implementation 'com.github.kyuubiran:EzXHelper:2.2.1'
     implementation 'com.github.takusemba:spotlight:2.0.5'
     implementation 'com.github.topjohnwu.libsu:core:6.0.0'
+    implementation 'com.github.skydoves:colorpickerview:2.3.0'
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'com.jonathanfinerty.once:once:1.3.1'
     implementation 'com.kizitonwose.calendar:view:2.9.0'
