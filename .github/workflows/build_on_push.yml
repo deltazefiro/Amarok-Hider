@@ -5,6 +5,16 @@ on:
   - pull_request
 
 jobs:
+  # validate-metadata:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Validate Fastlane metadata
+  #       uses: ashutoshgngwr/validate-fastlane-supply-metadata@v2
+  #       with:
+  #         fastlaneDir: ./fastlane/metadata/android
+  #         usePlayStoreLocales: false
+
   build:
     runs-on: ubuntu-latest
     steps:
