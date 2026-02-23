@@ -10,3 +10,5 @@
 .cxx
 local.properties
 tmp/
+app/.settings/
+app/.project
