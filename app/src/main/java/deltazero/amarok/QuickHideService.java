@@ -79,18 +79,20 @@ public class QuickHideService extends LifecycleService {
         }
         isServiceRunning = true;
 
-        // Init panic button
+        // Init panic button (use TOP|START so coords match the library's post-drag system)
         panicButton = new EasyWindow<>(getApplication())
                 .setContentView(R.layout.dialog_panic_button)
-                .setGravity(Gravity.END | Gravity.BOTTOM)
-                .setYOffset(300)
+                .setGravity(Gravity.TOP | Gravity.START)
                 .setDraggable(new SpringBackDraggable())
                 .setOnClickListener(R.id.dialog_iv_panic_button,
                         (EasyWindow.OnClickListener<ImageView>) (xToast, view) -> Hider.hide(this));
 
         ivPanicButton = panicButton.findViewById(R.id.dialog_iv_panic_button);
-        ivPanicButton.setColorFilter(getColor(R.color.light_grey),
+        ivPanicButton.setColorFilter(PrefMgr.getPanicButtonColor(),
                 PorterDuff.Mode.SRC_IN);
+
+        // Restore saved position if available
+        restorePanicButtonPosition();
 
         Hider.state.observe(this, state -> updatePanicButton());
         updatePanicButton();
@@ -146,7 +148,7 @@ public class QuickHideService extends LifecycleService {
             } else {
                 showPanicButton();
             }
-            ivPanicButton.setColorFilter(getApplication().getColor(R.color.light_grey),
+            ivPanicButton.setColorFilter(PrefMgr.getPanicButtonColor(),
                     android.graphics.PorterDuff.Mode.SRC_IN);
             ivPanicButton.setEnabled(true);
         }
@@ -160,7 +162,23 @@ public class QuickHideService extends LifecycleService {
 
     private void cancelPanicButton() {
         if (panicButton != null && panicButton.isShowing()) {
+            savePanicButtonPosition();
             panicButton.cancel();
         }
+    }
+
+    private void savePanicButtonPosition() {
+        if (panicButton != null) {
+            var params = panicButton.getWindowParams();
+            int screenWidth = getResources().getDisplayMetrics().widthPixels;
+            PrefMgr.setPanicButtonY(params.y);
+            PrefMgr.setPanicButtonLeftEdge(params.x < screenWidth / 2);
+        }
+    }
+
+    private void restorePanicButtonPosition() {
+        panicButton.setYOffset(PrefMgr.getPanicButtonY());
+        // Large offset clamps to the right edge; Integer.MAX_VALUE overflows in WindowManager.
+        panicButton.setXOffset(PrefMgr.isPanicButtonLeftEdge() ? 0 : 10000);
     }
 }

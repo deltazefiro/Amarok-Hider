@@ -5,10 +5,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
+import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SeekBarPreference;
 
 import com.hjq.permissions.OnPermissionCallback;
+import com.skydoves.colorpickerview.ColorPickerDialog;
+import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener;
 
 import java.util.List;
 
@@ -22,6 +25,7 @@ public class QuickHideCategory extends BaseCategory {
 
     private MaterialSwitchPreference panicButtonPref, autoHideAfterScreenOffPref;
     private SeekBarPreference autoHideDelayPref;
+    private Preference panicButtonColorPref;
 
     public QuickHideCategory(@NonNull FragmentActivity activity, @NonNull PreferenceScreen screen) {
         super(activity, screen);
@@ -56,6 +60,7 @@ public class QuickHideCategory extends BaseCategory {
         });
         servicePref.setOnPreferenceChangeListener((preference, newValue) -> {
             panicButtonPref.setEnabled((boolean) newValue);
+            panicButtonColorPref.setEnabled((boolean) newValue && panicButtonPref.isChecked());
             autoHideAfterScreenOffPref.setEnabled((boolean) newValue);
             autoHideDelayPref.setEnabled((boolean) newValue && autoHideAfterScreenOffPref.isChecked());
             if (!(boolean) newValue)
@@ -88,11 +93,45 @@ public class QuickHideCategory extends BaseCategory {
                     }
                 });
             } else {
-                QuickHideService.startService(activity); // Restart service
+                // Reset position when panic button is disabled
+                PrefMgr.resetPanicButtonPosition();
+                QuickHideService.stopService(activity);
+                QuickHideService.startService(activity);
             }
             return true;
         });
+        panicButtonPref.setOnPreferenceChangeListener((preference, newValue) -> {
+            panicButtonColorPref.setEnabled((boolean) newValue);
+            return true;
+        });
         addPreference(panicButtonPref);
+
+        // Panic button color preference
+        panicButtonColorPref = new Preference(activity);
+        panicButtonColorPref.setKey(PrefMgr.PANIC_BUTTON_COLOR);
+        panicButtonColorPref.setIcon(R.drawable.colors_24dp_1f1f1f_fill0_wght400_grad0_opsz24);
+        panicButtonColorPref.setTitle(R.string.panic_button_color);
+        panicButtonColorPref.setSummary(R.string.panic_button_color_description);
+        panicButtonColorPref.setEnabled(PrefMgr.getEnableQuickHideService() && PrefMgr.getEnablePanicButton());
+        panicButtonColorPref.setOnPreferenceClickListener(preference -> {
+            var colorPickerBuilder = new ColorPickerDialog.Builder(activity)
+                    .setTitle(R.string.panic_button_color)
+                    .setPreferenceName("PanicButtonColorPicker")
+                    .setPositiveButton(activity.getString(android.R.string.ok),
+                            (ColorEnvelopeListener) (envelope, fromUser) -> {
+                                PrefMgr.setPanicButtonColor(envelope.getColor());
+                                QuickHideService.startService(activity);
+                            })
+                    .setNegativeButton(activity.getString(android.R.string.cancel),
+                            (dialogInterface, i) -> dialogInterface.dismiss())
+                    .attachAlphaSlideBar(true)
+                    .attachBrightnessSlideBar(true)
+                    .setBottomSpace(12);
+            colorPickerBuilder.getColorPickerView().setInitialColor(PrefMgr.getPanicButtonColor());
+            colorPickerBuilder.show();
+            return true;
+        });
+        addPreference(panicButtonColorPref);
 
         autoHideAfterScreenOffPref = new MaterialSwitchPreference(activity);
         autoHideAfterScreenOffPref.setKey(PrefMgr.ENABLE_AUTO_HIDE);

@@ -74,6 +74,9 @@ public final class PrefMgr {
     public static final String DISABLE_SECURITY_WHEN_UNHIDDEN = "disableSecurityWhenUnhidden";
     public static final String HIDE_FROM_RECENTS = "hideFromRecents";
     public static final String UPDATE_CHANNEL = "updateChannel";
+    public static final String PANIC_BUTTON_COLOR = "panicButtonColor";
+    public static final String PANIC_BUTTON_Y = "panicButtonY";
+    public static final String PANIC_BUTTON_LEFT_EDGE = "panicButtonLeftEdge";
 
     public static Set<String> getHideFilePath() {
         // Return a defensive copy to avoid SharedPreferences caching issues
@@ -370,6 +373,39 @@ public final class PrefMgr {
 
     public static void setUpdateChannel(UpdateUtil.UpdateChannel channel) {
         mPrefEditor.putString(UPDATE_CHANNEL, channel.name());
+        mPrefEditor.apply();
+    }
+
+    public static int getPanicButtonColor() {
+        return mPrefs.getInt(PANIC_BUTTON_COLOR, 0xFFD1D1D1); // Default: light_grey (#d1d1d1)
+    }
+
+    public static void setPanicButtonColor(int color) {
+        mPrefEditor.putInt(PANIC_BUTTON_COLOR, color);
+        mPrefEditor.apply();
+    }
+
+    public static int getPanicButtonY() {
+        return mPrefs.getInt(PANIC_BUTTON_Y, 300);
+    }
+
+    public static void setPanicButtonY(int y) {
+        mPrefEditor.putInt(PANIC_BUTTON_Y, y);
+        mPrefEditor.apply();
+    }
+
+    public static boolean isPanicButtonLeftEdge() {
+        return mPrefs.getBoolean(PANIC_BUTTON_LEFT_EDGE, false);
+    }
+
+    public static void setPanicButtonLeftEdge(boolean isLeftEdge) {
+        mPrefEditor.putBoolean(PANIC_BUTTON_LEFT_EDGE, isLeftEdge);
+        mPrefEditor.apply();
+    }
+
+    public static void resetPanicButtonPosition() {
+        mPrefEditor.remove(PANIC_BUTTON_Y);
+        mPrefEditor.remove(PANIC_BUTTON_LEFT_EDGE);
         mPrefEditor.apply();
     }
 }
