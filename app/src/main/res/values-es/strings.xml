@@ -13,7 +13,7 @@
     <string name="switch_file_hider">Cambiar el modo de ocultar archivos</string>
     <string name="apply_on_restart">Reinicie la aplicación para aplicar los nuevos cambios.</string>
     <string name="usage">Uso</string>
-    <string name="ok">Ok</string>
+    <string name="ok">Aceptar</string>
     <string name="obfuscate_file_header">Ofuscar las cabeceras de los archivos</string>
     <string name="obfuscate_file_header_description">Oculta la firma del archivo en el encabezado del archivo para que parezca que está dañado. Impide que el archivo se abra manualmente con \"Abrir con\", pero puede ralentizar el proceso de ocultación.</string>
     <string name="filename_only">Sólo nombres de archivo</string>
@@ -61,7 +61,7 @@
     <string name="set_hide_files">Establecer archivos ocultos</string>
     <string name="analytics_description">Envíe informes anónimos de fallos a los desarrolladores para su análisis.</string>
     <string name="about_description">Mostrar información sobre la aplicación.</string>
-    <string name="unhidden_toast">Sin ocultar. Ten cuidado.</string>
+    <string name="unhidden_toast">No oculto</string>
     <string name="hide_app_failed_admin_inactive">No se puede ocultar la aplicación: Proveedor DSM no activo.</string>
     <string name="manually_set_path">Elegir manualmente</string>
     <string name="view_github_repo">Repositorio GitHub</string>
@@ -69,7 +69,7 @@
     <string name="show_debug_info">Información de depuración</string>
     <string name="debug_info_description">Muestra información para ayudar a solucionar problemas.</string>
     <string name="invalid_dsm_provider">DSM: Proveedor DSM no válido. Ha instalado y activado el proveedor DSM en su dispositivo\?</string>
-    <string name="hidden_toast">Oculto. ¡Cock-a-doodle-do~!</string>
+    <string name="hidden_toast">Oculto</string>
     <string name="folder_selector_hints">Consejos para el selector de carpetas:
 \n\t 1. Haga clic en \"Usar esta carpeta\" para seleccionar la carpeta
 \n\t 2. Seleccione siempre un archivo del dispositivo
@@ -88,13 +88,13 @@
     <string name="root_not_ava">No se pudo conseguir acceso root.</string>
     <string name="update_ava">Nueva versión disponible</string>
     <string name="update_description">Amarok %s (%d) está disponible para su descarga e instalación.</string>
-    <string name="check_update_on_start_description">Comprueba si hay nuevas versiones de Amarok al abrir la aplicación.</string>
+    <string name="check_update_on_start_description">Comprueba si hay nuevas versiones al arrancar.</string>
     <string name="check_update_description">Versión actual: %s</string>
     <string name="update">Actualizar</string>
     <string name="no_update_ava">Está ejecutando la versión más reciente.</string>
     <string name="shizuku_pre_v11">Versión de Shizuku no compatible: Pre-v11. Por favor, instale Shizuku v11 o posterior.</string>
     <string name="shizuku_permission_denied">Shizuku: Permiso denegado</string>
-    <string name="apphider_not_ava_title">Modo ocultar aplicación inactivas</string>
+    <string name="apphider_not_ava_title">Servicio no disponible</string>
     <string name="shizuku_not_working">Shizuku: Servicio no disponible. ¿Has instalado Shizuku/Sui en tu dispositivo?</string>
     <string name="apphider_root_description">Ocultar aplicaciones con acceso root.
 \nRecomendado si su dispositivo tiene acceso root, pero carece del marco Xposed. Se requiere permiso root.</string>
@@ -136,13 +136,12 @@
     <string name="dhizuku_pre_v5">Dhizuku: Versión de Dhizuku no soportada. Actualiza Dhizuku a la versión 5 o superior.</string>
     <string name="dhizuku_not_init">Dhizuku: Servicio no disponible. Por favor, asegúrate de haber instalado y activado Dhizuku.</string>
     <string name="apphider_dhizuku">Modo Dhizuku</string>
-    <string name="apphider_dhizuku_description">[Experimental] Ocultar las aplicaciones con Dhizuku. 
-\nUna solución moderna y mejorada para ocultar aplicaciones en dispositivos no rooteados. Se requiere la instalación y activación de la aplicación Dhizuku.</string>
+    <string name="apphider_dhizuku_description">Ocultar las aplicaciones con Dhizuku. \nUna solución moderna y mejorada para ocultar aplicaciones en dispositivos no rooteados. Se requiere la instalación y activación de la aplicación Dhizuku.</string>
     <string name="force_unhide_confirm_msg">¿Intentar restaurar todo\?.
 \n
 \n<b>ADVERTENCIA:</b> Esta opción puede corromper tus archivos. Úsala solamente cuando encuentres problemas y no puedas realizar la función \"mostrar\" de manera normal.</string>
     <string name="force_unhide_description">Intenta restaurar todo. Usa esta opción solo cuando tengas problemas.</string>
-    <string name="force_unhide">Forzar mostrar</string>
+    <string name="force_unhide">Forzar desocultar</string>
     <string name="filter">Filtrar</string>
     <string name="display_system_apps">Mostrar aplicaciones del sistema</string>
     <string name="language">Idioma</string>
@@ -175,7 +174,7 @@
     <string name="filehider_not_ava_title">Ocultar archivos no disponible</string>
     <string name="filehider_chmod">Modo Chmod</string>
     <string name="warning">ADVERTENCIA</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Algunos usuarios de Samsung han informado de que el uso de ChmodFileHider hizo que sus dispositivos no arrancaran.</font> Consulta el tema #105 de GitHub para obtener más información. Utilízalo bajo tu propia responsabilidad.</b></string>
+    <string name="chmod_samsung_warning">Algunos usuarios de Samsung han informado que el uso de ChmodFileHider hizo que sus dispositivos no arrancaran. Refiérase el tema #105 de GitHub para más información. Utilízalo bajo tu propia responsabilidad.</string>
     <string name="appearance">Apariencia</string>
     <string name="auto_hide">Ocultar automáticamente</string>
     <string name="auto_hide_delay">Retardo al ocultar automáticamente</string>
@@ -195,4 +194,27 @@
     <string name="apphider_not_activated_title">Aplicación inactiva</string>
     <string name="invert_tile_color">Invertir el color del mosaico</string>
     <string name="invert_tile_color_description">De forma predeterminada, el icono de configuración rápida aparece activado cuando su privacidad está visible. Cambia esta opción para revertir el comportamiento.</string>
+    <string name="confirm_with_countdown">Confirmar (%1$ds)</string>
+    <string name="update_channel">Actualizar canal</string>
+    <string name="update_channel_release">Lanzamientos estables</string>
+    <string name="update_channel_beta">Pre-lanzamientos beta</string>
+    <string name="update_available_title">Actualización Disponible</string>
+    <string name="update_available_message">La versión %s ahora está disponible para actualizar.</string>
+    <string name="view_on_github">Vista en GitHub</string>
+    <string name="checking_update">Comprobando actualizaciones…</string>
+    <string name="update_check_failed">Ha fallado al comprobar actualizaciones</string>
+    <string name="display_root_apps">Exhibe apps relacionadas con root</string>
+    <string name="hide_amarok_icon">Ocultar icono</string>
+    <string name="hide_amarok_icon_description">Oculta Amarok desde el lanzador. Dial *#*#262765#*#* para abrir el Amarok.</string>
+    <string name="disable_security_when_unhidden">Inhabilita seguridad cuando no esté ocultado</string>
+    <string name="disable_security_when_unhidden_description">Inutiliza disfraz y bloqueo de aplicación cuando no oculto.</string>
+    <string name="disable_only_with_xhide">Inhabilitar solo apps</string>
+    <string name="disable_only_with_xhide_description">Solo inhabilita apps y XHide manipula la ocultación exclusivamente. Puede reducir el retraso durante la ocultación.</string>
+    <string name="warning_system_apps">Ocultar las apps del sistema puede causar bucle de arranque en el sistema. Sea cauto cuando oculte las apps del sistema.</string>
+    <string name="warning_root_apps">Amarok no está diseñado para ocultar aplicaciones relativas a root. Puede causar pérdida de acceso de root. Considera en cambio utilizar Dr.-TSNG/Ocultar-Mi-Listado-de-Applist.</string>
+    <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: ha fallado al conceder `DELEGATION_PACKAGE_ACCESS`. Intente reactivar Dhizuku.</string>
+    <string name="hide_from_recents">Ocultar desde Recientes</string>
+    <string name="hide_from_recents_description">Ocultar Amarok desde la pantalla reciente de apps.</string>
+    <string name="hide_amarok_icon_dialog_title">Ocultar Icono de Amarok</string>
+    <string name="hide_amarok_icon_dialog_message">Esta opción ocultará Amarok desde el lanzador. Puedes marcar *#*#262765#*#* (262765 olas \"amarok\" en teclado numérico T9) para acceder otra vez a Amarok.</string>
 </resources>

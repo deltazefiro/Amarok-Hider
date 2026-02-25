@@ -140,8 +140,7 @@
     <string name="biometric_auth_description">Használd az eszköz biometrikus hitelesítését az Amarok hozzáféréshez, ha rendelkezésre áll.</string>
     <string name="dhizuku_permission_denied">Dhizuku: Engedély megtagadva</string>
     <string name="apphider_dhizuku">Dhizuku mód</string>
-    <string name="apphider_dhizuku_description">[Kísérleti] Alkalmazás-elrejtés Dhizukuval.
-\nEgy modern és továbbfejlesztett megoldás az alkalmazások elrejtésére nem rootolt eszközökön. A Dhizuku alkalmazás telepítése és aktiválása szükséges.</string>
+    <string name="apphider_dhizuku_description">[Kísérleti] Alkalmazás-elrejtés Dhizukuval. \nEgy modern és továbbfejlesztett megoldás az alkalmazások elrejtésére nem rootolt eszközökön. A Dhizuku alkalmazás telepítése és aktiválása szükséges.</string>
     <string name="force_unhide_confirm_msg">Megpróbál mindent visszaállítani\?
 \n
 \n<b>FIGYELMEZTETÉS: </b>Ez a lehetőség megrongálhatja a fájlokat. Csak akkor használja, ha problémába ütközik, és nem tudja normálisan elvégezni a \"feloldás\" funkciót.</string>

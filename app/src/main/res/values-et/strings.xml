@@ -40,12 +40,12 @@
     <string name="usage_description">Ava juhendite veebisait (inglise keeles).</string>
     <string name="current_mode">Praegune meetod: %s</string>
     <string name="apply_on_restart">Muudatuste jõustamiseks käivita rakendus uuesti.</string>
-    <string name="unhidden_toast">Pole peidetud. Ole ettevaatlik.</string>
+    <string name="unhidden_toast">Pole peidetud</string>
     <string name="add_hide_files">Lisa peidetud kaust</string>
     <string name="remove_hide_path_description">Kas eemaldame „%s“ kausta peidetud objektide loendist?</string>
     <string name="not_local_storage_description">Palun kontrolli, et tegemist on kohaliku failiga, mitte virtuaalse failiga.</string>
     <string name="check_update_on_start">Uuenda automaatselt</string>
-    <string name="check_update_on_start_description">Rakenduse käivitamisel kontrolli uuete Amaroki versioonide olemasolu.</string>
+    <string name="check_update_on_start_description">Rakenduse käivitamisel kontrolli uute versioonide olemasolu.</string>
     <string name="check_update">Kontrolli rakenduse uuendusi</string>
     <string name="check_update_description">Praegune versioon: %s</string>
     <string name="update_description">Amarok %s (%d) on allalaadimiseks ja paigaldamiseks saadaval.</string>
@@ -79,7 +79,7 @@
     <string name="filehider_none">Pole kasutusel</string>
     <string name="warning">HOIATUS</string>
     <string name="join_developer_channel">Telegrami grupp</string>
-    <string name="hidden_toast">Peidetud. Leia mind tuhandete seast!</string>
+    <string name="hidden_toast">Peidetud</string>
     <string name="apphider_dhizuku">Dhizuku režiim</string>
     <string name="analytics_description">Saada arendajatele analüüsimiseks anonüümseid rakenduse kokkujooksmise aruandeid.</string>
     <string name="debug_info_description">Näitab teavet, mis aitab võimalike vigade ja probleemide lahendamisel.</string>
@@ -103,7 +103,7 @@
     <string name="shizuku_not_working">Shizuku: teenus pole saadaval. Kas sa oled oma nutiseadmesse paigaldanud Shizuku või Sui?</string>
     <string name="shizuku_hidden_api_error">Rakenduse peitmine ei õnnestunud: IPackageManager API pole ligipääsetav.</string>
     <string name="shizuku_service_not_running">Shizuku: teenus ei tööta.</string>
-    <string name="apphider_not_ava_title">Rakenduste peitmine pole kasutusel</string>
+    <string name="apphider_not_ava_title">Teenus pole saadaval</string>
     <string name="dsm_permission_denied">DSM: õigused on puudu</string>
     <string name="folder_selector_hints">Soovituse kaustade valimiseks: \n\t 1. Kausta valimiseks klõpsi „Kasuta seda kausta“\n\t 2. Alati vali seadmes asuv fail \n\t(Kohalike failide avamiseks viipa ekraanil paremalt vasakule)</string>
     <string name="invalid_path">Vigane asukoht.</string>
@@ -128,4 +128,17 @@
     <string name="dynamic_color_description">Kasuta dünaamiliste värvidega kujundust.</string>
     <string name="filehider_not_ava_title">Failide peitmine pole saadaval</string>
     <string name="filehider_none_description">Lülita failide peitmise võimalus välja.</string>
+    <string name="confirm_with_countdown">Kinnita (%1$ds)</string>
+    <string name="update_channel">Uuenduste kanali tüüp</string>
+    <string name="update_channel_release">Stabiilsed versioonid</string>
+    <string name="update_channel_beta">Beetaversioonid</string>
+    <string name="update_available_title">Rakenduse uuendus on saadaval</string>
+    <string name="update_available_message">Uuendamiseks on saadaval versioon %s.</string>
+    <string name="view_on_github">Vaata GitHubis</string>
+    <string name="checking_update">Kontrollin uuendusi…</string>
+    <string name="update_check_failed">Uuenduste kontrollimine ei õnnestunud</string>
+    <string name="force_unhide">Lõpeta peitmine sundkorras</string>
+    <string name="disguise">Rakenduse varjamine</string>
+    <string name="filehider_obfuscate">Hämamisrežiim</string>
+    <string name="filehider_chmod">Chmod-režiim</string>
 </resources>

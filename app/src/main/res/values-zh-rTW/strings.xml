@@ -97,8 +97,7 @@
     <string name="dhizuku_pre_v5">Dhizuku: 版本过低。请将 Dhizuku 升级到 v5.0 以上。</string>
     <string name="dhizuku_not_init">Dhizuku: 服務無效。請確定您的設備已安裝 Dhizuku 並成功啟用。</string>
     <string name="apphider_dhizuku">Dhizuku 模式</string>
-    <string name="apphider_dhizuku_description">[實驗性功能] 透過 Dhizuku API 隱藏應用。
-\nDhizuku 透過共享裝置管理員權限，賦予無 Root 裝置應用隱藏的能力。需要安裝並啟動 Dhizuku。</string>
+    <string name="apphider_dhizuku_description">[實驗性功能] 透過 Dhizuku API 隱藏應用。 \nDhizuku 透過共享裝置管理員權限，賦予無 Root 裝置應用隱藏的能力。需要安裝並啟動 Dhizuku。</string>
     <string name="force_unhide">強制取消隱藏</string>
     <string name="force_unhide_description">嘗試恢復所有隱藏的檔案與應用程式。僅在出現問題時使用。</string>
     <string name="performing_force_unhide">正在嘗試取消隱藏。請稍後。</string>

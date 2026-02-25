@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">取消隱藏</string>
+    <string name="hide">隱藏</string>
+    <string name="visible_status">可見</string>
+    <string name="hidden_status">已隱藏</string>
+    <string name="apphider_not_activated_msg">啓用應用隱藏模式以啓用此功能。</string>
+    <string name="apphider_not_activated_title">狀態：未隱藏應用</string>
+    <string name="disable_toasts_description">在隱藏或解除隱藏作中不顯示Toast通知。</string>
+    <string name="disable_toasts">不顯示Toast通知</string>
+    <string name="disable_only_with_xhide_description">只禁用應用，讓XHide獨自處理隱藏。可能減少隱藏時的延遲。</string>
+    <string name="disable_only_with_xhide">只禁用應用</string>
+    <string name="xposed_inactive">模塊失效。查看Xposed管理器(也許是lsposed或其它)？</string>
+    <string name="xposed_active">活動的、Xposed API%d</string>
+    <string name="enable_x_hide_description">狀態：%s</string>
+    <string name="enable_x_hide">啓用XHide</string>
+    <string name="x_hide_description">利用Xposed增強應用隱藏功能。隱藏的應用將不再在設置或其他應用中可見。需要Xposed API ≥ 93 。</string>
+    <string name="xposed_desc">啓用Amarok以隱藏系統菜單中的應用程序。</string>
+    <string name="block_screenshots_description">在Amarok中禁止截圖，並在最近應用列表中模糊顯示。</string>
+    <string name="block_screenshots">禁止截圖</string>
+    <string name="auto_hide_delay_description">屏幕關閉後隱藏前需要延遲的分鐘數。</string>
+    <string name="auto_hide_delay">自動隱藏延遲</string>
+    <string name="auto_hide_description">屏幕關閉後會自動隱藏。</string>
+    <string name="auto_hide">自動隱藏</string>
+    <string name="appearance">外觀</string>
+    <string name="chmod_samsung_warning">一些三星用户報告稱使用ChmodFileHider會導致設備無法啓動。更多信息請參閲GitHub issue #105。請自行承擔風險。</string>
+    <string name="warning">警告</string>
+    <string name="welcome_msg">Amarok 是一個免費且自由的隱藏私密文件工具＆應用。\n請注意，Amarok 不是加密軟件，而是一個隱藏物品的工具。我們強烈建議不要使用Amarok來保護機密文件和應用程序。\n\n\n\n\n&lt;你&gt;免責聲明：Amarok 提供時不承擔任何保證或條件。用户對使用Amarok可能產生的任何傷害或後果負全責。&lt;/u&gt;</string>
+    <string name="welcome_title">歡迎</string>
+    <string name="filehider_nomedia_description">只需在文件夾中添加.nomedia。不需要root權限。</string>
+    <string name="filehider_nomedia">Nomedia 模式</string>
+    <string name="filehider_chmod_description">更改文件權限使其無法讀取。需要root權限。該過程即刻生效。</string>
+    <string name="filehider_chmod">Chmod模式</string>
+    <string name="filehider_obfuscate_description">混淆文件名和文件簽名。無需root權限。處理可能需要一些時間。</string>
+    <string name="filehider_obfuscate">混淆模式</string>
+    <string name="filehider_none_description">關閉文件隱藏功能。</string>
+    <string name="filehider_none">失效</string>
+    <string name="filehider_not_ava_title">文件隱藏不可用</string>
+    <string name="spotlight_do_not_show_again">不再顯示</string>
+    <string name="close_disguise_spotlight_tip">長按<font fgcolor="#FCCA3E"><b>年份</b></font>以訪問Amarok。</string>
+    <string name="calendar_about">簡約日曆丨作者：koramA</string>
+</resources>
