@@ -65,10 +65,10 @@
     <string name="shizuku_not_working">Shizuku: Usługa niedostępna. Czy Shizuku/Sui jest zainstalowane i aktywne na urządzeniu?</string>
     <string name="shizuku_hidden_api_error">Nie udało się ukryć aplikacji: brak dostępu do API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku: Usługa nie jest uruchomiona.</string>
-    <string name="apphider_not_ava_title">Ukrywanie aplikacji niedostępne</string>
+    <string name="apphider_not_ava_title">Usługa niedostępna</string>
     <string name="switch_file_hider">Tryb ukrywania plików</string>
-    <string name="hidden_toast">Ukryte. Kukurykuuu~!</string>
-    <string name="unhidden_toast">Odkryte. Bądź ostrożny.</string>
+    <string name="hidden_toast">Ukryte</string>
+    <string name="unhidden_toast">Odkryte</string>
     <string name="show_debug_info">Pokaż informacje debug</string>
     <string name="debug_info_description">Pokaż informacje pomocne w rozwiązywaniu problemów.</string>
     <string name="hide_app_failed_admin_inactive">Nie udało się ukryć aplikacji: dostawca DSM jest nieaktywny.</string>
@@ -81,7 +81,7 @@
     <string name="root_not_ava">Nie udało się uzyskać dostępu do uprawnień Root.</string>
     <string name="check_update_on_start_description">Automatycznie sprawdzaj aktualizacje przy uruchomieniu aplikacji.</string>
     <string name="check_update">Sprawdź aktualizacje</string>
-    <string name="check_update_description">Używana wersja: %s</string>
+    <string name="check_update_description">Zainstalowana wersja: %s</string>
     <string name="update_description">Wersja %s (%d) jest dostępna do pobrania i zainstalowania.</string>
     <string name="no_update_ava">Aplikacja jest aktualna.</string>
     <string name="dsm_permission_denied">DSM: Odmówiono uprawnienia</string>
@@ -138,7 +138,7 @@
     <string name="disable_toasts">Wyłącz powiadomienia</string>
     <string name="welcome_title">Witaj</string>
     <string name="warning">OSTRZEŻENIE</string>
-    <string name="apphider_dhizuku_description">[Eksperymentalne] Ukrywanie aplikacji z Dhizuku.\nWspółczesna i ulepszona metoda ukrywania aplikacji na urządzeniach które nie mają dostępu do uprawnień Root. Wymaga zainstalowanej i aktywnej aplikacji Dhizuku.</string>
+    <string name="apphider_dhizuku_description">Ukrywanie aplikacji z Dhizuku.\nWspółczesna i ulepszona metoda ukrywania aplikacji na urządzeniach które nie mają dostępu do uprawnień Root. Wymaga zainstalowanej i aktywnej aplikacji Dhizuku.</string>
     <string name="force_unhide">Wymuś odkrycie</string>
     <string name="force_unhide_description">Przywróć wszystko. Użyj kiedy napotkasz problem.</string>
     <string name="force_unhide_confirm_msg">Próbujesz przywrócić wszystko?\n\n<b>OSTRZEŻENIE: </b>Opcja może uszkodzić pliki. Użyj kiedy napotkasz problem i nie możesz użyć funkcji odkrycia normalnie.</string>
@@ -189,7 +189,7 @@
     <string name="invert_tile_color_description">Kafelek szybkiego panelu jest aktywny gdy pliki i aplikacje są odkryte. Włącz aby odwrócić zachowanie.</string>
     <string name="warning_system_apps">Ukrycie aplikacji systemowych może powodować zawieszenie się podczas ponownego uruchomienia urządzenia. Proszę uważać.</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Odmówiono uprawnienia `DELEGATION_PACKAGE_ACCESS`. Proszę, uruchom ponownie Dhizuku.</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Użytkownicy Samsungów zgłosili że używanie ChmodFileHider może powodować zawieszenie się podczas ponownego uruchomienia urządzenia.</font> Przeczytaj zgloszenie #105 na GitHub\'ie, aby uzyskać więcej informacji. Użyj na własne ryzyko.</b></string>
+    <string name="chmod_samsung_warning">Użytkownicy Samsungów zgłosili że używanie ChmodFileHider może powodować zawieszenie się podczas ponownego uruchomienia urządzenia. Przeczytaj zgloszenie #105 na GitHub\'ie, aby uzyskać więcej informacji. Użyj na własne ryzyko.</string>
     <string name="warning_root_apps">Aplikacja nie została zaprojektowana z myślą o ukrywaniu aplikacji używających dostępu do uprawnień Root. Możesz stracić przyznane uprawnienia. W zamian użyj Dr-TSNG/Hide-My-Applist.</string>
     <string name="update_channel">Kanał aktualizacji</string>
     <string name="update_channel_release">Wydania stabilne</string>
@@ -201,4 +201,7 @@
     <string name="update_check_failed">Nie można pobrać aktualizacji</string>
     <string name="hide_from_recents">Ukryj z ostatnio używanych</string>
     <string name="hide_from_recents_description">Ukryj z listy ostatnio używanych aplikacji.</string>
+    <string name="confirm_with_countdown">Potwierdź (%1$ds)</string>
+    <string name="hide_amarok_icon_dialog_title">Ukryj ikonę aplikacji</string>
+    <string name="hide_amarok_icon_dialog_message">Ukrywa aplikację na ekranie głównym. Wpisz *#*#262765#*#* (262765 odpowiada słowu \"amarok\" wpisywanemu na klawiatueze T9) aby uruchomić.</string>
 </resources>

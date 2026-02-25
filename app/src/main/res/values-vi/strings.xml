@@ -25,4 +25,15 @@
     <string name="storage_permission_request_message">Cấp quyền cho Amarok truy cập vào bộ nhớ ngoài để làm ẩn tệp.</string>
     <string name="hide">Ẩn</string>
     <string name="apphider_not_ava">Tính năng Ẩn ứng dụng không khả dụng. Kiểm tra \"Thiết đặt khác\" → \"Chuyển đổi chế độ ẩn ứng dụng\".</string>
+    <string name="show_about">Hiển thị thêm về</string>
+    <string name="about_description">Hiển thị thông tin về ứng dụng.</string>
+    <string name="usage">Hướng dẫn sử dụng</string>
+    <string name="debug_info_description">Hiển thị thông tin giúp khắc phục sự cố.</string>
+    <string name="invalid_dsm_provider">DSM: Trình cung cấp DSM không hợp lệ. Bạn đã cài đặt và kích hoạt trình cung cấp DSM trên thiết bị của mình chưa?</string>
+    <string name="hide_app_failed_admin_inactive">Không thể ẩn ứng dụng: Trình cung cấp DSM không hoạt động.</string>
+    <string name="add_hide_files">Thêm thư mục ẩn</string>
+    <string name="folder_selector_hints">Mẹo chọn thư mục:\n1. Nhấp vào \"Sử dụng thư mục này\" để chọn thư mục.\n2. Luôn chọn tệp trên thiết bị.\n(Vuốt từ bên phải màn hình để mở tệp cục bộ)</string>
+    <string name="remove_hide_path">Xoá thư mục ẩn?</string>
+    <string name="remove_hide_path_description">Đã xóa \'%s\' mục khỏi danh sách thư mục ẩn.</string>
+    <string name="confirm">Xác nhận</string>
 </resources>

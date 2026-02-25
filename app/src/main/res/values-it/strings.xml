@@ -115,8 +115,7 @@
     <string name="dhizuku_not_init">Dhizuku: Servizio non disponibile. Assicurati di aver installato e attivato Dhizuku.</string>
     <string name="apphider_shizuku">Modalità Shizuku (Sui)</string>
     <string name="shizuku_not_working">Shizuku: Servizio non disponibile. Avete installato Shizuku/Sei sul tuo dispositivo?</string>
-    <string name="apphider_dhizuku_description">[Sperimentale] Nascondere le app con Dhizuku.
-\nUna soluzione moderna e migliorata per nascondere le app su dispositivi non-rootati. Sono necessarie l\'installazione e l\'attivazione dell\'applicazione Dhizuku.</string>
+    <string name="apphider_dhizuku_description">[Sperimentale] Nascondere le app con Dhizuku. \nUna soluzione moderna e migliorata per nascondere le app su dispositivi non-rootati. Sono necessarie l\'installazione e l\'attivazione dell\'applicazione Dhizuku.</string>
     <string name="apphider_none">Disabilitato</string>
     <string name="apphider_root">Modalità root</string>
     <string name="apphider_root_description">Nascondere le app con accesso root.

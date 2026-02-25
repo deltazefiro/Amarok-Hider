@@ -143,8 +143,7 @@
     <string name="participate_translation">Participe na tradução</string>
     <string name="enable_analytics">Estatísticas anônimas</string>
     <string name="force_unhide">Forçar desocultação</string>
-    <string name="apphider_dhizuku_description">[Experimental] Ocultação de apps com Dhizuku.
-\nUma solução moderna e aprimorada para ocultar apps em dispositivos sem root. A instalação e ativação da spp Dhizuku são necessárias.</string>
+    <string name="apphider_dhizuku_description">[Experimental] Ocultação de apps com Dhizuku. \nUma solução moderna e aprimorada para ocultar apps em dispositivos sem root. A instalação e ativação da spp Dhizuku são necessárias.</string>
     <string name="alert_permission_request_title">Permissão para abrir janelas pop-up necessária</string>
     <string name="password_length_error">A palavra-passe deve ter entre 3 e 15 caracteres.</string>
     <string name="filehider_not_ava_title">Ocultação de ficheiro indisponível</string>

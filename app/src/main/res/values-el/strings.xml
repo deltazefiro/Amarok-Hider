@@ -13,16 +13,16 @@
     <string name="switch_app_hider">Εναλλαγή λειτουργίας απόκρυψης εφαρμογών</string>
     <string name="current_mode">Τρέχουσα Λειτουργία: %s</string>
     <string name="switch_file_hider">Εναλλαγή λειτουργίας απόκρυψης αρχείων</string>
-    <string name="hidden_toast">Κρυμμένα. Κι-κιρί-κου~!</string>
-    <string name="unhidden_toast">Αναίρεση Κρυμμένων. Να Προσέχεις.</string>
+    <string name="hidden_toast">Κρυμμένα</string>
+    <string name="unhidden_toast">Αναίρεση απόκρυψης</string>
     <string name="hide_app_failed_admin_inactive">Αδύνατη η απόκρυψη της εφαρμογής: Ο πάροχος DSM είναι ανενεργός.</string>
     <string name="add_hide_files">Προσθήκη κρυμμένου φακέλου</string>
     <string name="remove_hide_path">Αφαίρεση κρυμμένου φακέλου;</string>
-    <string name="remove_hide_path_description">Αφαίρεση φακέλου \'%s\' από την κρυφή λίστα;</string>
+    <string name="remove_hide_path_description">Αφαίρεση φακέλου \'%s\' από την κρυμμένη λίστα;</string>
     <string name="confirm">Επιβεβαίωση</string>
     <string name="not_local_storage">Μη υποστηριζόμενος κατάλογος</string>
     <string name="help">Βοήθεια</string>
-    <string name="path_duplicated">Λούπα κρυμμένου φακέλου</string>
+    <string name="path_duplicated">Επανάληψη κρυμμένου φακέλου</string>
     <string name="root_not_ava">Δεν ήταν δυνατή η απόκτηση πρόσβασης root.</string>
     <string name="check_update">Έλεγχος για ενημέρωση</string>
     <string name="check_update_description">Τρέχουσα έκδοση: %s</string>
@@ -31,7 +31,7 @@
     <string name="shizuku_permission_denied">Shizuku: Η άδεια απορρίφθηκε</string>
     <string name="shizuku_not_working">Shizuku: Υπηρεσία μη διαθέσιμη. Έχεις εγκαταστήσει το Shizuku/Sui στην συσκευή σου;</string>
     <string name="shizuku_service_not_running">Shizuku: Η υπηρεσία δεν εκτελείται.</string>
-    <string name="apphider_not_ava_title">Η απόκρυψη εφαρμογής είναι ανενεργή</string>
+    <string name="apphider_not_ava_title">Μη διαθέσιμη υπηρεσία</string>
     <string name="dsm_permission_denied">DSM: Η άδεια απορρίφθηκε</string>
     <string name="unhide">Αναίρεση απόκρυψης</string>
     <string name="hide">Απόκρυψη</string>
@@ -53,7 +53,7 @@
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nπεριέχει\n\n<u>\'%2$s\'</u></string>
     <string name="no_apphider">Παρακαλώ επιλέξτε την λειτουργία απόκρυψης εφαρμογών που βρίσκεται στις \"Περισσότερες ρυθμίσεις\".</string>
     <string name="check_update_on_start">Αυτόματη ενημέρωση</string>
-    <string name="check_update_on_start_description">Έλεγχος για νέες εκδόσεις του Amarok κατά το άνοιγμα της εφαρμογής.</string>
+    <string name="check_update_on_start_description">Έλεγχος για νέες εκδόσεις κατά την εκκίνηση.</string>
     <string name="update_ava">Νέα έκδοση διαθέσιμη</string>
     <string name="update_description">Το Amarok %s (%d) είναι διαθέσιμο για λήψη και εγκατάσταση.</string>
     <string name="never">Ποτέ</string>
@@ -101,7 +101,7 @@
     <string name="notification_permission_request_title">Απαιτείται άδεια ειδοποίησης</string>
     <string name="notification_permission_request_message">Η υπηρεσία Γρήγορη Απόκρυψη χρειάζεται άδεια ειδοποίησης για να λειτουργήσει.</string>
     <string name="quick_hide_notification_title">Το απόρρητο δεν είναι κρυφό</string>
-    <string name="quick_hide_notification_content">Το απόρρητο σας δεν είναι κρυφό. Κάντε κλικ για απόκρυψη.</string>
+    <string name="quick_hide_notification_content">Το απόρρητο σας δεν είναι κρυμμένο. Κάντε κλικ για απόκρυψη.</string>
     <string name="invalid_action">Λήφθηκε μη έγκυρη πρόθεση: %s</string>
     <string name="password">Κωδικός Πρόσβασης</string>
     <string name="unlock">Ξεκλείδωμα</string>
@@ -119,7 +119,7 @@
     <string name="dhizuku_pre_v5">Dhizuku: Μη υποστηριζόμενη έκδοση Dhizuku. Ενημερώστε το Dhizuku στην έκδοση 5 ή νεότερη.</string>
     <string name="dhizuku_not_init">Dhizuku: Υπηρεσία μη διαθέσιμη. Βεβαιωθείτε ότι έχετε εγκαταστήσει και ενεργοποιήσει το Dhizuku.</string>
     <string name="apphider_dhizuku">Λειτουργία Dhizuku</string>
-    <string name="apphider_dhizuku_description">[Πειραματικό] Απόκρυψη εφαρμογής με το Dhizuku.\nΜια σύγχρονη και βελτιωμένη λύση για την απόκρυψη εφαρμογών σε συσκευές που δεν έχουν root. Απαιτείται εγκατάσταση και ενεργοποίηση της εφαρμογής Dhizuku.</string>
+    <string name="apphider_dhizuku_description">Απόκρυψη εφαρμογής με το Dhizuku.\nΜια σύγχρονη και βελτιωμένη λύση για την απόκρυψη εφαρμογών σε συσκευές που δεν έχουν root. Απαιτείται εγκατάσταση και ενεργοποίηση της εφαρμογής Dhizuku.</string>
     <string name="force_unhide">Επιβολή αναίρεση απόκρυψης</string>
     <string name="force_unhide_description">Προσπάθεια επαναφοράς όλων. Χρήση της επιλογής μόνο όταν αντιμετωπίζετε προβλήματα.</string>
     <string name="force_unhide_confirm_msg">Προσπάθεια επαναφοράς όλων;\n\n<b>ΠΡΟΕΙΔΟΠΟΙΗΣΗ: </b>Αυτή η επιλογή ενδέχεται να καταστρέψει τα αρχεία σας. Χρήση μόνο όταν αντιμετωπίζετε προβλήματα και δεν μπορείτε να εκτελέσετε κανονικά τη λειτουργία \"αναίρεση απόκρυψης\".</string>
@@ -162,7 +162,7 @@
     <string name="filehider_none">Απενεργοποιημένη</string>
     <string name="filehider_obfuscate">Λειτουργία Θολώματος</string>
     <string name="filehider_chmod_description">Αλλαγή δικαιωμάτων των αρχείων για να γίνουν μη αναγνώσιμα. Απαιτείται πρόσβαση root. Η διαδικασία είναι άμεση.</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Ορισμένοι χρήστες Samsung ανέφεραν ότι η χρήση του ChmodFileHider προκάλεσε την αποτυχία εκκίνησης των συσκευών τους.</font> Ανατρέξτε στο GitHub στο ζήτημα #105 για περισσότερες πληροφορίες. Χρήση με δική σας ευθύνη.</b></string>
+    <string name="chmod_samsung_warning">Ορισμένοι χρήστες Samsung ανέφεραν ότι η χρήση του ChmodFileHider προκάλεσε την αποτυχία εκκίνησης των συσκευών τους. Ανατρέξτε στο GitHub στο ζήτημα #105 για περισσότερες πληροφορίες. Χρήση με δική σας ευθύνη.</string>
     <string name="welcome_msg">Το Amarok είναι ένα δωρεάν και ελεύθερο εργαλείο για την απόκρυψη ιδιωτικών αρχείων &amp; εφαρμογών.\n\nΛάβετε υπόψη ότι το Amarok δεν είναι ένα λογισμικό κρυπτογράφησης, αλλά ένα εργαλείο για την απόκρυψη πραγμάτων. Σας συμβουλεύουμε ανεπιφύλακτα να μην χρησιμοποιείτε το Amarok για την προστασία εμπιστευτικών αρχείων και εφαρμογών.\n\n<u>Αποποίηση ευθυνών: Το Amarok παρέχεται χωρίς εγγυήσεις ή προϋποθέσεις. Ο χρήστης είναι πλήρως υπεύθυνος για οποιαδήποτε βλάβη ή συνέπειες που μπορεί να προκύψουν από τη χρήση του Amarok.</u></string>
     <string name="invert_tile_color">Αντιστροφή χρώματος πλακιδίων</string>
     <string name="invert_tile_color_description">Από προεπιλογή, το πλακίδιο γρήγορων ρυθμίσεων εμφανίζεται ενεργοποιημένο όταν είναι ορατό το απόρρητο σας. Ενεργοποιήσει επιλογής για να αντιστρέψετε τη συμπεριφορά.</string>
@@ -187,4 +187,17 @@
     <string name="disable_security_when_unhidden_description">Απενεργοποίηση μεταμφίεσης και κλειδώματος εφαρμογών όταν δεν είναι κρυμμένα.</string>
     <string name="hide_amarok_icon">Απόκρυψη εικονιδίου</string>
     <string name="hide_amarok_icon_description">Απόκρυψη του Amarok από τον εκκινητή. Πληκτρολογήστε *#*#262765#*#* για να ανοίξετε το Amarok.</string>
+    <string name="confirm_with_countdown">Επιβεβαίωση (%1$ds)</string>
+    <string name="update_channel">Ενημέρωση καναλιού</string>
+    <string name="update_channel_release">Σταθερές εκδόσεις</string>
+    <string name="update_channel_beta">Beta προ-εκδόσεις</string>
+    <string name="update_available_title">Διαθέσιμη Ενημέρωση</string>
+    <string name="update_available_message">Η έκδοση %s είναι τώρα διαθέσιμη για ενημέρωση.</string>
+    <string name="view_on_github">Προβολή στο GitHub</string>
+    <string name="checking_update">Έλεγχος για ενημερώσεις…</string>
+    <string name="update_check_failed">Αποτυχία ελέγχου για ενημερώσεις</string>
+    <string name="hide_from_recents">Απόκρυψη από τα Πρόσφατα</string>
+    <string name="hide_from_recents_description">Απόκρυψη του Amarok από την οθόνη πρόσφατων εφαρμογών.</string>
+    <string name="hide_amarok_icon_dialog_title">Απόκρυψη Εικονιδίου Amarok</string>
+    <string name="hide_amarok_icon_dialog_message">Αυτή η επιλογή θα αποκρύψει το Amarok από τον εκκινητή. Μπορείτε να καλέσετε *#*#262765#*#* (το 262765 γράφει \"amarok\" στο πληκτρολόγιο T9) για να αποκτήσετε ξανά πρόσβαση στο Amarok.</string>
 </resources>

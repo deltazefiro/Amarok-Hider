@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="dhizuku_not_init">Dhizuku: Služba nie je k dispozícii. Uistite sa, že ste nainštalovali a aktivovali Dhizuku.</string>
-    <string name="unhidden_toast">Neskryté. Buďte opatrní.</string>
+    <string name="unhidden_toast">Odokryté</string>
     <string name="performing_force_unhide">Vykonávanie vynútenie odkrytia. Prosím, vydržte.</string>
     <string name="debug_info_description">Zobrazí informácie, ktoré pomáhajú pri odstraňovaní problémov.</string>
     <string name="app_name_calendar">Kalendár</string>
     <string name="about_description">Zobrazenie informácií o aplikácii.</string>
-    <string name="hidden_toast">Skryté. Cock-a-doodle-do~!</string>
+    <string name="hidden_toast">Skryté</string>
     <string name="obfuscate_filename_description">Urobí názov súboru nečitateľným pre človeka. Základná funkcia skrývania súborov, ktorú nie je možné vypnúť.</string>
     <string name="filehider_nomedia_description">Jednoducho vloží do priečinkov súbory .nomedia. Nie je potrebný prístup k rootu.</string>
     <string name="quick_hide_notification_title">Súkromie nie je skryté</string>
@@ -85,7 +85,7 @@
     <string name="unlock_required">Potrebné odomknutie</string>
     <string name="biometric_auth">Biometrické overovanie</string>
     <string name="filehider_nomedia">NoMedia Mode (Režim bez médií)</string>
-    <string name="check_update_on_start_description">Pri otvorení aplikácie Amarok skontrolujte, či sú k dispozícii nové verzie.</string>
+    <string name="check_update_on_start_description">Pri spustení skontrolovať, či nie sú k dispozícii nové verzie.</string>
     <string name="invalid_path">Nesprávna cesta.</string>
     <string name="analytics_description">Odoslanie anonymných hlásení o zlyhaní vývojárom na analýzu.</string>
     <string name="ok">OK</string>
@@ -122,7 +122,7 @@
     <string name="unhide">Odkryť</string>
     <string name="hide">Skryť</string>
     <string name="workmode">Pracovný režim</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Niektorí používatelia spoločnosti Samsung hlásili, že používanie nástroja ChmodFileHider spôsobilo, že sa ich zariadenia nespustia.</font> Viac informácií nájdete v probléme GitHub #105. Use at your own risk.</b></string>
+    <string name="chmod_samsung_warning">Niektorí používatelia zaradení Samsung hlásili, že používanie nástroja ChmodFileHider spôsobilo, že sa ich zariadenia nespustia. Viac informácií o probléme nájdete na GitHub #105. Používajte na vlastné riziko.</string>
     <string name="cancel">Zrušiť</string>
     <string name="usage">Využitie</string>
     <string name="alert_permission_denied">Povolenie na zobrazenie nad inými aplikáciami zamietnuté.</string>
@@ -144,8 +144,7 @@
     <string name="participate_translation">Podieľať sa na preklade</string>
     <string name="enable_analytics">Anonymné analýzy</string>
     <string name="force_unhide">Vynútiť odtajnenie</string>
-    <string name="apphider_dhizuku_description">[Experimentálne] Skrývanie aplikácií pomocou Dhizuku.
-\nModerné a vylepšené riešenie na skrývanie aplikácií na zariadeniach bez koreňového systému. Vyžaduje sa inštalácia a aktivácia aplikácie Dhizuku.</string>
+    <string name="apphider_dhizuku_description">Skrývanie aplikácií pomocou Dhizuku. \nModerné a vylepšené riešenie na skrývanie aplikácií na zariadeniach bez koreňového systému. Vyžaduje sa inštalácia a aktivácia aplikácie Dhizuku.</string>
     <string name="alert_permission_request_title">Vyžaduje sa povolenie na vytváranie vyskakovacích okien</string>
     <string name="password_length_error">Heslo musí mať 3 až 15 znakov.</string>
     <string name="filehider_not_ava_title">Skrývanie súborov nie je k dispozícii</string>
@@ -156,7 +155,7 @@
     <string name="password_mismatch_error">Heslá sa nezhodujú.</string>
     <string name="set_hide_apps">Nastavenie skrytých aplikácií</string>
     <string name="check_update_description">Aktuálna verzia: %s</string>
-    <string name="apphider_not_ava_title">Skrytie aplikácie neaktívne</string>
+    <string name="apphider_not_ava_title">Služba nie je k dispozícii</string>
     <string name="disguise_description">Zamaskuje Amarok za aplikáciu kalendára.</string>
     <string name="security">Zabezpečenie</string>
     <string name="hidden_status">Ukryté</string>
@@ -204,4 +203,18 @@
     <string name="disable_only_with_xhide_description">Zakáže iba aplikácie a nechá XHide, aby sa postaral výlučne o skrývanie. Môže sa znížiť oneskorenie počas skrývania.</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Nepodarilo sa udeliť `DELEGATION_PACKAGE_ACCESS`. Skúste prosím znovu aktivovať Dhizuku.</string>
     <string name="hide_amarok_icon">Skryť ikonu</string>
+    <string name="confirm_with_countdown">Potvrdiť (%1$ds)</string>
+    <string name="update_channel">Aktualizovať kanál</string>
+    <string name="update_channel_release">Stabilné verzie</string>
+    <string name="update_channel_beta">Predbežné verzie beta</string>
+    <string name="update_available_title">Aktualizácia je k dispozícii</string>
+    <string name="update_available_message">Verzia %s je teraz k dispozícii na aktualizáciu.</string>
+    <string name="view_on_github">Pozrieť na GitHub</string>
+    <string name="checking_update">Skontrolovať aktualizácie…</string>
+    <string name="update_check_failed">Nepodarilo sa skontrolovať aktualizácie</string>
+    <string name="hide_amarok_icon_description">Schovať Amarok z spúšťača telefónu. Zadajte *#*#262765#*#*, pre otvorenie aplikácie Amarok.</string>
+    <string name="hide_from_recents">Skryť z nedávnych</string>
+    <string name="hide_from_recents_description">Skryť Amarok z obrazovky nedávno použitých aplikácií.</string>
+    <string name="hide_amarok_icon_dialog_title">Skryť ikonu Amarok</string>
+    <string name="hide_amarok_icon_dialog_message">Táto voľba skryje Amarok z spúšťača telefónu. Pre opätovný prístup k Amaroku zadajte *#*#262765#*#* (262765 znamená „amarok” na klávesnici T9).</string>
 </resources>
