@@ -8,7 +8,7 @@ See @.cursor/rules/overview.mdc
 
 ## Build
 
-Requires JDK 17+:
+Requires JDK 21+:
 ```bash
 ./gradlew assemble  # Build APKs
 # Output: app/build/outputs/apk/{flavor}/{debug|release}/Amarok-v{version}+{commit}-{flavor}.apk
