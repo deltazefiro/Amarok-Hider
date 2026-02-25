@@ -1,0 +1,6 @@
+v0.10.1
+- Add dark theme selection
+- Add customizable panic button color and persistent position (#107, #108)
+- Prevent hiding root managers (KSU/Magisk forks) and privilege escalation managers (Shizuku, Dhizuku, etc.)
+- Fix file hiding with chmod on non-primary user (#242)
+- Fix preference persistence for hide paths and apps (#244)
