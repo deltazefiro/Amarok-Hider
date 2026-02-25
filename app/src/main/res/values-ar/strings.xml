@@ -12,12 +12,12 @@
     <string name="set_hide_apps">حدد التطبيقات لإخفائها</string>
     <string name="hidden_status">مخفي</string>
     <string name="dhizuku_not_init">Dhizuku: الخدمة غير متوفرة. يرجى التأكد من تثبيت وتنشيط Dhizuku.</string>
-    <string name="unhidden_toast">تم الاظهار. انتبه.</string>
+    <string name="unhidden_toast">غير مخفي</string>
     <string name="performing_force_unhide">تنفيذ الإظهار بالقوة. فضلا على رسلك.</string>
     <string name="debug_info_description">يعرض معلومات للمساعدة في استكشاف المشكلات وإصلاحها.</string>
     <string name="app_name_calendar">تقويم</string>
     <string name="about_description">عرض معلومات حول التطبيق.</string>
-    <string name="hidden_toast">تم الاخفاء. انت-ماذا-تفعل~!</string>
+    <string name="hidden_toast">مخفي</string>
     <string name="obfuscate_filename_description">يجعل اسم الملف غير قابل للقراءة البشرية. ميزة أساسية لإخفاء الملفات لا يمكن إيقافها.</string>
     <string name="quick_hide_notification_title">الخصوصية ليست مخفية</string>
     <string name="apphider_shizuku">وضع Shizuku (Sui)</string>
@@ -88,7 +88,7 @@
     <string name="help">المساعدة</string>
     <string name="unlock_required">إلغاء القفل مطلوب</string>
     <string name="biometric_auth">المصادقة الحيوية</string>
-    <string name="check_update_on_start_description">تحقق من وجود إصدارات Amarok جديدة عند فتح التطبيق.</string>
+    <string name="check_update_on_start_description">تحقق من وجود إصدارات جديدة عند بدء التشغيل.</string>
     <string name="invalid_path">مسار غير صالح.</string>
     <string name="analytics_description">إرسال تقارير الأعطال المجهولة إلى المطورين لتحليلها.</string>
     <string name="option_unava_when_hidden">الخيارات غير متوفرة في وضع الإخفاء.</string>
@@ -131,8 +131,7 @@
     <string name="participate_translation">المشاركة في الترجمة</string>
     <string name="enable_analytics">تحليلات مجهولة المصدر</string>
     <string name="force_unhide">فرض الإظهار</string>
-    <string name="apphider_dhizuku_description">[تجريبي] إخفاء التطبيق مع Dhizuku.
-\nحل حديث ومحسن لإخفاء التطبيقات على الأجهزة التي ليس بها روت. يلزم تثبيت وتفعيل تطبيق Dhizuku.</string>
+    <string name="apphider_dhizuku_description">إخفاء التطبيقات باستخدام Dhizuku.\nحلٌّ عصريٌّ ومُحسَّنٌ لإخفاء التطبيقات على الأجهزة غير المُجذَّرة. يتطلب الأمر تثبيت تطبيق Dhizuku وتفعيله.</string>
     <string name="alert_permission_request_title">مطلوب إذن لفرز النوافذ المنبثقة</string>
     <string name="password_length_error">يجب أن تكون كلمة المرور بين 3 و 15 حرفا.</string>
     <string name="usage_description">فتح مركز المساعدة.</string>
@@ -141,7 +140,7 @@
     <string name="participate_translation_description">ساعدنا في ترجمة \t  إلى لغتك.</string>
     <string name="password_mismatch_error">كلمات المرور غير متطابقة.</string>
     <string name="check_update_description">الإصدار الحالي: %s</string>
-    <string name="apphider_not_ava_title">وضع إخفاء التطبيق غير نشط</string>
+    <string name="apphider_not_ava_title">الخدمة غير متوفرة</string>
     <string name="disguise_description">تمويه Amarok كتطبيق تقويم.</string>
     <string name="security">الأمن</string>
     <string name="apphider_dsm">وضع DSM</string>
@@ -175,7 +174,7 @@
     <string name="filehider_not_ava_title">إخفاء الملف غير متوفر</string>
     <string name="filehider_chmod">وضع Chmod</string>
     <string name="warning">تحذير</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">أبلغ بعض مستخدمي Samsung أن استخدام وضع Chmod تسبب في فشل أجهزتهم في التمهيد (بوتلوب).</font> راجع مشكلة جيثب 105# لمزيد من المعلومات. الاستخدام على مسؤوليتك الخاصة.</b></string>
+    <string name="chmod_samsung_warning">أفاد بعض مستخدمي سامسونج أن استخدام أداة ChmodFileHider تسبب في فشل أجهزتهم في الإقلاع. راجع المشكلة رقم 105 على GitHub لمزيد من المعلومات. استخدمها على مسؤوليتك الخاصة.</string>
     <string name="auto_hide">إخفاء تلقائي</string>
     <string name="auto_hide_delay">تأخير الإخفاء التلقائي</string>
     <string name="auto_hide_delay_description">عدد دقائق التأخير قبل الإخفاء بعد إطفاء الشاشة.</string>
@@ -205,4 +204,17 @@
     <string name="disable_only_with_xhide_description">قم فقط بتعطيل التطبيقات ودَع XHide يتولى الإخفاء بشكل حصري. قد يقلل ذلك من التباطؤ أثناء عملية الإخفاء.</string>
     <string name="hide_amarok_icon">إخفاء الأيقونة</string>
     <string name="hide_amarok_icon_description">إخفاء Amarok من المشغل. اطلب *#*#262765#*#* لفتح Amarok.</string>
+    <string name="confirm_with_countdown">يتأكد (%1$ds)</string>
+    <string name="update_channel">تحديث القناة</string>
+    <string name="update_channel_release">‎إصدارات مستقرة</string>
+    <string name="update_channel_beta">إصدارات تجريبية أولية</string>
+    <string name="update_available_title">يتوفر تحديث</string>
+    <string name="update_available_message">الإصدار %s متاح الان للتحديث.</string>
+    <string name="view_on_github">عرض على GitHub</string>
+    <string name="checking_update">جارٍ التحقق من وجود تحديثات…</string>
+    <string name="update_check_failed">فشل التحقق من وجود تحديثات</string>
+    <string name="hide_from_recents">إخفاء من آخر الأخبار</string>
+    <string name="hide_from_recents_description">قم بإخفاء تطبيق Amarok من قائمة التطبيقات الحديثة.</string>
+    <string name="hide_amarok_icon_dialog_title">إخفاء أيقونة Amarok</string>
+    <string name="hide_amarok_icon_dialog_message">سيؤدي هذا الخيار إلى إخفاء Amarok من قائمة التطبيقات. يمكنك طلب الرقم *#*#262765#*#* (حيث يُكتب الرقم 262765 على لوحة مفاتيح T9 كلمة \"amarok\") للوصول إلى Amarok مرة أخرى.</string>
 </resources>

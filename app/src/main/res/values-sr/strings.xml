@@ -129,8 +129,7 @@
     <string name="participate_translation">Учествуј у превођењу</string>
     <string name="enable_analytics">Анонимна аналитика</string>
     <string name="force_unhide">Присилно откриј</string>
-    <string name="apphider_dhizuku_description">[Експериментално] Сакривање апликација помоћу Dhizuku-а.
-\nМодерно и побољшано решење за сакривање апликација на уређајима без root-а. Потребна је инсталација и активација апликације Dhizuku.</string>
+    <string name="apphider_dhizuku_description">[Експериментално] Сакривање апликација помоћу Dhizuku-а. \nМодерно и побољшано решење за сакривање апликација на уређајима без root-а. Потребна је инсталација и активација апликације Dhizuku.</string>
     <string name="alert_permission_request_title">Потребна је дозвола за покретање искачућих прозора</string>
     <string name="password_length_error">Лозинка мора бити између 3 и 15 знакова.</string>
     <string name="usage_description">Отворите центар за помоћ.</string>
