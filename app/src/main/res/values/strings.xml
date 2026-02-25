@@ -182,6 +182,7 @@
     <string name="filehider_chmod_description">Change file permissions to make them unreadable. Root access required. The procedure is immediate.</string>
     <string name="filehider_nomedia">NoMedia Mode</string>
     <string name="filehider_nomedia_description">Simply adds .nomedia to folders. No root access required.</string>
+    <string name="filehider_truncate_long_names">Truncates overly long file names for better filesystem compatibility. No root access required.</string>
     <string name="welcome_title">Welcome</string>
     <string name="welcome_msg">Amarok is a free and freedom tool for hiding private files &amp; applications.\n\nPlease note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.\n\n<u>Disclaimers: Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.</u></string>
     <string name="warning">WARNING</string>

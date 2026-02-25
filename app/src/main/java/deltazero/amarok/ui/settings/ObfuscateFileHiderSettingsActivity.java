@@ -11,7 +11,7 @@ import deltazero.amarok.R;
 
 public class ObfuscateFileHiderSettingsActivity extends AmarokActivity {
 
-    private MaterialSwitch swObfuscateFileHeader, swObfuscateTextFile, swObfuscateTextFileEnhanced;
+    private MaterialSwitch swObfuscateFileHeader, swObfuscateTextFile, swObfuscateTextFileEnhanced, swTruncateFileNames;
     private MaterialToolbar tbToolBar;
 
     @Override
@@ -22,6 +22,7 @@ public class ObfuscateFileHiderSettingsActivity extends AmarokActivity {
         swObfuscateFileHeader = findViewById(R.id.switch_filehider_sw_obfuscate_header);
         swObfuscateTextFile = findViewById(R.id.switch_filehider_sw_obfuscate_text);
         swObfuscateTextFileEnhanced = findViewById(R.id.switch_filehider_sw_obfuscate_text_enhanced);
+        swTruncateFileNames = findViewById(R.id.filehider_truncate_long_names);
         tbToolBar = findViewById(R.id.switch_filehider_tb_toolbar);
 
         // Init UI
@@ -44,6 +45,11 @@ public class ObfuscateFileHiderSettingsActivity extends AmarokActivity {
             PrefMgr.setEnableObfuscateTextFileEnhanced(isChecked);
             updateUI();
         });
+        swTruncateFileNames.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            PrefMgr.setTruncate(isChecked);
+            updateUI();
+        });
+        
 
         // Enable back button
         tbToolBar.setNavigationOnClickListener(v -> finish());
@@ -62,6 +68,7 @@ public class ObfuscateFileHiderSettingsActivity extends AmarokActivity {
         swObfuscateFileHeader.setChecked(PrefMgr.getEnableObfuscateFileHeader());
         swObfuscateTextFile.setChecked(PrefMgr.getEnableObfuscateTextFile());
         swObfuscateTextFileEnhanced.setChecked(PrefMgr.getEnableObfuscateTextFileEnhanced());
+        swTruncateFileNames.setChecked(PrefMgr.getTruncate());
 
         swObfuscateTextFile.setEnabled(PrefMgr.getEnableObfuscateFileHeader());
         swObfuscateTextFileEnhanced.setEnabled(PrefMgr.getEnableObfuscateFileHeader() && PrefMgr.getEnableObfuscateTextFile());
