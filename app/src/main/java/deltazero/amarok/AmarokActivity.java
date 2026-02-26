@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.WindowCompat;
+import androidx.activity.EdgeToEdge;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class AmarokActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Enable edge-to-edge display
-        WindowCompat.enableEdgeToEdge(getWindow());
+        EdgeToEdge.enable(this);
     }
     
     @Override
