@@ -33,9 +33,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clipToBounds
+import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -155,9 +159,9 @@ fun MainScreen(
                                 .size(150.dp)
                                 .offset(x = 55.dp),
                             colorFilter = if (state == Hider.State.HIDDEN)
-                                androidx.compose.ui.graphics.ColorFilter.tint(
+                                ColorFilter.tint(
                                     Color(0xFF1F1F1F),
-                                    blendMode = androidx.compose.ui.graphics.BlendMode.Modulate
+                                    blendMode = BlendMode.Modulate
                                 )
                             else null
                         )
@@ -168,46 +172,45 @@ fun MainScreen(
             Spacer(Modifier.height(35.dp))
 
             // Action buttons
-            TextButton(
-                onClick = onSetHideFiles,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp)
-                    .padding(horizontal = 50.dp)
-            ) {
-                Icon(painterResource(R.drawable.ic_folder), contentDescription = null)
-                Spacer(Modifier.width(15.dp))
-                Text(stringResource(R.string.set_hide_files))
-                Spacer(Modifier.weight(1f))
-            }
+            ActionButton(
+                icon = R.drawable.ic_folder,
+                text = R.string.set_hide_files,
+                onClick = onSetHideFiles
+            )
 
-            TextButton(
-                onClick = onSetHideApps,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp)
-                    .padding(horizontal = 50.dp)
-            ) {
-                Icon(painterResource(R.drawable.ic_app), contentDescription = null)
-                Spacer(Modifier.width(15.dp))
-                Text(stringResource(R.string.set_hide_apps))
-                Spacer(Modifier.weight(1f))
-            }
+            ActionButton(
+                icon = R.drawable.ic_app,
+                text = R.string.set_hide_apps,
+                onClick = onSetHideApps
+            )
 
-            TextButton(
-                onClick = onSettings,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(60.dp)
-                    .padding(horizontal = 50.dp)
-            ) {
-                Icon(painterResource(R.drawable.ic_settings), contentDescription = null)
-                Spacer(Modifier.width(15.dp))
-                Text(stringResource(R.string.more_settings))
-                Spacer(Modifier.weight(1f))
-            }
+            ActionButton(
+                icon = R.drawable.ic_settings,
+                text = R.string.more_settings,
+                onClick = onSettings
+            )
 
             Spacer(Modifier.height(42.dp))
         }
+    }
+}
+
+@Composable
+private fun ActionButton(
+    @DrawableRes icon: Int,
+    @StringRes text: Int,
+    onClick: () -> Unit
+) {
+    TextButton(
+        onClick = onClick,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(60.dp)
+            .padding(horizontal = 50.dp)
+    ) {
+        Icon(painterResource(icon), contentDescription = null)
+        Spacer(Modifier.width(15.dp))
+        Text(stringResource(text))
+        Spacer(Modifier.weight(1f))
     }
 }
