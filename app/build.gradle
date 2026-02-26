@@ -141,7 +141,6 @@ dependencies {
     appcenterImplementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
     appcenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
 
-    implementation 'dev.rikka.rikkax.material:material-preference:2.0.0'
     implementation 'dev.rikka.rikkax.appcompat:appcompat:1.6.1'
     implementation 'io.github.iamr0s:Dhizuku-API:2.5.4'
     implementation 'com.github.getActivity:XXPermissions:20.0'
@@ -159,7 +158,6 @@ dependencies {
     implementation 'androidx.biometric:biometric:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.preference:preference:1.2.1'
     implementation 'androidx.work:work-runtime:2.11.0'
     implementation 'org.apache.maven:maven-artifact:3.9.11'
 
