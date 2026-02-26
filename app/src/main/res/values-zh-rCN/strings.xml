@@ -200,4 +200,11 @@
     <string name="confirm_with_countdown">确认（%1$d 秒）</string>
     <string name="hide_amarok_icon_dialog_title">隐藏 Amarok 图标</string>
     <string name="hide_amarok_icon_dialog_message">此选项将使启动器中看不到 Amarok。可以在拨号器上按 *#*#262765#*#* (T9 键盘上按 262765 会拼写出 “amarok”）再次访问 Amarok。</string>
+    <string name="panic_button_color">紧急按钮颜色</string>
+    <string name="panic_button_color_description">自定义紧急按钮颜色。</string>
+    <string name="dark_theme">深色主题</string>
+    <string name="dark_theme_description">选择应用主题</string>
+    <string name="dark_theme_follow_system">跟随系统</string>
+    <string name="dark_theme_light">浅色</string>
+    <string name="dark_theme_dark">深色</string>
 </resources>

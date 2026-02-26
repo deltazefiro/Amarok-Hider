@@ -200,4 +200,11 @@
     <string name="hide_from_recents_description">Απόκρυψη του Amarok από την οθόνη πρόσφατων εφαρμογών.</string>
     <string name="hide_amarok_icon_dialog_title">Απόκρυψη Εικονιδίου Amarok</string>
     <string name="hide_amarok_icon_dialog_message">Αυτή η επιλογή θα αποκρύψει το Amarok από τον εκκινητή. Μπορείτε να καλέσετε *#*#262765#*#* (το 262765 γράφει \"amarok\" στο πληκτρολόγιο T9) για να αποκτήσετε ξανά πρόσβαση στο Amarok.</string>
+    <string name="panic_button_color">Χρώμα κουμπιού πανικού</string>
+    <string name="panic_button_color_description">Προσαρμόστε το χρώμα του κουμπιού πανικού.</string>
+    <string name="dark_theme">Σκούρο θέμα</string>
+    <string name="dark_theme_description">Επιλογή θέματος εφαρμογής</string>
+    <string name="dark_theme_follow_system">Ακολουθώντας το σύστημα</string>
+    <string name="dark_theme_light">Φωτεινό</string>
+    <string name="dark_theme_dark">Σκούρο</string>
 </resources>
