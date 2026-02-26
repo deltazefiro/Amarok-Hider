@@ -52,9 +52,9 @@ private fun ObfuscateSettingsScreen(onBack: () -> Unit) {
                 .padding(padding)
                 .verticalScroll(rememberScrollState())
         ) {
-            SwitchSettingItem(
+            SwitchPreferenceItem(
                 title = stringResource(R.string.obfuscate_file_header),
-                description = stringResource(R.string.obfuscate_file_header_description),
+                summary = stringResource(R.string.obfuscate_file_header_description),
                 checked = obfuscateHeader,
                 onCheckedChange = { checked ->
                     obfuscateHeader = checked
@@ -67,9 +67,9 @@ private fun ObfuscateSettingsScreen(onBack: () -> Unit) {
                     }
                 }
             )
-            SwitchSettingItem(
+            SwitchPreferenceItem(
                 title = stringResource(R.string.obfuscate_text_file),
-                description = stringResource(R.string.obfuscate_text_file_description),
+                summary = stringResource(R.string.obfuscate_text_file_description),
                 checked = obfuscateText,
                 enabled = obfuscateHeader,
                 onCheckedChange = { checked ->
@@ -81,9 +81,9 @@ private fun ObfuscateSettingsScreen(onBack: () -> Unit) {
                     }
                 }
             )
-            SwitchSettingItem(
+            SwitchPreferenceItem(
                 title = stringResource(R.string.obfuscate_text_file_enhanced),
-                description = stringResource(R.string.obfuscate_text_file_description_enhanced),
+                summary = stringResource(R.string.obfuscate_text_file_description_enhanced),
                 checked = obfuscateTextEnhanced,
                 enabled = obfuscateHeader && obfuscateText,
                 onCheckedChange = { checked ->

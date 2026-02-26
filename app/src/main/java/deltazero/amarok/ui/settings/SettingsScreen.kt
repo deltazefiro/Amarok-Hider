@@ -1,8 +1,11 @@
 package deltazero.amarok.ui.settings
 
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.widget.Toast
+import androidx.annotation.DrawableRes
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -19,10 +22,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import deltazero.amarok.Hider
 import deltazero.amarok.PrefMgr
+import deltazero.amarok.QuickHideService
 import deltazero.amarok.R
 import deltazero.amarok.utils.AppCenterUtil
+import deltazero.amarok.utils.HashUtil
+import deltazero.amarok.utils.LauncherIconController
+import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.UpdateUtil
 import deltazero.amarok.utils.XHidePrefBridge
+
+@Composable
+private fun prefIcon(@DrawableRes id: Int) = @Composable {
+    Icon(painterResource(id), contentDescription = null, modifier = Modifier.fillMaxSize())
+}
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -78,13 +90,13 @@ private fun WorkmodeSection(onSwitchAppHider: () -> Unit, onSwitchFileHider: () 
     ClickPreferenceItem(
         title = stringResource(R.string.switch_app_hider),
         summary = stringResource(R.string.current_mode, PrefMgr.getAppHider(context).name),
-        icon = { Icon(painterResource(R.drawable.apps_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.apps_black_24dp),
         onClick = onSwitchAppHider
     )
     ClickPreferenceItem(
         title = stringResource(R.string.switch_file_hider),
         summary = stringResource(R.string.current_mode, PrefMgr.getFileHider(context).name),
-        icon = { Icon(painterResource(R.drawable.folder_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.folder_black_24dp),
         onClick = onSwitchFileHider
     )
 }
@@ -106,7 +118,7 @@ private fun XHideSection() {
         title = stringResource(R.string.enable_x_hide),
         summary = if (isAvailable) stringResource(R.string.xposed_active, XHidePrefBridge.xposedVersion.toString())
         else stringResource(R.string.xposed_inactive),
-        icon = { Icon(painterResource(R.drawable.domino_mask_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.domino_mask_fill0_wght400_grad0_opsz24),
         checked = enableXHide,
         enabled = isAvailable,
         onCheckedChange = { checked ->
@@ -117,7 +129,7 @@ private fun XHideSection() {
     SwitchPreferenceItem(
         title = stringResource(R.string.disable_only_with_xhide),
         summary = stringResource(R.string.disable_only_with_xhide_description),
-        icon = { Icon(painterResource(R.drawable.visibility_off_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.visibility_off_24dp),
         checked = disableOnlyWithXHide,
         enabled = isAvailable && enableXHide,
         onCheckedChange = { checked ->
@@ -148,14 +160,14 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.app_lock),
         summary = stringResource(R.string.app_lock_description),
-        icon = { Icon(painterResource(R.drawable.lock_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.lock_black_24dp),
         checked = hasPassword,
         onCheckedChange = { checked ->
             if (checked) {
                 onSetPassword { password ->
                     if (password != null) {
-                        PrefMgr.setAmarokPassword(deltazero.amarok.utils.HashUtil.calculateHash(password))
-                        deltazero.amarok.utils.SecurityUtil.unlock()
+                        PrefMgr.setAmarokPassword(HashUtil.calculateHash(password))
+                        SecurityUtil.unlock()
                     }
                     hasPassword = PrefMgr.getAmarokPassword() != null
                     biometricAuth = PrefMgr.getEnableAmarokBiometricAuth()
@@ -171,7 +183,7 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.biometric_auth),
         summary = stringResource(R.string.biometric_auth_description),
-        icon = { Icon(painterResource(R.drawable.fingerprint_24dp_1f1f1f_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.fingerprint_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         checked = biometricAuth,
         enabled = hasPassword,
         onCheckedChange = { checked ->
@@ -184,19 +196,19 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.disguise),
         summary = stringResource(R.string.disguise_description),
-        icon = { Icon(painterResource(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         checked = disguise,
         enabled = !hideIcon,
         onCheckedChange = { checked ->
             disguise = checked
             PrefMgr.setEnableDisguise(checked)
             PrefMgr.setDoShowQuitDisguiseInstuct(true)
-            if (checked) deltazero.amarok.utils.SecurityUtil.lockAndDisguise()
-            (context as? android.app.Activity)?.let {
-                deltazero.amarok.utils.LauncherIconController.setIconState(
+            if (checked) SecurityUtil.lockAndDisguise()
+            (context as? Activity)?.let {
+                LauncherIconController.setIconState(
                     it,
-                    if (checked) deltazero.amarok.utils.LauncherIconController.IconState.DISGUISED
-                    else deltazero.amarok.utils.LauncherIconController.IconState.VISIBLE
+                    if (checked) LauncherIconController.IconState.DISGUISED
+                    else LauncherIconController.IconState.VISIBLE
                 )
             }
         }
@@ -206,7 +218,7 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.hide_amarok_icon),
         summary = stringResource(R.string.hide_amarok_icon_description),
-        icon = { Icon(painterResource(R.drawable.hide_source_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.hide_source_black_24dp),
         checked = hideIcon,
         onCheckedChange = { checked ->
             if (checked) {
@@ -214,10 +226,10 @@ private fun PrivacySection(
                     { // onConfirm
                         disguise = false
                         PrefMgr.setEnableDisguise(false)
-                        (context as? android.app.Activity)?.let {
-                            deltazero.amarok.utils.LauncherIconController.setIconState(
+                        (context as? Activity)?.let {
+                            LauncherIconController.setIconState(
                                 it,
-                                deltazero.amarok.utils.LauncherIconController.IconState.HIDDEN
+                                LauncherIconController.IconState.HIDDEN
                             )
                         }
                         hideIcon = true
@@ -229,10 +241,10 @@ private fun PrivacySection(
             } else {
                 hideIcon = false
                 PrefMgr.setHideAmarokIcon(false)
-                (context as? android.app.Activity)?.let {
-                    deltazero.amarok.utils.LauncherIconController.setIconState(
+                (context as? Activity)?.let {
+                    LauncherIconController.setIconState(
                         it,
-                        deltazero.amarok.utils.LauncherIconController.IconState.VISIBLE
+                        LauncherIconController.IconState.VISIBLE
                     )
                 }
             }
@@ -243,7 +255,7 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.hide_from_recents),
         summary = stringResource(R.string.hide_from_recents_description),
-        icon = { Icon(painterResource(R.drawable.search_activity_24dp_1f1f1f_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.search_activity_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         checked = hideFromRecents,
         onCheckedChange = { checked ->
             hideFromRecents = checked
@@ -256,7 +268,7 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.block_screenshots),
         summary = stringResource(R.string.block_screenshots_description),
-        icon = { Icon(painterResource(R.drawable.cancel_presentation_24dp_1f1f1f_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.cancel_presentation_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         checked = blockScreenshots,
         onCheckedChange = { checked ->
             blockScreenshots = checked
@@ -269,7 +281,7 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.disable_security_when_unhidden),
         summary = stringResource(R.string.disable_security_when_unhidden_description),
-        icon = { Icon(painterResource(R.drawable.encrypted_off_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.encrypted_off_24dp),
         checked = disableSecurityWhenUnhidden,
         onCheckedChange = { checked ->
             disableSecurityWhenUnhidden = checked
@@ -281,7 +293,7 @@ private fun PrivacySection(
     SwitchPreferenceItem(
         title = stringResource(R.string.disable_toasts),
         summary = stringResource(R.string.disable_toasts_description),
-        icon = { Icon(painterResource(R.drawable.speaker_notes_off_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.speaker_notes_off_24dp),
         checked = disableToasts,
         onCheckedChange = { checked ->
             disableToasts = checked
@@ -308,7 +320,7 @@ private fun QuickHideSection(
     SwitchPreferenceItem(
         title = stringResource(R.string.notification),
         summary = stringResource(R.string.quick_hide_notification_description),
-        icon = { Icon(painterResource(R.drawable.notifications_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.notifications_black_24dp),
         checked = quickHideService,
         onCheckedChange = { checked ->
             if (checked) {
@@ -316,7 +328,7 @@ private fun QuickHideSection(
                     { // granted
                         quickHideService = true
                         PrefMgr.setEnableQuickHideService(true)
-                        deltazero.amarok.QuickHideService.startService(context)
+                        QuickHideService.startService(context)
                     },
                     { // denied
                         quickHideService = false
@@ -328,7 +340,7 @@ private fun QuickHideSection(
                 PrefMgr.setEnableQuickHideService(false)
                 panicButton = false
                 PrefMgr.setEnablePanicButton(false)
-                deltazero.amarok.QuickHideService.stopService(context)
+                QuickHideService.stopService(context)
             }
         }
     )
@@ -337,7 +349,7 @@ private fun QuickHideSection(
     SwitchPreferenceItem(
         title = stringResource(R.string.panic_button),
         summary = stringResource(R.string.panic_button_description),
-        icon = { Icon(painterResource(R.drawable.crisis_alert_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.crisis_alert_black_24dp),
         checked = panicButton,
         enabled = quickHideService,
         onCheckedChange = { checked ->
@@ -346,7 +358,7 @@ private fun QuickHideSection(
                     { // granted
                         panicButton = true
                         PrefMgr.setEnablePanicButton(true)
-                        deltazero.amarok.QuickHideService.startService(context)
+                        QuickHideService.startService(context)
                     },
                     { // denied
                         panicButton = false
@@ -357,8 +369,8 @@ private fun QuickHideSection(
                 panicButton = false
                 PrefMgr.setEnablePanicButton(false)
                 PrefMgr.resetPanicButtonPosition()
-                deltazero.amarok.QuickHideService.stopService(context)
-                deltazero.amarok.QuickHideService.startService(context)
+                QuickHideService.stopService(context)
+                QuickHideService.startService(context)
             }
         }
     )
@@ -367,7 +379,7 @@ private fun QuickHideSection(
     ClickPreferenceItem(
         title = stringResource(R.string.panic_button_color),
         summary = stringResource(R.string.panic_button_color_description),
-        icon = { Icon(painterResource(R.drawable.colors_24dp_1f1f1f_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.colors_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         enabled = quickHideService && panicButton,
         onClick = onShowColorPicker
     )
@@ -376,7 +388,7 @@ private fun QuickHideSection(
     SwitchPreferenceItem(
         title = stringResource(R.string.auto_hide),
         summary = stringResource(R.string.auto_hide_description),
-        icon = { Icon(painterResource(R.drawable.lock_clock_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24),
         checked = autoHide,
         enabled = quickHideService,
         onCheckedChange = { checked ->
@@ -389,7 +401,7 @@ private fun QuickHideSection(
     SliderPreferenceItem(
         title = stringResource(R.string.auto_hide_delay),
         summary = stringResource(R.string.auto_hide_delay_description),
-        icon = { Icon(painterResource(R.drawable.timer_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.timer_fill0_wght400_grad0_opsz24),
         value = autoHideDelay,
         valueRange = 0f..30f,
         steps = 29,
@@ -412,7 +424,7 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
     SwitchPreferenceItem(
         title = stringResource(R.string.enable_dynamic_color),
         summary = stringResource(R.string.dynamic_color_description),
-        icon = { Icon(painterResource(R.drawable.palette_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.palette_black_24dp),
         checked = dynamicColor,
         onCheckedChange = { checked ->
             dynamicColor = checked
@@ -427,9 +439,9 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
 
     if (showDarkThemeDialog) {
         val options = listOf(
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM to stringResource(R.string.dark_theme_follow_system),
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO to stringResource(R.string.dark_theme_light),
-            androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES to stringResource(R.string.dark_theme_dark),
+            AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM to stringResource(R.string.dark_theme_follow_system),
+            AppCompatDelegate.MODE_NIGHT_NO to stringResource(R.string.dark_theme_light),
+            AppCompatDelegate.MODE_NIGHT_YES to stringResource(R.string.dark_theme_dark),
         )
         AlertDialog(
             onDismissRequest = { showDarkThemeDialog = false },
@@ -443,7 +455,7 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
                                 .clickable {
                                     darkThemeMode = mode
                                     PrefMgr.setDarkTheme(mode)
-                                    androidx.appcompat.app.AppCompatDelegate.setDefaultNightMode(mode)
+                                    AppCompatDelegate.setDefaultNightMode(mode)
                                     showDarkThemeDialog = false
                                 }
                                 .padding(vertical = 12.dp),
@@ -469,33 +481,33 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
         title = stringResource(R.string.dark_theme),
         summary = stringResource(
             when (darkThemeMode) {
-                androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES -> R.string.dark_theme_dark
-                androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO -> R.string.dark_theme_light
+                AppCompatDelegate.MODE_NIGHT_YES -> R.string.dark_theme_dark
+                AppCompatDelegate.MODE_NIGHT_NO -> R.string.dark_theme_light
                 else -> R.string.dark_theme_follow_system
             }
         ),
-        icon = { Icon(painterResource(R.drawable.contrast_24dp_1f1f1f_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.contrast_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         onClick = { showDarkThemeDialog = true }
     )
 
     ClickPreferenceItem(
         title = stringResource(R.string.language),
         summary = stringResource(R.string.language_description),
-        icon = { Icon(painterResource(R.drawable.ic_language), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.ic_language),
         onClick = onSwitchLocale
     )
 
     ClickPreferenceItem(
         title = stringResource(R.string.participate_translation),
         summary = stringResource(R.string.participate_translation_description),
-        icon = { Icon(painterResource(R.drawable.translate_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.translate_black_24dp),
         onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://hosted.weblate.org/engage/amarok-hider/"))) }
     )
 
     SwitchPreferenceItem(
         title = stringResource(R.string.invert_tile_color),
         summary = stringResource(R.string.invert_tile_color_description),
-        icon = { Icon(painterResource(R.drawable.invert_colors_24dp_5f6368_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.invert_colors_24dp_5f6368_fill0_wght400_grad0_opsz24),
         checked = invertTileColor,
         onCheckedChange = { checked ->
             invertTileColor = checked
@@ -523,13 +535,13 @@ private fun UpdateSection() {
     ClickPreferenceItem(
         title = stringResource(R.string.check_update),
         summary = stringResource(R.string.check_update_description, appVersionName ?: "?"),
-        icon = { Icon(painterResource(R.drawable.update_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.update_black_24dp),
         onClick = { UpdateUtil.checkAndNotify(context, false) }
     )
 
     DropdownPreferenceItem(
         title = stringResource(R.string.update_channel),
-        icon = { Icon(painterResource(R.drawable.alt_route_24dp_1f1f1f_fill0_wght400_grad0_opsz24), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.alt_route_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
         selectedValue = updateChannel,
         options = listOf(
             UpdateUtil.UpdateChannel.RELEASE.name to stringResource(R.string.update_channel_release),
@@ -544,7 +556,7 @@ private fun UpdateSection() {
     SwitchPreferenceItem(
         title = stringResource(R.string.check_update_on_start),
         summary = stringResource(R.string.check_update_on_start_description),
-        icon = { Icon(painterResource(R.drawable.autorenew_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.autorenew_black_24dp),
         checked = autoUpdate,
         onCheckedChange = { checked ->
             autoUpdate = checked
@@ -567,7 +579,7 @@ private fun AboutSection() {
                 TextButton(onClick = {
                     Hider.forceUnhide(context)
                     Toast.makeText(context, R.string.performing_force_unhide, Toast.LENGTH_LONG).show()
-                    (context as? android.app.Activity)?.finish()
+                    (context as? Activity)?.finish()
                 }) { Text(stringResource(R.string.confirm)) }
             },
             dismissButton = {
@@ -583,7 +595,7 @@ private fun AboutSection() {
     SwitchPreferenceItem(
         title = stringResource(R.string.enable_analytics),
         summary = stringResource(R.string.analytics_description),
-        icon = { Icon(painterResource(R.drawable.feedback_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.feedback_black_24dp),
         checked = AppCenterUtil.isAnalyticsEnabled(),
         enabled = AppCenterUtil.isAvailable(),
         onCheckedChange = { checked ->
@@ -595,28 +607,28 @@ private fun AboutSection() {
     ClickPreferenceItem(
         title = stringResource(R.string.force_unhide),
         summary = stringResource(R.string.force_unhide_description),
-        icon = { Icon(painterResource(R.drawable.settings_backup_restore_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.settings_backup_restore_black_24dp),
         onClick = { showForceUnhideDialog = true }
     )
 
     ClickPreferenceItem(
         title = stringResource(R.string.view_github_repo),
         summary = stringResource(R.string.view_github_repo_description),
-        icon = { Icon(painterResource(R.drawable.code_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.code_black_24dp),
         onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider"))) }
     )
 
     ClickPreferenceItem(
         title = stringResource(R.string.join_developer_channel),
         summary = stringResource(R.string.developer_channel_telegram),
-        icon = { Icon(painterResource(R.drawable.ic_telegram), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.ic_telegram),
         onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/amarok_dev"))) }
     )
 
     ClickPreferenceItem(
         title = stringResource(R.string.usage),
         summary = stringResource(R.string.usage_description),
-        icon = { Icon(painterResource(R.drawable.help_outline_black_24dp), null, modifier = Modifier.fillMaxSize()) },
+        icon = prefIcon(R.drawable.help_outline_black_24dp),
         onClick = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(R.string.doc_url)))) }
     )
 }

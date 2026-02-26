@@ -102,16 +102,14 @@ fun SetHideAppScreen(
                 LinearProgressIndicator(modifier = Modifier.fillMaxWidth())
             }
 
-            Box(modifier = Modifier.fillMaxSize()) {
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(apps, key = { it.packageName() }) { app ->
-                        AppListItem(
-                            app = app,
-                            isHidden = isHidden(app),
-                            onToggle = { onToggleApp(app) }
-                        )
-                        HorizontalDivider()
-                    }
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(apps, key = { it.packageName() }) { app ->
+                    AppListItem(
+                        app = app,
+                        isHidden = isHidden(app),
+                        onToggle = { onToggleApp(app) }
+                    )
+                    HorizontalDivider()
                 }
             }
         }
