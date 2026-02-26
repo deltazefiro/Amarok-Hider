@@ -217,4 +217,11 @@
     <string name="hide_from_recents_description">Ocultar Amarok desde la pantalla reciente de apps.</string>
     <string name="hide_amarok_icon_dialog_title">Ocultar Icono de Amarok</string>
     <string name="hide_amarok_icon_dialog_message">Esta opción ocultará Amarok desde el lanzador. Puedes marcar *#*#262765#*#* (262765 olas \"amarok\" en teclado numérico T9) para acceder otra vez a Amarok.</string>
+    <string name="panic_button_color">Color del botón de pánico</string>
+    <string name="panic_button_color_description">Personalizar el color del botón de pánico.</string>
+    <string name="dark_theme">Tema oscuro</string>
+    <string name="dark_theme_description">Seleccionar tema de app</string>
+    <string name="dark_theme_follow_system">Sigue el sistema</string>
+    <string name="dark_theme_light">Claro</string>
+    <string name="dark_theme_dark">Oscuro</string>
 </resources>
