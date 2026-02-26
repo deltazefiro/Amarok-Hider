@@ -112,8 +112,4 @@ class MainActivity : AmarokActivity() {
         }
         startActivity(Intent(this, SetHideFilesActivity::class.java))
     }
-
-    override fun onResume() {
-        super.onResume()
-    }
 }

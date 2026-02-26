@@ -51,33 +51,6 @@ fun RadioOptionItem(
     }
 }
 
-@Composable
-fun SwitchSettingItem(
-    title: String,
-    description: String,
-    checked: Boolean,
-    enabled: Boolean = true,
-    onCheckedChange: (Boolean) -> Unit
-) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 36.dp, end = 28.dp, top = 20.dp, bottom = 20.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(modifier = Modifier.weight(1f)) {
-            Text(text = title, style = MaterialTheme.typography.titleSmall)
-            Text(text = description, fontSize = 12.sp)
-        }
-        Spacer(Modifier.width(15.dp))
-        Switch(
-            checked = checked,
-            onCheckedChange = onCheckedChange,
-            enabled = enabled
-        )
-    }
-}
-
 // Category section header
 @Composable
 fun PreferenceGroupHeader(title: String) {
