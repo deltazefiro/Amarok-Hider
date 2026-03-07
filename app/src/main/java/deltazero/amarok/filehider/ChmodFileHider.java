@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 
 import com.topjohnwu.superuser.Shell;
+import com.topjohnwu.superuser.ShellUtils;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,7 +30,10 @@ public class ChmodFileHider extends BaseFileHider {
         Shell.Job processJob = Shell.getShell().newJob();
 
         processDirs.stream()
-                .map(d -> String.format("chmod -R %s %s", method == ProcessMethod.HIDE ? 0 : 2770, d))
+                .map(d -> String.format("chmod -R %s %s",
+                        method == ProcessMethod.HIDE ? 0 : 2770,
+                        ShellUtils.escapedString(d)
+                ))
                 .forEach(processJob::add);
 
         processJob.submit(result -> MediaStoreHelper.scan(context, processDirs));
