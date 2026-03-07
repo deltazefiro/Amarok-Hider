@@ -17,20 +17,23 @@ public class RootAppHider extends BaseAppHider {
     @Override
     public void hide(Set<String> pkgNames, boolean disableOnly) {
         for (String p : pkgNames) {
+            String escaped = "'" + p.replace("'", "'\\''") + "'";
             if (disableOnly) {
                 // Only disable, skip hide step
-                Shell.cmd(String.format("pm disable %s", p)).submit();
+                Shell.cmd(String.format("pm disable %s", escaped)).submit();
             } else {
                 // Normal behavior: both disable and hide
-                Shell.cmd(String.format("pm disable %s & pm hide %s", p, p)).submit();
+                Shell.cmd(String.format("pm disable %s & pm hide %s", escaped, escaped)).submit();
             }
         }
     }
 
     @Override
     public void unhide(Set<String> pkgNames) {
-        for (String p : pkgNames)
-            Shell.cmd(String.format("pm unhide %s & pm enable %s", p, p)).submit();
+        for (String p : pkgNames) {
+            String escaped = "'" + p.replace("'", "'\\''") + "'";
+            Shell.cmd(String.format("pm unhide %s & pm enable %s", escaped, escaped)).submit();
+        }
     }
 
     @Override

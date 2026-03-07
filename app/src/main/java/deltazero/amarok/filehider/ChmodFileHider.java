@@ -29,7 +29,10 @@ public class ChmodFileHider extends BaseFileHider {
         Shell.Job processJob = Shell.getShell().newJob();
 
         processDirs.stream()
-                .map(d -> String.format("chmod -R %s %s", method == ProcessMethod.HIDE ? 0 : 2770, d))
+                .map(d -> String.format("chmod -R %s '%s'",
+                        method == ProcessMethod.HIDE ? 0 : 2770,
+                        d.replace("'", "'\\''")
+                ))
                 .forEach(processJob::add);
 
         processJob.submit(result -> MediaStoreHelper.scan(context, processDirs));
