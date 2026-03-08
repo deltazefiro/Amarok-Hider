@@ -16,7 +16,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.PrefMgr
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.R
 import deltazero.amarok.apphider.BaseAppHider
 import deltazero.amarok.apphider.DhizukuAppHider
@@ -32,7 +32,7 @@ class SwitchAppHiderActivity : AmarokActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        selectedHider = PrefMgr.getAppHider(this).javaClass
+        selectedHider = BaseAppHider.fromMode(this, PrefMgr.getAppHiderMode()).javaClass
         setContent {
             AmarokTheme {
                 SwitchAppHiderScreen(
@@ -55,16 +55,16 @@ class SwitchAppHiderActivity : AmarokActivity() {
 
     override fun onResume() {
         super.onResume()
-        selectedHider = PrefMgr.getAppHider(this).javaClass
+        selectedHider = BaseAppHider.fromMode(this, PrefMgr.getAppHiderMode()).javaClass
     }
 
     private fun activate(hider: BaseAppHider) {
         hider.tryToActivate { cls, success, msgResID ->
             if (success) {
-                PrefMgr.setAppHiderMode(cls)
+                PrefMgr.setAppHiderMode(BaseAppHider.modeOf(cls))
                 selectedHider = cls
             } else {
-                PrefMgr.setAppHiderMode(NoneAppHider::class.java)
+                PrefMgr.setAppHiderMode(BaseAppHider.modeOf(NoneAppHider::class.java))
                 selectedHider = NoneAppHider::class.java
                 runOnUiThread {
                     val builder = MaterialAlertDialogBuilder(this)

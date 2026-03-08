@@ -21,7 +21,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 import deltazero.amarok.BuildConfig;
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.R;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

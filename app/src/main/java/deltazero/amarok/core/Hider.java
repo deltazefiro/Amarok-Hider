@@ -1,19 +1,19 @@
-package deltazero.amarok;
+package deltazero.amarok.core;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
-import deltazero.amarok.ui.settings.SwitchAppHiderActivity;
+import deltazero.amarok.QuickHideService;
+import deltazero.amarok.R;
+import deltazero.amarok.apphider.BaseAppHider;
+import deltazero.amarok.filehider.BaseFileHider;
 import deltazero.amarok.utils.SecurityUtil;
 
 
@@ -24,12 +24,17 @@ public final class Hider {
     private static final Handler threadHandler;
 
     public static boolean initialized = false;
-    public static MutableLiveData<State> state;
+    private static MutableLiveData<State> _state;
+    public static LiveData<State> state;
 
     public enum State {
         HIDDEN,
         VISIBLE,
         PROCESSING
+    }
+
+    public interface OnActivationFailedListener {
+        void onActivationFailed(int msgResID);
     }
 
     static {
@@ -38,15 +43,16 @@ public final class Hider {
     }
 
     /**
-     * This method should be invoked in {@link AmarokApplication#onCreate()}, after {@link PrefMgr#init(Context)}.
+     * This method should be invoked in {@link deltazero.amarok.AmarokApplication#onCreate()}, after {@link PrefMgr#init(Context)}.
      * Do not invoke this method in static part or before {@link PrefMgr#init(Context)}.
      */
     public static void init() {
         assert PrefMgr.initialized;
-        state = new MutableLiveData<>(PrefMgr.getIsHidden() ? State.HIDDEN : State.VISIBLE);
-        state.observeForever(state -> {
-            if (state != State.PROCESSING)
-                PrefMgr.setIsHidden(state == State.HIDDEN);
+        _state = new MutableLiveData<>(PrefMgr.getIsHidden() ? State.HIDDEN : State.VISIBLE);
+        state = _state;
+        _state.observeForever(s -> {
+            if (s != State.PROCESSING)
+                PrefMgr.setIsHidden(s == State.HIDDEN);
         });
         initialized = true;
     }
@@ -56,19 +62,24 @@ public final class Hider {
      * does not guarantee that the latest value set will be received.
      */
     public static State getState() {
-        return state.getValue();
+        return _state.getValue();
     }
 
     public static void hide(Context context) {
-        PrefMgr.getAppHider(context).tryToActivate((appHiderClass, succeed, msg) -> {
+        hide(context, null);
+    }
+
+    public static void hide(Context context, OnActivationFailedListener listener) {
+        BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).tryToActivate((appHiderClass, succeed, msg) -> {
             if (succeed) {
                 processHide(context);
                 return;
             }
-            if (context instanceof Activity)
-                showNoHiderDialog(context, msg);
-            else
+            if (listener != null) {
+                listener.onActivationFailed(msg);
+            } else {
                 showNoHiderToast(context, msg);
+            }
         });
 
         // Avoid password or disguise right after hide
@@ -83,21 +94,21 @@ public final class Hider {
         threadHandler.post(() -> {
 
             Log.i(TAG, "Process 'hide' start.");
-            state.postValue(State.PROCESSING);
+            _state.postValue(State.PROCESSING);
 
             try {
                 // Determine if we should only disable apps (skip hide step) when XHide is enabled
                 boolean disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide();
 
-                PrefMgr.getAppHider(context).hide(PrefMgr.getHideApps(), disableOnly);
-                PrefMgr.getFileHider(context).hide(PrefMgr.getHideFilePath());
+                BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).hide(PrefMgr.getHideApps(), disableOnly);
+                BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).hide(PrefMgr.getHideFilePath());
             } catch (InterruptedException e) {
                 Log.w(TAG, "Process 'hide' interrupted.");
                 return;
             }
 
             Log.i(TAG, "Process 'hide' finish.");
-            state.postValue(State.HIDDEN);
+            _state.postValue(State.HIDDEN);
 
             if (!PrefMgr.getDisableToasts())
                 Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show();
@@ -108,15 +119,20 @@ public final class Hider {
     }
 
     public static void unhide(Context context) {
-        PrefMgr.getAppHider(context).tryToActivate((appHiderClass, succeed, msg) -> {
+        unhide(context, null);
+    }
+
+    public static void unhide(Context context, OnActivationFailedListener listener) {
+        BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).tryToActivate((appHiderClass, succeed, msg) -> {
             if (succeed) {
                 processUnhide(context);
                 return;
             }
-            if (context instanceof Activity)
-                showNoHiderDialog(context, msg);
-            else
+            if (listener != null) {
+                listener.onActivationFailed(msg);
+            } else {
                 showNoHiderToast(context, msg);
+            }
         });
     }
 
@@ -125,18 +141,18 @@ public final class Hider {
         threadHandler.post(() -> {
 
             Log.i(TAG, "Process 'unhide' start.");
-            state.postValue(State.PROCESSING);
+            _state.postValue(State.PROCESSING);
 
             try {
-                PrefMgr.getAppHider(context).unhide(PrefMgr.getHideApps());
-                PrefMgr.getFileHider(context).unhide(PrefMgr.getHideFilePath());
+                BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).unhide(PrefMgr.getHideApps());
+                BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).unhide(PrefMgr.getHideFilePath());
             } catch (InterruptedException e) {
                 Log.w(TAG, "Process 'unhide' interrupted.");
                 return;
             }
 
             Log.i(TAG, "Process 'unhide' finish.");
-            state.postValue(State.VISIBLE);
+            _state.postValue(State.VISIBLE);
 
             if (!PrefMgr.getDisableToasts())
                 Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
@@ -150,20 +166,10 @@ public final class Hider {
     }
 
     public static void forceUnhide(Context context) {
-        if (state.getValue() == State.PROCESSING)
+        if (_state.getValue() == State.PROCESSING)
             hiderThread.interrupt();
         PrefMgr.setIsHidden(true);
         unhide(context);
-    }
-
-    public static void showNoHiderDialog(Context context, int message) {
-        new MaterialAlertDialogBuilder(context)
-                .setTitle(R.string.apphider_not_ava_title)
-                .setMessage(message)
-                .setPositiveButton(R.string.switch_app_hider, (dialog, which)
-                        -> context.startActivity(new Intent(context, SwitchAppHiderActivity.class)))
-                .setNegativeButton(context.getString(R.string.ok), null)
-                .show();
     }
 
     private static void showNoHiderToast(Context context, int message) {

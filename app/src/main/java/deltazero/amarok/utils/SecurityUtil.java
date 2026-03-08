@@ -1,7 +1,7 @@
 package deltazero.amarok.utils;
 
-import deltazero.amarok.Hider;
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.Hider;
+import deltazero.amarok.core.PrefMgr;
 
 public class SecurityUtil {
     private static boolean locked = true;

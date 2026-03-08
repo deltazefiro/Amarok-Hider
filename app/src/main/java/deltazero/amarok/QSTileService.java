@@ -10,6 +10,8 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 
+import deltazero.amarok.core.Hider;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
 import deltazero.amarok.utils.SecurityUtil;
 

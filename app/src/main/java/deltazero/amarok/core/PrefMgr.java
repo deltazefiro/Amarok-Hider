@@ -1,4 +1,4 @@
-package deltazero.amarok;
+package deltazero.amarok.core;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -11,17 +11,6 @@ import androidx.annotation.Nullable;
 import java.util.HashSet;
 import java.util.Set;
 
-import deltazero.amarok.apphider.BaseAppHider;
-import deltazero.amarok.apphider.DhizukuAppHider;
-import deltazero.amarok.apphider.DsmAppHider;
-import deltazero.amarok.apphider.NoneAppHider;
-import deltazero.amarok.apphider.RootAppHider;
-import deltazero.amarok.apphider.ShizukuAppHider;
-import deltazero.amarok.filehider.BaseFileHider;
-import deltazero.amarok.filehider.ChmodFileHider;
-import deltazero.amarok.filehider.NoMediaFileHider;
-import deltazero.amarok.filehider.NoneFileHider;
-import deltazero.amarok.filehider.ObfuscateFileHider;
 import deltazero.amarok.utils.UpdateUtil;
 
 public final class PrefMgr {
@@ -32,7 +21,7 @@ public final class PrefMgr {
     public static boolean initialized = false;
 
     /**
-     * This method should be invoked in {@link AmarokApplication#onCreate()}.
+     * This method should be invoked in {@link deltazero.amarok.AmarokApplication#onCreate()}.
      *
      * @param context Application context
      */
@@ -112,58 +101,21 @@ public final class PrefMgr {
         mPrefEditor.apply();
     }
 
-    public static BaseAppHider getAppHider(Context context) {
-        return switch (mPrefs.getInt(APP_HIDER_MODE, 0)) {
-            case 0 -> new NoneAppHider(context);
-            case 1 -> new RootAppHider(context);
-            case 2 -> new DsmAppHider(context);
-            case 3 -> new ShizukuAppHider(context);
-            case 4 -> new DhizukuAppHider(context);
-            default -> throw new IndexOutOfBoundsException("Should not reach here");
-        };
+    public static int getAppHiderMode() {
+        return mPrefs.getInt(APP_HIDER_MODE, 0);
     }
 
-    public static void setAppHiderMode(Class<? extends BaseAppHider> mode) {
-        int modeCode;
-        if (mode == NoneAppHider.class)
-            modeCode = 0;
-        else if (mode == RootAppHider.class)
-            modeCode = 1;
-        else if (mode == DsmAppHider.class)
-            modeCode = 2;
-        else if (mode == ShizukuAppHider.class)
-            modeCode = 3;
-        else if (mode == DhizukuAppHider.class)
-            modeCode = 4;
-        else
-            throw new IndexOutOfBoundsException("Should not reach here");
-        mPrefEditor.putInt(APP_HIDER_MODE, modeCode);
+    public static void setAppHiderMode(int mode) {
+        mPrefEditor.putInt(APP_HIDER_MODE, mode);
         mPrefEditor.apply();
     }
 
-    public static BaseFileHider getFileHider(Context context) {
-        return switch (mPrefs.getInt(FILE_HIDER_MODE, 1)) {
-            case 0 -> new NoneFileHider(context);
-            case 1 -> new ObfuscateFileHider(context);
-            case 2 -> new NoMediaFileHider(context);
-            case 3 -> new ChmodFileHider(context);
-            default -> throw new IndexOutOfBoundsException("Should not reach here");
-        };
+    public static int getFileHiderMode() {
+        return mPrefs.getInt(FILE_HIDER_MODE, 1);
     }
 
-    public static void setFileHiderMode(Class<? extends BaseFileHider> mode) {
-        int modeCode;
-        if (mode == NoneFileHider.class)
-            modeCode = 0;
-        else if (mode == ObfuscateFileHider.class)
-            modeCode = 1;
-        else if (mode == NoMediaFileHider.class)
-            modeCode = 2;
-        else if (mode == ChmodFileHider.class)
-            modeCode = 3;
-        else
-            throw new IndexOutOfBoundsException("Should not reach here");
-        mPrefEditor.putInt(FILE_HIDER_MODE, modeCode);
+    public static void setFileHiderMode(int mode) {
+        mPrefEditor.putInt(FILE_HIDER_MODE, mode);
         mPrefEditor.apply();
     }
 

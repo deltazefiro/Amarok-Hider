@@ -24,6 +24,26 @@ public abstract class BaseAppHider {
 
     public abstract String getName();
 
+    public static BaseAppHider fromMode(Context context, int mode) {
+        return switch (mode) {
+            case 0 -> new NoneAppHider(context);
+            case 1 -> new RootAppHider(context);
+            case 2 -> new DsmAppHider(context);
+            case 3 -> new ShizukuAppHider(context);
+            case 4 -> new DhizukuAppHider(context);
+            default -> throw new IndexOutOfBoundsException("Unknown app hider mode: " + mode);
+        };
+    }
+
+    public static int modeOf(Class<? extends BaseAppHider> cls) {
+        if (cls == NoneAppHider.class) return 0;
+        if (cls == RootAppHider.class) return 1;
+        if (cls == DsmAppHider.class) return 2;
+        if (cls == ShizukuAppHider.class) return 3;
+        if (cls == DhizukuAppHider.class) return 4;
+        throw new IndexOutOfBoundsException("Unknown app hider class: " + cls.getName());
+    }
+
     public interface ActivationCallbackListener {
         void onActivateCallback(Class<? extends BaseAppHider> appHider, boolean success, int msgResID);
     }

@@ -4,10 +4,9 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.runtime.*
-import androidx.compose.runtime.livedata.observeAsState
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.PrefMgr
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.R
 import deltazero.amarok.ui.theme.AmarokTheme
 
@@ -19,10 +18,10 @@ class SetHideAppActivity : AmarokActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             AmarokTheme {
-                val apps by viewModel.getAppList().observeAsState(emptyList())
-                val isLoading by viewModel.isLoading().observeAsState(false)
-                val showSystemApps by viewModel.getShowSystemApps().observeAsState(false)
-                val showRootApps by viewModel.getShowRootApps().observeAsState(false)
+                val apps by viewModel.appList.collectAsState()
+                val isLoading by viewModel.isLoading.collectAsState()
+                val showSystemApps by viewModel.showSystemApps.collectAsState()
+                val showRootApps by viewModel.showRootApps.collectAsState()
 
                 SetHideAppScreen(
                     apps = apps,

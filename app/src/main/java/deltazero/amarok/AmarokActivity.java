@@ -11,6 +11,7 @@ import androidx.activity.EdgeToEdge;
 
 import java.util.List;
 
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.ui.CalendarActivity;
 import deltazero.amarok.ui.SecurityAuthActivity;
 import deltazero.amarok.utils.SecurityUtil;

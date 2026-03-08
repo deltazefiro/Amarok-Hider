@@ -15,8 +15,8 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
-import deltazero.amarok.Hider;
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.Hider;
+import deltazero.amarok.core.PrefMgr;
 
 public class AutoHideUtil {
 
