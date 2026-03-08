@@ -2,11 +2,12 @@ package deltazero.amarok.ui.settings
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import com.hjq.permissions.OnPermissionCallback
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.PrefMgr
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.QuickHideService
 import deltazero.amarok.R
 import deltazero.amarok.ui.CountdownConfirmDialog
@@ -15,6 +16,9 @@ import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.PermissionUtil
 
 class SettingsActivity : AmarokActivity() {
+
+    private val viewModel: SettingsViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -73,9 +77,15 @@ class SettingsActivity : AmarokActivity() {
                     },
                     onSwitchLocale = {
                         deltazero.amarok.utils.SwitchLocaleUtil.switchLocale(this)
-                    }
+                    },
+                    viewModel = viewModel
                 )
             }
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshHiderNames()
     }
 }

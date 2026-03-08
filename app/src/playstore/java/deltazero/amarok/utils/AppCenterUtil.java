@@ -5,7 +5,7 @@ import android.app.Application;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.crashes.Crashes;
 
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.PrefMgr;
 import kotlin.NotImplementedError;
 
 public class AppCenterUtil {

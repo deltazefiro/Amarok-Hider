@@ -3,7 +3,7 @@ package deltazero.amarok.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.Hider
+import deltazero.amarok.core.Hider
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn

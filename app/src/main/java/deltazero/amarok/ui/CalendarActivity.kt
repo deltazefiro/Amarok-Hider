@@ -29,7 +29,7 @@ import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import com.kizitonwose.calendar.core.daysOfWeek
 import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
-import deltazero.amarok.PrefMgr
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.R
 import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.SwitchLocaleUtil

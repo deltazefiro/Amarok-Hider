@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
 
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.utils.SecurityUtil;
 

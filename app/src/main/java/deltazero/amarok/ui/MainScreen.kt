@@ -44,7 +44,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import deltazero.amarok.Hider
+import deltazero.amarok.core.Hider
 import deltazero.amarok.R
 
 @Composable

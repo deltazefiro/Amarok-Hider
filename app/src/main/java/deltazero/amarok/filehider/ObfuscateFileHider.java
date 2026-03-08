@@ -21,7 +21,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.Set;
 
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.utils.FileHiderUtil;
 import deltazero.amarok.utils.MediaStoreHelper;
 

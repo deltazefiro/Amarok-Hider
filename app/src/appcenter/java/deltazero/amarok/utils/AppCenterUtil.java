@@ -14,7 +14,7 @@ import com.microsoft.appcenter.distribute.DistributeListener;
 import com.microsoft.appcenter.distribute.ReleaseDetails;
 import com.microsoft.appcenter.distribute.UpdateAction;
 
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.R;
 import deltazero.amarok.ui.settings.SettingsActivity;
 

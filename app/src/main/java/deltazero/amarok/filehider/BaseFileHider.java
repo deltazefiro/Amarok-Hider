@@ -30,6 +30,24 @@ public abstract class BaseFileHider {
         process(targetDirs, ProcessMethod.UNHIDE);
     }
 
+    public static BaseFileHider fromMode(Context context, int mode) {
+        return switch (mode) {
+            case 0 -> new NoneFileHider(context);
+            case 1 -> new ObfuscateFileHider(context);
+            case 2 -> new NoMediaFileHider(context);
+            case 3 -> new ChmodFileHider(context);
+            default -> throw new IndexOutOfBoundsException("Unknown file hider mode: " + mode);
+        };
+    }
+
+    public static int modeOf(Class<? extends BaseFileHider> cls) {
+        if (cls == NoneFileHider.class) return 0;
+        if (cls == ObfuscateFileHider.class) return 1;
+        if (cls == NoMediaFileHider.class) return 2;
+        if (cls == ChmodFileHider.class) return 3;
+        throw new IndexOutOfBoundsException("Unknown file hider class: " + cls.getName());
+    }
+
     public interface ActivationCallbackListener {
         void onActivateCallback(Class<? extends BaseFileHider> appHider, boolean success, int msgResID);
     }

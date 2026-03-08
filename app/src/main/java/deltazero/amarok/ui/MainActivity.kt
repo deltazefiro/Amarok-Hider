@@ -8,10 +8,12 @@ import androidx.activity.compose.setContent
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hjq.permissions.XXPermissions
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.Hider
-import deltazero.amarok.PrefMgr
+import deltazero.amarok.core.Hider
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.R
+import deltazero.amarok.apphider.BaseAppHider
 import deltazero.amarok.apphider.NoneAppHider
+import deltazero.amarok.filehider.BaseFileHider
 import deltazero.amarok.filehider.NoneFileHider
 import deltazero.amarok.ui.settings.SettingsActivity
 import deltazero.amarok.ui.settings.SwitchAppHiderActivity
@@ -54,14 +56,14 @@ class MainActivity : AmarokActivity() {
         }
 
         // Check Hiders availability
-        PrefMgr.getAppHider(this).tryToActivate { _, succeed, msg ->
+        BaseAppHider.fromMode(this, PrefMgr.getAppHiderMode()).tryToActivate { _, succeed, msg ->
             if (succeed) return@tryToActivate
-            Hider.showNoHiderDialog(this, msg)
+            showNoHiderDialog(msg)
         }
 
-        PrefMgr.getFileHider(this).tryToActive { _, succeed, msg ->
+        BaseFileHider.fromMode(this, PrefMgr.getFileHiderMode()).tryToActive { _, succeed, msg ->
             if (succeed) return@tryToActive
-            PrefMgr.setFileHiderMode(NoneFileHider::class.java)
+            PrefMgr.setFileHiderMode(BaseFileHider.modeOf(NoneFileHider::class.java))
             MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.filehider_not_ava_title)
                 .setMessage(msg)
@@ -78,8 +80,22 @@ class MainActivity : AmarokActivity() {
     }
 
     private fun changeStatus() {
-        if (Hider.getState() == Hider.State.HIDDEN) Hider.unhide(this)
-        else Hider.hide(this)
+        if (Hider.getState() == Hider.State.HIDDEN) {
+            Hider.unhide(this) { msgResID -> showNoHiderDialog(msgResID) }
+        } else {
+            Hider.hide(this) { msgResID -> showNoHiderDialog(msgResID) }
+        }
+    }
+
+    private fun showNoHiderDialog(msgResID: Int) {
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.apphider_not_ava_title)
+            .setMessage(msgResID)
+            .setPositiveButton(R.string.switch_app_hider) { _, _ ->
+                startActivity(Intent(this, SwitchAppHiderActivity::class.java))
+            }
+            .setNegativeButton(getString(R.string.ok), null)
+            .show()
     }
 
     private fun setHideApps() {
@@ -87,7 +103,7 @@ class MainActivity : AmarokActivity() {
             Toast.makeText(this, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show()
             return
         }
-        if (PrefMgr.getAppHider(this) is NoneAppHider) {
+        if (BaseAppHider.fromMode(this, PrefMgr.getAppHiderMode()) is NoneAppHider) {
             MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.apphider_not_activated_title)
                 .setMessage(R.string.apphider_not_activated_msg)
