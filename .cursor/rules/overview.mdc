@@ -20,15 +20,15 @@ Core Features
 
 ### 1. Hiding Management
 
-**File:** `app/src/main/java/deltazero/amarok/Hider.java`
+**File:** `app/src/main/java/deltazero/amarok/core/Hider.java`
 
 The `Hider` class serves as the central management system for both file and app hiding operations.
 
 - **Retrieve State:** `Hider.getState()` returns one of three states: `HIDDEN`, `VISIBLE`, `PROCESSING`.
+- **State observation:** `Hider.state` is exposed as `LiveData<State>` (read-only). Internal mutations use private `_state`.
+- **Trigger Processing:** `Hider.hide(context)` and `Hider.unhide(context)` trigger hiding/unhiding operations. Both accept an optional `OnActivationFailedListener` for callers that want to handle failures (e.g., show a dialog) instead of the default toast.
 
-> NOTE: Calling this method on a background thread does not guarantee that the latest value set will be received. Call it on the main thread.
-
-- **Trigger Processing:** `Hider.hide(context)` and `Hider.unhide(context)` trigger hiding/unhiding operations.
+> NOTE: Calling `getState()` on a background thread does not guarantee that the latest value set will be received. Call it on the main thread.
 
 ### 2. File Hiding Implementations
 
@@ -48,24 +48,24 @@ The `Hider` class serves as the central management system for both file and app 
   - **DSM Mode:** `DsmAppHider.java`
   - **Dhizuku Mode:** `DhizukuAppHider.java`
 
+- **Factory methods:** `BaseAppHider.fromMode(context, mode)` and `BaseFileHider.fromMode(context, mode)` create hider instances from stored mode integers. Reverse mapping via `modeOf(Class)`.
+
 ### 4. Settings and Preferences
 
-- Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/PrefMgr.java`) with SharedPreferences.
+- Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/core/PrefMgr.java`) with SharedPreferences. `PrefMgr` stores/retrieves preference values only; hider instantiation is done via `BaseAppHider.fromMode()` / `BaseFileHider.fromMode()`.
 - UI is implemented under `app/src/main/java/deltazero/amarok/ui/settings/` with each setting grouped by category.
+- Business logic for settings is in `SettingsViewModel.kt`, which exposes a `SettingsUiState` via `StateFlow` and action methods that update both `PrefMgr` and the UI state.
 
 #### Preference Categories
 
-- Privacy: `PrivacyCategory.java`
-- Quick Hide: `QuickHideCategory.java`
-- Appearance: `AppearanceCategory.java`
-- Work Mode: `WorkModeCategory.java`
-- XHide: `XHideCategory.java`
+Settings sections are defined as composable functions in `SettingsScreen.kt`:
+- Workmode, XHide, Privacy, Quick Hide, Appearance, Update, About
 
 #### To Add a New Setting
 
-1. Update `PrefMgr.java` with the new preference.
-2. Add the setting UI under the appropriate category. Use `R.drawable.ic_null` as placeholder icon for new options.
-3. Access it via `PrefMgr.getXXX()` or update it with `PrefMgr.setXXX()`.
+1. Update `PrefMgr.java` with the new preference getter/setter.
+2. Add the field to `SettingsUiState` and a corresponding action method to `SettingsViewModel`.
+3. Add the setting UI in the appropriate section of `SettingsScreen.kt`. Use `R.drawable.ic_null` as placeholder icon for new options.
 
 ### 5. XHide
 

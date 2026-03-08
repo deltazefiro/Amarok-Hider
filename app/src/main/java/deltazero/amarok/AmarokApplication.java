@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatDelegate;
 import com.google.android.material.color.DynamicColors;
 import com.rosan.dhizuku.api.Dhizuku;
 
+import deltazero.amarok.core.Hider;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.receivers.ScreenStatusReceiver;
 import deltazero.amarok.utils.AppCenterUtil;
 import deltazero.amarok.utils.XHidePrefBridge;

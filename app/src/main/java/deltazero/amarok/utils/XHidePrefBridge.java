@@ -11,8 +11,8 @@ import java.nio.file.Files;
 import java.util.Objects;
 
 import deltazero.amarok.BuildConfig;
-import deltazero.amarok.Hider;
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.Hider;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.xposed.utils.XPref;
 
 @SuppressLint("SdCardPath")

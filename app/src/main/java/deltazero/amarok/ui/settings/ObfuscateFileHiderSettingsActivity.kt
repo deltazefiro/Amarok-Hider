@@ -12,7 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.PrefMgr
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.R
 import deltazero.amarok.ui.theme.AmarokTheme
 

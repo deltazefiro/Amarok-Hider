@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
 
-import deltazero.amarok.Hider;
+import deltazero.amarok.core.Hider;
 import deltazero.amarok.R;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
 import deltazero.amarok.utils.SecurityUtil;

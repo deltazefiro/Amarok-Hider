@@ -17,7 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.PrefMgr
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.R
 import deltazero.amarok.filehider.BaseFileHider
 import deltazero.amarok.filehider.ChmodFileHider
@@ -32,7 +32,7 @@ class SwitchFileHiderActivity : AmarokActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        selectedHider = PrefMgr.getFileHider(this).javaClass
+        selectedHider = BaseFileHider.fromMode(this, PrefMgr.getFileHiderMode()).javaClass
         setContent {
             AmarokTheme {
                 SwitchFileHiderScreen(
@@ -52,16 +52,16 @@ class SwitchFileHiderActivity : AmarokActivity() {
 
     override fun onResume() {
         super.onResume()
-        selectedHider = PrefMgr.getFileHider(this).javaClass
+        selectedHider = BaseFileHider.fromMode(this, PrefMgr.getFileHiderMode()).javaClass
     }
 
     private fun activate(hider: BaseFileHider) {
         hider.tryToActive { cls, success, msgResID ->
             if (success) {
-                PrefMgr.setFileHiderMode(cls)
+                PrefMgr.setFileHiderMode(BaseFileHider.modeOf(cls))
                 selectedHider = cls
             } else {
-                PrefMgr.setFileHiderMode(NoneFileHider::class.java)
+                PrefMgr.setFileHiderMode(BaseFileHider.modeOf(NoneFileHider::class.java))
                 selectedHider = NoneFileHider::class.java
                 runOnUiThread {
                     val builder = MaterialAlertDialogBuilder(this)

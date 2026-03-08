@@ -20,16 +20,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import deltazero.amarok.Hider
-import deltazero.amarok.PrefMgr
-import deltazero.amarok.QuickHideService
+import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
-import deltazero.amarok.utils.AppCenterUtil
 import deltazero.amarok.utils.HashUtil
-import deltazero.amarok.utils.LauncherIconController
-import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.UpdateUtil
-import deltazero.amarok.utils.XHidePrefBridge
 
 @Composable
 private fun prefIcon(@DrawableRes id: Int) = @Composable {
@@ -52,7 +46,10 @@ fun SettingsScreen(
     onShowColorPicker: () -> Unit,
     // Appearance
     onSwitchLocale: () -> Unit,
+    viewModel: SettingsViewModel = viewModel(),
 ) {
+    val state by viewModel.uiState.collectAsState()
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -71,88 +68,75 @@ fun SettingsScreen(
                 .padding(padding)
                 .verticalScroll(rememberScrollState())
         ) {
-            WorkmodeSection(onSwitchAppHider, onSwitchFileHider)
-            XHideSection()
-            PrivacySection(onSetPassword, onShowCountdownConfirm)
-            QuickHideSection(onRequestNotificationPermission, onRequestSystemAlertPermission, onShowColorPicker)
-            AppearanceSection(onSwitchLocale)
-            UpdateSection()
-            AboutSection()
+            WorkmodeSection(state, onSwitchAppHider, onSwitchFileHider)
+            XHideSection(state, viewModel)
+            PrivacySection(state, viewModel, onSetPassword, onShowCountdownConfirm)
+            QuickHideSection(state, viewModel, onRequestNotificationPermission, onRequestSystemAlertPermission, onShowColorPicker)
+            AppearanceSection(state, viewModel, onSwitchLocale)
+            UpdateSection(state, viewModel)
+            AboutSection(state, viewModel)
             Spacer(Modifier.height(32.dp))
         }
     }
 }
 
 @Composable
-private fun WorkmodeSection(onSwitchAppHider: () -> Unit, onSwitchFileHider: () -> Unit) {
-    val context = LocalContext.current
+private fun WorkmodeSection(
+    state: SettingsUiState,
+    onSwitchAppHider: () -> Unit,
+    onSwitchFileHider: () -> Unit
+) {
     PreferenceGroupHeader(stringResource(R.string.workmode))
     ClickPreferenceItem(
         title = stringResource(R.string.switch_app_hider),
-        summary = stringResource(R.string.current_mode, PrefMgr.getAppHider(context).name),
+        summary = stringResource(R.string.current_mode, state.appHiderName),
         icon = prefIcon(R.drawable.apps_black_24dp),
         onClick = onSwitchAppHider
     )
     ClickPreferenceItem(
         title = stringResource(R.string.switch_file_hider),
-        summary = stringResource(R.string.current_mode, PrefMgr.getFileHider(context).name),
+        summary = stringResource(R.string.current_mode, state.fileHiderName),
         icon = prefIcon(R.drawable.folder_black_24dp),
         onClick = onSwitchFileHider
     )
 }
 
 @Composable
-private fun XHideSection() {
-    val isAvailable = XHidePrefBridge.isAvailable
-    var enableXHide by remember { mutableStateOf(PrefMgr.isXHideEnabled()) }
-    var disableOnlyWithXHide by remember { mutableStateOf(PrefMgr.getDisableOnlyWithXHide()) }
-
+private fun XHideSection(state: SettingsUiState, viewModel: SettingsViewModel) {
     PreferenceGroupHeader(stringResource(R.string.x_hide))
     ClickPreferenceItem(
         title = "",
         summary = stringResource(R.string.x_hide_description),
-        enabled = isAvailable,
+        enabled = state.isXHideAvailable,
         onClick = {}
     )
     SwitchPreferenceItem(
         title = stringResource(R.string.enable_x_hide),
-        summary = if (isAvailable) stringResource(R.string.xposed_active, XHidePrefBridge.xposedVersion.toString())
+        summary = if (state.isXHideAvailable) stringResource(R.string.xposed_active, state.xposedVersion.toString())
         else stringResource(R.string.xposed_inactive),
         icon = prefIcon(R.drawable.domino_mask_fill0_wght400_grad0_opsz24),
-        checked = enableXHide,
-        enabled = isAvailable,
-        onCheckedChange = { checked ->
-            enableXHide = checked
-            PrefMgr.setXHideEnabled(checked)
-        }
+        checked = state.enableXHide,
+        enabled = state.isXHideAvailable,
+        onCheckedChange = { viewModel.setXHideEnabled(it) }
     )
     SwitchPreferenceItem(
         title = stringResource(R.string.disable_only_with_xhide),
         summary = stringResource(R.string.disable_only_with_xhide_description),
         icon = prefIcon(R.drawable.visibility_off_24dp),
-        checked = disableOnlyWithXHide,
-        enabled = isAvailable && enableXHide,
-        onCheckedChange = { checked ->
-            disableOnlyWithXHide = checked
-            PrefMgr.setDisableOnlyWithXHide(checked)
-        }
+        checked = state.disableOnlyWithXHide,
+        enabled = state.isXHideAvailable && state.enableXHide,
+        onCheckedChange = { viewModel.setDisableOnlyWithXHide(it) }
     )
 }
 
 @Composable
 private fun PrivacySection(
+    state: SettingsUiState,
+    viewModel: SettingsViewModel,
     onSetPassword: (callback: (String?) -> Unit) -> Unit,
     onShowCountdownConfirm: (onConfirm: () -> Unit, onCancel: () -> Unit) -> Unit
 ) {
     val context = LocalContext.current
-    var hasPassword by remember { mutableStateOf(PrefMgr.getAmarokPassword() != null) }
-    var biometricAuth by remember { mutableStateOf(PrefMgr.getEnableAmarokBiometricAuth()) }
-    var disguise by remember { mutableStateOf(PrefMgr.getEnableDisguise()) }
-    var hideIcon by remember { mutableStateOf(PrefMgr.getHideAmarokIcon()) }
-    var hideFromRecents by remember { mutableStateOf(PrefMgr.getHideFromRecents()) }
-    var blockScreenshots by remember { mutableStateOf(PrefMgr.getBlockScreenshots()) }
-    var disableSecurityWhenUnhidden by remember { mutableStateOf(PrefMgr.getDisableSecurityWhenUnhidden()) }
-    var disableToasts by remember { mutableStateOf(PrefMgr.getDisableToasts()) }
 
     PreferenceGroupHeader(stringResource(R.string.security))
 
@@ -161,20 +145,18 @@ private fun PrivacySection(
         title = stringResource(R.string.app_lock),
         summary = stringResource(R.string.app_lock_description),
         icon = prefIcon(R.drawable.lock_black_24dp),
-        checked = hasPassword,
+        checked = state.hasPassword,
         onCheckedChange = { checked ->
             if (checked) {
                 onSetPassword { password ->
                     if (password != null) {
-                        PrefMgr.setAmarokPassword(HashUtil.calculateHash(password))
-                        SecurityUtil.unlock()
+                        viewModel.setPassword(HashUtil.calculateHash(password))
+                    } else {
+                        viewModel.setPassword(null)
                     }
-                    hasPassword = PrefMgr.getAmarokPassword() != null
-                    biometricAuth = PrefMgr.getEnableAmarokBiometricAuth()
                 }
             } else {
-                PrefMgr.setAmarokPassword(null)
-                hasPassword = false
+                viewModel.setPassword(null)
             }
         }
     )
@@ -184,12 +166,9 @@ private fun PrivacySection(
         title = stringResource(R.string.biometric_auth),
         summary = stringResource(R.string.biometric_auth_description),
         icon = prefIcon(R.drawable.fingerprint_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-        checked = biometricAuth,
-        enabled = hasPassword,
-        onCheckedChange = { checked ->
-            biometricAuth = checked
-            PrefMgr.setEnableAmarokBiometricAuth(checked)
-        }
+        checked = state.biometricAuth,
+        enabled = state.hasPassword,
+        onCheckedChange = { viewModel.setBiometricAuth(it) }
     )
 
     // Disguise
@@ -197,21 +176,9 @@ private fun PrivacySection(
         title = stringResource(R.string.disguise),
         summary = stringResource(R.string.disguise_description),
         icon = prefIcon(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-        checked = disguise,
-        enabled = !hideIcon,
-        onCheckedChange = { checked ->
-            disguise = checked
-            PrefMgr.setEnableDisguise(checked)
-            PrefMgr.setDoShowQuitDisguiseInstuct(true)
-            if (checked) SecurityUtil.lockAndDisguise()
-            (context as? Activity)?.let {
-                LauncherIconController.setIconState(
-                    it,
-                    if (checked) LauncherIconController.IconState.DISGUISED
-                    else LauncherIconController.IconState.VISIBLE
-                )
-            }
-        }
+        checked = state.disguise,
+        enabled = !state.hideIcon,
+        onCheckedChange = { viewModel.setDisguise(it, context as? Activity) }
     )
 
     // Hide amarok icon
@@ -219,34 +186,15 @@ private fun PrivacySection(
         title = stringResource(R.string.hide_amarok_icon),
         summary = stringResource(R.string.hide_amarok_icon_description),
         icon = prefIcon(R.drawable.hide_source_black_24dp),
-        checked = hideIcon,
+        checked = state.hideIcon,
         onCheckedChange = { checked ->
             if (checked) {
                 onShowCountdownConfirm(
-                    { // onConfirm
-                        disguise = false
-                        PrefMgr.setEnableDisguise(false)
-                        (context as? Activity)?.let {
-                            LauncherIconController.setIconState(
-                                it,
-                                LauncherIconController.IconState.HIDDEN
-                            )
-                        }
-                        hideIcon = true
-                        PrefMgr.setHideAmarokIcon(true)
-                    },
-                    { // onCancel
-                    }
+                    { viewModel.confirmHideIcon(context as? Activity) },
+                    { /* onCancel */ }
                 )
             } else {
-                hideIcon = false
-                PrefMgr.setHideAmarokIcon(false)
-                (context as? Activity)?.let {
-                    LauncherIconController.setIconState(
-                        it,
-                        LauncherIconController.IconState.VISIBLE
-                    )
-                }
+                viewModel.unhideIcon(context as? Activity)
             }
         }
     )
@@ -256,10 +204,9 @@ private fun PrivacySection(
         title = stringResource(R.string.hide_from_recents),
         summary = stringResource(R.string.hide_from_recents_description),
         icon = prefIcon(R.drawable.search_activity_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-        checked = hideFromRecents,
-        onCheckedChange = { checked ->
-            hideFromRecents = checked
-            PrefMgr.setHideFromRecents(checked)
+        checked = state.hideFromRecents,
+        onCheckedChange = {
+            viewModel.setHideFromRecents(it)
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
         }
     )
@@ -269,10 +216,9 @@ private fun PrivacySection(
         title = stringResource(R.string.block_screenshots),
         summary = stringResource(R.string.block_screenshots_description),
         icon = prefIcon(R.drawable.cancel_presentation_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-        checked = blockScreenshots,
-        onCheckedChange = { checked ->
-            blockScreenshots = checked
-            PrefMgr.setBlockScreenshots(checked)
+        checked = state.blockScreenshots,
+        onCheckedChange = {
+            viewModel.setBlockScreenshots(it)
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
         }
     )
@@ -282,11 +228,8 @@ private fun PrivacySection(
         title = stringResource(R.string.disable_security_when_unhidden),
         summary = stringResource(R.string.disable_security_when_unhidden_description),
         icon = prefIcon(R.drawable.encrypted_off_24dp),
-        checked = disableSecurityWhenUnhidden,
-        onCheckedChange = { checked ->
-            disableSecurityWhenUnhidden = checked
-            PrefMgr.setDisableSecurityWhenUnhidden(checked)
-        }
+        checked = state.disableSecurityWhenUnhidden,
+        onCheckedChange = { viewModel.setDisableSecurityWhenUnhidden(it) }
     )
 
     // Disable toasts
@@ -294,25 +237,20 @@ private fun PrivacySection(
         title = stringResource(R.string.disable_toasts),
         summary = stringResource(R.string.disable_toasts_description),
         icon = prefIcon(R.drawable.speaker_notes_off_24dp),
-        checked = disableToasts,
-        onCheckedChange = { checked ->
-            disableToasts = checked
-            PrefMgr.setDisableToasts(checked)
-        }
+        checked = state.disableToasts,
+        onCheckedChange = { viewModel.setDisableToasts(it) }
     )
 }
 
 @Composable
 private fun QuickHideSection(
+    state: SettingsUiState,
+    viewModel: SettingsViewModel,
     onRequestNotificationPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
     onRequestSystemAlertPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
     onShowColorPicker: () -> Unit
 ) {
     val context = LocalContext.current
-    var quickHideService by remember { mutableStateOf(PrefMgr.getEnableQuickHideService()) }
-    var panicButton by remember { mutableStateOf(PrefMgr.getEnablePanicButton()) }
-    var autoHide by remember { mutableStateOf(PrefMgr.getEnableAutoHide()) }
-    var autoHideDelay by remember { mutableStateOf(PrefMgr.getAutoHideDelay().toFloat()) }
 
     PreferenceGroupHeader(stringResource(R.string.quick_hide))
 
@@ -321,26 +259,17 @@ private fun QuickHideSection(
         title = stringResource(R.string.notification),
         summary = stringResource(R.string.quick_hide_notification_description),
         icon = prefIcon(R.drawable.notifications_black_24dp),
-        checked = quickHideService,
+        checked = state.quickHideService,
         onCheckedChange = { checked ->
             if (checked) {
                 onRequestNotificationPermission(
-                    { // granted
-                        quickHideService = true
-                        PrefMgr.setEnableQuickHideService(true)
-                        QuickHideService.startService(context)
-                    },
-                    { // denied
-                        quickHideService = false
+                    { viewModel.setQuickHideService(true) },
+                    {
                         Toast.makeText(context, R.string.notification_permission_denied, Toast.LENGTH_LONG).show()
                     }
                 )
             } else {
-                quickHideService = false
-                PrefMgr.setEnableQuickHideService(false)
-                panicButton = false
-                PrefMgr.setEnablePanicButton(false)
-                QuickHideService.stopService(context)
+                viewModel.setQuickHideService(false)
             }
         }
     )
@@ -350,27 +279,18 @@ private fun QuickHideSection(
         title = stringResource(R.string.panic_button),
         summary = stringResource(R.string.panic_button_description),
         icon = prefIcon(R.drawable.crisis_alert_black_24dp),
-        checked = panicButton,
-        enabled = quickHideService,
+        checked = state.panicButton,
+        enabled = state.quickHideService,
         onCheckedChange = { checked ->
             if (checked) {
                 onRequestSystemAlertPermission(
-                    { // granted
-                        panicButton = true
-                        PrefMgr.setEnablePanicButton(true)
-                        QuickHideService.startService(context)
-                    },
-                    { // denied
-                        panicButton = false
+                    { viewModel.setPanicButton(true) },
+                    {
                         Toast.makeText(context, R.string.alert_permission_denied, Toast.LENGTH_LONG).show()
                     }
                 )
             } else {
-                panicButton = false
-                PrefMgr.setEnablePanicButton(false)
-                PrefMgr.resetPanicButtonPosition()
-                QuickHideService.stopService(context)
-                QuickHideService.startService(context)
+                viewModel.setPanicButton(false)
             }
         }
     )
@@ -380,7 +300,7 @@ private fun QuickHideSection(
         title = stringResource(R.string.panic_button_color),
         summary = stringResource(R.string.panic_button_color_description),
         icon = prefIcon(R.drawable.colors_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-        enabled = quickHideService && panicButton,
+        enabled = state.quickHideService && state.panicButton,
         onClick = onShowColorPicker
     )
 
@@ -389,12 +309,9 @@ private fun QuickHideSection(
         title = stringResource(R.string.auto_hide),
         summary = stringResource(R.string.auto_hide_description),
         icon = prefIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24),
-        checked = autoHide,
-        enabled = quickHideService,
-        onCheckedChange = { checked ->
-            autoHide = checked
-            PrefMgr.setEnableAutoHide(checked)
-        }
+        checked = state.autoHide,
+        enabled = state.quickHideService,
+        onCheckedChange = { viewModel.setAutoHide(it) }
     )
 
     // Auto hide delay slider
@@ -402,22 +319,21 @@ private fun QuickHideSection(
         title = stringResource(R.string.auto_hide_delay),
         summary = stringResource(R.string.auto_hide_delay_description),
         icon = prefIcon(R.drawable.timer_fill0_wght400_grad0_opsz24),
-        value = autoHideDelay,
+        value = state.autoHideDelay,
         valueRange = 0f..30f,
         steps = 29,
-        enabled = quickHideService && autoHide,
-        onValueChange = { value ->
-            autoHideDelay = value
-            PrefMgr.setAutoHideDelay(value.toInt())
-        }
+        enabled = state.quickHideService && state.autoHide,
+        onValueChange = { viewModel.setAutoHideDelay(it) }
     )
 }
 
 @Composable
-private fun AppearanceSection(onSwitchLocale: () -> Unit) {
+private fun AppearanceSection(
+    state: SettingsUiState,
+    viewModel: SettingsViewModel,
+    onSwitchLocale: () -> Unit
+) {
     val context = LocalContext.current
-    var dynamicColor by remember { mutableStateOf(PrefMgr.getEnableDynamicColor()) }
-    var invertTileColor by remember { mutableStateOf(PrefMgr.getInvertTileColor()) }
 
     PreferenceGroupHeader(stringResource(R.string.appearance))
 
@@ -425,17 +341,15 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
         title = stringResource(R.string.enable_dynamic_color),
         summary = stringResource(R.string.dynamic_color_description),
         icon = prefIcon(R.drawable.palette_black_24dp),
-        checked = dynamicColor,
-        onCheckedChange = { checked ->
-            dynamicColor = checked
-            PrefMgr.setEnableDynamicColor(checked)
+        checked = state.dynamicColor,
+        onCheckedChange = {
+            viewModel.setDynamicColor(it)
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
         }
     )
 
     // Dark theme dialog
     var showDarkThemeDialog by remember { mutableStateOf(false) }
-    var darkThemeMode by remember { mutableStateOf(PrefMgr.getDarkTheme()) }
 
     if (showDarkThemeDialog) {
         val options = listOf(
@@ -453,15 +367,13 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .clickable {
-                                    darkThemeMode = mode
-                                    PrefMgr.setDarkTheme(mode)
-                                    AppCompatDelegate.setDefaultNightMode(mode)
+                                    viewModel.setDarkTheme(mode)
                                     showDarkThemeDialog = false
                                 }
                                 .padding(vertical = 12.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            RadioButton(selected = mode == darkThemeMode, onClick = null)
+                            RadioButton(selected = mode == state.darkThemeMode, onClick = null)
                             Spacer(Modifier.width(12.dp))
                             Text(label)
                         }
@@ -480,7 +392,7 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
     ClickPreferenceItem(
         title = stringResource(R.string.dark_theme),
         summary = stringResource(
-            when (darkThemeMode) {
+            when (state.darkThemeMode) {
                 AppCompatDelegate.MODE_NIGHT_YES -> R.string.dark_theme_dark
                 AppCompatDelegate.MODE_NIGHT_NO -> R.string.dark_theme_light
                 else -> R.string.dark_theme_follow_system
@@ -508,33 +420,23 @@ private fun AppearanceSection(onSwitchLocale: () -> Unit) {
         title = stringResource(R.string.invert_tile_color),
         summary = stringResource(R.string.invert_tile_color_description),
         icon = prefIcon(R.drawable.invert_colors_24dp_5f6368_fill0_wght400_grad0_opsz24),
-        checked = invertTileColor,
-        onCheckedChange = { checked ->
-            invertTileColor = checked
-            PrefMgr.setInvertTileColor(checked)
+        checked = state.invertTileColor,
+        onCheckedChange = {
+            viewModel.setInvertTileColor(it)
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
         }
     )
 }
 
 @Composable
-private fun UpdateSection() {
+private fun UpdateSection(state: SettingsUiState, viewModel: SettingsViewModel) {
     val context = LocalContext.current
-    val appVersionName = remember {
-        try {
-            context.packageManager.getPackageInfo(context.packageName, 0).versionName
-        } catch (_: Exception) {
-            "?"
-        }
-    }
-    var updateChannel by remember { mutableStateOf(PrefMgr.getUpdateChannel().name) }
-    var autoUpdate by remember { mutableStateOf(PrefMgr.getEnableAutoUpdate()) }
 
     PreferenceGroupHeader(stringResource(R.string.update))
 
     ClickPreferenceItem(
         title = stringResource(R.string.check_update),
-        summary = stringResource(R.string.check_update_description, appVersionName ?: "?"),
+        summary = stringResource(R.string.check_update_description, state.appVersionName),
         icon = prefIcon(R.drawable.update_black_24dp),
         onClick = { UpdateUtil.checkAndNotify(context, false) }
     )
@@ -542,31 +444,25 @@ private fun UpdateSection() {
     DropdownPreferenceItem(
         title = stringResource(R.string.update_channel),
         icon = prefIcon(R.drawable.alt_route_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-        selectedValue = updateChannel,
+        selectedValue = state.updateChannel,
         options = listOf(
             UpdateUtil.UpdateChannel.RELEASE.name to stringResource(R.string.update_channel_release),
             UpdateUtil.UpdateChannel.BETA.name to stringResource(R.string.update_channel_beta)
         ),
-        onValueChange = { value ->
-            updateChannel = value
-            PrefMgr.setUpdateChannel(UpdateUtil.UpdateChannel.fromString(value))
-        }
+        onValueChange = { viewModel.setUpdateChannel(UpdateUtil.UpdateChannel.fromString(it)) }
     )
 
     SwitchPreferenceItem(
         title = stringResource(R.string.check_update_on_start),
         summary = stringResource(R.string.check_update_on_start_description),
         icon = prefIcon(R.drawable.autorenew_black_24dp),
-        checked = autoUpdate,
-        onCheckedChange = { checked ->
-            autoUpdate = checked
-            PrefMgr.setEnableAutoUpdate(checked)
-        }
+        checked = state.autoUpdate,
+        onCheckedChange = { viewModel.setAutoUpdate(it) }
     )
 }
 
 @Composable
-private fun AboutSection() {
+private fun AboutSection(state: SettingsUiState, viewModel: SettingsViewModel) {
     val context = LocalContext.current
     var showForceUnhideDialog by remember { mutableStateOf(false) }
 
@@ -577,7 +473,7 @@ private fun AboutSection() {
             text = { Text(stringResource(R.string.force_unhide_confirm_msg)) },
             confirmButton = {
                 TextButton(onClick = {
-                    Hider.forceUnhide(context)
+                    viewModel.forceUnhide()
                     Toast.makeText(context, R.string.performing_force_unhide, Toast.LENGTH_LONG).show()
                     (context as? Activity)?.finish()
                 }) { Text(stringResource(R.string.confirm)) }
@@ -596,10 +492,10 @@ private fun AboutSection() {
         title = stringResource(R.string.enable_analytics),
         summary = stringResource(R.string.analytics_description),
         icon = prefIcon(R.drawable.feedback_black_24dp),
-        checked = AppCenterUtil.isAnalyticsEnabled(),
-        enabled = AppCenterUtil.isAvailable(),
-        onCheckedChange = { checked ->
-            AppCenterUtil.setAnalyticsEnabled(checked)
+        checked = state.analyticsEnabled,
+        enabled = state.analyticsAvailable,
+        onCheckedChange = {
+            viewModel.setAnalyticsEnabled(it)
             Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
         }
     )

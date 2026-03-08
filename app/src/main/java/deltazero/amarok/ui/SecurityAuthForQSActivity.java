@@ -1,6 +1,6 @@
 package deltazero.amarok.ui;
 
-import deltazero.amarok.Hider;
+import deltazero.amarok.core.Hider;
 
 public class SecurityAuthForQSActivity extends SecurityAuthActivity {
     @Override

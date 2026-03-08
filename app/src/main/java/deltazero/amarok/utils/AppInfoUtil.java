@@ -17,7 +17,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import deltazero.amarok.PrefMgr;
+import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.R;
 
 public class AppInfoUtil {
