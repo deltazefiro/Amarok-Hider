@@ -121,6 +121,14 @@ public class UpdateUtil {
         }
     }
 
+    public static boolean isAvailable() {
+        return true;
+    }
+
+    public static String getStorePageUrl() {
+        throw new UnsupportedOperationException("AppCenter build has in-app updates");
+    }
+
     private static boolean isNewerVersion(@NonNull String current, @NonNull String newVersion) {
         current = current.replaceFirst("^v", "");
         newVersion = newVersion.replaceFirst("^v", "");

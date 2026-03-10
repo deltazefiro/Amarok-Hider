@@ -96,7 +96,7 @@ public class MainActivity extends AmarokActivity {
         });
 
         // Check for updates
-        if (PrefMgr.getEnableAutoUpdate()) {
+        if (UpdateUtil.isAvailable() && PrefMgr.getEnableAutoUpdate()) {
             UpdateUtil.checkAndNotify(this, true);
         }
     }
