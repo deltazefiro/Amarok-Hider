@@ -67,6 +67,8 @@ public final class PrefMgr {
     public static final String PANIC_BUTTON_Y = "panicButtonY";
     public static final String PANIC_BUTTON_LEFT_EDGE = "panicButtonLeftEdge";
     public static final String DARK_THEME = "darkTheme";
+    public static final String HIDDEN_APPS = "hiddenApps";
+    public static final String HIDDEN_FOLDERS = "hiddenFolders";
 
     public static Set<String> getHideFilePath() {
         // Return a defensive copy to avoid SharedPreferences caching issues
@@ -368,6 +370,24 @@ public final class PrefMgr {
 
     public static void setDarkTheme(int mode) {
         mPrefEditor.putInt(DARK_THEME, mode);
+        mPrefEditor.apply();
+    }
+
+    public static Set<String> getHiddenApps() {
+        return new HashSet<>(mPrefs.getStringSet(HIDDEN_APPS, new HashSet<>()));
+    }
+
+    public static void setHiddenApps(Set<String> pkgNames) {
+        mPrefEditor.putStringSet(HIDDEN_APPS, pkgNames);
+        mPrefEditor.apply();
+    }
+
+    public static Set<String> getHiddenFolders() {
+        return new HashSet<>(mPrefs.getStringSet(HIDDEN_FOLDERS, new HashSet<>()));
+    }
+
+    public static void setHiddenFolders(Set<String> paths) {
+        mPrefEditor.putStringSet(HIDDEN_FOLDERS, paths);
         mPrefEditor.apply();
     }
 }
