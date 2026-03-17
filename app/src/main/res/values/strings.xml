@@ -221,4 +221,6 @@
     <string name="hide_from_recents_description">Hide Amarok from the recent apps screen.</string>
     <string name="hide_amarok_icon_dialog_title">Hide Amarok Icon</string>
     <string name="hide_amarok_icon_dialog_message">This option will hide Amarok from the launcher. You can dial *#*#262765#*#*  (262765 spells \"amarok\" on T9 keypad) to access Amarok again.</string>
+    <string name="no_managed_apps">No managed apps. Tap the edit icon to add apps.</string>
+    <string name="no_managed_folders">No managed folders. Tap + to add folders.</string>
 </resources>
