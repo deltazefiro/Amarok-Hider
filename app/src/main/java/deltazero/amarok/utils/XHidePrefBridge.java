@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Objects;
+import java.util.Set;
 
 import deltazero.amarok.BuildConfig;
 import deltazero.amarok.core.Hider;
@@ -92,6 +93,7 @@ public class XHidePrefBridge {
         PrefMgr.getPrefs().registerOnSharedPreferenceChangeListener(hidePkgNamesChangeListener);
 
         Hider.state.observeForever(state -> commitNewValues());
+        Hider.hiddenApps.observeForever(apps -> commitNewValues());
 
         Log.i(TAG, "XHide initialized.");
         isAvailable = true;
@@ -99,8 +101,9 @@ public class XHidePrefBridge {
 
     private static void commitNewValues() {
         Log.d(TAG, "Committing new values to XPref");
-        xprefEditor.putStringSet(XPref.HIDE_PKG_NAMES, PrefMgr.getHideApps());
-        xprefEditor.putBoolean(XPref.IS_ACTIVE, Hider.getState() == Hider.State.HIDDEN && PrefMgr.isXHideEnabled());
+        Set<String> hiddenApps = Hider.hiddenApps.getValue();
+        xprefEditor.putStringSet(XPref.HIDE_PKG_NAMES, hiddenApps != null ? hiddenApps : new java.util.HashSet<>());
+        xprefEditor.putBoolean(XPref.IS_ACTIVE, PrefMgr.isXHideEnabled() && hiddenApps != null && !hiddenApps.isEmpty());
         xprefEditor.commit();
     }
 }

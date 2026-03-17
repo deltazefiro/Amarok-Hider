@@ -10,6 +10,9 @@ import android.widget.Toast;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import deltazero.amarok.QuickHideService;
 import deltazero.amarok.R;
 import deltazero.amarok.apphider.BaseAppHider;
@@ -26,6 +29,10 @@ public final class Hider {
     public static boolean initialized = false;
     private static MutableLiveData<State> _state;
     public static LiveData<State> state;
+    private static MutableLiveData<Set<String>> _hiddenApps;
+    public static LiveData<Set<String>> hiddenApps;
+    private static MutableLiveData<Set<String>> _hiddenFolders;
+    public static LiveData<Set<String>> hiddenFolders;
 
     public enum State {
         HIDDEN,
@@ -48,12 +55,33 @@ public final class Hider {
      */
     public static void init() {
         assert PrefMgr.initialized;
-        _state = new MutableLiveData<>(PrefMgr.getIsHidden() ? State.HIDDEN : State.VISIBLE);
+
+        _hiddenApps = new MutableLiveData<>(PrefMgr.getHiddenApps());
+        hiddenApps = _hiddenApps;
+        _hiddenFolders = new MutableLiveData<>(PrefMgr.getHiddenFolders());
+        hiddenFolders = _hiddenFolders;
+
+        if (PrefMgr.getIsHidden()) {
+            if (PrefMgr.getHiddenApps().isEmpty() && !PrefMgr.getHideApps().isEmpty()) {
+                Set<String> managed = PrefMgr.getHideApps();
+                PrefMgr.setHiddenApps(managed);
+                _hiddenApps.setValue(managed);
+            }
+            if (PrefMgr.getHiddenFolders().isEmpty() && !PrefMgr.getHideFilePath().isEmpty()) {
+                Set<String> managed = PrefMgr.getHideFilePath();
+                PrefMgr.setHiddenFolders(managed);
+                _hiddenFolders.setValue(managed);
+            }
+        }
+
+        _state = new MutableLiveData<>(computeState());
         state = _state;
+
         _state.observeForever(s -> {
             if (s != State.PROCESSING)
                 PrefMgr.setIsHidden(s == State.HIDDEN);
         });
+
         initialized = true;
     }
 
@@ -63,6 +91,25 @@ public final class Hider {
      */
     public static State getState() {
         return _state.getValue();
+    }
+
+    private static State computeState() {
+        Set<String> ha = _hiddenApps.getValue();
+        Set<String> hf = _hiddenFolders.getValue();
+        boolean anyHidden = (ha != null && !ha.isEmpty()) || (hf != null && !hf.isEmpty());
+        if (!anyHidden) return State.VISIBLE;
+
+        Set<String> managedApps = PrefMgr.getHideApps();
+        Set<String> managedFolders = PrefMgr.getHideFilePath();
+        boolean allAppsHidden = ha != null && ha.containsAll(managedApps);
+        boolean allFoldersHidden = hf != null && hf.containsAll(managedFolders);
+        if (allAppsHidden && allFoldersHidden) return State.HIDDEN;
+
+        return State.VISIBLE;
+    }
+
+    private static void recomputeState() {
+        _state.postValue(computeState());
     }
 
     public static void hide(Context context) {
@@ -97,15 +144,34 @@ public final class Hider {
             _state.postValue(State.PROCESSING);
 
             try {
-                // Determine if we should only disable apps (skip hide step) when XHide is enabled
                 boolean disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide();
 
-                BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).hide(PrefMgr.getHideApps(), disableOnly);
-                BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).hide(PrefMgr.getHideFilePath());
+                Set<String> managedApps = PrefMgr.getHideApps();
+                Set<String> alreadyHiddenApps = _hiddenApps.getValue() != null ? _hiddenApps.getValue() : new HashSet<>();
+                Set<String> appsToHide = new HashSet<>(managedApps);
+                appsToHide.removeAll(alreadyHiddenApps);
+                if (!appsToHide.isEmpty()) {
+                    BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).hide(appsToHide, disableOnly);
+                }
+
+                Set<String> managedFolders = PrefMgr.getHideFilePath();
+                Set<String> alreadyHiddenFolders = _hiddenFolders.getValue() != null ? _hiddenFolders.getValue() : new HashSet<>();
+                Set<String> foldersToHide = new HashSet<>(managedFolders);
+                foldersToHide.removeAll(alreadyHiddenFolders);
+                if (!foldersToHide.isEmpty()) {
+                    BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).hide(foldersToHide);
+                }
             } catch (InterruptedException e) {
                 Log.w(TAG, "Process 'hide' interrupted.");
                 return;
             }
+
+            Set<String> allManagedApps = PrefMgr.getHideApps();
+            Set<String> allManagedFolders = PrefMgr.getHideFilePath();
+            _hiddenApps.postValue(allManagedApps);
+            _hiddenFolders.postValue(allManagedFolders);
+            PrefMgr.setHiddenApps(allManagedApps);
+            PrefMgr.setHiddenFolders(allManagedFolders);
 
             Log.i(TAG, "Process 'hide' finish.");
             _state.postValue(State.HIDDEN);
@@ -144,12 +210,24 @@ public final class Hider {
             _state.postValue(State.PROCESSING);
 
             try {
-                BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).unhide(PrefMgr.getHideApps());
-                BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).unhide(PrefMgr.getHideFilePath());
+                Set<String> currentlyHiddenApps = _hiddenApps.getValue() != null ? _hiddenApps.getValue() : new HashSet<>();
+                if (!currentlyHiddenApps.isEmpty()) {
+                    BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).unhide(currentlyHiddenApps);
+                }
+
+                Set<String> currentlyHiddenFolders = _hiddenFolders.getValue() != null ? _hiddenFolders.getValue() : new HashSet<>();
+                if (!currentlyHiddenFolders.isEmpty()) {
+                    BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).unhide(currentlyHiddenFolders);
+                }
             } catch (InterruptedException e) {
                 Log.w(TAG, "Process 'unhide' interrupted.");
                 return;
             }
+
+            _hiddenApps.postValue(new HashSet<>());
+            _hiddenFolders.postValue(new HashSet<>());
+            PrefMgr.setHiddenApps(new HashSet<>());
+            PrefMgr.setHiddenFolders(new HashSet<>());
 
             Log.i(TAG, "Process 'unhide' finish.");
             _state.postValue(State.VISIBLE);
@@ -157,11 +235,69 @@ public final class Hider {
             if (!PrefMgr.getDisableToasts())
                 Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show();
 
-            // Important: The startService() method of QuickHideService must be invoked on the main thread.
-            // If it's called from a background thread, the service might not get the most recent value from Hider.getState() in time.
-            // As a result, if the state changes into VISIBLE from HIDDEN just before, the service won't start.
             new Handler(Looper.getMainLooper()).post(
                     () -> QuickHideService.startService(context));
+        });
+    }
+
+    public static void hideApp(Context context, String pkgName) {
+        Set<String> current = new HashSet<>(_hiddenApps.getValue());
+        current.add(pkgName);
+        _hiddenApps.postValue(current);
+        PrefMgr.setHiddenApps(current);
+
+        threadHandler.post(() -> {
+            boolean disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide();
+            BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode())
+                    .hide(Set.of(pkgName), disableOnly);
+            recomputeState();
+        });
+    }
+
+    public static void unhideApp(Context context, String pkgName) {
+        Set<String> current = new HashSet<>(_hiddenApps.getValue());
+        current.remove(pkgName);
+        _hiddenApps.postValue(current);
+        PrefMgr.setHiddenApps(current);
+
+        threadHandler.post(() -> {
+            BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode())
+                    .unhide(Set.of(pkgName));
+            recomputeState();
+        });
+    }
+
+    public static void hideFolder(Context context, String path) {
+        Set<String> current = new HashSet<>(_hiddenFolders.getValue());
+        current.add(path);
+        _hiddenFolders.postValue(current);
+        PrefMgr.setHiddenFolders(current);
+
+        threadHandler.post(() -> {
+            try {
+                BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode())
+                        .hide(Set.of(path));
+            } catch (InterruptedException e) {
+                Log.w(TAG, "hideFolder interrupted");
+            }
+            recomputeState();
+        });
+    }
+
+    public static void unhideFolder(Context context, String path) {
+        Set<String> current = new HashSet<>(_hiddenFolders.getValue());
+        current.remove(path);
+        _hiddenFolders.postValue(current);
+        PrefMgr.setHiddenFolders(current);
+
+        threadHandler.post(() -> {
+            try {
+                BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode())
+                        .unhide(Set.of(path));
+            } catch (InterruptedException e) {
+                Log.w(TAG, "unhideFolder interrupted");
+            }
+            recomputeState();
         });
     }
 
