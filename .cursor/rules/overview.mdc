@@ -26,7 +26,9 @@ The `Hider` class serves as the central management system for both file and app 
 
 - **Retrieve State:** `Hider.getState()` returns one of three states: `HIDDEN`, `VISIBLE`, `PROCESSING`.
 - **State observation:** `Hider.state` is exposed as `LiveData<State>` (read-only). Internal mutations use private `_state`.
-- **Trigger Processing:** `Hider.hide(context)` and `Hider.unhide(context)` trigger hiding/unhiding operations. Both accept an optional `OnActivationFailedListener` for callers that want to handle failures (e.g., show a dialog) instead of the default toast.
+- **Bulk operations:** `Hider.hide(context)` and `Hider.unhide(context)` hide/unhide everything at once. Both accept an optional `OnActivationFailedListener` for callers that want to handle failures (e.g., show a dialog) instead of the default toast.
+- **Per-item operations:** `Hider.hideApp(context, pkgName)`, `Hider.unhideApp(context, pkgName)`, `Hider.hideFolder(context, path)`, `Hider.unhideFolder(context, path)` operate on a single item.
+- **Per-item state:** `Hider.hiddenApps: LiveData<Set<String>>` and `Hider.hiddenFolders: LiveData<Set<String>>` track which items are currently hidden.
 
 > NOTE: Calling `getState()` on a background thread does not guarantee that the latest value set will be received. Call it on the main thread.
 
@@ -50,7 +52,31 @@ The `Hider` class serves as the central management system for both file and app 
 
 - **Factory methods:** `BaseAppHider.fromMode(context, mode)` and `BaseFileHider.fromMode(context, mode)` create hider instances from stored mode integers. Reverse mapping via `modeOf(Class)`.
 
-### 4. Settings and Preferences
+### 4. Main UI — Single Activity with NavHost
+
+**Entry:** `app/src/main/java/deltazero/amarok/ui/MainActivity.kt`
+
+The app uses a single `MainActivity` that hosts a bottom-navigation `NavHost` with four tabs:
+
+| Tab | Screen | File |
+|-----|--------|------|
+| Dashboard | `DashboardScreen` | `DashboardScreen.kt` |
+| Apps | `AppsScreen` | `AppsScreen.kt` |
+| Files | `FilesScreen` | `FilesScreen.kt` |
+| Settings | `SettingsScreen` | `settings/SettingsScreen.kt` |
+
+**Navigation setup:** `AmarokNavigation.kt` defines the `NavHost`, routes, and bottom nav bar.
+
+**ViewModels:**
+- `MainViewModel.kt` — hider state, managed counts, hider mode names (used by `DashboardScreen`)
+- `AppsViewModel.kt` — managed apps list, per-app hidden/processing state, hide/unhide actions
+- `FilesViewModel.kt` — managed folders list, per-folder hidden/processing state, add/remove/hide/unhide actions
+- `settings/SettingsViewModel.kt` — settings state and action methods
+- `AppListViewModel.kt` — app list for the app editor (`SetHideAppActivity`)
+
+**App list editor:** `SetHideAppActivity` + `SetHideAppScreen.kt` — launched from `AppsScreen`'s edit button (remains a separate Activity since it is launched via Intent).
+
+### 5. Settings and Preferences
 
 - Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/core/PrefMgr.java`) with SharedPreferences. `PrefMgr` stores/retrieves preference values only; hider instantiation is done via `BaseAppHider.fromMode()` / `BaseFileHider.fromMode()`.
 - UI is implemented under `app/src/main/java/deltazero/amarok/ui/settings/` with each setting grouped by category.
@@ -67,18 +93,18 @@ Settings sections are defined as composable functions in `SettingsScreen.kt`:
 2. Add the field to `SettingsUiState` and a corresponding action method to `SettingsViewModel`.
 3. Add the setting UI in the appropriate section of `SettingsScreen.kt`. Use `R.drawable.ic_null` as placeholder icon for new options.
 
-### 5. XHide
+### 6. XHide
 
 **Directory:** `app/src/main/java/deltazero/amarok/xposed/`
 
 Amarok is both an Android app and an Xposed module. The Xposed part is implemented in the `xposed` package.
 
-- **Purpose:** Provides system-level app hiding by intercepting Android’s PackageManager queries.
+- **Purpose:** Provides system-level app hiding by intercepting Android's PackageManager queries.
 - **Limitations:** Does not hide apps from launchers; use with other app hiding modes.
 
 #### Key Components
 
-- **XposedEntry:** Module’s main entry point.
+- **XposedEntry:** Module's main entry point.
 - **FilterHooks:** Contains version-specific implementations.
 
 #### Communication and Preference Management
@@ -92,7 +118,7 @@ The main app and the module run in different processes, so they communicate with
 
 When a hide/unhide operation is triggered, the main app will call `XHidePrefBridge.commitNewValues()` to activate the module for system queries filtering.
 
-### 6. Quick Hide
+### 7. Quick Hide
 
 Provides multiple triggers for instant hide/unhide operations:
 
