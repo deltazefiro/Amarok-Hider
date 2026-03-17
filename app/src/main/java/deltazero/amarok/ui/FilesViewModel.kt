@@ -70,8 +70,4 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
         PrefMgr.setHideFilePath(current)
         _managedFolders.value = current.toList()
     }
-
-    fun refreshFolders() {
-        _managedFolders.value = PrefMgr.getHideFilePath().toList()
-    }
 }
