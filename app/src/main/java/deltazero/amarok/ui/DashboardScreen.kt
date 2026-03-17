@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -26,7 +25,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -38,8 +36,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -48,10 +44,7 @@ import deltazero.amarok.core.Hider
 import deltazero.amarok.R
 
 @Composable
-fun MainScreen(
-    onSetHideFiles: () -> Unit,
-    onSetHideApps: () -> Unit,
-    onSettings: () -> Unit,
+fun DashboardScreen(
     onChangeStatus: () -> Unit,
     viewModel: MainViewModel = viewModel()
 ) {
@@ -169,48 +162,7 @@ fun MainScreen(
                 }
             }
 
-            Spacer(Modifier.height(35.dp))
-
-            // Action buttons
-            ActionButton(
-                icon = R.drawable.ic_folder,
-                text = R.string.set_hide_files,
-                onClick = onSetHideFiles
-            )
-
-            ActionButton(
-                icon = R.drawable.ic_app,
-                text = R.string.set_hide_apps,
-                onClick = onSetHideApps
-            )
-
-            ActionButton(
-                icon = R.drawable.ic_settings,
-                text = R.string.more_settings,
-                onClick = onSettings
-            )
-
             Spacer(Modifier.height(42.dp))
         }
-    }
-}
-
-@Composable
-private fun ActionButton(
-    @DrawableRes icon: Int,
-    @StringRes text: Int,
-    onClick: () -> Unit
-) {
-    TextButton(
-        onClick = onClick,
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(60.dp)
-            .padding(horizontal = 50.dp)
-    ) {
-        Icon(painterResource(icon), contentDescription = null)
-        Spacer(Modifier.width(15.dp))
-        Text(stringResource(text))
-        Spacer(Modifier.weight(1f))
     }
 }

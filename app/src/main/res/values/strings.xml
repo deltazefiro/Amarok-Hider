@@ -7,6 +7,9 @@
     <string name="hidden_status">Hidden</string>
     <string name="visible_moto" translatable="false">"\"Night has fallen. Be careful.\" "</string>
     <string name="hidden_moto" translatable="false">"\"Secrets never emerge under the sun.\" "</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="apps">Apps</string>
+    <string name="files">Files</string>
     <string name="ok">OK</string>
     <string name="about">About</string>
     <string name="cancel">Cancel</string>
