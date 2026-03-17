@@ -34,6 +34,7 @@ import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import deltazero.amarok.QuickHideService
 import androidx.activity.viewModels
 import androidx.lifecycle.viewmodel.compose.viewModel
+import deltazero.amarok.ui.SetHideAppActivity
 
 class MainActivity : AmarokActivity() {
 
@@ -59,7 +60,15 @@ class MainActivity : AmarokActivity() {
                             )
                         }
                         composable(AmarokRoute.APPS.route) {
-                            AppsScreen()
+                            AppsScreen(
+                                onOpenEditor = {
+                                    if (Hider.getState() == Hider.State.HIDDEN) {
+                                        Toast.makeText(this@MainActivity, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show()
+                                        return@AppsScreen
+                                    }
+                                    startActivity(Intent(this@MainActivity, SetHideAppActivity::class.java))
+                                }
+                            )
                         }
                         composable(AmarokRoute.FILES.route) {
                             FilesScreen()
