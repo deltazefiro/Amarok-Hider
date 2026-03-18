@@ -15,6 +15,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -27,6 +28,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
 import deltazero.amarok.ui.theme.AmarokTheme
@@ -38,6 +42,13 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
   val apps by viewModel.managedApps.collectAsState()
   val hiddenApps by viewModel.hiddenApps.collectAsState()
   val processingApps by viewModel.processingApps.collectAsState()
+
+  val lifecycleOwner = LocalLifecycleOwner.current
+  LaunchedEffect(lifecycleOwner) {
+    lifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED) {
+      viewModel.loadManagedApps()
+    }
+  }
 
   AppsScreen(
     apps = apps,

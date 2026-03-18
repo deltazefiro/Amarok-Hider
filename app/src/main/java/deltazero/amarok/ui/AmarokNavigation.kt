@@ -16,7 +16,15 @@ enum class AmarokRoute(val route: String, val labelRes: Int, val iconRes: Int) {
   DASHBOARD("dashboard", R.string.dashboard, R.drawable.ic_home),
   APPS("apps", R.string.apps, R.drawable.ic_app),
   FILES("files", R.string.files, R.drawable.ic_folder),
-  SETTINGS("settings", R.string.more_settings, R.drawable.ic_settings),
+  SETTINGS("settings", R.string.more_settings, R.drawable.ic_settings);
+
+  companion object {
+    val tabRoutes: Set<String> = entries.map { it.route }.toSet()
+  }
+}
+
+object AmarokRoutes {
+  const val APP_PICKER = "app_picker"
 }
 
 @Composable

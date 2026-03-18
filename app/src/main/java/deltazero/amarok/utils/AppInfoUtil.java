@@ -19,7 +19,7 @@ import java.util.Set;
 
 public class AppInfoUtil {
   private final PackageManager pkgMgr;
-  private final List<AppInfo> appInfoList = new ArrayList<>();
+  private volatile List<AppInfo> appInfoList = List.of();
   private final Set<String> predefinedRootApps;
 
   public AppInfoUtil(Context context) {
@@ -46,14 +46,14 @@ public class AppInfoUtil {
   }
 
   public void refresh() {
-    appInfoList.clear();
-
     Set<String> hiddenApps = PrefMgr.getHideApps();
 
     // Get applications info
     List<ApplicationInfo> installedApplications =
         pkgMgr.getInstalledApplications(
             GET_META_DATA | MATCH_DISABLED_COMPONENTS | MATCH_UNINSTALLED_PACKAGES);
+
+    List<AppInfo> newList = new ArrayList<>();
     for (ApplicationInfo applicationInfo : installedApplications) {
 
       // Filter out Amarok itself
@@ -67,17 +67,20 @@ public class AppInfoUtil {
               isRootApp(applicationInfo),
               pkgMgr.getApplicationIcon(applicationInfo));
 
-      appInfoList.add(appInfo);
+      newList.add(appInfo);
     }
 
     // Sort with app name, with the hidden apps always on the top
-    appInfoList.sort(
+    newList.sort(
         (o1, o2) -> {
           if (hiddenApps.contains(o1.packageName) && !hiddenApps.contains(o2.packageName))
             return -1;
           if (hiddenApps.contains(o2.packageName) && !hiddenApps.contains(o1.packageName)) return 1;
           return (o1.label.compareTo(o2.label));
         });
+
+    // Atomically swap to the new immutable list
+    appInfoList = List.copyOf(newList);
   }
 
   public List<AppInfo> getFilteredApps(

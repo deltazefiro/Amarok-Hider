@@ -8,10 +8,12 @@ import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hjq.permissions.OnPermissionCallback
@@ -43,7 +45,11 @@ class MainActivity : AmarokActivity() {
     setContent {
       AmarokTheme {
         val navController = rememberNavController()
-        Scaffold(bottomBar = { AmarokNavigationBar(navController) }) { padding ->
+        val backStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = backStackEntry?.destination?.route
+        val showBottomBar = currentRoute in AmarokRoute.tabRoutes
+
+        Scaffold(bottomBar = { if (showBottomBar) AmarokNavigationBar(navController) }) { padding ->
           NavHost(
             navController = navController,
             startDestination = AmarokRoute.DASHBOARD.route,
@@ -64,11 +70,14 @@ class MainActivity : AmarokActivity() {
                       .show()
                     return@AppsScreen
                   }
-                  startActivity(Intent(this@MainActivity, SetHideAppActivity::class.java))
+                  navController.navigate(AmarokRoutes.APP_PICKER)
                 }
               )
             }
             composable(AmarokRoute.FILES.route) { FilesScreen() }
+            composable(AmarokRoutes.APP_PICKER) {
+              AppPickerScreen(onBack = { navController.popBackStack() })
+            }
             composable(AmarokRoute.SETTINGS.route) {
               SettingsScreen(
                 onBack = { navController.popBackStack() },
