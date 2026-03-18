@@ -6,15 +6,51 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.widget.Toast
 import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.HelpOutline
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.FilterChipDefaults
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.RadioButton
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Slider
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -36,9 +72,6 @@ private fun prefIcon(@DrawableRes id: Int) =
 @Composable
 fun SettingsScreen(
   onBack: () -> Unit,
-  // Workmode
-  onSwitchAppHider: () -> Unit,
-  onSwitchFileHider: () -> Unit,
   // Privacy
   onSetPassword: (callback: (String?) -> Unit) -> Unit,
   onShowCountdownConfirm: (onConfirm: () -> Unit, onCancel: () -> Unit) -> Unit,
@@ -52,11 +85,16 @@ fun SettingsScreen(
 ) {
   val context = LocalContext.current
   val state by viewModel.uiState.collectAsState()
+  val hasHiddenFiles by viewModel.hasHiddenFiles.collectAsState()
+
+  LaunchedEffect(Unit) { viewModel.refreshWorkmodeState() }
 
   SettingsScreen(
     state = state,
-    onSwitchAppHider = onSwitchAppHider,
-    onSwitchFileHider = onSwitchFileHider,
+    isHidden = hasHiddenFiles,
+    onSetAppHiderMode = { viewModel.setAppHiderMode(it) },
+    onSetFileHiderMode = { viewModel.setFileHiderMode(it) },
+    onSetObfuscateLevel = { viewModel.setObfuscateLevel(it) },
     onSetXHideEnabled = { viewModel.setXHideEnabled(it) },
     onSetDisableOnlyWithXHide = { viewModel.setDisableOnlyWithXHide(it) },
     onSetPassword = onSetPassword,
@@ -93,8 +131,10 @@ fun SettingsScreen(
 @Composable
 fun SettingsScreen(
   state: SettingsUiState,
-  onSwitchAppHider: () -> Unit,
-  onSwitchFileHider: () -> Unit,
+  isHidden: Boolean,
+  onSetAppHiderMode: (Int) -> Unit,
+  onSetFileHiderMode: (Int) -> Unit,
+  onSetObfuscateLevel: (Int) -> Unit,
   onSetXHideEnabled: (Boolean) -> Unit,
   onSetDisableOnlyWithXHide: (Boolean) -> Unit,
   onSetPassword: (callback: (String?) -> Unit) -> Unit,
@@ -130,7 +170,7 @@ fun SettingsScreen(
     Column(
       modifier = Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())
     ) {
-      WorkmodeSection(state, onSwitchAppHider, onSwitchFileHider)
+      WorkmodeSection(state, isHidden, onSetAppHiderMode, onSetFileHiderMode, onSetObfuscateLevel)
       XHideSection(state, onSetXHideEnabled, onSetDisableOnlyWithXHide)
       PrivacySection(
         state,
@@ -170,25 +210,259 @@ fun SettingsScreen(
   }
 }
 
+private data class HiderModeOption(
+  val mode: Int,
+  @StringRes val nameResId: Int,
+  @StringRes val descResId: Int,
+)
+
+private val appHiderModes =
+  listOf(
+    HiderModeOption(1, R.string.apphider_root, R.string.apphider_root_description),
+    HiderModeOption(3, R.string.apphider_shizuku, R.string.apphider_shizuku_description),
+    HiderModeOption(4, R.string.apphider_dhizuku, R.string.apphider_dhizuku_description),
+    HiderModeOption(2, R.string.apphider_dsm, R.string.apphider_dsm_description),
+  )
+
+private val fileHiderModes =
+  listOf(
+    HiderModeOption(1, R.string.filehider_obfuscate, R.string.filehider_obfuscate_description),
+    HiderModeOption(3, R.string.filehider_chmod, R.string.filehider_chmod_description),
+    HiderModeOption(2, R.string.filehider_nomedia, R.string.filehider_nomedia_description),
+  )
+
+private data class ObfuscateLevelOption(
+  val level: Int,
+  @StringRes val nameResId: Int,
+  @StringRes val descResId: Int,
+)
+
+private val obfuscateLevels =
+  listOf(
+    ObfuscateLevelOption(0, R.string.filehider_none, R.string.filehider_obfuscate_description),
+    ObfuscateLevelOption(
+      1,
+      R.string.obfuscate_file_header,
+      R.string.obfuscate_file_header_description,
+    ),
+    ObfuscateLevelOption(2, R.string.obfuscate_text_file, R.string.obfuscate_text_file_description),
+    ObfuscateLevelOption(
+      3,
+      R.string.obfuscate_text_file_enhanced,
+      R.string.obfuscate_text_file_description_enhanced,
+    ),
+  )
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 internal fun WorkmodeSection(
   state: SettingsUiState,
-  onSwitchAppHider: () -> Unit,
-  onSwitchFileHider: () -> Unit,
+  isHidden: Boolean,
+  onSetAppHiderMode: (Int) -> Unit,
+  onSetFileHiderMode: (Int) -> Unit,
+  onSetObfuscateLevel: (Int) -> Unit,
 ) {
+  val context = LocalContext.current
   PreferenceGroupHeader(stringResource(R.string.workmode))
-  ClickPreferenceItem(
-    title = stringResource(R.string.switch_app_hider),
-    summary = stringResource(R.string.current_mode, state.appHiderName),
-    icon = prefIcon(R.drawable.apps_black_24dp),
-    onClick = onSwitchAppHider,
-  )
-  ClickPreferenceItem(
-    title = stringResource(R.string.switch_file_hider),
-    summary = stringResource(R.string.current_mode, state.fileHiderName),
-    icon = prefIcon(R.drawable.folder_black_24dp),
-    onClick = onSwitchFileHider,
-  )
+
+  // App Hider Card
+  val selectedAppDesc =
+    appHiderModes.find { it.mode == state.appHiderMode }?.descResId
+      ?: R.string.apphider_none_description
+  ElevatedCard(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+    Column(modifier = Modifier.padding(16.dp)) {
+      Text(
+        text = stringResource(R.string.switch_app_hider),
+        style = MaterialTheme.typography.titleSmall,
+      )
+      Spacer(Modifier.height(8.dp))
+      FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        appHiderModes.forEach { option ->
+          val isFailed = state.appHiderFailedMode == option.mode
+          FilterChip(
+            selected = state.appHiderMode == option.mode || isFailed,
+            onClick = {
+              onSetAppHiderMode(
+                if (state.appHiderMode == option.mode || isFailed) 0 else option.mode
+              )
+            },
+            label = { Text(stringResource(option.nameResId)) },
+            colors =
+              if (isFailed)
+                FilterChipDefaults.filterChipColors(
+                  selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
+                  selectedLabelColor = MaterialTheme.colorScheme.onErrorContainer,
+                )
+              else FilterChipDefaults.filterChipColors(),
+            border =
+              if (isFailed)
+                FilterChipDefaults.filterChipBorder(
+                  enabled = true,
+                  selected = true,
+                  borderColor = MaterialTheme.colorScheme.error,
+                  selectedBorderColor = MaterialTheme.colorScheme.error,
+                  selectedBorderWidth = 1.dp,
+                )
+              else FilterChipDefaults.filterChipBorder(enabled = true, selected = false),
+          )
+        }
+      }
+      Spacer(Modifier.height(4.dp))
+      // Show failed mode's description when there's an error
+      val appDescResId =
+        if (state.appHiderFailedMode >= 0)
+          appHiderModes.find { it.mode == state.appHiderFailedMode }?.descResId ?: selectedAppDesc
+        else selectedAppDesc
+      Text(
+        text = stringResource(appDescResId),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+      )
+      if (state.appHiderErrorResId != 0) {
+        Row(
+          verticalAlignment = Alignment.CenterVertically,
+          modifier = Modifier.padding(top = 4.dp),
+        ) {
+          Text(
+            text = stringResource(state.appHiderErrorResId),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.error,
+            modifier = Modifier.weight(1f),
+          )
+          IconButton(
+            onClick = {
+              context.startActivity(
+                Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(R.string.hideapp_doc_url)))
+              )
+            }
+          ) {
+            Icon(
+              imageVector = Icons.AutoMirrored.Outlined.HelpOutline,
+              contentDescription = null,
+              tint = MaterialTheme.colorScheme.error,
+            )
+          }
+        }
+      }
+    }
+  }
+
+  // File Hider Card
+  val selectedFileDesc =
+    fileHiderModes.find { it.mode == state.fileHiderMode }?.descResId
+      ?: R.string.filehider_none_description
+  val fileCardAlpha = if (isHidden) 0.38f else 1f
+  ElevatedCard(
+    modifier =
+      Modifier.fillMaxWidth()
+        .padding(horizontal = 16.dp, vertical = 4.dp)
+        .then(
+          if (isHidden)
+            Modifier.clickable {
+              Toast.makeText(context, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT)
+                .show()
+            }
+          else Modifier
+        )
+  ) {
+    Column(modifier = Modifier.padding(16.dp).alpha(fileCardAlpha)) {
+      Text(
+        text = stringResource(R.string.switch_file_hider),
+        style = MaterialTheme.typography.titleSmall,
+      )
+      Spacer(Modifier.height(8.dp))
+      FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        fileHiderModes.forEach { option ->
+          val isFailed = state.fileHiderFailedMode == option.mode
+          FilterChip(
+            selected = state.fileHiderMode == option.mode || isFailed,
+            enabled = !isHidden,
+            onClick = {
+              onSetFileHiderMode(
+                if (state.fileHiderMode == option.mode || isFailed) 0 else option.mode
+              )
+            },
+            label = { Text(stringResource(option.nameResId)) },
+            colors =
+              if (isFailed)
+                FilterChipDefaults.filterChipColors(
+                  selectedContainerColor = MaterialTheme.colorScheme.errorContainer,
+                  selectedLabelColor = MaterialTheme.colorScheme.onErrorContainer,
+                )
+              else FilterChipDefaults.filterChipColors(),
+            border =
+              if (isFailed)
+                FilterChipDefaults.filterChipBorder(
+                  enabled = true,
+                  selected = true,
+                  borderColor = MaterialTheme.colorScheme.error,
+                  selectedBorderColor = MaterialTheme.colorScheme.error,
+                  selectedBorderWidth = 1.dp,
+                )
+              else FilterChipDefaults.filterChipBorder(enabled = true, selected = false),
+          )
+        }
+      }
+      Spacer(Modifier.height(4.dp))
+      val fileDescResId =
+        if (state.fileHiderFailedMode >= 0)
+          fileHiderModes.find { it.mode == state.fileHiderFailedMode }?.descResId
+            ?: selectedFileDesc
+        else selectedFileDesc
+      Text(
+        text = stringResource(fileDescResId),
+        style = MaterialTheme.typography.bodySmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+      )
+      if (state.fileHiderErrorResId != 0) {
+        Text(
+          text = stringResource(state.fileHiderErrorResId),
+          style = MaterialTheme.typography.bodySmall,
+          color = MaterialTheme.colorScheme.error,
+          modifier = Modifier.padding(top = 4.dp),
+        )
+      }
+
+      // Obfuscate level settings (visible when obfuscate mode selected)
+      AnimatedVisibility(visible = state.fileHiderMode == 1) {
+        Column {
+          Spacer(Modifier.height(16.dp))
+          HorizontalDivider()
+          Spacer(Modifier.height(16.dp))
+          Text(
+            text = stringResource(R.string.obfuscation_options),
+            style = MaterialTheme.typography.titleSmall,
+          )
+          Spacer(Modifier.height(4.dp))
+          val levelLabel =
+            obfuscateLevels.find { it.level == state.obfuscateLevel }?.nameResId
+              ?: obfuscateLevels[0].nameResId
+          Text(
+            text = stringResource(levelLabel),
+            style = MaterialTheme.typography.labelMedium,
+            color = MaterialTheme.colorScheme.primary,
+          )
+          Spacer(Modifier.height(4.dp))
+          Slider(
+            value = state.obfuscateLevel.toFloat(),
+            onValueChange = { onSetObfuscateLevel(it.toInt()) },
+            enabled = !isHidden,
+            valueRange = 0f..3f,
+            steps = 2,
+          )
+          Spacer(Modifier.height(4.dp))
+          val levelDesc =
+            obfuscateLevels.find { it.level == state.obfuscateLevel }?.descResId
+              ?: R.string.filehider_obfuscate_description
+          Text(
+            text = stringResource(levelDesc),
+            style = MaterialTheme.typography.bodySmall,
+            color = MaterialTheme.colorScheme.onSurfaceVariant,
+          )
+        }
+      }
+    }
+  }
 }
 
 @Composable
@@ -686,8 +960,11 @@ private fun previewState() =
     dynamicColor = true,
     darkThemeMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
     invertTileColor = false,
+    appHiderMode = 2,
+    fileHiderMode = 1,
     appHiderName = "DSM (Device Owner)",
     fileHiderName = "Obfuscate",
+    obfuscateLevel = 1,
     updateChannel = "RELEASE",
     autoUpdate = true,
     appVersionName = "0.10.0",
@@ -700,7 +977,7 @@ private fun previewState() =
 @Composable
 private fun WorkmodeSectionPreview() {
   AmarokTheme(dynamicColor = false) {
-    Surface { Column { WorkmodeSection(previewState(), {}, {}) } }
+    Surface { Column { WorkmodeSection(previewState(), false, {}, {}, {}) } }
   }
 }
 
