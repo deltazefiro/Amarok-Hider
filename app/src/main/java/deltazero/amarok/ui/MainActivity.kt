@@ -5,20 +5,24 @@ import android.net.Uri
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.hjq.permissions.XXPermissions
+import com.hjq.permissions.OnPermissionCallback
+import com.skydoves.colorpickerview.ColorPickerDialog
+import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.core.Hider
-import deltazero.amarok.core.PrefMgr
+import deltazero.amarok.QuickHideService
 import deltazero.amarok.R
 import deltazero.amarok.apphider.BaseAppHider
-import deltazero.amarok.apphider.NoneAppHider
+import deltazero.amarok.core.Hider
+import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.filehider.BaseFileHider
 import deltazero.amarok.filehider.NoneFileHider
 import deltazero.amarok.ui.settings.SettingsScreen
@@ -28,177 +32,190 @@ import deltazero.amarok.ui.settings.SwitchFileHiderActivity
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.PermissionUtil
 import deltazero.amarok.utils.UpdateUtil
-import com.hjq.permissions.OnPermissionCallback
-import com.skydoves.colorpickerview.ColorPickerDialog
-import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
-import deltazero.amarok.QuickHideService
-import androidx.activity.viewModels
-import androidx.lifecycle.viewmodel.compose.viewModel
-import deltazero.amarok.ui.SetHideAppActivity
 
 class MainActivity : AmarokActivity() {
 
-    private val settingsViewModel: SettingsViewModel by viewModels()
+  private val settingsViewModel: SettingsViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
 
-        setContent {
-            AmarokTheme {
-                val navController = rememberNavController()
-                Scaffold(
-                    bottomBar = { AmarokNavigationBar(navController) }
-                ) { padding ->
-                    NavHost(
-                        navController = navController,
-                        startDestination = AmarokRoute.DASHBOARD.route,
-                        modifier = Modifier.padding(padding)
-                    ) {
-                        composable(AmarokRoute.DASHBOARD.route) {
-                            DashboardScreen(
-                                onChangeStatus = { changeStatus() }
-                            )
-                        }
-                        composable(AmarokRoute.APPS.route) {
-                            AppsScreen(
-                                onOpenEditor = {
-                                    if (Hider.getState() == Hider.State.HIDDEN) {
-                                        Toast.makeText(this@MainActivity, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show()
-                                        return@AppsScreen
-                                    }
-                                    startActivity(Intent(this@MainActivity, SetHideAppActivity::class.java))
-                                }
-                            )
-                        }
-                        composable(AmarokRoute.FILES.route) {
-                            FilesScreen()
-                        }
-                        composable(AmarokRoute.SETTINGS.route) {
-                            SettingsScreen(
-                                onBack = { navController.popBackStack() },
-                                onSwitchAppHider = {
-                                    startActivity(Intent(this@MainActivity, SwitchAppHiderActivity::class.java))
-                                },
-                                onSwitchFileHider = {
-                                    startActivity(Intent(this@MainActivity, SwitchFileHiderActivity::class.java))
-                                },
-                                onSetPassword = { callback ->
-                                    SetPasswordFragment()
-                                        .setCallback { password -> callback(password) }
-                                        .show(supportFragmentManager, null)
-                                },
-                                onShowCountdownConfirm = { onConfirm, onCancel ->
-                                    CountdownConfirmDialog.Builder(this@MainActivity)
-                                        .setTitle(R.string.hide_amarok_icon_dialog_title)
-                                        .setMessage(R.string.hide_amarok_icon_dialog_message)
-                                        .setCountdownSeconds(10)
-                                        .setOnConfirmAction(onConfirm)
-                                        .setOnCancelAction(onCancel)
-                                        .show()
-                                },
-                                onRequestNotificationPermission = { onGranted, onDenied ->
-                                    PermissionUtil.requestNotificationPermission(this@MainActivity, object : OnPermissionCallback {
-                                        override fun onGranted(permissions: MutableList<String>, all: Boolean) { onGranted() }
-                                        override fun onDenied(permissions: MutableList<String>, never: Boolean) { onDenied() }
-                                    })
-                                },
-                                onRequestSystemAlertPermission = { onGranted, onDenied ->
-                                    PermissionUtil.requestSystemAlertPermission(this@MainActivity, object : OnPermissionCallback {
-                                        override fun onGranted(permissions: MutableList<String>, all: Boolean) { onGranted() }
-                                        override fun onDenied(permissions: MutableList<String>, never: Boolean) { onDenied() }
-                                    })
-                                },
-                                onShowColorPicker = {
-                                    val builder = ColorPickerDialog.Builder(this@MainActivity)
-                                        .setTitle(R.string.panic_button_color)
-                                        .setPreferenceName("PanicButtonColorPicker")
-                                        .setPositiveButton(
-                                            getString(android.R.string.ok),
-                                            ColorEnvelopeListener { envelope, _ ->
-                                                PrefMgr.setPanicButtonColor(envelope.color)
-                                                QuickHideService.startService(this@MainActivity)
-                                            }
-                                        )
-                                        .setNegativeButton(getString(android.R.string.cancel)) { dialog, _ -> dialog.dismiss() }
-                                        .attachAlphaSlideBar(true)
-                                        .attachBrightnessSlideBar(true)
-                                        .setBottomSpace(12)
-                                    builder.colorPickerView.setInitialColor(PrefMgr.getPanicButtonColor())
-                                    builder.show()
-                                },
-                                onSwitchLocale = {
-                                    deltazero.amarok.utils.SwitchLocaleUtil.switchLocale(this@MainActivity)
-                                },
-                                viewModel = settingsViewModel
-                            )
-                        }
-                    }
-                }
+    setContent {
+      AmarokTheme {
+        val navController = rememberNavController()
+        Scaffold(bottomBar = { AmarokNavigationBar(navController) }) { padding ->
+          NavHost(
+            navController = navController,
+            startDestination = AmarokRoute.DASHBOARD.route,
+            modifier = Modifier.padding(padding),
+          ) {
+            composable(AmarokRoute.DASHBOARD.route) {
+              DashboardScreen(onChangeStatus = { changeStatus() })
             }
-        }
-
-        // Show welcome dialog
-        if (PrefMgr.getShowWelcome()) {
-            MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.welcome_title)
-                .setMessage(R.string.welcome_msg)
-                .setPositiveButton(R.string.ok) { _, _ -> PermissionUtil.requestStoragePermission(this) }
-                .setNegativeButton(R.string.view_github_repo) { _, _ ->
-                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider")))
-                    PermissionUtil.requestStoragePermission(this)
+            composable(AmarokRoute.APPS.route) {
+              AppsScreen(
+                onOpenEditor = {
+                  if (Hider.getState() == Hider.State.HIDDEN) {
+                    Toast.makeText(
+                        this@MainActivity,
+                        R.string.setting_not_ava_when_hidden,
+                        Toast.LENGTH_SHORT,
+                      )
+                      .show()
+                    return@AppsScreen
+                  }
+                  startActivity(Intent(this@MainActivity, SetHideAppActivity::class.java))
                 }
-                .setOnCancelListener { PermissionUtil.requestStoragePermission(this) }
-                .show()
-            PrefMgr.setShowWelcome(false)
-        } else {
-            PermissionUtil.requestStoragePermission(this)
-        }
-
-        // Check Hiders availability
-        BaseAppHider.fromMode(this, PrefMgr.getAppHiderMode()).tryToActivate { _, succeed, msg ->
-            if (succeed) return@tryToActivate
-            showNoHiderDialog(msg)
-        }
-
-        BaseFileHider.fromMode(this, PrefMgr.getFileHiderMode()).tryToActive { _, succeed, msg ->
-            if (succeed) return@tryToActive
-            PrefMgr.setFileHiderMode(BaseFileHider.modeOf(NoneFileHider::class.java))
-            MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.filehider_not_ava_title)
-                .setMessage(msg)
-                .setPositiveButton(R.string.switch_file_hider) { _, _ ->
-                    startActivity(Intent(this, SwitchFileHiderActivity::class.java))
-                }
-                .setNegativeButton(getString(R.string.ok), null)
-                .show()
-        }
-
-        if (PrefMgr.getEnableAutoUpdate()) {
-            UpdateUtil.checkAndNotify(this, true)
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        settingsViewModel.refreshHiderNames()
-    }
-
-    private fun changeStatus() {
-        if (Hider.getState() == Hider.State.HIDDEN) {
-            Hider.unhide(this) { msgResID -> showNoHiderDialog(msgResID) }
-        } else {
-            Hider.hide(this) { msgResID -> showNoHiderDialog(msgResID) }
-        }
-    }
-
-    private fun showNoHiderDialog(msgResID: Int) {
-        MaterialAlertDialogBuilder(this)
-            .setTitle(R.string.apphider_not_ava_title)
-            .setMessage(msgResID)
-            .setPositiveButton(R.string.switch_app_hider) { _, _ ->
-                startActivity(Intent(this, SwitchAppHiderActivity::class.java))
+              )
             }
-            .setNegativeButton(getString(R.string.ok), null)
-            .show()
+            composable(AmarokRoute.FILES.route) { FilesScreen() }
+            composable(AmarokRoute.SETTINGS.route) {
+              SettingsScreen(
+                onBack = { navController.popBackStack() },
+                onSwitchAppHider = {
+                  startActivity(Intent(this@MainActivity, SwitchAppHiderActivity::class.java))
+                },
+                onSwitchFileHider = {
+                  startActivity(Intent(this@MainActivity, SwitchFileHiderActivity::class.java))
+                },
+                onSetPassword = { callback ->
+                  SetPasswordFragment()
+                    .setCallback { password -> callback(password) }
+                    .show(supportFragmentManager, null)
+                },
+                onShowCountdownConfirm = { onConfirm, onCancel ->
+                  CountdownConfirmDialog.Builder(this@MainActivity)
+                    .setTitle(R.string.hide_amarok_icon_dialog_title)
+                    .setMessage(R.string.hide_amarok_icon_dialog_message)
+                    .setCountdownSeconds(10)
+                    .setOnConfirmAction(onConfirm)
+                    .setOnCancelAction(onCancel)
+                    .show()
+                },
+                onRequestNotificationPermission = { onGranted, onDenied ->
+                  PermissionUtil.requestNotificationPermission(
+                    this@MainActivity,
+                    object : OnPermissionCallback {
+                      override fun onGranted(permissions: MutableList<String>, all: Boolean) {
+                        onGranted()
+                      }
+
+                      override fun onDenied(permissions: MutableList<String>, never: Boolean) {
+                        onDenied()
+                      }
+                    },
+                  )
+                },
+                onRequestSystemAlertPermission = { onGranted, onDenied ->
+                  PermissionUtil.requestSystemAlertPermission(
+                    this@MainActivity,
+                    object : OnPermissionCallback {
+                      override fun onGranted(permissions: MutableList<String>, all: Boolean) {
+                        onGranted()
+                      }
+
+                      override fun onDenied(permissions: MutableList<String>, never: Boolean) {
+                        onDenied()
+                      }
+                    },
+                  )
+                },
+                onShowColorPicker = {
+                  val builder =
+                    ColorPickerDialog.Builder(this@MainActivity)
+                      .setTitle(R.string.panic_button_color)
+                      .setPreferenceName("PanicButtonColorPicker")
+                      .setPositiveButton(
+                        getString(android.R.string.ok),
+                        ColorEnvelopeListener { envelope, _ ->
+                          PrefMgr.setPanicButtonColor(envelope.color)
+                          QuickHideService.startService(this@MainActivity)
+                        },
+                      )
+                      .setNegativeButton(getString(android.R.string.cancel)) { dialog, _ ->
+                        dialog.dismiss()
+                      }
+                      .attachAlphaSlideBar(true)
+                      .attachBrightnessSlideBar(true)
+                      .setBottomSpace(12)
+                  builder.colorPickerView.setInitialColor(PrefMgr.getPanicButtonColor())
+                  builder.show()
+                },
+                onSwitchLocale = {
+                  deltazero.amarok.utils.SwitchLocaleUtil.switchLocale(this@MainActivity)
+                },
+                viewModel = settingsViewModel,
+              )
+            }
+          }
+        }
+      }
     }
+
+    // Show welcome dialog
+    if (PrefMgr.getShowWelcome()) {
+      MaterialAlertDialogBuilder(this)
+        .setTitle(R.string.welcome_title)
+        .setMessage(R.string.welcome_msg)
+        .setPositiveButton(R.string.ok) { _, _ -> PermissionUtil.requestStoragePermission(this) }
+        .setNegativeButton(R.string.view_github_repo) { _, _ ->
+          startActivity(
+            Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider"))
+          )
+          PermissionUtil.requestStoragePermission(this)
+        }
+        .setOnCancelListener { PermissionUtil.requestStoragePermission(this) }
+        .show()
+      PrefMgr.setShowWelcome(false)
+    } else {
+      PermissionUtil.requestStoragePermission(this)
+    }
+
+    // Check Hiders availability
+    BaseAppHider.fromMode(this, PrefMgr.getAppHiderMode()).tryToActivate { _, succeed, msg ->
+      if (succeed) return@tryToActivate
+      showNoHiderDialog(msg)
+    }
+
+    BaseFileHider.fromMode(this, PrefMgr.getFileHiderMode()).tryToActive { _, succeed, msg ->
+      if (succeed) return@tryToActive
+      PrefMgr.setFileHiderMode(BaseFileHider.modeOf(NoneFileHider::class.java))
+      MaterialAlertDialogBuilder(this)
+        .setTitle(R.string.filehider_not_ava_title)
+        .setMessage(msg)
+        .setPositiveButton(R.string.switch_file_hider) { _, _ ->
+          startActivity(Intent(this, SwitchFileHiderActivity::class.java))
+        }
+        .setNegativeButton(getString(R.string.ok), null)
+        .show()
+    }
+
+    if (PrefMgr.getEnableAutoUpdate()) {
+      UpdateUtil.checkAndNotify(this, true)
+    }
+  }
+
+  override fun onResume() {
+    super.onResume()
+    settingsViewModel.refreshHiderNames()
+  }
+
+  private fun changeStatus() {
+    if (Hider.getState() == Hider.State.HIDDEN) {
+      Hider.unhide(this) { msgResID -> showNoHiderDialog(msgResID) }
+    } else {
+      Hider.hide(this) { msgResID -> showNoHiderDialog(msgResID) }
+    }
+  }
+
+  private fun showNoHiderDialog(msgResID: Int) {
+    MaterialAlertDialogBuilder(this)
+      .setTitle(R.string.apphider_not_ava_title)
+      .setMessage(msgResID)
+      .setPositiveButton(R.string.switch_app_hider) { _, _ ->
+        startActivity(Intent(this, SwitchAppHiderActivity::class.java))
+      }
+      .setNegativeButton(getString(R.string.ok), null)
+      .show()
+  }
 }
