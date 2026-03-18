@@ -2,4 +2,4 @@ pre-commit:
   commands:
     spotless:
       glob: "*.{kt,java}"
-      run: ./gradlew spotlessCheck -PspotlessRatchetFrom=HEAD -q
+      run: ./gradlew spotlessApply -PspotlessRatchetFrom=HEAD -q && git add {staged_files}
