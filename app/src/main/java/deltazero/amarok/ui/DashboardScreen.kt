@@ -1,12 +1,30 @@
 package deltazero.amarok.ui
 
+import android.content.res.Configuration
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -18,11 +36,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
+import deltazero.amarok.ui.theme.AmarokTheme
 
 @Composable
 fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = viewModel()) {
@@ -32,6 +51,25 @@ fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = viewM
   val appHiderName by viewModel.appHiderName.collectAsState()
   val fileHiderName by viewModel.fileHiderName.collectAsState()
 
+  DashboardScreen(
+    state = state,
+    appCount = appCount,
+    folderCount = folderCount,
+    appHiderName = appHiderName,
+    fileHiderName = fileHiderName,
+    onChangeStatus = onChangeStatus,
+  )
+}
+
+@Composable
+fun DashboardScreen(
+  state: Hider.State,
+  appCount: Int,
+  folderCount: Int,
+  appHiderName: String,
+  fileHiderName: String,
+  onChangeStatus: () -> Unit,
+) {
   Column(
     modifier =
       Modifier.fillMaxSize()
@@ -43,19 +81,14 @@ fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = viewM
     // Title - no motto
     Text(
       text = stringResource(R.string.app_name),
-      style = MaterialTheme.typography.titleLarge,
-      fontSize = 40.sp,
+      style = MaterialTheme.typography.displayMedium,
       modifier = Modifier.padding(start = 42.dp),
     )
 
-    Spacer(Modifier.height(45.dp))
+    Spacer(Modifier.height(20.dp))
 
     // Status card
-    ElevatedCard(
-      modifier = Modifier.fillMaxWidth().padding(horizontal = 35.dp),
-      shape = MaterialTheme.shapes.extraLarge,
-      elevation = CardDefaults.elevatedCardElevation(defaultElevation = 3.dp),
-    ) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth().padding(horizontal = 35.dp)) {
       Box(modifier = Modifier.fillMaxWidth().clipToBounds()) {
         Row(
           modifier = Modifier.fillMaxWidth().padding(start = 35.dp, top = 35.dp, bottom = 35.dp),
@@ -68,8 +101,7 @@ fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = viewM
                   Hider.State.HIDDEN -> stringResource(R.string.hidden_status)
                   else -> stringResource(R.string.visible_status)
                 },
-              style = MaterialTheme.typography.titleLarge,
-              fontSize = 30.sp,
+              style = MaterialTheme.typography.headlineMedium,
             )
             Text(
               text = stringResource(R.string.item_counts, appCount, folderCount),
@@ -123,11 +155,7 @@ fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = viewM
     Spacer(Modifier.height(20.dp))
 
     // Info panels card
-    ElevatedCard(
-      modifier = Modifier.fillMaxWidth().padding(horizontal = 35.dp),
-      shape = MaterialTheme.shapes.extraLarge,
-      elevation = CardDefaults.elevatedCardElevation(defaultElevation = 3.dp),
-    ) {
+    ElevatedCard(modifier = Modifier.fillMaxWidth().padding(horizontal = 35.dp)) {
       Column(modifier = Modifier.padding(horizontal = 35.dp, vertical = 24.dp)) {
         Text(
           text = stringResource(R.string.app_hiding_mode),
@@ -146,5 +174,36 @@ fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = viewM
     }
 
     Spacer(Modifier.height(42.dp))
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun DashboardScreenPreview() {
+  AmarokTheme(dynamicColor = false) {
+    DashboardScreen(
+      state = Hider.State.VISIBLE,
+      appCount = 3,
+      folderCount = 5,
+      appHiderName = "DSM (Device Owner)",
+      fileHiderName = "Obfuscate",
+      onChangeStatus = {},
+    )
+  }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun DashboardScreenHiddenPreview() {
+  AmarokTheme(dynamicColor = false) {
+    DashboardScreen(
+      state = Hider.State.HIDDEN,
+      appCount = 3,
+      folderCount = 5,
+      appHiderName = "DSM (Device Owner)",
+      fileHiderName = "Obfuscate",
+      onChangeStatus = {},
+    )
   }
 }
