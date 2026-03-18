@@ -2,6 +2,7 @@ package deltazero.amarok.ui.settings
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.widget.Toast
 import androidx.annotation.DrawableRes
@@ -17,9 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
+import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.HashUtil
 import deltazero.amarok.utils.UpdateUtil
 
@@ -47,33 +50,128 @@ fun SettingsScreen(
   onSwitchLocale: () -> Unit,
   viewModel: SettingsViewModel = viewModel(),
 ) {
+  val context = LocalContext.current
   val state by viewModel.uiState.collectAsState()
 
+  SettingsScreen(
+    state = state,
+    onSwitchAppHider = onSwitchAppHider,
+    onSwitchFileHider = onSwitchFileHider,
+    onSetXHideEnabled = { viewModel.setXHideEnabled(it) },
+    onSetDisableOnlyWithXHide = { viewModel.setDisableOnlyWithXHide(it) },
+    onSetPassword = onSetPassword,
+    onPasswordHashChanged = { viewModel.setPassword(it) },
+    onSetBiometricAuth = { viewModel.setBiometricAuth(it) },
+    onSetDisguise = { viewModel.setDisguise(it, context as? Activity) },
+    onConfirmHideIcon = { viewModel.confirmHideIcon(context as? Activity) },
+    onUnhideIcon = { viewModel.unhideIcon(context as? Activity) },
+    onShowCountdownConfirm = onShowCountdownConfirm,
+    onSetHideFromRecents = { viewModel.setHideFromRecents(it) },
+    onSetBlockScreenshots = { viewModel.setBlockScreenshots(it) },
+    onSetDisableSecurityWhenUnhidden = { viewModel.setDisableSecurityWhenUnhidden(it) },
+    onSetDisableToasts = { viewModel.setDisableToasts(it) },
+    onRequestNotificationPermission = onRequestNotificationPermission,
+    onSetQuickHideService = { viewModel.setQuickHideService(it) },
+    onRequestSystemAlertPermission = onRequestSystemAlertPermission,
+    onSetPanicButton = { viewModel.setPanicButton(it) },
+    onShowColorPicker = onShowColorPicker,
+    onSetAutoHide = { viewModel.setAutoHide(it) },
+    onSetAutoHideDelay = { viewModel.setAutoHideDelay(it) },
+    onSetDynamicColor = { viewModel.setDynamicColor(it) },
+    onSetDarkTheme = { viewModel.setDarkTheme(it) },
+    onSwitchLocale = onSwitchLocale,
+    onSetInvertTileColor = { viewModel.setInvertTileColor(it) },
+    onCheckUpdate = { UpdateUtil.checkAndNotify(context, false) },
+    onSetUpdateChannel = { viewModel.setUpdateChannel(UpdateUtil.UpdateChannel.fromString(it)) },
+    onSetAutoUpdate = { viewModel.setAutoUpdate(it) },
+    onSetAnalyticsEnabled = { viewModel.setAnalyticsEnabled(it) },
+    onForceUnhide = { viewModel.forceUnhide() },
+  )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun SettingsScreen(
+  state: SettingsUiState,
+  onSwitchAppHider: () -> Unit,
+  onSwitchFileHider: () -> Unit,
+  onSetXHideEnabled: (Boolean) -> Unit,
+  onSetDisableOnlyWithXHide: (Boolean) -> Unit,
+  onSetPassword: (callback: (String?) -> Unit) -> Unit,
+  onPasswordHashChanged: (String?) -> Unit,
+  onSetBiometricAuth: (Boolean) -> Unit,
+  onSetDisguise: (Boolean) -> Unit,
+  onConfirmHideIcon: () -> Unit,
+  onUnhideIcon: () -> Unit,
+  onShowCountdownConfirm: (onConfirm: () -> Unit, onCancel: () -> Unit) -> Unit,
+  onSetHideFromRecents: (Boolean) -> Unit,
+  onSetBlockScreenshots: (Boolean) -> Unit,
+  onSetDisableSecurityWhenUnhidden: (Boolean) -> Unit,
+  onSetDisableToasts: (Boolean) -> Unit,
+  onRequestNotificationPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
+  onSetQuickHideService: (Boolean) -> Unit,
+  onRequestSystemAlertPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
+  onSetPanicButton: (Boolean) -> Unit,
+  onShowColorPicker: () -> Unit,
+  onSetAutoHide: (Boolean) -> Unit,
+  onSetAutoHideDelay: (Float) -> Unit,
+  onSetDynamicColor: (Boolean) -> Unit,
+  onSetDarkTheme: (Int) -> Unit,
+  onSwitchLocale: () -> Unit,
+  onSetInvertTileColor: (Boolean) -> Unit,
+  onCheckUpdate: () -> Unit,
+  onSetUpdateChannel: (String) -> Unit,
+  onSetAutoUpdate: (Boolean) -> Unit,
+  onSetAnalyticsEnabled: (Boolean) -> Unit,
+  onForceUnhide: () -> Unit,
+) {
   Scaffold(topBar = { TopAppBar(title = { Text(stringResource(R.string.more_settings)) }) }) {
     padding ->
     Column(
       modifier = Modifier.fillMaxSize().padding(padding).verticalScroll(rememberScrollState())
     ) {
       WorkmodeSection(state, onSwitchAppHider, onSwitchFileHider)
-      XHideSection(state, viewModel)
-      PrivacySection(state, viewModel, onSetPassword, onShowCountdownConfirm)
+      XHideSection(state, onSetXHideEnabled, onSetDisableOnlyWithXHide)
+      PrivacySection(
+        state,
+        onSetPassword,
+        onPasswordHashChanged,
+        onSetBiometricAuth,
+        onSetDisguise,
+        onConfirmHideIcon,
+        onUnhideIcon,
+        onShowCountdownConfirm,
+        onSetHideFromRecents,
+        onSetBlockScreenshots,
+        onSetDisableSecurityWhenUnhidden,
+        onSetDisableToasts,
+      )
       QuickHideSection(
         state,
-        viewModel,
         onRequestNotificationPermission,
+        onSetQuickHideService,
         onRequestSystemAlertPermission,
+        onSetPanicButton,
         onShowColorPicker,
+        onSetAutoHide,
+        onSetAutoHideDelay,
       )
-      AppearanceSection(state, viewModel, onSwitchLocale)
-      UpdateSection(state, viewModel)
-      AboutSection(state, viewModel)
+      AppearanceSection(
+        state,
+        onSetDynamicColor,
+        onSetDarkTheme,
+        onSwitchLocale,
+        onSetInvertTileColor,
+      )
+      UpdateSection(state, onCheckUpdate, onSetUpdateChannel, onSetAutoUpdate)
+      AboutSection(state, onSetAnalyticsEnabled, onForceUnhide)
       Spacer(Modifier.height(32.dp))
     }
   }
 }
 
 @Composable
-private fun WorkmodeSection(
+internal fun WorkmodeSection(
   state: SettingsUiState,
   onSwitchAppHider: () -> Unit,
   onSwitchFileHider: () -> Unit,
@@ -94,7 +192,11 @@ private fun WorkmodeSection(
 }
 
 @Composable
-private fun XHideSection(state: SettingsUiState, viewModel: SettingsViewModel) {
+internal fun XHideSection(
+  state: SettingsUiState,
+  onSetXHideEnabled: (Boolean) -> Unit,
+  onSetDisableOnlyWithXHide: (Boolean) -> Unit,
+) {
   PreferenceGroupHeader(stringResource(R.string.x_hide))
   ClickPreferenceItem(
     title = "",
@@ -111,7 +213,7 @@ private fun XHideSection(state: SettingsUiState, viewModel: SettingsViewModel) {
     icon = prefIcon(R.drawable.domino_mask_fill0_wght400_grad0_opsz24),
     checked = state.enableXHide,
     enabled = state.isXHideAvailable,
-    onCheckedChange = { viewModel.setXHideEnabled(it) },
+    onCheckedChange = onSetXHideEnabled,
   )
   SwitchPreferenceItem(
     title = stringResource(R.string.disable_only_with_xhide),
@@ -119,16 +221,24 @@ private fun XHideSection(state: SettingsUiState, viewModel: SettingsViewModel) {
     icon = prefIcon(R.drawable.visibility_off_24dp),
     checked = state.disableOnlyWithXHide,
     enabled = state.isXHideAvailable && state.enableXHide,
-    onCheckedChange = { viewModel.setDisableOnlyWithXHide(it) },
+    onCheckedChange = onSetDisableOnlyWithXHide,
   )
 }
 
 @Composable
-private fun PrivacySection(
+internal fun PrivacySection(
   state: SettingsUiState,
-  viewModel: SettingsViewModel,
   onSetPassword: (callback: (String?) -> Unit) -> Unit,
+  onPasswordHashChanged: (String?) -> Unit,
+  onSetBiometricAuth: (Boolean) -> Unit,
+  onSetDisguise: (Boolean) -> Unit,
+  onConfirmHideIcon: () -> Unit,
+  onUnhideIcon: () -> Unit,
   onShowCountdownConfirm: (onConfirm: () -> Unit, onCancel: () -> Unit) -> Unit,
+  onSetHideFromRecents: (Boolean) -> Unit,
+  onSetBlockScreenshots: (Boolean) -> Unit,
+  onSetDisableSecurityWhenUnhidden: (Boolean) -> Unit,
+  onSetDisableToasts: (Boolean) -> Unit,
 ) {
   val context = LocalContext.current
 
@@ -144,13 +254,13 @@ private fun PrivacySection(
       if (checked) {
         onSetPassword { password ->
           if (password != null) {
-            viewModel.setPassword(HashUtil.calculateHash(password))
+            onPasswordHashChanged(HashUtil.calculateHash(password))
           } else {
-            viewModel.setPassword(null)
+            onPasswordHashChanged(null)
           }
         }
       } else {
-        viewModel.setPassword(null)
+        onPasswordHashChanged(null)
       }
     },
   )
@@ -162,7 +272,7 @@ private fun PrivacySection(
     icon = prefIcon(R.drawable.fingerprint_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
     checked = state.biometricAuth,
     enabled = state.hasPassword,
-    onCheckedChange = { viewModel.setBiometricAuth(it) },
+    onCheckedChange = onSetBiometricAuth,
   )
 
   // Disguise
@@ -172,7 +282,7 @@ private fun PrivacySection(
     icon = prefIcon(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
     checked = state.disguise,
     enabled = !state.hideIcon,
-    onCheckedChange = { viewModel.setDisguise(it, context as? Activity) },
+    onCheckedChange = onSetDisguise,
   )
 
   // Hide amarok icon
@@ -183,12 +293,9 @@ private fun PrivacySection(
     checked = state.hideIcon,
     onCheckedChange = { checked ->
       if (checked) {
-        onShowCountdownConfirm(
-          { viewModel.confirmHideIcon(context as? Activity) },
-          { /* onCancel */ },
-        )
+        onShowCountdownConfirm(onConfirmHideIcon, { /* onCancel */ })
       } else {
-        viewModel.unhideIcon(context as? Activity)
+        onUnhideIcon()
       }
     },
   )
@@ -200,7 +307,7 @@ private fun PrivacySection(
     icon = prefIcon(R.drawable.search_activity_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
     checked = state.hideFromRecents,
     onCheckedChange = {
-      viewModel.setHideFromRecents(it)
+      onSetHideFromRecents(it)
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
   )
@@ -212,7 +319,7 @@ private fun PrivacySection(
     icon = prefIcon(R.drawable.cancel_presentation_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
     checked = state.blockScreenshots,
     onCheckedChange = {
-      viewModel.setBlockScreenshots(it)
+      onSetBlockScreenshots(it)
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
   )
@@ -223,7 +330,7 @@ private fun PrivacySection(
     summary = stringResource(R.string.disable_security_when_unhidden_description),
     icon = prefIcon(R.drawable.encrypted_off_24dp),
     checked = state.disableSecurityWhenUnhidden,
-    onCheckedChange = { viewModel.setDisableSecurityWhenUnhidden(it) },
+    onCheckedChange = onSetDisableSecurityWhenUnhidden,
   )
 
   // Disable toasts
@@ -232,17 +339,20 @@ private fun PrivacySection(
     summary = stringResource(R.string.disable_toasts_description),
     icon = prefIcon(R.drawable.speaker_notes_off_24dp),
     checked = state.disableToasts,
-    onCheckedChange = { viewModel.setDisableToasts(it) },
+    onCheckedChange = onSetDisableToasts,
   )
 }
 
 @Composable
-private fun QuickHideSection(
+internal fun QuickHideSection(
   state: SettingsUiState,
-  viewModel: SettingsViewModel,
   onRequestNotificationPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
+  onSetQuickHideService: (Boolean) -> Unit,
   onRequestSystemAlertPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
+  onSetPanicButton: (Boolean) -> Unit,
   onShowColorPicker: () -> Unit,
+  onSetAutoHide: (Boolean) -> Unit,
+  onSetAutoHideDelay: (Float) -> Unit,
 ) {
   val context = LocalContext.current
 
@@ -257,14 +367,14 @@ private fun QuickHideSection(
     onCheckedChange = { checked ->
       if (checked) {
         onRequestNotificationPermission(
-          { viewModel.setQuickHideService(true) },
+          { onSetQuickHideService(true) },
           {
             Toast.makeText(context, R.string.notification_permission_denied, Toast.LENGTH_LONG)
               .show()
           },
         )
       } else {
-        viewModel.setQuickHideService(false)
+        onSetQuickHideService(false)
       }
     },
   )
@@ -279,11 +389,11 @@ private fun QuickHideSection(
     onCheckedChange = { checked ->
       if (checked) {
         onRequestSystemAlertPermission(
-          { viewModel.setPanicButton(true) },
+          { onSetPanicButton(true) },
           { Toast.makeText(context, R.string.alert_permission_denied, Toast.LENGTH_LONG).show() },
         )
       } else {
-        viewModel.setPanicButton(false)
+        onSetPanicButton(false)
       }
     },
   )
@@ -304,7 +414,7 @@ private fun QuickHideSection(
     icon = prefIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24),
     checked = state.autoHide,
     enabled = state.quickHideService,
-    onCheckedChange = { viewModel.setAutoHide(it) },
+    onCheckedChange = onSetAutoHide,
   )
 
   // Auto hide delay slider
@@ -316,15 +426,17 @@ private fun QuickHideSection(
     valueRange = 0f..30f,
     steps = 29,
     enabled = state.quickHideService && state.autoHide,
-    onValueChange = { viewModel.setAutoHideDelay(it) },
+    onValueChange = onSetAutoHideDelay,
   )
 }
 
 @Composable
-private fun AppearanceSection(
+internal fun AppearanceSection(
   state: SettingsUiState,
-  viewModel: SettingsViewModel,
+  onSetDynamicColor: (Boolean) -> Unit,
+  onSetDarkTheme: (Int) -> Unit,
   onSwitchLocale: () -> Unit,
+  onSetInvertTileColor: (Boolean) -> Unit,
 ) {
   val context = LocalContext.current
 
@@ -336,7 +448,7 @@ private fun AppearanceSection(
     icon = prefIcon(R.drawable.palette_black_24dp),
     checked = state.dynamicColor,
     onCheckedChange = {
-      viewModel.setDynamicColor(it)
+      onSetDynamicColor(it)
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
   )
@@ -362,7 +474,7 @@ private fun AppearanceSection(
               modifier =
                 Modifier.fillMaxWidth()
                   .clickable {
-                    viewModel.setDarkTheme(mode)
+                    onSetDarkTheme(mode)
                     showDarkThemeDialog = false
                   }
                   .padding(vertical = 12.dp),
@@ -422,23 +534,26 @@ private fun AppearanceSection(
     icon = prefIcon(R.drawable.invert_colors_24dp_5f6368_fill0_wght400_grad0_opsz24),
     checked = state.invertTileColor,
     onCheckedChange = {
-      viewModel.setInvertTileColor(it)
+      onSetInvertTileColor(it)
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
   )
 }
 
 @Composable
-private fun UpdateSection(state: SettingsUiState, viewModel: SettingsViewModel) {
-  val context = LocalContext.current
-
+internal fun UpdateSection(
+  state: SettingsUiState,
+  onCheckUpdate: () -> Unit,
+  onSetUpdateChannel: (String) -> Unit,
+  onSetAutoUpdate: (Boolean) -> Unit,
+) {
   PreferenceGroupHeader(stringResource(R.string.update))
 
   ClickPreferenceItem(
     title = stringResource(R.string.check_update),
     summary = stringResource(R.string.check_update_description, state.appVersionName),
     icon = prefIcon(R.drawable.update_black_24dp),
-    onClick = { UpdateUtil.checkAndNotify(context, false) },
+    onClick = onCheckUpdate,
   )
 
   DropdownPreferenceItem(
@@ -450,7 +565,7 @@ private fun UpdateSection(state: SettingsUiState, viewModel: SettingsViewModel) 
         UpdateUtil.UpdateChannel.RELEASE.name to stringResource(R.string.update_channel_release),
         UpdateUtil.UpdateChannel.BETA.name to stringResource(R.string.update_channel_beta),
       ),
-    onValueChange = { viewModel.setUpdateChannel(UpdateUtil.UpdateChannel.fromString(it)) },
+    onValueChange = onSetUpdateChannel,
   )
 
   SwitchPreferenceItem(
@@ -458,12 +573,16 @@ private fun UpdateSection(state: SettingsUiState, viewModel: SettingsViewModel) 
     summary = stringResource(R.string.check_update_on_start_description),
     icon = prefIcon(R.drawable.autorenew_black_24dp),
     checked = state.autoUpdate,
-    onCheckedChange = { viewModel.setAutoUpdate(it) },
+    onCheckedChange = onSetAutoUpdate,
   )
 }
 
 @Composable
-private fun AboutSection(state: SettingsUiState, viewModel: SettingsViewModel) {
+internal fun AboutSection(
+  state: SettingsUiState,
+  onSetAnalyticsEnabled: (Boolean) -> Unit,
+  onForceUnhide: () -> Unit,
+) {
   val context = LocalContext.current
   var showForceUnhideDialog by remember { mutableStateOf(false) }
 
@@ -475,7 +594,7 @@ private fun AboutSection(state: SettingsUiState, viewModel: SettingsViewModel) {
       confirmButton = {
         TextButton(
           onClick = {
-            viewModel.forceUnhide()
+            onForceUnhide()
             Toast.makeText(context, R.string.performing_force_unhide, Toast.LENGTH_LONG).show()
             (context as? Activity)?.finish()
           }
@@ -500,7 +619,7 @@ private fun AboutSection(state: SettingsUiState, viewModel: SettingsViewModel) {
     checked = state.analyticsEnabled,
     enabled = state.analyticsAvailable,
     onCheckedChange = {
-      viewModel.setAnalyticsEnabled(it)
+      onSetAnalyticsEnabled(it)
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
   )
@@ -542,4 +661,99 @@ private fun AboutSection(state: SettingsUiState, viewModel: SettingsViewModel) {
       )
     },
   )
+}
+
+// Previews
+
+private fun previewState() =
+  SettingsUiState(
+    isXHideAvailable = false,
+    xposedVersion = 0,
+    enableXHide = false,
+    disableOnlyWithXHide = false,
+    hasPassword = true,
+    biometricAuth = false,
+    disguise = false,
+    hideIcon = false,
+    hideFromRecents = false,
+    blockScreenshots = false,
+    disableSecurityWhenUnhidden = false,
+    disableToasts = false,
+    quickHideService = true,
+    panicButton = false,
+    autoHide = false,
+    autoHideDelay = 5f,
+    dynamicColor = true,
+    darkThemeMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
+    invertTileColor = false,
+    appHiderName = "DSM (Device Owner)",
+    fileHiderName = "Obfuscate",
+    updateChannel = "RELEASE",
+    autoUpdate = true,
+    appVersionName = "0.10.0",
+    analyticsEnabled = false,
+    analyticsAvailable = true,
+  )
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun WorkmodeSectionPreview() {
+  AmarokTheme(dynamicColor = false) {
+    Surface { Column { WorkmodeSection(previewState(), {}, {}) } }
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun XHideSectionPreview() {
+  AmarokTheme(dynamicColor = false) { Surface { Column { XHideSection(previewState(), {}, {}) } } }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun PrivacySectionPreview() {
+  AmarokTheme(dynamicColor = false) {
+    Surface {
+      Column { PrivacySection(previewState(), {}, {}, {}, {}, {}, {}, { _, _ -> }, {}, {}, {}, {}) }
+    }
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun QuickHideSectionPreview() {
+  AmarokTheme(dynamicColor = false) {
+    Surface {
+      Column { QuickHideSection(previewState(), { _, _ -> }, {}, { _, _ -> }, {}, {}, {}, {}) }
+    }
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun AppearanceSectionPreview() {
+  AmarokTheme(dynamicColor = false) {
+    Surface { Column { AppearanceSection(previewState(), {}, {}, {}, {}) } }
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun UpdateSectionPreview() {
+  AmarokTheme(dynamicColor = false) {
+    Surface { Column { UpdateSection(previewState(), {}, {}, {}) } }
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun AboutSectionPreview() {
+  AmarokTheme(dynamicColor = false) { Surface { Column { AboutSection(previewState(), {}, {}) } } }
 }

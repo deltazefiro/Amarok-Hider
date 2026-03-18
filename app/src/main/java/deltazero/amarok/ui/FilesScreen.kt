@@ -1,6 +1,7 @@
 package deltazero.amarok.ui
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.net.Uri
 import android.os.Environment
 import android.widget.Toast
@@ -21,12 +22,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
+import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.SDCardUtil
 import java.io.File
 import java.nio.file.Paths
@@ -38,8 +41,6 @@ fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
   val folders by viewModel.managedFolders.collectAsState()
   val hiddenFolders by viewModel.hiddenFolders.collectAsState()
   val processingFolders by viewModel.processingFolders.collectAsState()
-
-  var pathToConfirmRemove by remember { mutableStateOf<String?>(null) }
 
   val dirLauncher =
     rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { uri ->
@@ -66,6 +67,39 @@ fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
       viewModel.addFolder(newPath)
     }
 
+  FilesScreen(
+    folders = folders,
+    hiddenFolders = hiddenFolders,
+    processingFolders = processingFolders,
+    onAddFolder = {
+      if (Hider.getState() == Hider.State.HIDDEN) {
+        Toast.makeText(context, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show()
+        return@FilesScreen
+      }
+      dirLauncher.launch(null)
+    },
+    onToggleAllFolders = { viewModel.toggleAllFolders() },
+    onToggleFolder = { path ->
+      val isHidden = hiddenFolders.contains(path)
+      if (isHidden) viewModel.unhideFolder(path) else viewModel.hideFolder(path)
+    },
+    onRemoveFolder = { viewModel.removeFolder(it) },
+  )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FilesScreen(
+  folders: List<String>,
+  hiddenFolders: Set<String>,
+  processingFolders: Set<String>,
+  onAddFolder: () -> Unit,
+  onToggleAllFolders: () -> Unit,
+  onToggleFolder: (String) -> Unit,
+  onRemoveFolder: (String) -> Unit,
+) {
+  var pathToConfirmRemove by remember { mutableStateOf<String?>(null) }
+
   // Remove confirmation dialog
   pathToConfirmRemove?.let { path ->
     AlertDialog(
@@ -75,7 +109,7 @@ fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
       confirmButton = {
         TextButton(
           onClick = {
-            viewModel.removeFolder(path)
+            onRemoveFolder(path)
             pathToConfirmRemove = null
           }
         ) {
@@ -95,25 +129,14 @@ fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
       TopAppBar(
         title = { Text(stringResource(R.string.files)) },
         actions = {
-          IconButton(
-            onClick = {
-              if (Hider.getState() == Hider.State.HIDDEN) {
-                Toast.makeText(context, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT)
-                  .show()
-                return@IconButton
-              }
-              dirLauncher.launch(null)
-            }
-          ) {
-            Icon(Icons.Default.Add, contentDescription = null)
-          }
+          IconButton(onClick = onAddFolder) { Icon(Icons.Default.Add, contentDescription = null) }
         },
       )
     },
     floatingActionButton = {
       if (folders.isNotEmpty()) {
         val allHidden = hiddenFolders.containsAll(folders.toSet())
-        FloatingActionButton(onClick = { viewModel.toggleAllFolders() }) {
+        FloatingActionButton(onClick = onToggleAllFolders) {
           Icon(
             if (allHidden) Icons.Default.Visibility else Icons.Default.VisibilityOff,
             contentDescription = null,
@@ -142,9 +165,7 @@ fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
             fullPath = path,
             isHidden = isHidden,
             isProcessing = isProcessing,
-            onToggle = {
-              if (isHidden) viewModel.unhideFolder(path) else viewModel.hideFolder(path)
-            },
+            onToggle = { onToggleFolder(path) },
             onRemove = { if (!isHidden) pathToConfirmRemove = path },
           )
           HorizontalDivider()
@@ -210,4 +231,78 @@ private fun getPathFromUri(context: android.content.Context, uri: Uri): String? 
     return Environment.getExternalStorageDirectory().toString() + File.separator + splitUri[1]
   }
   return null
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun FilesScreenEmptyPreview() {
+  AmarokTheme(dynamicColor = false) {
+    FilesScreen(
+      folders = emptyList(),
+      hiddenFolders = emptySet(),
+      processingFolders = emptySet(),
+      onAddFolder = {},
+      onToggleAllFolders = {},
+      onToggleFolder = {},
+      onRemoveFolder = {},
+    )
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun FilesScreenPopulatedPreview() {
+  AmarokTheme(dynamicColor = false) {
+    FilesScreen(
+      folders =
+        listOf(
+          "/storage/emulated/0/DCIM",
+          "/storage/emulated/0/Documents/Private",
+          "/storage/emulated/0/Download/Sensitive",
+        ),
+      hiddenFolders = setOf("/storage/emulated/0/DCIM"),
+      processingFolders = setOf("/storage/emulated/0/Download/Sensitive"),
+      onAddFolder = {},
+      onToggleAllFolders = {},
+      onToggleFolder = {},
+      onRemoveFolder = {},
+    )
+  }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun FolderListItemPreview() {
+  AmarokTheme(dynamicColor = false) {
+    Column {
+      FolderListItem(
+        folderName = "DCIM",
+        fullPath = "/storage/emulated/0/DCIM",
+        isHidden = true,
+        isProcessing = false,
+        onToggle = {},
+        onRemove = {},
+      )
+      HorizontalDivider()
+      FolderListItem(
+        folderName = "Documents",
+        fullPath = "/storage/emulated/0/Documents",
+        isHidden = false,
+        isProcessing = false,
+        onToggle = {},
+        onRemove = {},
+      )
+      HorizontalDivider()
+      FolderListItem(
+        folderName = "Download",
+        fullPath = "/storage/emulated/0/Download",
+        isHidden = false,
+        isProcessing = true,
+        onToggle = {},
+        onRemove = {},
+      )
+    }
+  }
 }

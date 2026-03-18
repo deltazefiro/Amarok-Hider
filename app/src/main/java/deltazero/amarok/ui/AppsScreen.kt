@@ -1,5 +1,6 @@
 package deltazero.amarok.ui
 
+import android.content.res.Configuration
 import android.widget.ImageView
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.combinedClickable
@@ -8,6 +9,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Android
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -17,14 +19,17 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
+import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.AppInfoUtil.AppInfo
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
@@ -34,6 +39,28 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
   val hiddenApps by viewModel.hiddenApps.collectAsState()
   val processingApps by viewModel.processingApps.collectAsState()
 
+  AppsScreen(
+    apps = apps,
+    hiddenApps = hiddenApps,
+    processingApps = processingApps,
+    onOpenEditor = onOpenEditor,
+    onToggleAllApps = { viewModel.toggleAllApps() },
+    onHideApp = { viewModel.hideApp(it) },
+    onUnhideApp = { viewModel.unhideApp(it) },
+  )
+}
+
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@Composable
+fun AppsScreen(
+  apps: List<AppInfo>,
+  hiddenApps: Set<String>,
+  processingApps: Set<String>,
+  onOpenEditor: () -> Unit,
+  onToggleAllApps: () -> Unit,
+  onHideApp: (String) -> Unit,
+  onUnhideApp: (String) -> Unit,
+) {
   Scaffold(
     topBar = {
       TopAppBar(
@@ -46,7 +73,7 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
     floatingActionButton = {
       val allHidden =
         apps.isNotEmpty() && hiddenApps.containsAll(apps.map { it.packageName() }.toSet())
-      FloatingActionButton(onClick = { viewModel.toggleAllApps() }) {
+      FloatingActionButton(onClick = onToggleAllApps) {
         Icon(
           if (allHidden) Icons.Default.Visibility else Icons.Default.VisibilityOff,
           contentDescription = null,
@@ -78,8 +105,8 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
             app = app,
             isHidden = isHidden,
             isProcessing = isProcessing,
-            onClick = { if (isHidden) viewModel.unhideApp(app.packageName()) },
-            onLongClick = { if (!isHidden) viewModel.hideApp(app.packageName()) },
+            onClick = { if (isHidden) onUnhideApp(app.packageName()) },
+            onLongClick = { if (!isHidden) onHideApp(app.packageName()) },
           )
         }
       }
@@ -131,5 +158,73 @@ private fun AppGridItem(
       textAlign = TextAlign.Center,
       modifier = Modifier.fillMaxWidth(),
     )
+  }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+private fun AppGridItemPreview(label: String, isHidden: Boolean, isProcessing: Boolean) {
+  Column(modifier = Modifier.padding(4.dp), horizontalAlignment = Alignment.CenterHorizontally) {
+    Box(contentAlignment = Alignment.Center) {
+      if (isProcessing) {
+        CircularProgressIndicator(modifier = Modifier.size(48.dp), strokeWidth = 2.dp)
+      } else {
+        Icon(
+          Icons.Default.Android,
+          contentDescription = null,
+          modifier = Modifier.size(48.dp).alpha(if (isHidden) 0.4f else 1f),
+          tint =
+            if (isHidden) MaterialTheme.colorScheme.onSurfaceVariant
+            else MaterialTheme.colorScheme.primary,
+        )
+      }
+    }
+    Spacer(Modifier.height(4.dp))
+    Text(
+      text = label,
+      fontSize = 11.sp,
+      maxLines = 1,
+      overflow = TextOverflow.Ellipsis,
+      textAlign = TextAlign.Center,
+      modifier = Modifier.fillMaxWidth(),
+    )
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun AppsScreenEmptyPreview() {
+  AmarokTheme(dynamicColor = false) {
+    AppsScreen(
+      apps = emptyList(),
+      hiddenApps = emptySet(),
+      processingApps = emptySet(),
+      onOpenEditor = {},
+      onToggleAllApps = {},
+      onHideApp = {},
+      onUnhideApp = {},
+    )
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun AppGridItemsPreview() {
+  AmarokTheme(dynamicColor = false) {
+    Surface {
+      Row(modifier = Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+        Box(modifier = Modifier.width(80.dp)) {
+          AppGridItemPreview(label = "Gallery", isHidden = false, isProcessing = false)
+        }
+        Box(modifier = Modifier.width(80.dp)) {
+          AppGridItemPreview(label = "Messages", isHidden = true, isProcessing = false)
+        }
+        Box(modifier = Modifier.width(80.dp)) {
+          AppGridItemPreview(label = "Browser", isHidden = false, isProcessing = true)
+        }
+      }
+    }
   }
 }
