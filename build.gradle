@@ -9,8 +9,11 @@ buildscript {
         classpath 'dev.rikka.tools.autoresconfig:gradle-plugin:1.2.2'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0'
         classpath 'org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.0'
+        classpath 'com.diffplug.spotless:spotless-plugin-gradle:7.0.4'
     }
 }
+
+apply plugin: 'com.diffplug.spotless'
 
 allprojects {
     repositories {
@@ -20,6 +23,13 @@ allprojects {
     }
 }
 
-tasks.register('clean', Delete) {
-    delete rootProject.buildDir
+spotless {
+    kotlin {
+        target '**/*.kt'
+        ktfmt('0.58').googleStyle()
+    }
+    java {
+        target '**/*.java'
+        googleJavaFormat()
+    }
 }
