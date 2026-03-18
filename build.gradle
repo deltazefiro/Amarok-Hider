@@ -24,6 +24,9 @@ allprojects {
 }
 
 spotless {
+    if (project.hasProperty('spotlessRatchetFrom')) {
+        ratchetFrom project.property('spotlessRatchetFrom')
+    }
     kotlin {
         target '**/*.kt'
         ktfmt('0.58').googleStyle()
