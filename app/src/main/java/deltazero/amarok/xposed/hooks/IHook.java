@@ -1,7 +1,7 @@
 package deltazero.amarok.xposed.hooks;
 
 public interface IHook {
-    String getName();
+  String getName();
 
-    void load();
+  void load();
 }
