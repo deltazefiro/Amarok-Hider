@@ -1,0 +1,5 @@
+pre-commit:
+  commands:
+    spotless:
+      glob: "*.{kt,java}"
+      run: ./gradlew spotlessCheck -PspotlessRatchetFrom=HEAD -q
