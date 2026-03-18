@@ -72,9 +72,9 @@ The app uses a single `MainActivity` that hosts a bottom-navigation `NavHost` wi
 - `AppsViewModel.kt` — managed apps list, per-app hidden/processing state, hide/unhide actions
 - `FilesViewModel.kt` — managed folders list, per-folder hidden/processing state, add/remove/hide/unhide actions
 - `settings/SettingsViewModel.kt` — settings state and action methods
-- `AppListViewModel.kt` — app list for the app editor (`SetHideAppActivity`)
+- `AppPickerViewModel.kt` — app picker for selecting which apps to hide (used by `AppPickerScreen`)
 
-**App list editor:** `SetHideAppActivity` + `SetHideAppScreen.kt` — launched from `AppsScreen`'s edit button (remains a separate Activity since it is launched via Intent).
+**App picker:** `AppPickerScreen.kt` — navigated to from `AppsScreen`'s edit button via NavHost route `app_picker`.
 
 ### 5. Settings and Preferences
 
