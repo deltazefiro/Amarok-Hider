@@ -84,11 +84,11 @@
     <string name="dsm_permission_denied">DSM: Permission denied</string>
     <string name="apphider_none">Disabled</string>
     <string name="apphider_none_description">Turn off app-hiding.</string>
-    <string name="apphider_root">Root mode</string>
+    <string name="apphider_root">Root</string>
     <string name="apphider_root_description">App-hiding with root access.\nRecommended if your device is rooted, but lacks the Xposed framework. Root permission is required.</string>
-    <string name="apphider_shizuku">Shizuku (Sui) mode</string>
-    <string name="apphider_shizuku_description">App-hiding with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or has the Xposed framework. Installed and active Shizuku or Sui required.\n</string>
-    <string name="apphider_dsm">DSM mode</string>
+    <string name="apphider_shizuku">Shizuku</string>
+    <string name="apphider_shizuku_description">App-hiding with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or has the Xposed framework. Installed and active Shizuku or Sui required.</string>
+    <string name="apphider_dsm">DSM</string>
     <string name="apphider_dsm_description">App-hiding with Delegated-Scopes-Manager.\nNot recommended unless your device runs Android 10 or earlier and is not rooted. May be buggy and work unexpectedly. Installed Icebox (or StopAPP) set as device owner required.</string>
     <string name="learn_more">Setup tutorial</string>
     <string name="option_unava_when_hidden">Options are unavailable until unhidden.</string>
@@ -102,6 +102,7 @@
     <string name="obfuscate_text_file_description">Obfuscating file headers has no effect on text files. Enabling this function will fully obfuscate text files.</string>
     <string name="obfuscate_text_file_enhanced">Fully obfuscate text files - Enhanced</string>
     <string name="obfuscate_text_file_description_enhanced">Not recommended. An enhanced version of \"Fully obfuscate text files\". Use this option only if the standard method proves ineffective. Significantly slows down the hiding process.</string>
+    <string name="obfuscation_options">Obfuscation options</string>
     <string name="join_developer_channel">Telegram group</string>
     <string name="developer_channel_telegram" translatable="false">Telegram @amarok_dev</string>
     <string name="processing">Processing…</string>
@@ -147,7 +148,7 @@
     <string name="dhizuku_permission_denied">Dhizuku: Permission denied</string>
     <string name="dhizuku_pre_v5">Dhizuku: Unsupported Dhizuku version. Please update Dhizuku to version 5 or higher.</string>
     <string name="dhizuku_not_init">Dhizuku: Service unavailable. Please ensure that you have installed and activated Dhizuku.</string>
-    <string name="apphider_dhizuku">Dhizuku mode</string>
+    <string name="apphider_dhizuku">Dhizuku</string>
     <string name="apphider_dhizuku_description">App-hiding with Dhizuku.\nA modern and improved solution for hiding apps on non-rooted devices. Installation and activation of the Dhizuku app are required.</string>
     <string name="force_unhide">Force unhide</string>
     <string name="force_unhide_description">Try to restore everything. Use this option only when you run into troubles.</string>
@@ -182,11 +183,11 @@
     <string name="filehider_not_ava_title">File hiding unavailable</string>
     <string name="filehider_none">Disabled</string>
     <string name="filehider_none_description">Disable file hiding.</string>
-    <string name="filehider_obfuscate">Obfuscation Mode</string>
+    <string name="filehider_obfuscate">Obfuscation</string>
     <string name="filehider_obfuscate_description">Obfuscate filenames and file signatures. No root access required. May take some time to process.</string>
-    <string name="filehider_chmod">Chmod Mode</string>
+    <string name="filehider_chmod">Chmod</string>
     <string name="filehider_chmod_description">Change file permissions to make them unreadable. Root access required. The procedure is immediate.</string>
-    <string name="filehider_nomedia">NoMedia Mode</string>
+    <string name="filehider_nomedia">NoMedia</string>
     <string name="filehider_nomedia_description">Simply adds .nomedia to folders. No root access required.</string>
     <string name="welcome_title">Welcome</string>
     <string name="welcome_msg">Amarok is a free and freedom tool for hiding private files &amp; applications.\n\nPlease note that Amarok is not an encryption software, but rather a tool for hiding things. We strongly advise against using Amarok to protect confidential files and applications.\n\n<u>Disclaimers: Amarok is provided without any warranties or conditions. The user is fully responsible for any harm or consequences that may arise from using Amarok.</u></string>

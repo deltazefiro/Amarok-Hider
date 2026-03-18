@@ -81,12 +81,6 @@ class MainActivity : AmarokActivity() {
             composable(AmarokRoute.SETTINGS.route) {
               SettingsScreen(
                 onBack = { navController.popBackStack() },
-                onSwitchAppHider = {
-                  startActivity(Intent(this@MainActivity, SwitchAppHiderActivity::class.java))
-                },
-                onSwitchFileHider = {
-                  startActivity(Intent(this@MainActivity, SwitchFileHiderActivity::class.java))
-                },
                 onSetPassword = { callback ->
                   SetPasswordFragment()
                     .setCallback { password -> callback(password) }
@@ -206,7 +200,7 @@ class MainActivity : AmarokActivity() {
 
   override fun onResume() {
     super.onResume()
-    settingsViewModel.refreshHiderNames()
+    settingsViewModel.refreshWorkmodeState()
   }
 
   private fun changeStatus() {
