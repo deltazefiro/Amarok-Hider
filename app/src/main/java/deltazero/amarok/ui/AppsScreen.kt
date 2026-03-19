@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,6 +51,7 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
     }
   }
 
+  val context = LocalContext.current
   AppsScreen(
     apps = apps,
     hiddenApps = hiddenApps,
@@ -58,6 +60,9 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
     onToggleAllApps = { viewModel.toggleAllApps() },
     onHideApp = { viewModel.hideApp(it) },
     onUnhideApp = { viewModel.unhideApp(it) },
+    onLaunchApp = {
+      context.packageManager.getLaunchIntentForPackage(it)?.let(context::startActivity)
+    },
   )
 }
 
@@ -71,6 +76,7 @@ fun AppsScreen(
   onToggleAllApps: () -> Unit,
   onHideApp: (String) -> Unit,
   onUnhideApp: (String) -> Unit,
+  onLaunchApp: (String) -> Unit,
 ) {
   Scaffold(
     topBar = {
@@ -116,7 +122,9 @@ fun AppsScreen(
             app = app,
             isHidden = isHidden,
             isProcessing = isProcessing,
-            onClick = { if (isHidden) onUnhideApp(app.packageName()) },
+            onClick = {
+              if (isHidden) onUnhideApp(app.packageName()) else onLaunchApp(app.packageName())
+            },
             onLongClick = { if (!isHidden) onHideApp(app.packageName()) },
           )
         }
@@ -145,18 +153,8 @@ private fun AppGridItem(
       } else {
         AndroidView(
           factory = { ctx -> ImageView(ctx) },
-          update = { iv ->
-            iv.setImageDrawable(app.icon())
-            if (isHidden) {
-              iv.colorFilter =
-                android.graphics.ColorMatrixColorFilter(
-                  android.graphics.ColorMatrix().apply { setSaturation(0f) }
-                )
-            } else {
-              iv.colorFilter = null
-            }
-          },
-          modifier = Modifier.size(48.dp),
+          update = { iv -> iv.setImageDrawable(app.icon()) },
+          modifier = Modifier.size(48.dp).alpha(if (isHidden) 0.4f else 1f),
         )
       }
     }
@@ -215,6 +213,7 @@ private fun AppsScreenEmptyPreview() {
       onToggleAllApps = {},
       onHideApp = {},
       onUnhideApp = {},
+      onLaunchApp = {},
     )
   }
 }
