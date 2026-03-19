@@ -42,7 +42,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -86,8 +85,6 @@ fun SettingsScreen(
   val context = LocalContext.current
   val state by viewModel.uiState.collectAsState()
   val hasHiddenFiles by viewModel.hasHiddenFiles.collectAsState()
-
-  LaunchedEffect(Unit) { viewModel.refreshWorkmodeState() }
 
   SettingsScreen(
     state = state,
@@ -278,14 +275,11 @@ internal fun WorkmodeSection(
       Spacer(Modifier.height(8.dp))
       FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         appHiderModes.forEach { option ->
-          val isFailed = state.appHiderFailedMode == option.mode
+          val isSelected = state.appHiderMode == option.mode
+          val isFailed = isSelected && state.appHiderErrorResId != 0
           FilterChip(
-            selected = state.appHiderMode == option.mode || isFailed,
-            onClick = {
-              onSetAppHiderMode(
-                if (state.appHiderMode == option.mode || isFailed) 0 else option.mode
-              )
-            },
+            selected = isSelected,
+            onClick = { onSetAppHiderMode(if (isSelected) 0 else option.mode) },
             label = { Text(stringResource(option.nameResId)) },
             colors =
               if (isFailed)
@@ -308,13 +302,8 @@ internal fun WorkmodeSection(
         }
       }
       Spacer(Modifier.height(4.dp))
-      // Show failed mode's description when there's an error
-      val appDescResId =
-        if (state.appHiderFailedMode >= 0)
-          appHiderModes.find { it.mode == state.appHiderFailedMode }?.descResId ?: selectedAppDesc
-        else selectedAppDesc
       Text(
-        text = stringResource(appDescResId),
+        text = stringResource(selectedAppDesc),
         style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
       )
@@ -373,15 +362,12 @@ internal fun WorkmodeSection(
       Spacer(Modifier.height(8.dp))
       FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         fileHiderModes.forEach { option ->
-          val isFailed = state.fileHiderFailedMode == option.mode
+          val isSelected = state.fileHiderMode == option.mode
+          val isFailed = isSelected && state.fileHiderErrorResId != 0
           FilterChip(
-            selected = state.fileHiderMode == option.mode || isFailed,
+            selected = isSelected,
             enabled = !isHidden,
-            onClick = {
-              onSetFileHiderMode(
-                if (state.fileHiderMode == option.mode || isFailed) 0 else option.mode
-              )
-            },
+            onClick = { onSetFileHiderMode(if (isSelected) 0 else option.mode) },
             label = { Text(stringResource(option.nameResId)) },
             colors =
               if (isFailed)
@@ -404,11 +390,7 @@ internal fun WorkmodeSection(
         }
       }
       Spacer(Modifier.height(4.dp))
-      val fileDescResId =
-        if (state.fileHiderFailedMode >= 0)
-          fileHiderModes.find { it.mode == state.fileHiderFailedMode }?.descResId
-            ?: selectedFileDesc
-        else selectedFileDesc
+      val fileDescResId = selectedFileDesc
       Text(
         text = stringResource(fileDescResId),
         style = MaterialTheme.typography.bodySmall,

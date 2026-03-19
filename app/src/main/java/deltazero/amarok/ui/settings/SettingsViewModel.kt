@@ -8,11 +8,9 @@ import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import deltazero.amarok.QuickHideService
 import deltazero.amarok.apphider.BaseAppHider
-import deltazero.amarok.apphider.NoneAppHider
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.filehider.BaseFileHider
-import deltazero.amarok.filehider.NoneFileHider
 import deltazero.amarok.utils.AppCenterUtil
 import deltazero.amarok.utils.LauncherIconController
 import deltazero.amarok.utils.SecurityUtil
@@ -22,9 +20,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
 private fun obfuscateLevelFromPrefs(): Int =
   when {
@@ -59,13 +59,11 @@ data class SettingsUiState(
   val darkThemeMode: Int = PrefMgr.getDarkTheme(),
   val invertTileColor: Boolean = PrefMgr.getInvertTileColor(),
   // Workmode
-  val appHiderMode: Int = PrefMgr.getAppHiderMode(),
-  val fileHiderMode: Int = PrefMgr.getFileHiderMode(),
+  val appHiderMode: Int = Hider.getAppHiderMode(),
+  val fileHiderMode: Int = Hider.getFileHiderMode(),
   val appHiderName: String = "",
   val fileHiderName: String = "",
-  val appHiderFailedMode: Int = -1,
   val appHiderErrorResId: Int = 0,
-  val fileHiderFailedMode: Int = -1,
   val fileHiderErrorResId: Int = 0,
   val obfuscateLevel: Int = obfuscateLevelFromPrefs(),
   // Update
@@ -86,9 +84,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
             application.packageManager.getPackageInfo(application.packageName, 0).versionName ?: "?"
           } catch (_: Exception) {
             "?"
-          },
-        appHiderName = BaseAppHider.fromMode(application, PrefMgr.getAppHiderMode()).name,
-        fileHiderName = BaseFileHider.fromMode(application, PrefMgr.getFileHiderMode()).name,
+          }
       )
     )
   val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
@@ -99,77 +95,60 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
       .map { !it.isNullOrEmpty() }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
-  fun refreshWorkmodeState() {
+  init {
     val ctx = getApplication<Application>()
-    _uiState.update {
-      it.copy(
-        appHiderMode = PrefMgr.getAppHiderMode(),
-        fileHiderMode = PrefMgr.getFileHiderMode(),
-        appHiderName = BaseAppHider.fromMode(ctx, PrefMgr.getAppHiderMode()).name,
-        fileHiderName = BaseFileHider.fromMode(ctx, PrefMgr.getFileHiderMode()).name,
-        appHiderFailedMode = -1,
-        appHiderErrorResId = 0,
-        fileHiderFailedMode = -1,
-        fileHiderErrorResId = 0,
-      )
+
+    // Derive workmode UI state reactively from Hider LiveData
+    Hider.appHiderMode
+      .asFlow()
+      .map { mode -> Pair(mode, BaseAppHider.fromMode(ctx, mode).name) }
+      .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+      .also { flow ->
+        viewModelScope.launch {
+          flow.filterNotNull().collect { (mode, name) ->
+            _uiState.update { it.copy(appHiderMode = mode, appHiderName = name) }
+          }
+        }
+      }
+
+    Hider.fileHiderMode
+      .asFlow()
+      .map { mode -> Pair(mode, BaseFileHider.fromMode(ctx, mode).name) }
+      .stateIn(viewModelScope, SharingStarted.Eagerly, null)
+      .also { flow ->
+        viewModelScope.launch {
+          flow.filterNotNull().collect { (mode, name) ->
+            _uiState.update { it.copy(fileHiderMode = mode, fileHiderName = name) }
+          }
+        }
+      }
+
+    viewModelScope.launch {
+      Hider.appHiderError.asFlow().collect { errorResId ->
+        _uiState.update { it.copy(appHiderErrorResId = errorResId ?: 0) }
+      }
+    }
+
+    viewModelScope.launch {
+      Hider.fileHiderError.asFlow().collect { errorResId ->
+        _uiState.update { it.copy(fileHiderErrorResId = errorResId ?: 0) }
+      }
     }
   }
 
   fun setAppHiderMode(mode: Int) {
     val ctx = getApplication<Application>()
-    _uiState.update { it.copy(appHiderFailedMode = -1, appHiderErrorResId = 0) }
-    val hider = BaseAppHider.fromMode(ctx, mode)
-    hider.tryToActivate { cls, success, msgResID ->
-      if (success) {
-        PrefMgr.setAppHiderMode(BaseAppHider.modeOf(cls))
-        _uiState.update {
-          it.copy(
-            appHiderMode = BaseAppHider.modeOf(cls),
-            appHiderName = BaseAppHider.fromMode(ctx, BaseAppHider.modeOf(cls)).name,
-            appHiderFailedMode = -1,
-            appHiderErrorResId = 0,
-          )
-        }
-      } else {
-        PrefMgr.setAppHiderMode(BaseAppHider.modeOf(NoneAppHider::class.java))
-        _uiState.update {
-          it.copy(
-            appHiderMode = 0,
-            appHiderName = BaseAppHider.fromMode(ctx, 0).name,
-            appHiderFailedMode = mode,
-            appHiderErrorResId = msgResID,
-          )
-        }
-      }
+    BaseAppHider.fromMode(ctx, mode).tryToActivate { _, success, msgResID ->
+      Hider.setAppHiderMode(mode)
+      Hider.setAppHiderError(if (success) 0 else msgResID)
     }
   }
 
   fun setFileHiderMode(mode: Int) {
     val ctx = getApplication<Application>()
-    _uiState.update { it.copy(fileHiderFailedMode = -1, fileHiderErrorResId = 0) }
-    val hider = BaseFileHider.fromMode(ctx, mode)
-    hider.tryToActive { cls, success, msgResID ->
-      if (success) {
-        PrefMgr.setFileHiderMode(BaseFileHider.modeOf(cls))
-        _uiState.update {
-          it.copy(
-            fileHiderMode = BaseFileHider.modeOf(cls),
-            fileHiderName = BaseFileHider.fromMode(ctx, BaseFileHider.modeOf(cls)).name,
-            fileHiderFailedMode = -1,
-            fileHiderErrorResId = 0,
-          )
-        }
-      } else {
-        PrefMgr.setFileHiderMode(BaseFileHider.modeOf(NoneFileHider::class.java))
-        _uiState.update {
-          it.copy(
-            fileHiderMode = 0,
-            fileHiderName = BaseFileHider.fromMode(ctx, 0).name,
-            fileHiderFailedMode = mode,
-            fileHiderErrorResId = msgResID,
-          )
-        }
-      }
+    BaseFileHider.fromMode(ctx, mode).tryToActive { _, success, msgResID ->
+      Hider.setFileHiderMode(mode)
+      Hider.setFileHiderError(if (success) 0 else msgResID)
     }
   }
 
