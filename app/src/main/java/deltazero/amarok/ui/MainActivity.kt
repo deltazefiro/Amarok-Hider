@@ -11,6 +11,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -26,11 +27,8 @@ import deltazero.amarok.apphider.BaseAppHider
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.filehider.BaseFileHider
-import deltazero.amarok.filehider.NoneFileHider
 import deltazero.amarok.ui.settings.SettingsScreen
 import deltazero.amarok.ui.settings.SettingsViewModel
-import deltazero.amarok.ui.settings.SwitchAppHiderActivity
-import deltazero.amarok.ui.settings.SwitchFileHiderActivity
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.PermissionUtil
 import deltazero.amarok.utils.UpdateUtil
@@ -38,13 +36,14 @@ import deltazero.amarok.utils.UpdateUtil
 class MainActivity : AmarokActivity() {
 
   private val settingsViewModel: SettingsViewModel by viewModels()
+  private lateinit var navController: NavHostController
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
     setContent {
       AmarokTheme {
-        val navController = rememberNavController()
+        navController = rememberNavController()
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
         val showBottomBar = currentRoute in AmarokRoute.tabRoutes
@@ -174,23 +173,18 @@ class MainActivity : AmarokActivity() {
       PermissionUtil.requestStoragePermission(this)
     }
 
-    // Check Hiders availability
-    BaseAppHider.fromMode(this, PrefMgr.getAppHiderMode()).tryToActivate { _, succeed, msg ->
-      if (succeed) return@tryToActivate
-      showNoHiderDialog(msg)
+    // Check Hiders availability on startup
+    BaseAppHider.fromMode(this, Hider.getAppHiderMode()).tryToActivate { _, succeed, msg ->
+      if (!succeed) {
+        Hider.setAppHiderError(msg)
+        showNoHiderDialog(msg)
+      }
     }
-
-    BaseFileHider.fromMode(this, PrefMgr.getFileHiderMode()).tryToActive { _, succeed, msg ->
-      if (succeed) return@tryToActive
-      PrefMgr.setFileHiderMode(BaseFileHider.modeOf(NoneFileHider::class.java))
-      MaterialAlertDialogBuilder(this)
-        .setTitle(R.string.filehider_not_ava_title)
-        .setMessage(msg)
-        .setPositiveButton(R.string.switch_file_hider) { _, _ ->
-          startActivity(Intent(this, SwitchFileHiderActivity::class.java))
-        }
-        .setNegativeButton(getString(R.string.ok), null)
-        .show()
+    BaseFileHider.fromMode(this, Hider.getFileHiderMode()).tryToActive { _, succeed, msg ->
+      if (!succeed) {
+        Hider.setFileHiderError(msg)
+        showNoHiderDialog(msg)
+      }
     }
 
     if (PrefMgr.getEnableAutoUpdate()) {
@@ -198,16 +192,24 @@ class MainActivity : AmarokActivity() {
     }
   }
 
-  override fun onResume() {
-    super.onResume()
-    settingsViewModel.refreshWorkmodeState()
+  private fun changeStatus() {
+    val appErr = Hider.appHiderError.value
+    if (appErr != null && appErr != 0) {
+      showNoHiderDialog(appErr)
+      return
+    }
+    if (Hider.getState() == Hider.State.HIDDEN) {
+      Hider.unhide(this)
+    } else {
+      Hider.hide(this)
+    }
   }
 
-  private fun changeStatus() {
-    if (Hider.getState() == Hider.State.HIDDEN) {
-      Hider.unhide(this) { msgResID -> showNoHiderDialog(msgResID) }
-    } else {
-      Hider.hide(this) { msgResID -> showNoHiderDialog(msgResID) }
+  private fun navigateToSettings() {
+    navController.navigate(AmarokRoute.SETTINGS.route) {
+      popUpTo(navController.graph.startDestinationId) { saveState = true }
+      launchSingleTop = true
+      restoreState = true
     }
   }
 
@@ -215,9 +217,7 @@ class MainActivity : AmarokActivity() {
     MaterialAlertDialogBuilder(this)
       .setTitle(R.string.apphider_not_ava_title)
       .setMessage(msgResID)
-      .setPositiveButton(R.string.switch_app_hider) { _, _ ->
-        startActivity(Intent(this, SwitchAppHiderActivity::class.java))
-      }
+      .setPositiveButton(R.string.more_settings) { _, _ -> navigateToSettings() }
       .setNegativeButton(getString(R.string.ok), null)
       .show()
   }

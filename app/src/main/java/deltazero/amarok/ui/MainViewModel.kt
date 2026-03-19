@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -24,22 +25,28 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
   val managedFolderCount: StateFlow<Int> =
     MutableStateFlow(PrefMgr.getHideFilePath().size).asStateFlow()
 
-  private val _appHiderName =
-    MutableStateFlow(BaseAppHider.fromMode(application, PrefMgr.getAppHiderMode()).name)
-  val appHiderName: StateFlow<String> = _appHiderName.asStateFlow()
+  val appHiderName: StateFlow<String> =
+    Hider.appHiderMode
+      .asFlow()
+      .map { mode -> BaseAppHider.fromMode(getApplication(), mode).name }
+      .stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5000),
+        BaseAppHider.fromMode(application, Hider.getAppHiderMode()).name,
+      )
 
-  private val _fileHiderName =
-    MutableStateFlow(BaseFileHider.fromMode(application, PrefMgr.getFileHiderMode()).name)
-  val fileHiderName: StateFlow<String> = _fileHiderName.asStateFlow()
+  val fileHiderName: StateFlow<String> =
+    Hider.fileHiderMode
+      .asFlow()
+      .map { mode -> BaseFileHider.fromMode(getApplication(), mode).name }
+      .stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5000),
+        BaseFileHider.fromMode(application, Hider.getFileHiderMode()).name,
+      )
 
   fun refreshCounts() {
     (managedAppCount as MutableStateFlow).value = PrefMgr.getHideApps().size
     (managedFolderCount as MutableStateFlow).value = PrefMgr.getHideFilePath().size
-  }
-
-  fun refreshHiderNames() {
-    val ctx = getApplication<Application>()
-    _appHiderName.value = BaseAppHider.fromMode(ctx, PrefMgr.getAppHiderMode()).name
-    _fileHiderName.value = BaseFileHider.fromMode(ctx, PrefMgr.getFileHiderMode()).name
   }
 }

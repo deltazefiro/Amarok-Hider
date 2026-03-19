@@ -70,13 +70,7 @@
         </activity-alias>
 
         <activity
-            android:name=".ui.settings.SwitchFileHiderActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.settings.ObfuscateFileHiderSettingsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.settings.SwitchAppHiderActivity"
             android:exported="false" />
         <activity
             android:name=".ui.CalendarActivity"

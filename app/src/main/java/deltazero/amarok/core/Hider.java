@@ -29,15 +29,25 @@ public final class Hider {
   public static LiveData<Set<String>> hiddenApps;
   private static MutableLiveData<Set<String>> _hiddenFolders;
   public static LiveData<Set<String>> hiddenFolders;
+  private static MutableLiveData<Integer> _appHiderMode;
+  public static LiveData<Integer> appHiderMode;
+  private static MutableLiveData<Integer> _fileHiderMode;
+  public static LiveData<Integer> fileHiderMode;
+
+  /** Error string resource ID from the last failed tryToActivate, 0 means no error. */
+  private static MutableLiveData<Integer> _appHiderError;
+
+  public static LiveData<Integer> appHiderError;
+
+  /** Error string resource ID from the last failed tryToActive, 0 means no error. */
+  private static MutableLiveData<Integer> _fileHiderError;
+
+  public static LiveData<Integer> fileHiderError;
 
   public enum State {
     HIDDEN,
     VISIBLE,
     PROCESSING
-  }
-
-  public interface OnActivationFailedListener {
-    void onActivationFailed(int msgResID);
   }
 
   static {
@@ -57,6 +67,14 @@ public final class Hider {
     hiddenApps = _hiddenApps;
     _hiddenFolders = new MutableLiveData<>(PrefMgr.getHiddenFolders());
     hiddenFolders = _hiddenFolders;
+    _appHiderMode = new MutableLiveData<>(PrefMgr.getAppHiderMode());
+    appHiderMode = _appHiderMode;
+    _fileHiderMode = new MutableLiveData<>(PrefMgr.getFileHiderMode());
+    fileHiderMode = _fileHiderMode;
+    _appHiderError = new MutableLiveData<>(0);
+    appHiderError = _appHiderError;
+    _fileHiderError = new MutableLiveData<>(0);
+    fileHiderError = _fileHiderError;
 
     if (PrefMgr.getIsHidden()) {
       if (PrefMgr.getHiddenApps().isEmpty() && !PrefMgr.getHideApps().isEmpty()) {
@@ -110,21 +128,15 @@ public final class Hider {
   }
 
   public static void hide(Context context) {
-    hide(context, null);
-  }
-
-  public static void hide(Context context, OnActivationFailedListener listener) {
-    BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode())
+    BaseAppHider.fromMode(context, getAppHiderMode())
         .tryToActivate(
             (appHiderClass, succeed, msg) -> {
               if (succeed) {
+                _appHiderError.postValue(0);
                 processHide(context);
-                return;
-              }
-              if (listener != null) {
-                listener.onActivationFailed(msg);
               } else {
-                showNoHiderToast(context, msg);
+                _appHiderError.postValue(msg);
+                showErrorToast(context, msg);
               }
             });
 
@@ -151,8 +163,7 @@ public final class Hider {
             Set<String> appsToHide = new HashSet<>(managedApps);
             appsToHide.removeAll(alreadyHiddenApps);
             if (!appsToHide.isEmpty()) {
-              BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode())
-                  .hide(appsToHide, disableOnly);
+              BaseAppHider.fromMode(context, getAppHiderMode()).hide(appsToHide, disableOnly);
             }
 
             Set<String> managedFolders = PrefMgr.getHideFilePath();
@@ -161,7 +172,7 @@ public final class Hider {
             Set<String> foldersToHide = new HashSet<>(managedFolders);
             foldersToHide.removeAll(alreadyHiddenFolders);
             if (!foldersToHide.isEmpty()) {
-              BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).hide(foldersToHide);
+              BaseFileHider.fromMode(context, getFileHiderMode()).hide(foldersToHide);
             }
           } catch (InterruptedException e) {
             Log.w(TAG, "Process 'hide' interrupted.");
@@ -186,21 +197,15 @@ public final class Hider {
   }
 
   public static void unhide(Context context) {
-    unhide(context, null);
-  }
-
-  public static void unhide(Context context, OnActivationFailedListener listener) {
-    BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode())
+    BaseAppHider.fromMode(context, getAppHiderMode())
         .tryToActivate(
             (appHiderClass, succeed, msg) -> {
               if (succeed) {
+                _appHiderError.postValue(0);
                 processUnhide(context);
-                return;
-              }
-              if (listener != null) {
-                listener.onActivationFailed(msg);
               } else {
-                showNoHiderToast(context, msg);
+                _appHiderError.postValue(msg);
+                showErrorToast(context, msg);
               }
             });
   }
@@ -216,14 +221,13 @@ public final class Hider {
             Set<String> currentlyHiddenApps =
                 _hiddenApps.getValue() != null ? _hiddenApps.getValue() : new HashSet<>();
             if (!currentlyHiddenApps.isEmpty()) {
-              BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).unhide(currentlyHiddenApps);
+              BaseAppHider.fromMode(context, getAppHiderMode()).unhide(currentlyHiddenApps);
             }
 
             Set<String> currentlyHiddenFolders =
                 _hiddenFolders.getValue() != null ? _hiddenFolders.getValue() : new HashSet<>();
             if (!currentlyHiddenFolders.isEmpty()) {
-              BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode())
-                  .unhide(currentlyHiddenFolders);
+              BaseFileHider.fromMode(context, getFileHiderMode()).unhide(currentlyHiddenFolders);
             }
           } catch (InterruptedException e) {
             Log.w(TAG, "Process 'unhide' interrupted.");
@@ -246,6 +250,12 @@ public final class Hider {
   }
 
   public static void hideApp(Context context, String pkgName) {
+    Integer err = _appHiderError.getValue();
+    if (err != null && err != 0) {
+      Log.w(TAG, "hideApp skipped: app hider in error state");
+      showErrorToast(context, err);
+      return;
+    }
     Set<String> current = new HashSet<>(_hiddenApps.getValue());
     current.add(pkgName);
     _hiddenApps.postValue(current);
@@ -254,13 +264,18 @@ public final class Hider {
     threadHandler.post(
         () -> {
           boolean disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide();
-          BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode())
-              .hide(Set.of(pkgName), disableOnly);
+          BaseAppHider.fromMode(context, getAppHiderMode()).hide(Set.of(pkgName), disableOnly);
           recomputeState();
         });
   }
 
   public static void unhideApp(Context context, String pkgName) {
+    Integer err = _appHiderError.getValue();
+    if (err != null && err != 0) {
+      Log.w(TAG, "unhideApp skipped: app hider in error state");
+      showErrorToast(context, err);
+      return;
+    }
     Set<String> current = new HashSet<>(_hiddenApps.getValue());
     current.remove(pkgName);
     _hiddenApps.postValue(current);
@@ -268,12 +283,18 @@ public final class Hider {
 
     threadHandler.post(
         () -> {
-          BaseAppHider.fromMode(context, PrefMgr.getAppHiderMode()).unhide(Set.of(pkgName));
+          BaseAppHider.fromMode(context, getAppHiderMode()).unhide(Set.of(pkgName));
           recomputeState();
         });
   }
 
   public static void hideFolder(Context context, String path) {
+    Integer err = _fileHiderError.getValue();
+    if (err != null && err != 0) {
+      Log.w(TAG, "hideFolder skipped: file hider in error state");
+      showErrorToast(context, err);
+      return;
+    }
     Set<String> current = new HashSet<>(_hiddenFolders.getValue());
     current.add(path);
     _hiddenFolders.postValue(current);
@@ -282,7 +303,7 @@ public final class Hider {
     threadHandler.post(
         () -> {
           try {
-            BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).hide(Set.of(path));
+            BaseFileHider.fromMode(context, getFileHiderMode()).hide(Set.of(path));
           } catch (InterruptedException e) {
             Log.w(TAG, "hideFolder interrupted");
           }
@@ -291,6 +312,12 @@ public final class Hider {
   }
 
   public static void unhideFolder(Context context, String path) {
+    Integer err = _fileHiderError.getValue();
+    if (err != null && err != 0) {
+      Log.w(TAG, "unhideFolder skipped: file hider in error state");
+      showErrorToast(context, err);
+      return;
+    }
     Set<String> current = new HashSet<>(_hiddenFolders.getValue());
     current.remove(path);
     _hiddenFolders.postValue(current);
@@ -299,7 +326,7 @@ public final class Hider {
     threadHandler.post(
         () -> {
           try {
-            BaseFileHider.fromMode(context, PrefMgr.getFileHiderMode()).unhide(Set.of(path));
+            BaseFileHider.fromMode(context, getFileHiderMode()).unhide(Set.of(path));
           } catch (InterruptedException e) {
             Log.w(TAG, "unhideFolder interrupted");
           }
@@ -313,7 +340,34 @@ public final class Hider {
     unhide(context);
   }
 
-  private static void showNoHiderToast(Context context, int message) {
-    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+  public static int getAppHiderMode() {
+    return _appHiderMode.getValue();
+  }
+
+  public static void setAppHiderMode(int mode) {
+    PrefMgr.setAppHiderMode(mode);
+    _appHiderMode.postValue(mode);
+  }
+
+  public static void setAppHiderError(int errorResId) {
+    _appHiderError.postValue(errorResId);
+  }
+
+  public static int getFileHiderMode() {
+    return _fileHiderMode.getValue();
+  }
+
+  public static void setFileHiderMode(int mode) {
+    PrefMgr.setFileHiderMode(mode);
+    _fileHiderMode.postValue(mode);
+  }
+
+  public static void setFileHiderError(int errorResId) {
+    _fileHiderError.postValue(errorResId);
+  }
+
+  private static void showErrorToast(Context context, int msgResId) {
+    new Handler(Looper.getMainLooper())
+        .post(() -> Toast.makeText(context, msgResId, Toast.LENGTH_LONG).show());
   }
 }
