@@ -46,7 +46,8 @@ class MainActivity : AmarokActivity() {
         navController = rememberNavController()
         val backStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = backStackEntry?.destination?.route
-        val showBottomBar = currentRoute in AmarokRoute.tabRoutes
+        val showBottomBar =
+          currentRoute in AmarokRoute.tabRoutes || currentRoute == AmarokRoutes.APP_PICKER
 
         Scaffold(bottomBar = { if (showBottomBar) AmarokNavigationBar(navController) }) { padding ->
           NavHost(
