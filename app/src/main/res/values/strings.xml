@@ -5,7 +5,7 @@
     <string name="hide">Hide</string>
     <string name="visible_status">Visible</string>
     <string name="hidden_status">Hidden</string>
-    <string name="item_counts">%1$d apps. %2$d folders.</string>
+    <string name="item_counts">%1$d apps, %2$d folders.</string>
     <string name="app_hiding_mode">App hiding mode</string>
     <string name="file_hiding_mode">File hiding mode</string>
     <string name="visible_moto" translatable="false">"\"Night has fallen. Be careful.\" "</string>

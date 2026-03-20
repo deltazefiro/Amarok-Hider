@@ -108,7 +108,7 @@ fun DashboardScreen(
               style = MaterialTheme.typography.bodySmall,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-            Spacer(Modifier.height(35.dp))
+            Spacer(Modifier.height(20.dp))
             Row(verticalAlignment = Alignment.CenterVertically) {
               Button(onClick = onChangeStatus, enabled = state != Hider.State.PROCESSING) {
                 Icon(
@@ -142,7 +142,7 @@ fun DashboardScreen(
                 else R.drawable.img_status_visible
               ),
             contentDescription = null,
-            modifier = Modifier.size(150.dp).offset(x = 55.dp),
+            modifier = Modifier.size(130.dp).offset(x = 55.dp),
             colorFilter =
               if (state == Hider.State.HIDDEN)
                 ColorFilter.tint(Color(0xFF1F1F1F), blendMode = BlendMode.Modulate)
