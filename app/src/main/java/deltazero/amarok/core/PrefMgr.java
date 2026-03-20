@@ -33,7 +33,7 @@ public final class PrefMgr {
   }
 
   public static final String HIDE_FILE_PATH = "hideFilePath";
-  public static final String IS_HIDDEN = "isHidden";
+
   public static final String HIDE_PKG_NAMES = "hidePkgNames";
   public static final String APP_HIDER_MODE = "appHiderMode";
   public static final String FILE_HIDER_MODE = "fileHiderMode";
@@ -75,19 +75,6 @@ public final class PrefMgr {
 
   public static void setHideFilePath(Set<String> path) {
     mPrefEditor.putStringSet(HIDE_FILE_PATH, path);
-    mPrefEditor.apply();
-  }
-
-  /**
-   * Avoid using this method except for initializing {@link Hider}. Use {@link Hider#getState()}
-   * instead.
-   */
-  public static boolean getIsHidden() {
-    return mPrefs.getBoolean(IS_HIDDEN, false);
-  }
-
-  public static void setIsHidden(boolean isHidden) {
-    mPrefEditor.putBoolean(IS_HIDDEN, isHidden);
     mPrefEditor.apply();
   }
 
