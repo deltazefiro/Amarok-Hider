@@ -90,9 +90,9 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
   val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
 
   val hasHiddenFiles: StateFlow<Boolean> =
-    Hider.hiddenFolders
+    Hider.folderStates
       .asFlow()
-      .map { !it.isNullOrEmpty() }
+      .map { states -> states.values.any { it == Hider.FolderStatus.HIDDEN } }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
   init {

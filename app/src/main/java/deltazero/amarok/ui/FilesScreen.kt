@@ -7,12 +7,14 @@ import android.os.Environment
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
@@ -24,7 +26,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
@@ -135,12 +136,21 @@ fun FilesScreen(
     },
     floatingActionButton = {
       if (folders.isNotEmpty()) {
+        val anyProcessing = processingFolders.isNotEmpty()
         val allHidden = hiddenFolders.containsAll(folders.toSet())
-        FloatingActionButton(onClick = onToggleAllFolders) {
-          Icon(
-            if (allHidden) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-            contentDescription = null,
-          )
+        FloatingActionButton(onClick = { if (!anyProcessing) onToggleAllFolders() }) {
+          if (anyProcessing) {
+            CircularProgressIndicator(
+              modifier = Modifier.size(24.dp),
+              strokeWidth = 3.dp,
+              color = MaterialTheme.colorScheme.onPrimaryContainer,
+            )
+          } else {
+            Icon(
+              if (allHidden) Icons.Default.Visibility else Icons.Default.VisibilityOff,
+              contentDescription = null,
+            )
+          }
         }
       }
     },
@@ -160,14 +170,48 @@ fun FilesScreen(
           val isProcessing = processingFolders.contains(path)
           val folderName = path.substringAfterLast(File.separator).ifEmpty { path }
 
-          FolderListItem(
-            folderName = folderName,
-            fullPath = path,
-            isHidden = isHidden,
-            isProcessing = isProcessing,
-            onToggle = { onToggleFolder(path) },
-            onRemove = { if (!isHidden) pathToConfirmRemove = path },
-          )
+          val dismissState =
+            rememberSwipeToDismissBoxState(
+              confirmValueChange = {
+                if (it == SwipeToDismissBoxValue.StartToEnd && !isHidden) {
+                  pathToConfirmRemove = path
+                }
+                false // Don't actually dismiss; let the dialog handle removal
+              }
+            )
+
+          SwipeToDismissBox(
+            state = dismissState,
+            enableDismissFromEndToStart = false,
+            enableDismissFromStartToEnd = !isHidden,
+            backgroundContent = {
+              val color by
+                animateColorAsState(
+                  if (dismissState.targetValue == SwipeToDismissBoxValue.StartToEnd)
+                    MaterialTheme.colorScheme.errorContainer
+                  else MaterialTheme.colorScheme.surface,
+                  label = "swipe-bg",
+                )
+              Box(
+                modifier = Modifier.fillMaxSize().background(color).padding(horizontal = 24.dp),
+                contentAlignment = Alignment.CenterStart,
+              ) {
+                Icon(
+                  Icons.Default.Delete,
+                  contentDescription = null,
+                  tint = MaterialTheme.colorScheme.onErrorContainer,
+                )
+              }
+            },
+          ) {
+            FolderListItem(
+              folderName = folderName,
+              fullPath = path,
+              isHidden = isHidden,
+              isProcessing = isProcessing,
+              onToggle = { onToggleFolder(path) },
+            )
+          }
           HorizontalDivider()
         }
       }
@@ -182,10 +226,12 @@ private fun FolderListItem(
   isHidden: Boolean,
   isProcessing: Boolean,
   onToggle: () -> Unit,
-  onRemove: () -> Unit,
 ) {
   Row(
-    modifier = Modifier.fillMaxWidth().padding(horizontal = 24.dp, vertical = 12.dp),
+    modifier =
+      Modifier.fillMaxWidth()
+        .background(MaterialTheme.colorScheme.surface)
+        .padding(horizontal = 24.dp, vertical = 12.dp),
     verticalAlignment = Alignment.CenterVertically,
   ) {
     Column(modifier = Modifier.weight(1f)) {
@@ -197,19 +243,16 @@ private fun FolderListItem(
       )
       Text(
         text = fullPath,
-        fontSize = 11.sp,
-        maxLines = 2,
+        style = MaterialTheme.typography.labelSmall,
+        maxLines = 1,
         overflow = TextOverflow.Ellipsis,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
       )
     }
-    if (!isHidden) {
-      IconButton(onClick = onRemove) {
-        Icon(Icons.Default.Close, contentDescription = null, modifier = Modifier.size(20.dp))
-      }
-    }
     if (isProcessing) {
-      CircularProgressIndicator(modifier = Modifier.size(24.dp), strokeWidth = 2.dp)
+      Box(modifier = Modifier.size(48.dp), contentAlignment = Alignment.Center) {
+        CircularProgressIndicator(modifier = Modifier.size(24.dp), strokeWidth = 2.dp)
+      }
     } else {
       IconButton(onClick = onToggle) {
         Icon(
@@ -283,7 +326,6 @@ private fun FolderListItemPreview() {
         isHidden = true,
         isProcessing = false,
         onToggle = {},
-        onRemove = {},
       )
       HorizontalDivider()
       FolderListItem(
@@ -292,7 +334,6 @@ private fun FolderListItemPreview() {
         isHidden = false,
         isProcessing = false,
         onToggle = {},
-        onRemove = {},
       )
       HorizontalDivider()
       FolderListItem(
@@ -301,7 +342,6 @@ private fun FolderListItemPreview() {
         isHidden = false,
         isProcessing = true,
         onToggle = {},
-        onRemove = {},
       )
     }
   }

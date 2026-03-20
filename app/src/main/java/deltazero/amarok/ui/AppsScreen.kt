@@ -42,7 +42,6 @@ import deltazero.amarok.utils.AppInfoUtil.AppInfo
 fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewModel()) {
   val apps by viewModel.managedApps.collectAsState()
   val hiddenApps by viewModel.hiddenApps.collectAsState()
-  val processingApps by viewModel.processingApps.collectAsState()
 
   val lifecycleOwner = LocalLifecycleOwner.current
   LaunchedEffect(lifecycleOwner) {
@@ -55,7 +54,6 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
   AppsScreen(
     apps = apps,
     hiddenApps = hiddenApps,
-    processingApps = processingApps,
     onOpenEditor = onOpenEditor,
     onToggleAllApps = { viewModel.toggleAllApps() },
     onHideApp = { viewModel.hideApp(it) },
@@ -71,7 +69,6 @@ fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewMod
 fun AppsScreen(
   apps: List<AppInfo>,
   hiddenApps: Set<String>,
-  processingApps: Set<String>,
   onOpenEditor: () -> Unit,
   onToggleAllApps: () -> Unit,
   onHideApp: (String) -> Unit,
@@ -116,12 +113,10 @@ fun AppsScreen(
       ) {
         items(apps, key = { it.packageName() }) { app ->
           val isHidden = hiddenApps.contains(app.packageName())
-          val isProcessing = processingApps.contains(app.packageName())
 
           AppGridItem(
             app = app,
             isHidden = isHidden,
-            isProcessing = isProcessing,
             onClick = {
               if (isHidden) onUnhideApp(app.packageName()) else onLaunchApp(app.packageName())
             },
@@ -138,7 +133,6 @@ fun AppsScreen(
 private fun AppGridItem(
   app: AppInfo,
   isHidden: Boolean,
-  isProcessing: Boolean,
   onClick: () -> Unit,
   onLongClick: () -> Unit,
 ) {
@@ -147,17 +141,11 @@ private fun AppGridItem(
       Modifier.combinedClickable(onClick = onClick, onLongClick = onLongClick).padding(4.dp),
     horizontalAlignment = Alignment.CenterHorizontally,
   ) {
-    Box(contentAlignment = Alignment.Center) {
-      if (isProcessing) {
-        CircularProgressIndicator(modifier = Modifier.size(48.dp), strokeWidth = 2.dp)
-      } else {
-        AndroidView(
-          factory = { ctx -> ImageView(ctx) },
-          update = { iv -> iv.setImageDrawable(app.icon()) },
-          modifier = Modifier.size(48.dp).alpha(if (isHidden) 0.4f else 1f),
-        )
-      }
-    }
+    AndroidView(
+      factory = { ctx -> ImageView(ctx) },
+      update = { iv -> iv.setImageDrawable(app.icon()) },
+      modifier = Modifier.size(48.dp).alpha(if (isHidden) 0.4f else 1f),
+    )
     Spacer(Modifier.height(4.dp))
     Text(
       text = app.label(),
@@ -172,22 +160,16 @@ private fun AppGridItem(
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun AppGridItemPreview(label: String, isHidden: Boolean, isProcessing: Boolean) {
+private fun AppGridItemPreview(label: String, isHidden: Boolean) {
   Column(modifier = Modifier.padding(4.dp), horizontalAlignment = Alignment.CenterHorizontally) {
-    Box(contentAlignment = Alignment.Center) {
-      if (isProcessing) {
-        CircularProgressIndicator(modifier = Modifier.size(48.dp), strokeWidth = 2.dp)
-      } else {
-        Icon(
-          Icons.Default.Android,
-          contentDescription = null,
-          modifier = Modifier.size(48.dp).alpha(if (isHidden) 0.4f else 1f),
-          tint =
-            if (isHidden) MaterialTheme.colorScheme.onSurfaceVariant
-            else MaterialTheme.colorScheme.primary,
-        )
-      }
-    }
+    Icon(
+      Icons.Default.Android,
+      contentDescription = null,
+      modifier = Modifier.size(48.dp).alpha(if (isHidden) 0.4f else 1f),
+      tint =
+        if (isHidden) MaterialTheme.colorScheme.onSurfaceVariant
+        else MaterialTheme.colorScheme.primary,
+    )
     Spacer(Modifier.height(4.dp))
     Text(
       text = label,
@@ -208,7 +190,6 @@ private fun AppsScreenEmptyPreview() {
     AppsScreen(
       apps = emptyList(),
       hiddenApps = emptySet(),
-      processingApps = emptySet(),
       onOpenEditor = {},
       onToggleAllApps = {},
       onHideApp = {},
@@ -226,13 +207,10 @@ private fun AppGridItemsPreview() {
     Surface {
       Row(modifier = Modifier.padding(8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
         Box(modifier = Modifier.width(80.dp)) {
-          AppGridItemPreview(label = "Gallery", isHidden = false, isProcessing = false)
+          AppGridItemPreview(label = "Gallery", isHidden = false)
         }
         Box(modifier = Modifier.width(80.dp)) {
-          AppGridItemPreview(label = "Messages", isHidden = true, isProcessing = false)
-        }
-        Box(modifier = Modifier.width(80.dp)) {
-          AppGridItemPreview(label = "Browser", isHidden = false, isProcessing = true)
+          AppGridItemPreview(label = "Messages", isHidden = true)
         }
       }
     }

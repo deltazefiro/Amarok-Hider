@@ -6,47 +6,43 @@ import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
-import kotlinx.coroutines.launch
 
 class FilesViewModel(application: Application) : AndroidViewModel(application) {
 
   private val _managedFolders = MutableStateFlow(PrefMgr.getHideFilePath().toList())
   val managedFolders: StateFlow<List<String>> = _managedFolders.asStateFlow()
 
-  val hiddenFolders: StateFlow<Set<String>> =
-    Hider.hiddenFolders
+  private val folderStatesFlow =
+    Hider.folderStates
       .asFlow()
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        Hider.hiddenFolders.value ?: emptySet(),
+        Hider.folderStates.value ?: emptyMap(),
       )
 
-  private val _processingFolders = MutableStateFlow<Set<String>>(emptySet())
-  val processingFolders: StateFlow<Set<String>> = _processingFolders.asStateFlow()
+  val hiddenFolders: StateFlow<Set<String>> =
+    folderStatesFlow
+      .map { states -> states.filterValues { it == Hider.FolderStatus.HIDDEN }.keys }
+      .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
+
+  val processingFolders: StateFlow<Set<String>> =
+    folderStatesFlow
+      .map { states -> states.filterValues { it == Hider.FolderStatus.PROCESSING }.keys }
+      .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
 
   fun hideFolder(path: String) {
-    _processingFolders.value = _processingFolders.value + path
     Hider.hideFolder(getApplication(), path)
-    viewModelScope.launch(Dispatchers.IO) {
-      Thread.sleep(500)
-      _processingFolders.value = _processingFolders.value - path
-    }
   }
 
   fun unhideFolder(path: String) {
-    _processingFolders.value = _processingFolders.value + path
     Hider.unhideFolder(getApplication(), path)
-    viewModelScope.launch(Dispatchers.IO) {
-      Thread.sleep(500)
-      _processingFolders.value = _processingFolders.value - path
-    }
   }
 
   fun toggleAllFolders() {

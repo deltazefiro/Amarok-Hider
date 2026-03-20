@@ -31,9 +31,6 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
         Hider.hiddenApps.value ?: emptySet(),
       )
 
-  private val _processingApps = MutableStateFlow<Set<String>>(emptySet())
-  val processingApps: StateFlow<Set<String>> = _processingApps.asStateFlow()
-
   init {
     loadManagedApps()
   }
@@ -48,25 +45,11 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
   }
 
   fun hideApp(pkgName: String) {
-    _processingApps.value = _processingApps.value + pkgName
-    val ctx = getApplication<Application>()
-    Hider.hideApp(ctx, pkgName)
-    // Remove from processing after a short delay (backend is async)
-    viewModelScope.launch(Dispatchers.IO) {
-      // Wait for the hider thread to process
-      Thread.sleep(500)
-      _processingApps.value = _processingApps.value - pkgName
-    }
+    Hider.hideApp(getApplication(), pkgName)
   }
 
   fun unhideApp(pkgName: String) {
-    _processingApps.value = _processingApps.value + pkgName
-    val ctx = getApplication<Application>()
-    Hider.unhideApp(ctx, pkgName)
-    viewModelScope.launch(Dispatchers.IO) {
-      Thread.sleep(500)
-      _processingApps.value = _processingApps.value - pkgName
-    }
+    Hider.unhideApp(getApplication(), pkgName)
   }
 
   fun toggleAllApps() {
@@ -75,10 +58,8 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
     val ctx = getApplication<Application>()
 
     if (hidden.containsAll(managed)) {
-      // All hidden -> unhide all
       Hider.unhide(ctx)
     } else {
-      // Some visible -> hide all
       Hider.hide(ctx)
     }
   }
