@@ -171,12 +171,7 @@ public final class Hider {
     private static void processUnhideOne(Context context, String packageName) {
         threadHandler.post(() -> {
             Log.i(TAG, "Process 'unhideOne' start: " + packageName);
-            try {
-                PrefMgr.getAppHider(context).unhide(Collections.singleton(packageName));
-            } catch (InterruptedException e) {
-                Log.w(TAG, "Process 'unhideOne' interrupted.");
-                return;
-            }
+            PrefMgr.getAppHider(context).unhide(Collections.singleton(packageName));
             Log.i(TAG, "Process 'unhideOne' finish: " + packageName);
 
             // 只在全局隐藏中时才记录临时状态
