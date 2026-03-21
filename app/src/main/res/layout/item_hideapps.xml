@@ -1,28 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    两行式布局：
-    第一行：图标 | 应用名 + 包名 | 隐藏复选框
-    第二行（仅已隐藏时显示）：创建快捷方式 文字 + 复选框，缩进与应用名对齐
-
-    通过固定两行各自高度避免抖动：
-    - 第一行固定 minHeight=64dp（图标 40sp + 上下 padding）
-    - 第二行 wrap_content，出现时整体 item 变高，但第一行高度不变，
-      图标/应用名相对位置不动，视觉上只是向下扩展
--->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <!-- 第一行：图标 + 文字 + 隐藏 checkbox -->
+    <!-- 第一行：图标 + 应用名/包名 + 隐藏 checkbox，固定高度保证对齐稳定 -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="64dp">
 
+        <!--
+            图标用 40dp（不用 sp），对齐计算稳定：
+            第二行文字 paddingStart = 16(marginStart) + 40(icon) + 12(gap) = 68dp
+        -->
         <ImageView
             android:id="@+id/hideapp_iv_appicon"
-            android:layout_width="40sp"
-            android:layout_height="40sp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
@@ -68,14 +62,17 @@
 
     </RelativeLayout>
 
-    <!-- 第二行：创建快捷方式（仅已隐藏时显示，默认 GONE） -->
+    <!--
+        第二行：创建快捷方式（仅已隐藏时显示，默认 GONE）
+        paddingStart=68dp 精确对齐应用名左边：16(icon margin) + 40(icon) + 12(gap)
+    -->
     <LinearLayout
         android:id="@+id/hideapp_ll_shortcut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingStart="72dp"
+        android:paddingStart="68dp"
         android:paddingEnd="8dp"
         android:paddingBottom="8dp"
         android:visibility="gone">
@@ -94,6 +91,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:minHeight="0dp"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
             style="@style/Widget.Material3.CompoundButton.CheckBox" />
 
     </LinearLayout>
