@@ -87,8 +87,8 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
             cbIsHidden.setOnCheckedChangeListener(null);
             cbIsHidden.setChecked(isHidden);
 
-            // 用 INVISIBLE 而非 GONE：保持占位高度，避免 item 高度变化导致 RecyclerView 抖动
-            llShortcut.setVisibility(isHidden ? View.VISIBLE : View.INVISIBLE);
+            // 只有已隐藏时显示快捷方式行（第一行高度固定，不受影响）
+            llShortcut.setVisibility(isHidden ? View.VISIBLE : View.GONE);
 
             cbShortcut.setOnCheckedChangeListener(null);
             cbShortcut.setChecked(hasShortcut);
@@ -96,7 +96,7 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
             cbIsHidden.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (currentApp != null && buttonView.isPressed()) {
                     listener.onAppToggled(currentApp);
-                    llShortcut.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
+                    llShortcut.setVisibility(isChecked ? View.VISIBLE : View.GONE);
                     if (!isChecked) {
                         // 取消隐藏时同步清除快捷方式勾选状态
                         cbShortcut.setOnCheckedChangeListener(null);

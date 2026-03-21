@@ -1,87 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    两行式布局：
+    第一行：图标 | 应用名 + 包名 | 隐藏复选框
+    第二行（仅已隐藏时显示）：创建快捷方式 文字 + 复选框，缩进与应用名对齐
+
+    通过固定两行各自高度避免抖动：
+    - 第一行固定 minHeight=64dp（图标 40sp + 上下 padding）
+    - 第二行 wrap_content，出现时整体 item 变高，但第一行高度不变，
+      图标/应用名相对位置不动，视觉上只是向下扩展
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
-    <!--
-        快捷方式行始终占位（INVISIBLE 而非 GONE），item 高度不随其显示/隐藏变化，
-        消除 RecyclerView 重新 measure 引起的抖动。
-    -->
+    <!-- 第一行：图标 + 文字 + 隐藏 checkbox -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp">
 
-    <ImageView
-        android:id="@+id/hideapp_iv_appicon"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/ic_null" />
+        <ImageView
+            android:id="@+id/hideapp_iv_appicon"
+            android:layout_width="40sp"
+            android:layout_height="40sp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_null" />
 
-    <com.google.android.material.checkbox.MaterialCheckBox
-        android:id="@+id/hideapp_cb_ishidden"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="8dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_toStartOf="@id/hideapp_cb_ishidden"
-        android:layout_toEndOf="@id/hideapp_iv_appicon"
-        android:orientation="vertical">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/hideapp_tv_appname"
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/hideapp_cb_ishidden"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="APP Name"
-            android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/hideapp_tv_pkgname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="APP PkgName"
-            android:textSize="8sp" />
-
-        <!-- 始终占位，仅通过 VISIBLE/INVISIBLE 切换，不改变 item 高度 -->
         <LinearLayout
-            android:id="@+id/hideapp_ll_shortcut"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="2dp"
-            android:visibility="invisible">
-
-            <com.google.android.material.checkbox.MaterialCheckBox
-                android:id="@+id/hideapp_cb_shortcut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minHeight="0dp"
-                style="@style/Widget.Material3.CompoundButton.CheckBox" />
+            android:layout_centerVertical="true"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="4dp"
+            android:layout_toStartOf="@id/hideapp_cb_ishidden"
+            android:layout_toEndOf="@id/hideapp_iv_appicon"
+            android:orientation="vertical">
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/hideapp_tv_shortcut"
+                android:id="@+id/hideapp_tv_appname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/create_shortcut"
-                android:textSize="12sp"
-                android:textColor="?attr/colorOnSurfaceVariant" />
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="APP Name"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/hideapp_tv_pkgname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="APP PkgName"
+                android:textSize="8sp" />
 
         </LinearLayout>
 
+    </RelativeLayout>
+
+    <!-- 第二行：创建快捷方式（仅已隐藏时显示，默认 GONE） -->
+    <LinearLayout
+        android:id="@+id/hideapp_ll_shortcut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="72dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/hideapp_tv_shortcut"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/create_shortcut"
+            android:textSize="12sp"
+            android:textColor="?attr/colorOnSurfaceVariant" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/hideapp_cb_shortcut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            style="@style/Widget.Material3.CompoundButton.CheckBox" />
+
     </LinearLayout>
 
-</RelativeLayout>
+</LinearLayout>
