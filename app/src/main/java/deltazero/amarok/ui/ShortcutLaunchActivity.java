@@ -1,10 +1,11 @@
 package deltazero.amarok.ui;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import deltazero.amarok.Hider;
 
@@ -12,7 +13,7 @@ import deltazero.amarok.Hider;
  * 快捷方式点击后的中转 Activity。
  * 先通过 {@link Hider#unhideOne} 取消隐藏目标应用，完成后启动目标应用。
  */
-public class ShortcutLaunchActivity extends Activity {
+public class ShortcutLaunchActivity extends AppCompatActivity {
 
     public static final String EXTRA_TARGET_PACKAGE = "target_package";
     private static final String TAG = "ShortcutLaunchActivity";
