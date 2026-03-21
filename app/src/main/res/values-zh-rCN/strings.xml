@@ -218,8 +218,9 @@
     <string name="import_section_shortcut">快捷方式</string>
     <string name="import_hide_success">成功导入 %1$d 个</string>
     <string name="import_hide_skipped">跳过 %1$d 个</string>
-    <string name="import_sc_marked">已标记 %1$d 个（需在隐藏应用列表中手动创建快捷方式）</string>
+    <string name="import_sc_pending">待创建 %1$d 个</string>
     <string name="import_sc_skipped">跳过 %1$d 个</string>
-    <string name="import_sc_hint">请前往"隐藏应用"列表，为上述应用手动点击创建快捷方式。</string>
+    <string name="import_sc_create_btn">开始创建快捷方式</string>
+    <string name="import_sc_creating">创建中…</string>
     <string name="import_not_installed">未安装</string>
 </resources>

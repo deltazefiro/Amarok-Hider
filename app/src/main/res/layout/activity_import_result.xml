@@ -86,6 +86,15 @@
 
             </com.google.android.material.card.MaterialCardView>
 
+            <!-- 批量创建快捷方式按钮（有待创建的应用时显示） -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/import_result_btn_create_shortcuts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="@string/import_sc_create_btn"
+                style="@style/Widget.Material3.Button.TonalButton" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/import_result_btn_done"
                 android:layout_width="match_parent"
