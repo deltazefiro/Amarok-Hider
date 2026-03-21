@@ -19,6 +19,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import deltazero.amarok.AmarokActivity;
 import deltazero.amarok.R;
+import deltazero.amarok.utils.AppInfoUtil;
 
 public class SetHideAppActivity extends AmarokActivity {
 
@@ -58,7 +59,17 @@ public class SetHideAppActivity extends AmarokActivity {
     }
 
     private void setupRecyclerView() {
-        adapter = new AppListAdapter(app -> viewModel.toggleAppHidden(app));
+        adapter = new AppListAdapter(new AppListAdapter.OnAppToggleListener() {
+            @Override
+            public void onAppToggled(AppInfoUtil.AppInfo app) {
+                viewModel.toggleAppHidden(app);
+            }
+
+            @Override
+            public void onShortcutToggled(AppInfoUtil.AppInfo app, boolean create) {
+                viewModel.toggleShortcut(app, create);
+            }
+        });
         rvAppList.setAdapter(adapter);
         rvAppList.setLayoutManager(new LinearLayoutManager(this));
     }

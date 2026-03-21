@@ -43,6 +43,30 @@
             android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent" />
 
+        <LinearLayout
+            android:id="@+id/hideapp_ll_shortcut"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp"
+            android:visibility="gone">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/hideapp_cb_shortcut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/hideapp_tv_shortcut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/create_shortcut"
+                android:textSize="12sp"
+                android:textColor="?attr/colorOnSurfaceVariant" />
+
+        </LinearLayout>
+
     </LinearLayout>
 
     <ImageView

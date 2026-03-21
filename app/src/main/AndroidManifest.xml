@@ -108,6 +108,12 @@
             android:exported="false"
             android:noHistory="true"
             android:theme="@style/Theme.Amarok.Transparent" />
+        <activity
+            android:name=".ui.ShortcutLaunchActivity"
+            android:exported="true"
+            android:excludeFromRecents="true"
+            android:noHistory="true"
+            android:theme="@style/Theme.Amarok.Transparent" />
 
         <service
             android:name=".QSTileService"
@@ -174,6 +180,14 @@
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/toggle_widget_info" />
+        </receiver>
+        <receiver
+            android:name=".receivers.PackageUpdateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
         </receiver>
         <receiver
             android:name=".receivers.DialerReceiver"

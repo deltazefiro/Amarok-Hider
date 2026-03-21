@@ -78,6 +78,8 @@ public final class PrefMgr {
     public static final String PANIC_BUTTON_Y = "panicButtonY";
     public static final String PANIC_BUTTON_LEFT_EDGE = "panicButtonLeftEdge";
     public static final String DARK_THEME = "darkTheme";
+    public static final String SHORTCUT_PKG_NAMES = "shortcutPkgNames";
+    public static final String TEMP_UNHIDDEN_PKG_NAMES = "tempUnhiddenPkgNames";
 
     public static Set<String> getHideFilePath() {
         // Return a defensive copy to avoid SharedPreferences caching issues
@@ -416,6 +418,31 @@ public final class PrefMgr {
 
     public static void setDarkTheme(int mode) {
         mPrefEditor.putInt(DARK_THEME, mode);
+        mPrefEditor.apply();
+    }
+
+    public static Set<String> getShortcutApps() {
+        return new HashSet<>(mPrefs.getStringSet(SHORTCUT_PKG_NAMES, new HashSet<>()));
+    }
+
+    public static void setShortcutApps(Set<String> pkgNames) {
+        mPrefEditor.putStringSet(SHORTCUT_PKG_NAMES, pkgNames);
+        mPrefEditor.apply();
+    }
+
+    public static Set<String> getTempUnhiddenApps() {
+        return new HashSet<>(mPrefs.getStringSet(TEMP_UNHIDDEN_PKG_NAMES, new HashSet<>()));
+    }
+
+    public static void addTempUnhiddenApp(String packageName) {
+        Set<String> set = getTempUnhiddenApps();
+        set.add(packageName);
+        mPrefEditor.putStringSet(TEMP_UNHIDDEN_PKG_NAMES, set);
+        mPrefEditor.apply();
+    }
+
+    public static void clearTempUnhiddenApps() {
+        mPrefEditor.remove(TEMP_UNHIDDEN_PKG_NAMES);
         mPrefEditor.apply();
     }
 }

@@ -15,6 +15,7 @@ import java.util.concurrent.Executors;
 import deltazero.amarok.PrefMgr;
 import deltazero.amarok.utils.AppInfoUtil;
 import deltazero.amarok.utils.AppInfoUtil.AppInfo;
+import deltazero.amarok.utils.ShortcutUtil;
 
 public class AppListViewModel extends AndroidViewModel {
     private final AppInfoUtil appInfoUtil;
@@ -83,6 +84,14 @@ public class AppListViewModel extends AndroidViewModel {
             hiddenApps.add(app.packageName());
         }
         PrefMgr.setHideApps(hiddenApps);
+    }
+
+    public void toggleShortcut(AppInfo app, boolean create) {
+        if (create) {
+            ShortcutUtil.createShortcut(getApplication(), app);
+        } else {
+            ShortcutUtil.removeShortcut(getApplication(), app.packageName());
+        }
     }
 
     private void updateAppList() {

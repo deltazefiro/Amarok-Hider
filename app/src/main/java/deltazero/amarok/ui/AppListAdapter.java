@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
 
     public interface OnAppToggleListener {
         void onAppToggled(AppInfo app);
+        void onShortcutToggled(AppInfo app, boolean create);
     }
 
     private final OnAppToggleListener listener;
@@ -59,6 +61,8 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
         private final TextView tvPkgName;
         private final MaterialCheckBox cbIsHidden;
         private final ImageView ivAppIcon;
+        private final LinearLayout llShortcut;
+        private final MaterialCheckBox cbShortcut;
         private AppInfo currentApp;
 
         AppListHolder(View view) {
@@ -67,6 +71,8 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
             tvPkgName = view.findViewById(R.id.hideapp_tv_pkgname);
             cbIsHidden = view.findViewById(R.id.hideapp_cb_ishidden);
             ivAppIcon = view.findViewById(R.id.hideapp_iv_appicon);
+            llShortcut = view.findViewById(R.id.hideapp_ll_shortcut);
+            cbShortcut = view.findViewById(R.id.hideapp_cb_shortcut);
         }
 
         void bind(AppInfo app, OnAppToggleListener listener) {
@@ -74,11 +80,34 @@ public class AppListAdapter extends ListAdapter<AppInfo, AppListAdapter.AppListH
             tvAppName.setText(app.label());
             tvPkgName.setText(app.packageName());
             ivAppIcon.setImageDrawable(app.icon());
-            cbIsHidden.setChecked(PrefMgr.getHideApps().contains(app.packageName()));
+
+            boolean isHidden = PrefMgr.getHideApps().contains(app.packageName());
+            boolean hasShortcut = PrefMgr.getShortcutApps().contains(app.packageName());
+
+            cbIsHidden.setOnCheckedChangeListener(null);
+            cbIsHidden.setChecked(isHidden);
+
+            // 只有已隐藏时才显示快捷方式行
+            llShortcut.setVisibility(isHidden ? View.VISIBLE : View.GONE);
+
+            cbShortcut.setOnCheckedChangeListener(null);
+            cbShortcut.setChecked(hasShortcut);
 
             cbIsHidden.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (currentApp != null && buttonView.isPressed()) {
                     listener.onAppToggled(currentApp);
+                    llShortcut.setVisibility(isChecked ? View.VISIBLE : View.GONE);
+                    if (!isChecked) {
+                        // 取消隐藏时同步清除快捷方式勾选状态
+                        cbShortcut.setOnCheckedChangeListener(null);
+                        cbShortcut.setChecked(false);
+                    }
+                }
+            });
+
+            cbShortcut.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                if (currentApp != null && buttonView.isPressed()) {
+                    listener.onShortcutToggled(currentApp, isChecked);
                 }
             });
         }
