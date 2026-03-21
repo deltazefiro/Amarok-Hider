@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import deltazero.amarok.QuickHideService
 import deltazero.amarok.apphider.BaseAppHider
@@ -20,7 +19,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
@@ -91,47 +89,38 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
   val hasHiddenFiles: StateFlow<Boolean> =
     Hider.folderStates
-      .asFlow()
       .map { states -> states.values.any { it == Hider.FolderStatus.HIDDEN } }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
   init {
     val ctx = getApplication<Application>()
 
-    // Derive workmode UI state reactively from Hider LiveData
-    Hider.appHiderMode
-      .asFlow()
-      .map { mode -> Pair(mode, BaseAppHider.fromMode(ctx, mode).name) }
-      .stateIn(viewModelScope, SharingStarted.Eagerly, null)
-      .also { flow ->
-        viewModelScope.launch {
-          flow.filterNotNull().collect { (mode, name) ->
-            _uiState.update { it.copy(appHiderMode = mode, appHiderName = name) }
-          }
+    // Derive workmode UI state reactively from Hider StateFlows
+    viewModelScope.launch {
+      Hider.appHiderMode
+        .map { mode -> Pair(mode, BaseAppHider.fromMode(ctx, mode).name) }
+        .collect { (mode, name) ->
+          _uiState.update { it.copy(appHiderMode = mode, appHiderName = name) }
         }
-      }
-
-    Hider.fileHiderMode
-      .asFlow()
-      .map { mode -> Pair(mode, BaseFileHider.fromMode(ctx, mode).name) }
-      .stateIn(viewModelScope, SharingStarted.Eagerly, null)
-      .also { flow ->
-        viewModelScope.launch {
-          flow.filterNotNull().collect { (mode, name) ->
-            _uiState.update { it.copy(fileHiderMode = mode, fileHiderName = name) }
-          }
-        }
-      }
+    }
 
     viewModelScope.launch {
-      Hider.appHiderError.asFlow().collect { errorResId ->
-        _uiState.update { it.copy(appHiderErrorResId = errorResId ?: 0) }
+      Hider.fileHiderMode
+        .map { mode -> Pair(mode, BaseFileHider.fromMode(ctx, mode).name) }
+        .collect { (mode, name) ->
+          _uiState.update { it.copy(fileHiderMode = mode, fileHiderName = name) }
+        }
+    }
+
+    viewModelScope.launch {
+      Hider.appHiderError.collect { errorResId ->
+        _uiState.update { it.copy(appHiderErrorResId = errorResId) }
       }
     }
 
     viewModelScope.launch {
-      Hider.fileHiderError.asFlow().collect { errorResId ->
-        _uiState.update { it.copy(fileHiderErrorResId = errorResId ?: 0) }
+      Hider.fileHiderError.collect { errorResId ->
+        _uiState.update { it.copy(fileHiderErrorResId = errorResId) }
       }
     }
   }

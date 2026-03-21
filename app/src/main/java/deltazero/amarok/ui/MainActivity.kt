@@ -195,7 +195,7 @@ class MainActivity : AmarokActivity() {
 
   private fun changeStatus() {
     val appErr = Hider.appHiderError.value
-    if (appErr != null && appErr != 0) {
+    if (appErr != 0) {
       showNoHiderDialog(appErr)
       return
     }

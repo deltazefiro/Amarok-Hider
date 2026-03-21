@@ -94,8 +94,8 @@ public class XHidePrefBridge {
         };
     PrefMgr.getPrefs().registerOnSharedPreferenceChangeListener(hidePkgNamesChangeListener);
 
-    Hider.state.observeForever(state -> commitNewValues());
-    Hider.hiddenApps.observeForever(apps -> commitNewValues());
+    Hider.getStateLiveData().observeForever(state -> commitNewValues());
+    Hider.getHiddenAppsLiveData().observeForever(apps -> commitNewValues());
 
     Log.i(TAG, "XHide initialized.");
     isAvailable = true;
@@ -103,7 +103,7 @@ public class XHidePrefBridge {
 
   private static void commitNewValues() {
     Log.d(TAG, "Committing new values to XPref");
-    Set<String> hiddenApps = Hider.hiddenApps.getValue();
+    Set<String> hiddenApps = Hider.getHiddenAppsLiveData().getValue();
     xprefEditor.putStringSet(
         XPref.HIDE_PKG_NAMES, hiddenApps != null ? hiddenApps : new java.util.HashSet<>());
     xprefEditor.putBoolean(

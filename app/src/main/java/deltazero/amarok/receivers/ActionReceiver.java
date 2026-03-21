@@ -20,7 +20,7 @@ public class ActionReceiver extends BroadcastReceiver {
   public void onReceive(Context context, Intent intent) {
     Log.i("ActionReceiver", "New action received.");
 
-    if (Hider.state.getValue() == Hider.State.PROCESSING) {
+    if (Hider.getState() == Hider.State.PROCESSING) {
       Log.w("ActionReceiver", "Already processing. Ignore the new action.");
       return;
     }

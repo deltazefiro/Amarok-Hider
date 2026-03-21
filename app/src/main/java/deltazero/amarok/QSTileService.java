@@ -71,15 +71,16 @@ public class QSTileService extends TileService {
    */
   public static void init(Context context) {
     assert Hider.initialized;
-    Hider.state.observeForever(
-        state -> {
-          try {
-            TileService.requestListeningState(
-                context, new ComponentName(context, QSTileService.class));
-          } catch (IllegalArgumentException e) {
-            Log.w(TAG, "QuickSetting is unavailable when running in an Android work profile.");
-          }
-        });
+    Hider.getStateLiveData()
+        .observeForever(
+            state -> {
+              try {
+                TileService.requestListeningState(
+                    context, new ComponentName(context, QSTileService.class));
+              } catch (IllegalArgumentException e) {
+                Log.w(TAG, "QuickSetting is unavailable when running in an Android work profile.");
+              }
+            });
     initialized = true;
   }
 

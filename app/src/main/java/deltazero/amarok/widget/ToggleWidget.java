@@ -26,11 +26,12 @@ public class ToggleWidget extends AppWidgetProvider {
    */
   public static void init(Context context) {
     assert Hider.initialized;
-    Hider.state.observeForever(
-        state -> {
-          Log.i(TAG, "State changed, updating all widgets.");
-          updateAllWidgets(context);
-        });
+    Hider.getStateLiveData()
+        .observeForever(
+            state -> {
+              Log.i(TAG, "State changed, updating all widgets.");
+              updateAllWidgets(context);
+            });
     initialized = true;
   }
 
