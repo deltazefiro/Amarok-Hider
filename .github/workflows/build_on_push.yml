@@ -32,11 +32,7 @@ jobs:
           echo 'org.gradle.vfs.watch=true' >> gradle.properties
           echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
           echo 'android.native.buildOutput=verbose' >> gradle.properties
-          ./gradlew assembleFossDebug \
-          -Pandroid.injected.signing.store.file="${{ github.workspace }}/debug.keystore" \
-          -Pandroid.injected.signing.store.password="android" \
-          -Pandroid.injected.signing.key.alias="androiddebugkey" \
-          -Pandroid.injected.signing.key.password="android"
+          ./gradlew assembleFossDebug
       - name: Upload built apk
         if: success()
         uses: actions/upload-artifact@v4
