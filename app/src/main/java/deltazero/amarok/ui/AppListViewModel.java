@@ -80,6 +80,8 @@ public class AppListViewModel extends AndroidViewModel {
         Set<String> hiddenApps = PrefMgr.getHideApps();
         if (hiddenApps.contains(app.packageName())) {
             hiddenApps.remove(app.packageName());
+            // 取消隐藏时同步移除快捷方式记录并禁用桌面快捷方式
+            ShortcutUtil.removeShortcut(getApplication(), app.packageName());
         } else {
             hiddenApps.add(app.packageName());
         }
