@@ -12,7 +12,6 @@ import android.os.Build;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.util.Collections;
 import java.util.Set;
 
 import deltazero.amarok.PrefMgr;
@@ -64,21 +63,17 @@ public class ShortcutUtil {
     }
 
     /**
-     * 移除指定应用的快捷方式记录，并禁用桌面快捷方式。
+     * 移除指定应用的快捷方式记录。
+     *
+     * <p>Android 不提供删除 pinned shortcut 的 API（pinned shortcut 由用户放置在桌面，
+     * 系统禁止 app 在未经用户操作的情况下删除）。这里只清除 Prefs 记录，
+     * 桌面上已有的快捷方式图标保持可用状态，用户可自行长按删除。
      */
     public static void removeShortcut(Context context, String packageName) {
         Set<String> shortcuts = PrefMgr.getShortcutApps();
         shortcuts.remove(packageName);
         PrefMgr.setShortcutApps(shortcuts);
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-            ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-            shortcutManager.disableShortcuts(
-                    Collections.singletonList(shortcutId(packageName)),
-                    context.getString(R.string.shortcut_disabled_hint)
-            );
-        }
-        Log.i(TAG, "Shortcut removed for: " + packageName);
+        Log.i(TAG, "Shortcut record removed for: " + packageName);
     }
 
     public static String shortcutId(String packageName) {
