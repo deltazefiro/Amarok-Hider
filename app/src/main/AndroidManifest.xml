@@ -114,6 +114,9 @@
             android:excludeFromRecents="true"
             android:noHistory="true"
             android:theme="@style/Theme.Amarok.Transparent" />
+        <activity
+            android:name=".ui.ImportResultActivity"
+            android:exported="false" />
 
         <service
             android:name=".QSTileService"

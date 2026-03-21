@@ -218,4 +218,23 @@
     <string name="create_shortcut">创建快捷方式</string>
     <string name="shortcut_not_supported">Pinned shortcuts are not supported on this launcher.</string>
     <string name="shortcut_disabled_hint">This shortcut has been removed.</string>
+
+    <!-- Config export / import -->
+    <string name="data_category_title">数据</string>
+    <string name="export_config">导出配置</string>
+    <string name="export_config_description">将隐藏应用列表和快捷方式列表导出为 JSON 文件</string>
+    <string name="export_success">导出成功</string>
+    <string name="export_failed">导出失败</string>
+    <string name="import_config">导入配置</string>
+    <string name="import_config_description">从 JSON 文件导入配置，与本地列表合并</string>
+    <string name="import_failed">导入失败，请检查文件格式</string>
+    <string name="import_result_title">导入结果</string>
+    <string name="import_section_hide">隐藏应用</string>
+    <string name="import_section_shortcut">快捷方式</string>
+    <string name="import_hide_success">成功导入 %1$d 个</string>
+    <string name="import_hide_skipped">跳过 %1$d 个</string>
+    <string name="import_sc_marked">已标记 %1$d 个（需在隐藏应用列表中手动创建快捷方式）</string>
+    <string name="import_sc_skipped">跳过 %1$d 个</string>
+    <string name="import_sc_hint">请前往"隐藏应用"列表，为上述应用手动点击创建快捷方式。</string>
+    <string name="import_not_installed">未安装</string>
 </resources>
