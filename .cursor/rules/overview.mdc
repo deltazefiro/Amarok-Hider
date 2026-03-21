@@ -20,17 +20,15 @@ Core Features
 
 ### 1. Hiding Management
 
-**File:** `app/src/main/java/deltazero/amarok/core/Hider.java`
+**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderState.kt`
 
-The `Hider` class serves as the central management system for both file and app hiding operations.
+The `Hider` object orchestrates hide/unhide operations using coroutines. `HiderState` owns all mutable state as `StateFlow`s.
 
-- **Retrieve State:** `Hider.getState()` returns one of three states: `HIDDEN`, `VISIBLE`, `PROCESSING`.
-- **State observation:** `Hider.state` is exposed as `LiveData<State>` (read-only). Internal mutations use private `_state`.
-- **Bulk operations:** `Hider.hide(context)` and `Hider.unhide(context)` hide/unhide everything at once. Both accept an optional `OnActivationFailedListener` for callers that want to handle failures (e.g., show a dialog) instead of the default toast.
-- **Per-item operations:** `Hider.hideApp(context, pkgName)`, `Hider.unhideApp(context, pkgName)`, `Hider.hideFolder(context, path)`, `Hider.unhideFolder(context, path)` operate on a single item.
-- **Per-item state:** `Hider.hiddenApps: LiveData<Set<String>>` and `Hider.hiddenFolders: LiveData<Set<String>>` track which items are currently hidden.
-
-> NOTE: Calling `getState()` on a background thread does not guarantee that the latest value set will be received. Call it on the main thread.
+- **State:** `Hider.state: StateFlow<State>` — derived from folder/app states via `combine()`. `Hider.getState()` for synchronous reads.
+- **Bulk operations:** `Hider.hide(context)` / `Hider.unhide(context)` — launch coroutines; blocking I/O runs on `Dispatchers.IO`.
+- **Per-item operations:** `Hider.hideApp()`, `Hider.unhideApp()`, `Hider.hideFolder()`, `Hider.unhideFolder()`.
+- **Per-item state:** `Hider.hiddenApps: StateFlow<Set<String>>`, `Hider.folderStates: StateFlow<Map<String, FolderStatus>>`.
+- **Java interop:** `Hider.getStateLiveData()` / `Hider.getHiddenAppsLiveData()` expose LiveData bridges for Java consumers that need `observeForever()`/`observe()`.
 
 ### 2. File Hiding Implementations
 

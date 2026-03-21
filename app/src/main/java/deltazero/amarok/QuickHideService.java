@@ -98,7 +98,7 @@ public class QuickHideService extends LifecycleService {
     // Restore saved position if available
     restorePanicButtonPosition();
 
-    Hider.state.observe(this, state -> updatePanicButton());
+    Hider.getStateLiveData().observe(this, state -> updatePanicButton());
     updatePanicButton();
 
     Log.i("QuickHideService", "Service start.");

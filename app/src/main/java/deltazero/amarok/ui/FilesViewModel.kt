@@ -2,7 +2,6 @@ package deltazero.amarok.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
@@ -19,13 +18,11 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
   val managedFolders: StateFlow<List<String>> = _managedFolders.asStateFlow()
 
   private val folderStatesFlow =
-    Hider.folderStates
-      .asFlow()
-      .stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(5000),
-        Hider.folderStates.value ?: emptyMap(),
-      )
+    Hider.folderStates.stateIn(
+      viewModelScope,
+      SharingStarted.WhileSubscribed(5000),
+      Hider.folderStates.value,
+    )
 
   val hiddenFolders: StateFlow<Set<String>> =
     folderStatesFlow

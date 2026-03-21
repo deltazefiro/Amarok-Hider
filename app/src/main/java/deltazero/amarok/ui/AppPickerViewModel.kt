@@ -2,7 +2,6 @@ package deltazero.amarok.ui
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
@@ -45,13 +44,11 @@ class AppPickerViewModel(application: Application) : AndroidViewModel(applicatio
   private val _allApps = MutableStateFlow<List<AppInfo>>(emptyList())
 
   private val _actuallyHiddenApps =
-    Hider.hiddenApps
-      .asFlow()
-      .stateIn(
-        viewModelScope,
-        SharingStarted.WhileSubscribed(5000),
-        Hider.hiddenApps.value ?: emptySet(),
-      )
+    Hider.hiddenApps.stateIn(
+      viewModelScope,
+      SharingStarted.WhileSubscribed(5000),
+      Hider.hiddenApps.value,
+    )
 
   private val _filteredApps =
     combine(_allApps, _searchQuery, _showSystemApps, _showRootApps) { _, query, showSystem, showRoot
