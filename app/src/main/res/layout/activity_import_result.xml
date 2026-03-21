@@ -32,7 +32,7 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- 隐藏应用结果 -->
+            <!-- 隐藏应用 -->
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -59,7 +59,7 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 快捷方式结果 -->
+            <!-- 快捷方式 -->
             <com.google.android.material.textview.MaterialTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
+                android:layout_marginBottom="8dp"
                 app:cardElevation="0dp"
                 app:strokeWidth="1dp"
                 app:strokeColor="?attr/colorOutline">
@@ -86,14 +86,41 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- 批量创建快捷方式按钮（有待创建的应用时显示） -->
+            <!-- 批量创建快捷方式按钮 -->
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/import_result_btn_create_shortcuts"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="16dp"
                 android:text="@string/import_sc_create_btn"
                 style="@style/Widget.Material3.Button.TonalButton" />
+
+            <!-- 隐藏文件 -->
+            <com.google.android.material.textview.MaterialTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/import_section_file"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+                android:layout_marginBottom="4dp" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="?attr/colorOutline">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/import_result_tv_file"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="12dp"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:lineSpacingMultiplier="1.4"
+                    android:text="—" />
+
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/import_result_btn_done"

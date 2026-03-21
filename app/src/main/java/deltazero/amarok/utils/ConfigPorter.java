@@ -9,6 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -27,7 +28,8 @@ import deltazero.amarok.PrefMgr;
  * {
  *   "version": 1,
  *   "hideApps": ["com.a.b", "com.c.d"],
- *   "shortcutApps": ["com.a.b"]
+ *   "shortcutApps": ["com.a.b"],
+ *   "hideFiles": ["/sdcard/foo", "/sdcard/bar"]
  * }
  * </pre>
  */
@@ -40,11 +42,6 @@ public class ConfigPorter {
     // 导出
     // -------------------------------------------------------------------------
 
-    /**
-     * 将当前配置写入指定 Uri（由 SAF 文件选择器提供）。
-     *
-     * @return 是否成功
-     */
     public static boolean export(Context context, Uri destUri) {
         try {
             JSONObject json = new JSONObject();
@@ -57,6 +54,10 @@ public class ConfigPorter {
             JSONArray shortcutApps = new JSONArray();
             for (String pkg : PrefMgr.getShortcutApps()) shortcutApps.put(pkg);
             json.put("shortcutApps", shortcutApps);
+
+            JSONArray hideFiles = new JSONArray();
+            for (String path : PrefMgr.getHideFilePath()) hideFiles.put(path);
+            json.put("hideFiles", hideFiles);
 
             try (OutputStream os = context.getContentResolver().openOutputStream(destUri)) {
                 if (os == null) return false;
@@ -75,25 +76,19 @@ public class ConfigPorter {
     // -------------------------------------------------------------------------
 
     public static class ImportResult {
-        public final List<String> hideImported = new ArrayList<>();   // 成功导入（并集后新增）
-        public final List<String> hideSkipped  = new ArrayList<>();   // 未安装，跳过
-        public final List<String> scImported   = new ArrayList<>();   // 快捷方式已标记
-        public final List<String> scSkipped    = new ArrayList<>();   // 快捷方式跳过（未安装）
+        // 隐藏应用
+        public final List<String> hideImported = new ArrayList<>();
+        public final List<String> hideSkipped  = new ArrayList<>();
+        // 快捷方式
+        public final List<String> scImported   = new ArrayList<>();
+        public final List<String> scSkipped    = new ArrayList<>();
+        // 隐藏文件
+        public final List<String> fileImported = new ArrayList<>();
+        public final List<String> fileSkipped  = new ArrayList<>();
     }
 
-    /**
-     * 从指定 Uri 读取配置并导入。
-     *
-     * <ul>
-     *   <li>隐藏应用：过滤未安装，与本地列表求并集</li>
-     *   <li>快捷方式：过滤未安装，与本地 shortcutApps 求并集（仅标记，不自动 pin）</li>
-     * </ul>
-     *
-     * @return 导入结果，失败时返回 null
-     */
     public static ImportResult importFrom(Context context, Uri srcUri) {
         try {
-            // 读取文件
             StringBuilder sb = new StringBuilder();
             try (InputStream is = context.getContentResolver().openInputStream(srcUri);
                  BufferedReader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"))) {
@@ -103,7 +98,6 @@ public class ConfigPorter {
 
             JSONObject json = new JSONObject(sb.toString());
             PackageManager pm = context.getPackageManager();
-
             ImportResult result = new ImportResult();
 
             // --- 隐藏应用 ---
@@ -112,13 +106,11 @@ public class ConfigPorter {
             if (hideArr != null) {
                 for (int i = 0; i < hideArr.length(); i++) {
                     String pkg = hideArr.getString(i);
-                    if (!isInstalled(pm, pkg)) {
+                    if (!isAppInstalled(pm, pkg)) {
                         result.hideSkipped.add(pkg);
                     } else if (!localHideApps.contains(pkg)) {
-                        // 新增，不重复添加
                         result.hideImported.add(pkg);
                     }
-                    // 已在列表中的静默跳过
                 }
             }
             Set<String> newHideApps = new HashSet<>(localHideApps);
@@ -131,7 +123,7 @@ public class ConfigPorter {
             if (scArr != null) {
                 for (int i = 0; i < scArr.length(); i++) {
                     String pkg = scArr.getString(i);
-                    if (!isInstalled(pm, pkg)) {
+                    if (!isAppInstalled(pm, pkg)) {
                         result.scSkipped.add(pkg);
                     } else if (!localShortcuts.contains(pkg)) {
                         result.scImported.add(pkg);
@@ -142,10 +134,26 @@ public class ConfigPorter {
             newShortcuts.addAll(result.scImported);
             PrefMgr.setShortcutApps(newShortcuts);
 
-            Log.i(TAG, "Config imported: hideImported=" + result.hideImported.size()
-                    + " hideSkipped=" + result.hideSkipped.size()
-                    + " scImported=" + result.scImported.size()
-                    + " scSkipped=" + result.scSkipped.size());
+            // --- 隐藏文件 ---
+            Set<String> localFiles = PrefMgr.getHideFilePath();
+            JSONArray fileArr = json.optJSONArray("hideFiles");
+            if (fileArr != null) {
+                for (int i = 0; i < fileArr.length(); i++) {
+                    String path = fileArr.getString(i);
+                    if (!new File(path).exists()) {
+                        result.fileSkipped.add(path);
+                    } else if (!localFiles.contains(path)) {
+                        result.fileImported.add(path);
+                    }
+                }
+            }
+            Set<String> newFiles = new HashSet<>(localFiles);
+            newFiles.addAll(result.fileImported);
+            PrefMgr.setHideFilePath(newFiles);
+
+            Log.i(TAG, "Imported: hideApps=" + result.hideImported.size()
+                    + " sc=" + result.scImported.size()
+                    + " files=" + result.fileImported.size());
             return result;
 
         } catch (Exception e) {
@@ -154,7 +162,7 @@ public class ConfigPorter {
         }
     }
 
-    private static boolean isInstalled(PackageManager pm, String packageName) {
+    private static boolean isAppInstalled(PackageManager pm, String packageName) {
         try {
             pm.getPackageInfo(packageName, 0);
             return true;

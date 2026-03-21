@@ -237,5 +237,10 @@
     <string name="import_sc_skipped">跳过 %1$d 个</string>
     <string name="import_sc_create_btn">开始创建快捷方式</string>
     <string name="import_sc_creating">创建中…</string>
+    <string name="import_sc_done">创建完成</string>
     <string name="import_not_installed">未安装</string>
+    <string name="import_section_file">隐藏文件</string>
+    <string name="import_file_success">成功导入 %1$d 个</string>
+    <string name="import_file_skipped">跳过 %1$d 个</string>
+    <string name="import_not_exist">文件不存在</string>
 </resources>
