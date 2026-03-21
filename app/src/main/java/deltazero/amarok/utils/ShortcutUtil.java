@@ -26,7 +26,9 @@ public class ShortcutUtil {
 
     /**
      * 为指定应用创建桌面快捷方式。
-     * 点击快捷方式后会先取消隐藏该应用，再启动它。
+     * 点击快捷方式会启动 {@link ShortcutLaunchActivity}（透明、无动画），
+     * 后者立即发广播给 ShortcutReceiver，自身 finish()，
+     * 由 ShortcutReceiver 完成 unhide + 启动目标应用。
      */
     public static void createShortcut(Context context, AppInfo app) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {

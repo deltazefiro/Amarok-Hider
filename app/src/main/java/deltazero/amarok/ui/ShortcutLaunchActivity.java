@@ -1,25 +1,23 @@
 package deltazero.amarok.ui;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import deltazero.amarok.Hider;
+import deltazero.amarok.receivers.ShortcutReceiver;
 
 /**
- * 快捷方式点击后的中转 Activity。
- * 先通过 {@link Hider#unhideOneWithCallback} 取消隐藏目标应用，完成后无动画启动目标应用。
+ * 快捷方式点击后的轻量中转 Activity（透明、无动画）。
  *
- * <p>设计要点：
- * <ul>
- *   <li>进入/退出均无动画，避免空白页闪现</li>
- *   <li>使用回调而非 LiveData observer，避免 LiveData 回放旧值导致
- *       应用尚未取消隐藏就被启动的问题</li>
- *   <li>回调在主线程执行（由 Hider 保证），startActivity 安全</li>
- * </ul>
+ * <p>Android ShortcutInfo.setIntent() 只支持 Activity，无法直接触发广播，
+ * 因此保留此 Activity 作为入口，但其唯一职责是：
+ * <ol>
+ *   <li>立即发广播给 {@link ShortcutReceiver}</li>
+ *   <li>立即 finish()，用户感知不到此页面</li>
+ * </ol>
+ * 实际的 unhide + 启动目标应用逻辑全部在 ShortcutReceiver 中执行。
  */
 public class ShortcutLaunchActivity extends AppCompatActivity {
 
@@ -30,7 +28,7 @@ public class ShortcutLaunchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // 消除本 Activity 的进入动画
+        // 无进入动画
         overridePendingTransition(0, 0);
 
         String targetPackage = getIntent().getStringExtra(EXTRA_TARGET_PACKAGE);
@@ -41,26 +39,16 @@ public class ShortcutLaunchActivity extends AppCompatActivity {
             return;
         }
 
-        Log.i(TAG, "Shortcut launched for: " + targetPackage);
+        Log.i(TAG, "Relaying shortcut to ShortcutReceiver for: " + targetPackage);
 
-        // 取消隐藏完成后立即启动目标 App（回调在主线程执行）
-        Hider.unhideOneWithCallback(this, targetPackage, () -> {
-            launchApp(targetPackage);
-            finish();
-            overridePendingTransition(0, 0);
-        });
-    }
+        // 发广播，由 ShortcutReceiver 执行 unhide + 启动
+        Intent broadcast = new Intent(ShortcutReceiver.ACTION);
+        broadcast.setPackage(getPackageName());
+        broadcast.putExtra(ShortcutReceiver.EXTRA_TARGET_PACKAGE, targetPackage);
+        sendBroadcast(broadcast);
 
-    private void launchApp(String packageName) {
-        PackageManager pm = getPackageManager();
-        Intent launchIntent = pm.getLaunchIntentForPackage(packageName);
-        if (launchIntent != null) {
-            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(launchIntent);
-            overridePendingTransition(0, 0);
-            Log.i(TAG, "Launched: " + packageName);
-        } else {
-            Log.w(TAG, "No launch intent for: " + packageName);
-        }
+        // 立即退出，用户感知不到此页面
+        finish();
+        overridePendingTransition(0, 0);
     }
 }

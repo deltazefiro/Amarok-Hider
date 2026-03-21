@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:minHeight="72dp">
+    android:layout_height="wrap_content">
+
+    <!--
+        快捷方式行始终占位（INVISIBLE 而非 GONE），item 高度不随其显示/隐藏变化，
+        消除 RecyclerView 重新 measure 引起的抖动。
+    -->
 
     <ImageView
         android:id="@+id/hideapp_iv_appicon"
@@ -32,8 +35,7 @@
         android:layout_marginBottom="8dp"
         android:layout_toStartOf="@id/hideapp_cb_ishidden"
         android:layout_toEndOf="@id/hideapp_iv_appicon"
-        android:orientation="vertical"
-        android:gravity="center_vertical">
+        android:orientation="vertical">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/hideapp_tv_appname"
@@ -53,6 +55,7 @@
             android:text="APP PkgName"
             android:textSize="8sp" />
 
+        <!-- 始终占位，仅通过 VISIBLE/INVISIBLE 切换，不改变 item 高度 -->
         <LinearLayout
             android:id="@+id/hideapp_ll_shortcut"
             android:layout_width="wrap_content"
@@ -60,7 +63,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:layout_marginTop="2dp"
-            android:visibility="gone">
+            android:visibility="invisible">
 
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/hideapp_cb_shortcut"

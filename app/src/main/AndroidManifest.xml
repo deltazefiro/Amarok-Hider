@@ -190,6 +190,13 @@
             </intent-filter>
         </receiver>
         <receiver
+            android:name=".receivers.ShortcutReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="deltazero.amarok.SHORTCUT_LAUNCH" />
+            </intent-filter>
+        </receiver>
+        <receiver
             android:name=".receivers.DialerReceiver"
             android:exported="true">
             <intent-filter>
