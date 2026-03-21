@@ -11,7 +11,15 @@ import deltazero.amarok.Hider;
 
 /**
  * 快捷方式点击后的中转 Activity。
- * 先通过 {@link Hider#unhideOne} 取消隐藏目标应用，完成后启动目标应用。
+ * 先通过 {@link Hider#unhideOneWithCallback} 取消隐藏目标应用，完成后无动画启动目标应用。
+ *
+ * <p>设计要点：
+ * <ul>
+ *   <li>进入/退出均无动画，避免空白页闪现</li>
+ *   <li>使用回调而非 LiveData observer，避免 LiveData 回放旧值导致
+ *       应用尚未取消隐藏就被启动的问题</li>
+ *   <li>回调在主线程执行（由 Hider 保证），startActivity 安全</li>
+ * </ul>
  */
 public class ShortcutLaunchActivity extends AppCompatActivity {
 
@@ -22,26 +30,25 @@ public class ShortcutLaunchActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // 消除本 Activity 的进入动画
+        overridePendingTransition(0, 0);
+
         String targetPackage = getIntent().getStringExtra(EXTRA_TARGET_PACKAGE);
         if (targetPackage == null) {
             Log.w(TAG, "No target package specified.");
             finish();
+            overridePendingTransition(0, 0);
             return;
         }
 
         Log.i(TAG, "Shortcut launched for: " + targetPackage);
 
-        // 监听单应用取消隐藏完成事件
-        Hider.singleUnhideEvent.observe(this, pkg -> {
-            if (targetPackage.equals(pkg)) {
-                Hider.singleUnhideEvent.removeObservers(this);
-                launchApp(targetPackage);
-                finish();
-            }
+        // 取消隐藏完成后立即启动目标 App（回调在主线程执行）
+        Hider.unhideOneWithCallback(this, targetPackage, () -> {
+            launchApp(targetPackage);
+            finish();
+            overridePendingTransition(0, 0);
         });
-
-        // 触发单应用取消隐藏
-        Hider.unhideOne(this, targetPackage);
     }
 
     private void launchApp(String packageName) {
@@ -50,6 +57,7 @@ public class ShortcutLaunchActivity extends AppCompatActivity {
         if (launchIntent != null) {
             launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(launchIntent);
+            overridePendingTransition(0, 0);
             Log.i(TAG, "Launched: " + packageName);
         } else {
             Log.w(TAG, "No launch intent for: " + packageName);

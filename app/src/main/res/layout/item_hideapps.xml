@@ -2,7 +2,17 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:minHeight="72dp">
+
+    <ImageView
+        android:id="@+id/hideapp_iv_appicon"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/ic_null" />
 
     <com.google.android.material.checkbox.MaterialCheckBox
         android:id="@+id/hideapp_cb_ishidden"
@@ -10,19 +20,20 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginEnd="8dp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:layout_toStartOf="@id/hideapp_cb_ishidden"
         android:layout_toEndOf="@id/hideapp_iv_appicon"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/hideapp_tv_appname"
@@ -40,8 +51,7 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="APP PkgName"
-            android:textSize="8sp"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            android:textSize="8sp" />
 
         <LinearLayout
             android:id="@+id/hideapp_ll_shortcut"
@@ -55,7 +65,9 @@
             <com.google.android.material.checkbox.MaterialCheckBox
                 android:id="@+id/hideapp_cb_shortcut"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                style="@style/Widget.Material3.CompoundButton.CheckBox" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/hideapp_tv_shortcut"
@@ -68,15 +80,5 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <ImageView
-        android:id="@+id/hideapp_iv_appicon"
-        android:layout_width="40sp"
-        android:layout_height="40sp"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:src="@drawable/ic_null" />
 
 </RelativeLayout>
