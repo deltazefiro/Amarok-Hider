@@ -87,13 +87,6 @@
             android:exported="false"
             android:noHistory="true"
             android:theme="@style/Theme.Amarok.Transparent" />
-        <activity
-            android:name=".ui.DsmActivationActivity"
-            android:excludeFromRecents="true"
-            android:exported="false"
-            android:noHistory="true"
-            android:theme="@style/Theme.Amarok.Transparent" />
-
         <service
             android:name=".QSTileService"
             android:exported="true"
@@ -125,19 +118,6 @@
                 android:value="true" />
         </service>
 
-        <receiver
-            android:name=".receivers.AdminReceiver"
-            android:exported="true"
-            android:permission="android.permission.BIND_DEVICE_ADMIN">
-            <intent-filter>
-                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
-                <action android:name="android.app.develop.action.DEVICE_DELEGATION" />
-            </intent-filter>
-
-            <meta-data
-                android:name="android.app.develop.delegation"
-                android:resource="@xml/app_delegation" />
-        </receiver>
         <receiver
             android:name=".receivers.ActionReceiver"
             android:enabled="true"

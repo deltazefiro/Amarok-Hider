@@ -29,7 +29,6 @@
     <string name="apply_on_restart">צריך לאתחל את היישום כדי להחיל את השינויים.</string>
     <string name="switch_file_hider">החלפת מצב הסתרת קבצים</string>
     <string name="show_debug_info">מידע לניפוי באגים</string>
-    <string name="hide_app_failed_admin_inactive">לא יכל להסתיר יישום: ספק DSM לא פעיל.</string>
     <string name="add_hide_files">הוספת תיקייה מוסתרת</string>
     <string name="folder_selector_hints">רמזים לבחור התיקיות: \n\t1. לחץ \"השתמש בתיקייה הזאת\" כדי לבחור את התיקייה\n\t2. תמיד בחר קובץ מהמכשיר \n\t(החלק מימין המסך כדי לפתוח קבצים מקומיים)</string>
     <string name="remove_hide_path">להסיר תיקייה מוסתרת?</string>
@@ -38,7 +37,6 @@
     <string name="not_local_storage">תיקייה לא נתמכת</string>
     <string name="help">עזרה</string>
     <string name="not_local_storage_description">נא לוודא שהקובץ מקומי ולא וירטואלי.</string>
-    <string name="invalid_dsm_provider">DSM: ספק DSM לא תקף. האם התקנת והפעלת את ספק הDSM על מכשירך?</string>
     <string name="root_not_ava">לא יכל לקבל גישת שורש.</string>
     <string name="check_update_description">גרסה נוכחית:%s</string>
     <string name="shizuku_service_not_running">Shizuku: השירות לא פעיל.</string>
@@ -57,14 +55,11 @@
     <string name="shizuku_not_working">Shizuku: שירות לא זמין. האם התקנת Shizuku/sui על מכשירך?</string>
     <string name="shizuku_hidden_api_error">לא יכל להסתיר את היישום: לא יכל לגשת לAPI של IPackageManager.</string>
     <string name="apphider_not_ava_title">הסתרת יישומים לא פעילה</string>
-    <string name="dsm_permission_denied">DSM: ההרשאה נדחתה</string>
     <string name="apphider_none">מושבת</string>
     <string name="apphider_none_description">כיבוי הסתרת היישומים.</string>
     <string name="apphider_root">מצב שורש</string>
     <string name="apphider_root_description">הסתרת יישומים עם גישת שורש.\nמומלצת אם מכשירך משורש אך לא מכיל את מסגרת הXposed. הרשאת שורש נדרשת.</string>
     <string name="apphider_shizuku">מצב Shizuku (Sui)</string>
-    <string name="apphider_dsm">מצב DSM</string>
-    <string name="apphider_dsm_description">הסתרת יישומים באמצעות מנהל היקפים מוסמכים.\nלא מומלץ אלא אם מכשירך מריץ אנדרואיד 10 או פחות ולא משורש. עלול להיות באגי ולפעול בצורה לא צפויה. Icebox (או StopAPP) מותקן וקבוע כמנהל מכשיר נדרש.</string>
     <string name="learn_more">מדריך התקנה</string>
     <string name="option_unava_when_hidden">אפשרויות זמינות עד שההסתרה מבוטלת.</string>
     <string name="obfuscate_filename">בלבול שמות קבצים</string>

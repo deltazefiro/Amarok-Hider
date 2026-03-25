@@ -39,8 +39,6 @@
     <string name="unhidden_toast">Unhidden</string>
     <string name="show_debug_info">Debug info</string>
     <string name="debug_info_description">Displays information to help troubleshoot issues.</string>
-    <string name="invalid_dsm_provider">DSM: Invalid DSM provider. Have you installed and activated the DSM provider on your device?</string>
-    <string name="hide_app_failed_admin_inactive">Could not hide app: DSM provider not active.</string>
     <string name="add_hide_files">Add hidden folder</string>
     <string name="folder_selector_hints">Hints for folder selector: \n\t 1. Click \"Use This Folder\" to select the folder\n\t 2. Always select a file on the device \n\t(Slide from the right of the screen to open local files)</string>
     <string name="remove_hide_path">Remove hidden folder?</string>
@@ -81,15 +79,12 @@
     <string name="shizuku_hidden_api_error">Could not hide app: Could not access IPackageManager API.</string>
     <string name="shizuku_service_not_running">Shizuku: Service not running.</string>
     <string name="apphider_not_ava_title">Service unavailable</string>
-    <string name="dsm_permission_denied">DSM: Permission denied</string>
     <string name="apphider_none">Disabled</string>
     <string name="apphider_none_description">Turn off app-hiding.</string>
     <string name="apphider_root">Root</string>
     <string name="apphider_root_description">App-hiding with root access.\nRecommended if your device is rooted, but lacks the Xposed framework. Root permission is required.</string>
     <string name="apphider_shizuku">Shizuku</string>
     <string name="apphider_shizuku_description">App-hiding with Shizuku (or Sui). \nRecommended if your device runs Android 11+ or has the Xposed framework. Installed and active Shizuku or Sui required.</string>
-    <string name="apphider_dsm">DSM</string>
-    <string name="apphider_dsm_description">App-hiding with Delegated-Scopes-Manager.\nNot recommended unless your device runs Android 10 or earlier and is not rooted. May be buggy and work unexpectedly. Installed Icebox (or StopAPP) set as device owner required.</string>
     <string name="learn_more">Setup tutorial</string>
     <string name="option_unava_when_hidden">Options are unavailable until unhidden.</string>
     <string name="obfuscate_filename">Obfuscate filenames</string>

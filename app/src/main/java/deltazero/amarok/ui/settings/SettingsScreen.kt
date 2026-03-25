@@ -57,6 +57,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
+import deltazero.amarok.apphider.AppHiderMode
+import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.HashUtil
 import deltazero.amarok.utils.UpdateUtil
@@ -129,8 +131,8 @@ fun SettingsScreen(
 fun SettingsScreen(
   state: SettingsUiState,
   isHidden: Boolean,
-  onSetAppHiderMode: (Int) -> Unit,
-  onSetFileHiderMode: (Int) -> Unit,
+  onSetAppHiderMode: (AppHiderMode) -> Unit,
+  onSetFileHiderMode: (FileHiderMode) -> Unit,
   onSetObfuscateLevel: (Int) -> Unit,
   onSetXHideEnabled: (Boolean) -> Unit,
   onSetDisableOnlyWithXHide: (Boolean) -> Unit,
@@ -207,25 +209,44 @@ fun SettingsScreen(
   }
 }
 
-private data class HiderModeOption(
-  val mode: Int,
+private data class HiderModeOption<T>(
+  val mode: T,
   @StringRes val nameResId: Int,
   @StringRes val descResId: Int,
 )
 
 private val appHiderModes =
   listOf(
-    HiderModeOption(1, R.string.apphider_root, R.string.apphider_root_description),
-    HiderModeOption(3, R.string.apphider_shizuku, R.string.apphider_shizuku_description),
-    HiderModeOption(4, R.string.apphider_dhizuku, R.string.apphider_dhizuku_description),
-    HiderModeOption(2, R.string.apphider_dsm, R.string.apphider_dsm_description),
+    HiderModeOption(AppHiderMode.ROOT, R.string.apphider_root, R.string.apphider_root_description),
+    HiderModeOption(
+      AppHiderMode.SHIZUKU,
+      R.string.apphider_shizuku,
+      R.string.apphider_shizuku_description,
+    ),
+    HiderModeOption(
+      AppHiderMode.DHIZUKU,
+      R.string.apphider_dhizuku,
+      R.string.apphider_dhizuku_description,
+    ),
   )
 
 private val fileHiderModes =
   listOf(
-    HiderModeOption(1, R.string.filehider_obfuscate, R.string.filehider_obfuscate_description),
-    HiderModeOption(3, R.string.filehider_chmod, R.string.filehider_chmod_description),
-    HiderModeOption(2, R.string.filehider_nomedia, R.string.filehider_nomedia_description),
+    HiderModeOption(
+      FileHiderMode.OBFUSCATE,
+      R.string.filehider_obfuscate,
+      R.string.filehider_obfuscate_description,
+    ),
+    HiderModeOption(
+      FileHiderMode.CHMOD,
+      R.string.filehider_chmod,
+      R.string.filehider_chmod_description,
+    ),
+    HiderModeOption(
+      FileHiderMode.NOMEDIA,
+      R.string.filehider_nomedia,
+      R.string.filehider_nomedia_description,
+    ),
   )
 
 private data class ObfuscateLevelOption(
@@ -255,8 +276,8 @@ private val obfuscateLevels =
 internal fun WorkmodeSection(
   state: SettingsUiState,
   isHidden: Boolean,
-  onSetAppHiderMode: (Int) -> Unit,
-  onSetFileHiderMode: (Int) -> Unit,
+  onSetAppHiderMode: (AppHiderMode) -> Unit,
+  onSetFileHiderMode: (FileHiderMode) -> Unit,
   onSetObfuscateLevel: (Int) -> Unit,
 ) {
   val context = LocalContext.current
@@ -279,7 +300,7 @@ internal fun WorkmodeSection(
           val isFailed = isSelected && state.appHiderErrorResId != 0
           FilterChip(
             selected = isSelected,
-            onClick = { onSetAppHiderMode(if (isSelected) 0 else option.mode) },
+            onClick = { onSetAppHiderMode(if (isSelected) AppHiderMode.NONE else option.mode) },
             label = { Text(stringResource(option.nameResId)) },
             colors =
               if (isFailed)
@@ -367,7 +388,7 @@ internal fun WorkmodeSection(
           FilterChip(
             selected = isSelected,
             enabled = !isHidden,
-            onClick = { onSetFileHiderMode(if (isSelected) 0 else option.mode) },
+            onClick = { onSetFileHiderMode(if (isSelected) FileHiderMode.NONE else option.mode) },
             label = { Text(stringResource(option.nameResId)) },
             colors =
               if (isFailed)
@@ -406,7 +427,7 @@ internal fun WorkmodeSection(
       }
 
       // Obfuscate level settings (visible when obfuscate mode selected)
-      AnimatedVisibility(visible = state.fileHiderMode == 1) {
+      AnimatedVisibility(visible = state.fileHiderMode == FileHiderMode.OBFUSCATE) {
         Column {
           Spacer(Modifier.height(16.dp))
           HorizontalDivider()
@@ -942,9 +963,9 @@ private fun previewState() =
     dynamicColor = true,
     darkThemeMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
     invertTileColor = false,
-    appHiderMode = 2,
-    fileHiderMode = 1,
-    appHiderName = "DSM (Device Owner)",
+    appHiderMode = AppHiderMode.ROOT,
+    fileHiderMode = FileHiderMode.OBFUSCATE,
+    appHiderName = "Root",
     fileHiderName = "Obfuscate",
     obfuscateLevel = 1,
     updateChannel = "RELEASE",

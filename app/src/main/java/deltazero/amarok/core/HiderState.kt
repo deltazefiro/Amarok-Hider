@@ -1,7 +1,9 @@
 package deltazero.amarok.core
 
+import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.core.Hider.FolderStatus
 import deltazero.amarok.core.Hider.State
+import deltazero.amarok.filehider.FileHiderMode
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -29,11 +31,11 @@ class HiderState(private val scope: CoroutineScope) {
 
   // --- Workmode ---
 
-  private val _appHiderMode = MutableStateFlow(0)
-  val appHiderMode: StateFlow<Int> = _appHiderMode.asStateFlow()
+  private val _appHiderMode = MutableStateFlow(AppHiderMode.NONE)
+  val appHiderMode: StateFlow<AppHiderMode> = _appHiderMode.asStateFlow()
 
-  private val _fileHiderMode = MutableStateFlow(0)
-  val fileHiderMode: StateFlow<Int> = _fileHiderMode.asStateFlow()
+  private val _fileHiderMode = MutableStateFlow(FileHiderMode.NONE)
+  val fileHiderMode: StateFlow<FileHiderMode> = _fileHiderMode.asStateFlow()
 
   // --- Errors (string resource ID, 0 = no error) ---
 
@@ -75,8 +77,8 @@ class HiderState(private val scope: CoroutineScope) {
       }
 
     // Workmode & error
-    _appHiderMode.value = PrefMgr.getAppHiderMode()
-    _fileHiderMode.value = PrefMgr.getFileHiderMode()
+    _appHiderMode.value = AppHiderMode.fromKey(PrefMgr.getAppHiderMode())
+    _fileHiderMode.value = FileHiderMode.fromKey(PrefMgr.getFileHiderMode())
     _appHiderError.value = 0
     _fileHiderError.value = 0
 
@@ -126,13 +128,13 @@ class HiderState(private val scope: CoroutineScope) {
     _hiddenApps.value = apps
   }
 
-  fun setAppHiderMode(mode: Int) {
-    PrefMgr.setAppHiderMode(mode)
+  fun setAppHiderMode(mode: AppHiderMode) {
+    PrefMgr.setAppHiderMode(mode.key)
     _appHiderMode.value = mode
   }
 
-  fun setFileHiderMode(mode: Int) {
-    PrefMgr.setFileHiderMode(mode)
+  fun setFileHiderMode(mode: FileHiderMode) {
+    PrefMgr.setFileHiderMode(mode.key)
     _fileHiderMode.value = mode
   }
 

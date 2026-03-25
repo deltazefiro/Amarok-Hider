@@ -9,8 +9,8 @@ Amarok is a lightweight Android app that quickly hides files and applications �
 
 Core Features
 
-- **File Hiding:** Obfuscation and Chmod modes.
-- **App Hiding:** Supports Root, Shizuku, Dhizuku, and DSM modes.
+- **File Hiding:** Obfuscation, NoMedia, and Chmod modes.
+- **App Hiding:** Supports Root, Shizuku, and Dhizuku modes.
 - **XHide Module:** Uses Xposed to filter hidden apps from system queries.
 - **Panic Button:** Floating button to trigger hide operations.
 - **Quick Settings Tile:** Direct access for quick hide/unhide.
@@ -25,32 +25,45 @@ Core Features
 The `Hider` object orchestrates hide/unhide operations using coroutines. `HiderState` owns all mutable state as `StateFlow`s.
 
 - **State:** `Hider.state: StateFlow<State>` — derived from folder/app states via `combine()`. `Hider.getState()` for synchronous reads.
-- **Bulk operations:** `Hider.hide(context)` / `Hider.unhide(context)` — launch coroutines; blocking I/O runs on `Dispatchers.IO`.
+- **Unified process:** `Hider.hide(context)` / `Hider.unhide(context)` both delegate to a single `process(context, action)` method internally; blocking I/O runs on `Dispatchers.IO`.
 - **Per-item operations:** `Hider.hideApp()`, `Hider.unhideApp()`, `Hider.hideFolder()`, `Hider.unhideFolder()`.
 - **Per-item state:** `Hider.hiddenApps: StateFlow<Set<String>>`, `Hider.folderStates: StateFlow<Map<String, FolderStatus>>`.
-- **Java interop:** `Hider.getStateLiveData()` / `Hider.getHiddenAppsLiveData()` expose LiveData bridges for Java consumers that need `observeForever()`/`observe()`.
+- **Mode types:** `Hider.appHiderMode: StateFlow<AppHiderMode>`, `Hider.fileHiderMode: StateFlow<FileHiderMode>` — enum-based.
+- **Java interop:** `Hider.getStateLiveData()` / `Hider.getHiddenAppsLiveData()` expose LiveData bridges for Java consumers.
 
 ### 2. File Hiding Implementations
 
 **Directory:** `app/src/main/java/deltazero/amarok/filehider/`
 
-- **Implementations (all extend `BaseFileHider`):**
-  - **Obfuscation:** Implemented in `ObfuscateFileHider`
-  - **Chmod Mode:** Implemented in `ChmodFileHider`
+- **Interface:** `FileHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(targetDirs, action)`.
+- **Mode enum:** `FileHiderMode` — `NONE`, `OBFUSCATE`, `NOMEDIA`, `CHMOD` with string keys.
+- **Implementations (all implement `FileHider`):**
+  - `NoneFileHider.kt` — no-op
+  - `ObfuscateFileHider.kt` — Base64 filename encoding + optional content obfuscation
+  - `NoMediaFileHider.kt` — creates/removes .nomedia files
+  - `ChmodFileHider.kt` — changes file permissions via root
+- **Factory:** `FileHider.fromMode(context, mode)` creates instances from enum values.
 
 ### 3. App Hiding Implementations
 
 **Directory:** `app/src/main/java/deltazero/amarok/apphider/`
 
-- **Implementations (all extend `BaseAppHider`):**
-  - **Root Mode:** `RootAppHider.java`
-  - **Shizuku Mode:** `ShizukuAppHider.java`
-  - **DSM Mode:** `DsmAppHider.java`
-  - **Dhizuku Mode:** `DhizukuAppHider.java`
+- **Interface:** `AppHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(pkgNames, action)`.
+- **Mode enum:** `AppHiderMode` — `NONE`, `ROOT`, `SHIZUKU`, `DHIZUKU` with string keys.
+- **Implementations (all implement `AppHider`):**
+  - `NoneAppHider.kt` — no-op
+  - `RootAppHider.kt` — pm disable/hide via libsu
+  - `ShizukuAppHider.kt` — IPackageManager via Shizuku reflection
+  - `DhizukuAppHider.kt` — DevicePolicyManager via Dhizuku
+- **Factory:** `AppHider.fromMode(context, mode)` creates instances from enum values.
 
-- **Factory methods:** `BaseAppHider.fromMode(context, mode)` and `BaseFileHider.fromMode(context, mode)` create hider instances from stored mode integers. Reverse mapping via `modeOf(Class)`.
+### 4. Core Types
 
-### 4. Main UI — Single Activity with NavHost
+- **`core/HideAction.kt`:** Sealed interface — `HideAction.Hide(disableOnly)` / `HideAction.Unhide`.
+- **`core/ActivationResult.kt`:** Data class — `ActivationResult(success, msgResId)`.
+- **`utils/ShellExt.kt`:** Coroutine bridges — `Shell.Job.await()`, `awaitShell()`.
+
+### 5. Main UI — Single Activity with NavHost
 
 **Entry:** `app/src/main/java/deltazero/amarok/ui/MainActivity.kt`
 
@@ -74,11 +87,12 @@ The app uses a single `MainActivity` that hosts a bottom-navigation `NavHost` wi
 
 **App picker:** `AppPickerScreen.kt` — navigated to from `AppsScreen`'s edit button via NavHost route `app_picker`.
 
-### 5. Settings and Preferences
+### 6. Settings and Preferences
 
-- Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/core/PrefMgr.java`) with SharedPreferences. `PrefMgr` stores/retrieves preference values only; hider instantiation is done via `BaseAppHider.fromMode()` / `BaseFileHider.fromMode()`.
+- Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/core/PrefMgr.java`) with SharedPreferences. Hider modes are stored as string keys (e.g. `"root"`, `"shizuku"`).
 - UI is implemented under `app/src/main/java/deltazero/amarok/ui/settings/` with each setting grouped by category.
 - Business logic for settings is in `SettingsViewModel.kt`, which exposes a `SettingsUiState` via `StateFlow` and action methods that update both `PrefMgr` and the UI state.
+- Activation is coroutine-based: `SettingsViewModel.setAppHiderMode()` calls `suspend fun activate()` in a `viewModelScope.launch`.
 
 #### Preference Categories
 
@@ -91,7 +105,7 @@ Settings sections are defined as composable functions in `SettingsScreen.kt`:
 2. Add the field to `SettingsUiState` and a corresponding action method to `SettingsViewModel`.
 3. Add the setting UI in the appropriate section of `SettingsScreen.kt`. Use `R.drawable.ic_null` as placeholder icon for new options.
 
-### 6. XHide
+### 7. XHide
 
 **Directory:** `app/src/main/java/deltazero/amarok/xposed/`
 
@@ -116,7 +130,7 @@ The main app and the module run in different processes, so they communicate with
 
 When a hide/unhide operation is triggered, the main app will call `XHidePrefBridge.commitNewValues()` to activate the module for system queries filtering.
 
-### 7. Quick Hide
+### 8. Quick Hide
 
 Provides multiple triggers for instant hide/unhide operations:
 

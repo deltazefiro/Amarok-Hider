@@ -44,7 +44,6 @@
     <string name="shizuku_not_working">Shizuku 服務不可用。請在您的設備上安裝 Shizuku 或 Sui。</string>
     <string name="shizuku_hidden_api_error">隱藏應用程式失敗: 無法取得 IPackageManager 介面。</string>
     <string name="apphider_not_ava_title">應用隱藏器無效</string>
-    <string name="dsm_permission_denied">DSM: 權限請求被拒絕</string>
     <string name="apphider_none">停用</string>
     <string name="apphider_none_description">停用應用程式隱藏功能。</string>
     <string name="apphider_root">Root 模式</string>
@@ -54,7 +53,6 @@
     <string name="apphider_shizuku_description">透過 Shizuku(或 Sui) API 隱藏應用程式。
 \n若您的裝置使用 Android 11+ 或已安裝了 Xposed 框架，則建議使用此模式。您需要先安裝並啟動 Shizuku 或 Sui 以使用此模式。
 \n</string>
-    <string name="apphider_dsm">DSM 模式 [已停止開發]</string>
     <string name="obfuscate_filename">混淆檔案名稱</string>
     <string name="obfuscate_file_header">混淆文件頭</string>
     <string name="obfuscate_file_header_description">透過混淆文件頭部內容使文件損壞，即使文件透過手動選擇開啟方式仍無法開啟。對壓縮檔案與文字檔案無效。開啟此可能將降低隱藏速度。</string>
@@ -149,8 +147,6 @@
     <string name="about_description">顯示有關應用程式的資訊。</string>
     <string name="usage_description">打開幫助中心。</string>
     <string name="apply_on_restart">重新啟動應用程式以應用新的配置。</string>
-    <string name="invalid_dsm_provider">DSM: DSM 管理員無效。您是否在裝置上安裝了 DSM 管理員應用程式並以裝置管理員身分啟動它？</string>
-    <string name="hide_app_failed_admin_inactive">隱藏應用程式失敗：DSM 管理員未啟動。</string>
     <string name="folder_selector_hints">文件選擇器使用說明：
 \n\t1. 點選 \'使用此資料夾\' 以選擇隱藏此資料夾
 \n\t2. Amarok僅支援隱藏本地儲存中的文件
@@ -166,8 +162,6 @@
     <string name="shizuku_permission_denied">Shizuku: 權限請求被拒絕</string>
     <string name="shizuku_service_not_running">Shizuku 服務未運作。</string>
     <string name="obfuscate_text_file_enhanced">文字文件完全混淆 - 增強</string>
-    <string name="apphider_dsm_description">透過共享設備管理員（DSM）隱藏應用程式。
-\n若您的裝置使用 Android 10 或以下且未 Root，則建議使用此模式。此模式已經停止開發，可能無法正常運作。您需要先安裝 冰箱 或 小黑屋 並使用設備管理員模式將其啟動以使用此模式。</string>
     <string name="learn_more">詳細指南</string>
     <string name="filename_only">僅混淆檔案名稱</string>
     <string name="option_unava_when_hidden">請先取消隱藏以變更此設定。</string>

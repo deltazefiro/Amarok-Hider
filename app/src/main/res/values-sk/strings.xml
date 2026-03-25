@@ -42,7 +42,6 @@
     <string name="unlock">Odomknutie</string>
     <string name="storage_permission_denied">Povolenie na úložisko bolo zamietnuté. Skrývanie súborov nie je k dispozícii</string>
     <string name="storage_permission_request_message">Udeliť Amaroku prístup k externému úložisku pre skrývanie súborov.</string>
-    <string name="hide_app_failed_admin_inactive">Nepodarilo sa skryť aplikáciu: DSM provider nie je aktívny.</string>
     <string name="show_about">Zobraziť o</string>
     <string name="processing">Spracovanie…</string>
     <string name="obfuscate_file_header_description">Zamaskuje podpis súboru v hlavičke súboru, aby sa javil ako poškodený. Zabraňuje ručnému otvoreniu súboru pomocou funkcie „Otvoriť pomocou“, ale môže spomaliť proces skrývania.</string>
@@ -78,7 +77,6 @@
 \n
 \n<b>UPOZORNENIE: </b>Táto možnosť môže poškodiť vaše súbory. Použite ju len vtedy, keď sa vyskytnú problémy a nemôžete funkciu \"unhide\" vykonať normálne.</string>
     <string name="set_password">Nastavenie hesla</string>
-    <string name="dsm_permission_denied">DSM: Povolenie zamietnuté</string>
     <string name="set_hide_files">Nastavenie skrytých súborov</string>
     <string name="apply_on_restart">Reštartujte aplikáciu, aby sa uplatnili nové zmeny.</string>
     <string name="help">Pomoc</string>
@@ -100,8 +98,6 @@
     <string name="apphider_shizuku_description">Skrývanie aplikácií so Shizuku (alebo Sui).
 \nOdporúča sa, ak vaše zariadenie používa systém Android 11+ alebo má rámec Xposed. Vyžaduje sa nainštalovaný a aktívny Shizuku alebo Sui.
 \n</string>
-    <string name="apphider_dsm_description">Skrývanie aplikácií pomocou nástroja Delegated-Scopes-Manager.
-\nNeodporúča sa, pokiaľ vaše zariadenie nemá operačný systém Android 10 alebo starší a nie je rootnuté. Môže mať chyby a fungovať neočakávane. Vyžaduje sa nainštalovaný Icebox (alebo StopAPP) nastavený ako vlastník zariadenia.</string>
     <string name="apphider_none_description">Vypnuté skrývanie aplikácií.</string>
     <string name="filehider_none">Vypnutý</string>
     <string name="about">O nás</string>
@@ -159,7 +155,6 @@
     <string name="disguise_description">Zamaskuje Amarok za aplikáciu kalendára.</string>
     <string name="security">Zabezpečenie</string>
     <string name="hidden_status">Ukryté</string>
-    <string name="apphider_dsm">Režim DSM</string>
     <string name="app_lock">Zámok aplikácie</string>
     <string name="obfuscate_text_file_description_enhanced">Neodporúča sa. Rozšírená verzia „Úplne zamaskovať textové súbory“. Túto možnosť použite len vtedy, ak sa štandardná metóda ukáže ako neúčinná. Výrazne spomaľuje proces skrývania.</string>
     <string name="check_update">Skontrolujte, či je k dispozícii aktualizácia</string>
@@ -173,7 +168,6 @@
     <string name="display_system_apps">Zobraziť systémové aplikácie</string>
     <string name="filehider_chmod">Režim Chmod</string>
     <string name="enable_dynamic_color">Dynamická farba</string>
-    <string name="invalid_dsm_provider">DSM: Neplatný poskytovateľ DSM. Nainštalovali ste a aktivovali ste poskytovateľa DSM vo vašom zariadení?</string>
     <string name="view_github_repo">Repozitár GitHub</string>
     <string name="appearance">Personalizácia</string>
     <string name="auto_hide">Automaticky skrývať</string>

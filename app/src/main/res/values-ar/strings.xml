@@ -48,7 +48,6 @@
     <string name="apphider_not_ava">إخفاء التطبيق غير متوفر. حدد \"مزيد من الإعدادات\" ← \"تبديل وضع إخفاء التطبيق\".</string>
     <string name="unlock">إلغاء القفل</string>
     <string name="storage_permission_denied">تم رفض إذن التخزين. إخفاء الملف غير متوفر</string>
-    <string name="hide_app_failed_admin_inactive">تعذر إخفاء التطبيق: موفر DSM غير نشط.</string>
     <string name="show_about">عرض المزيد عن</string>
     <string name="processing">يتم المعالجة…</string>
     <string name="obfuscate_file_header_description">يعمل على تمويه توقيع الملف في رأس الملف لجعله يبدو تالفًا. يمنع فتح الملف يدويًا باستخدام \"فتح بواسطة\"، ولكنه قد يؤدي إلى تباطؤ عملية الإخفاء.</string>
@@ -82,7 +81,6 @@
 \n
 \n<b>تحذير: </b> قد يؤدي هذا الخيار إلى إتلاف ملفاتك. استخدمه فقط عندما تواجه مشكلة ولا يمكنك أداء وظيفة \"الإظهار\" بشكل طبيعي.</string>
     <string name="set_password">تعيين كلمة المرور</string>
-    <string name="dsm_permission_denied">DSM: تم رفض الإذن</string>
     <string name="set_hide_files">تحديد الملفات المخفية</string>
     <string name="apply_on_restart">أعد تشغيل التطبيق لتطبيق التغييرات الحديثة.</string>
     <string name="help">المساعدة</string>
@@ -101,8 +99,6 @@
     <string name="apphider_shizuku_description">إخفاء التطبيق مع Shizuku (أو Sui).
 \nموصى به إذا كان جهازك يعمل بنظام أندرويد 11+ أو يحتوي على إطار عمل Xposed. مطلوب Shizuku أو Sui مثبت ونشط.
 \n</string>
-    <string name="apphider_dsm_description">إخفاء التطبيق مع مدير النطاقات المفوض.
-\nلا ينصح به إلا إذا كان جهازك يعمل بنظام أندرويد 10 أو إصدار أقدم ولم يكن به روت ربما تحدث مشاكل ويعمل بشكل غير متوقع. مطلوب (Icebox) تم تعيينه و تثبيته (أو StopAPP) كمالك للجهاز.</string>
     <string name="apphider_none_description">أوقف إخفاء التطبيقات.</string>
     <string name="spotlight_do_not_show_again">عدم الظهور مرة أخرى</string>
     <string name="shizuku_permission_denied">Shizuku: تم رفض الإذن</string>
@@ -143,7 +139,6 @@
     <string name="apphider_not_ava_title">الخدمة غير متوفرة</string>
     <string name="disguise_description">تمويه Amarok كتطبيق تقويم.</string>
     <string name="security">الأمن</string>
-    <string name="apphider_dsm">وضع DSM</string>
     <string name="app_lock">قفل التطبيق</string>
     <string name="obfuscate_text_file_description_enhanced">غير موصى به. إصدار محسن من \"تمويه كامل للملفات النصية\". استخدم هذا الخيار فقط إذا أثبتت الطريقة القياسية عدم فعاليتها. يؤدي بشكل كبير إلى إبطاء عملية الإخفاء.</string>
     <string name="check_update">تحقق من وجود تحديث</string>
@@ -156,7 +151,6 @@
     <string name="calendar_about">التقويم النقي | بواسطة @koramA</string>
     <string name="display_system_apps">عرض تطبيقات النظام</string>
     <string name="enable_dynamic_color">لون ديناميكي</string>
-    <string name="invalid_dsm_provider">DSM: موفر DSM غير صالح. هل قمت بتثبيت وتفعيل موفر DSM على جهازك؟</string>
     <string name="view_github_repo">مستودع Github</string>
     <string name="filehider_nomedia_description">يضيف ببساطة .nomedia إلى المجلدات. لا يتطلب الوصول إلى الجذر.</string>
     <string name="filehider_none_description">تعطيل إخفاء الملفات.</string>

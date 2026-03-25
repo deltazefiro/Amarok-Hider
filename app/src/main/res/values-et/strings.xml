@@ -19,7 +19,6 @@
     <string name="enable_analytics">Anonüümne statistika</string>
     <string name="confirm_password">Korda salasõna</string>
     <string name="set_hide_files">Vali peidetavad failid</string>
-    <string name="apphider_dsm">DSM-režiim</string>
     <string name="password">Salasõna</string>
     <string name="panic_button">Paanikanupp</string>
     <string name="password_incorrect">Vale salasõna.</string>
@@ -90,10 +89,8 @@
     <string name="no_update_ava">Hetkel kasutad rakenduse viimast versiooni.</string>
     <string name="apphider_none_description">Lülita rakenduste peitmine välja.</string>
     <string name="obfuscate_file_header_description">Hämab ära faili alguses oleva failitunnuse ning seejärel fail tundub olema rikutud. Takistab faili avamist „Ava rakendusega“ käsuga, aga aeglustab peitmise protsessi.</string>
-    <string name="hide_app_failed_admin_inactive">Rakenduse peitmine polnud võimalik: DSM-teenusepakkuja polnud aktiivne.</string>
     <string name="show_debug_info">Silumisteave</string>
     <string name="biometric_auth">Biomeetriline autentimine</string>
-    <string name="invalid_dsm_provider">DSM: Vigane DSM-teenusepakkuja. Kas sa oled oma nutiseadmesse paigaldanud DSM-teenusepakkuja ja selle aktiveerinud?</string>
     <string name="path_duplicated">Tee varjatud kaustast silmus</string>
     <string name="path_duplicated_description"><u>„%1$s“</u>\n\nsisaldab\n\n<u>„%2$s“</u></string>
     <string name="no_apphider">Palun vali rakenduste peitmise viis valikust „Lisaseadistused“.</string>
@@ -104,7 +101,6 @@
     <string name="shizuku_hidden_api_error">Rakenduse peitmine ei õnnestunud: IPackageManager API pole ligipääsetav.</string>
     <string name="shizuku_service_not_running">Shizuku: teenus ei tööta.</string>
     <string name="apphider_not_ava_title">Teenus pole saadaval</string>
-    <string name="dsm_permission_denied">DSM: õigused on puudu</string>
     <string name="folder_selector_hints">Soovituse kaustade valimiseks: \n\t 1. Kausta valimiseks klõpsi „Kasuta seda kausta“\n\t 2. Alati vali seadmes asuv fail \n\t(Kohalike failide avamiseks viipa ekraanil paremalt vasakule)</string>
     <string name="invalid_path">Vigane asukoht.</string>
     <string name="alert_permission_request_message">Ujuv nupp eeldab õigust avada hüpikaknaid. Palun luba see õigus süsteemi seadistustest rakenduste õiguste valikust Amaroki andmetest.</string>

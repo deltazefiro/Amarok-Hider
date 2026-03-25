@@ -57,7 +57,6 @@
     <string name="show_debug_info">デバッグ情報</string>
     <string name="apphider_root">Root モード</string>
     <string name="apphider_not_ava">アプリの非表示は利用できません。「その他の設定」→「アプリの非表示方法を切り替え」を確認してください。</string>
-    <string name="hide_app_failed_admin_inactive">アプリを非表示できません: DSM プロバイダーが有効化されていません。</string>
     <string name="processing">処理中…</string>
     <string name="obfuscate_file_header_description">ファイルヘッダーのファイル署名を難読化し、ファイルを「破損」させます。手動で「〜で開く」をしてファイルを開くことを防ぎますが、ファイル非表示の処理が遅くなる可能性があります。</string>
     <string name="obfuscate_text_file">テキストファイルを完全に難読化</string>
@@ -71,7 +70,6 @@
     <string name="join_developer_channel">Telegram グループ</string>
     <string name="current_mode">現在のモード: %s</string>
     <string name="obfuscate_text_file_enhanced">テキストファイルを完全に難読化 - 拡張</string>
-    <string name="dsm_permission_denied">DSM: 権限が拒否されました</string>
     <string name="apply_on_restart">再起動して新しい変更を適用。</string>
     <string name="help">ヘルプ</string>
     <string name="option_unava_when_hidden">オプションは再表示されるまで利用できません。</string>
@@ -81,8 +79,6 @@
     <string name="apphider_shizuku_description">Shizuku (Sui) でのアプリ非表示。
 \nお使いのデバイスが Android 11 以上または Xposed フレームワークがある場合にお勧めします。Shizuku または Sui のインストールと有効化が必要です。
 \n</string>
-    <string name="apphider_dsm_description">Delegated-Scopes-Manager でのアプリ非表示。
-\nAndroid 10 以前を搭載し、root 化されていないデバイスでない限り推奨されません。バグや予期せぬ動作が発生する可能性があります。デバイスの所有者として設定されたIcebox (または StopAPP) のインストールが必要です。</string>
     <string name="apphider_none_description">アプリの非表示機能を無効にする。</string>
     <string name="shizuku_permission_denied">Shizuku: 権限が拒否されました</string>
     <string name="manually_set_path_description">警告: 手動で選択したものが実際に存在することを確認してください。</string>
@@ -98,13 +94,11 @@
     <string name="alert_permission_request_message">フローティングボタンは他のアプリに重ねて表示するための権限が必要です。設定から Amarok を許可してください。</string>
     <string name="alert_permission_request_title">ポップアップウィンドウを表示するために必要です</string>
     <string name="apphider_not_ava_title">アプリ非表示 無効</string>
-    <string name="apphider_dsm">DSM モード</string>
     <string name="obfuscate_text_file_description_enhanced">非推奨。「テキストファイルを完全に難読化」の拡張版。このオプションは、標準の方法では効果がない場合にのみ使用してください。処理が劇的に遅くなります。</string>
     <string name="remove_hide_path">非表示フォルダを削除しますか？</string>
     <string name="obfuscate_text_file_description">ファイルヘッダーの難読化はテキストファイルには効果がありません。この機能を有効にすると、テキストファイルは完全に難読化されます。</string>
     <string name="remove_hide_path_description">「%s」を非表示フォルダから削除しますか？</string>
     <string name="update_description">Amarok %s (%d) をダウンロードしてインストールできます。</string>
-    <string name="invalid_dsm_provider">DSM: 無効な DSM プロバイダーです。このデバイスに DSM プロバイダーをインストールし、有効化しましたか？</string>
     <string name="app_name_calendar">カレンダー</string>
     <string name="disguise">アプリを偽装</string>
     <string name="block_screenshots_description">Amarokでのスクリーンショットを阻止し、履歴画面でぼかしを入れる。</string>

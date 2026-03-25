@@ -3,10 +3,10 @@ package deltazero.amarok.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.apphider.BaseAppHider
+import deltazero.amarok.apphider.AppHider
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
-import deltazero.amarok.filehider.BaseFileHider
+import deltazero.amarok.filehider.FileHider
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -24,20 +24,20 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
   val appHiderName: StateFlow<String> =
     Hider.appHiderMode
-      .map { mode -> BaseAppHider.fromMode(getApplication(), mode).name }
+      .map { mode -> AppHider.fromMode(getApplication(), mode).name }
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        BaseAppHider.fromMode(application, Hider.getAppHiderMode()).name,
+        AppHider.fromMode(application, Hider.getAppHiderMode()).name,
       )
 
   val fileHiderName: StateFlow<String> =
     Hider.fileHiderMode
-      .map { mode -> BaseFileHider.fromMode(getApplication(), mode).name }
+      .map { mode -> FileHider.fromMode(getApplication(), mode).name }
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        BaseFileHider.fromMode(application, Hider.getFileHiderMode()).name,
+        FileHider.fromMode(application, Hider.getFileHiderMode()).name,
       )
 
   fun refreshCounts() {

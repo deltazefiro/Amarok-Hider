@@ -19,7 +19,6 @@
     <string name="apphider_not_ava">Penyembunyian aplikasi tidak tersedia. Cek \"Pengaturan Lainnya\" → \"Ganti mode penyembunyian aplikasi\".</string>
     <string name="storage_permission_denied">Izin penyimpanan ditolak. Penyembunyian file tidak tersedia</string>
     <string name="storage_permission_request_message">Berikan Amarok akses ke penyimpanan eksternal untuk menyembunyikan file.</string>
-    <string name="hide_app_failed_admin_inactive">Tidak dapat menyembunyikan aplikasi: Penyedia DSM tidak aktif.</string>
     <string name="show_about">Tampilkan Tentang</string>
     <string name="root_not_ava">Tidak dapat memperoleh akses root.</string>
     <string name="more_settings">Pengaturan Lainnya</string>
@@ -52,7 +51,6 @@
     <string name="remove_hide_path_description">Hapus folder \'%s\' dari daftar tersembunyi?</string>
     <string name="switch_app_hider">Ganti mode penyembunyian aplikasi</string>
     <string name="update_description">Amarok %s (%d) tersedia untuk diunduh dan diinstal.</string>
-    <string name="invalid_dsm_provider">DSM: Penyedia DSM tidak valid. Sudahkah Anda memasang dan mengaktifkan penyedia DSM di perangkat Anda?</string>
     <string name="dhizuku_not_init">Dhizuku: Layanan tidak tersedia. Pastikan Anda telah menginstal dan mengaktifkan Dhizuku.</string>
     <string name="performing_force_unhide">Mengeksekusi mode \"Perlihatkan Secara Paksa\". Silahkan tunggu.</string>
     <string name="app_name_calendar">Kalender</string>
@@ -101,7 +99,6 @@
     <string name="invalid_action">Intent tidak valid diterima: %s</string>
     <string name="force_unhide_confirm_msg">Coba pulihkan semuanya?\n\n<b>PERINGATAN: </b>Opsi ini dapat merusak berkas Anda. Gunakan hanya saat Anda mengalami masalah dan tidak dapat menjalankan fungsi \"Perlihatkan\" secara normal.</string>
     <string name="set_password">Pasang kata sandi</string>
-    <string name="dsm_permission_denied">DSM: Izin ditolak</string>
     <string name="unlock_required">Perlu dibuka</string>
     <string name="biometric_auth">Autentikasi Biometrik</string>
     <string name="filehider_nomedia">Mode NoMedia</string>
@@ -112,7 +109,6 @@
     <string name="obfuscate_file_header">Kaburkan header file</string>
     <string name="apphider_root_description">Menyembunyikan aplikasi dengan akses root.\nDirekomendasikan jika perangkat Anda sudah di-root, tetapi tidak memiliki framework Xposed. Izin root diperlukan.</string>
     <string name="apphider_shizuku_description">Menyembunyikan aplikasi dengan Shizuku (atau Sui).\nDirekomendasikan jika perangkat Anda menjalankan Android 11+ atau memiliki framework Xposed. Shizuku atau Sui yang terinstal dan aktif diperlukan.\n</string>
-    <string name="apphider_dsm_description">Menyembunyikan aplikasi dengan Delegated-Scopes-Manager.\nTidak disarankan kecuali perangkat Anda menjalankan Android 10 atau versi lebih lama dan tidak di-root. Mungkin bermasalah dan tidak bekerja baik. Icebox (atau StopAPP) terpasang sebagai device owner diperlukan.</string>
     <string name="apphider_none_description">Nonaktifkan penyembunyian aplikasi.</string>
     <string name="filehider_none">Dinonaktifkan</string>
     <string name="spotlight_do_not_show_again">JANGAN TAMPILKAN LAGI</string>
@@ -152,7 +148,6 @@
     <string name="apphider_not_ava_title">Penyembunyian aplikasi tidak aktif</string>
     <string name="disguise_description">Samarkan Amarok sebagai aplikasi kalender.</string>
     <string name="security">Keamanan</string>
-    <string name="apphider_dsm">Mode DSM</string>
     <string name="app_lock">Kunci aplikasi</string>
     <string name="obfuscate_text_file_description_enhanced">Tidak direkomendasikan. Versi yang disempurnakan dari \"Mengaburkan file teks sepenuhnya\". Gunakan opsi ini hanya jika metode standar terbukti tidak efektif. Memperlambat proses penyembunyian secara signifikan.</string>
     <string name="obfuscate_text_file_description">Mengaburkan header file tidak akan berpengaruh pada berkas teks. Mengaktifkan fungsi ini akan sepenuhnya mengaburkan file teks.</string>

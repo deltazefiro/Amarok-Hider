@@ -42,7 +42,6 @@
     <string name="unlock">Desbloquear</string>
     <string name="storage_permission_denied">Permissão de armazenamento negada. A ocultação de ficheiros está indisponível</string>
     <string name="storage_permission_request_message">Concedor ao Amarok acesso ao armazenamento externo para ocultar ficheiros.</string>
-    <string name="hide_app_failed_admin_inactive">Não foi possível ocultar a app: Provedor DSM não está ativo.</string>
     <string name="show_about">Mostrar sobre</string>
     <string name="processing">A processar…</string>
     <string name="obfuscate_file_header_description">Obfusque a assinatura do ficheiro no cabeçalho do ficheiro para torná-lo \"corrompido\". Isso impede que o ficheiro seja aberto manualmente com \"Abrir com\", mas pode retardar o processo de ocultação de ficheiros.</string>
@@ -78,7 +77,6 @@
 \n
 \n<b>ATENÇÃO:</b> Esta opção pode corromper os seus ficheiros. Use-a apenas quando encontrar problemas e não puder executar a função \"desocultar\" normalmente.</string>
     <string name="set_password">Definir palavra-passe</string>
-    <string name="dsm_permission_denied">DSM: Permissão negada</string>
     <string name="set_hide_files">Definir Ficheiros a ocultar</string>
     <string name="apply_on_restart">Reinicie a app para aplicar as novas mudanças.</string>
     <string name="help">Ajuda</string>
@@ -100,8 +98,6 @@
     <string name="apphider_shizuku_description">Ocultação de apps com Shizuku (ou Sui).
 \nRecomendado se o seu dispositivo executa o Android 11+ ou tiver o framework Xposed. Shizuku ou Sui instalados e ativos são necessários.
 \n</string>
-    <string name="apphider_dsm_description">Ocultação de apps com o Delegated-Scopes-Manager.
-\nNão recomendado, a menos que o seu dispositivo esteja executando o Android 10 ou anterior e não tenha root. Pode apresentar bugs e funcionar de maneira inesperada. A instalação do Icebox (ou StopAPP) como proprietário do dispositivo é necessária.</string>
     <string name="apphider_none_description">Desativar a ocultação de apps.</string>
     <string name="filehider_none">Desativado</string>
     <string name="about">Sobre</string>
@@ -158,7 +154,6 @@
     <string name="disguise_description">Disfarçar o Amarok como um calendário.</string>
     <string name="security">Segurança</string>
     <string name="hidden_status">Oculto</string>
-    <string name="apphider_dsm">Modo DSM</string>
     <string name="app_lock">Bloqueio de app</string>
     <string name="obfuscate_text_file_description_enhanced">Não recomendado. Uma versão aprimorada de \"Ofuscar completamente ficheiros de texto\". Utilize esta opção apenas se o método padrão se mostrar ineficaz. Diminui drasticamente a velocidade do processo de ocultação.</string>
     <string name="check_update">Procurar por atualização</string>
@@ -172,7 +167,6 @@
     <string name="display_system_apps">Exibir apps do sistema</string>
     <string name="filehider_chmod">Modo Chmod</string>
     <string name="enable_dynamic_color">Cores dinâmicas</string>
-    <string name="invalid_dsm_provider">DSM: Provedor DSM inválido. Instalou e ativou o provedor DSM no seu dispositivo?</string>
     <string name="view_github_repo">Repositório GitHub</string>
     <string name="display_root_apps">Mostrar apps relacionados a root</string>
     <string name="hide_amarok_icon">Ocultar ícone</string>

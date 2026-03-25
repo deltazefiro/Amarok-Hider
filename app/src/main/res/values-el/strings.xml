@@ -15,7 +15,6 @@
     <string name="switch_file_hider">Εναλλαγή λειτουργίας απόκρυψης αρχείων</string>
     <string name="hidden_toast">Κρυμμένα</string>
     <string name="unhidden_toast">Αναίρεση απόκρυψης</string>
-    <string name="hide_app_failed_admin_inactive">Αδύνατη η απόκρυψη της εφαρμογής: Ο πάροχος DSM είναι ανενεργός.</string>
     <string name="add_hide_files">Προσθήκη κρυμμένου φακέλου</string>
     <string name="remove_hide_path">Αφαίρεση κρυμμένου φακέλου;</string>
     <string name="remove_hide_path_description">Αφαίρεση φακέλου \'%s\' από την κρυμμένη λίστα;</string>
@@ -32,7 +31,6 @@
     <string name="shizuku_not_working">Shizuku: Υπηρεσία μη διαθέσιμη. Έχεις εγκαταστήσει το Shizuku/Sui στην συσκευή σου;</string>
     <string name="shizuku_service_not_running">Shizuku: Η υπηρεσία δεν εκτελείται.</string>
     <string name="apphider_not_ava_title">Μη διαθέσιμη υπηρεσία</string>
-    <string name="dsm_permission_denied">DSM: Η άδεια απορρίφθηκε</string>
     <string name="unhide">Αναίρεση απόκρυψης</string>
     <string name="hide">Απόκρυψη</string>
     <string name="ok">Εντάξει</string>
@@ -47,7 +45,6 @@
     <string name="apply_on_restart">Επανεκκίνηση εφαρμογής για να εφαρμοστούν οι νέες αλλαγές.</string>
     <string name="show_debug_info">Πληροφορίες Εντοπισμού Σφαλμάτων</string>
     <string name="debug_info_description">Εμφανίζει πληροφορίες που βοηθούν στην αντιμετώπιση προβλημάτων.</string>
-    <string name="invalid_dsm_provider">DSM: Μη έγκυρος πάροχος DSM. Έχεις εγκαταστήσει και ενεργοποιήσει τον πάροχο DSM στην συσκευή σου;</string>
     <string name="folder_selector_hints">Συμβουλές για επιλογή φακέλων:\n\t1. Κλικ \"Χρήση Αυτού του Φακέλου\" για επιλογή φακέλου\n\t2. Πάντα να επιλέγετε ένα αρχείο που είναι στη συσκευή\n\t(Ολίσθηση από τα δεξιά της οθόνης για άνοιγμα τοπικών αρχείων)</string>
     <string name="not_local_storage_description">Παρακαλώ βεβαιωθείτε ότι είναι τοπικό αρχείο και όχι εικονικό.</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nπεριέχει\n\n<u>\'%2$s\'</u></string>
@@ -68,7 +65,6 @@
     <string name="apphider_root_description">Απόκρυψη εφαρμογών με πρόσβαση root.\nΣυνιστάται εάν η συσκευή σας είναι root, αλλά δεν έχει το πλαίσιο Xposed. Απαιτείται πρόσβαση root.</string>
     <string name="apphider_shizuku">Λειτουργία Shizuku (Sui)</string>
     <string name="apphider_shizuku_description">Απόκρυψη εφαρμογής με Shizuku (ή Sui).\nΣυνιστάται εάν η συσκευή σας εκτελεί Android 11+ ή έχει το πλαίσιο Xposed. Απαιτείται εγκατεστημένο και ενεργό Shizuku ή Sui.\n</string>
-    <string name="apphider_dsm">Λειτουργία DSM</string>
     <string name="learn_more">Οδηγός εγκατάστασης</string>
     <string name="option_unava_when_hidden">Οι επιλογές δεν είναι διαθέσιμες μέχρι να καταργηθεί η απόκρυψη.</string>
     <string name="obfuscate_filename">Θόλωμα ονομάτων αρχείων</string>
@@ -153,7 +149,6 @@
     <string name="auto_hide_delay_description">Ο αριθμός των λεπτών για καθυστέρηση πριν την απόκρυψη μετά την απενεργοποίηση της οθόνης.</string>
     <string name="block_screenshots">Αποκλεισμός στιγμιότυπων οθόνης</string>
     <string name="block_screenshots_description">Αποκλεισμός στιγμιότυπων οθόνης στο Amarok και θόλωμα στη λίστα πρόσφατων εφαρμογών.</string>
-    <string name="apphider_dsm_description">Απόκρυψη εφαρμογής με το Delegated-Scopes-Manager.\nΔεν συνιστάται, εκτός εάν η συσκευή σας εκτελεί Android 10 ή παλαιότερη έκδοση και δεν είναι root. Μπορεί να έχει σφάλματα και να λειτουργεί απροσδόκητα. Απαιτείται εγκατεστημένο Icebox (ή StopAPP) που έχει οριστεί ως κάτοχος συσκευής.</string>
     <string name="failed_to_open_doc_tree_description">Ωχ! Το σύστημά σας δεν διαθέτει προεπιλεγμένο διαχειριστή αρχείων. Πατήστε παρατεταμένα το κουμπί \"Προσθήκη κρυφού φακέλου\" και εισαγάγετε χειροκίνητα τη διαδρομή.</string>
     <string name="quick_hide_notification_description">Εμφανίζει μια μόνιμη ειδοποίηση για να ειδοποιεί τους χρήστες όταν δεν είναι κρυφή.</string>
     <string name="notification_permission_denied">Η άδεια ειδοποίησης απορρίφθηκε.</string>

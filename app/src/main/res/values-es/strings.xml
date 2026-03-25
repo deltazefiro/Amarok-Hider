@@ -62,13 +62,11 @@
     <string name="analytics_description">Envíe informes anónimos de fallos a los desarrolladores para su análisis.</string>
     <string name="about_description">Mostrar información sobre la aplicación.</string>
     <string name="unhidden_toast">No oculto</string>
-    <string name="hide_app_failed_admin_inactive">No se puede ocultar la aplicación: Proveedor DSM no activo.</string>
     <string name="manually_set_path">Elegir manualmente</string>
     <string name="view_github_repo">Repositorio GitHub</string>
     <string name="more_settings">Más ajustes</string>
     <string name="show_debug_info">Información de depuración</string>
     <string name="debug_info_description">Muestra información para ayudar a solucionar problemas.</string>
-    <string name="invalid_dsm_provider">DSM: Proveedor DSM no válido. Ha instalado y activado el proveedor DSM en su dispositivo\?</string>
     <string name="hidden_toast">Oculto</string>
     <string name="folder_selector_hints">Consejos para el selector de carpetas:
 \n\t 1. Haga clic en \"Usar esta carpeta\" para seleccionar la carpeta
@@ -100,17 +98,13 @@
 \nRecomendado si su dispositivo tiene acceso root, pero carece del marco Xposed. Se requiere permiso root.</string>
     <string name="shizuku_hidden_api_error">No se ha podido ocultar la aplicación: No se ha podido acceder a la API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku: El servicio no funciona.</string>
-    <string name="dsm_permission_denied">DSM: Permiso denegado</string>
     <string name="apphider_none">Desactivado</string>
     <string name="apphider_none_description">Desactiva la opción de ocultar aplicaciones.</string>
     <string name="apphider_root">Modo root</string>
     <string name="apphider_shizuku">Modo Shizuku (Sui)</string>
-    <string name="apphider_dsm_description">Ocultar aplicaciones con Delegated-Scopes-Manager.
-\nNo se recomienda a menos que el dispositivo ejecute Android 10 o anterior y no esté rooteado. Puede tener errores y funcionar de forma inesperada. Se requiere Icebox (o StopAPP) instalado como propietario del dispositivo.</string>
     <string name="apphider_shizuku_description">Ocultar aplicaciones con Shizuku (o Sui).
 \nRecomendado si su dispositivo ejecuta Android 11+ o tiene el framework Xposed. Se requiere Shizuku o Sui instalado y activo.
 \n</string>
-    <string name="apphider_dsm">Modo DSM</string>
     <string name="learn_more">Tutorial de configuración</string>
     <string name="option_unava_when_hidden">Las opciones estarán disponibles hasta que se no estén ocultos.</string>
     <string name="obfuscate_filename_description">Hace que el nombre del archivo sea ilegible. Función básica de ocultación de archivos que no se puede desactivar.</string>
