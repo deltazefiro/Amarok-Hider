@@ -34,8 +34,6 @@
     <string name="apphider_shizuku_description">Скрытие с помощью Shizuku (или Sui).
 \nРекомендуется, если у вас Android 11+ или есть Xposed. Требуется установленный Shizuku или Sui.
 \n</string>
-    <string name="apphider_dsm_description">Скрытие с помощью Delegated-Scopes-Manager.
-\nРекомендуется только при наличии Android 10 или старее и отсутствии root-прав. Может работать со сбоями. Необходим Icebox (или StopAPP) в режиме администратора устройства.</string>
     <string name="filename_only">Только имена файлов</string>
     <string name="obfuscate_text_file_description">Обфускация заголовков файлов не влияет на текстовые файлы. Включение этой функции приведет к полной обфускации текстовых файлов.</string>
     <string name="obfuscate_text_file_description_enhanced">Не рекомендуется. Расширенная версия опции \"Полностью обфусцировать текстовые файлы\". Используйте эту опцию только в том случае, если стандартный метод оказался неэффективным. Значительно замедляет процесс скрытия.</string>
@@ -65,14 +63,12 @@
     <string name="shizuku_pre_v11">Неподдерживаемая версия Shizuku: Pre-v11. Пожалуйста, установите Shizuku v11 или более позднюю версию.</string>
     <string name="shizuku_hidden_api_error">Не удалось скрыть приложение: Не удалось получить доступ к IPackageManager API.</string>
     <string name="shizuku_not_working">Shizuku: Служба не доступна. Вы установили Shizuku/Sui на своё устройство?</string>
-    <string name="dsm_permission_denied">DSM: В разрешении отказано</string>
     <string name="apphider_none">Отключен</string>
     <string name="apphider_none_description">Скрытие приложений отключено.</string>
     <string name="apphider_root">Режим Root</string>
     <string name="apphider_root_description">Скрытие с root-правами.
 \nРекомендуется, если ваше устройство имеет root-права, но отсутствуют Xposed. Необходим root.</string>
     <string name="apphider_shizuku">Режим Shizuku (Sui)</string>
-    <string name="apphider_dsm">Режим DSM</string>
     <string name="learn_more">Руководство по настройке</string>
     <string name="obfuscate_filename">Обфускация имён файлов</string>
     <string name="obfuscate_filename_description">Делает название файла нечитаемым. Основная функция скрытия файлов, которую нельзя отключить.</string>
@@ -86,8 +82,6 @@
     <string name="search">Поиск</string>
     <string name="alert_permission_request_message">Плавающей кнопке требуется разрешение на создание всплывающих окон. Пожалуйста, дайте это разрешение в меню настроек Amarok.</string>
     <string name="panic_button_description">Отображает плавающую кнопку для быстрого скрытия приложений и файлов в экстренных случаях. Эта кнопка отображается поверх всех остальных приложений, когда Amarok не скрыт.</string>
-    <string name="invalid_dsm_provider">DSM: недействительный поставщик DSM. Вы установили и активировали поставщика DSM на своем устройстве\?</string>
-    <string name="hide_app_failed_admin_inactive">Не удалось скрыть приложение: поставщик DSM не активен.</string>
     <string name="path_duplicated">Зациклить скрытую папку</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nсодержит\n\n<u>\'%2$s\'</u></string>
     <string name="shizuku_permission_denied">Shizuku: В доступе отказано</string>

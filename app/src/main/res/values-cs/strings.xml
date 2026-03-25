@@ -29,8 +29,6 @@
     <string name="unhidden_toast">Odkryto. Buď opatrný.</string>
     <string name="show_debug_info">Ladicí informace</string>
     <string name="debug_info_description">Zobrazuje informace, které pomáhají při řešení problémů.</string>
-    <string name="invalid_dsm_provider">DSM: Neplatný poskytovatel DSM. Nainstalovali jste a aktivovali poskytovatele DSM na svém zařízení?</string>
-    <string name="hide_app_failed_admin_inactive">Nelze skrýt aplikaci: Poskytovatel DSM není aktivní.</string>
     <string name="add_hide_files">Přidat skrytou složku</string>
     <string name="folder_selector_hints">"Tipy pro výběr složky:\n       1. Klikněte na „Použít tuto složku“ pro výběr složky.\n       2. Vždy vyberte soubor na zařízení.\n       (Posunutím zprava na obrazovce otevřete místní soubory.)"</string>
     <string name="remove_hide_path">Odstranit skrytou složku?</string>
@@ -61,15 +59,12 @@
     <string name="shizuku_hidden_api_error">Nelze skrýt aplikaci: Nelze získat přístup k API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku: Služba neběží.</string>
     <string name="apphider_not_ava_title">Skrývání aplikací neaktivní</string>
-    <string name="dsm_permission_denied">DSM: Přístup odepřen</string>
     <string name="apphider_none">Deaktivováno</string>
     <string name="apphider_none_description">Vypnout skrývání aplikací.</string>
     <string name="apphider_root">Režim root</string>
     <string name="apphider_root_description">Skrývání aplikací s přístupem k rootu.\nDoporučeno, pokud je vaše zařízení rootováno, ale postrádá Xposed framework. Je vyžadováno oprávnění root.</string>
     <string name="apphider_shizuku">Režim Shizuku (Sui)</string>
     <string name="apphider_shizuku_description">Skrývání aplikací s Shizuku (nebo Sui).\nDoporučeno, pokud vaše zařízení běží na Androidu 11+ nebo má Xposed framework. Vyžaduje nainstalovaný a aktivní Shizuku nebo Sui.\n</string>
-    <string name="apphider_dsm">Režim DSM</string>
-    <string name="apphider_dsm_description">Skrývání aplikací pomocí Delegated-Scopes-Manager.\nNedoporučuje se, pokud vaše zařízení běží na Androidu 10 nebo starším a není rootováno. Může být náchylné k chybám a fungovat neočekávaně. Vyžaduje nainstalovaný Icebox (nebo StopAPP) nastavený jako vlastník zařízení.</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
 </resources>

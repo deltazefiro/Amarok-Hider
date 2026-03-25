@@ -30,7 +30,6 @@
 \n 
 \n<u>«%2$s»</u></string>
     <string name="unhidden_toast">Vist igjen. Vær forsiktig.</string>
-    <string name="invalid_dsm_provider">DSM: Ugyldig DSM-tilbyder. Har du installert og aktivert DSM-tilbyderen på enheten din\?</string>
     <string name="storage_permission_request_title">Lagringstilgang kreves</string>
     <string name="storage_permission_request_message">Amarok trenger tilgang til eksternlagring for å skjule filene dine.</string>
     <string name="storage_permission_denied">Lagringstilgang nektet. Filskjuling utilgjengelig</string>
@@ -46,7 +45,6 @@
     <string name="update_description">Amarok %s (%d) kan lastes ned og installeres.</string>
     <string name="shizuku_permission_denied">Shizuku: Tilgang nektet</string>
     <string name="filename_and_header">Filnavn + hode</string>
-    <string name="dsm_permission_denied">DSM: Tilgang nektet</string>
     <string name="shizuku_service_not_running">Shizuku: Tjenesten kjører ikke.</string>
     <string name="shizuku_pre_v11">Ustøttet Shizuku-versjon: Installer Shizuku v11 eller nyere.</string>
     <string name="manually_set_path_description">Advarsel: Forsikre at stien du setter manuelt er gyldig, fordi den **hopper over** bekreftelsen.</string>
@@ -57,7 +55,6 @@
     <string name="switch_app_hider">Bytt programskjulingsmodus</string>
     <string name="switch_file_hider">Bytt arbeidsmetode for filskjuling</string>
     <string name="hidden_toast">Borte. Hei duuuuu!</string>
-    <string name="hide_app_failed_admin_inactive">Kunne ikke skjule programmet. Administrering er ikke aktiv.</string>
     <string name="add_hide_files">Programskjulingsmappe</string>
     <string name="apphider_not_ava">Programskjuler er ikke tilgjengelig. Sjekk «Flere innstillinger» → «Bytt programskjuler».</string>
     <string name="shizuku_not_working">Shizuku: Tjenesten er ikke gyldig. Har du installert Shizuku/Sui på enheten din?</string>
@@ -72,7 +69,6 @@
     <string name="shizuku_hidden_api_error">Klarte ikke å skjule programmet: Kunne ikke hente IPackageManager-API.</string>
     <string name="apphider_not_ava_title">Utilgjengelig programskjuler</string>
     <string name="apphider_shizuku">Shizuku (Sui)-modus - <font fgcolor="#de5f1b">DeepHide</font></string>
-    <string name="apphider_dsm">DSM-modus [Foreldet]</string>
     <string name="obfuscate_filename">Tilslør filnavnet</string>
     <string name="obfuscate_filename_description">Gjør filnavnet lesbart for mennesker. Den grunnleggende funksjonen til fulskjuleren. Kan ikke skrus av.</string>
     <string name="obfuscate_text_file">Tilslør tekstfilen helt</string>
@@ -102,8 +98,6 @@
     <string name="option_unava_when_hidden">Alternativer er tilgjengelig til skjuling opphører.</string>
     <string name="apphider_shizuku_description">HideApp med Shizuku (eller Sui). \nAnbefalt hvis enheten din kjører Android 11+, eller med Xposed-rammeverket. Du må installere og aktivere Shizuku eller Sui for å bruke dette. \n<i><b>* DeepHide</b>: Skjulte programmer vises ikke i systemmenyen.</i></string>
     <string name="obfuscate_file_header_description">Tilslør filsignaturen i filhodet for å gjøre filen «skadet». Dette forhindrer den fra åpning eller å bli valgt med «Åpne i …» manuelt, men kan gjøre filskjulingsprosessen tregere.</string>
-    <string name="apphider_dsm_description">HideApp med Delegated-Scopes-Manager.
-\nIkke anbefalt med mindre enheten din kjører Android 10 eller tidligere, og ikke har rot-tilgang. Det kan være feilaktig og fungere dårlig. Du må installere Icebox eller StopAPP og sette dem som enhetshåndterer for å bruke dette.</string>
     <string name="panic_button_description">Vis en flytende knapp over andre programmer til bruk i nødsfall. Knappen vises kun når skjuling er opphevet.</string>
     <string name="failed_to_open_doc_tree_description">Du har ingen forvalgt filbehandler. Lang-trykk på «Legg til skjulingsmappe»-knappen og sett en sti manuelt.</string>
     <string name="obfuscate_text_file_description">Eksperimentell funksjon. Tilsløring av filhoder har ingen effekt på tekstfiler. Å skru på denne funksjonen tilslører tekstfiler helt, men gjør det tregere.</string>

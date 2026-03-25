@@ -32,8 +32,6 @@
     <string name="show_debug_info">Informazioni di debug</string>
     <string name="confirm">Conferma</string>
     <string name="debug_info_description">Mostra informazioni che aiutano a risolvere i problemi.</string>
-    <string name="invalid_dsm_provider">DSM: Provider DSM non valido. Hai installato e attivato il provider DSM sul dispositivo\?</string>
-    <string name="hide_app_failed_admin_inactive">Impossibile nascondere l\'applicazione: Il provider DSM non è attivo.</string>
     <string name="add_hide_files">Aggiungi una cartella nascosta</string>
     <string name="remove_hide_path">Rimuovere la cartella nascosta\?</string>
     <string name="remove_hide_path_description">Rimuovere la cartella \'%s\' dalla lista nascoste?</string>
@@ -64,7 +62,6 @@
     <string name="shizuku_hidden_api_error">Impossibile nascondere l\'applicazione: Impossibile accedere all\'API IPackageManager.</string>
     <string name="shizuku_service_not_running">Shizuku: Servizio non in funzione.</string>
     <string name="apphider_not_ava_title">Nascondimento app non attivo</string>
-    <string name="dsm_permission_denied">DSM: Autorizzazione negata</string>
     <string name="learn_more">Tutorial di configurazione</string>
     <string name="option_unava_when_hidden">Le opzioni non sono disponibili finché non vengono nascoste.</string>
     <string name="obfuscate_filename">Offusca i nomi dei file</string>
@@ -121,12 +118,9 @@
     <string name="apphider_root_description">Nascondere le app con accesso root.
 \nConsigliato se il dispositivo è rootato, ma non dispone del framework Xposed. Sono necessari i permessi di root.</string>
     <string name="apphider_none_description">Disattiva il nascondimento app.</string>
-    <string name="apphider_dsm">Modalità DSM</string>
     <string name="apphider_shizuku_description">Nascondere le app con Shizuku (o Sui).
 \nConsigliato se il dispositivo è dotato di Android 11 o del framework Xposed. È necessario che Shizuku o Sui siano installati e attivi.
 \n</string>
-    <string name="apphider_dsm_description">Nascondere le app con Delegated-Scopes-Manager.
-\nNon è consigliato a meno che il dispositivo non abbia Android 10 o versioni precedenti e non sia rootato. Potrebbe essere difettoso e funzionare in modo imprevisto. È necessario installare Icebox (o StopAPP) impostato come proprietario del dispositivo.</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/it-IT/hideapp.html</string>
     <string name="alert_permission_request_message">Il pulsante fluttuante ha bisogno di un permesso per le finestre pop-up. Cerca Amarok nel menu delle impostazioni e concedi il permesso.</string>
     <string name="panic_button_description">Mostra un pulsante fluttuante per nascondere rapidamente app e file in caso di emergenza. Questo pulsante appare sopra tutte le altre app quando Amarok non è nascosto.</string>

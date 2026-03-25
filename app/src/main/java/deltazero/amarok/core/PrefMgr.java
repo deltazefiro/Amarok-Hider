@@ -88,21 +88,21 @@ public final class PrefMgr {
     mPrefEditor.apply();
   }
 
-  public static int getAppHiderMode() {
-    return mPrefs.getInt(APP_HIDER_MODE, 0);
+  public static String getAppHiderMode() {
+    return mPrefs.getString(APP_HIDER_MODE, "none");
   }
 
-  public static void setAppHiderMode(int mode) {
-    mPrefEditor.putInt(APP_HIDER_MODE, mode);
+  public static void setAppHiderMode(String mode) {
+    mPrefEditor.putString(APP_HIDER_MODE, mode);
     mPrefEditor.apply();
   }
 
-  public static int getFileHiderMode() {
-    return mPrefs.getInt(FILE_HIDER_MODE, 1);
+  public static String getFileHiderMode() {
+    return mPrefs.getString(FILE_HIDER_MODE, "none");
   }
 
-  public static void setFileHiderMode(int mode) {
-    mPrefEditor.putInt(FILE_HIDER_MODE, mode);
+  public static void setFileHiderMode(String mode) {
+    mPrefEditor.putString(FILE_HIDER_MODE, mode);
     mPrefEditor.apply();
   }
 

@@ -28,8 +28,6 @@
     <string name="unhidden_toast">Felfedve. Légy óvatos.</string>
     <string name="show_debug_info">Hibakeresési információ</string>
     <string name="debug_info_description">Probléma megoldását segítő információ megjelenítése.</string>
-    <string name="invalid_dsm_provider">DSM: Érvénytelen DSM szolgáltató. Telepítette és aktiválta a DSM szolgáltatót a készülékén\?</string>
-    <string name="hide_app_failed_admin_inactive">Az alkalmazás elrejtése sikertelen: DSM szolgáltató nem aktív.</string>
     <string name="add_hide_files">Rejtett mappa hozzáadása</string>
     <string name="folder_selector_hints">Tanácsok a mappaválasztóhoz:
 \n\t 1. Kattintson a \"Jelenlegi mappa használata\" gombra a mappa kiválasztásához.
@@ -63,7 +61,6 @@
     <string name="apphider_root_description">Alkalmazás-elrejtés root hozzáféréssel.
 \nAjánlott, ha a készülék rootolt, de nincs Xposed keretrendszer. Root engedély szükséges.</string>
     <string name="apphider_shizuku">Shizuku (Sui) mód</string>
-    <string name="apphider_dsm">DSM mód</string>
     <string name="learn_more">Beállítási útmutató</string>
     <string name="option_unava_when_hidden">Az opciók addig nem állnak rendelkezésre, amíg a fájlok nincsenek felfedve.</string>
     <string name="obfuscate_filename">Fájlnevek elfedése</string>
@@ -114,10 +111,8 @@
     <string name="view_github_repo">GitHub tároló</string>
     <string name="shizuku_pre_v11">Nem támogatott Shizuku verzió: V11 előtti. Kérjük, telepítse a Shizuku v11 vagy újabb verzióját.</string>
     <string name="shizuku_hidden_api_error">Nem lehetett elrejteni az alkalmazást: Nem lehet elérni az IPackageManager API-t.</string>
-    <string name="dsm_permission_denied">DSM: Engedély megtagadva</string>
     <string name="apphider_none_description">Alkalmazás elrejtés kikapcsolása.</string>
     <string name="apphider_shizuku_description">Alkalmazásrejtés Shizukuval (vagy Suival). \nAjánlott, ha a készülékeden Android 11+ fut, vagy rendelkezel az Xposed keretrendszerrel. Telepített és aktív Shizuku vagy Sui szükséges.\n</string>
-    <string name="apphider_dsm_description">Alkalmazásrejtés a Delegated-Scopes-Managerrel. \nNem ajánlott, kivéve, ha a készülékeden Android 10 vagy annál régibb rendszer fut, és nincs rootolva. Lehet, hogy hibás és váratlanul működik. Telepített Icebox (vagy StopAPP) beállítása eszközadminisztrátorként szükséges.</string>
     <string name="obfuscate_filename_description">A fájlnevet ember által olvashatatlanná teszi. A fájlrejtés alapvető funkciója, ami nem kapcsolható ki.</string>
     <string name="obfuscate_file_header_description">A fejlécben lévő fájlaláírás elfedése, hogy a fájl sérültnek látsszon. Megakadályozza, hogy a fájlt a \"Nyitás ezzel\" manuálisan megnyissák, de lassíthatja a fájlrejtés folyamatát.</string>
     <string name="processing">Feldolgozás…</string>

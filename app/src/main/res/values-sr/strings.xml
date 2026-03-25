@@ -39,7 +39,6 @@
     <string name="unlock">Откључај</string>
     <string name="storage_permission_denied">Дозвола за приступ меморији је одбијена. Сакривање фајла недоступно</string>
     <string name="storage_permission_request_message">Одобрите Amarok-у приступ спољној меморији да бисте сакрили фајлове.</string>
-    <string name="hide_app_failed_admin_inactive">Није могуће сакрити апликацију: DSM пружалац није активан.</string>
     <string name="show_about">Показати „О апликацији“</string>
     <string name="processing">Обрада…</string>
     <string name="obfuscate_file_header_description">Замаглите потпис фајла у заглављу фајла, како би фајл био оштећен. Спречава ручно отварање фајла преко „Отвори помоћу“, али може успорити процес сакривања.</string>
@@ -73,7 +72,6 @@
 \n
 \n<b>УПОЗОРЕЊЕ: </b>Ова опција може оштетити ваше фајлове. Користите је само када наиђете на проблеме и не можете нормално да извршите функцију „Откриј“.</string>
     <string name="set_password">Поставите лозинку</string>
-    <string name="dsm_permission_denied">DSM: Дозвола одбијена</string>
     <string name="set_hide_files">Подеси скривене фајлове</string>
     <string name="apply_on_restart">Рестартујте апликацију да бисте применили нове промене.</string>
     <string name="help">Помоћ</string>
@@ -94,8 +92,6 @@
     <string name="apphider_shizuku_description">Сакривање апликација помоћу Shizuku-а (или Sui-ја).
 \nПрепоручено, ако ваш уређај користи Android 11+ или има Xposed оквир. Потребан је инсталиран и активан Shizuku или Sui.
 \n</string>
-    <string name="apphider_dsm_description">Сакривање апликација помоћу Delegated-Scopes-Manager-а.
-\nНије препоручено, осим ако ваш уређај не користи Android 10 или старију верзију и није root-ован. Може радити неочекивано. Потребан је инсталиран Icebox (или StopAPP), постављен као власник уређаја.</string>
     <string name="apphider_none_description">Искључите сакривање апликација.</string>
     <string name="about">О апликацији</string>
     <string name="spotlight_do_not_show_again">НЕ ПРИКАЗУЈ ПОНОВО</string>
@@ -143,7 +139,6 @@
     <string name="disguise_description">Прерушите Amarok као апликацију календара.</string>
     <string name="security">Безбедност</string>
     <string name="hidden_status">Сакривено</string>
-    <string name="apphider_dsm">DSM режим</string>
     <string name="app_lock">Закључавање апликације</string>
     <string name="obfuscate_text_file_description_enhanced">Није препоручено. Побољшана верзија опције „Потпуно замагли текстуалне фајлове“. Користите ову опцију само ако се стандардни метод покаже неефикасним. Драматично успорава процес сакривања.</string>
     <string name="check_update">Провери ажурирање</string>
@@ -156,7 +151,6 @@
     <string name="calendar_about">Pure Calendar | од @koramA</string>
     <string name="display_system_apps">Прикажи системске апликације</string>
     <string name="enable_dynamic_color">Динамичка боја</string>
-    <string name="invalid_dsm_provider">DSM: Неважећи DSM пружалац. Да ли сте инсталирали и активирали DSM пружаоца на свом уређају\?</string>
     <string name="view_github_repo">GitHub репозиторијум</string>
     <string name="filehider_nomedia_description">Једноставно додаје .nomedia у фолдере. Није потребан root приступ.</string>
     <string name="filehider_none_description">Онемогућите сакривање фајлова.</string>

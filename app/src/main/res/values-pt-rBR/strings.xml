@@ -36,7 +36,6 @@
     <string name="check_update_on_start">Atualização automática</string>
     <string name="manually_set_path">Escolher manualmente</string>
     <string name="apphider_root">Modo root</string>
-    <string name="apphider_dsm">Modo DSM</string>
     <string name="obfuscate_filename">Obfuscar nomes de arquivos</string>
     <string name="learn_more">Tutorial de configuração</string>
     <string name="obfuscate_file_header">Obfuscar cabeçalhos de arquivo</string>
@@ -47,7 +46,6 @@
     <string name="notification">Notificação</string>
     <string name="notification_permission_denied">Permissão de notificação negada.</string>
     <string name="analytics_description">Eviar relatórios anônimos de crash aos desenvolvedores para análises.</string>
-    <string name="dsm_permission_denied">DSM: Permissão negada</string>
     <string name="check_update">Procurar por atualização</string>
     <string name="about_description">Mostra informações sobre o aplicativo.</string>
     <string name="dhizuku_not_init">Dhizuku: Serviço indisponível. Por favor, certifique-se de que você instalou e ativou o Dhizuku.</string>
@@ -78,7 +76,6 @@
     <string name="shizuku_pre_v11">Versão Shizuku não suportada: Pre-v11. Por favor, instale o Shizuku v11 ou posterior.</string>
     <string name="apphider_not_ava">\"Ocultar aplicativo indisponível. Verifique \"Mais Configurações\" → \"Alternar modo de ocultação de aplicativos\".</string>
     <string name="unlock">Desbloquear</string>
-    <string name="hide_app_failed_admin_inactive">Não foi possível ocultar o aplicativo: Provedor DSM não está ativo.</string>
     <string name="obfuscate_file_header_description">Oculta a assinatura do arquivo no cabeçalho para que o arquivo pareça corrompido. Impede que o arquivo seja aberto manualmente com a opção \"Abrir com\", mas pode tornar o processo de ocultação mais lento.</string>
     <string name="obfuscate_text_file">Ofusque completamente arquivos de texto</string>
     <string name="app_lock_description">Requerer senha para acessar o Amarok.</string>
@@ -121,8 +118,6 @@
     <string name="apphider_shizuku_description">Ocultação de aplicativos com Shizuku (ou Sui).
 \nRecomendado se seu dispositivo estiver executando o Android 11+ ou tiver o framework Xposed. Shizuku ou Sui instalados e ativos são necessários.
 \n</string>
-    <string name="apphider_dsm_description">Ocultação de aplicativos com o Delegated-Scopes-Manager.
-\nNão recomendado, a menos que seu dispositivo esteja executando o Android 10 ou anterior e não tenha root. Pode apresentar bugs e funcionar de maneira inesperada. A instalação do Icebox (ou StopAPP) como proprietário do dispositivo é necessária.</string>
     <string name="apphider_none_description">Desativar a ocultação de aplicativos.</string>
     <string name="filehider_none">Desativado</string>
     <string name="spotlight_do_not_show_again">NÃO MOSTRAR NOVAMENTE</string>
@@ -172,7 +167,6 @@
     <string name="display_system_apps">Exibir aplicativos do sistema</string>
     <string name="filehider_chmod">Modo Chmod</string>
     <string name="enable_dynamic_color">Cores dinâmicas</string>
-    <string name="invalid_dsm_provider">DSM: Provedor DSM inválido. Você instalou e ativou o provedor DSM em seu dispositivo\?</string>
     <string name="warning">ATENÇÃO</string>
     <string name="chmod_samsung_warning">Alguns usuários da Samsung relataram que o uso do ChmodFileHider fez com que seus dispositivos não inicializassem. Consulte a issue #105 no GitHub para obter mais informações. Use por sua conta e risco.</string>
     <string name="appearance">Aparência</string>

@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import deltazero.amarok.QuickHideService
-import deltazero.amarok.apphider.BaseAppHider
+import deltazero.amarok.apphider.AppHider
+import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
-import deltazero.amarok.filehider.BaseFileHider
+import deltazero.amarok.filehider.FileHider
+import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.utils.AppCenterUtil
 import deltazero.amarok.utils.LauncherIconController
 import deltazero.amarok.utils.SecurityUtil
@@ -57,8 +59,8 @@ data class SettingsUiState(
   val darkThemeMode: Int = PrefMgr.getDarkTheme(),
   val invertTileColor: Boolean = PrefMgr.getInvertTileColor(),
   // Workmode
-  val appHiderMode: Int = Hider.getAppHiderMode(),
-  val fileHiderMode: Int = Hider.getFileHiderMode(),
+  val appHiderMode: AppHiderMode = Hider.getAppHiderMode(),
+  val fileHiderMode: FileHiderMode = Hider.getFileHiderMode(),
   val appHiderName: String = "",
   val fileHiderName: String = "",
   val appHiderErrorResId: Int = 0,
@@ -95,10 +97,9 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
   init {
     val ctx = getApplication<Application>()
 
-    // Derive workmode UI state reactively from Hider StateFlows
     viewModelScope.launch {
       Hider.appHiderMode
-        .map { mode -> Pair(mode, BaseAppHider.fromMode(ctx, mode).name) }
+        .map { mode -> Pair(mode, AppHider.fromMode(ctx, mode).name) }
         .collect { (mode, name) ->
           _uiState.update { it.copy(appHiderMode = mode, appHiderName = name) }
         }
@@ -106,7 +107,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     viewModelScope.launch {
       Hider.fileHiderMode
-        .map { mode -> Pair(mode, BaseFileHider.fromMode(ctx, mode).name) }
+        .map { mode -> Pair(mode, FileHider.fromMode(ctx, mode).name) }
         .collect { (mode, name) ->
           _uiState.update { it.copy(fileHiderMode = mode, fileHiderName = name) }
         }
@@ -125,19 +126,21 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     }
   }
 
-  fun setAppHiderMode(mode: Int) {
+  fun setAppHiderMode(mode: AppHiderMode) {
     val ctx = getApplication<Application>()
-    BaseAppHider.fromMode(ctx, mode).tryToActivate { _, success, msgResID ->
+    viewModelScope.launch {
+      val result = AppHider.fromMode(ctx, mode).activate()
       Hider.setAppHiderMode(mode)
-      Hider.setAppHiderError(if (success) 0 else msgResID)
+      Hider.setAppHiderError(if (result.success) 0 else result.msgResId)
     }
   }
 
-  fun setFileHiderMode(mode: Int) {
+  fun setFileHiderMode(mode: FileHiderMode) {
     val ctx = getApplication<Application>()
-    BaseFileHider.fromMode(ctx, mode).tryToActive { _, success, msgResID ->
+    viewModelScope.launch {
+      val result = FileHider.fromMode(ctx, mode).activate()
       Hider.setFileHiderMode(mode)
-      Hider.setFileHiderError(if (success) 0 else msgResID)
+      Hider.setFileHiderError(if (result.success) 0 else result.msgResId)
     }
   }
 

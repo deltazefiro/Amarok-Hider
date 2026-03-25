@@ -9,10 +9,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import deltazero.amarok.QuickHideService
 import deltazero.amarok.R
-import deltazero.amarok.apphider.BaseAppHider
-import deltazero.amarok.filehider.BaseFileHider
+import deltazero.amarok.apphider.AppHider
+import deltazero.amarok.apphider.AppHiderMode
+import deltazero.amarok.filehider.FileHider
+import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.utils.SecurityUtil
-import kotlin.coroutines.resume
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,7 +22,6 @@ import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.withContext
 
 object Hider {
@@ -46,7 +46,6 @@ object Hider {
   }
 
   // StateFlow accessors (Kotlin consumers)
-  // @get:JvmName avoids clashes with the @JvmStatic scalar getter functions below.
 
   @get:JvmName("stateFlow")
   val state: StateFlow<State>
@@ -59,11 +58,11 @@ object Hider {
     get() = s.hiddenApps
 
   @get:JvmName("appHiderModeFlow")
-  val appHiderMode: StateFlow<Int>
+  val appHiderMode: StateFlow<AppHiderMode>
     get() = s.appHiderMode
 
   @get:JvmName("fileHiderModeFlow")
-  val fileHiderMode: StateFlow<Int>
+  val fileHiderMode: StateFlow<FileHiderMode>
     get() = s.fileHiderMode
 
   val appHiderError: StateFlow<Int>
@@ -80,7 +79,6 @@ object Hider {
 
   // Initialization
 
-  /** Must be invoked in [deltazero.amarok.AmarokApplication.onCreate], after [PrefMgr.init]. */
   @JvmStatic
   fun init() {
     assert(PrefMgr.initialized)
@@ -97,11 +95,11 @@ object Hider {
   fun hide(context: Context) {
     currentJob =
       scope.launch {
-        val appHider = BaseAppHider.fromMode(context, getAppHiderMode())
-        val (success, msgResId) = appHider.activate()
-        if (!success) {
-          s.setAppHiderError(msgResId)
-          showErrorToast(context, msgResId)
+        val appHider = AppHider.fromMode(context, getAppHiderMode())
+        val result = appHider.activate()
+        if (!result.success) {
+          s.setAppHiderError(result.msgResId)
+          showErrorToast(context, result.msgResId)
           return@launch
         }
         s.setAppHiderError(0)
@@ -111,98 +109,82 @@ object Hider {
           SecurityUtil.dismissDisguise()
         }
 
-        processHide(context)
+        process(
+          context,
+          HideAction.Hide(
+            disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide()
+          ),
+        )
       }
-  }
-
-  private suspend fun processHide(context: Context) {
-    val managedApps = PrefMgr.getHideApps()
-    val alreadyHiddenApps = s.hiddenApps.value
-    val appsToHide = managedApps - alreadyHiddenApps
-
-    val currentStates = s.folderStates.value
-    val foldersToHide = currentStates.filterValues { it != FolderStatus.HIDDEN }.keys
-
-    if (foldersToHide.isNotEmpty()) s.updateFolderStatuses(foldersToHide, FolderStatus.PROCESSING)
-    if (appsToHide.isNotEmpty()) s.setHiddenApps(managedApps)
-
-    Log.i(TAG, "Process 'hide' start.")
-    try {
-      if (appsToHide.isNotEmpty()) {
-        val disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide()
-        withContext(Dispatchers.IO) {
-          BaseAppHider.fromMode(context, getAppHiderMode()).hide(appsToHide, disableOnly)
-        }
-      }
-
-      val fileHider = BaseFileHider.fromMode(context, getFileHiderMode())
-      for (folder in foldersToHide) {
-        withContext(Dispatchers.IO) { fileHider.hide(setOf(folder)) }
-        s.updateFolderStatus(folder, FolderStatus.HIDDEN)
-      }
-    } catch (e: CancellationException) {
-      Log.w(TAG, "Process 'hide' cancelled.")
-      withContext(NonCancellable) { s.clearProcessingFolders() }
-      throw e
-    }
-
-    Log.i(TAG, "Process 'hide' finish.")
-    if (!PrefMgr.getDisableToasts()) {
-      Toast.makeText(context, R.string.hidden_toast, Toast.LENGTH_SHORT).show()
-    }
-    QuickHideService.stopService(context)
   }
 
   @JvmStatic
   fun unhide(context: Context) {
     currentJob =
       scope.launch {
-        val appHider = BaseAppHider.fromMode(context, getAppHiderMode())
-        val (success, msgResId) = appHider.activate()
-        if (!success) {
-          s.setAppHiderError(msgResId)
-          showErrorToast(context, msgResId)
+        val appHider = AppHider.fromMode(context, getAppHiderMode())
+        val result = appHider.activate()
+        if (!result.success) {
+          s.setAppHiderError(result.msgResId)
+          showErrorToast(context, result.msgResId)
           return@launch
         }
         s.setAppHiderError(0)
 
-        processUnhide(context)
+        process(context, HideAction.Unhide)
       }
   }
 
-  private suspend fun processUnhide(context: Context) {
-    val currentlyHiddenApps = s.hiddenApps.value
+  private suspend fun process(context: Context, action: HideAction) {
+    val hide = action is HideAction.Hide
+
+    val managedApps = PrefMgr.getHideApps()
     val currentStates = s.folderStates.value
-    val foldersToUnhide = currentStates.filterValues { it == FolderStatus.HIDDEN }.keys
 
-    if (foldersToUnhide.isNotEmpty())
-      s.updateFolderStatuses(foldersToUnhide, FolderStatus.PROCESSING)
-    s.setHiddenApps(emptySet())
+    val appsToProcess: Set<String>
+    val foldersToProcess: Set<String>
 
-    Log.i(TAG, "Process 'unhide' start.")
+    if (hide) {
+      val alreadyHiddenApps = s.hiddenApps.value
+      appsToProcess = managedApps - alreadyHiddenApps
+      foldersToProcess = currentStates.filterValues { it != FolderStatus.HIDDEN }.keys
+      if (foldersToProcess.isNotEmpty())
+        s.updateFolderStatuses(foldersToProcess, FolderStatus.PROCESSING)
+      if (appsToProcess.isNotEmpty()) s.setHiddenApps(managedApps)
+    } else {
+      appsToProcess = s.hiddenApps.value
+      foldersToProcess = currentStates.filterValues { it == FolderStatus.HIDDEN }.keys
+      if (foldersToProcess.isNotEmpty())
+        s.updateFolderStatuses(foldersToProcess, FolderStatus.PROCESSING)
+      s.setHiddenApps(emptySet())
+    }
+
+    Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' start.")
     try {
-      if (currentlyHiddenApps.isNotEmpty()) {
+      if (appsToProcess.isNotEmpty()) {
         withContext(Dispatchers.IO) {
-          BaseAppHider.fromMode(context, getAppHiderMode()).unhide(currentlyHiddenApps)
+          AppHider.fromMode(context, getAppHiderMode()).process(appsToProcess, action)
         }
       }
 
-      val fileHider = BaseFileHider.fromMode(context, getFileHiderMode())
-      for (folder in foldersToUnhide) {
-        withContext(Dispatchers.IO) { fileHider.unhide(setOf(folder)) }
-        s.updateFolderStatus(folder, FolderStatus.VISIBLE)
+      val fileHider = FileHider.fromMode(context, getFileHiderMode())
+      val targetStatus = if (hide) FolderStatus.HIDDEN else FolderStatus.VISIBLE
+      for (folder in foldersToProcess) {
+        withContext(Dispatchers.IO) { fileHider.process(setOf(folder), action) }
+        s.updateFolderStatus(folder, targetStatus)
       }
     } catch (e: CancellationException) {
-      Log.w(TAG, "Process 'unhide' cancelled.")
+      Log.w(TAG, "Process cancelled.")
       withContext(NonCancellable) { s.clearProcessingFolders() }
       throw e
     }
 
-    Log.i(TAG, "Process 'unhide' finish.")
+    Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' finish.")
     if (!PrefMgr.getDisableToasts()) {
-      Toast.makeText(context, R.string.unhidden_toast, Toast.LENGTH_SHORT).show()
+      val msgRes = if (hide) R.string.hidden_toast else R.string.unhidden_toast
+      Toast.makeText(context, msgRes, Toast.LENGTH_SHORT).show()
     }
-    QuickHideService.startService(context)
+    if (hide) QuickHideService.stopService(context) else QuickHideService.startService(context)
   }
 
   // Individual app hide/unhide
@@ -220,7 +202,8 @@ object Hider {
     scope.launch {
       val disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide()
       withContext(Dispatchers.IO) {
-        BaseAppHider.fromMode(context, getAppHiderMode()).hide(setOf(pkgName), disableOnly)
+        AppHider.fromMode(context, getAppHiderMode())
+          .process(setOf(pkgName), HideAction.Hide(disableOnly))
       }
     }
   }
@@ -237,7 +220,7 @@ object Hider {
 
     scope.launch {
       withContext(Dispatchers.IO) {
-        BaseAppHider.fromMode(context, getAppHiderMode()).unhide(setOf(pkgName))
+        AppHider.fromMode(context, getAppHiderMode()).process(setOf(pkgName), HideAction.Unhide)
       }
     }
   }
@@ -257,7 +240,7 @@ object Hider {
     scope.launch {
       try {
         withContext(Dispatchers.IO) {
-          BaseFileHider.fromMode(context, getFileHiderMode()).hide(setOf(path))
+          FileHider.fromMode(context, getFileHiderMode()).process(setOf(path), HideAction.Hide())
         }
         s.updateFolderStatus(path, FolderStatus.HIDDEN)
       } catch (e: CancellationException) {
@@ -280,7 +263,7 @@ object Hider {
     scope.launch {
       try {
         withContext(Dispatchers.IO) {
-          BaseFileHider.fromMode(context, getFileHiderMode()).unhide(setOf(path))
+          FileHider.fromMode(context, getFileHiderMode()).process(setOf(path), HideAction.Unhide)
         }
         s.updateFolderStatus(path, FolderStatus.VISIBLE)
       } catch (e: CancellationException) {
@@ -301,10 +284,10 @@ object Hider {
 
   // Workmode getters/setters
 
-  @JvmStatic fun getAppHiderMode(): Int = s.appHiderMode.value
+  @JvmStatic fun getAppHiderMode(): AppHiderMode = s.appHiderMode.value
 
   @JvmStatic
-  fun setAppHiderMode(mode: Int) {
+  fun setAppHiderMode(mode: AppHiderMode) {
     s.setAppHiderMode(mode)
   }
 
@@ -313,10 +296,10 @@ object Hider {
     s.setAppHiderError(errorResId)
   }
 
-  @JvmStatic fun getFileHiderMode(): Int = s.fileHiderMode.value
+  @JvmStatic fun getFileHiderMode(): FileHiderMode = s.fileHiderMode.value
 
   @JvmStatic
-  fun setFileHiderMode(mode: Int) {
+  fun setFileHiderMode(mode: FileHiderMode) {
     s.setFileHiderMode(mode)
   }
 
@@ -324,15 +307,6 @@ object Hider {
   fun setFileHiderError(errorResId: Int) {
     s.setFileHiderError(errorResId)
   }
-
-  // tryToActivate bridge
-
-  private data class ActivationResult(val success: Boolean, val msgResId: Int)
-
-  private suspend fun BaseAppHider.activate(): ActivationResult =
-    suspendCancellableCoroutine { cont ->
-      tryToActivate { _, success, msgResId -> cont.resume(ActivationResult(success, msgResId)) }
-    }
 
   // Utilities
 

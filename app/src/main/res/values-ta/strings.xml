@@ -26,8 +26,6 @@
     <string name="unhidden_toast">மறைக்கப்படாதது. கவனமாக இருங்கள்.</string>
     <string name="show_debug_info">பிழைத்திருத்தத் தகவல்</string>
     <string name="debug_info_description">சிக்கல்களை சரிசெய்ய உதவும் தகவல்களைக் காட்டுகிறது.</string>
-    <string name="invalid_dsm_provider">DSM: தவறான DSM வழங்குநர். உங்கள் சாதனத்தில் DSM வழங்குநரை நிறுவி செயல்படுத்தியுள்ளீர்களா?</string>
-    <string name="hide_app_failed_admin_inactive">செயலியை மறைக்க முடியவில்லை: DSM வழங்குநர் செயலில் இல்லை.</string>
     <string name="apphider_not_ava">பயன்பாடு-மறைத்தல் கிடைக்கவில்லை. \"மேலும் அமைப்புகள்\" → \"பயன்பாடு-மறைக்கும் பயன்முறையை சுவிட்ச்\" சரிபார்க்கவும்.</string>
     <string name="switch_file_hider">கோப்பு-மறைக்கும் பயன்முறையை மாற்றவும்</string>
     <string name="add_hide_files">மறைக்கப்பட்ட கோப்புறையைச் சேர்க்கவும்</string>
@@ -59,15 +57,12 @@
     <string name="shizuku_hidden_api_error">பயன்பாட்டை மறைக்க முடியவில்லை: IPACKAGEMANAGER பநிஇ ஐ அணுக முடியவில்லை.</string>
     <string name="shizuku_service_not_running">சிசுகு: பணி இயங்கவில்லை.</string>
     <string name="apphider_not_ava_title">பயன்பாடு செயலற்றதை மறைக்கிறது</string>
-    <string name="dsm_permission_denied">டி.எச்.எம்: இசைவு மறுக்கப்பட்டது</string>
     <string name="apphider_none">முடக்கப்பட்டது</string>
     <string name="apphider_none_description">பயன்பாட்டு-மறைவை அணைக்கவும்.</string>
     <string name="apphider_root">ரூட் பயன்முறை</string>
     <string name="apphider_root_description">ரூட் அணுகலுடன் பயன்பாடு-மறைத்தல்.\n உங்கள் சாதனம் வேரூன்றியிருந்தால் பரிந்துரைக்கப்படுகிறது, ஆனால் எக்ச்போச் கட்டமைப்பு இல்லை. ரூட் இசைவு தேவை.</string>
     <string name="apphider_shizuku">சிசுகு (SUI) மேலும் வெளியே வருகிறது</string>
     <string name="apphider_shizuku_description">சிசுகு (அல்லது SUI) உடன் பயன்பாடு-மறைத்தல்.\n உங்கள் சாதனம் ஆண்ட்ராய்டு 11+ ஐ இயக்கினால் அல்லது எக்ச்போச் கட்டமைப்பைக் கொண்டிருந்தால் பரிந்துரைக்கப்படுகிறது. நிறுவப்பட்ட மற்றும் செயலில் உள்ள சிசுகு அல்லது சூய் தேவை.\n</string>
-    <string name="apphider_dsm">டிஎச்எம் பயன்முறை</string>
-    <string name="apphider_dsm_description">பிரதிநிதித்துவ-ச்கோப்ச்-மேலாளருடன் பயன்பாடு-மறைத்தல்.\n உங்கள் சாதனம் ஆண்ட்ராய்டு 10 அல்லது அதற்கு முந்தையதாக இயங்கும் மற்றும் வேரூன்றாவிட்டால் பரிந்துரைக்கப்படாது. தரமற்றதாக இருக்கலாம் மற்றும் எதிர்பாராத விதமாக வேலை செய்யலாம். நிறுவப்பட்ட ஐச்பாக்ச் (அல்லது ச்டாப்ஆப்) சாதன உரிமையாளராக அமைக்கப்பட்டுள்ளது.</string>
     <string name="learn_more">அமைவு பயிற்சி</string>
     <string name="option_unava_when_hidden">மறைக்கப்படாத வரை விருப்பங்கள் கிடைக்காது.</string>
     <string name="obfuscate_filename">Bufuscate கோப்பு பெயர்கள்</string>

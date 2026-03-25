@@ -21,7 +21,6 @@
     <string name="setting_not_ava_when_hidden">Šis iestatījums ir pieejams tikai pēc slēpšanas atcelšanas, atspējošanas</string>
     <string name="remove_hide_path_description">Vai noņemt \'%s\' mapi no slēpto mapju saraksta?</string>
     <string name="check_update_on_start">Automātiska atjaunināšana</string>
-    <string name="hide_app_failed_admin_inactive">Nevarēja paslēpt lietotni: DSM nodrošinātājs nav aktīvs.</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nsatur\n\n<u>\'%2$s\'</u></string>
     <string name="not_local_storage">Neatbalstīta mape</string>
     <string name="check_update_on_start_description">Palaižot Amarok, pārbaudīt, vai nav atjauninājumu.</string>

@@ -30,7 +30,6 @@
     <string name="unhidden_toast">Unversteckt. Seien Sie vorsichtig.</string>
     <string name="show_debug_info">Debug-Informationen</string>
     <string name="debug_info_description">Informationen anzeigen, um bei der Problemlösung zu helfen.</string>
-    <string name="invalid_dsm_provider">DSM: Ungültiger DSM Provider. Haben Sie den DSM Provider auf Ihrem Gerät installiert und aktiviert\?</string>
     <string name="folder_selector_hints">Hinweise zur Ordnerauswahl:
 \n\t 1. Klicken Sie auf \"Diesen Ordner verwenden\", um den Ordner auszuwählen
 \n\t 2. Wählen Sie immer die Datei aus dem lokalen Speicher
@@ -39,12 +38,9 @@
     <string name="apphider_shizuku_description">App-Verstecken mit Shizuku (oder Sui).
 \nEmpfohlen, wenn Ihr Gerät mit Android 11+ läuft oder das Xposed-Framework hat. Installiertes und aktives Shizuku oder Sui erforderlich.
 \n</string>
-    <string name="hide_app_failed_admin_inactive">App ausblenden fehlgeschlagen: Admin nicht aktiv.</string>
-    <string name="apphider_dsm">DSM-Modus [Veraltet]</string>
     <string name="obfuscate_filename">Dateiname verschleiern</string>
     <string name="add_hide_files">Versteckter-Ordner hinzufügen</string>
     <string name="apphider_not_ava_title">Verstecken von Apps inaktiv</string>
-    <string name="dsm_permission_denied">DSM: Erlaubnis verweigert</string>
     <string name="remove_hide_path">Pfad verbergen entfernen\?</string>
     <string name="root_not_ava">Root-Zugriff nicht möglich.</string>
     <string name="check_update_on_start_description">Prüfen Sie, ob es beim Start von Amarok Aktualisierungen gibt.</string>
@@ -66,8 +62,6 @@
     <string name="shizuku_not_working">Shizuku: Dienst nicht verfügbar. Haben Sie Shizuku/Sui auf Ihrem Gerät installiert?</string>
     <string name="shizuku_service_not_running">Shizuku: Der Dienst läuft nicht.</string>
     <string name="apphider_none">Behinderte</string>
-    <string name="apphider_dsm_description">HideApp mit Delegated-Scopes-Manager.
-\nNICHT empfohlen, es sei denn, Ihr Gerät läuft unter Android 10 oder darunter und ist nicht verwurzelt. Er kann FEHLERHAFT sein und unerwartet funktionieren. Sie müssen Icebox oder StopAPP installieren und sie als DeviceManager einstellen, um diesen Modus zu verwenden.</string>
     <string name="apphider_root_description">HideApp mit Root.
 \nEmpfohlen, wenn Ihr Gerät verwurzelt ist, aber ohne Xposed-Verschalung. Root-Erlaubnis ist erforderlich.</string>
     <string name="apphider_shizuku">Shizuku (Sui) Modus - <font fgcolor="#de5f1b">DeepHide</font></string>

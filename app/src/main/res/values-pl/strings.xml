@@ -34,7 +34,6 @@
     <string name="never">Nigdy</string>
     <string name="set_hide_apps">Ustaw aplikacje do ukrycia</string>
     <string name="security">Bezpieczeństwo</string>
-    <string name="apphider_dsm">Tryb DSM</string>
     <string name="view_github_repo">Repozytorium GitHub</string>
     <string name="visible_status">Widoczne</string>
     <string name="unhide">Odkryj</string>
@@ -42,7 +41,6 @@
     <string name="hidden_status">Ukryte</string>
     <string name="usage_description">Odwiedź stronę domową.</string>
     <string name="apply_on_restart">Uruchom ponownie, aby zastosować zmiany.</string>
-    <string name="invalid_dsm_provider">DSM: Nieprawidłowy dostawca. Czy zainstalowano i aktywowano dostawcę DSM na urządzeniu?</string>
     <string name="folder_selector_hints">Wskazówki dotyczące wyboru katalogu: \n\t 1. Kliknij \"Użyj katalogu\", aby wybrać katalog \n\t 2. Wybierz plik na urządzeniu \n\t(Przesuń palcem od prawej krawędzi ekranu, aby otworzyć pliki)</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>
 \n
@@ -52,7 +50,6 @@
     <string name="update_ava">Dostępna aktualizacja do pobrania</string>
     <string name="manually_set_path_description">Uwaga: Upewnij się, że wybrany ręcznie plik istnieje, ponieważ wybór nie jest weryfikowany.</string>
     <string name="apphider_root_description">Ukrywanie aplikacji z dostępem do uprawnień Root. \nZalecane, jeśli urządzenie ma dostęp do uprawnień Root, ale nie ma zainstalowanego systemu Xposed. Wymagany dostęp do uprawnień Root.</string>
-    <string name="apphider_dsm_description">Ukrywanie aplikacji z Delegated-Scopes-Manager. \nNie zalecane, chyba że urządzenie posiada system Android 10 lub starszy oraz nie ma dostępu do uprawnień Root. Może działać niestabilnie i niepoprawnie. Wymagana instalacja aplikacji Icebox (lub StopAPP) oraz ustawienie jako właściciela urządzenia.</string>
     <string name="storage_permission_request_title">Wymagane pozwolenie na dostęp do pamięci</string>
     <string name="storage_permission_denied">Uprawnienie dostępu do pamięci odmówione. Ukrywanie plików niedostępne</string>
     <string name="apphider_not_ava">Ukrywanie aplikacji niedostępne. Sprawdź w \"Więcej ustawień\" → \"Tryb ukrywania aplikacji\".</string>
@@ -71,7 +68,6 @@
     <string name="unhidden_toast">Odkryte</string>
     <string name="show_debug_info">Pokaż informacje debug</string>
     <string name="debug_info_description">Pokaż informacje pomocne w rozwiązywaniu problemów.</string>
-    <string name="hide_app_failed_admin_inactive">Nie udało się ukryć aplikacji: dostawca DSM jest nieaktywny.</string>
     <string name="add_hide_files">Dodaj ukryty katalog</string>
     <string name="remove_hide_path">Usunąć ukryty katalog?</string>
     <string name="remove_hide_path_description">Usunąć katalog \"%s\" z ukrycia?</string>
@@ -84,7 +80,6 @@
     <string name="check_update_description">Zainstalowana wersja: %s</string>
     <string name="update_description">Wersja %s (%d) jest dostępna do pobrania i zainstalowania.</string>
     <string name="no_update_ava">Aplikacja jest aktualna.</string>
-    <string name="dsm_permission_denied">DSM: Odmówiono uprawnienia</string>
     <string name="apphider_none_description">Wyłącz ukrywanie aplikacji.</string>
     <string name="apphider_shizuku">Shizuku (Sui)</string>
     <string name="apphider_shizuku_description">Ukrywanie aplikacji z Shizuku (lub Sui). \nZalecane, jeżeli urządzenie posiada system Android 11 lub Xposed. Wymaga zainstalowanej i aktywnej aplikacji Shizuku lub Sui.\n</string>

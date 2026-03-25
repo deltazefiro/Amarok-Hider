@@ -13,7 +13,6 @@
     <string name="apply_on_restart">Рестартирайте Amarok, за да приложите новите промени.</string>
     <string name="hidden_toast">Скрити. Ку-ку-ригууу!</string>
     <string name="show_debug_info">Информация за отстраняване на грешки</string>
-    <string name="hide_app_failed_admin_inactive">Не успяхме да скрием приложението: DSM доставчикът не е активен.</string>
     <string name="add_hide_files">Добавяне на скрита папка</string>
     <string name="hide">Скрий</string>
     <string name="visible_status">Видими</string>
@@ -31,5 +30,4 @@
     <string name="more_settings">Още Настройки</string>
     <string name="unhidden_toast">Видими. Бъдете предпазливи.</string>
     <string name="debug_info_description">Показва информация за отстраняване на грешки.</string>
-    <string name="invalid_dsm_provider">DSM: Невалиден DSM доставчик. Моля, проверете дали DSM доставчикът е успешно инсталиран и активиран на устройството.</string>
 </resources>

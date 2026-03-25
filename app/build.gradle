@@ -147,7 +147,7 @@ dependencies {
     implementation 'io.github.iamr0s:Dhizuku-API:2.5.4'
     implementation 'com.github.getActivity:XXPermissions:20.0'
     implementation 'com.github.getActivity:EasyWindow:10.62'
-    implementation 'com.github.heruoxin.Delegated-Scopes-Manager:client:master-SNAPSHOT'
+
     implementation 'com.github.kyuubiran:EzXHelper:2.2.1'
     implementation 'com.github.takusemba:spotlight:2.0.5'
     implementation 'com.github.topjohnwu.libsu:core:6.0.0'
