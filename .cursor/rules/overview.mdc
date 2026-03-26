@@ -135,8 +135,7 @@ When a hide/unhide operation is triggered, the main app will call `XHidePrefBrid
 Provides multiple triggers for instant hide/unhide operations:
 
 - **Quick Settings Tile:** `QSTileService.java`
-- **Quick Hide Service:** `QuickHideService.java` (foreground service for notification and panic button)
-- **Quick Hide Coordinator:** `QuickHideCoordinator.kt` observes `Hider.state` and owns service start/stop policy
+- **Quick Hide Service:** `QuickHideService.java` owns the foreground service plus its `init()/sync()/refresh()` state observer hooks
 - **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.java` and `AutoHideUtil.java`
 - **Intent API:** Managed by `ActionReceiver.java`
 - **Widget:** `ToggleWidget.java`
