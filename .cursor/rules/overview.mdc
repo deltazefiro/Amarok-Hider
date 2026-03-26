@@ -25,8 +25,8 @@ Core Features
 The `Hider` object orchestrates hide/unhide operations using coroutines. `HiderState` owns all mutable state as `StateFlow`s.
 
 - **State:** `Hider.state: StateFlow<State>` — derived from folder/app states via `combine()`. `Hider.getState()` for synchronous reads.
-- **Unified process:** `Hider.hide(context)` / `Hider.unhide(context)` both delegate to a single `process(context, action)` method internally; blocking I/O runs on `Dispatchers.IO`.
-- **Per-item operations:** `Hider.hideApp()`, `Hider.unhideApp()`, `Hider.hideFolder()`, `Hider.unhideFolder()`.
+- **Unified process:** `Hider.processAll(context, action)` drives managed app + folder processing; blocking I/O runs on `Dispatchers.IO`.
+- **Targeted operations:** `Hider.processApps()` and `Hider.processFolders()` handle explicit app/folder sets.
 - **Per-item state:** `Hider.hiddenApps: StateFlow<Set<String>>`, `Hider.folderStates: StateFlow<Map<String, FolderStatus>>`.
 - **Mode types:** `Hider.appHiderMode: StateFlow<AppHiderMode>`, `Hider.fileHiderMode: StateFlow<FileHiderMode>` — enum-based.
 - **Java interop:** `Hider.getStateLiveData()` / `Hider.getHiddenAppsLiveData()` expose LiveData bridges for Java consumers.
@@ -135,7 +135,8 @@ When a hide/unhide operation is triggered, the main app will call `XHidePrefBrid
 Provides multiple triggers for instant hide/unhide operations:
 
 - **Quick Settings Tile:** `QSTileService.java`
-- **Quick Hide Service:** `QuickHideService.java` (includes notification and panic button functionality)
+- **Quick Hide Service:** `QuickHideService.java` (foreground service for notification and panic button)
+- **Quick Hide Coordinator:** `QuickHideCoordinator.kt` observes `Hider.state` and owns service start/stop policy
 - **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.java` and `AutoHideUtil.java`
 - **Intent API:** Managed by `ActionReceiver.java`
 - **Widget:** `ToggleWidget.java`

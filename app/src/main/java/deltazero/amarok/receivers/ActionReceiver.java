@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.Toast;
 import deltazero.amarok.R;
+import deltazero.amarok.core.HideAction;
 import deltazero.amarok.core.Hider;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
 import deltazero.amarok.utils.SecurityUtil;
@@ -29,23 +30,24 @@ public class ActionReceiver extends BroadcastReceiver {
     if (action != null)
       switch (action) {
         case ACTION_HIDE:
-          Hider.hide(context);
+          Hider.processAll(context, Hider.newHideAction());
           return;
         case ACTION_UNHIDE:
           if (SecurityUtil.isUnlockRequired())
             context.startActivity(
                 new Intent(context, SecurityAuthForQSActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-          else Hider.unhide(context);
+          else Hider.processAll(context, HideAction.Unhide.INSTANCE);
           return;
         case ACTION_TOGGLE:
-          if (Hider.getState() == Hider.State.VISIBLE) Hider.hide(context);
+          if (Hider.getState() == Hider.State.VISIBLE)
+            Hider.processAll(context, Hider.newHideAction());
           else {
             if (SecurityUtil.isUnlockRequired())
               context.startActivity(
                   new Intent(context, SecurityAuthForQSActivity.class)
                       .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-            else Hider.unhide(context);
+            else Hider.processAll(context, HideAction.Unhide.INSTANCE);
           }
           return;
       }

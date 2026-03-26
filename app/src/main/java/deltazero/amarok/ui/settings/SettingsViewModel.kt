@@ -5,7 +5,7 @@ import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.QuickHideService
+import deltazero.amarok.QuickHideCoordinator
 import deltazero.amarok.apphider.AppHider
 import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.core.Hider
@@ -234,13 +234,11 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
   fun setQuickHideService(enabled: Boolean) {
     val ctx = getApplication<Application>()
     PrefMgr.setEnableQuickHideService(enabled)
-    if (enabled) {
-      QuickHideService.startService(ctx)
-    } else {
+    if (!enabled) {
       PrefMgr.setEnablePanicButton(false)
-      QuickHideService.stopService(ctx)
       _uiState.update { it.copy(panicButton = false) }
     }
+    QuickHideCoordinator.sync(ctx)
     _uiState.update { it.copy(quickHideService = enabled) }
   }
 
@@ -248,8 +246,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     val ctx = getApplication<Application>()
     PrefMgr.setEnablePanicButton(enabled)
     if (!enabled) PrefMgr.resetPanicButtonPosition()
-    QuickHideService.stopService(ctx)
-    QuickHideService.startService(ctx)
+    QuickHideCoordinator.refresh(ctx)
     _uiState.update { it.copy(panicButton = enabled) }
   }
 

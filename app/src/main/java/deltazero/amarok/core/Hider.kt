@@ -7,13 +7,11 @@ import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
-import deltazero.amarok.QuickHideService
 import deltazero.amarok.R
 import deltazero.amarok.apphider.AppHider
 import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.filehider.FileHider
 import deltazero.amarok.filehider.FileHiderMode
-import deltazero.amarok.utils.SecurityUtil
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -89,53 +87,34 @@ object Hider {
 
   @JvmStatic fun getState(): State = s.state.value
 
-  // Hide / Unhide (all)
-
   @JvmStatic
-  fun hide(context: Context) {
-    currentJob =
-      scope.launch {
-        val appHider = AppHider.fromMode(context, getAppHiderMode())
-        val result = appHider.activate()
-        if (!result.success) {
-          s.setAppHiderError(result.msgResId)
-          showErrorToast(context, result.msgResId)
-          return@launch
-        }
-        s.setAppHiderError(0)
+  fun newHideAction(): HideAction.Hide =
+    HideAction.Hide(disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide())
 
-        if (PrefMgr.getDisableSecurityWhenUnhidden()) {
-          SecurityUtil.unlock()
-          SecurityUtil.dismissDisguise()
-        }
+  // Process managed items
 
-        process(
-          context,
-          HideAction.Hide(
-            disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide()
-          ),
-        )
-      }
+  /** Activate the app hider, returning true on success. Sets error state and toasts on failure. */
+  private suspend fun activateAppHider(context: Context): Boolean {
+    val result = AppHider.fromMode(context, getAppHiderMode()).activate()
+    if (!result.success) {
+      s.setAppHiderError(result.msgResId)
+      showErrorToast(context, result.msgResId)
+      return false
+    }
+    s.setAppHiderError(0)
+    return true
   }
 
   @JvmStatic
-  fun unhide(context: Context) {
+  fun processAll(context: Context, action: HideAction) {
     currentJob =
       scope.launch {
-        val appHider = AppHider.fromMode(context, getAppHiderMode())
-        val result = appHider.activate()
-        if (!result.success) {
-          s.setAppHiderError(result.msgResId)
-          showErrorToast(context, result.msgResId)
-          return@launch
-        }
-        s.setAppHiderError(0)
-
-        process(context, HideAction.Unhide)
+        if (!activateAppHider(context)) return@launch
+        processAllInternal(context, action)
       }
   }
 
-  private suspend fun process(context: Context, action: HideAction) {
+  private suspend fun processAllInternal(context: Context, action: HideAction) {
     val hide = action is HideAction.Hide
 
     val managedApps = PrefMgr.getHideApps()
@@ -184,90 +163,57 @@ object Hider {
       val msgRes = if (hide) R.string.hidden_toast else R.string.unhidden_toast
       Toast.makeText(context, msgRes, Toast.LENGTH_SHORT).show()
     }
-    if (hide) QuickHideService.stopService(context) else QuickHideService.startService(context)
   }
 
-  // Individual app hide/unhide
+  // Process apps
 
   @JvmStatic
-  fun hideApp(context: Context, pkgName: String) {
+  fun processApps(context: Context, pkgNames: Set<String>, action: HideAction) {
+    if (pkgNames.isEmpty()) return
+
     val err = s.appHiderError.value
     if (err != 0) {
-      Log.w(TAG, "hideApp skipped: app hider in error state")
+      Log.w(TAG, "processApps skipped: app hider in error state")
       showErrorToast(context, err)
       return
     }
-    s.setHiddenApps(s.hiddenApps.value + pkgName)
+
+    val hide = action is HideAction.Hide
+    s.setHiddenApps(if (hide) s.hiddenApps.value + pkgNames else s.hiddenApps.value - pkgNames)
 
     scope.launch {
-      val disableOnly = PrefMgr.isXHideEnabled() && PrefMgr.getDisableOnlyWithXHide()
       withContext(Dispatchers.IO) {
-        AppHider.fromMode(context, getAppHiderMode())
-          .process(setOf(pkgName), HideAction.Hide(disableOnly))
+        AppHider.fromMode(context, getAppHiderMode()).process(pkgNames, action)
       }
     }
   }
 
-  @JvmStatic
-  fun unhideApp(context: Context, pkgName: String) {
-    val err = s.appHiderError.value
-    if (err != 0) {
-      Log.w(TAG, "unhideApp skipped: app hider in error state")
-      showErrorToast(context, err)
-      return
-    }
-    s.setHiddenApps(s.hiddenApps.value - pkgName)
-
-    scope.launch {
-      withContext(Dispatchers.IO) {
-        AppHider.fromMode(context, getAppHiderMode()).process(setOf(pkgName), HideAction.Unhide)
-      }
-    }
-  }
-
-  // Individual folder hide/unhide
+  // Process folders
 
   @JvmStatic
-  fun hideFolder(context: Context, path: String) {
+  fun processFolders(context: Context, paths: Set<String>, action: HideAction) {
+    if (paths.isEmpty()) return
+
     val err = s.fileHiderError.value
     if (err != 0) {
-      Log.w(TAG, "hideFolder skipped: file hider in error state")
+      Log.w(TAG, "processFolders skipped: file hider in error state")
       showErrorToast(context, err)
       return
     }
-    s.updateFolderStatus(path, FolderStatus.PROCESSING)
+    val hide = action is HideAction.Hide
+    s.updateFolderStatuses(paths, FolderStatus.PROCESSING)
+
+    val doneStatus = if (hide) FolderStatus.HIDDEN else FolderStatus.VISIBLE
+    val rollbackStatus = if (hide) FolderStatus.VISIBLE else FolderStatus.HIDDEN
 
     scope.launch {
       try {
         withContext(Dispatchers.IO) {
-          FileHider.fromMode(context, getFileHiderMode()).process(setOf(path), HideAction.Hide())
+          FileHider.fromMode(context, getFileHiderMode()).process(paths, action)
         }
-        s.updateFolderStatus(path, FolderStatus.HIDDEN)
+        s.updateFolderStatuses(paths, doneStatus)
       } catch (e: CancellationException) {
-        s.updateFolderStatus(path, FolderStatus.VISIBLE)
-        throw e
-      }
-    }
-  }
-
-  @JvmStatic
-  fun unhideFolder(context: Context, path: String) {
-    val err = s.fileHiderError.value
-    if (err != 0) {
-      Log.w(TAG, "unhideFolder skipped: file hider in error state")
-      showErrorToast(context, err)
-      return
-    }
-    s.updateFolderStatus(path, FolderStatus.PROCESSING)
-
-    scope.launch {
-      try {
-        withContext(Dispatchers.IO) {
-          FileHider.fromMode(context, getFileHiderMode()).process(setOf(path), HideAction.Unhide)
-        }
-        s.updateFolderStatus(path, FolderStatus.VISIBLE)
-      } catch (e: CancellationException) {
-        s.updateFolderStatus(path, FolderStatus.HIDDEN)
+        s.updateFolderStatuses(paths, rollbackStatus)
         throw e
       }
     }
@@ -279,7 +225,7 @@ object Hider {
   fun forceUnhide(context: Context) {
     currentJob?.cancel()
     s.clearProcessingFolders()
-    unhide(context)
+    processAll(context, HideAction.Unhide)
   }
 
   // Workmode getters/setters

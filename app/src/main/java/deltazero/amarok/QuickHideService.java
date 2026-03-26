@@ -90,7 +90,8 @@ public class QuickHideService extends LifecycleService {
             .setDraggable(new SpringBackDraggable())
             .setOnClickListener(
                 R.id.dialog_iv_panic_button,
-                (EasyWindow.OnClickListener<ImageView>) (xToast, view) -> Hider.hide(this));
+                (EasyWindow.OnClickListener<ImageView>)
+                    (xToast, view) -> Hider.processAll(this, Hider.newHideAction()));
 
     ivPanicButton = panicButton.findViewById(R.id.dialog_iv_panic_button);
     ivPanicButton.setColorFilter(PrefMgr.getPanicButtonColor(), PorterDuff.Mode.SRC_IN);
@@ -126,6 +127,10 @@ public class QuickHideService extends LifecycleService {
       // Start the service
       context.startForegroundService(new Intent(context, QuickHideService.class));
     }
+  }
+
+  public static boolean isRunning() {
+    return isServiceRunning;
   }
 
   public static void stopService(Context context) {

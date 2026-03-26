@@ -9,6 +9,7 @@ import android.os.Build;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
+import deltazero.amarok.core.HideAction;
 import deltazero.amarok.core.Hider;
 import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
@@ -53,10 +54,10 @@ public class QSTileService extends TileService {
         () -> {
           Log.i(TAG, "Toggled tile.");
           switch (Hider.getState()) {
-            case VISIBLE -> Hider.hide(this);
+            case VISIBLE -> Hider.processAll(this, Hider.newHideAction());
             case HIDDEN -> {
               if (SecurityUtil.isUnlockRequired()) startAuthThenUnhide();
-              else Hider.unhide(this);
+              else Hider.processAll(this, HideAction.Unhide.INSTANCE);
             }
             default -> throw new IllegalStateException("Unexpected value: " + Hider.getState());
           }
