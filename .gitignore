@@ -10,6 +10,9 @@
 .cxx
 local.properties
 tmp/
-app/.settings/
-app/.project
+.settings/
+.project
+.classpath
+*.swp
+*.swo
 .kotlin/
