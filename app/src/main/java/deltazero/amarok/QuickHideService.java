@@ -34,6 +34,7 @@ public class QuickHideService extends LifecycleService {
   private static final int NOTIFICATION_ID = 1;
 
   private static boolean isServiceRunning = false;
+  private static boolean initialized = false;
 
   @Override
   public void onCreate() {
@@ -108,24 +109,52 @@ public class QuickHideService extends LifecycleService {
   }
 
   @MainThread
+  public static void init(Context context) {
+    if (initialized) return;
+
+    var appContext = context.getApplicationContext();
+    Hider.getStateLiveData().observeForever(state -> sync(appContext));
+    initialized = true;
+    sync(appContext);
+  }
+
+  @MainThread
+  public static void sync(Context context) {
+    var appContext = context.getApplicationContext();
+    boolean shouldRun =
+        PrefMgr.getEnableQuickHideService() && Hider.getState() != Hider.State.HIDDEN;
+
+    if (shouldRun && !isServiceRunning) startService(appContext);
+    else if (!shouldRun && isServiceRunning) stopService(appContext);
+  }
+
+  @MainThread
+  public static void refresh(Context context) {
+    var appContext = context.getApplicationContext();
+    if (isServiceRunning) stopService(appContext);
+    sync(appContext);
+  }
+
+  @MainThread
   public static void startService(Context context) {
+    var appContext = context.getApplicationContext();
 
     assert PrefMgr.initialized;
 
     if (isServiceRunning) {
       Log.w("QuickHideService", "Restarting QuickHideService ...");
-      stopService(context);
-      context.startForegroundService(new Intent(context, QuickHideService.class));
+      stopService(appContext);
+      appContext.startForegroundService(new Intent(appContext, QuickHideService.class));
     } else if (!PrefMgr.getEnableQuickHideService()) {
       Log.i("QuickHideService", "QuickHideService is disabled. Skip starting service.");
     } else if (Hider.getState() == Hider.State.HIDDEN) {
       Log.i("QuickHideService", "Current state is hidden. Skip starting service.");
-    } else if (!XXPermissions.isGranted(context, Permission.NOTIFICATION_SERVICE)) {
+    } else if (!XXPermissions.isGranted(appContext, Permission.NOTIFICATION_SERVICE)) {
       Log.w("QuickHideService", "Permission denied: NOTIFICATION_SERVICE. Skip starting service.");
       PrefMgr.setEnableQuickHideService(false);
     } else {
       // Start the service
-      context.startForegroundService(new Intent(context, QuickHideService.class));
+      appContext.startForegroundService(new Intent(appContext, QuickHideService.class));
     }
   }
 
@@ -134,7 +163,8 @@ public class QuickHideService extends LifecycleService {
   }
 
   public static void stopService(Context context) {
-    context.stopService(new Intent(context, QuickHideService.class));
+    var appContext = context.getApplicationContext();
+    appContext.stopService(new Intent(appContext, QuickHideService.class));
   }
 
   private void updatePanicButton() {
