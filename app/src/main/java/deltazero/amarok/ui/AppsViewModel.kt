@@ -3,6 +3,7 @@ package deltazero.amarok.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import deltazero.amarok.core.HideAction
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.utils.AppInfoUtil
@@ -42,11 +43,11 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
   }
 
   fun hideApp(pkgName: String) {
-    Hider.hideApp(getApplication(), pkgName)
+    Hider.processApps(getApplication(), setOf(pkgName), Hider.newHideAction())
   }
 
   fun unhideApp(pkgName: String) {
-    Hider.unhideApp(getApplication(), pkgName)
+    Hider.processApps(getApplication(), setOf(pkgName), HideAction.Unhide)
   }
 
   fun toggleAllApps() {
@@ -55,9 +56,9 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
     val ctx = getApplication<Application>()
 
     if (hidden.containsAll(managed)) {
-      Hider.unhide(ctx)
+      Hider.processAll(ctx, HideAction.Unhide)
     } else {
-      Hider.hide(ctx)
+      Hider.processAll(ctx, Hider.newHideAction())
     }
   }
 }

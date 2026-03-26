@@ -24,6 +24,7 @@ public class AmarokApplication extends Application {
     XHidePrefBridge.migratePrefsIfNeeded(this);
     PrefMgr.init(this);
     Hider.init();
+    QuickHideCoordinator.init(this);
     QSTileService.init(getApplicationContext());
     ToggleWidget.init(getApplicationContext());
 
@@ -40,9 +41,6 @@ public class AmarokApplication extends Application {
 
     // Initialise XHidePrefBridge
     XHidePrefBridge.init(this);
-
-    // Start PanicButton service
-    QuickHideService.startService(this);
 
     // Start App-center
     AppCenterUtil.startAppCenter(this);

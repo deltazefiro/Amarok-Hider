@@ -3,6 +3,7 @@ package deltazero.amarok.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import deltazero.amarok.core.HideAction
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -35,11 +36,11 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
 
   fun hideFolder(path: String) {
-    Hider.hideFolder(getApplication(), path)
+    Hider.processFolders(getApplication(), setOf(path), HideAction.Hide())
   }
 
   fun unhideFolder(path: String) {
-    Hider.unhideFolder(getApplication(), path)
+    Hider.processFolders(getApplication(), setOf(path), HideAction.Unhide)
   }
 
   fun toggleAllFolders() {
@@ -48,9 +49,9 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
     val ctx = getApplication<Application>()
 
     if (hidden.containsAll(managed)) {
-      Hider.unhide(ctx)
+      Hider.processAll(ctx, HideAction.Unhide)
     } else {
-      Hider.hide(ctx)
+      Hider.processAll(ctx, Hider.newHideAction())
     }
   }
 

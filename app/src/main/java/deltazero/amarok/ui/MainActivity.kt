@@ -21,9 +21,10 @@ import com.hjq.permissions.OnPermissionCallback
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.QuickHideService
+import deltazero.amarok.QuickHideCoordinator
 import deltazero.amarok.R
 import deltazero.amarok.apphider.AppHider
+import deltazero.amarok.core.HideAction
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.filehider.FileHider
@@ -134,7 +135,7 @@ class MainActivity : AmarokActivity() {
                         getString(android.R.string.ok),
                         ColorEnvelopeListener { envelope, _ ->
                           PrefMgr.setPanicButtonColor(envelope.color)
-                          QuickHideService.startService(this@MainActivity)
+                          QuickHideCoordinator.refresh(this@MainActivity)
                         },
                       )
                       .setNegativeButton(getString(android.R.string.cancel)) { dialog, _ ->
@@ -204,9 +205,9 @@ class MainActivity : AmarokActivity() {
       return
     }
     if (Hider.getState() == Hider.State.HIDDEN) {
-      Hider.unhide(this)
+      Hider.processAll(this, HideAction.Unhide)
     } else {
-      Hider.hide(this)
+      Hider.processAll(this, Hider.newHideAction())
     }
   }
 
