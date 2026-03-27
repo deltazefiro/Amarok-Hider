@@ -9,7 +9,7 @@ import android.util.Log
 import deltazero.amarok.BuildConfig
 import deltazero.amarok.R
 import deltazero.amarok.core.ActivationResult
-import deltazero.amarok.core.HideAction
+import deltazero.amarok.core.Hider
 import java.lang.reflect.Method
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
@@ -18,7 +18,8 @@ import rikka.shizuku.ShizukuBinderWrapper
 import rikka.shizuku.ShizukuProvider
 import rikka.shizuku.SystemServiceHelper
 
-class ShizukuAppHider(private val context: Context) : AppHider {
+class ShizukuAppHider(private val context: Context, private val options: AppHiderOptions) :
+  AppHider {
   override val mode = AppHiderMode.SHIZUKU
   override val name = "Shizuku"
 
@@ -76,20 +77,20 @@ class ShizukuAppHider(private val context: Context) : AppHider {
     }
   }
 
-  override suspend fun process(pkgNames: Set<String>, action: HideAction) {
+  override suspend fun process(pkgNames: Set<String>, action: Hider.Action) {
     if (!Shizuku.pingBinder()) {
       Log.w("ShizukuHider", "Binder not available.")
       return
     }
 
     when (action) {
-      is HideAction.Hide -> {
+      Hider.Action.HIDE -> {
         setAppDisabled(true, pkgNames)
-        if (!action.disableOnly) {
+        if (!options.disableOnly) {
           setAppHidden(true, pkgNames)
         }
       }
-      is HideAction.Unhide -> {
+      Hider.Action.UNHIDE -> {
         setAppDisabled(false, pkgNames)
         setAppHidden(false, pkgNames)
       }

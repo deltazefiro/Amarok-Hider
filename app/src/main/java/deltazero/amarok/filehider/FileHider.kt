@@ -2,7 +2,7 @@ package deltazero.amarok.filehider
 
 import android.content.Context
 import deltazero.amarok.core.ActivationResult
-import deltazero.amarok.core.HideAction
+import deltazero.amarok.core.Hider
 
 sealed interface FileHider {
   val mode: FileHiderMode
@@ -10,10 +10,11 @@ sealed interface FileHider {
 
   suspend fun activate(): ActivationResult
 
-  suspend fun process(targetDirs: Set<String>, action: HideAction)
+  suspend fun process(targetDirs: Set<String>, action: Hider.Action)
 
   companion object {
-    fun fromMode(context: Context, mode: FileHiderMode): FileHider =
+    @JvmStatic
+    fun build(context: Context, mode: FileHiderMode): FileHider =
       when (mode) {
         FileHiderMode.NONE -> NoneFileHider()
         FileHiderMode.OBFUSCATE -> ObfuscateFileHider(context)

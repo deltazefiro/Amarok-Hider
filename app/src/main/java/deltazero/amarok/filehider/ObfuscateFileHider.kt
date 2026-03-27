@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Base64
 import android.util.Log
 import deltazero.amarok.core.ActivationResult
-import deltazero.amarok.core.HideAction
+import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.utils.FileHiderUtil
 import deltazero.amarok.utils.MediaStoreHelper
@@ -30,8 +30,8 @@ class ObfuscateFileHider(context: Context) : FileHider {
 
   override suspend fun activate() = ActivationResult(success = true, msgResId = 0)
 
-  override suspend fun process(targetDirs: Set<String>, action: HideAction) {
-    val hide = action is HideAction.Hide
+  override suspend fun process(targetDirs: Set<String>, action: Hider.Action) {
+    val hide = action == Hider.Action.HIDE
     for (dir in targetDirs) {
       try {
         processTree(Paths.get(dir), hide)

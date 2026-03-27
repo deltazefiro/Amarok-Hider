@@ -99,7 +99,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     viewModelScope.launch {
       Hider.appHiderMode
-        .map { mode -> Pair(mode, AppHider.fromMode(ctx, mode).name) }
+        .map { mode -> Pair(mode, AppHider.build(ctx, mode).name) }
         .collect { (mode, name) ->
           _uiState.update { it.copy(appHiderMode = mode, appHiderName = name) }
         }
@@ -107,7 +107,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     viewModelScope.launch {
       Hider.fileHiderMode
-        .map { mode -> Pair(mode, FileHider.fromMode(ctx, mode).name) }
+        .map { mode -> Pair(mode, FileHider.build(ctx, mode).name) }
         .collect { (mode, name) ->
           _uiState.update { it.copy(fileHiderMode = mode, fileHiderName = name) }
         }
@@ -129,7 +129,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
   fun setAppHiderMode(mode: AppHiderMode) {
     val ctx = getApplication<Application>()
     viewModelScope.launch {
-      val result = AppHider.fromMode(ctx, mode).activate()
+      val result = AppHider.build(ctx, mode).activate()
       Hider.setAppHiderMode(mode)
       Hider.setAppHiderError(if (result.success) 0 else result.msgResId)
     }
@@ -138,7 +138,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
   fun setFileHiderMode(mode: FileHiderMode) {
     val ctx = getApplication<Application>()
     viewModelScope.launch {
-      val result = FileHider.fromMode(ctx, mode).activate()
+      val result = FileHider.build(ctx, mode).activate()
       Hider.setFileHiderMode(mode)
       Hider.setFileHiderError(if (result.success) 0 else result.msgResId)
     }

@@ -3,7 +3,7 @@ package deltazero.amarok.filehider
 import android.content.Context
 import android.util.Log
 import deltazero.amarok.core.ActivationResult
-import deltazero.amarok.core.HideAction
+import deltazero.amarok.core.Hider
 import deltazero.amarok.utils.MediaStoreHelper
 import java.nio.file.Paths
 import kotlin.coroutines.coroutineContext
@@ -15,8 +15,8 @@ class NoMediaFileHider(private val context: Context) : FileHider {
 
   override suspend fun activate() = ActivationResult(success = true, msgResId = 0)
 
-  override suspend fun process(targetDirs: Set<String>, action: HideAction) {
-    val hide = action is HideAction.Hide
+  override suspend fun process(targetDirs: Set<String>, action: Hider.Action) {
+    val hide = action == Hider.Action.HIDE
     for (dir in targetDirs) {
       coroutineContext.ensureActive()
       Log.i(TAG, "Processing: $dir")
