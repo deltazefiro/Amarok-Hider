@@ -9,7 +9,6 @@ import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
 import deltazero.amarok.R;
-import deltazero.amarok.core.HideAction;
 import deltazero.amarok.core.Hider;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
 import deltazero.amarok.utils.SecurityUtil;
@@ -70,10 +69,10 @@ public class ToggleWidget extends AppWidgetProvider {
               new Intent(context, SecurityAuthForQSActivity.class)
                   .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         } else {
-          Hider.processAll(context, HideAction.Unhide.INSTANCE);
+          Hider.processAll(context, Hider.Action.UNHIDE);
         }
       } else if (Hider.getState() == Hider.State.VISIBLE) {
-        Hider.processAll(context, Hider.newHideAction());
+        Hider.processAll(context, Hider.Action.HIDE);
       }
       // Widget will be automatically updated via state observer
     }

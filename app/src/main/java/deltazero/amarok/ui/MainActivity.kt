@@ -24,7 +24,6 @@ import deltazero.amarok.AmarokActivity
 import deltazero.amarok.QuickHideService
 import deltazero.amarok.R
 import deltazero.amarok.apphider.AppHider
-import deltazero.amarok.core.HideAction
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.filehider.FileHider
@@ -179,14 +178,14 @@ class MainActivity : AmarokActivity() {
 
     // Check Hiders availability on startup
     MainScope().launch {
-      val appResult = AppHider.fromMode(this@MainActivity, Hider.getAppHiderMode()).activate()
+      val appResult = AppHider.build(this@MainActivity, Hider.getAppHiderMode()).activate()
       if (!appResult.success) {
         Hider.setAppHiderError(appResult.msgResId)
         showNoHiderDialog(appResult.msgResId)
       }
     }
     MainScope().launch {
-      val fileResult = FileHider.fromMode(this@MainActivity, Hider.getFileHiderMode()).activate()
+      val fileResult = FileHider.build(this@MainActivity, Hider.getFileHiderMode()).activate()
       if (!fileResult.success) {
         Hider.setFileHiderError(fileResult.msgResId)
         showNoHiderDialog(fileResult.msgResId)
@@ -205,9 +204,9 @@ class MainActivity : AmarokActivity() {
       return
     }
     if (Hider.getState() == Hider.State.HIDDEN) {
-      Hider.processAll(this, HideAction.Unhide)
+      Hider.processAll(this, Hider.Action.UNHIDE)
     } else {
-      Hider.processAll(this, Hider.newHideAction())
+      Hider.processAll(this, Hider.Action.HIDE)
     }
   }
 

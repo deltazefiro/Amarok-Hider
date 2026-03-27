@@ -5,7 +5,7 @@ import android.util.Log
 import com.topjohnwu.superuser.Shell
 import deltazero.amarok.R
 import deltazero.amarok.core.ActivationResult
-import deltazero.amarok.core.HideAction
+import deltazero.amarok.core.Hider
 import deltazero.amarok.utils.MediaStoreHelper
 import deltazero.amarok.utils.await
 import deltazero.amarok.utils.awaitShell
@@ -23,8 +23,8 @@ class ChmodFileHider(private val context: Context) : FileHider {
     }
   }
 
-  override suspend fun process(targetDirs: Set<String>, action: HideAction) {
-    val hide = action is HideAction.Hide
+  override suspend fun process(targetDirs: Set<String>, action: Hider.Action) {
+    val hide = action == Hider.Action.HIDE
     val processDirs = mutableSetOf<String>()
     for (d in targetDirs) {
       if (d.startsWith("/storage/emulated/")) {

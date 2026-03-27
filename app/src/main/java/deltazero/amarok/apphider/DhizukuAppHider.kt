@@ -8,11 +8,12 @@ import com.rosan.dhizuku.api.Dhizuku
 import com.rosan.dhizuku.api.DhizukuRequestPermissionListener
 import deltazero.amarok.R
 import deltazero.amarok.core.ActivationResult
-import deltazero.amarok.core.HideAction
+import deltazero.amarok.core.Hider
 import kotlin.coroutines.resume
 import kotlinx.coroutines.suspendCancellableCoroutine
 
-class DhizukuAppHider(private val context: Context) : AppHider {
+class DhizukuAppHider(private val context: Context, private val options: AppHiderOptions) :
+  AppHider {
   override val mode = AppHiderMode.DHIZUKU
   override val name = "Dhizuku"
 
@@ -62,9 +63,9 @@ class DhizukuAppHider(private val context: Context) : AppHider {
     }
   }
 
-  override suspend fun process(pkgNames: Set<String>, action: HideAction) {
+  override suspend fun process(pkgNames: Set<String>, action: Hider.Action) {
     setDelegatedScopes()
-    val hidden = action is HideAction.Hide
+    val hidden = action == Hider.Action.HIDE
     for (pkgName in pkgNames) {
       devicePolicyManager.setApplicationHidden(null, pkgName, hidden)
     }

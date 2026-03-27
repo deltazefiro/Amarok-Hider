@@ -25,7 +25,7 @@ Core Features
 The `Hider` object orchestrates hide/unhide operations using coroutines. `HiderState` owns all mutable state as `StateFlow`s.
 
 - **State:** `Hider.state: StateFlow<State>` — derived from folder/app states via `combine()`. `Hider.getState()` for synchronous reads.
-- **Unified process:** `Hider.processAll(context, action)` drives managed app + folder processing; blocking I/O runs on `Dispatchers.IO`.
+- **Unified process:** `Hider.processAll(context, Hider.Action)` drives managed app + folder processing; blocking I/O runs on `Dispatchers.IO`.
 - **Targeted operations:** `Hider.processApps()` and `Hider.processFolders()` handle explicit app/folder sets.
 - **Per-item state:** `Hider.hiddenApps: StateFlow<Set<String>>`, `Hider.folderStates: StateFlow<Map<String, FolderStatus>>`.
 - **Mode types:** `Hider.appHiderMode: StateFlow<AppHiderMode>`, `Hider.fileHiderMode: StateFlow<FileHiderMode>` — enum-based.
@@ -35,31 +35,31 @@ The `Hider` object orchestrates hide/unhide operations using coroutines. `HiderS
 
 **Directory:** `app/src/main/java/deltazero/amarok/filehider/`
 
-- **Interface:** `FileHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(targetDirs, action)`.
+- **Interface:** `FileHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(targetDirs, Hider.Action)`.
 - **Mode enum:** `FileHiderMode` — `NONE`, `OBFUSCATE`, `NOMEDIA`, `CHMOD` with string keys.
 - **Implementations (all implement `FileHider`):**
   - `NoneFileHider.kt` — no-op
   - `ObfuscateFileHider.kt` — Base64 filename encoding + optional content obfuscation
   - `NoMediaFileHider.kt` — creates/removes .nomedia files
   - `ChmodFileHider.kt` — changes file permissions via root
-- **Factory:** `FileHider.fromMode(context, mode)` creates instances from enum values.
+- **Factory:** `FileHider.build(context, mode)` creates instances from enum values.
 
 ### 3. App Hiding Implementations
 
 **Directory:** `app/src/main/java/deltazero/amarok/apphider/`
 
-- **Interface:** `AppHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(pkgNames, action)`.
+- **Interface:** `AppHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(pkgNames, Hider.Action)`.
 - **Mode enum:** `AppHiderMode` — `NONE`, `ROOT`, `SHIZUKU`, `DHIZUKU` with string keys.
 - **Implementations (all implement `AppHider`):**
   - `NoneAppHider.kt` — no-op
   - `RootAppHider.kt` — pm disable/hide via libsu
   - `ShizukuAppHider.kt` — IPackageManager via Shizuku reflection
   - `DhizukuAppHider.kt` — DevicePolicyManager via Dhizuku
-- **Factory:** `AppHider.fromMode(context, mode)` creates instances from enum values.
+- **Factory:** `AppHider.build(context, mode, options)` creates configured instances from enum values.
 
 ### 4. Core Types
 
-- **`core/HideAction.kt`:** Sealed interface — `HideAction.Hide(disableOnly)` / `HideAction.Unhide`.
+- **`apphider/AppHider.kt`:** `AppHiderOptions` carries app-specific runtime policy like `disableOnly`.
 - **`core/ActivationResult.kt`:** Data class — `ActivationResult(success, msgResId)`.
 - **`utils/ShellExt.kt`:** Coroutine bridges — `Shell.Job.await()`, `awaitShell()`.
 

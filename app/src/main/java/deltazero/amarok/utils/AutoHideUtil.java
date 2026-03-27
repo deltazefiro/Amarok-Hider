@@ -29,7 +29,7 @@ public class AutoHideUtil {
     @Override
     public Result doWork() {
       Log.i(TAG, "Auto hide triggered. Start hiding.");
-      Hider.processAll(getApplicationContext(), Hider.newHideAction());
+      Hider.processAll(getApplicationContext(), Hider.Action.HIDE);
       return Result.success();
     }
   }
