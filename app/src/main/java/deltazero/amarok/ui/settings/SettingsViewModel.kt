@@ -59,8 +59,8 @@ data class SettingsUiState(
   val darkThemeMode: Int = PrefMgr.getDarkTheme(),
   val invertTileColor: Boolean = PrefMgr.getInvertTileColor(),
   // Workmode
-  val appHiderMode: AppHiderMode = Hider.getAppHiderMode(),
-  val fileHiderMode: FileHiderMode = Hider.getFileHiderMode(),
+  val appHiderMode: AppHiderMode = Hider.appHiderMode.value,
+  val fileHiderMode: FileHiderMode = Hider.fileHiderMode.value,
   val appHiderName: String = "",
   val fileHiderName: String = "",
   val appHiderErrorResId: Int = 0,
@@ -91,7 +91,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
   val hasHiddenFiles: StateFlow<Boolean> =
     Hider.folderStates
-      .map { states -> states.values.any { it == Hider.FolderStatus.HIDDEN } }
+      .map { states -> states.values.any { it == Hider.State.HIDDEN } }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
   init {
@@ -128,20 +128,12 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
   fun setAppHiderMode(mode: AppHiderMode) {
     val ctx = getApplication<Application>()
-    viewModelScope.launch {
-      val result = AppHider.build(ctx, mode).activate()
-      Hider.setAppHiderMode(mode)
-      Hider.setAppHiderError(if (result.success) 0 else result.msgResId)
-    }
+    viewModelScope.launch { Hider.switchAppHider(ctx, mode) }
   }
 
   fun setFileHiderMode(mode: FileHiderMode) {
     val ctx = getApplication<Application>()
-    viewModelScope.launch {
-      val result = FileHider.build(ctx, mode).activate()
-      Hider.setFileHiderMode(mode)
-      Hider.setFileHiderError(if (result.success) 0 else result.msgResId)
-    }
+    viewModelScope.launch { Hider.switchFileHider(ctx, mode) }
   }
 
   fun setObfuscateLevel(level: Int) {
@@ -295,6 +287,8 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
   }
 
   fun forceUnhide() {
-    Hider.forceUnhide(getApplication())
+    val ctx = getApplication<Application>()
+    Hider.cancelProcess()
+    Hider.processAll(ctx, Hider.Action.UNHIDE)
   }
 }

@@ -28,7 +28,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        AppHider.build(application, Hider.getAppHiderMode()).name,
+        AppHider.build(application, Hider.appHiderMode.value).name,
       )
 
   val fileHiderName: StateFlow<String> =
@@ -37,7 +37,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        FileHider.build(application, Hider.getFileHiderMode()).name,
+        FileHider.build(application, Hider.fileHiderMode.value).name,
       )
 
   fun refreshCounts() {

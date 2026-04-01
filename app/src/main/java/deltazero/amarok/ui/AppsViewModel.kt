@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -21,12 +22,17 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
   private val _managedApps = MutableStateFlow<List<AppInfo>>(emptyList())
   val managedApps: StateFlow<List<AppInfo>> = _managedApps.asStateFlow()
 
-  val hiddenApps: StateFlow<Set<String>> =
-    Hider.hiddenApps.stateIn(
+  private val appStatesFlow =
+    Hider.appStates.stateIn(
       viewModelScope,
       SharingStarted.WhileSubscribed(5000),
-      Hider.hiddenApps.value,
+      Hider.appStates.value,
     )
+
+  val hiddenApps: StateFlow<Set<String>> =
+    appStatesFlow
+      .map { states -> states.filterValues { it == Hider.State.HIDDEN }.keys }
+      .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
 
   init {
     loadManagedApps()

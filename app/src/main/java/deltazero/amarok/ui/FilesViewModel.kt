@@ -26,12 +26,12 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
 
   val hiddenFolders: StateFlow<Set<String>> =
     folderStatesFlow
-      .map { states -> states.filterValues { it == Hider.FolderStatus.HIDDEN }.keys }
+      .map { states -> states.filterValues { it == Hider.State.HIDDEN }.keys }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
 
   val processingFolders: StateFlow<Set<String>> =
     folderStatesFlow
-      .map { states -> states.filterValues { it == Hider.FolderStatus.PROCESSING }.keys }
+      .map { states -> states.filterValues { it == Hider.State.PROCESSING }.keys }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
 
   fun hideFolder(path: String) {

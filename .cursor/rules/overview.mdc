@@ -20,16 +20,17 @@ Core Features
 
 ### 1. Hiding Management
 
-**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderState.kt`
+**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`
 
-The `Hider` object orchestrates hide/unhide operations using coroutines. `HiderState` owns all mutable state as `StateFlow`s.
+The `Hider` object owns mutable hide state, persisted mode/error state, active hider strategies, and hide/unhide orchestration using coroutines.
 
 - **State:** `Hider.state: StateFlow<State>` — derived from folder/app states via `combine()`. `Hider.getState()` for synchronous reads.
 - **Unified process:** `Hider.processAll(context, Hider.Action)` drives managed app + folder processing; blocking I/O runs on `Dispatchers.IO`.
 - **Targeted operations:** `Hider.processApps()` and `Hider.processFolders()` handle explicit app/folder sets.
-- **Per-item state:** `Hider.hiddenApps: StateFlow<Set<String>>`, `Hider.folderStates: StateFlow<Map<String, FolderStatus>>`.
+- **Per-item state:** `Hider.appStates` and `Hider.folderStates` are both `StateFlow<Map<String, Hider.State>>`; hidden sets are derived by consumers when needed.
 - **Mode types:** `Hider.appHiderMode: StateFlow<AppHiderMode>`, `Hider.fileHiderMode: StateFlow<FileHiderMode>` — enum-based.
-- **Java interop:** `Hider.getStateLiveData()` / `Hider.getHiddenAppsLiveData()` expose LiveData bridges for Java consumers.
+- **Strategy ownership:** `Hider.init(context)` restores persisted state, builds the selected app/file hiders, and attempts one activation pass; `switchAppHider()` / `switchFileHider()` own mode persistence and re-activation.
+- **Java interop:** `Hider.getStateLiveData()` / `Hider.getAppStatesLiveData()` expose LiveData bridges for Java consumers.
 
 ### 2. File Hiding Implementations
 
