@@ -118,7 +118,36 @@ object Hider {
     launchTrackedProcess("processAll") {
       if (!activateAppHider(context)) return@launchTrackedProcess
       if (!activateFileHider(context)) return@launchTrackedProcess
-      processAllInternal(context, action)
+      val hide = action == Action.HIDE
+      val managedApps = PrefMgr.getHideApps()
+      val managedFolders = PrefMgr.getHideFilePath()
+      val currentAppStates = _appStates.value
+      val currentFolderStates = _folderStates.value
+
+      val appsToProcess =
+        managedApps.filterTo(mutableSetOf()) { pkgName ->
+          val state = currentAppStates[pkgName] ?: State.VISIBLE
+          if (hide) state != State.HIDDEN else state == State.HIDDEN
+        }
+      val foldersToProcess =
+        managedFolders.filterTo(mutableSetOf()) { path ->
+          val state = currentFolderStates[path] ?: State.VISIBLE
+          if (hide) state != State.HIDDEN else state == State.HIDDEN
+        }
+
+      Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' start.")
+      processTargets(_appStates, appsToProcess, action) {
+        withContext(Dispatchers.IO) { appHider.process(appsToProcess, action) }
+      }
+      processTargets(_folderStates, foldersToProcess, action) {
+        withContext(Dispatchers.IO) { fileHider.process(foldersToProcess, action) }
+      }
+
+      Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' finish.")
+      if (!PrefMgr.getDisableToasts()) {
+        val msgRes = if (hide) R.string.hidden_toast else R.string.unhidden_toast
+        Toast.makeText(context, msgRes, Toast.LENGTH_SHORT).show()
+      }
     }
   }
 
@@ -147,39 +176,6 @@ object Hider {
   @JvmStatic
   fun cancelProcess() {
     currentJob?.cancel()
-  }
-
-  private suspend fun processAllInternal(context: Context, action: Action) {
-    val hide = action == Action.HIDE
-    val managedApps = PrefMgr.getHideApps()
-    val managedFolders = PrefMgr.getHideFilePath()
-    val currentAppStates = _appStates.value
-    val currentFolderStates = _folderStates.value
-
-    val appsToProcess =
-      managedApps.filterTo(mutableSetOf()) { pkgName ->
-        val state = currentAppStates[pkgName] ?: State.VISIBLE
-        if (hide) state != State.HIDDEN else state == State.HIDDEN
-      }
-    val foldersToProcess =
-      managedFolders.filterTo(mutableSetOf()) { path ->
-        val state = currentFolderStates[path] ?: State.VISIBLE
-        if (hide) state != State.HIDDEN else state == State.HIDDEN
-      }
-
-    Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' start.")
-    processTargets(_appStates, appsToProcess, action) {
-      withContext(Dispatchers.IO) { appHider.process(appsToProcess, action) }
-    }
-    processTargets(_folderStates, foldersToProcess, action) {
-      withContext(Dispatchers.IO) { fileHider.process(foldersToProcess, action) }
-    }
-
-    Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' finish.")
-    if (!PrefMgr.getDisableToasts()) {
-      val msgRes = if (hide) R.string.hidden_toast else R.string.unhidden_toast
-      Toast.makeText(context, msgRes, Toast.LENGTH_SHORT).show()
-    }
   }
 
   @JvmStatic
