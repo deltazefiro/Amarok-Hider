@@ -11,6 +11,8 @@ import deltazero.amarok.xposed.utils.XPref;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -95,7 +97,7 @@ public class XHidePrefBridge {
     PrefMgr.getPrefs().registerOnSharedPreferenceChangeListener(hidePkgNamesChangeListener);
 
     Hider.getStateLiveData().observeForever(state -> commitNewValues());
-    Hider.getHiddenAppsLiveData().observeForever(apps -> commitNewValues());
+    Hider.getAppStatesLiveData().observeForever(appStates -> commitNewValues());
 
     Log.i(TAG, "XHide initialized.");
     isAvailable = true;
@@ -103,11 +105,17 @@ public class XHidePrefBridge {
 
   private static void commitNewValues() {
     Log.d(TAG, "Committing new values to XPref");
-    Set<String> hiddenApps = Hider.getHiddenAppsLiveData().getValue();
-    xprefEditor.putStringSet(
-        XPref.HIDE_PKG_NAMES, hiddenApps != null ? hiddenApps : new java.util.HashSet<>());
-    xprefEditor.putBoolean(
-        XPref.IS_ACTIVE, PrefMgr.isXHideEnabled() && hiddenApps != null && !hiddenApps.isEmpty());
+    Map<String, Hider.State> appStates = Hider.getAppStatesLiveData().getValue();
+    Set<String> hiddenApps = new HashSet<>();
+    if (appStates != null) {
+      for (Map.Entry<String, Hider.State> entry : appStates.entrySet()) {
+        if (entry.getValue() == Hider.State.HIDDEN) {
+          hiddenApps.add(entry.getKey());
+        }
+      }
+    }
+    xprefEditor.putStringSet(XPref.HIDE_PKG_NAMES, hiddenApps);
+    xprefEditor.putBoolean(XPref.IS_ACTIVE, PrefMgr.isXHideEnabled() && !hiddenApps.isEmpty());
     xprefEditor.commit();
   }
 }

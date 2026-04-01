@@ -23,17 +23,13 @@ import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import deltazero.amarok.AmarokActivity
 import deltazero.amarok.QuickHideService
 import deltazero.amarok.R
-import deltazero.amarok.apphider.AppHider
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.PrefMgr
-import deltazero.amarok.filehider.FileHider
 import deltazero.amarok.ui.settings.SettingsScreen
 import deltazero.amarok.ui.settings.SettingsViewModel
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.PermissionUtil
 import deltazero.amarok.utils.UpdateUtil
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.launch
 
 class MainActivity : AmarokActivity() {
 
@@ -175,23 +171,6 @@ class MainActivity : AmarokActivity() {
     } else {
       PermissionUtil.requestStoragePermission(this)
     }
-
-    // Check Hiders availability on startup
-    MainScope().launch {
-      val appResult = AppHider.build(this@MainActivity, Hider.getAppHiderMode()).activate()
-      if (!appResult.success) {
-        Hider.setAppHiderError(appResult.msgResId)
-        showNoHiderDialog(appResult.msgResId)
-      }
-    }
-    MainScope().launch {
-      val fileResult = FileHider.build(this@MainActivity, Hider.getFileHiderMode()).activate()
-      if (!fileResult.success) {
-        Hider.setFileHiderError(fileResult.msgResId)
-        showNoHiderDialog(fileResult.msgResId)
-      }
-    }
-
     if (PrefMgr.getEnableAutoUpdate()) {
       UpdateUtil.checkAndNotify(this, true)
     }
@@ -201,6 +180,11 @@ class MainActivity : AmarokActivity() {
     val appErr = Hider.appHiderError.value
     if (appErr != 0) {
       showNoHiderDialog(appErr)
+      return
+    }
+    val fileErr = Hider.fileHiderError.value
+    if (fileErr != 0) {
+      showNoHiderDialog(fileErr)
       return
     }
     if (Hider.getState() == Hider.State.HIDDEN) {

@@ -23,7 +23,7 @@ public class AmarokApplication extends Application {
     // WARNING: Do not change the order of those initializations.
     XHidePrefBridge.migratePrefsIfNeeded(this);
     PrefMgr.init(this);
-    Hider.init();
+    Hider.init(this);
     QuickHideService.init(this);
     QSTileService.init(getApplicationContext());
     ToggleWidget.init(getApplicationContext());

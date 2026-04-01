@@ -12,6 +12,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -44,11 +45,13 @@ class AppPickerViewModel(application: Application) : AndroidViewModel(applicatio
   private val _allApps = MutableStateFlow<List<AppInfo>>(emptyList())
 
   private val _actuallyHiddenApps =
-    Hider.hiddenApps.stateIn(
-      viewModelScope,
-      SharingStarted.WhileSubscribed(5000),
-      Hider.hiddenApps.value,
-    )
+    Hider.appStates
+      .map { states -> states.filterValues { it == Hider.State.HIDDEN }.keys }
+      .stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5000),
+        Hider.appStates.value.filterValues { it == Hider.State.HIDDEN }.keys,
+      )
 
   private val _filteredApps =
     combine(_allApps, _searchQuery, _showSystemApps, _showRootApps) { _, query, showSystem, showRoot
