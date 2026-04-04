@@ -68,10 +68,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
-
-        <activity
-            android:name=".ui.settings.ObfuscateFileHiderSettingsActivity"
-            android:exported="false" />
         <activity
             android:name=".ui.CalendarActivity"
             android:exported="false"

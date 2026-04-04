@@ -78,7 +78,6 @@ class MainActivity : AmarokActivity() {
             }
             composable(AmarokRoute.SETTINGS.route) {
               SettingsScreen(
-                onBack = { navController.popBackStack() },
                 onSetPassword = { callback ->
                   SetPasswordFragment()
                     .setCallback { password -> callback(password) }

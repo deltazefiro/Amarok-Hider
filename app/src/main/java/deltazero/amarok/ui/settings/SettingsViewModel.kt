@@ -16,7 +16,6 @@ import deltazero.amarok.utils.AppCenterUtil
 import deltazero.amarok.utils.LauncherIconController
 import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.UpdateUtil
-import deltazero.amarok.utils.XHidePrefBridge
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -26,65 +25,18 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-private fun obfuscateLevelFromPrefs(): Int =
-  when {
-    PrefMgr.getEnableObfuscateTextFileEnhanced() -> 3
-    PrefMgr.getEnableObfuscateTextFile() -> 2
-    PrefMgr.getEnableObfuscateFileHeader() -> 1
-    else -> 0
+private fun packageVersionName(application: Application): String =
+  try {
+    application.packageManager.getPackageInfo(application.packageName, 0).versionName ?: "?"
+  } catch (_: Exception) {
+    "?"
   }
-
-data class SettingsUiState(
-  // XHide
-  val isXHideAvailable: Boolean = XHidePrefBridge.isAvailable,
-  val xposedVersion: Int = XHidePrefBridge.xposedVersion,
-  val enableXHide: Boolean = PrefMgr.isXHideEnabled(),
-  val disableOnlyWithXHide: Boolean = PrefMgr.getDisableOnlyWithXHide(),
-  // Privacy
-  val hasPassword: Boolean = PrefMgr.getAmarokPassword() != null,
-  val biometricAuth: Boolean = PrefMgr.getEnableAmarokBiometricAuth(),
-  val disguise: Boolean = PrefMgr.getEnableDisguise(),
-  val hideIcon: Boolean = PrefMgr.getHideAmarokIcon(),
-  val hideFromRecents: Boolean = PrefMgr.getHideFromRecents(),
-  val blockScreenshots: Boolean = PrefMgr.getBlockScreenshots(),
-  val disableSecurityWhenUnhidden: Boolean = PrefMgr.getDisableSecurityWhenUnhidden(),
-  val disableToasts: Boolean = PrefMgr.getDisableToasts(),
-  // Quick Hide
-  val quickHideService: Boolean = PrefMgr.getEnableQuickHideService(),
-  val panicButton: Boolean = PrefMgr.getEnablePanicButton(),
-  val autoHide: Boolean = PrefMgr.getEnableAutoHide(),
-  val autoHideDelay: Float = PrefMgr.getAutoHideDelay().toFloat(),
-  // Appearance
-  val dynamicColor: Boolean = PrefMgr.getEnableDynamicColor(),
-  val darkThemeMode: Int = PrefMgr.getDarkTheme(),
-  val invertTileColor: Boolean = PrefMgr.getInvertTileColor(),
-  // Workmode
-  val appHiderMode: AppHiderMode = Hider.appHiderMode.value,
-  val fileHiderMode: FileHiderMode = Hider.fileHiderMode.value,
-  val appHiderName: String = "",
-  val fileHiderName: String = "",
-  val appHiderErrorResId: Int = 0,
-  val fileHiderErrorResId: Int = 0,
-  val obfuscateLevel: Int = obfuscateLevelFromPrefs(),
-  // Update
-  val updateChannel: String = PrefMgr.getUpdateChannel().name,
-  val autoUpdate: Boolean = PrefMgr.getEnableAutoUpdate(),
-  val appVersionName: String = "",
-  // About
-  val analyticsEnabled: Boolean = AppCenterUtil.isAnalyticsEnabled(),
-  val analyticsAvailable: Boolean = AppCenterUtil.isAvailable(),
-)
 
 class SettingsViewModel(application: Application) : AndroidViewModel(application) {
   private val _uiState =
     MutableStateFlow(
       SettingsUiState(
-        appVersionName =
-          try {
-            application.packageManager.getPackageInfo(application.packageName, 0).versionName ?: "?"
-          } catch (_: Exception) {
-            "?"
-          }
+        updates = UpdateSettingsState(appVersionName = packageVersionName(application))
       )
     )
   val uiState: StateFlow<SettingsUiState> = _uiState.asStateFlow()
@@ -99,29 +51,29 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
     viewModelScope.launch {
       Hider.appHiderMode
-        .map { mode -> Pair(mode, AppHider.build(ctx, mode).name) }
+        .map { mode -> mode to AppHider.build(ctx, mode).name }
         .collect { (mode, name) ->
-          _uiState.update { it.copy(appHiderMode = mode, appHiderName = name) }
+          updateWorkmode { it.copy(appHiderMode = mode, appHiderName = name) }
         }
     }
 
     viewModelScope.launch {
       Hider.fileHiderMode
-        .map { mode -> Pair(mode, FileHider.build(ctx, mode).name) }
+        .map { mode -> mode to FileHider.build(ctx, mode).name }
         .collect { (mode, name) ->
-          _uiState.update { it.copy(fileHiderMode = mode, fileHiderName = name) }
+          updateWorkmode { it.copy(fileHiderMode = mode, fileHiderName = name) }
         }
     }
 
     viewModelScope.launch {
       Hider.appHiderError.collect { errorResId ->
-        _uiState.update { it.copy(appHiderErrorResId = errorResId) }
+        updateWorkmode { it.copy(appHiderErrorResId = errorResId) }
       }
     }
 
     viewModelScope.launch {
       Hider.fileHiderError.collect { errorResId ->
-        _uiState.update { it.copy(fileHiderErrorResId = errorResId) }
+        updateWorkmode { it.copy(fileHiderErrorResId = errorResId) }
       }
     }
   }
@@ -140,25 +92,23 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     PrefMgr.setEnableObfuscateFileHeader(level >= 1)
     PrefMgr.setEnableObfuscateTextFile(level >= 2)
     PrefMgr.setEnableObfuscateTextFileEnhanced(level >= 3)
-    _uiState.update { it.copy(obfuscateLevel = level) }
+    updateWorkmode { it.copy(obfuscateLevel = level) }
   }
 
-  // XHide
   fun setXHideEnabled(enabled: Boolean) {
     PrefMgr.setXHideEnabled(enabled)
-    _uiState.update { it.copy(enableXHide = enabled) }
+    updateXHide { it.copy(enabled = enabled) }
   }
 
   fun setDisableOnlyWithXHide(enabled: Boolean) {
     PrefMgr.setDisableOnlyWithXHide(enabled)
-    _uiState.update { it.copy(disableOnlyWithXHide = enabled) }
+    updateXHide { it.copy(disableOnlyWithXHide = enabled) }
   }
 
-  // Privacy
   fun setPassword(hash: String?) {
     PrefMgr.setAmarokPassword(hash)
     if (hash != null) SecurityUtil.unlock()
-    _uiState.update {
+    updatePrivacy {
       it.copy(
         hasPassword = PrefMgr.getAmarokPassword() != null,
         biometricAuth = PrefMgr.getEnableAmarokBiometricAuth(),
@@ -168,7 +118,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
 
   fun setBiometricAuth(enabled: Boolean) {
     PrefMgr.setEnableAmarokBiometricAuth(enabled)
-    _uiState.update { it.copy(biometricAuth = enabled) }
+    updatePrivacy { it.copy(biometricAuth = enabled) }
   }
 
   fun setDisguise(enabled: Boolean, activity: Activity?) {
@@ -182,7 +132,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
         else LauncherIconController.IconState.VISIBLE,
       )
     }
-    _uiState.update { it.copy(disguise = enabled) }
+    updatePrivacy { it.copy(disguise = enabled) }
   }
 
   fun confirmHideIcon(activity: Activity?) {
@@ -191,7 +141,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
       LauncherIconController.setIconState(it, LauncherIconController.IconState.HIDDEN)
     }
     PrefMgr.setHideAmarokIcon(true)
-    _uiState.update { it.copy(hideIcon = true, disguise = false) }
+    updatePrivacy { it.copy(hideIcon = true, disguise = false) }
   }
 
   fun unhideIcon(activity: Activity?) {
@@ -199,39 +149,39 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     activity?.let {
       LauncherIconController.setIconState(it, LauncherIconController.IconState.VISIBLE)
     }
-    _uiState.update { it.copy(hideIcon = false) }
+    updatePrivacy { it.copy(hideIcon = false) }
   }
 
   fun setHideFromRecents(enabled: Boolean) {
     PrefMgr.setHideFromRecents(enabled)
-    _uiState.update { it.copy(hideFromRecents = enabled) }
+    updatePrivacy { it.copy(hideFromRecents = enabled) }
   }
 
   fun setBlockScreenshots(enabled: Boolean) {
     PrefMgr.setBlockScreenshots(enabled)
-    _uiState.update { it.copy(blockScreenshots = enabled) }
+    updatePrivacy { it.copy(blockScreenshots = enabled) }
   }
 
   fun setDisableSecurityWhenUnhidden(enabled: Boolean) {
     PrefMgr.setDisableSecurityWhenUnhidden(enabled)
-    _uiState.update { it.copy(disableSecurityWhenUnhidden = enabled) }
+    updatePrivacy { it.copy(disableSecurityWhenUnhidden = enabled) }
   }
 
   fun setDisableToasts(enabled: Boolean) {
     PrefMgr.setDisableToasts(enabled)
-    _uiState.update { it.copy(disableToasts = enabled) }
+    updatePrivacy { it.copy(disableToasts = enabled) }
   }
 
-  // Quick Hide
   fun setQuickHideService(enabled: Boolean) {
     val ctx = getApplication<Application>()
     PrefMgr.setEnableQuickHideService(enabled)
     if (!enabled) {
       PrefMgr.setEnablePanicButton(false)
-      _uiState.update { it.copy(panicButton = false) }
     }
     QuickHideService.sync(ctx)
-    _uiState.update { it.copy(quickHideService = enabled) }
+    updateQuickHide {
+      it.copy(quickHideService = enabled, panicButton = if (enabled) it.panicButton else false)
+    }
   }
 
   fun setPanicButton(enabled: Boolean) {
@@ -239,56 +189,81 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
     PrefMgr.setEnablePanicButton(enabled)
     if (!enabled) PrefMgr.resetPanicButtonPosition()
     QuickHideService.refresh(ctx)
-    _uiState.update { it.copy(panicButton = enabled) }
+    updateQuickHide { it.copy(panicButton = enabled) }
   }
 
   fun setAutoHide(enabled: Boolean) {
     PrefMgr.setEnableAutoHide(enabled)
-    _uiState.update { it.copy(autoHide = enabled) }
+    updateQuickHide { it.copy(autoHide = enabled) }
   }
 
   fun setAutoHideDelay(delay: Float) {
     PrefMgr.setAutoHideDelay(delay.toInt())
-    _uiState.update { it.copy(autoHideDelay = delay) }
+    updateQuickHide { it.copy(autoHideDelay = delay) }
   }
 
-  // Appearance
   fun setDynamicColor(enabled: Boolean) {
     PrefMgr.setEnableDynamicColor(enabled)
-    _uiState.update { it.copy(dynamicColor = enabled) }
+    updateAppearance { it.copy(dynamicColor = enabled) }
   }
 
   fun setDarkTheme(mode: Int) {
     PrefMgr.setDarkTheme(mode)
     AppCompatDelegate.setDefaultNightMode(mode)
-    _uiState.update { it.copy(darkThemeMode = mode) }
+    updateAppearance { it.copy(darkThemeMode = mode) }
   }
 
   fun setInvertTileColor(enabled: Boolean) {
     PrefMgr.setInvertTileColor(enabled)
-    _uiState.update { it.copy(invertTileColor = enabled) }
+    updateAppearance { it.copy(invertTileColor = enabled) }
   }
 
-  // Update
   fun setUpdateChannel(channel: UpdateUtil.UpdateChannel) {
     PrefMgr.setUpdateChannel(channel)
-    _uiState.update { it.copy(updateChannel = channel.name) }
+    updateUpdates { it.copy(updateChannel = channel.name) }
   }
 
   fun setAutoUpdate(enabled: Boolean) {
     PrefMgr.setEnableAutoUpdate(enabled)
-    _uiState.update { it.copy(autoUpdate = enabled) }
+    updateUpdates { it.copy(autoUpdate = enabled) }
   }
 
-  // About
   fun setAnalyticsEnabled(enabled: Boolean) {
     AppCenterUtil.setAnalyticsEnabled(enabled)
-    _uiState.update { it.copy(analyticsEnabled = enabled) }
+    updateAbout { it.copy(analyticsEnabled = enabled) }
   }
 
   fun forceUnhide() {
     val ctx = getApplication<Application>()
     Hider.cancelProcess()
     Hider.processAll(ctx, Hider.Action.UNHIDE)
+  }
+
+  private fun updateWorkmode(transform: (WorkmodeSettingsState) -> WorkmodeSettingsState) {
+    _uiState.update { it.copy(workmode = transform(it.workmode)) }
+  }
+
+  private fun updateXHide(transform: (XHideSettingsState) -> XHideSettingsState) {
+    _uiState.update { it.copy(xHide = transform(it.xHide)) }
+  }
+
+  private fun updatePrivacy(transform: (PrivacySettingsState) -> PrivacySettingsState) {
+    _uiState.update { it.copy(privacy = transform(it.privacy)) }
+  }
+
+  private fun updateQuickHide(transform: (QuickHideSettingsState) -> QuickHideSettingsState) {
+    _uiState.update { it.copy(quickHide = transform(it.quickHide)) }
+  }
+
+  private fun updateAppearance(transform: (AppearanceSettingsState) -> AppearanceSettingsState) {
+    _uiState.update { it.copy(appearance = transform(it.appearance)) }
+  }
+
+  private fun updateUpdates(transform: (UpdateSettingsState) -> UpdateSettingsState) {
+    _uiState.update { it.copy(updates = transform(it.updates)) }
+  }
+
+  private fun updateAbout(transform: (AboutSettingsState) -> AboutSettingsState) {
+    _uiState.update { it.copy(about = transform(it.about)) }
   }
 }

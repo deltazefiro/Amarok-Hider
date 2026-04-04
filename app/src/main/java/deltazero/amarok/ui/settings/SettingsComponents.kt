@@ -1,5 +1,7 @@
 package deltazero.amarok.ui.settings
 
+import android.content.res.Configuration
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -11,37 +13,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 
-@Composable
-fun RadioOptionItem(
-  title: String,
-  description: String,
-  selected: Boolean,
-  onClick: () -> Unit,
-  modifier: Modifier = Modifier,
-  trailingContent: (@Composable () -> Unit)? = null,
-) {
-  Row(
-    modifier =
-      modifier
-        .fillMaxWidth()
-        .clickable(onClick = onClick)
-        .padding(horizontal = 32.dp, vertical = 10.dp),
-    verticalAlignment = Alignment.Top,
-  ) {
-    RadioButton(selected = selected, onClick = onClick)
-    Column(modifier = Modifier.weight(1f).padding(top = 14.dp)) {
-      Text(text = title, style = MaterialTheme.typography.titleSmall)
-      Spacer(Modifier.height(8.dp))
-      Text(text = description, fontSize = 11.sp)
-    }
-    if (trailingContent != null) {
-      Box(modifier = Modifier.align(Alignment.CenterVertically)) { trailingContent() }
-    }
+internal fun prefIcon(@DrawableRes id: Int): @Composable () -> Unit =
+  @Composable {
+    Icon(painterResource(id), contentDescription = null, modifier = Modifier.fillMaxSize())
   }
-}
 
 // Category section header
 @Composable
@@ -72,15 +51,15 @@ fun ClickPreferenceItem(
     verticalAlignment = Alignment.CenterVertically,
   ) {
     if (icon != null) {
-      Box(modifier = Modifier.size(24.dp)) { icon() }
+      Box(modifier = Modifier.size(20.dp)) { icon() }
       Spacer(Modifier.width(16.dp))
     }
     Column(modifier = Modifier.weight(1f)) {
-      Text(text = title, style = MaterialTheme.typography.bodyLarge)
+      Text(text = title, style = MaterialTheme.typography.bodyMedium)
       if (summary != null) {
         Text(
           text = summary,
-          style = MaterialTheme.typography.bodyMedium,
+          style = MaterialTheme.typography.bodySmall,
           color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
       }
@@ -107,15 +86,15 @@ fun SwitchPreferenceItem(
     verticalAlignment = Alignment.CenterVertically,
   ) {
     if (icon != null) {
-      Box(modifier = Modifier.size(24.dp)) { icon() }
+      Box(modifier = Modifier.size(20.dp)) { icon() }
       Spacer(Modifier.width(16.dp))
     }
     Column(modifier = Modifier.weight(1f)) {
-      Text(text = title, style = MaterialTheme.typography.bodyLarge)
+      Text(text = title, style = MaterialTheme.typography.bodyMedium)
       if (summary != null) {
         Text(
           text = summary,
-          style = MaterialTheme.typography.bodyMedium,
+          style = MaterialTheme.typography.bodySmall,
           color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
       }
@@ -150,22 +129,24 @@ fun SliderPreferenceItem(
   ) {
     Row(verticalAlignment = Alignment.CenterVertically) {
       if (icon != null) {
-        Box(modifier = Modifier.size(24.dp)) { icon() }
+        Box(modifier = Modifier.size(20.dp)) { icon() }
         Spacer(Modifier.width(16.dp))
       }
       Column(modifier = Modifier.weight(1f)) {
-        Text(text = title, style = MaterialTheme.typography.bodyLarge)
+        Text(text = title, style = MaterialTheme.typography.bodyMedium)
         if (summary != null) {
           Text(
             text = summary,
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
           )
         }
       }
       Text(text = valueLabel(value), style = MaterialTheme.typography.bodyMedium)
     }
+    Spacer(Modifier.height(8.dp))
     Slider(
+      modifier = Modifier.padding(start = if (icon != null) 34.dp else 0.dp),
       value = value,
       onValueChange = onValueChange,
       valueRange = valueRange,
@@ -195,15 +176,15 @@ fun DropdownPreferenceItem(
     verticalAlignment = Alignment.CenterVertically,
   ) {
     if (icon != null) {
-      Box(modifier = Modifier.size(24.dp)) { icon() }
+      Box(modifier = Modifier.size(20.dp)) { icon() }
       Spacer(Modifier.width(16.dp))
     }
     Column(modifier = Modifier.weight(1f)) {
-      Text(text = title, style = MaterialTheme.typography.bodyLarge)
+      Text(text = title, style = MaterialTheme.typography.bodyMedium)
       val selectedLabel = options.find { it.first == selectedValue }?.second ?: summary ?: ""
       Text(
         text = selectedLabel,
-        style = MaterialTheme.typography.bodyMedium,
+        style = MaterialTheme.typography.bodySmall,
         color = MaterialTheme.colorScheme.onSurfaceVariant,
       )
     }
@@ -219,4 +200,49 @@ fun DropdownPreferenceItem(
       }
     }
   }
+}
+
+@Composable
+private fun SettingsComponentsPreviewContent() {
+  var switchEnabled by remember { mutableStateOf(true) }
+  var sliderValue by remember { mutableStateOf(3f) }
+  var selectedChannel by remember { mutableStateOf("release") }
+
+  Column {
+    PreferenceGroupHeader(title = "General")
+    ClickPreferenceItem(
+      title = "Manage Password",
+      summary = "Set up or update your lock password",
+      onClick = {},
+    )
+    SwitchPreferenceItem(
+      title = "Enable Quick Hide",
+      summary = "Show floating shortcut for quick hide",
+      checked = switchEnabled,
+      onCheckedChange = { switchEnabled = it },
+    )
+    SliderPreferenceItem(
+      title = "Auto-hide Delay",
+      summary = "Hide automatically after inactivity",
+      value = sliderValue,
+      valueRange = 1f..10f,
+      steps = 8,
+      valueLabel = { "${it.toInt()} min" },
+      onValueChange = { sliderValue = it },
+    )
+    DropdownPreferenceItem(
+      title = "Update Channel",
+      summary = "Choose release track",
+      selectedValue = selectedChannel,
+      options = listOf("release" to "Release", "beta" to "Beta"),
+      onValueChange = { selectedChannel = it },
+    )
+  }
+}
+
+@Preview(showBackground = true)
+@Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
+@Composable
+private fun SettingsComponentsPreview() {
+  SettingsSectionPreview { SettingsComponentsPreviewContent() }
 }

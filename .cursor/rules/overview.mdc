@@ -91,20 +91,24 @@ The app uses a single `MainActivity` that hosts a bottom-navigation `NavHost` wi
 ### 6. Settings and Preferences
 
 - Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/core/PrefMgr.java`) with SharedPreferences. Hider modes are stored as string keys (e.g. `"root"`, `"shizuku"`).
-- UI is implemented under `app/src/main/java/deltazero/amarok/ui/settings/` with each setting grouped by category.
-- Business logic for settings is in `SettingsViewModel.kt`, which exposes a `SettingsUiState` via `StateFlow` and action methods that update both `PrefMgr` and the UI state.
+- UI is implemented under `app/src/main/java/deltazero/amarok/ui/settings/`.
+- `SettingsRoute.kt` wires the screen to `SettingsViewModel`, platform callbacks, and update checks.
+- `SettingsScreen.kt` owns the scaffold and section ordering.
+- `settings/sections/*.kt` holds one composable file per preference category.
+- `SettingsState.kt` groups `SettingsUiState` into section-specific sub-states; `SettingsActions.kt` mirrors that with section action bundles.
+- Business logic for settings is in `SettingsViewModel.kt`, which exposes a `StateFlow<SettingsUiState>` and action methods that update both `PrefMgr` and the UI state.
 - Activation is coroutine-based: `SettingsViewModel.setAppHiderMode()` calls `suspend fun activate()` in a `viewModelScope.launch`.
 
 #### Preference Categories
 
-Settings sections are defined as composable functions in `SettingsScreen.kt`:
+Settings sections are defined in `settings/sections/`:
 - Workmode, XHide, Privacy, Quick Hide, Appearance, Update, About
 
 #### To Add a New Setting
 
 1. Update `PrefMgr.java` with the new preference getter/setter.
 2. Add the field to `SettingsUiState` and a corresponding action method to `SettingsViewModel`.
-3. Add the setting UI in the appropriate section of `SettingsScreen.kt`. Use `R.drawable.ic_null` as placeholder icon for new options.
+3. Add the setting UI in the appropriate file under `settings/sections/`. Use `R.drawable.ic_null` as placeholder icon for new options.
 
 ### 7. XHide
 
