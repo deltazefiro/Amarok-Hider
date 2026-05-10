@@ -9,8 +9,9 @@ import androidx.work.WorkInfo;
 import androidx.work.WorkManager;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
+import deltazero.amarok.AmarokApplication;
 import deltazero.amarok.core.Hider;
-import deltazero.amarok.core.PrefMgr;
+import deltazero.amarok.core.SettingsSnapshot;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
@@ -35,14 +36,19 @@ public class AutoHideUtil {
   }
 
   public static void setAutoHide(Context context) {
-    if (!PrefMgr.getEnableAutoHide() || Hider.getState() == Hider.State.HIDDEN) return;
-    Log.i(TAG, "Auto hide set. Delay: " + PrefMgr.getAutoHideDelay() + " minutes.");
+    SettingsSnapshot settings =
+        ((AmarokApplication) context.getApplicationContext())
+            .getSettingsRepo()
+            .getSettings()
+            .getValue();
+    if (!settings.getAutoHide() || Hider.getState() == Hider.State.HIDDEN) return;
+    Log.i(TAG, "Auto hide set. Delay: " + settings.getAutoHideDelay() + " minutes.");
     WorkManager.getInstance(context)
         .enqueueUniqueWork(
             AUTO_HIDE_WORK_NAME,
             ExistingWorkPolicy.REPLACE,
             new OneTimeWorkRequest.Builder(AutoHideWorker.class)
-                .setInitialDelay(PrefMgr.getAutoHideDelay(), TimeUnit.MINUTES)
+                .setInitialDelay(settings.getAutoHideDelay(), TimeUnit.MINUTES)
                 .build());
   }
 

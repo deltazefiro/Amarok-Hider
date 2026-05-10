@@ -29,13 +29,16 @@ import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import com.kizitonwose.calendar.core.daysOfWeek
 import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
+import deltazero.amarok.AmarokApplication
 import deltazero.amarok.R
-import deltazero.amarok.core.PrefMgr
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.SwitchLocaleUtil
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.TextStyle as JTextStyle
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 // Calendar dark theme colors (from colors.xml)
 private val CalendarBg = Color(0xFF3A284C) // calendar_bg
@@ -62,12 +65,14 @@ class CalendarActivity : AppCompatActivity() {
       },
     )
 
+    val settingsRepo = (application as AmarokApplication).settingsRepo
     setContent {
       CalendarScreen(
+        settingsRepo = settingsRepo,
         onDismissDisguise = {
           SecurityUtil.dismissDisguise()
           finish()
-        }
+        },
       )
     }
   }
@@ -75,7 +80,7 @@ class CalendarActivity : AppCompatActivity() {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-private fun CalendarScreen(onDismissDisguise: () -> Unit) {
+private fun CalendarScreen(settingsRepo: SettingsRepository, onDismissDisguise: () -> Unit) {
   val context = LocalContext.current
   val currentMonth = remember { YearMonth.now() }
   val startMonth = remember { currentMonth.minusMonths(100) }
@@ -83,6 +88,7 @@ private fun CalendarScreen(onDismissDisguise: () -> Unit) {
   val firstDayOfWeek = remember { firstDayOfWeekFromLocale() }
   val daysOfWeek = remember { daysOfWeek(firstDayOfWeek) }
   val locale = remember { SwitchLocaleUtil.getActiveLocale(context) }
+  val scope = rememberCoroutineScope()
 
   val state =
     rememberCalendarState(
@@ -94,7 +100,9 @@ private fun CalendarScreen(onDismissDisguise: () -> Unit) {
 
   var selectedDate by remember { mutableStateOf<LocalDate?>(null) }
   val visibleMonth = state.firstVisibleMonth
-  var showInstruction by remember { mutableStateOf(PrefMgr.getDoShowQuitDisguiseInstuct()) }
+  var showInstruction by remember {
+    mutableStateOf(settingsRepo.settings.value.doShowQuitDisguiseInstruct)
+  }
 
   // Instruction dialog (replaces Spotlight overlay)
   if (showInstruction) {
@@ -107,7 +115,7 @@ private fun CalendarScreen(onDismissDisguise: () -> Unit) {
         TextButton(
           onClick = {
             showInstruction = false
-            PrefMgr.setDoShowQuitDisguiseInstuct(false)
+            scope.launch(Dispatchers.IO) { settingsRepo.setDoShowQuitDisguiseInstruct(false) }
           }
         ) {
           Text(stringResource(R.string.spotlight_do_not_show_again))

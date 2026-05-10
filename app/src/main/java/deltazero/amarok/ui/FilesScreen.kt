@@ -29,7 +29,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
-import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.SDCardUtil
 import java.io.File
@@ -56,7 +55,7 @@ fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
         return@rememberLauncherForActivityResult
       }
       // Check for path overlap
-      val current = PrefMgr.getHideFilePath()
+      val current = folders
       val p2 = Paths.get(newPath).toAbsolutePath()
       for (p in current) {
         val p1 = Paths.get(p).toAbsolutePath()

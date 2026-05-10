@@ -20,16 +20,18 @@ Core Features
 
 ### 1. Hiding Management
 
-**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`
+**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderStateRepository.kt`, `SettingsRepository.kt`
 
-The `Hider` object owns mutable hide state, persisted mode/error state, active hider strategies, and hide/unhide orchestration using coroutines.
+The DataStore-backed repositories own persisted facts. `Hider` owns active hider strategies, activation errors, transient processing state, and hide/unhide orchestration using coroutines.
 
-- **State:** `Hider.state: StateFlow<State>` — derived from folder/app states via `combine()`. `Hider.getState()` for synchronous reads.
+- **Persisted configuration:** `SettingsRepository.settings: StateFlow<SettingsSnapshot>` owns settings such as hider modes, XHide flags, quick-hide settings, security settings, appearance, and updates.
+- **Persisted hide model:** `HiderStateRepository` owns `managedApps`, `managedFolders`, `hiddenApps`, and `hiddenFolders`. Managed items are user configuration; hidden sets are the persisted result of successful `Hider` operations.
+- **State:** `Hider.state: StateFlow<State>` — derived from repository-backed app/folder state plus transient processing sets. `Hider.getState()` exists for synchronous Java/service reads.
 - **Unified process:** `Hider.processAll(context, Hider.Action)` drives managed app + folder processing; blocking I/O runs on `Dispatchers.IO`.
 - **Targeted operations:** `Hider.processApps()` and `Hider.processFolders()` handle explicit app/folder sets.
-- **Per-item state:** `Hider.appStates` and `Hider.folderStates` are both `StateFlow<Map<String, Hider.State>>`; hidden sets are derived by consumers when needed.
-- **Mode types:** `Hider.appHiderMode: StateFlow<AppHiderMode>`, `Hider.fileHiderMode: StateFlow<FileHiderMode>` — enum-based.
-- **Strategy ownership:** `Hider.init(context)` restores persisted state, builds the selected app/file hiders, and attempts one activation pass; `switchAppHider()` / `switchFileHider()` own mode persistence and re-activation.
+- **Per-item state:** `Hider.appStates` and `Hider.folderStates` are `StateFlow<Map<String, Hider.State>>`, derived from managed sets, hidden sets, and transient processing sets.
+- **Mode source of truth:** hider modes are read from `SettingsRepository.settings`; ViewModels should use settings flows for display. `Hider` keeps only active strategy instances and observes settings changes to rebuild/reactivate them.
+- **Strategy ownership:** `Hider.init(context, settingsRepo, hiderStateRepo)` builds the selected app/file hiders, observes relevant settings, and attempts one activation pass. `switchAppHider()` / `switchFileHider()` only persist desired modes; the settings observer rebuilds/reactivates strategies.
 - **Java interop:** `Hider.getStateLiveData()` / `Hider.getAppStatesLiveData()` expose LiveData bridges for Java consumers.
 
 ### 2. File Hiding Implementations
@@ -88,16 +90,17 @@ The app uses a single `MainActivity` that hosts a bottom-navigation `NavHost` wi
 
 **App picker:** `AppPickerScreen.kt` — navigated to from `AppsScreen`'s edit button via NavHost route `app_picker`.
 
-### 6. Settings and Preferences
+### 6. Settings and Persistence
 
-- Settings persistence is handled through the `PrefMgr` class (`app/src/main/java/deltazero/amarok/core/PrefMgr.java`) with SharedPreferences. Hider modes are stored as string keys (e.g. `"root"`, `"shizuku"`).
+- Settings persistence is handled by `SettingsRepository.kt` using Preferences DataStore. It exposes a typed `SettingsSnapshot` flow and setter methods.
+- Hide-model persistence is handled by `HiderStateRepository.kt` using Preferences DataStore. It exposes managed/hidden app and folder flows plus managed-item mutation helpers.
 - UI is implemented under `app/src/main/java/deltazero/amarok/ui/settings/`.
 - `SettingsRoute.kt` wires the screen to `SettingsViewModel`, platform callbacks, and update checks.
 - `SettingsScreen.kt` owns the scaffold and section ordering.
 - `settings/sections/*.kt` holds one composable file per preference category.
 - `SettingsState.kt` groups `SettingsUiState` into section-specific sub-states; `SettingsActions.kt` mirrors that with section action bundles.
-- Business logic for settings is in `SettingsViewModel.kt`, which exposes a `StateFlow<SettingsUiState>` and action methods that update both `PrefMgr` and the UI state.
-- Activation is coroutine-based: `SettingsViewModel.setAppHiderMode()` calls `suspend fun activate()` in a `viewModelScope.launch`.
+- Business logic for settings is in `SettingsViewModel.kt`, which derives `SettingsUiState` from repository and `Hider` flows. Actions persist settings through repositories.
+- Activation is flow-driven: changing persisted app/file hider mode updates `SettingsRepository`; `Hider` observes the settings flow, rebuilds the active strategy, and updates activation error flows.
 
 #### Preference Categories
 
@@ -106,8 +109,8 @@ Settings sections are defined in `settings/sections/`:
 
 #### To Add a New Setting
 
-1. Update `PrefMgr.java` with the new preference getter/setter.
-2. Add the field to `SettingsUiState` and a corresponding action method to `SettingsViewModel`.
+1. Add a key, field, default, decoder entry, and setter in `SettingsRepository.kt`.
+2. Add the field to the appropriate section state in `SettingsState.kt` and a corresponding action method to `SettingsViewModel`.
 3. Add the setting UI in the appropriate file under `settings/sections/`. Use `R.drawable.ic_null` as placeholder icon for new options.
 
 ### 7. XHide
@@ -130,17 +133,18 @@ The main app and the module run in different processes, so they communicate with
 
 - **XHidePrefBridge:**
   - Receives module status/version (`isModuleActive`, `xposedVersion`)
-  - Sends updated app settings with `commitNewValues()`
+  - Observes `HiderStateRepository.hiddenApps` and `SettingsRepository.settings.xHideEnabled`
+  - Sends updated module preferences with `commitNewValues()`
 - **XPref:** Manages module-side cached preferences.
 
-When a hide/unhide operation is triggered, the main app will call `XHidePrefBridge.commitNewValues()` to activate the module for system queries filtering.
+When hidden apps or XHide enablement changes, the bridge updates module preferences for system query filtering.
 
 ### 8. Quick Hide
 
 Provides multiple triggers for instant hide/unhide operations:
 
 - **Quick Settings Tile:** `QSTileService.java`
-- **Quick Hide Service:** `QuickHideService.java` owns the foreground service plus its `init()/sync()/refresh()` state observer hooks
+- **Quick Hide Service:** `QuickHideService.kt` owns the foreground service and observes settings plus `Hider.state` to start/stop/react to panic button changes
 - **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.java` and `AutoHideUtil.java`
 - **Intent API:** Managed by `ActionReceiver.java`
 - **Widget:** `ToggleWidget.java`

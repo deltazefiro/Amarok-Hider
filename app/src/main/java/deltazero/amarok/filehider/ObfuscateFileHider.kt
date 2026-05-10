@@ -3,9 +3,9 @@ package deltazero.amarok.filehider
 import android.content.Context
 import android.util.Base64
 import android.util.Log
+import deltazero.amarok.AmarokApplication
 import deltazero.amarok.core.ActivationResult
 import deltazero.amarok.core.Hider
-import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.utils.FileHiderUtil
 import deltazero.amarok.utils.MediaStoreHelper
 import java.io.IOException
@@ -23,9 +23,11 @@ class ObfuscateFileHider(context: Context) : FileHider {
   override val mode = FileHiderMode.OBFUSCATE
   override val name = "Obfuscate"
 
-  private val processHeader: Boolean = PrefMgr.getEnableObfuscateFileHeader()
-  private val processTextFile: Boolean = PrefMgr.getEnableObfuscateTextFile()
-  private val processTextFileEnhanced: Boolean = PrefMgr.getEnableObfuscateTextFileEnhanced()
+  private val settings =
+    (context.applicationContext as AmarokApplication).settingsRepo.settings.value
+  private val processHeader: Boolean = settings.obfuscateFileHeader
+  private val processTextFile: Boolean = settings.obfuscateTextFile
+  private val processTextFileEnhanced: Boolean = settings.obfuscateTextFileEnhanced
   private val context: Context = context
 
   override suspend fun activate() = ActivationResult(success = true, msgResId = 0)

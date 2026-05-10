@@ -1,66 +1,105 @@
 package deltazero.amarok.ui.settings
 
 import deltazero.amarok.apphider.AppHiderMode
-import deltazero.amarok.core.Hider
-import deltazero.amarok.core.PrefMgr
+import deltazero.amarok.core.SettingsSnapshot
 import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.utils.AppCenterUtil
 import deltazero.amarok.utils.XHidePrefBridge
 
-private fun obfuscateLevelFromPrefs(): Int =
-  when {
-    PrefMgr.getEnableObfuscateTextFileEnhanced() -> 3
-    PrefMgr.getEnableObfuscateTextFile() -> 2
-    PrefMgr.getEnableObfuscateFileHeader() -> 1
-    else -> 0
-  }
-
 data class WorkmodeSettingsState(
-  val appHiderMode: AppHiderMode = Hider.appHiderMode.value,
-  val fileHiderMode: FileHiderMode = Hider.fileHiderMode.value,
+  val appHiderMode: AppHiderMode = AppHiderMode.NONE,
+  val fileHiderMode: FileHiderMode = FileHiderMode.NONE,
   val appHiderName: String = "",
   val fileHiderName: String = "",
   val appHiderErrorResId: Int = 0,
   val fileHiderErrorResId: Int = 0,
-  val obfuscateLevel: Int = obfuscateLevelFromPrefs(),
+  val obfuscateLevel: Int = 0,
 )
 
 data class XHideSettingsState(
   val isAvailable: Boolean = XHidePrefBridge.isAvailable,
   val xposedVersion: Int = XHidePrefBridge.xposedVersion,
-  val enabled: Boolean = PrefMgr.isXHideEnabled(),
-  val disableOnlyWithXHide: Boolean = PrefMgr.getDisableOnlyWithXHide(),
-)
+  val enabled: Boolean = false,
+  val disableOnlyWithXHide: Boolean = false,
+) {
+  constructor(
+    settings: SettingsSnapshot
+  ) : this(
+    isAvailable = XHidePrefBridge.isAvailable,
+    xposedVersion = XHidePrefBridge.xposedVersion,
+    enabled = settings.xHideEnabled,
+    disableOnlyWithXHide = settings.disableOnlyWithXHide,
+  )
+}
 
 data class PrivacySettingsState(
-  val hasPassword: Boolean = PrefMgr.getAmarokPassword() != null,
-  val biometricAuth: Boolean = PrefMgr.getEnableAmarokBiometricAuth(),
-  val disguise: Boolean = PrefMgr.getEnableDisguise(),
-  val hideIcon: Boolean = PrefMgr.getHideAmarokIcon(),
-  val hideFromRecents: Boolean = PrefMgr.getHideFromRecents(),
-  val blockScreenshots: Boolean = PrefMgr.getBlockScreenshots(),
-  val disableSecurityWhenUnhidden: Boolean = PrefMgr.getDisableSecurityWhenUnhidden(),
-  val disableToasts: Boolean = PrefMgr.getDisableToasts(),
-)
+  val hasPassword: Boolean = false,
+  val biometricAuth: Boolean = false,
+  val disguise: Boolean = false,
+  val hideIcon: Boolean = false,
+  val hideFromRecents: Boolean = false,
+  val blockScreenshots: Boolean = false,
+  val disableSecurityWhenUnhidden: Boolean = false,
+  val disableToasts: Boolean = false,
+) {
+  constructor(
+    settings: SettingsSnapshot
+  ) : this(
+    hasPassword = settings.password != null,
+    biometricAuth = settings.biometricAuth,
+    disguise = settings.disguise,
+    hideIcon = settings.hideAmarokIcon,
+    hideFromRecents = settings.hideFromRecents,
+    blockScreenshots = settings.blockScreenshots,
+    disableSecurityWhenUnhidden = settings.disableSecurityWhenUnhidden,
+    disableToasts = settings.disableToasts,
+  )
+}
 
 data class QuickHideSettingsState(
-  val quickHideService: Boolean = PrefMgr.getEnableQuickHideService(),
-  val panicButton: Boolean = PrefMgr.getEnablePanicButton(),
-  val autoHide: Boolean = PrefMgr.getEnableAutoHide(),
-  val autoHideDelay: Float = PrefMgr.getAutoHideDelay().toFloat(),
-)
+  val quickHideService: Boolean = false,
+  val panicButton: Boolean = false,
+  val autoHide: Boolean = false,
+  val autoHideDelay: Float = 0f,
+) {
+  constructor(
+    settings: SettingsSnapshot
+  ) : this(
+    quickHideService = settings.quickHideService,
+    panicButton = settings.panicButton,
+    autoHide = settings.autoHide,
+    autoHideDelay = settings.autoHideDelay.toFloat(),
+  )
+}
 
 data class AppearanceSettingsState(
-  val dynamicColor: Boolean = PrefMgr.getEnableDynamicColor(),
-  val darkThemeMode: Int = PrefMgr.getDarkTheme(),
-  val invertTileColor: Boolean = PrefMgr.getInvertTileColor(),
-)
+  val dynamicColor: Boolean = false,
+  val darkThemeMode: Int = -1,
+  val invertTileColor: Boolean = false,
+) {
+  constructor(
+    settings: SettingsSnapshot
+  ) : this(
+    dynamicColor = settings.dynamicColor,
+    darkThemeMode = settings.darkTheme,
+    invertTileColor = settings.invertTileColor,
+  )
+}
 
 data class UpdateSettingsState(
-  val updateChannel: String = PrefMgr.getUpdateChannel().name,
-  val autoUpdate: Boolean = PrefMgr.getEnableAutoUpdate(),
+  val updateChannel: String = "",
+  val autoUpdate: Boolean = true,
   val appVersionName: String = "",
-)
+) {
+  constructor(
+    settings: SettingsSnapshot,
+    appVersionName: String,
+  ) : this(
+    updateChannel = settings.updateChannel.name,
+    autoUpdate = settings.autoUpdate,
+    appVersionName = appVersionName,
+  )
+}
 
 data class AboutSettingsState(
   val analyticsEnabled: Boolean = AppCenterUtil.isAnalyticsEnabled(),

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -21,15 +22,16 @@ import com.hjq.permissions.OnPermissionCallback
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.QuickHideService
+import deltazero.amarok.AmarokApplication
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
-import deltazero.amarok.core.PrefMgr
 import deltazero.amarok.ui.settings.SettingsScreen
 import deltazero.amarok.ui.settings.SettingsViewModel
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.PermissionUtil
 import deltazero.amarok.utils.UpdateUtil
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class MainActivity : AmarokActivity() {
 
@@ -121,6 +123,7 @@ class MainActivity : AmarokActivity() {
                   )
                 },
                 onShowColorPicker = {
+                  val settingsRepo = (application as AmarokApplication).settingsRepo
                   val builder =
                     ColorPickerDialog.Builder(this@MainActivity)
                       .setTitle(R.string.panic_button_color)
@@ -128,8 +131,9 @@ class MainActivity : AmarokActivity() {
                       .setPositiveButton(
                         getString(android.R.string.ok),
                         ColorEnvelopeListener { envelope, _ ->
-                          PrefMgr.setPanicButtonColor(envelope.color)
-                          QuickHideService.refresh(this@MainActivity)
+                          lifecycleScope.launch(Dispatchers.IO) {
+                            settingsRepo.setPanicButtonColor(envelope.color)
+                          }
                         },
                       )
                       .setNegativeButton(getString(android.R.string.cancel)) { dialog, _ ->
@@ -138,7 +142,9 @@ class MainActivity : AmarokActivity() {
                       .attachAlphaSlideBar(true)
                       .attachBrightnessSlideBar(true)
                       .setBottomSpace(12)
-                  builder.colorPickerView.setInitialColor(PrefMgr.getPanicButtonColor())
+                  builder.colorPickerView.setInitialColor(
+                    settingsRepo.settings.value.panicButtonColor
+                  )
                   builder.show()
                 },
                 onSwitchLocale = {
@@ -153,7 +159,8 @@ class MainActivity : AmarokActivity() {
     }
 
     // Show welcome dialog
-    if (PrefMgr.getShowWelcome()) {
+    val settingsRepo = (application as AmarokApplication).settingsRepo
+    if (settingsRepo.settings.value.showWelcome) {
       MaterialAlertDialogBuilder(this)
         .setTitle(R.string.welcome_title)
         .setMessage(R.string.welcome_msg)
@@ -166,11 +173,11 @@ class MainActivity : AmarokActivity() {
         }
         .setOnCancelListener { PermissionUtil.requestStoragePermission(this) }
         .show()
-      PrefMgr.setShowWelcome(false)
+      lifecycleScope.launch(Dispatchers.IO) { settingsRepo.setShowWelcome(false) }
     } else {
       PermissionUtil.requestStoragePermission(this)
     }
-    if (PrefMgr.getEnableAutoUpdate()) {
+    if (settingsRepo.settings.value.autoUpdate) {
       UpdateUtil.checkAndNotify(this, true)
     }
   }

@@ -44,7 +44,7 @@ fun AppPickerScreen(onBack: () -> Unit, viewModel: AppPickerViewModel = viewMode
     onSearchQueryChange = viewModel::setSearchQuery,
     onToggleSystemApps = viewModel::requestToggleSystemApps,
     onToggleRootApps = viewModel::requestToggleRootApps,
-    onToggleApp = viewModel::toggleAppHidden,
+    onToggleApp = viewModel::toggleManagedApp,
     onConfirmWarning = viewModel::confirmWarning,
     onDismissWarning = viewModel::dismissWarning,
   )
@@ -155,7 +155,7 @@ fun AppPickerScreen(
     ) {
       LazyColumn(modifier = Modifier.fillMaxSize()) {
         items(state.apps, key = { it.packageName() }) { app ->
-          val isActuallyHidden = state.actuallyHiddenApps.contains(app.packageName())
+          val isHidden = state.hiddenApps.contains(app.packageName())
           AppPickerItem(
             label = app.label(),
             packageName = app.packageName(),
@@ -166,8 +166,8 @@ fun AppPickerScreen(
                 modifier = Modifier.size(40.dp),
               )
             },
-            isHidden = state.hiddenApps.contains(app.packageName()),
-            enabled = !isActuallyHidden,
+            isManaged = state.managedApps.contains(app.packageName()),
+            enabled = !isHidden,
             onToggle = { onToggleApp(app) },
           )
           HorizontalDivider()
@@ -227,7 +227,7 @@ private fun AppPickerItem(
   label: String,
   packageName: String,
   icon: @Composable () -> Unit,
-  isHidden: Boolean,
+  isManaged: Boolean,
   enabled: Boolean,
   onToggle: () -> Unit,
 ) {
@@ -262,7 +262,7 @@ private fun AppPickerItem(
         overflow = TextOverflow.Ellipsis,
       )
     }
-    Checkbox(checked = isHidden, enabled = enabled, onCheckedChange = null)
+    Checkbox(checked = isManaged, enabled = enabled, onCheckedChange = null)
   }
 }
 
@@ -289,7 +289,7 @@ private fun AppPickerItemsPreview() {
           label = "Gallery",
           packageName = "com.android.gallery3d",
           icon = { PreviewIcon() },
-          isHidden = false,
+          isManaged = false,
           enabled = true,
           onToggle = {},
         )
@@ -298,7 +298,7 @@ private fun AppPickerItemsPreview() {
           label = "Messages",
           packageName = "com.android.mms",
           icon = { PreviewIcon() },
-          isHidden = true,
+          isManaged = true,
           enabled = true,
           onToggle = {},
         )
@@ -307,7 +307,7 @@ private fun AppPickerItemsPreview() {
           label = "Calculator",
           packageName = "com.android.calculator2",
           icon = { PreviewIcon() },
-          isHidden = true,
+          isManaged = true,
           enabled = false,
           onToggle = {},
         )
