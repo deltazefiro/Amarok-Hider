@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
+import deltazero.amarok.AmarokApplication;
 import deltazero.amarok.R;
 import deltazero.amarok.core.Hider;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
@@ -26,11 +27,14 @@ public class ToggleWidget extends AppWidgetProvider {
    */
   public static void init(Context context) {
     assert Hider.initialized;
+    if (initialized) return;
+
+    Context appContext = context.getApplicationContext();
     Hider.getStateLiveData()
         .observeForever(
             state -> {
               Log.i(TAG, "State changed, updating all widgets.");
-              updateAllWidgets(context);
+              updateAllWidgets(appContext);
             });
     initialized = true;
   }
@@ -63,7 +67,7 @@ public class ToggleWidget extends AppWidgetProvider {
       }
 
       if (Hider.getState() == Hider.State.HIDDEN) {
-        if (SecurityUtil.isUnlockRequired()) {
+        if (SecurityUtil.isUnlockRequired((AmarokApplication) context.getApplicationContext())) {
           Log.i(TAG, "Security unlock required. Launching authentication activity.");
           context.startActivity(
               new Intent(context, SecurityAuthForQSActivity.class)

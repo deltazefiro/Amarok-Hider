@@ -3,7 +3,6 @@ package deltazero.amarok.utils;
 import android.app.Application;
 import com.microsoft.appcenter.AppCenter;
 import com.microsoft.appcenter.crashes.Crashes;
-import deltazero.amarok.core.PrefMgr;
 import kotlin.NotImplementedError;
 
 public class AppCenterUtil {
@@ -26,8 +25,8 @@ public class AppCenterUtil {
     return Crashes.isEnabled().get();
   }
 
-  public static void startAppCenter(Application application) {
-    assert PrefMgr.initialized;
+  public static void startAppCenter(
+      Application application, boolean autoUpdateEnabled, Runnable onDisableAutoUpdate) {
     AppCenter.start(application, appSecret, Crashes.class);
   }
 

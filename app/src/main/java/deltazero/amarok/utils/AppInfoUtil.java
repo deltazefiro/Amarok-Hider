@@ -9,8 +9,9 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
 import androidx.annotation.NonNull;
+import deltazero.amarok.AmarokApplication;
 import deltazero.amarok.R;
-import deltazero.amarok.core.PrefMgr;
+import deltazero.amarok.core.HiderStateRepository;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -21,12 +22,14 @@ public class AppInfoUtil {
   private final PackageManager pkgMgr;
   private volatile List<AppInfo> appInfoList = List.of();
   private final Set<String> predefinedRootApps;
+  private final HiderStateRepository hiderStateRepo;
 
   public AppInfoUtil(Context context) {
     pkgMgr = context.getPackageManager();
     predefinedRootApps =
         new HashSet<>(
             Arrays.asList(context.getResources().getStringArray(R.array.root_app_packages)));
+    hiderStateRepo = ((AmarokApplication) context.getApplicationContext()).getHiderStateRepo();
   }
 
   private static boolean containsIgnoreCase(String str, String searchStr) {
@@ -46,7 +49,7 @@ public class AppInfoUtil {
   }
 
   public void refresh() {
-    Set<String> hiddenApps = PrefMgr.getHideApps();
+    Set<String> hiddenApps = hiderStateRepo.getManagedApps().getValue();
 
     // Get applications info
     List<ApplicationInfo> installedApplications =
@@ -86,7 +89,7 @@ public class AppInfoUtil {
   public List<AppInfo> getFilteredApps(
       String query, boolean includeSystemApps, boolean includeRootApps) {
     List<AppInfo> filtered = new ArrayList<>();
-    Set<String> hiddenApps = PrefMgr.getHideApps();
+    Set<String> hiddenApps = hiderStateRepo.getManagedApps().getValue();
 
     for (AppInfo appInfo : appInfoList) {
       boolean query_filter_result =

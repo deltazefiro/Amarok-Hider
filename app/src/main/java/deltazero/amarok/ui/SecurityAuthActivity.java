@@ -5,8 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.biometric.BiometricPrompt;
+import deltazero.amarok.AmarokApplication;
 import deltazero.amarok.R;
-import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.utils.SecurityUtil;
 
 public class SecurityAuthActivity extends AppCompatActivity {
@@ -57,9 +57,10 @@ public class SecurityAuthActivity extends AppCompatActivity {
 
   @Override
   protected void onResume() {
-    if (!SecurityUtil.isUnlockRequired()) finish();
+    AmarokApplication app = (AmarokApplication) getApplication();
+    if (!SecurityUtil.isUnlockRequired(app)) finish();
     super.onResume();
-    if (PrefMgr.getEnableAmarokBiometricAuth()) biometricAuthenticate();
+    if (app.getSettingsRepo().getSettings().getValue().getBiometricAuth()) biometricAuthenticate();
     else passwordAuthenticate();
   }
 

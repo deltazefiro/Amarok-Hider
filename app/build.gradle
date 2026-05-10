@@ -161,8 +161,10 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.9.0'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.7'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'androidx.work:work-runtime:2.11.0'
+    implementation 'androidx.datastore:datastore-preferences:1.1.4'
     implementation 'org.apache.maven:maven-artifact:3.9.11'
 
     // F-Droid disallow `api.xposed.info` since it's not a "Trusted Maven Repository".

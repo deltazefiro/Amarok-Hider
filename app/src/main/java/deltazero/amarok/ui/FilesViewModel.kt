@@ -3,19 +3,28 @@ package deltazero.amarok.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import deltazero.amarok.AmarokApplication
 import deltazero.amarok.core.Hider
-import deltazero.amarok.core.PrefMgr
-import kotlinx.coroutines.flow.MutableStateFlow
+import deltazero.amarok.core.HiderStateRepository
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.launch
 
 class FilesViewModel(application: Application) : AndroidViewModel(application) {
 
-  private val _managedFolders = MutableStateFlow(PrefMgr.getHideFilePath().toList())
-  val managedFolders: StateFlow<List<String>> = _managedFolders.asStateFlow()
+  private val hiderStateRepo: HiderStateRepository =
+    (application as AmarokApplication).hiderStateRepo
+
+  val managedFolders: StateFlow<List<String>> =
+    hiderStateRepo.managedFolders
+      .map { it.toList() }
+      .stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5000),
+        hiderStateRepo.managedFolders.value.toList(),
+      )
 
   private val folderStatesFlow =
     Hider.folderStates.stateIn(
@@ -44,7 +53,7 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
 
   fun toggleAllFolders() {
     val hidden = hiddenFolders.value
-    val managed = PrefMgr.getHideFilePath()
+    val managed = hiderStateRepo.managedFolders.value
     val ctx = getApplication<Application>()
 
     if (hidden.containsAll(managed)) {
@@ -55,16 +64,16 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
   }
 
   fun addFolder(path: String) {
-    val current = PrefMgr.getHideFilePath()
-    current.add(path)
-    PrefMgr.setHideFilePath(current)
-    _managedFolders.value = current.toList()
+    viewModelScope.launch {
+      if (path in hiderStateRepo.managedFolders.value) return@launch
+      hiderStateRepo.addManagedFolder(path)
+    }
   }
 
   fun removeFolder(path: String) {
-    val current = PrefMgr.getHideFilePath()
-    current.remove(path)
-    PrefMgr.setHideFilePath(current)
-    _managedFolders.value = current.toList()
+    viewModelScope.launch {
+      if (path !in hiderStateRepo.managedFolders.value) return@launch
+      hiderStateRepo.removeManagedFolder(path)
+    }
   }
 }

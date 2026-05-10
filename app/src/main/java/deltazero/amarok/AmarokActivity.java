@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import deltazero.amarok.core.PrefMgr;
+import deltazero.amarok.core.SettingsSnapshot;
 import deltazero.amarok.ui.CalendarActivity;
 import deltazero.amarok.ui.SecurityAuthActivity;
 import deltazero.amarok.utils.SecurityUtil;
@@ -24,11 +24,13 @@ public class AmarokActivity extends AppCompatActivity {
 
   @Override
   protected void onStart() {
-    if (PrefMgr.getBlockScreenshots())
+    SettingsSnapshot settings =
+        ((AmarokApplication) getApplication()).getSettingsRepo().getSettings().getValue();
+    if (settings.getBlockScreenshots())
       getWindow()
           .setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE);
 
-    if (PrefMgr.getHideFromRecents()) {
+    if (settings.getHideFromRecents()) {
       ActivityManager am = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
       if (am != null) {
         List<ActivityManager.AppTask> tasks = am.getAppTasks();
@@ -43,8 +45,9 @@ public class AmarokActivity extends AppCompatActivity {
 
   @Override
   protected void onResume() {
-    if (SecurityUtil.isDisguiseNeeded()) startActivity(new Intent(this, CalendarActivity.class));
-    else if (SecurityUtil.isUnlockRequired())
+    AmarokApplication app = (AmarokApplication) getApplication();
+    if (SecurityUtil.isDisguiseNeeded(app)) startActivity(new Intent(this, CalendarActivity.class));
+    else if (SecurityUtil.isUnlockRequired(app))
       startActivity(new Intent(this, SecurityAuthActivity.class));
     super.onResume();
   }

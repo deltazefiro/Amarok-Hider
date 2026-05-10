@@ -13,14 +13,18 @@ import com.microsoft.appcenter.distribute.DistributeListener;
 import com.microsoft.appcenter.distribute.ReleaseDetails;
 import com.microsoft.appcenter.distribute.UpdateAction;
 import deltazero.amarok.R;
-import deltazero.amarok.core.PrefMgr;
-import deltazero.amarok.ui.settings.SettingsActivity;
 
 public class AppCenterUtil {
 
   private static final String appSecret = "6bcd9547-9df2-4023-bfcd-6e1a0f0f9e12";
 
   public static class AmarokDistributeListener implements DistributeListener {
+
+    private final Runnable onDisableAutoUpdate;
+
+    public AmarokDistributeListener(Runnable onDisableAutoUpdate) {
+      this.onDisableAutoUpdate = onDisableAutoUpdate;
+    }
 
     @Override
     public boolean onReleaseAvailable(Activity activity, ReleaseDetails releaseDetails) {
@@ -41,7 +45,7 @@ public class AppCenterUtil {
             .setNeutralButton(
                 R.string.never,
                 (dialog, which) -> {
-                  PrefMgr.setEnableAutoUpdate(false);
+                  onDisableAutoUpdate.run();
                   Distribute.notifyUpdateAction(UpdateAction.POSTPONE);
                 })
             .setNegativeButton(
@@ -61,9 +65,6 @@ public class AppCenterUtil {
 
     @Override
     public void onNoReleaseAvailable(Activity activity) {
-      if (activity instanceof SettingsActivity)
-        Toast.makeText(activity, activity.getString(R.string.no_update_ava), Toast.LENGTH_SHORT)
-            .show();
       Log.i("CheckUpdate", "No available update yet.");
     }
   }
@@ -88,13 +89,12 @@ public class AppCenterUtil {
     return Crashes.isEnabled().get();
   }
 
-  public static void startAppCenter(Application application) {
-    assert PrefMgr.initialized;
-
+  public static void startAppCenter(
+      Application application, boolean autoUpdateEnabled, Runnable onDisableAutoUpdate) {
     Distribute.setEnabledForDebuggableBuild(false);
-    if (!PrefMgr.getEnableAutoUpdate()) Distribute.disableAutomaticCheckForUpdate();
+    if (!autoUpdateEnabled) Distribute.disableAutomaticCheckForUpdate();
 
-    Distribute.setListener(new AmarokDistributeListener());
+    Distribute.setListener(new AmarokDistributeListener(onDisableAutoUpdate));
     AppCenter.start(application, appSecret, Analytics.class, Crashes.class, Distribute.class);
   }
 

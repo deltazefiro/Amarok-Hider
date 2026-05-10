@@ -11,8 +11,8 @@ import androidx.annotation.Nullable;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import deltazero.amarok.AmarokApplication;
 import deltazero.amarok.R;
-import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.utils.HashUtil;
 
 public class PasswordAuthFragment extends BottomSheetDialogFragment {
@@ -71,7 +71,12 @@ public class PasswordAuthFragment extends BottomSheetDialogFragment {
 
   private void verify() {
 
-    String password = PrefMgr.getAmarokPassword();
+    String password =
+        ((AmarokApplication) requireActivity().getApplication())
+            .getSettingsRepo()
+            .getSettings()
+            .getValue()
+            .getPassword();
     assert etPassword.getText() != null;
 
     if (password == null

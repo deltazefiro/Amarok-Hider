@@ -1,7 +1,8 @@
 package deltazero.amarok.utils;
 
+import deltazero.amarok.AmarokApplication;
 import deltazero.amarok.core.Hider;
-import deltazero.amarok.core.PrefMgr;
+import deltazero.amarok.core.SettingsSnapshot;
 
 public class SecurityUtil {
   private static boolean locked = true;
@@ -20,15 +21,17 @@ public class SecurityUtil {
     disguised = false;
   }
 
-  public static boolean isDisguiseNeeded() {
-    if (PrefMgr.getDisableSecurityWhenUnhidden() && Hider.getState() == Hider.State.VISIBLE)
+  public static boolean isDisguiseNeeded(AmarokApplication app) {
+    SettingsSnapshot settings = app.getSettingsRepo().getSettings().getValue();
+    if (settings.getDisableSecurityWhenUnhidden() && Hider.getState() == Hider.State.VISIBLE)
       return false;
-    return PrefMgr.getEnableDisguise() && disguised;
+    return settings.getDisguise() && disguised;
   }
 
-  public static boolean isUnlockRequired() {
-    if (PrefMgr.getDisableSecurityWhenUnhidden() && Hider.getState() == Hider.State.VISIBLE)
+  public static boolean isUnlockRequired(AmarokApplication app) {
+    SettingsSnapshot settings = app.getSettingsRepo().getSettings().getValue();
+    if (settings.getDisableSecurityWhenUnhidden() && Hider.getState() == Hider.State.VISIBLE)
       return false;
-    return PrefMgr.getAmarokPassword() != null && locked;
+    return settings.getPassword() != null && locked;
   }
 }

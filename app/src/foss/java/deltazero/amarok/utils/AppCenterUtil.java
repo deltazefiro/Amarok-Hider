@@ -14,7 +14,8 @@ public class AppCenterUtil {
     return false;
   }
 
-  public static void startAppCenter(Application application) {}
+  public static void startAppCenter(
+      Application application, boolean autoUpdateEnabled, Runnable onDisableAutoUpdate) {}
 
   public static boolean isAvailable() {
     return false;

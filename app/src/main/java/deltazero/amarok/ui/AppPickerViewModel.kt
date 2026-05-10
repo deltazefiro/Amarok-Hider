@@ -3,8 +3,9 @@ package deltazero.amarok.ui
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import deltazero.amarok.AmarokApplication
 import deltazero.amarok.core.Hider
-import deltazero.amarok.core.PrefMgr
+import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.utils.AppInfoUtil
 import deltazero.amarok.utils.AppInfoUtil.AppInfo
 import kotlinx.coroutines.Dispatchers
@@ -18,8 +19,8 @@ import kotlinx.coroutines.launch
 
 data class AppPickerUiState(
   val apps: List<AppInfo> = emptyList(),
+  val managedApps: Set<String> = emptySet(),
   val hiddenApps: Set<String> = emptySet(),
-  val actuallyHiddenApps: Set<String> = emptySet(),
   val isLoading: Boolean = false,
   val searchQuery: String = "",
   val showSystemApps: Boolean = false,
@@ -34,17 +35,18 @@ enum class WarningType {
 
 class AppPickerViewModel(application: Application) : AndroidViewModel(application) {
   private val appInfoUtil = AppInfoUtil(application)
+  private val hiderStateRepo: HiderStateRepository =
+    (application as AmarokApplication).hiderStateRepo
 
   private val _isLoading = MutableStateFlow(false)
   private val _searchQuery = MutableStateFlow("")
   private val _showSystemApps = MutableStateFlow(false)
   private val _showRootApps = MutableStateFlow(false)
-  private val _hiddenApps = MutableStateFlow<Set<String>>(emptySet())
   private val _pendingWarning = MutableStateFlow<WarningType?>(null)
 
   private val _allApps = MutableStateFlow<List<AppInfo>>(emptyList())
 
-  private val _actuallyHiddenApps =
+  private val _hiddenApps =
     Hider.appStates
       .map { states -> states.filterValues { it == Hider.State.HIDDEN }.keys }
       .stateIn(
@@ -60,30 +62,27 @@ class AppPickerViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
   val uiState: StateFlow<AppPickerUiState> =
-    combine(_filteredApps, _hiddenApps, _isLoading, _searchQuery, _pendingWarning) {
+    combine(_filteredApps, hiderStateRepo.managedApps, _isLoading, _searchQuery, _pendingWarning) {
         apps,
-        hidden,
+        managed,
         loading,
         query,
         warning ->
         AppPickerUiState(
           apps = apps,
-          hiddenApps = hidden,
+          managedApps = managed,
           isLoading = loading,
           searchQuery = query,
           pendingWarning = warning,
         )
       }
-      .combine(_actuallyHiddenApps) { state, actuallyHidden ->
-        state.copy(actuallyHiddenApps = actuallyHidden)
-      }
+      .combine(_hiddenApps) { state, hidden -> state.copy(hiddenApps = hidden) }
       .combine(combine(_showSystemApps, _showRootApps, ::Pair)) { state, (showSystem, showRoot) ->
         state.copy(showSystemApps = showSystem, showRootApps = showRoot)
       }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), AppPickerUiState())
 
   init {
-    _hiddenApps.value = PrefMgr.getHideApps().toSet()
     refreshApps()
   }
 
@@ -120,15 +119,15 @@ class AppPickerViewModel(application: Application) : AndroidViewModel(applicatio
     _pendingWarning.value = null
   }
 
-  fun toggleAppHidden(app: AppInfo) {
-    val hiddenApps = PrefMgr.getHideApps()
-    if (hiddenApps.contains(app.packageName())) {
-      hiddenApps.remove(app.packageName())
-    } else {
-      hiddenApps.add(app.packageName())
+  fun toggleManagedApp(app: AppInfo) {
+    val pkgName = app.packageName()
+    viewModelScope.launch {
+      if (pkgName in hiderStateRepo.managedApps.value) {
+        hiderStateRepo.removeManagedApp(pkgName)
+      } else {
+        hiderStateRepo.addManagedApp(pkgName)
+      }
     }
-    PrefMgr.setHideApps(hiddenApps)
-    _hiddenApps.value = hiddenApps.toSet()
   }
 
   fun refreshApps() {

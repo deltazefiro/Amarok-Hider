@@ -10,7 +10,6 @@ import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 import android.util.Log;
 import deltazero.amarok.core.Hider;
-import deltazero.amarok.core.PrefMgr;
 import deltazero.amarok.ui.SecurityAuthForQSActivity;
 import deltazero.amarok.utils.SecurityUtil;
 
@@ -55,7 +54,8 @@ public class QSTileService extends TileService {
           switch (Hider.getState()) {
             case VISIBLE -> Hider.processAll(this, Hider.Action.HIDE);
             case HIDDEN -> {
-              if (SecurityUtil.isUnlockRequired()) startAuthThenUnhide();
+              if (SecurityUtil.isUnlockRequired((AmarokApplication) getApplication()))
+                startAuthThenUnhide();
               else Hider.processAll(this, Hider.Action.UNHIDE);
             }
             default -> throw new IllegalStateException("Unexpected value: " + Hider.getState());
@@ -71,17 +71,22 @@ public class QSTileService extends TileService {
    */
   public static void init(Context context) {
     assert Hider.initialized;
-    Hider.getStateLiveData()
-        .observeForever(
-            state -> {
-              try {
-                TileService.requestListeningState(
-                    context, new ComponentName(context, QSTileService.class));
-              } catch (IllegalArgumentException e) {
-                Log.w(TAG, "QuickSetting is unavailable when running in an Android work profile.");
-              }
-            });
+    if (initialized) return;
+
+    Context appContext = context.getApplicationContext();
+    Hider.getStateLiveData().observeForever(state -> requestListeningState(appContext));
+    ((AmarokApplication) appContext)
+        .getInvertTileColorLiveData()
+        .observeForever(invertTileColor -> requestListeningState(appContext));
     initialized = true;
+  }
+
+  private static void requestListeningState(Context context) {
+    try {
+      TileService.requestListeningState(context, new ComponentName(context, QSTileService.class));
+    } catch (IllegalArgumentException e) {
+      Log.w(TAG, "QuickSetting is unavailable when running in an Android work profile.");
+    }
   }
 
   @SuppressLint("StartActivityAndCollapseDeprecated")
@@ -97,7 +102,13 @@ public class QSTileService extends TileService {
   }
 
   private int determineTileState(boolean isHidden) {
-    if (PrefMgr.getInvertTileColor()) return isHidden ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE;
+    boolean invertTileColor =
+        ((AmarokApplication) getApplication())
+            .getSettingsRepo()
+            .getSettings()
+            .getValue()
+            .getInvertTileColor();
+    if (invertTileColor) return isHidden ? Tile.STATE_ACTIVE : Tile.STATE_INACTIVE;
     return isHidden ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE;
   }
 }

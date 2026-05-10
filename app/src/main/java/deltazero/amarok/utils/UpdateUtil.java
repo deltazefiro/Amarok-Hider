@@ -10,9 +10,9 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import deltazero.amarok.AmarokApplication;
 import deltazero.amarok.BuildConfig;
 import deltazero.amarok.R;
-import deltazero.amarok.core.PrefMgr;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -64,7 +64,13 @@ public class UpdateUtil {
         () -> {
           try {
             String currentVersion = getCurrentVersion(context);
-            Release latestRelease = fetchLatestRelease(PrefMgr.getUpdateChannel());
+            UpdateChannel channel =
+                ((AmarokApplication) context.getApplicationContext())
+                    .getSettingsRepo()
+                    .getSettings()
+                    .getValue()
+                    .getUpdateChannel();
+            Release latestRelease = fetchLatestRelease(channel);
 
             Log.d(
                 TAG,
