@@ -114,6 +114,12 @@ android {
         buildConfig true
         compose true
     }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
 }
 
 repositories {
@@ -166,6 +172,10 @@ dependencies {
     implementation 'androidx.work:work-runtime:2.11.0'
     implementation 'androidx.datastore:datastore-preferences:1.1.4'
     implementation 'org.apache.maven:maven-artifact:3.9.11'
+
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.robolectric:robolectric:4.15.1'
+    testImplementation 'androidx.test:core:1.6.1'
 
     // F-Droid disallow `api.xposed.info` since it's not a "Trusted Maven Repository".
     // So we create a mirror GitHub repository and obtain the library from `jitpack.io` instead.
