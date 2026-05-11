@@ -1,6 +1,3 @@
----
-alwaysApply: true
----
 # Amarok Project Overview
 
 ## Introduction
@@ -41,10 +38,10 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
 - **Interface:** `FileHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(targetDirs, Hider.Action)`.
 - **Mode enum:** `FileHiderMode` — `NONE`, `OBFUSCATE`, `NOMEDIA`, `CHMOD` with string keys.
 - **Implementations (all implement `FileHider`):**
-  - `NoneFileHider.kt` — no-op
-  - `ObfuscateFileHider.kt` — Base64 filename encoding + optional content obfuscation
-  - `NoMediaFileHider.kt` — creates/removes .nomedia files
-  - `ChmodFileHider.kt` — changes file permissions via root
+    - `NoneFileHider.kt` — no-op
+    - `ObfuscateFileHider.kt` — Base64 filename encoding + optional content obfuscation
+    - `NoMediaFileHider.kt` — creates/removes .nomedia files
+    - `ChmodFileHider.kt` — changes file permissions via root
 - **Factory:** `FileHider.build(context, mode)` creates instances from enum values.
 
 ### 3. App Hiding Implementations
@@ -54,10 +51,10 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
 - **Interface:** `AppHider` (sealed interface) with `suspend fun activate()` and `suspend fun process(pkgNames, Hider.Action)`.
 - **Mode enum:** `AppHiderMode` — `NONE`, `ROOT`, `SHIZUKU`, `DHIZUKU` with string keys.
 - **Implementations (all implement `AppHider`):**
-  - `NoneAppHider.kt` — no-op
-  - `RootAppHider.kt` — pm disable/hide via libsu
-  - `ShizukuAppHider.kt` — IPackageManager via Shizuku reflection
-  - `DhizukuAppHider.kt` — DevicePolicyManager via Dhizuku
+    - `NoneAppHider.kt` — no-op
+    - `RootAppHider.kt` — pm disable/hide via libsu
+    - `ShizukuAppHider.kt` — IPackageManager via Shizuku reflection
+    - `DhizukuAppHider.kt` — DevicePolicyManager via Dhizuku
 - **Factory:** `AppHider.build(context, mode, options)` creates configured instances from enum values.
 
 ### 4. Core Types
@@ -132,9 +129,9 @@ Amarok is both an Android app and an Xposed module. The Xposed part is implement
 The main app and the module run in different processes, so they communicate with each other through `XHidePrefBridge`.
 
 - **XHidePrefBridge:**
-  - Receives module status/version (`isModuleActive`, `xposedVersion`)
-  - Observes `HiderStateRepository.hiddenApps` and `SettingsRepository.settings.xHideEnabled`
-  - Sends updated module preferences with `commitNewValues()`
+    - Receives module status/version (`isModuleActive`, `xposedVersion`)
+    - Observes `HiderStateRepository.hiddenApps` and `SettingsRepository.settings.xHideEnabled`
+    - Sends updated module preferences with `commitNewValues()`
 - **XPref:** Manages module-side cached preferences.
 
 When hidden apps or XHide enablement changes, the bridge updates module preferences for system query filtering.
