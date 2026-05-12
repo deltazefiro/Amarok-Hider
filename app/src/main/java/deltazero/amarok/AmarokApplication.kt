@@ -14,6 +14,7 @@ import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.components.SingletonComponent
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.HiderController
 import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.receivers.ScreenStatusReceiver
@@ -51,6 +52,7 @@ class AmarokApplication : Application() {
       EntryPointAccessors.fromApplication(this, RepositoryEntryPoint::class.java)
     settingsRepo = repositoryEntryPoint.settingsRepository()
     hiderStateRepo = repositoryEntryPoint.hiderStateRepository()
+    Hider.install(repositoryEntryPoint.hiderController())
 
     // Block until DataStore has loaded from disk, so that all synchronous .value reads below
     // return actual persisted data rather than defaults.
@@ -91,5 +93,7 @@ class AmarokApplication : Application() {
     fun settingsRepository(): SettingsRepository
 
     fun hiderStateRepository(): HiderStateRepository
+
+    fun hiderController(): HiderController
   }
 }
