@@ -72,6 +72,8 @@ object XHidePrefBridge {
     }
     if (isAvailable) return
 
+    @Suppress("DEPRECATION")
+    // Xposed reads this preferences file from outside the app process.
     val xPref: SharedPreferences =
       try {
         context.getSharedPreferences(XPref.XPREF_PATH, Context.MODE_WORLD_READABLE)
