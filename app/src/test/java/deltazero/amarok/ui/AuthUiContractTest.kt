@@ -126,7 +126,7 @@ class AuthUiContractTest {
   }
 
   @Test
-  fun countdownConfirmDialogBuilderDefaultsMatchCurrentJavaFields() {
+  fun countdownConfirmDialogBuilderDefaultsMatchCurrentFields() {
     val dialog = CountdownConfirmDialog.Builder(context).build()
 
     assertEquals("", privateField(dialog, "title"))

@@ -23,7 +23,7 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
 
 - **Persisted configuration:** `SettingsRepository.settings: StateFlow<SettingsSnapshot>` owns settings such as hider modes, XHide flags, quick-hide settings, security settings, appearance, and updates.
 - **Persisted hide model:** `HiderStateRepository` owns `managedApps`, `managedFolders`, `hiddenApps`, and `hiddenFolders`. Managed items are user configuration; hidden sets are the persisted result of successful `Hider` operations.
-- **State:** `Hider.state: StateFlow<State>` — derived from repository-backed app/folder state plus transient processing sets. `Hider.getState()` exists for synchronous Java/service reads.
+- **State:** `Hider.state: StateFlow<State>` — derived from repository-backed app/folder state plus transient processing sets. `Hider.getState()` exists for synchronous service/entrypoint reads.
 - **Unified process:** `Hider.processAll(context, Hider.Action)` drives managed app + folder processing; blocking I/O runs on `Dispatchers.IO`.
 - **Targeted operations:** `Hider.processApps()` and `Hider.processFolders()` handle explicit app/folder sets.
 - **Per-item state:** `Hider.appStates` and `Hider.folderStates` are `StateFlow<Map<String, Hider.State>>`, derived from managed sets, hidden sets, and transient processing sets.
