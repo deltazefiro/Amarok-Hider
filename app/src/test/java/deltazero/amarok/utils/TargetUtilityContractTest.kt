@@ -12,7 +12,7 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(application = Application::class, sdk = [35])
-class TargetUtilsMigrationSafetyTest {
+class TargetUtilityContractTest {
   @After
   fun resetSecurityState() {
     SecurityUtil.lockAndDisguise()

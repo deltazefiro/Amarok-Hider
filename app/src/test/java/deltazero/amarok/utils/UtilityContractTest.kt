@@ -29,7 +29,7 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(application = Application::class, sdk = [35])
-class MigrationSafetyUtilTest {
+class UtilityContractTest {
   @After
   fun resetLocales() {
     AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())

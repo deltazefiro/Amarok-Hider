@@ -26,7 +26,7 @@ import org.robolectric.annotation.Config
 
 @RunWith(RobolectricTestRunner::class)
 @Config(application = Application::class, sdk = [35])
-class AuthUiMigrationSafetyTest {
+class AuthUiContractTest {
   private val context: Context = ApplicationProvider.getApplicationContext()
   private val themedContext = ContextThemeWrapper(context, R.style.Theme_Amarok)
   private val inflater: LayoutInflater = LayoutInflater.from(themedContext)
@@ -137,7 +137,7 @@ class AuthUiMigrationSafetyTest {
   @Test
   fun directAuthAndDialogUiFlowsRemainBuildOnlyCharacterized() {
     // Showing these flows exercises app settings, biometric prompts, bottom sheets, or delayed
-    // dialog handlers. Keep this migration guard lightweight and rely on compilation plus the
+    // dialog handlers. Keep this contract check lightweight and rely on compilation plus the
     // stable manifest/layout/builder contracts above rather than brittle full UI execution.
     assertNotNull(SecurityAuthActivity::class.java.getDeclaredMethod("onSuccess"))
     assertNotNull(SecurityAuthActivity::class.java.getDeclaredMethod("onFail"))

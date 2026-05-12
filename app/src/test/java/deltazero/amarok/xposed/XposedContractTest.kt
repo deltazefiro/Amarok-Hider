@@ -8,7 +8,7 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertSame
 import org.junit.Test
 
-class XposedMigrationSafetyTest {
+class XposedContractTest {
   @Test
   fun xPrefConstantsAndDefaultCacheStateAreStable() {
     assertEquals("deltazero.amarok.xposed.prefs", XPref.XPREF_PATH)

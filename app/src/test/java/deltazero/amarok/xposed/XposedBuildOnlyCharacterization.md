@@ -1,8 +1,8 @@
 # Xposed Build-Only Characterization
 
-These Xposed classes are part of the Java-to-Kotlin migration safety set. The behaviors below are
-intentionally covered by compilation and flavor assembly instead of JVM execution because stable unit
-tests would require Xposed, EzXHelper, zygote, or Android framework/package-manager internals.
+The behaviors below are intentionally covered by compilation and flavor assembly instead of JVM
+execution because stable unit tests would require Xposed, EzXHelper, zygote, or Android
+framework/package-manager internals.
 
 - `XPref`: preference key constants and default inactive cache behavior are unit-tested; real
   `XSharedPreferences` path resolution, file readability, reload, and cross-process preference reads
