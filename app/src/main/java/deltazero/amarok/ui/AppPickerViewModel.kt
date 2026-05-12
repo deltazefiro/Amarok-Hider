@@ -42,7 +42,7 @@ constructor(
   @ApplicationContext context: Context,
   private val hiderStateRepo: HiderStateRepository,
 ) : ViewModel() {
-  private val appInfoUtil = AppInfoUtil(context)
+  private val appInfoUtil = AppInfoUtil(context, hiderStateRepo)
 
   private val _isLoading = MutableStateFlow(false)
   private val _searchQuery = MutableStateFlow("")

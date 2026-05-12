@@ -2,6 +2,7 @@ package deltazero.amarok.utils
 
 import deltazero.amarok.AmarokApplication
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.SettingsRepository
 
 object SecurityUtil {
   private var locked = true
@@ -25,7 +26,11 @@ object SecurityUtil {
 
   @JvmStatic
   fun isDisguiseNeeded(app: AmarokApplication): Boolean {
-    val settings = app.settingsRepo.settings.value
+    return isDisguiseNeeded(app.settingsRepo)
+  }
+
+  fun isDisguiseNeeded(settingsRepo: SettingsRepository): Boolean {
+    val settings = settingsRepo.settings.value
     if (settings.disableSecurityWhenUnhidden && Hider.getState() == Hider.State.VISIBLE)
       return false
     return settings.disguise && disguised
@@ -33,7 +38,11 @@ object SecurityUtil {
 
   @JvmStatic
   fun isUnlockRequired(app: AmarokApplication): Boolean {
-    val settings = app.settingsRepo.settings.value
+    return isUnlockRequired(app.settingsRepo)
+  }
+
+  fun isUnlockRequired(settingsRepo: SettingsRepository): Boolean {
+    val settings = settingsRepo.settings.value
     if (settings.disableSecurityWhenUnhidden && Hider.getState() == Hider.State.VISIBLE)
       return false
     return settings.password != null && locked

@@ -9,6 +9,7 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.widget.Toast
+import dagger.hilt.android.EntryPointAccessors
 import deltazero.amarok.AmarokApplication
 import deltazero.amarok.BuildConfig
 import deltazero.amarok.R
@@ -66,8 +67,11 @@ object UpdateUtil {
       try {
         val currentVersion = getCurrentVersion(context)
         val channel =
-          (context.applicationContext as AmarokApplication)
-            .settingsRepo
+          EntryPointAccessors.fromApplication(
+              context.applicationContext,
+              AmarokApplication.RepositoryEntryPoint::class.java,
+            )
+            .settingsRepository()
             .settings
             .value
             .updateChannel

@@ -6,18 +6,15 @@ import android.content.pm.PackageManager.GET_META_DATA
 import android.content.pm.PackageManager.MATCH_DISABLED_COMPONENTS
 import android.content.pm.PackageManager.MATCH_UNINSTALLED_PACKAGES
 import android.graphics.drawable.Drawable
-import deltazero.amarok.AmarokApplication
 import deltazero.amarok.R
 import deltazero.amarok.core.HiderStateRepository
 import java.util.Locale
 
-class AppInfoUtil(context: Context) {
+class AppInfoUtil(context: Context, private val hiderStateRepo: HiderStateRepository) {
   private val pkgMgr = context.packageManager
   @Volatile private var appInfoList: List<AppInfo> = listOf()
   private val predefinedRootApps =
     HashSet(context.resources.getStringArray(R.array.root_app_packages).asList())
-  private val hiderStateRepo: HiderStateRepository =
-    (context.applicationContext as AmarokApplication).hiderStateRepo
 
   private fun isRootApp(appInfo: ApplicationInfo): Boolean {
     val isXposedModule = appInfo.metaData != null && appInfo.metaData.containsKey("xposedmodule")
