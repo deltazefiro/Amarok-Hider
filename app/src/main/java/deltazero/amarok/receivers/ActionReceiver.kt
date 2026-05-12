@@ -5,13 +5,18 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.AndroidEntryPoint
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.ui.SecurityAuthForQSActivity
 import deltazero.amarok.utils.SecurityUtil
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class ActionReceiver : BroadcastReceiver() {
+
+  @Inject lateinit var settingsRepo: SettingsRepository
 
   override fun onReceive(context: Context, intent: Intent) {
     Log.i("ActionReceiver", "New action received.")
@@ -27,7 +32,7 @@ class ActionReceiver : BroadcastReceiver() {
         return
       }
       ACTION_UNHIDE -> {
-        if (SecurityUtil.isUnlockRequired(context.applicationContext as AmarokApplication)) {
+        if (SecurityUtil.isUnlockRequired(settingsRepo)) {
           context.startActivity(
             Intent(context, SecurityAuthForQSActivity::class.java)
               .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -41,7 +46,7 @@ class ActionReceiver : BroadcastReceiver() {
         if (Hider.getState() == Hider.State.VISIBLE) {
           Hider.processAll(context, Hider.Action.HIDE)
         } else {
-          if (SecurityUtil.isUnlockRequired(context.applicationContext as AmarokApplication)) {
+          if (SecurityUtil.isUnlockRequired(settingsRepo)) {
             context.startActivity(
               Intent(context, SecurityAuthForQSActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

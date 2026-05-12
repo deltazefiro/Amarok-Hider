@@ -9,11 +9,22 @@ import android.os.Build
 import android.service.quicksettings.Tile
 import android.service.quicksettings.TileService
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.asLiveData
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.ui.SecurityAuthForQSActivity
 import deltazero.amarok.utils.SecurityUtil
+import javax.inject.Inject
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
 
+@AndroidEntryPoint
 class QSTileService : TileService() {
+
+  @Inject lateinit var settingsRepo: SettingsRepository
 
   override fun onStartListening() {
     Log.i(TAG, "Tile update triggered.")
@@ -49,7 +60,7 @@ class QSTileService : TileService() {
       when (Hider.getState()) {
         Hider.State.VISIBLE -> Hider.processAll(this, Hider.Action.HIDE)
         Hider.State.HIDDEN -> {
-          if (SecurityUtil.isUnlockRequired(application as AmarokApplication)) {
+          if (SecurityUtil.isUnlockRequired(settingsRepo)) {
             startAuthThenUnhide()
           } else {
             Hider.processAll(this, Hider.Action.UNHIDE)
@@ -75,8 +86,7 @@ class QSTileService : TileService() {
   }
 
   private fun determineTileState(isHidden: Boolean): Int {
-    val invertTileColor =
-      (application as AmarokApplication).settingsRepo.settings.value.invertTileColor
+    val invertTileColor = settingsRepo.settings.value.invertTileColor
     if (invertTileColor) return if (isHidden) Tile.STATE_ACTIVE else Tile.STATE_INACTIVE
     return if (isHidden) Tile.STATE_INACTIVE else Tile.STATE_ACTIVE
   }
@@ -84,6 +94,7 @@ class QSTileService : TileService() {
   companion object {
     private const val TAG = "TileService"
     @JvmField var initialized = false
+    private var invertTileColorLiveData: LiveData<Boolean>? = null
 
     /**
      * The method should be invoked in [AmarokApplication.onCreate], after [Hider.state] is
@@ -98,9 +109,17 @@ class QSTileService : TileService() {
 
       val appContext = context.applicationContext
       Hider.stateLiveData.observeForever { requestListeningState(appContext) }
-      (appContext as AmarokApplication).invertTileColorLiveData.observeForever {
-        requestListeningState(appContext)
-      }
+      invertTileColorLiveData =
+        EntryPointAccessors.fromApplication(
+            appContext,
+            AmarokApplication.RepositoryEntryPoint::class.java,
+          )
+          .settingsRepository()
+          .settings
+          .map { it.invertTileColor }
+          .distinctUntilChanged()
+          .asLiveData()
+      invertTileColorLiveData?.observeForever { requestListeningState(appContext) }
       initialized = true
     }
 

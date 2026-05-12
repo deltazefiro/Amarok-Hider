@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
+import dagger.hilt.android.EntryPointAccessors
 import deltazero.amarok.AmarokApplication
 import deltazero.amarok.BuildConfig
 import deltazero.amarok.core.HiderStateRepository
@@ -85,9 +86,13 @@ object XHidePrefBridge {
 
     xprefEditor = xPref.edit()
 
-    val app = context.applicationContext as AmarokApplication
-    val settingsRepo: SettingsRepository = app.settingsRepo
-    val hiderStateRepo: HiderStateRepository = app.hiderStateRepo
+    val repositoryEntryPoint =
+      EntryPointAccessors.fromApplication(
+        context.applicationContext,
+        AmarokApplication.RepositoryEntryPoint::class.java,
+      )
+    val settingsRepo: SettingsRepository = repositoryEntryPoint.settingsRepository()
+    val hiderStateRepo: HiderStateRepository = repositoryEntryPoint.hiderStateRepository()
 
     // Keep XPref synchronized with the DataStore-backed source of truth.
     scope.launch {

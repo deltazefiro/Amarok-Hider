@@ -8,6 +8,7 @@ import androidx.work.WorkInfo
 import androidx.work.WorkManager
 import androidx.work.Worker
 import androidx.work.WorkerParameters
+import dagger.hilt.android.EntryPointAccessors
 import deltazero.amarok.AmarokApplication
 import deltazero.amarok.core.Hider
 import java.util.concurrent.ExecutionException
@@ -30,7 +31,14 @@ class AutoHideUtil {
 
     @JvmStatic
     fun setAutoHide(context: Context) {
-      val settings = (context.applicationContext as AmarokApplication).settingsRepo.settings.value
+      val settings =
+        EntryPointAccessors.fromApplication(
+            context.applicationContext,
+            AmarokApplication.RepositoryEntryPoint::class.java,
+          )
+          .settingsRepository()
+          .settings
+          .value
       if (!settings.autoHide || Hider.getState() == Hider.State.HIDDEN) return
       Log.i(TAG, "Auto hide set. Delay: " + settings.autoHideDelay + " minutes.")
       WorkManager.getInstance(context)

@@ -21,9 +21,12 @@ import com.hjq.permissions.Permission
 import com.hjq.permissions.XXPermissions
 import com.hjq.window.EasyWindow
 import com.hjq.window.draggable.SpringBackDraggable
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.receivers.ActionReceiver
+import javax.inject.Inject
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -32,6 +35,7 @@ import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class QuickHideService : LifecycleService() {
 
   private lateinit var panicButton: EasyWindow<*>
@@ -39,8 +43,7 @@ class QuickHideService : LifecycleService() {
   private var panicButtonObserversStarted = false
 
   private lateinit var activityPendingIntent: PendingIntent
-  private val settingsRepo: SettingsRepository
-    get() = (application as AmarokApplication).settingsRepo
+  @Inject lateinit var settingsRepo: SettingsRepository
 
   override fun onCreate() {
     super.onCreate()
@@ -193,7 +196,11 @@ class QuickHideService : LifecycleService() {
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
     private fun settingsRepo(context: Context) =
-      (context.applicationContext as AmarokApplication).settingsRepo
+      EntryPointAccessors.fromApplication(
+          context.applicationContext,
+          AmarokApplication.RepositoryEntryPoint::class.java,
+        )
+        .settingsRepository()
 
     @JvmStatic
     @MainThread

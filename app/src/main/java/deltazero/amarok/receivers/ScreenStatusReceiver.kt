@@ -4,9 +4,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import dagger.hilt.android.AndroidEntryPoint
 import deltazero.amarok.utils.AutoHideUtil
 import deltazero.amarok.utils.SecurityUtil
 
+@AndroidEntryPoint
 class ScreenStatusReceiver : BroadcastReceiver() {
   override fun onReceive(context: Context, intent: Intent) {
     assert(intent.action != null)

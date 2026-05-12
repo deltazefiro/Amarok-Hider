@@ -26,7 +26,7 @@ constructor(
   @param:ApplicationContext private val context: Context,
   private val hiderStateRepo: HiderStateRepository,
 ) : ViewModel() {
-  private val appInfoUtil = AppInfoUtil(context)
+  private val appInfoUtil = AppInfoUtil(context, hiderStateRepo)
 
   private val _allApps = MutableStateFlow<List<AppInfo>>(emptyList())
 

@@ -9,6 +9,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.RemoteViews
+import dagger.hilt.android.EntryPointAccessors
 import deltazero.amarok.AmarokApplication
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
@@ -38,7 +39,13 @@ class ToggleWidget : AppWidgetProvider() {
       }
 
       if (Hider.getState() == Hider.State.HIDDEN) {
-        if (SecurityUtil.isUnlockRequired(context.applicationContext as AmarokApplication)) {
+        val settingsRepo =
+          EntryPointAccessors.fromApplication(
+              context.applicationContext,
+              AmarokApplication.RepositoryEntryPoint::class.java,
+            )
+            .settingsRepository()
+        if (SecurityUtil.isUnlockRequired(settingsRepo)) {
           Log.i(TAG, "Security unlock required. Launching authentication activity.")
           context.startActivity(
             Intent(context, SecurityAuthForQSActivity::class.java)
