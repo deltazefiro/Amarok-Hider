@@ -9,11 +9,16 @@ import android.view.ViewGroup
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.AndroidEntryPoint
 import deltazero.amarok.R
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.utils.HashUtil
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class PasswordAuthFragment : BottomSheetDialogFragment() {
+  @Inject lateinit var settingsRepo: SettingsRepository
+
   private var onVerifiedCallback: OnVerifiedCallback? = null
   private lateinit var etPassword: TextInputEditText
   private lateinit var tilPassword: TextInputLayout
@@ -60,8 +65,7 @@ class PasswordAuthFragment : BottomSheetDialogFragment() {
   }
 
   private fun verify() {
-    val password =
-      (requireActivity().application as AmarokApplication).settingsRepo.settings.value.password
+    val password = settingsRepo.settings.value.password
 
     if (password == null || HashUtil.calculateHash(etPassword.text!!.toString()) == password) {
       onVerifiedCallback?.onVerified(true)

@@ -5,21 +5,27 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
-import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.EntryPointAccessors
+import deltazero.amarok.AmarokApplication
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
-import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.ui.SecurityAuthForQSActivity
 import deltazero.amarok.utils.SecurityUtil
-import javax.inject.Inject
 
-@AndroidEntryPoint
 class ActionReceiver : BroadcastReceiver() {
-
-  @Inject lateinit var settingsRepo: SettingsRepository
-
   override fun onReceive(context: Context, intent: Intent) {
     Log.i("ActionReceiver", "New action received.")
+
+    if (intent.action !in setOf(ACTION_HIDE, ACTION_UNHIDE, ACTION_TOGGLE)) {
+      Log.w("ActionReceiver", "Invalid action: " + intent.action)
+      Toast.makeText(
+          context,
+          context.getString(R.string.invalid_action, intent.action),
+          Toast.LENGTH_LONG,
+        )
+        .show()
+      return
+    }
 
     if (Hider.getState() == Hider.State.PROCESSING) {
       Log.w("ActionReceiver", "Already processing. Ignore the new action.")
@@ -32,7 +38,7 @@ class ActionReceiver : BroadcastReceiver() {
         return
       }
       ACTION_UNHIDE -> {
-        if (SecurityUtil.isUnlockRequired(settingsRepo)) {
+        if (SecurityUtil.isUnlockRequired(settingsRepo(context))) {
           context.startActivity(
             Intent(context, SecurityAuthForQSActivity::class.java)
               .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -46,7 +52,7 @@ class ActionReceiver : BroadcastReceiver() {
         if (Hider.getState() == Hider.State.VISIBLE) {
           Hider.processAll(context, Hider.Action.HIDE)
         } else {
-          if (SecurityUtil.isUnlockRequired(settingsRepo)) {
+          if (SecurityUtil.isUnlockRequired(settingsRepo(context))) {
             context.startActivity(
               Intent(context, SecurityAuthForQSActivity::class.java)
                 .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -58,19 +64,18 @@ class ActionReceiver : BroadcastReceiver() {
         return
       }
     }
-
-    Log.w("ActionReceiver", "Invalid action: " + intent.action)
-    Toast.makeText(
-        context,
-        context.getString(R.string.invalid_action, intent.action),
-        Toast.LENGTH_LONG,
-      )
-      .show()
   }
 
   companion object {
     const val ACTION_HIDE = "deltazero.amarok.HIDE"
     const val ACTION_UNHIDE = "deltazero.amarok.UNHIDE"
     const val ACTION_TOGGLE = "deltazero.amarok.TOGGLE"
+
+    private fun settingsRepo(context: Context) =
+      EntryPointAccessors.fromApplication(
+          context.applicationContext,
+          AmarokApplication.RepositoryEntryPoint::class.java,
+        )
+        .settingsRepository()
   }
 }

@@ -20,9 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hjq.permissions.OnPermissionCallback
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
-import dagger.hilt.android.AndroidEntryPoint
 import deltazero.amarok.AmarokActivity
-import deltazero.amarok.AmarokApplication
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
 import deltazero.amarok.ui.settings.SettingsScreen
@@ -33,7 +31,6 @@ import deltazero.amarok.utils.UpdateUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@AndroidEntryPoint
 class MainActivity : AmarokActivity() {
 
   private val settingsViewModel: SettingsViewModel by viewModels()
@@ -124,7 +121,6 @@ class MainActivity : AmarokActivity() {
                   )
                 },
                 onShowColorPicker = {
-                  val settingsRepo = (application as AmarokApplication).settingsRepo
                   val builder =
                     ColorPickerDialog.Builder(this@MainActivity)
                       .setTitle(R.string.panic_button_color)
@@ -160,7 +156,6 @@ class MainActivity : AmarokActivity() {
     }
 
     // Show welcome dialog
-    val settingsRepo = (application as AmarokApplication).settingsRepo
     if (settingsRepo.settings.value.showWelcome) {
       MaterialAlertDialogBuilder(this)
         .setTitle(R.string.welcome_title)

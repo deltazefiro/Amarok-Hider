@@ -55,7 +55,7 @@ constructor(
         appHiderMode = appMode,
         fileHiderMode = fileMode,
         appHiderName = AppHider.build(application, appMode).name,
-        fileHiderName = FileHider.build(application, fileMode).name,
+        fileHiderName = FileHider.build(application, fileMode, settingsRepo.settings.value).name,
         appHiderErrorResId = appErr,
         fileHiderErrorResId = fileErr,
         obfuscateLevel = obfuscateLevel,

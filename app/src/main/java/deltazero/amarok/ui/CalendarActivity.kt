@@ -29,7 +29,7 @@ import com.kizitonwose.calendar.core.CalendarDay
 import com.kizitonwose.calendar.core.DayPosition
 import com.kizitonwose.calendar.core.daysOfWeek
 import com.kizitonwose.calendar.core.firstDayOfWeekFromLocale
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.AndroidEntryPoint
 import deltazero.amarok.R
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.utils.SecurityUtil
@@ -37,6 +37,7 @@ import deltazero.amarok.utils.SwitchLocaleUtil
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.TextStyle as JTextStyle
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -47,7 +48,10 @@ private val CalendarWhite = Color(0xD9FFFFFF) // calendar_white (87% opacity)
 private val CalendarWhiteLight = Color(0x4DFFFFFF) // calendar_white_light (30% opacity)
 private val CalendarSelectionColor = Color(0xFFFCCA3E) // calendar_selection_color
 
+@AndroidEntryPoint
 class CalendarActivity : AppCompatActivity() {
+  @Inject lateinit var settingsRepo: SettingsRepository
+
   override fun onCreate(savedInstanceState: Bundle?) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
       overrideActivityTransition(OVERRIDE_TRANSITION_OPEN, 0, 0)
@@ -65,7 +69,6 @@ class CalendarActivity : AppCompatActivity() {
       },
     )
 
-    val settingsRepo = (application as AmarokApplication).settingsRepo
     setContent {
       CalendarScreen(
         settingsRepo = settingsRepo,

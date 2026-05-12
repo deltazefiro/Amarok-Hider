@@ -57,10 +57,15 @@ constructor(
 
   val fileHiderName: StateFlow<String> =
     settingsRepo.settings
-      .map { settings -> FileHider.build(context, settings.fileHiderMode).name }
+      .map { settings -> FileHider.build(context, settings.fileHiderMode, settings).name }
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        FileHider.build(context, settingsRepo.settings.value.fileHiderMode).name,
+        FileHider.build(
+            context,
+            settingsRepo.settings.value.fileHiderMode,
+            settingsRepo.settings.value,
+          )
+          .name,
       )
 }

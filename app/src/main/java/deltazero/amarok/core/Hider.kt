@@ -51,15 +51,7 @@ object Hider {
   val appStatesLiveData: LiveData<Map<String, State>> by lazy { controller.appStatesLiveData }
 
   @JvmStatic
-  fun init(
-    context: Context,
-    settingsRepository: SettingsRepository,
-    hiderStateRepository: HiderStateRepository,
-  ) {
-    if (!::controller.isInitialized) {
-      controller =
-        HiderController(context.applicationContext, settingsRepository, hiderStateRepository)
-    }
+  fun init(context: Context) {
     controller.init(context)
     initialized = controller.initialized
   }
