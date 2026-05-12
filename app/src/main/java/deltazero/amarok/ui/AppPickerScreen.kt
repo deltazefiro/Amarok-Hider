@@ -28,13 +28,13 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import deltazero.amarok.R
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.AppInfoUtil.AppInfo
 
 @Composable
-fun AppPickerScreen(onBack: () -> Unit, viewModel: AppPickerViewModel = viewModel()) {
+fun AppPickerScreen(onBack: () -> Unit, viewModel: AppPickerViewModel = hiltViewModel()) {
   val state by viewModel.uiState.collectAsState()
 
   AppPickerScreen(

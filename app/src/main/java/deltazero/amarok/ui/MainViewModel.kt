@@ -1,22 +1,29 @@
 package deltazero.amarok.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.apphider.AppHider
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.HiderStateRepository
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.filehider.FileHider
+import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
-
-  private val app = application as AmarokApplication
-  private val hiderStateRepo = app.hiderStateRepo
-  private val settingsRepo = app.settingsRepo
+@HiltViewModel
+class MainViewModel
+@Inject
+constructor(
+  @param:ApplicationContext private val context: Context,
+  private val hiderStateRepo: HiderStateRepository,
+  private val settingsRepo: SettingsRepository,
+) : ViewModel() {
 
   val hiderState: StateFlow<Hider.State> =
     Hider.state.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), Hider.getState())
@@ -41,19 +48,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
   val appHiderName: StateFlow<String> =
     settingsRepo.settings
-      .map { settings -> AppHider.build(getApplication(), settings.appHiderMode).name }
+      .map { settings -> AppHider.build(context, settings.appHiderMode).name }
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        AppHider.build(application, settingsRepo.settings.value.appHiderMode).name,
+        AppHider.build(context, settingsRepo.settings.value.appHiderMode).name,
       )
 
   val fileHiderName: StateFlow<String> =
     settingsRepo.settings
-      .map { settings -> FileHider.build(getApplication(), settings.fileHiderMode).name }
+      .map { settings -> FileHider.build(context, settings.fileHiderMode).name }
       .stateIn(
         viewModelScope,
         SharingStarted.WhileSubscribed(5000),
-        FileHider.build(application, settingsRepo.settings.value.fileHiderMode).name,
+        FileHider.build(context, settingsRepo.settings.value.fileHiderMode).name,
       )
 }

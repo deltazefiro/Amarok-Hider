@@ -1,13 +1,15 @@
 package deltazero.amarok.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.utils.AppInfoUtil
 import deltazero.amarok.utils.AppInfoUtil.AppInfo
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -33,10 +35,14 @@ enum class WarningType {
   ROOT_APPS,
 }
 
-class AppPickerViewModel(application: Application) : AndroidViewModel(application) {
-  private val appInfoUtil = AppInfoUtil(application)
-  private val hiderStateRepo: HiderStateRepository =
-    (application as AmarokApplication).hiderStateRepo
+@HiltViewModel
+class AppPickerViewModel
+@Inject
+constructor(
+  @ApplicationContext context: Context,
+  private val hiderStateRepo: HiderStateRepository,
+) : ViewModel() {
+  private val appInfoUtil = AppInfoUtil(context)
 
   private val _isLoading = MutableStateFlow(false)
   private val _searchQuery = MutableStateFlow("")

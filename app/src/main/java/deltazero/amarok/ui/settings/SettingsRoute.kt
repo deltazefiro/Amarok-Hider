@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import deltazero.amarok.utils.UpdateUtil
 
 @Composable
@@ -16,7 +16,7 @@ fun SettingsScreen(
   onRequestSystemAlertPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
   onShowColorPicker: () -> Unit,
   onSwitchLocale: () -> Unit,
-  viewModel: SettingsViewModel = viewModel(),
+  viewModel: SettingsViewModel = hiltViewModel(),
 ) {
   val context = LocalContext.current
   val activity = context as? Activity

@@ -1,21 +1,26 @@
 package deltazero.amarok.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.HiderStateRepository
+import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class FilesViewModel(application: Application) : AndroidViewModel(application) {
-
-  private val hiderStateRepo: HiderStateRepository =
-    (application as AmarokApplication).hiderStateRepo
+@HiltViewModel
+class FilesViewModel
+@Inject
+constructor(
+  @param:ApplicationContext private val context: Context,
+  private val hiderStateRepo: HiderStateRepository,
+) : ViewModel() {
 
   val managedFolders: StateFlow<List<String>> =
     hiderStateRepo.managedFolders
@@ -44,22 +49,21 @@ class FilesViewModel(application: Application) : AndroidViewModel(application) {
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptySet())
 
   fun hideFolder(path: String) {
-    Hider.processFolders(getApplication(), setOf(path), Hider.Action.HIDE)
+    Hider.processFolders(context, setOf(path), Hider.Action.HIDE)
   }
 
   fun unhideFolder(path: String) {
-    Hider.processFolders(getApplication(), setOf(path), Hider.Action.UNHIDE)
+    Hider.processFolders(context, setOf(path), Hider.Action.UNHIDE)
   }
 
   fun toggleAllFolders() {
     val hidden = hiddenFolders.value
     val managed = hiderStateRepo.managedFolders.value
-    val ctx = getApplication<Application>()
 
     if (hidden.containsAll(managed)) {
-      Hider.processAll(ctx, Hider.Action.UNHIDE)
+      Hider.processAll(context, Hider.Action.UNHIDE)
     } else {
-      Hider.processAll(ctx, Hider.Action.HIDE)
+      Hider.processAll(context, Hider.Action.HIDE)
     }
   }
 

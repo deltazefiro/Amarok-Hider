@@ -38,13 +38,13 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
 import deltazero.amarok.ui.theme.AmarokTheme
 
 @Composable
-fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = viewModel()) {
+fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = hiltViewModel()) {
   val state by viewModel.hiderState.collectAsState()
   val appCount by viewModel.managedAppCount.collectAsState()
   val folderCount by viewModel.managedFolderCount.collectAsState()
