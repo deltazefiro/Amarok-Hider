@@ -8,6 +8,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.google.android.material.color.DynamicColors
 import com.rosan.dhizuku.api.Dhizuku
+import dagger.hilt.android.HiltAndroidApp
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.core.SettingsRepository
@@ -23,6 +24,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
+@HiltAndroidApp
 class AmarokApplication : Application() {
 
   lateinit var settingsRepo: SettingsRepository
