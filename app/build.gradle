@@ -109,10 +109,10 @@ android {
         includeInBundle = false
     }
 
-    namespace 'deltazero.amarok'
+    namespace = 'deltazero.amarok'
     buildFeatures {
-        buildConfig true
-        compose true
+        buildConfig = true
+        compose = true
     }
 
     testOptions {
