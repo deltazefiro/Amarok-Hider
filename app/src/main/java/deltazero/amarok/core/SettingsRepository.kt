@@ -10,9 +10,12 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.utils.UpdateUtil
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -69,7 +72,8 @@ data class SettingsSnapshot(
       }
 }
 
-class SettingsRepository(context: Context) {
+@Singleton
+class SettingsRepository @Inject constructor(@ApplicationContext context: Context) {
 
   private val dataStore = context.applicationContext.settingsDataStore
   private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)

@@ -11,7 +11,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -21,6 +20,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.hjq.permissions.OnPermissionCallback
 import com.skydoves.colorpickerview.ColorPickerDialog
 import com.skydoves.colorpickerview.listeners.ColorEnvelopeListener
+import dagger.hilt.android.AndroidEntryPoint
 import deltazero.amarok.AmarokActivity
 import deltazero.amarok.AmarokApplication
 import deltazero.amarok.R
@@ -33,6 +33,7 @@ import deltazero.amarok.utils.UpdateUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : AmarokActivity() {
 
   private val settingsViewModel: SettingsViewModel by viewModels()

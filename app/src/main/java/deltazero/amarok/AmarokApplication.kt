@@ -8,7 +8,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import com.google.android.material.color.DynamicColors
 import com.rosan.dhizuku.api.Dhizuku
+import dagger.hilt.EntryPoint
+import dagger.hilt.InstallIn
+import dagger.hilt.android.EntryPointAccessors
 import dagger.hilt.android.HiltAndroidApp
+import dagger.hilt.components.SingletonComponent
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.core.SettingsRepository
@@ -43,8 +47,10 @@ class AmarokApplication : Application() {
     // WARNING: Do not change the order of those initializations.
     XHidePrefBridge.migratePrefsIfNeeded(this)
 
-    settingsRepo = SettingsRepository(this)
-    hiderStateRepo = HiderStateRepository(this)
+    val repositoryEntryPoint =
+      EntryPointAccessors.fromApplication(this, RepositoryEntryPoint::class.java)
+    settingsRepo = repositoryEntryPoint.settingsRepository()
+    hiderStateRepo = repositoryEntryPoint.hiderStateRepository()
 
     // Block until DataStore has loaded from disk, so that all synchronous .value reads below
     // return actual persisted data rather than defaults.
@@ -77,5 +83,13 @@ class AmarokApplication : Application() {
     }
     Dhizuku.init()
     Once.initialise(this)
+  }
+
+  @EntryPoint
+  @InstallIn(SingletonComponent::class)
+  interface RepositoryEntryPoint {
+    fun settingsRepository(): SettingsRepository
+
+    fun hiderStateRepository(): HiderStateRepository
   }
 }

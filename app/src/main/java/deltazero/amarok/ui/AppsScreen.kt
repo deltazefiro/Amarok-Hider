@@ -29,17 +29,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.lifecycle.viewmodel.compose.viewModel
 import deltazero.amarok.R
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.AppInfoUtil.AppInfo
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
 @Composable
-fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = viewModel()) {
+fun AppsScreen(onOpenEditor: () -> Unit = {}, viewModel: AppsViewModel = hiltViewModel()) {
   val apps by viewModel.managedApps.collectAsState()
   val hiddenApps by viewModel.hiddenApps.collectAsState()
 

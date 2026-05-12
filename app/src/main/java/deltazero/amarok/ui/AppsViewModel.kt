@@ -1,12 +1,15 @@
 package deltazero.amarok.ui
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import android.content.Context
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.utils.AppInfoUtil
 import deltazero.amarok.utils.AppInfoUtil.AppInfo
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -16,9 +19,14 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class AppsViewModel(application: Application) : AndroidViewModel(application) {
-  private val appInfoUtil = AppInfoUtil(application)
-  private val hiderStateRepo = (application as AmarokApplication).hiderStateRepo
+@HiltViewModel
+class AppsViewModel
+@Inject
+constructor(
+  @param:ApplicationContext private val context: Context,
+  private val hiderStateRepo: HiderStateRepository,
+) : ViewModel() {
+  private val appInfoUtil = AppInfoUtil(context)
 
   private val _allApps = MutableStateFlow<List<AppInfo>>(emptyList())
 
@@ -52,22 +60,21 @@ class AppsViewModel(application: Application) : AndroidViewModel(application) {
   }
 
   fun hideApp(pkgName: String) {
-    Hider.processApps(getApplication(), setOf(pkgName), Hider.Action.HIDE)
+    Hider.processApps(context, setOf(pkgName), Hider.Action.HIDE)
   }
 
   fun unhideApp(pkgName: String) {
-    Hider.processApps(getApplication(), setOf(pkgName), Hider.Action.UNHIDE)
+    Hider.processApps(context, setOf(pkgName), Hider.Action.UNHIDE)
   }
 
   fun toggleAllApps() {
     val hidden = hiddenApps.value
     val managed = hiderStateRepo.managedApps.value
-    val ctx = getApplication<Application>()
 
     if (hidden.containsAll(managed)) {
-      Hider.processAll(ctx, Hider.Action.UNHIDE)
+      Hider.processAll(context, Hider.Action.UNHIDE)
     } else {
-      Hider.processAll(ctx, Hider.Action.HIDE)
+      Hider.processAll(context, Hider.Action.HIDE)
     }
   }
 }

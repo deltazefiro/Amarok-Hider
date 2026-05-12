@@ -26,7 +26,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
 import deltazero.amarok.ui.theme.AmarokTheme
@@ -36,7 +36,7 @@ import java.nio.file.Paths
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FilesScreen(viewModel: FilesViewModel = viewModel()) {
+fun FilesScreen(viewModel: FilesViewModel = hiltViewModel()) {
   val context = LocalContext.current
   val folders by viewModel.managedFolders.collectAsState()
   val hiddenFolders by viewModel.hiddenFolders.collectAsState()

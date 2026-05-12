@@ -1,11 +1,12 @@
 package deltazero.amarok.ui.settings
 
 import android.app.Activity
-import android.app.Application
+import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.apphider.AppHider
 import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.core.Hider
@@ -16,6 +17,7 @@ import deltazero.amarok.utils.AppCenterUtil
 import deltazero.amarok.utils.LauncherIconController
 import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.UpdateUtil
+import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
@@ -23,16 +25,20 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-private fun packageVersionName(application: Application): String =
+private fun packageVersionName(application: Context): String =
   try {
     application.packageManager.getPackageInfo(application.packageName, 0).versionName ?: "?"
   } catch (_: Exception) {
     "?"
   }
 
-class SettingsViewModel(application: Application) : AndroidViewModel(application) {
-
-  private val settingsRepo: SettingsRepository = (application as AmarokApplication).settingsRepo
+@HiltViewModel
+class SettingsViewModel
+@Inject
+constructor(
+  @param:ApplicationContext private val application: Context,
+  private val settingsRepo: SettingsRepository,
+) : ViewModel() {
 
   private val appVersionName = packageVersionName(application)
 
@@ -45,12 +51,11 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
       Hider.fileHiderError,
       settingsRepo.settings.map { it.obfuscateLevel },
     ) { appMode, fileMode, appErr, fileErr, obfuscateLevel ->
-      val ctx = getApplication<Application>()
       WorkmodeSettingsState(
         appHiderMode = appMode,
         fileHiderMode = fileMode,
-        appHiderName = AppHider.build(ctx, appMode).name,
-        fileHiderName = FileHider.build(ctx, fileMode).name,
+        appHiderName = AppHider.build(application, appMode).name,
+        fileHiderName = FileHider.build(application, fileMode).name,
         appHiderErrorResId = appErr,
         fileHiderErrorResId = fileErr,
         obfuscateLevel = obfuscateLevel,
@@ -188,8 +193,7 @@ class SettingsViewModel(application: Application) : AndroidViewModel(application
   }
 
   fun forceUnhide() {
-    val ctx = getApplication<Application>()
     Hider.cancelProcess()
-    Hider.processAll(ctx, Hider.Action.UNHIDE)
+    Hider.processAll(application, Hider.Action.UNHIDE)
   }
 }

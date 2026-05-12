@@ -6,6 +6,9 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringSetPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
+import dagger.hilt.android.qualifiers.ApplicationContext
+import javax.inject.Inject
+import javax.inject.Singleton
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -22,7 +25,8 @@ private val Context.hiderStateDataStore: DataStore<Preferences> by
  * Persists managed item lists and hidden item lists. Kept in a separate DataStore from settings so
  * that frequent hide/unhide operations don't trigger spurious recompositions of the settings UI.
  */
-class HiderStateRepository(context: Context) {
+@Singleton
+class HiderStateRepository @Inject constructor(@ApplicationContext context: Context) {
 
   private val dataStore = context.applicationContext.hiderStateDataStore
   private val scope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
