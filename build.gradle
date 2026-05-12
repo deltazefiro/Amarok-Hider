@@ -5,10 +5,10 @@ buildscript {
         maven { url = 'https://jitpack.io' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.13.1'
+        classpath 'com.android.tools.build:gradle:9.1.1'
         classpath 'dev.rikka.tools.autoresconfig:gradle-plugin:1.2.2'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.1.0'
-        classpath 'org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.1.0'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.2.10'
+        classpath 'org.jetbrains.kotlin:compose-compiler-gradle-plugin:2.2.10'
         classpath 'com.diffplug.spotless:spotless-plugin-gradle:7.0.4'
     }
 }

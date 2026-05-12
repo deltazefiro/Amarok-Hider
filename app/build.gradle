@@ -4,12 +4,9 @@ plugins {
 }
 
 def getGitHash = { ->
-    def stdout = new ByteArrayOutputStream()
-    exec {
+    return providers.exec {
         commandLine 'git', 'rev-parse', '--short', 'HEAD'
-        standardOutput = stdout
-    }
-    return stdout.toString().trim()
+    }.standardOutput.asText.get().trim()
 }
 
 android {
