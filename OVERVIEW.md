@@ -140,8 +140,8 @@ When hidden apps or XHide enablement changes, the bridge updates module preferen
 
 Provides multiple triggers for instant hide/unhide operations:
 
-- **Quick Settings Tile:** `QSTileService.java`
+- **Quick Settings Tile:** `QSTileService.kt`
 - **Quick Hide Service:** `QuickHideService.kt` owns the foreground service and observes settings plus `Hider.state` to start/stop/react to panic button changes
-- **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.java` and `AutoHideUtil.java`
-- **Intent API:** Managed by `ActionReceiver.java`
-- **Widget:** `ToggleWidget.java`
+- **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.kt` and `AutoHideUtil.kt`
+- **Intent API:** Managed by `ActionReceiver.kt`
+- **Widget:** `ToggleWidget.kt`
