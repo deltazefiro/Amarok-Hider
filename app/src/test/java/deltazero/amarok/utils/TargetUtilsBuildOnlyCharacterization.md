@@ -1,8 +1,7 @@
 # Target Utils Build-Only Characterization
 
-These Java utilities are part of the migration safety set, but several behaviors are intentionally
-covered by compilation/assembly only because stable unit tests would require brittle Android
-framework, static library, network, or device storage setup.
+Several utility behaviors are intentionally covered by compilation/assembly only because stable unit
+tests would require brittle Android framework, static library, network, or device storage setup.
 
 - `SDCardUtil`: `getSdCardPaths` and URI-to-SD-card resolution depend on `StorageManager`,
   `StorageVolume`, mounted external cache directories, API level, and readable filesystem roots.
@@ -19,9 +18,9 @@ framework, static library, network, or device storage setup.
 
 # Entrypoint Build-Only Characterization
 
-The receiver/widget/tile entrypoints targeted for Java-to-Kotlin migration are covered by lightweight
-unit tests where behavior is stable without app-wide initialization. The remaining behavior is
-intentionally characterized by successful unit-test compilation and `assembleFossDebug` only:
+The receiver/widget/tile entrypoints are covered by lightweight unit tests where behavior is stable
+without app-wide initialization. The remaining behavior is intentionally characterized by successful
+unit-test compilation and `assembleFossDebug` only:
 
 - `AutoHideUtil`: the unique WorkManager name is unit-tested; enqueue/cancel behavior remains
   build-only because it depends on `AmarokApplication`, settings `LiveData`, `Hider` static state,

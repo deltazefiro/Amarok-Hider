@@ -29,7 +29,7 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
 - **Per-item state:** `Hider.appStates` and `Hider.folderStates` are `StateFlow<Map<String, Hider.State>>`, derived from managed sets, hidden sets, and transient processing sets.
 - **Mode source of truth:** hider modes are read from `SettingsRepository.settings`; ViewModels should use settings flows for display. `Hider` keeps only active strategy instances and observes settings changes to rebuild/reactivate them.
 - **Strategy ownership:** `Hider.init(context, settingsRepo, hiderStateRepo)` builds the selected app/file hiders, observes relevant settings, and attempts one activation pass. `switchAppHider()` / `switchFileHider()` only persist desired modes; the settings observer rebuilds/reactivates strategies.
-- **Java interop:** `Hider.getStateLiveData()` / `Hider.getAppStatesLiveData()` expose LiveData bridges for Java consumers.
+- **State observation:** `Hider.getStateLiveData()` / `Hider.getAppStatesLiveData()` expose LiveData bridges for UI observers.
 
 ### 2. File Hiding Implementations
 

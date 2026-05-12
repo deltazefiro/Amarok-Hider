@@ -25,7 +25,7 @@ import org.robolectric.shadows.ShadowToast
 
 @RunWith(RobolectricTestRunner::class)
 @Config(application = Application::class, sdk = [35])
-class EntrypointMigrationSafetyTest {
+class EntrypointContractTest {
   private val context: Context = ApplicationProvider.getApplicationContext()
 
   @Test
