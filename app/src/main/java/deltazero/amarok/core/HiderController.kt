@@ -368,7 +368,7 @@ constructor(
   }
 
   private fun buildFileHider(context: Context, mode: FileHiderMode): FileHider =
-    FileHider.build(context, mode)
+    FileHider.build(context, mode, settingsRepo.settings.value)
 
   private data class AppHiderConfig(val mode: AppHiderMode, val disableOnly: Boolean) {
     companion object {
@@ -380,10 +380,20 @@ constructor(
     }
   }
 
-  private data class FileHiderConfig(val mode: FileHiderMode, val obfuscateLevel: Int) {
+  private data class FileHiderConfig(
+    val mode: FileHiderMode,
+    val obfuscateFileHeader: Boolean,
+    val obfuscateTextFile: Boolean,
+    val obfuscateTextFileEnhanced: Boolean,
+  ) {
     companion object {
       fun from(settings: SettingsSnapshot) =
-        FileHiderConfig(mode = settings.fileHiderMode, obfuscateLevel = settings.obfuscateLevel)
+        FileHiderConfig(
+          mode = settings.fileHiderMode,
+          obfuscateFileHeader = settings.obfuscateFileHeader,
+          obfuscateTextFile = settings.obfuscateTextFile,
+          obfuscateTextFileEnhanced = settings.obfuscateTextFileEnhanced,
+        )
     }
   }
 

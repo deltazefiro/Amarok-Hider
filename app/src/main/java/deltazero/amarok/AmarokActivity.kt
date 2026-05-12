@@ -7,11 +7,17 @@ import android.os.Bundle
 import android.view.WindowManager
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.ui.CalendarActivity
 import deltazero.amarok.ui.SecurityAuthActivity
 import deltazero.amarok.utils.SecurityUtil
+import javax.inject.Inject
 
+@AndroidEntryPoint
 open class AmarokActivity : AppCompatActivity() {
+  @Inject lateinit var settingsRepo: SettingsRepository
+
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     // Enable edge-to-edge display
@@ -19,7 +25,7 @@ open class AmarokActivity : AppCompatActivity() {
   }
 
   override fun onStart() {
-    val settings = (application as AmarokApplication).settingsRepo.settings.value
+    val settings = settingsRepo.settings.value
     if (settings.blockScreenshots) {
       window.setFlags(
         WindowManager.LayoutParams.FLAG_SECURE,
@@ -41,10 +47,9 @@ open class AmarokActivity : AppCompatActivity() {
   }
 
   override fun onResume() {
-    val app = application as AmarokApplication
-    if (SecurityUtil.isDisguiseNeeded(app))
+    if (SecurityUtil.isDisguiseNeeded(settingsRepo))
       startActivity(Intent(this, CalendarActivity::class.java))
-    else if (SecurityUtil.isUnlockRequired(app)) {
+    else if (SecurityUtil.isUnlockRequired(settingsRepo)) {
       startActivity(Intent(this, SecurityAuthActivity::class.java))
     }
     super.onResume()

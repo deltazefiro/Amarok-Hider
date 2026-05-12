@@ -4,11 +4,16 @@ import android.os.Build
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
-import deltazero.amarok.AmarokApplication
+import dagger.hilt.android.AndroidEntryPoint
 import deltazero.amarok.R
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.utils.SecurityUtil
+import javax.inject.Inject
 
+@AndroidEntryPoint
 open class SecurityAuthActivity : AppCompatActivity() {
+  @Inject lateinit var settingsRepo: SettingsRepository
+
   private lateinit var passwordAuthFragment: PasswordAuthFragment
   private lateinit var biometricPrompt: BiometricPrompt
   private lateinit var biometricPromptInfo: BiometricPrompt.PromptInfo
@@ -50,10 +55,9 @@ open class SecurityAuthActivity : AppCompatActivity() {
   }
 
   override fun onResume() {
-    val app = application as AmarokApplication
-    if (!SecurityUtil.isUnlockRequired(app)) finish()
+    if (!SecurityUtil.isUnlockRequired(settingsRepo)) finish()
     super.onResume()
-    if (app.settingsRepo.settings.value.biometricAuth) biometricAuthenticate()
+    if (settingsRepo.settings.value.biometricAuth) biometricAuthenticate()
     else passwordAuthenticate()
   }
 

@@ -61,7 +61,7 @@ class AmarokApplication : Application() {
       hiderStateRepo.awaitLoaded()
     }
 
-    Hider.init(this, settingsRepo, hiderStateRepo)
+    Hider.init(this)
     QuickHideService.init(this)
     QSTileService.init(applicationContext)
     ToggleWidget.init(applicationContext)
