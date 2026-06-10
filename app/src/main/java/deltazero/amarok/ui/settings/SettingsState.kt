@@ -4,7 +4,7 @@ import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.core.SettingsSnapshot
 import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.utils.AppCenterUtil
-import deltazero.amarok.utils.XHidePrefBridge
+import deltazero.amarok.utils.XHideModuleBridge
 
 data class WorkmodeSettingsState(
   val appHiderMode: AppHiderMode = AppHiderMode.NONE,
@@ -17,16 +17,17 @@ data class WorkmodeSettingsState(
 )
 
 data class XHideSettingsState(
-  val isAvailable: Boolean = XHidePrefBridge.isAvailable,
-  val xposedVersion: Int = XHidePrefBridge.xposedVersion,
+  val isAvailable: Boolean = XHideModuleBridge.isAvailable,
+  val xposedVersion: Int = XHideModuleBridge.apiVersion,
   val enabled: Boolean = false,
   val disableOnlyWithXHide: Boolean = false,
 ) {
   constructor(
-    settings: SettingsSnapshot
+    settings: SettingsSnapshot,
+    xHideStatus: XHideModuleBridge.Status = XHideModuleBridge.status.value,
   ) : this(
-    isAvailable = XHidePrefBridge.isAvailable,
-    xposedVersion = XHidePrefBridge.xposedVersion,
+    isAvailable = xHideStatus.isAvailable && xHideStatus.isModuleActive,
+    xposedVersion = xHideStatus.apiVersion,
     enabled = settings.xHideEnabled,
     disableOnlyWithXHide = settings.disableOnlyWithXHide,
   )

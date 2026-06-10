@@ -19,7 +19,7 @@ import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.receivers.ScreenStatusReceiver
 import deltazero.amarok.utils.AppCenterUtil
-import deltazero.amarok.utils.XHidePrefBridge
+import deltazero.amarok.utils.XHideModuleBridge
 import deltazero.amarok.widget.ToggleWidget
 import jonathanfinerty.once.Once
 import kotlinx.coroutines.CoroutineScope
@@ -44,9 +44,6 @@ class AmarokApplication : Application() {
 
   override fun onCreate() {
     super.onCreate()
-
-    // WARNING: Do not change the order of those initializations.
-    XHidePrefBridge.migratePrefsIfNeeded(this)
 
     val repositoryEntryPoint =
       EntryPointAccessors.fromApplication(this, RepositoryEntryPoint::class.java)
@@ -78,7 +75,8 @@ class AmarokApplication : Application() {
       },
     )
 
-    XHidePrefBridge.init(this)
+    XHideModuleBridge.init(this)
+    XHideModuleBridge.startSync(this, settingsRepo, hiderStateRepo)
     val appScope = CoroutineScope(Dispatchers.IO)
     AppCenterUtil.startAppCenter(this, settings.autoUpdate) {
       appScope.launch { settingsRepo.setAutoUpdate(false) }
