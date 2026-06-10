@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Amarok XHide</string>
+    <string name="xposed_desc">Optional Amarok Xposed module for hiding apps from PackageManager results.</string>
+</resources>

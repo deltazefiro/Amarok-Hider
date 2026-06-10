@@ -17,6 +17,7 @@ import deltazero.amarok.utils.AppCenterUtil
 import deltazero.amarok.utils.LauncherIconController
 import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.UpdateUtil
+import deltazero.amarok.utils.XHideModuleBridge
 import javax.inject.Inject
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -63,10 +64,13 @@ constructor(
     }
 
   val uiState: StateFlow<SettingsUiState> =
-    combine(settingsRepo.settings, workmodeFlow) { settings, workmode ->
+    combine(settingsRepo.settings, workmodeFlow, XHideModuleBridge.status) {
+        settings,
+        workmode,
+        xHideStatus ->
         SettingsUiState(
           workmode = workmode,
-          xHide = XHideSettingsState(settings),
+          xHide = XHideSettingsState(settings, xHideStatus),
           privacy = PrivacySettingsState(settings),
           quickHide = QuickHideSettingsState(settings),
           appearance = AppearanceSettingsState(settings),

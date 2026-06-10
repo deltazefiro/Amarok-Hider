@@ -31,7 +31,7 @@ internal fun XHideSection(state: XHideSettingsState, actions: XHideActions) {
   SwitchPreferenceItem(
     title = stringResource(R.string.enable_x_hide),
     summary =
-      if (state.isAvailable) stringResource(R.string.xposed_active, state.xposedVersion.toString())
+      if (state.isAvailable) stringResource(R.string.xposed_active, state.xposedVersion)
       else stringResource(R.string.xposed_inactive),
     icon = prefIcon(R.drawable.domino_mask_fill0_wght400_grad0_opsz24),
     checked = state.enabled,

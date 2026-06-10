@@ -70,6 +70,10 @@ android {
     }
 
     sourceSets {
+        main {
+            java.srcDir rootProject.file('shared/xhide/src/main/java')
+            aidl.srcDir rootProject.file('shared/xhide/src/main/aidl')
+        }
         playstore {
             java.srcDirs = ['src/playstore/java']
         }
@@ -112,6 +116,7 @@ android {
     buildFeatures {
         buildConfig = true
         compose = true
+        aidl = true
     }
 
     testOptions {
@@ -154,7 +159,6 @@ dependencies {
     implementation 'com.github.getActivity:XXPermissions:20.0'
     implementation 'com.github.getActivity:EasyWindow:10.62'
 
-    implementation 'com.github.kyuubiran:EzXHelper:2.2.1'
     implementation 'com.github.takusemba:spotlight:2.0.5'
     implementation 'com.github.topjohnwu.libsu:core:6.0.0'
     implementation 'com.github.skydoves:colorpickerview:2.3.0'
@@ -179,10 +183,6 @@ dependencies {
     testImplementation 'org.robolectric:robolectric:4.15.1'
     testImplementation 'androidx.test:core:1.6.1'
 
-    // F-Droid disallow `api.xposed.info` since it's not a "Trusted Maven Repository".
-    // So we create a mirror GitHub repository and obtain the library from `jitpack.io` instead.
-    // Equivalent to `implementation 'de.robv.android.xposed:api:82'`.
-    compileOnly 'com.github.deltazefiro:XposedBridge:main-SNAPSHOT'
 }
 
 configurations.configureEach {
