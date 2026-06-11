@@ -112,29 +112,25 @@ Settings sections are defined in `settings/sections/`:
 
 ### 7. XHide
 
-**Directory:** `app/src/main/java/deltazero/amarok/xposed/`
+**Directories:** `xhide/`, `shared/xhide/`, `app/src/main/java/deltazero/amarok/utils/XHideModuleBridge.kt`
 
-Amarok is both an Android app and an Xposed module. The Xposed part is implemented in the `xposed` package.
+XHide is an optional companion Android app and libxposed module. The main Amarok app keeps user settings and hidden-app state; the companion module filters PackageManager queries from system server.
 
 - **Purpose:** Provides system-level app hiding by intercepting Android's PackageManager queries.
 - **Limitations:** Does not hide apps from launchers; use with other app hiding modes.
+- **Compatibility:** Uses libxposed API 101+ metadata under `xhide/src/main/resources/META-INF/xposed/`.
 
 #### Key Components
 
-- **XposedEntry:** Module's main entry point.
-- **FilterHooks:** Contains version-specific implementations.
+- **`:xhide`:** Standalone Android application with package `deltazero.amarok.xhide`.
+- **`XHideModule`:** libxposed module entry point; attaches remote preferences and loads system-server hooks.
+- **`FilterHooks` / `FilterHookFactory`:** Version-specific PackageManager hook registration.
+- **`XHideSyncService`:** Signature-permission AIDL service used by the main app to push snapshots and read framework status.
+- **`shared/xhide`:** Shared AIDL and `XHideContract` constants compiled by both `:app` and `:xhide`.
 
-#### Communication and Preference Management
+#### Communication and State
 
-The main app and the module run in different processes, so they communicate with each other through `XHidePrefBridge`.
-
-- **XHidePrefBridge:**
-    - Receives module status/version (`isModuleActive`, `xposedVersion`)
-    - Observes `HiderStateRepository.hiddenApps` and `SettingsRepository.settings.xHideEnabled`
-    - Sends updated module preferences with `commitNewValues()`
-- **XPref:** Manages module-side cached preferences.
-
-When hidden apps or XHide enablement changes, the bridge updates module preferences for system query filtering.
+The main app and the module communicate through `IXHideSyncService`. `XHideModuleBridge` observes `HiderStateRepository.hiddenApps` and `SettingsRepository.settings.xHideEnabled`, builds a snapshot bundle from the shared contract, and pushes it to the companion module. The module writes accepted snapshots into libxposed remote preferences through `XHideStateStore`; system-server hooks read the latest snapshot before filtering query results.
 
 ### 8. Quick Hide
 
