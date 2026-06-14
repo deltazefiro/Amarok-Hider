@@ -102,6 +102,10 @@ constructor(
   fun setDisableOnlyWithXHide(enabled: Boolean) =
     viewModelScope.launch { settingsRepo.setDisableOnlyWithXHide(enabled) }
 
+  fun refreshXHideStatus() {
+    XHideModuleBridge.refresh(application)
+  }
+
   fun setPassword(hash: String?) {
     viewModelScope.launch {
       settingsRepo.setPassword(hash)

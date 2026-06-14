@@ -2,7 +2,6 @@ package deltazero.amarok.xhide
 
 import android.app.Service
 import android.content.Intent
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.IBinder
 
@@ -11,7 +10,16 @@ class XHideSyncService : Service() {
     object : IXHideSyncService.Stub() {
       override fun getStatus(): Bundle {
         if (!isCallerAllowed()) return Bundle()
-        return XHideFrameworkStatus.toBundle()
+        return XHideFrameworkStatus.toBundle().apply {
+          @Suppress("DEPRECATION")
+          val sentinel =
+            runCatching { packageManager.getInstalledPackages(0) }
+              .getOrNull()
+              ?.firstOrNull { it.packageName == XHideContract.SENTINEL_PACKAGE }
+          putBoolean(XHideContract.KEY_HOOKS_LIVE, sentinel != null)
+          putInt(XHideContract.KEY_HOOK_COUNT, sentinel?.longVersionCode?.toInt() ?: 0)
+          putString(XHideContract.KEY_HOOK_ERROR, sentinel?.versionName ?: "")
+        }
       }
 
       override fun pushSnapshot(snapshot: Bundle): Boolean {
@@ -26,12 +34,6 @@ class XHideSyncService : Service() {
   private fun isCallerAllowed(): Boolean {
     val packages = packageManager.getPackagesForUid(IXHideSyncService.Stub.getCallingUid())
     if (packages.isNullOrEmpty()) return false
-    return packages.any { it in XHideContract.ALLOWED_MAIN_PACKAGES } &&
-      hasMatchingSignature(packages)
+    return packages.any { it in XHideContract.ALLOWED_MAIN_PACKAGES }
   }
-
-  private fun hasMatchingSignature(packages: Array<String>): Boolean =
-    packages.any {
-      packageManager.checkSignatures(packageName, it) == PackageManager.SIGNATURE_MATCH
-    }
 }
