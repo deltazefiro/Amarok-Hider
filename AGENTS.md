@@ -1,10 +1,20 @@
-# Amarok
+# Amarok-Hider
 
 Amarok is a lightweight Android app that hides files and applications for casual privacy needs. Instead of encryption, it manages file and app visibility using various techniques.
 
-## Project Overview
+Core Features
+- **File Hiding:** Obfuscation, NoMedia, and Chmod modes.
+- **App Hiding:** Supports Root, Shizuku, and Dhizuku modes.
+- **XHide Module:** Uses Xposed to filter hidden apps from system queries.
+- **Panic Button:** Floating button to trigger hide operations.
+- **Quick Settings Tile:** Direct access for quick hide/unhide.
+- **App Lock:** Protects with password/fingerprint.
 
-See @OVERVIEW.md
+## Documentations
+
+We maintain development docs in `./docs` folder. Update it as the code change.  
+Keep each file concise (within 300 lines), split if necessary.  
+Always read @docs/overview.md before starting a task. Keep the overview as a concise index.
 
 ## Build
 
@@ -17,20 +27,6 @@ Requires JDK 21+:
 
 Note: `./gradlew build` includes lint checks (mostly missing translations warnings), use `assemble` instead.
 
-## E2E Test
+## Guidelines
 
-1. Launch AVD (if not already running)
-    Check if device running with mcp `mobile_list_available_devices` (more reliable than `adb devices`). If not, start AVD with:
-    ```bash
-    emulator -avd android_16_avd -no-window -no-audio -no-boot-anim -gpu swiftshader_indirect
-    # Runs in background, wait ~30s until "mobile_list_available_devices" shows "emulator-*"
-    ```
-2. Install the latest build of the app with adb.
-3. Spawn agent `mobile-e2e-tester` to test the app.
-    - **Package name**: Use `deltazero.amarok.foss` for FOSS flavor builds (not `deltazero.amarok`)
-    - **Note**: Each agent invocation should test **one** simple, focused task. For complex test plans, decompose into multiple simple tasks and run agents sequentially. The agent only test user-facing behavior (black-box approach).
-
-## Agent Rules
-- Update @.cursor/rules/overview.mdc to reflect structural changes. Keep it as a concise index.
-- Modify @.claude/settings.local.json for permission updates. A restart of Claude Code is required to take effect.
 - For temporary files, always use `./tmp` folder under project root to avoid sandbox permission issues. Do not use `/tmp` or other system temp directories.
