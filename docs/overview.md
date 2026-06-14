@@ -1,21 +1,6 @@
 # Amarok Project Overview
 
-## Introduction
-
-Amarok is a lightweight Android app that quickly hides files and applications — ideal for casual privacy needs. Instead of encryption, it manages file and app visibility using various techniques.
-
-Core Features
-
-- **File Hiding:** Obfuscation, NoMedia, and Chmod modes.
-- **App Hiding:** Supports Root, Shizuku, and Dhizuku modes.
-- **XHide Module:** Uses Xposed to filter hidden apps from system queries.
-- **Panic Button:** Floating button to trigger hide operations.
-- **Quick Settings Tile:** Direct access for quick hide/unhide.
-- **App Lock:** Protects with password/fingerprint.
-
-## Functional Index
-
-### 1. Hiding Management
+## Hiding Management
 
 **Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderStateRepository.kt`, `SettingsRepository.kt`
 
@@ -31,7 +16,7 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
 - **Strategy ownership:** `Hider.init(context, settingsRepo, hiderStateRepo)` builds the selected app/file hiders, observes relevant settings, and attempts one activation pass. `switchAppHider()` / `switchFileHider()` only persist desired modes; the settings observer rebuilds/reactivates strategies.
 - **State observation:** `Hider.getStateLiveData()` / `Hider.getAppStatesLiveData()` expose LiveData bridges for UI observers.
 
-### 2. File Hiding Implementations
+## File Hiding Implementations
 
 **Directory:** `app/src/main/java/deltazero/amarok/filehider/`
 
@@ -44,7 +29,7 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
     - `ChmodFileHider.kt` — changes file permissions via root
 - **Factory:** `FileHider.build(context, mode)` creates instances from enum values.
 
-### 3. App Hiding Implementations
+## App Hiding Implementations
 
 **Directory:** `app/src/main/java/deltazero/amarok/apphider/`
 
@@ -57,13 +42,13 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
     - `DhizukuAppHider.kt` — DevicePolicyManager via Dhizuku
 - **Factory:** `AppHider.build(context, mode, options)` creates configured instances from enum values.
 
-### 4. Core Types
+## Core Types
 
 - **`apphider/AppHider.kt`:** `AppHiderOptions` carries app-specific runtime policy like `disableOnly`.
 - **`core/ActivationResult.kt`:** Data class — `ActivationResult(success, msgResId)`.
 - **`utils/ShellExt.kt`:** Coroutine bridges — `Shell.Job.await()`, `awaitShell()`.
 
-### 5. Main UI — Single Activity with NavHost
+## Main UI — Single Activity with NavHost
 
 **Entry:** `app/src/main/java/deltazero/amarok/ui/MainActivity.kt`
 
@@ -87,7 +72,7 @@ The app uses a single `MainActivity` that hosts a bottom-navigation `NavHost` wi
 
 **App picker:** `AppPickerScreen.kt` — navigated to from `AppsScreen`'s edit button via NavHost route `app_picker`.
 
-### 6. Settings and Persistence
+## Settings and Persistence
 
 - Settings persistence is handled by `SettingsRepository.kt` using Preferences DataStore. It exposes a typed `SettingsSnapshot` flow and setter methods.
 - Hide-model persistence is handled by `HiderStateRepository.kt` using Preferences DataStore. It exposes managed/hidden app and folder flows plus managed-item mutation helpers.
@@ -99,40 +84,26 @@ The app uses a single `MainActivity` that hosts a bottom-navigation `NavHost` wi
 - Business logic for settings is in `SettingsViewModel.kt`, which derives `SettingsUiState` from repository and `Hider` flows. Actions persist settings through repositories.
 - Activation is flow-driven: changing persisted app/file hider mode updates `SettingsRepository`; `Hider` observes the settings flow, rebuilds the active strategy, and updates activation error flows.
 
-#### Preference Categories
+## Preference Categories
 
 Settings sections are defined in `settings/sections/`:
 - Workmode, XHide, Privacy, Quick Hide, Appearance, Update, About
 
-#### To Add a New Setting
+### To Add a New Setting
 
 1. Add a key, field, default, decoder entry, and setter in `SettingsRepository.kt`.
 2. Add the field to the appropriate section state in `SettingsState.kt` and a corresponding action method to `SettingsViewModel`.
 3. Add the setting UI in the appropriate file under `settings/sections/`. Use `R.drawable.ic_null` as placeholder icon for new options.
 
-### 7. XHide
+## XHide (`docs/xhide.md`)
 
-**Directories:** `xhide/`, `shared/xhide/`, `app/src/main/java/deltazero/amarok/utils/XHideModuleBridge.kt`
+Optional companion app + libxposed module for PackageManager query filtering.
 
-XHide is an optional companion Android app and libxposed module. The main Amarok app keeps user settings and hidden-app state; the companion module filters PackageManager queries from system server.
+- Main app: AIDL client; pushes hidden-app snapshots and reads status.
+- Module app: AIDL service; writes snapshots to remote prefs and relays hook status.
+- system_server hooks: filter PackageManager results and inject the status sentinel.
 
-- **Purpose:** Provides system-level app hiding by intercepting Android's PackageManager queries.
-- **Limitations:** Does not hide apps from launchers; use with other app hiding modes.
-- **Compatibility:** Uses libxposed API 101+ metadata under `xhide/src/main/resources/META-INF/xposed/`.
-
-#### Key Components
-
-- **`:xhide`:** Standalone Android application with package `deltazero.amarok.xhide`.
-- **`XHideModule`:** libxposed module entry point; attaches remote preferences and loads system-server hooks.
-- **`FilterHooks` / `FilterHookFactory`:** Version-specific PackageManager hook registration.
-- **`XHideSyncService`:** Signature-permission AIDL service used by the main app to push snapshots and read framework status.
-- **`shared/xhide`:** Shared AIDL and `XHideContract` constants compiled by both `:app` and `:xhide`.
-
-#### Communication and State
-
-The main app and the module communicate through `IXHideSyncService`. `XHideModuleBridge` observes `HiderStateRepository.hiddenApps` and `SettingsRepository.settings.xHideEnabled`, builds a snapshot bundle from the shared contract, and pushes it to the companion module. The module writes accepted snapshots into libxposed remote preferences through `XHideStateStore`; system-server hooks read the latest snapshot before filtering query results.
-
-### 8. Quick Hide
+## Quick Hide
 
 Provides multiple triggers for instant hide/unhide operations:
 
