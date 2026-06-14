@@ -2,6 +2,7 @@ package deltazero.amarok.ui.settings
 
 import android.app.Activity
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
@@ -22,6 +23,7 @@ fun SettingsScreen(
   val activity = context as? Activity
   val state by viewModel.uiState.collectAsState()
   val hasHiddenFiles by viewModel.hasHiddenFiles.collectAsState()
+  LaunchedEffect(Unit) { viewModel.refreshXHideStatus() }
 
   SettingsScreenContent(
     state = state,

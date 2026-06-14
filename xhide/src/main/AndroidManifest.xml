@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <permission
-        android:name="deltazero.amarok.xhide.permission.SYNC"
-        android:protectionLevel="signature" />
-
     <application
         android:name=".XHideApplication"
         android:allowBackup="false"
@@ -14,7 +10,6 @@
 
         <service
             android:name=".XHideSyncService"
-            android:exported="true"
-            android:permission="deltazero.amarok.xhide.permission.SYNC" />
+            android:exported="true" />
     </application>
 </manifest>

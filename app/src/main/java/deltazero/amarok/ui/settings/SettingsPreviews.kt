@@ -9,6 +9,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.ui.theme.AmarokTheme
+import deltazero.amarok.utils.XHideStatus
 
 internal fun previewState() =
   SettingsUiState(
@@ -22,8 +23,7 @@ internal fun previewState() =
       ),
     xHide =
       XHideSettingsState(
-        isAvailable = false,
-        xposedVersion = 0,
+        status = XHideStatus.NotInstalled,
         enabled = false,
         disableOnlyWithXHide = false,
       ),

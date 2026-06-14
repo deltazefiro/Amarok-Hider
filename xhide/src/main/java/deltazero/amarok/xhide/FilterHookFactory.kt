@@ -14,11 +14,15 @@ object FilterHookFactory {
     val clazz =
       runCatching { Class.forName(className, false, classLoader) }
         .getOrElse {
+          XHideHookStatus.recordFailure(
+            "$className\$$methodName: ${it.message ?: it.javaClass.name}"
+          )
           xposed.log(Log.ERROR, TAG, "Error when initializing: ${className}\$${methodName}", it)
           return
         }
     val methods = clazz.declaredMethods.filter { it.name == methodName }
     if (methods.isEmpty()) {
+      XHideHookStatus.recordFailure("$className\$$methodName: method not found")
       xposed.log(Log.ERROR, TAG, "Method not found: ${className}\$${methodName}", null)
       return
     }
@@ -31,8 +35,16 @@ object FilterHookFactory {
             filterResult(result, method) { message -> xposed.log(Log.DEBUG, TAG, message, null) }
           }
         }
-        .onFailure { xposed.log(Log.ERROR, TAG, "Hook failed: $method", it) }
-        .onSuccess { xposed.log(Log.DEBUG, TAG, "Method hooked: $method", null) }
+        .onFailure {
+          XHideHookStatus.recordFailure(
+            "$className\$$methodName: ${it.message ?: it.javaClass.name}"
+          )
+          xposed.log(Log.ERROR, TAG, "Hook failed: $method", it)
+        }
+        .onSuccess {
+          XHideHookStatus.recordSuccess()
+          xposed.log(Log.DEBUG, TAG, "Method hooked: $method", null)
+        }
     }
   }
 
