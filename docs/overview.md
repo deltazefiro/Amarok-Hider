@@ -2,9 +2,9 @@
 
 ## Hiding Management
 
-**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderStateRepository.kt`, `SettingsRepository.kt`
+**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderController.kt`, `HiderStateRepository.kt`, `SettingsRepository.kt`
 
-The DataStore-backed repositories own persisted facts. `Hider` owns active hider strategies, activation errors, transient processing state, and hide/unhide orchestration using coroutines.
+The DataStore-backed repositories own persisted facts. `HiderController` (`@Singleton`, Hilt-injected) owns active hider strategies, activation errors, transient processing state, and hide/unhide orchestration using coroutines. `Hider` is a thin static facade that delegates to `HiderController` for entrypoints that lack DI access.
 
 - **Persisted configuration:** `SettingsRepository.settings: StateFlow<SettingsSnapshot>` owns settings such as hider modes, XHide flags, quick-hide settings, security settings, appearance, and updates.
 - **Persisted hide model:** `HiderStateRepository` owns `managedApps`, `managedFolders`, `hiddenApps`, and `hiddenFolders`. Managed items are user configuration; hidden sets are the persisted result of successful `Hider` operations.
@@ -13,8 +13,8 @@ The DataStore-backed repositories own persisted facts. `Hider` owns active hider
 - **Targeted operations:** `Hider.processApps()` and `Hider.processFolders()` handle explicit app/folder sets.
 - **Per-item state:** `Hider.appStates` and `Hider.folderStates` are `StateFlow<Map<String, Hider.State>>`, derived from managed sets, hidden sets, and transient processing sets.
 - **Mode source of truth:** hider modes are read from `SettingsRepository.settings`; ViewModels should use settings flows for display. `Hider` keeps only active strategy instances and observes settings changes to rebuild/reactivate them.
-- **Strategy ownership:** `Hider.init(context, settingsRepo, hiderStateRepo)` builds the selected app/file hiders, observes relevant settings, and attempts one activation pass. `switchAppHider()` / `switchFileHider()` only persist desired modes; the settings observer rebuilds/reactivates strategies.
-- **State observation:** `Hider.getStateLiveData()` / `Hider.getAppStatesLiveData()` expose LiveData bridges for UI observers.
+- **Strategy ownership:** `HiderController` receives `settingsRepo` and `hiderStateRepo` via Hilt; `Hider.init(context)` triggers it to build the selected app/file hiders, observe relevant settings, and attempt one activation pass. `switchAppHider()` / `switchFileHider()` only persist desired modes; the settings observer rebuilds/reactivates strategies.
+- **State observation:** `Hider.stateLiveData` / `Hider.appStatesLiveData` expose LiveData bridges for UI observers.
 
 ## File Hiding Implementations
 
