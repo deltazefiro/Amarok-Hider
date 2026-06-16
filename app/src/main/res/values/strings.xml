@@ -198,18 +198,24 @@
     <string name="block_screenshots_description">Block screenshots in Amarok and blur it in the recent apps list.</string>
     <string name="xposed_desc">Enable Amarok to hide applications from system menus.</string>
     <string name="x_hide" translatable="false">XHide</string>
-    <string name="x_hide_description">Utilizing the optional XHide module to enhance app hiding. Hidden apps will no longer be visible in settings or other apps. Xposed API ≥ 101 required.</string>
+    <string name="x_hide_description">Extra Xposed module for deeper hiding. Hide apps from Settings and other apps, not just the launcher.</string>
+    <string name="xhide_module">XHide extension</string>
+    <string name="xhide_download_url" translatable="false">https://github.com/deltazefiro/Amarok-Hider/releases</string>
+    <string name="xhide_download">Download module</string>
+    <string name="xhide_status_not_installed">Not installed. Download the module to continue.</string>
+    <string name="xhide_status_not_activated">Inactive. Enable Amarok XHide in the Xposed manager, then reboot.</string>
+    <string name="xhide_status_incompatible">Module outdated (v%1$d / v%2$d). Update XHide.</string>
+    <string name="xhide_status_pending_reboot">Inactive. Reboot to activate the extension.</string>
+    <string name="xhide_status_error">Hook error: %1$s</string>
+    <string name="xhide_status_active">Active. Hidden apps stay fully invisible.</string>
+    <string name="xhide_pill_inactive">Inactive</string>
+    <string name="xhide_pill_reboot">Reboot</string>
+    <string name="xhide_pill_error">Error</string>
+    <string name="xhide_pill_active">Active</string>
     <string name="enable_x_hide">Enable XHide</string>
-    <string name="enable_x_hide_description">Status: %s</string>
-    <string name="xposed_active">Active, Xposed API %d</string>
-    <string name="xposed_inactive">Module inactive. Check Xposed manager?</string>
-    <string name="xposed_not_installed">XHide module not installed.</string>
-    <string name="xposed_not_activated">Module installed but not activated. Enable Amarok in your Xposed manager.</string>
-    <string name="xposed_incompatible">Module incompatible (module protocol %1$d, app protocol %2$d). Update XHide.</string>
-    <string name="xposed_pending_reboot">Module activated. Reboot to load system hooks.</string>
-    <string name="xposed_error">Module error: %1$s</string>
+    <string name="enable_x_hide_summary">Use the module for hiding</string>
     <string name="disable_only_with_xhide">Disable apps only</string>
-    <string name="disable_only_with_xhide_description">Only disable apps and let XHide handle the hiding exclusively. May reduce lag during the hiding.</string>
+    <string name="disable_only_with_xhide_description">Let XHide handle hiding · less lag</string>
     <string name="disable_toasts">Disable toasts</string>
     <string name="disable_toasts_description">Do not show toast notifications during hide or unhide actions.</string>
     <string name="apphider_not_activated_title">App hiding inactive</string>

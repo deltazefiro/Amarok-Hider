@@ -164,9 +164,6 @@
     <string name="xposed_desc">Ενεργοποίηση του Amarok για απόκρυψη εφαρμογών από τα μενού συστήματος.</string>
     <string name="enable_x_hide">Ενεργοποίηση XHide</string>
     <string name="x_hide_description">Χρήση του Xposed για τη βελτίωση απόκρυψης εφαρμογών. Οι κρυφές εφαρμογές δεν θα είναι πλέον ορατές στις ρυθμίσεις ή σε άλλες εφαρμογές. Απαιτείται Xposed API ≥ 93.</string>
-    <string name="enable_x_hide_description">Κατάσταση: %s</string>
-    <string name="xposed_active">Ενεργό, Xposed API %d</string>
-    <string name="xposed_inactive">Η ενότητα είναι ανενεργή. Έλεγχος Xposed manager;</string>
     <string name="disable_toasts_description">Μη εμφάνιση ειδοποιήσεων toast κατά τη διάρκεια ενεργειών απόκρυψης ή αναίρεση απόκρυψης.</string>
     <string name="disable_toasts">Απενεργοποίηση toasts</string>
     <string name="apphider_not_activated_msg">Ενεργοποίηση λειτουργίας απόκρυψης εφαρμογής για ενεργοποίηση αυτής της δυνατότητας.</string>

@@ -173,11 +173,8 @@
     <string name="filehider_nomedia_description">Fügen Sie nur .nomedia zu Ordnern hinzu. Es ist kein Root-Zugriff erforderlich.</string>
     <string name="welcome_title">Willkommen</string>
     <string name="enable_x_hide">XHide aktivieren</string>
-    <string name="enable_x_hide_description">Status: %s</string>
     <string name="xposed_desc">Amarok aktivieren, um Anwendungen aus den Systemmenüs auszublenden.</string>
     <string name="x_hide_description">Verwendung des Xposed-Moduls zur Verbesserung des Ausblendens von Apps. Versteckte Apps sind nicht mehr in den Einstellungen oder anderen Apps sichtbar. Xposed API ≥ 93 Erforderlich.</string>
-    <string name="xposed_active">Aktiv, Xposed API %d</string>
-    <string name="xposed_inactive">Modul inaktiv. Xposed Manager überprüfen?</string>
     <string name="disable_toasts">Benachrichtigungen deaktivieren</string>
     <string name="disable_toasts_description">Zeige keine Pop-Up-Benachrichtigungen während des Versteckens oder Aufdeckens.</string>
     <string name="apphider_not_activated_title">Verstecken von Apps inaktiv</string>

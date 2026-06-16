@@ -176,12 +176,9 @@
     <string name="auto_hide_description">إخفاء تلقائي بعد إطفاء الشاشة.</string>
     <string name="block_screenshots_description">حظر لقطات الشاشة في Amarok وطمسها في قائمة التطبيقات الحديثة.</string>
     <string name="xposed_desc">تمكين Amarok لإخفاء التطبيقات من قوائم النظام.</string>
-    <string name="xposed_active">نشط، Xposed API %d</string>
     <string name="x_hide_description">استخدام Xpose لتحسين إخفاء التطبيقات. لن تكون التطبيقات المخفية مرئية بعد الآن في الإعدادات أو التطبيقات الأخرى. مطلوب Xpose API ≥ 93.</string>
-    <string name="xposed_inactive">الإضافة غير نشطة. تحقق من مدير Xposed؟</string>
     <string name="block_screenshots">منع لقطات الشاشة</string>
     <string name="enable_x_hide">تمكين XHide</string>
-    <string name="enable_x_hide_description">الحالة: %s</string>
     <string name="disable_toasts">إيقاف إشعارات \"التوست\"</string>
     <string name="disable_toasts_description">عدم عرض إشعارات \"التوست\" أثناء إجراءات الإخفاء أو الإظهار.</string>
     <string name="apphider_not_activated_msg">قم بتفعيل وضع إخفاء التطبيقات لتمكين هذه الميزة.</string>

@@ -157,7 +157,6 @@
     <string name="filehider_chmod">Mode Chmod</string>
     <string name="enable_dynamic_color">Warna dinamis</string>
     <string name="view_github_repo">Repositori GitHub</string>
-    <string name="enable_x_hide_description">Status: %s</string>
     <string name="enable_x_hide">Aktifkan XHide</string>
     <string name="block_screenshots">Halangi tangkapan layar</string>
     <string name="block_screenshots_description">Menghalagi penangkapan layar aplikasi Amarok dan mengaburkan tampilan aplikasi pada daftar aplikasi terkini.</string>
@@ -168,8 +167,6 @@
     <string name="auto_hide_delay_description">Jumlah menit yang dibutuhkan untuk berjeda sebelum masuk mode \"Sembunyikan\" setelah layar mati.</string>
     <string name="xposed_desc">Memungkinkan Amarok agar menyembunyikan aplikasi dari menu sistem.</string>
     <string name="x_hide_description">Gunakan modul Xposed/LSPosed untuk meningkatkan fungsi penyembunyian aplikasi. Aplikasi yg disembunyikan tidak akan terdeteksi oleh pengaturan atau aplikasi lain. Dibutuhkan Xposed API ≥ 93.</string>
-    <string name="xposed_active">Aktif, Xposed API %d</string>
-    <string name="xposed_inactive">Modul takktif. Cek manajer Xposed?</string>
     <string name="disable_toasts">Matikan notifikasi</string>
     <string name="apphider_not_activated_title">Fungsi sembunyi takaktif</string>
     <string name="apphider_not_activated_msg">Aktifkan mode sembunyi untuk menggunakan fitur ini.</string>

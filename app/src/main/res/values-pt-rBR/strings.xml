@@ -193,9 +193,6 @@
     <string name="xposed_desc">Ative a opção Amarok para ocultar aplicativos dos menus do sistema.</string>
     <string name="x_hide_description">Utilizando o Xposed para aprimorar a ocultação de aplicativos. Os aplicativos ocultos não serão mais visíveis nas configurações ou em outros aplicativos. Requer Xposed API ≥ 93.</string>
     <string name="enable_x_hide">Ativar XHide</string>
-    <string name="enable_x_hide_description">Status: %s</string>
-    <string name="xposed_active">API Xposed ativa %d</string>
-    <string name="xposed_inactive">Módulo inativo. Verificar o gerenciador Xposed?</string>
     <string name="disable_only_with_xhide">Desativar apenas os aplicativos</string>
     <string name="disable_only_with_xhide_description">Desative apenas os aplicativos e deixe o XHide cuidar exclusivamente da ocultação. Isso pode reduzir o atraso durante o processo.</string>
     <string name="disable_toasts">Desativar notificações</string>
