@@ -166,9 +166,6 @@
     <string name="auto_hide">Автоматичне приховування</string>
     <string name="auto_hide_description">Автоматично ховається після вимкнення екрана.</string>
     <string name="enable_x_hide">Увімкніть XHide</string>
-    <string name="enable_x_hide_description">Статус: %s</string>
-    <string name="xposed_active">Активний, Xposed API %d</string>
-    <string name="xposed_inactive">Модуль неактивний. Перевірити менеджер Xposed?</string>
     <string name="filehider_none_description">Вимкнути приховування файлів.</string>
     <string name="filehider_obfuscate">Режим обфускації</string>
     <string name="filehider_chmod_description">Змініть права доступу до файлів, щоб зробити їх нечитабельними. Необхідний доступ root. Процедура невідкладна.</string>

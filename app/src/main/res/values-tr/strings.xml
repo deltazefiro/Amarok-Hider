@@ -171,9 +171,6 @@
     <string name="xposed_desc">Uygulamaları sistem menülerinde gizlemek için Amarok\'u etkinleştir.</string>
     <string name="x_hide_description">Uygulama gizlemeyi geliştirmek için Xposed modülünü kullan. Gizli uygulamalar artık ayarlarda veya diğer uygulamalarda görünmeyecek. Xposed API ≥ 93 Gerekli.</string>
     <string name="enable_x_hide">Xhide\'ı etkinleştir</string>
-    <string name="enable_x_hide_description">Durum: %s</string>
-    <string name="xposed_active">Aktif, Xposed API %d</string>
-    <string name="xposed_inactive">Modül aktif değil. Xposed Manager\'ı kontrol ettin mi?</string>
     <string name="filehider_none">Devre dışı</string>
     <string name="filehider_none_description">Dosya gizlemeyi devre dışı bırak.</string>
     <string name="filehider_obfuscate">Şaşırtma Modu</string>

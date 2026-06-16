@@ -176,9 +176,6 @@
     <string name="invert_tile_color_description">По умолчанию плитка быстрых настроек отображается активированной, когда видна ваша конфиденциальность. Переключите этот параметр, чтобы изменить поведение.</string>
     <string name="x_hide_description">Использование Xposed для улучшения скрытия приложений. Скрытые приложения больше не будут видны в настройках и других приложениях. Требуется Xposed API ≥ 93.</string>
     <string name="enable_x_hide">Включить XHide</string>
-    <string name="enable_x_hide_description">Статус: %s</string>
-    <string name="xposed_active">Активно, Xposed API %d</string>
-    <string name="xposed_inactive">Модуль неактивен. Проверьте менеджер Xposed?</string>
     <string name="disable_toasts">Отключить тосты</string>
     <string name="disable_toasts_description">Не показывать уведомления о тостах во время действий по скрытию или снятию с экрана.</string>
     <string name="xposed_desc">Включите в Amarok функцию скрытия приложений из системных меню.</string>

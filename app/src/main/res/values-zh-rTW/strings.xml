@@ -132,9 +132,6 @@
     <string name="auto_hide_delay_description">息屏多少分鐘後自動隱藏。</string>
     <string name="block_screenshots">停用截圖</string>
     <string name="enable_x_hide">啟用 XHide</string>
-    <string name="enable_x_hide_description">狀態：%s</string>
-    <string name="xposed_active">已激活，Xposed API %d</string>
-    <string name="xposed_inactive">模組未激活，請檢查 Xposed 管理器。</string>
     <string name="disable_toasts">禁用提示</string>
     <string name="disable_toasts_description">停用隱藏或解除隱藏時的提示（Toast）。</string>
     <string name="apphider_not_activated_title">應用程式隱藏未激活</string>

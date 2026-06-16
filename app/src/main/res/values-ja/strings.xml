@@ -109,7 +109,6 @@
     <string name="dynamic_color_description">アプリの色にダイナミックカラーを利用する。</string>
     <string name="enable_x_hide">XHideの有効化</string>
     <string name="x_hide_description">Xposedを活用してアプリの非表示を強化。非表示アプリが設定や他のアプリで表示されなくなる。Xposed API93以上が必要。</string>
-    <string name="xposed_inactive">モジュールが無効。Xposed managerをチェックしてください。</string>
     <string name="disable_toasts">トーストの非表示</string>
     <string name="disable_toasts_description">非表示/非表示解除のトースト通知を表示しない。</string>
     <string name="invert_tile_color">タイルの色を反転させる</string>
@@ -135,7 +134,6 @@
     <string name="calendar_about">ピュアカレンダー | by @koramA</string>
     <string name="display_root_apps">root関連アプリを表示</string>
     <string name="invalid_path">無効なパスです。</string>
-    <string name="enable_x_hide_description">状態：%s</string>
     <string name="path_duplicated">非表示フォルダをループ</string>
     <string name="notification_channel_name">QuickHideサービス</string>
     <string name="password">パスワード</string>
@@ -164,7 +162,6 @@
     <string name="auto_hide_description">画面がオフになると自動的に非表示になります。</string>
     <string name="auto_hide_delay">自動非表示の遅延時間</string>
     <string name="auto_hide_delay_description">画面がオフになってから非表示になるまでの遅延時間（分）。</string>
-    <string name="xposed_active">有効（Xposed API %d）</string>
     <string name="disable_only_with_xhide">アプリのみ無効化</string>
     <string name="disable_only_with_xhide_description">アプリのみを無効化し、非表示はXHideに任せます。\nこれにより、非表示時の動作遅延が軽減される場合があります。</string>
     <string name="xposed_desc">Amarokを有効にすると、アプリをシステムメニューから非表示にできます。</string>

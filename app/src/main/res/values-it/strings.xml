@@ -171,10 +171,7 @@
     <string name="auto_hide_description">Nasconde automaticamente quando si spegne lo schermo.</string>
     <string name="auto_hide_delay">Ritardo Auto Nascondimento</string>
     <string name="enable_x_hide">Abilita XHide</string>
-    <string name="enable_x_hide_description">Stato: %s</string>
-    <string name="xposed_active">Attivo, API Xposed %d</string>
     <string name="auto_hide_delay_description">Numero di minuti di attesa prima di nascondersi dopo lo spegnimento dello schermo.</string>
-    <string name="xposed_inactive">Modulo inattivo. Controllare il manager Xposed?</string>
     <string name="warning_system_apps">Nascondere le app di sistema potrebbe causare un bootloop. Per favore sii attento quando nascondi le app di sistema.</string>
     <string name="warning_root_apps">Amarok non è progettato per nascondere app correlate al root. Potrebbe causare la perdita dell\'accesso root. Considera usare Dr-TSNG/Hide-My-Applist.</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: Impossibile concedere `DELEGATION_PACKAGE_ACCESS`. Prova a riattivare Dhizuku.</string>

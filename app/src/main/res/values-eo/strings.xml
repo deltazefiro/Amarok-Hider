@@ -12,7 +12,6 @@
     <string name="never">Neniam</string>
     <string name="view_github_repo">GitHub-deponejo</string>
     <string name="enable_x_hide">Ŝalti XHide</string>
-    <string name="enable_x_hide_description">Stato: %s</string>
     <string name="auto_hide">Aŭtomate kaŝi</string>
     <string name="follow_system">(laŭ sistemo)</string>
     <string name="enable_dynamic_color">Dinamika koloro</string>

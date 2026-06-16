@@ -173,9 +173,6 @@
     <string name="block_screenshots_description">Blokada zrzutów ekranu oraz rozmycie na liście ostatnich aplikacji.</string>
     <string name="xposed_desc">Włącz ukrywanie aplikacji z opcji systemowych.</string>
     <string name="enable_x_hide">Włącz XHide</string>
-    <string name="enable_x_hide_description">Stan: %s</string>
-    <string name="xposed_active">Aktywny, Xposed API %d</string>
-    <string name="xposed_inactive">Moduł nieaktywny. Sprawdzić menedżer Xposed?</string>
     <string name="disable_only_with_xhide">Tylko wyłączanie aplikacji</string>
     <string name="disable_only_with_xhide_description">Tylko wyłączanie aplikacji oraz pozwolenie, aby XHide zajmował się ukrywaniem. Przyśpiesza proces.</string>
     <string name="welcome_msg">Amarok to darmowe narzędzie, dające wolność ukrywając prywatne pliki &amp; aplikacje.\n\nProszę zauważ, że Amarok nie jest oprogramowaniem szyfrującym, lecz aplikacją do ukrywania. Nie zalecamy uzywania aplikacji do ochrony poufnych plików oraz aplikacji.\n\n<u>Zastrzeżenie: Amarok jest dostarczany bez żadnych gwarancji. Użytkownik ponosi pełną odpowiedzialność za wszelkie straty oraz konsekwencje powstałe podczas używania aplikacji.</u></string>

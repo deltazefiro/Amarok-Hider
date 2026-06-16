@@ -172,9 +172,6 @@
     <string name="xposed_desc">允许 Amarok 让应用不出现在系统菜单中。</string>
     <string name="x_hide_description">使用 Xposed 增强应用隐藏。启用后隐藏的应用在系统菜单与其他应用中不可见。需要 Xposed API ≥ 93。</string>
     <string name="enable_x_hide">启用 XHide</string>
-    <string name="enable_x_hide_description">状态：%s</string>
-    <string name="xposed_active">已激活，Xposed API %d</string>
-    <string name="xposed_inactive">模块未激活，请检查 Xposed 管理器。</string>
     <string name="disable_toasts">禁用提示</string>
     <string name="disable_toasts_description">禁用隐藏或解除隐藏时的提示（Toast）。</string>
     <string name="apphider_not_activated_title">应用隐藏未激活</string>

@@ -109,7 +109,5 @@
     <string name="spotlight_do_not_show_again">ÄLÄ NÄYTÄ UUDELLEEN</string>
     <string name="appearance">Ulkoasu</string>
     <string name="warning">VAROITUS</string>
-    <string name="enable_x_hide_description">Tila: %s</string>
-    <string name="xposed_active">Active, Xposed API %d</string>
     <string name="invert_tile_color">Käännä ruutujen värit</string>
 </resources>
