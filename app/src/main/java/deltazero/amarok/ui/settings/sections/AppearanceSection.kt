@@ -5,32 +5,15 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
-import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.RadioButton
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import deltazero.amarok.R
 import deltazero.amarok.ui.settings.AppearanceActions
 import deltazero.amarok.ui.settings.AppearanceSettingsState
 import deltazero.amarok.ui.settings.ClickPreferenceItem
+import deltazero.amarok.ui.settings.DropdownPreferenceItem
 import deltazero.amarok.ui.settings.PreferenceGroupHeader
 import deltazero.amarok.ui.settings.SettingsSectionPreview
 import deltazero.amarok.ui.settings.SwitchPreferenceItem
@@ -41,7 +24,6 @@ import deltazero.amarok.ui.settings.previewState
 @Composable
 internal fun AppearanceSection(state: AppearanceSettingsState, actions: AppearanceActions) {
   val context = LocalContext.current
-  var showDarkThemeDialog by remember { mutableStateOf(false) }
 
   PreferenceGroupHeader(stringResource(R.string.appearance))
   SwitchPreferenceItem(
@@ -54,59 +36,18 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
   )
-
-  if (showDarkThemeDialog) {
-    val options =
-      listOf(
-        AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM to
-          stringResource(R.string.dark_theme_follow_system),
-        AppCompatDelegate.MODE_NIGHT_NO to stringResource(R.string.dark_theme_light),
-        AppCompatDelegate.MODE_NIGHT_YES to stringResource(R.string.dark_theme_dark),
-      )
-    AlertDialog(
-      onDismissRequest = { showDarkThemeDialog = false },
-      title = { Text(stringResource(R.string.dark_theme)) },
-      text = {
-        Column {
-          options.forEach { (mode, label) ->
-            Row(
-              modifier =
-                Modifier.fillMaxWidth()
-                  .clickable {
-                    actions.setDarkTheme(mode)
-                    showDarkThemeDialog = false
-                  }
-                  .padding(vertical = 12.dp),
-              verticalAlignment = Alignment.CenterVertically,
-            ) {
-              RadioButton(selected = mode == state.darkThemeMode, onClick = null)
-              Spacer(Modifier.width(12.dp))
-              Text(label)
-            }
-          }
-        }
-      },
-      confirmButton = {},
-      dismissButton = {
-        TextButton(onClick = { showDarkThemeDialog = false }) {
-          Text(stringResource(R.string.cancel))
-        }
-      },
-    )
-  }
-
-  ClickPreferenceItem(
+  DropdownPreferenceItem(
     title = stringResource(R.string.dark_theme),
-    summary =
-      stringResource(
-        when (state.darkThemeMode) {
-          AppCompatDelegate.MODE_NIGHT_YES -> R.string.dark_theme_dark
-          AppCompatDelegate.MODE_NIGHT_NO -> R.string.dark_theme_light
-          else -> R.string.dark_theme_follow_system
-        }
-      ),
     icon = prefIcon(R.drawable.contrast_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-    onClick = { showDarkThemeDialog = true },
+    selectedValue = state.darkThemeMode.toString(),
+    options =
+      listOf(
+        AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM.toString() to
+          stringResource(R.string.dark_theme_follow_system),
+        AppCompatDelegate.MODE_NIGHT_NO.toString() to stringResource(R.string.dark_theme_light),
+        AppCompatDelegate.MODE_NIGHT_YES.toString() to stringResource(R.string.dark_theme_dark),
+      ),
+    onValueChange = { actions.setDarkTheme(it.toInt()) },
   )
   ClickPreferenceItem(
     title = stringResource(R.string.language),
