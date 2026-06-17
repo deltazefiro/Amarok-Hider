@@ -6,6 +6,9 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.only
@@ -62,6 +65,8 @@ class MainActivity : AmarokActivity() {
             navController = navController,
             startDestination = AmarokRoute.DASHBOARD.route,
             modifier = Modifier.padding(padding),
+            enterTransition = { fadeIn(tween(500)) },
+            exitTransition = { fadeOut(tween(500)) },
           ) {
             composable(AmarokRoute.DASHBOARD.route) {
               DashboardScreen(onChangeStatus = { changeStatus() })
