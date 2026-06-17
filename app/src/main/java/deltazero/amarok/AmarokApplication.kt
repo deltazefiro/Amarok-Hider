@@ -20,6 +20,7 @@ import deltazero.amarok.core.Hider
 import deltazero.amarok.core.HiderController
 import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.core.LockTrigger
+import deltazero.amarok.core.QuickHideController
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.receivers.ScreenStatusReceiver
 import deltazero.amarok.utils.AppCenterUtil
@@ -64,7 +65,7 @@ class AmarokApplication : Application() {
     }
 
     Hider.init(this)
-    QuickHideService.init(this)
+    repositoryEntryPoint.quickHideController().init()
     QSTileService.init(applicationContext)
     ToggleWidget.init(applicationContext)
 
@@ -109,5 +110,7 @@ class AmarokApplication : Application() {
     fun hiderStateRepository(): HiderStateRepository
 
     fun hiderController(): HiderController
+
+    fun quickHideController(): QuickHideController
   }
 }
