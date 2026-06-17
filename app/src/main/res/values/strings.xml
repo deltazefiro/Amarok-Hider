@@ -140,6 +140,10 @@
     <string name="password_mismatch_error">Passwords do not match.</string>
     <string name="biometric_auth">Biometric authentication</string>
     <string name="biometric_auth_description">Use the device\'s biometric authentication to access Amarok, when available.</string>
+    <string name="lock_when">Lock when</string>
+    <string name="lock_when_app_background">When leaving the app</string>
+    <string name="lock_when_screen_off">When the screen turns off</string>
+    <string name="lock_when_reopen">When reopened</string>
     <string name="dhizuku_permission_denied">Dhizuku: Permission denied</string>
     <string name="dhizuku_pre_v5">Dhizuku: Unsupported Dhizuku version. Please update Dhizuku to version 5 or higher.</string>
     <string name="dhizuku_not_init">Dhizuku: Service unavailable. Please ensure that you have installed and activated Dhizuku.</string>

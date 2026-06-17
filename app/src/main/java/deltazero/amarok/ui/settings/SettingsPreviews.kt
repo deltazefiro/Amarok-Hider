@@ -66,6 +66,7 @@ internal val previewPrivacyActions =
     requestPassword = {},
     setPasswordHash = {},
     setBiometricAuth = {},
+    setLockTrigger = {},
     setDisguise = {},
     confirmHideIcon = {},
     unhideIcon = {},

@@ -1,6 +1,7 @@
 package deltazero.amarok.utils
 
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.LockTrigger
 import deltazero.amarok.core.SettingsRepository
 
 object SecurityUtil {
@@ -11,6 +12,11 @@ object SecurityUtil {
   fun lockAndDisguise() {
     locked = true
     disguised = true
+  }
+
+  /** Re-arm lock and disguise if [trigger] matches the user's configured [LockTrigger]. */
+  fun onTrigger(trigger: LockTrigger, settingsRepo: SettingsRepository) {
+    if (settingsRepo.settings.value.lockTrigger == trigger) lockAndDisguise()
   }
 
   @JvmStatic
