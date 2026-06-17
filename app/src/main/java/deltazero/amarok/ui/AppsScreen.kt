@@ -21,6 +21,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -75,13 +76,16 @@ fun AppsScreen(
   onUnhideApp: (String) -> Unit,
   onLaunchApp: (String) -> Unit,
 ) {
+  val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
   Scaffold(
+    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
-      TopAppBar(
+      MediumTopAppBar(
         title = { Text(stringResource(R.string.apps)) },
         actions = {
           IconButton(onClick = onOpenEditor) { Icon(Icons.Default.Edit, contentDescription = null) }
         },
+        scrollBehavior = scrollBehavior,
       )
     },
     floatingActionButton = {

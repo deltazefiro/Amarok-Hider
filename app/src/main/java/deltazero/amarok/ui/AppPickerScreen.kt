@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -65,6 +66,7 @@ fun AppPickerScreen(
 ) {
   var searchActive by remember { mutableStateOf(false) }
   var filterMenuExpanded by remember { mutableStateOf(false) }
+  val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
   // Warning dialog
   state.pendingWarning?.let { warning ->
@@ -87,6 +89,7 @@ fun AppPickerScreen(
   }
 
   Scaffold(
+    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
       if (searchActive) {
         SearchTopBar(
@@ -98,7 +101,7 @@ fun AppPickerScreen(
           },
         )
       } else {
-        TopAppBar(
+        MediumTopAppBar(
           title = { Text(stringResource(R.string.set_hide_apps)) },
           navigationIcon = {
             IconButton(onClick = onBack) {
@@ -137,9 +140,10 @@ fun AppPickerScreen(
               }
             }
           },
+          scrollBehavior = scrollBehavior,
         )
       }
-    }
+    },
   ) { padding ->
     val pullToRefreshState = rememberPullToRefreshState()
 
