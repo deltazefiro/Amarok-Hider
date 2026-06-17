@@ -52,7 +52,6 @@ fun SettingsScreen(
         setHideFromRecents = viewModel::setHideFromRecents,
         setBlockScreenshots = viewModel::setBlockScreenshots,
         setDisableSecurityWhenUnhidden = viewModel::setDisableSecurityWhenUnhidden,
-        setDisableToasts = viewModel::setDisableToasts,
       ),
     quickHideActions =
       QuickHideActions(
@@ -70,6 +69,7 @@ fun SettingsScreen(
         setDarkTheme = viewModel::setDarkTheme,
         switchLocale = onSwitchLocale,
         setInvertTileColor = viewModel::setInvertTileColor,
+        setDisableToasts = viewModel::setDisableToasts,
       ),
     updateActions =
       UpdateActions(
