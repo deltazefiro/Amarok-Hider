@@ -36,7 +36,6 @@ internal fun previewState() =
         hideFromRecents = false,
         blockScreenshots = false,
         disableSecurityWhenUnhidden = false,
-        disableToasts = false,
       ),
     quickHide =
       QuickHideSettingsState(
@@ -50,6 +49,7 @@ internal fun previewState() =
         dynamicColor = true,
         darkThemeMode = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM,
         invertTileColor = false,
+        disableToasts = false,
       ),
     updates =
       UpdateSettingsState(updateChannel = "RELEASE", autoUpdate = true, appVersionName = "0.10.0"),
@@ -74,7 +74,6 @@ internal val previewPrivacyActions =
     setHideFromRecents = {},
     setBlockScreenshots = {},
     setDisableSecurityWhenUnhidden = {},
-    setDisableToasts = {},
   )
 
 internal val previewQuickHideActions =
@@ -94,6 +93,7 @@ internal val previewAppearanceActions =
     setDarkTheme = {},
     switchLocale = {},
     setInvertTileColor = {},
+    setDisableToasts = {},
   )
 
 internal val previewUpdateActions =

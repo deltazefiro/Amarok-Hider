@@ -134,6 +134,13 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
   )
+  SwitchPreferenceItem(
+    title = stringResource(R.string.disable_toasts),
+    summary = stringResource(R.string.disable_toasts_description),
+    icon = prefIcon(R.drawable.speaker_notes_off_24dp),
+    checked = state.disableToasts,
+    onCheckedChange = actions.setDisableToasts,
+  )
 }
 
 @Preview(showBackground = true)

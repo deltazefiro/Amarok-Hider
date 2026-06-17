@@ -45,7 +45,6 @@ data class PrivacySettingsState(
   val hideFromRecents: Boolean = false,
   val blockScreenshots: Boolean = false,
   val disableSecurityWhenUnhidden: Boolean = false,
-  val disableToasts: Boolean = false,
 ) {
   constructor(
     settings: SettingsSnapshot
@@ -58,7 +57,6 @@ data class PrivacySettingsState(
     hideFromRecents = settings.hideFromRecents,
     blockScreenshots = settings.blockScreenshots,
     disableSecurityWhenUnhidden = settings.disableSecurityWhenUnhidden,
-    disableToasts = settings.disableToasts,
   )
 }
 
@@ -82,6 +80,7 @@ data class AppearanceSettingsState(
   val dynamicColor: Boolean = false,
   val darkThemeMode: Int = -1,
   val invertTileColor: Boolean = false,
+  val disableToasts: Boolean = false,
 ) {
   constructor(
     settings: SettingsSnapshot
@@ -89,6 +88,7 @@ data class AppearanceSettingsState(
     dynamicColor = settings.dynamicColor,
     darkThemeMode = settings.darkTheme,
     invertTileColor = settings.invertTileColor,
+    disableToasts = settings.disableToasts,
   )
 }
 

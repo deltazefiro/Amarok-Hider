@@ -27,7 +27,6 @@ class PrivacyActions(
   val setHideFromRecents: (Boolean) -> Unit,
   val setBlockScreenshots: (Boolean) -> Unit,
   val setDisableSecurityWhenUnhidden: (Boolean) -> Unit,
-  val setDisableToasts: (Boolean) -> Unit,
 )
 
 class QuickHideActions(
@@ -45,6 +44,7 @@ class AppearanceActions(
   val setDarkTheme: (Int) -> Unit,
   val switchLocale: () -> Unit,
   val setInvertTileColor: (Boolean) -> Unit,
+  val setDisableToasts: (Boolean) -> Unit,
 )
 
 class UpdateActions(

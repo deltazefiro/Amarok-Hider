@@ -21,7 +21,7 @@
     <string name="storage_permission_request_title">Storage permission required</string>
     <string name="storage_permission_request_message">Grant Amarok access to external storage to hide files.</string>
     <string name="storage_permission_denied">Storage permission denied. File-hiding is unavailable</string>
-    <string name="apphider_not_ava">App-hiding unavailable. Check \"More Settings\" → \"Switch app-hiding mode\".</string>
+    <string name="apphider_not_ava">App-hiding unavailable. Check \"Settings\" → \"Switch app-hiding mode\".</string>
     <string name="set_hide_files">Set Hidden Files</string>
     <string name="show_about">Show about</string>
     <string name="moto" translatable="false">Hunting alone in the starless night.</string>
@@ -32,7 +32,7 @@
     <string name="usage_description">Open help center.</string>
     <string name="switch_app_hider">Switch app-hiding mode</string>
     <string name="current_mode">Current Mode: %s</string>
-    <string name="more_settings">More Settings</string>
+    <string name="more_settings">Settings</string>
     <string name="switch_file_hider">Switch file-hiding mode</string>
     <string name="apply_on_restart">Restart the app to apply the new changes.</string>
     <string name="hidden_toast">Hidden</string>
@@ -50,7 +50,7 @@
     <string name="help">Help</string>
     <string name="path_duplicated">Loop hidden folder</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\ncontains\n\n<u>\'%2$s\'</u></string>
-    <string name="no_apphider">Please select app-hiding mode in \"More settings\".</string>
+    <string name="no_apphider">Please select app-hiding mode in \"Settings\".</string>
     <string name="root_not_ava">Could not gain root access.</string>
     <string name="check_update_on_start">Auto update</string>
     <string name="check_update_on_start_description">Check for new versions on startup.</string>
@@ -174,8 +174,8 @@
     <string name="disguise_description">Disguise Amarok as a calendar app.</string>
     <string name="hide_amarok_icon">Hide icon</string>
     <string name="hide_amarok_icon_description">Hide Amarok from the launcher. Dial *#*#262765#*#* to open the Amarok.</string>
-    <string name="disable_security_when_unhidden">Disable security when unhidden</string>
-    <string name="disable_security_when_unhidden_description">Disable disguise and app lock when not hidden.</string>
+    <string name="disable_security_when_unhidden">Only lock when hidden</string>
+    <string name="disable_security_when_unhidden_description">Skip app lock and disguise while your files are visible.</string>
     <string name="calendar_about">Pure Calendar | by @koramA</string>
     <string name="close_disguise_spotlight_tip">Long press the <font fgcolor="#FCCA3E"><b>Year Number</b></font> to access Amarok.</string>
     <string name="spotlight_do_not_show_again">DON\'T SHOW AGAIN</string>

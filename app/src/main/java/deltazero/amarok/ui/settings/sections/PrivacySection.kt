@@ -47,6 +47,14 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
     enabled = state.hasPassword,
     onCheckedChange = actions.setBiometricAuth,
   )
+  SwitchPreferenceItem(
+    title = stringResource(R.string.disguise),
+    summary = stringResource(R.string.disguise_description),
+    icon = prefIcon(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    checked = state.disguise,
+    enabled = !state.hideIcon,
+    onCheckedChange = actions.setDisguise,
+  )
   DropdownPreferenceItem(
     title = stringResource(R.string.lock_when),
     icon = prefIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24),
@@ -60,12 +68,11 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
     onValueChange = { actions.setLockTrigger(LockTrigger.fromKey(it)) },
   )
   SwitchPreferenceItem(
-    title = stringResource(R.string.disguise),
-    summary = stringResource(R.string.disguise_description),
-    icon = prefIcon(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
-    checked = state.disguise,
-    enabled = !state.hideIcon,
-    onCheckedChange = actions.setDisguise,
+    title = stringResource(R.string.disable_security_when_unhidden),
+    summary = stringResource(R.string.disable_security_when_unhidden_description),
+    icon = prefIcon(R.drawable.encrypted_off_24dp),
+    checked = state.disableSecurityWhenUnhidden,
+    onCheckedChange = actions.setDisableSecurityWhenUnhidden,
   )
   SwitchPreferenceItem(
     title = stringResource(R.string.hide_amarok_icon),
@@ -99,20 +106,6 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
       actions.setBlockScreenshots(it)
       Toast.makeText(context, R.string.apply_on_restart, Toast.LENGTH_SHORT).show()
     },
-  )
-  SwitchPreferenceItem(
-    title = stringResource(R.string.disable_security_when_unhidden),
-    summary = stringResource(R.string.disable_security_when_unhidden_description),
-    icon = prefIcon(R.drawable.encrypted_off_24dp),
-    checked = state.disableSecurityWhenUnhidden,
-    onCheckedChange = actions.setDisableSecurityWhenUnhidden,
-  )
-  SwitchPreferenceItem(
-    title = stringResource(R.string.disable_toasts),
-    summary = stringResource(R.string.disable_toasts_description),
-    icon = prefIcon(R.drawable.speaker_notes_off_24dp),
-    checked = state.disableToasts,
-    onCheckedChange = actions.setDisableToasts,
   )
 }
 
