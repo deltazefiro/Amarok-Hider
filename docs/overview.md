@@ -121,12 +121,12 @@ Optional companion app + libxposed module for PackageManager query filtering.
 - Module app: AIDL service; writes snapshots to remote prefs and relays hook status.
 - system_server hooks: filter PackageManager results and inject the status sentinel.
 
-## Quick Hide
+## Quick Hide (`docs/quick-hide.md`)
 
-Provides multiple triggers for instant hide/unhide operations:
+Multiple triggers for instant hide/unhide, all funneling into `Hider.processAll`:
 
+- **Quick Hide Service / panic button:** `core/QuickHideController.kt` (single reactive authority over the service lifecycle) + `QuickHideService.kt` (dumb foreground overlay host)
 - **Quick Settings Tile:** `QSTileService.kt`
-- **Quick Hide Service:** `QuickHideService.kt` owns the foreground service and observes settings plus `Hider.state` to start/stop/react to panic button changes
-- **Auto Hide on Screen Off:** Implemented via `ScreenStatusReceiver.kt` and `AutoHideUtil.kt`
-- **Intent API:** Managed by `ActionReceiver.kt`
 - **Widget:** `ToggleWidget.kt`
+- **Intent API:** `receivers/ActionReceiver.kt`
+- **Auto Hide on Screen Off:** `receivers/ScreenStatusReceiver.kt` + `utils/AutoHideUtil.kt`
