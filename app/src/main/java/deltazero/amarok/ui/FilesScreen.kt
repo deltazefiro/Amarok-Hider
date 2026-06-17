@@ -21,6 +21,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -124,13 +125,16 @@ fun FilesScreen(
     )
   }
 
+  val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
   Scaffold(
+    modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
     topBar = {
-      TopAppBar(
+      MediumTopAppBar(
         title = { Text(stringResource(R.string.files)) },
         actions = {
           IconButton(onClick = onAddFolder) { Icon(Icons.Default.Add, contentDescription = null) }
         },
+        scrollBehavior = scrollBehavior,
       )
     },
     floatingActionButton = {

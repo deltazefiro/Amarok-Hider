@@ -6,7 +6,11 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.WindowInsetsSides
+import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -47,7 +51,13 @@ class MainActivity : AmarokActivity() {
         val showBottomBar =
           currentRoute in AmarokRoute.tabRoutes || currentRoute == AmarokRoutes.APP_PICKER
 
-        Scaffold(bottomBar = { if (showBottomBar) AmarokNavigationBar(navController) }) { padding ->
+        Scaffold(
+          bottomBar = { if (showBottomBar) AmarokNavigationBar(navController) },
+          // Let each screen's top app bar own the status-bar area so it draws
+          // edge-to-edge behind it; only the bottom/horizontal insets are consumed here.
+          contentWindowInsets =
+            WindowInsets.systemBars.only(WindowInsetsSides.Horizontal + WindowInsetsSides.Bottom),
+        ) { padding ->
           NavHost(
             navController = navController,
             startDestination = AmarokRoute.DASHBOARD.route,
