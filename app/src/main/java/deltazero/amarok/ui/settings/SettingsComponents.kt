@@ -100,11 +100,10 @@ fun SwitchPreferenceItem(
       }
     }
     Spacer(Modifier.width(16.dp))
-    Switch(
-      checked = checked,
-      onCheckedChange = if (enabled) onCheckedChange else null,
-      enabled = enabled,
-    )
+    // Always pass a non-null onCheckedChange so the Switch keeps its
+    // minimumInteractiveComponentSize reservation; `enabled = false` blocks the
+    // interaction. Passing null collapses the switch height and shifts rows.
+    Switch(checked = checked, onCheckedChange = onCheckedChange, enabled = enabled)
   }
 }
 
