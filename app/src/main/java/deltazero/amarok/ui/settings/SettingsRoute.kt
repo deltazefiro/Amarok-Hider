@@ -44,6 +44,7 @@ fun SettingsScreen(
         requestPassword = onSetPassword,
         setPasswordHash = viewModel::setPassword,
         setBiometricAuth = viewModel::setBiometricAuth,
+        setLockTrigger = viewModel::setLockTrigger,
         setDisguise = { viewModel.setDisguise(it, activity) },
         confirmHideIcon = { viewModel.confirmHideIcon(activity) },
         unhideIcon = { viewModel.unhideIcon(activity) },

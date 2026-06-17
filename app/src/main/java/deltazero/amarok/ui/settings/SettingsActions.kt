@@ -1,6 +1,7 @@
 package deltazero.amarok.ui.settings
 
 import deltazero.amarok.apphider.AppHiderMode
+import deltazero.amarok.core.LockTrigger
 import deltazero.amarok.filehider.FileHiderMode
 
 class WorkmodeActions(
@@ -18,6 +19,7 @@ class PrivacyActions(
   val requestPassword: (callback: (String?) -> Unit) -> Unit,
   val setPasswordHash: (String?) -> Unit,
   val setBiometricAuth: (Boolean) -> Unit,
+  val setLockTrigger: (LockTrigger) -> Unit,
   val setDisguise: (Boolean) -> Unit,
   val confirmHideIcon: () -> Unit,
   val unhideIcon: () -> Unit,

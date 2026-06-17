@@ -41,6 +41,7 @@ data class SettingsSnapshot(
   val disableOnlyWithXHide: Boolean = false,
   val password: String? = null,
   val biometricAuth: Boolean = false,
+  val lockTrigger: LockTrigger = LockTrigger.SCREEN_OFF,
   val disguise: Boolean = false,
   val hideAmarokIcon: Boolean = false,
   val doShowQuitDisguiseInstruct: Boolean = true,
@@ -116,6 +117,9 @@ class SettingsRepository @Inject constructor(@ApplicationContext context: Contex
   suspend fun setBiometricAuth(enabled: Boolean) =
     dataStore.edit { it[Keys.BIOMETRIC_AUTH] = enabled }
 
+  suspend fun setLockTrigger(trigger: LockTrigger) =
+    dataStore.edit { it[Keys.LOCK_TRIGGER] = trigger.key }
+
   suspend fun setDisguise(enabled: Boolean) = dataStore.edit { it[Keys.DISGUISE] = enabled }
 
   suspend fun setDoShowQuitDisguiseInstruct(show: Boolean) =
@@ -186,6 +190,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext context: Contex
     val DISABLE_ONLY_WITH_X_HIDE = booleanPreferencesKey("disableOnlyWithXHide")
     val PASSWORD = stringPreferencesKey("amarokPassword")
     val BIOMETRIC_AUTH = booleanPreferencesKey("enableAmarokBiometricAuth")
+    val LOCK_TRIGGER = stringPreferencesKey("lockTrigger")
     val DISGUISE = booleanPreferencesKey("enableDisguise")
     val HIDE_AMAROK_ICON = booleanPreferencesKey("hideAmarokIcon")
     val DO_SHOW_QUIT_DISGUISE_INSTRUCT = booleanPreferencesKey("doShowQuitDisguiseInstuct")
@@ -219,6 +224,7 @@ class SettingsRepository @Inject constructor(@ApplicationContext context: Contex
       disableOnlyWithXHide = this[Keys.DISABLE_ONLY_WITH_X_HIDE] ?: false,
       password = this[Keys.PASSWORD],
       biometricAuth = this[Keys.BIOMETRIC_AUTH] ?: false,
+      lockTrigger = LockTrigger.fromKey(this[Keys.LOCK_TRIGGER] ?: LockTrigger.SCREEN_OFF.key),
       disguise = this[Keys.DISGUISE] ?: false,
       hideAmarokIcon = this[Keys.HIDE_AMAROK_ICON] ?: false,
       doShowQuitDisguiseInstruct = this[Keys.DO_SHOW_QUIT_DISGUISE_INSTRUCT] ?: true,

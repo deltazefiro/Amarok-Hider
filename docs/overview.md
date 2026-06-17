@@ -95,6 +95,24 @@ Settings sections are defined in `settings/sections/`:
 2. Add the field to the appropriate section state in `SettingsState.kt` and a corresponding action method to `SettingsViewModel`.
 3. Add the setting UI in the appropriate file under `settings/sections/`. Use `R.drawable.ic_null` as placeholder icon for new options.
 
+## App Lock & Disguise
+
+**Files:** `utils/SecurityUtil.kt`, `ui/SecurityAuthActivity.kt`, `CalendarActivity.kt`, `AmarokActivity.kt`
+
+`SecurityUtil` holds two in-memory flags (`locked`, `disguised`), both defaulting to `true` so a
+cold start is always locked/disguised. `unlock()` / `dismissDisguise()` clear them after auth;
+`lockAndDisguise()` re-arms both. `AmarokActivity.onResume` checks `isDisguiseNeeded` →
+`CalendarActivity`, else `isUnlockRequired` → `SecurityAuthActivity`. Both checks are bypassed when
+`disableSecurityWhenUnhidden` is set and files are currently visible.
+
+**Re-arm timing (`LockTrigger`, persisted as `lockTrigger`, default `SCREEN_OFF`):**
+- `APP_BACKGROUND` — `ProcessLifecycleOwner` `ON_STOP` observer in `AmarokApplication` (covers screen-off too).
+- `SCREEN_OFF` — `ScreenStatusReceiver` on `ACTION_SCREEN_OFF`.
+- `ON_REOPEN` — no runtime trigger; relies on the cold-start default.
+
+`SecurityUtil.onTrigger(trigger, settingsRepo)` calls `lockAndDisguise()` only when the trigger
+matches the configured `lockTrigger`. UI is the "Lock when" dropdown in `PrivacySection`.
+
 ## XHide (`docs/xhide.md`)
 
 Optional companion app + libxposed module for PackageManager query filtering.

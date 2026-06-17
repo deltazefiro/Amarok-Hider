@@ -1,6 +1,7 @@
 package deltazero.amarok.ui.settings
 
 import deltazero.amarok.apphider.AppHiderMode
+import deltazero.amarok.core.LockTrigger
 import deltazero.amarok.core.SettingsSnapshot
 import deltazero.amarok.filehider.FileHiderMode
 import deltazero.amarok.utils.AppCenterUtil
@@ -38,6 +39,7 @@ data class XHideSettingsState(
 data class PrivacySettingsState(
   val hasPassword: Boolean = false,
   val biometricAuth: Boolean = false,
+  val lockTrigger: LockTrigger = LockTrigger.SCREEN_OFF,
   val disguise: Boolean = false,
   val hideIcon: Boolean = false,
   val hideFromRecents: Boolean = false,
@@ -50,6 +52,7 @@ data class PrivacySettingsState(
   ) : this(
     hasPassword = settings.password != null,
     biometricAuth = settings.biometricAuth,
+    lockTrigger = settings.lockTrigger,
     disguise = settings.disguise,
     hideIcon = settings.hideAmarokIcon,
     hideFromRecents = settings.hideFromRecents,

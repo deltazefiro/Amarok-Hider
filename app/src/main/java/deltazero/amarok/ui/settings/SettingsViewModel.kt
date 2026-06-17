@@ -10,6 +10,7 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.apphider.AppHider
 import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.core.Hider
+import deltazero.amarok.core.LockTrigger
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.filehider.FileHider
 import deltazero.amarok.filehider.FileHiderMode
@@ -115,6 +116,9 @@ constructor(
 
   fun setBiometricAuth(enabled: Boolean) =
     viewModelScope.launch { settingsRepo.setBiometricAuth(enabled) }
+
+  fun setLockTrigger(trigger: LockTrigger) =
+    viewModelScope.launch { settingsRepo.setLockTrigger(trigger) }
 
   fun setDisguise(enabled: Boolean, activity: Activity?) {
     viewModelScope.launch {

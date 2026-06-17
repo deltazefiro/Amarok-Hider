@@ -7,6 +7,8 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import deltazero.amarok.R
+import deltazero.amarok.core.LockTrigger
+import deltazero.amarok.ui.settings.DropdownPreferenceItem
 import deltazero.amarok.ui.settings.PreferenceGroupHeader
 import deltazero.amarok.ui.settings.PrivacyActions
 import deltazero.amarok.ui.settings.PrivacySettingsState
@@ -44,6 +46,18 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
     checked = state.biometricAuth,
     enabled = state.hasPassword,
     onCheckedChange = actions.setBiometricAuth,
+  )
+  DropdownPreferenceItem(
+    title = stringResource(R.string.lock_when),
+    icon = prefIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24),
+    selectedValue = state.lockTrigger.key,
+    options =
+      listOf(
+        LockTrigger.APP_BACKGROUND.key to stringResource(R.string.lock_when_app_background),
+        LockTrigger.SCREEN_OFF.key to stringResource(R.string.lock_when_screen_off),
+        LockTrigger.ON_REOPEN.key to stringResource(R.string.lock_when_reopen),
+      ),
+    onValueChange = { actions.setLockTrigger(LockTrigger.fromKey(it)) },
   )
   SwitchPreferenceItem(
     title = stringResource(R.string.disguise),

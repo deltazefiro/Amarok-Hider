@@ -4,7 +4,10 @@ import android.app.Application
 import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.lifecycle.asLiveData
 import com.google.android.material.color.DynamicColors
 import com.rosan.dhizuku.api.Dhizuku
@@ -16,9 +19,11 @@ import dagger.hilt.components.SingletonComponent
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.HiderController
 import deltazero.amarok.core.HiderStateRepository
+import deltazero.amarok.core.LockTrigger
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.receivers.ScreenStatusReceiver
 import deltazero.amarok.utils.AppCenterUtil
+import deltazero.amarok.utils.SecurityUtil
 import deltazero.amarok.utils.XHideModuleBridge
 import deltazero.amarok.widget.ToggleWidget
 import jonathanfinerty.once.Once
@@ -68,12 +73,23 @@ class AmarokApplication : Application() {
     if (settings.dynamicColor) DynamicColors.applyToActivitiesIfAvailable(this)
 
     registerReceiver(
-      ScreenStatusReceiver(),
+      ScreenStatusReceiver(settingsRepo),
       IntentFilter().apply {
         addAction(Intent.ACTION_SCREEN_ON)
         addAction(Intent.ACTION_SCREEN_OFF)
       },
     )
+
+    // Re-arm lock/disguise when the whole app goes to background, if the user opted in.
+    ProcessLifecycleOwner.get()
+      .lifecycle
+      .addObserver(
+        object : DefaultLifecycleObserver {
+          override fun onStop(owner: LifecycleOwner) {
+            SecurityUtil.onTrigger(LockTrigger.APP_BACKGROUND, settingsRepo)
+          }
+        }
+      )
 
     XHideModuleBridge.init(this)
     XHideModuleBridge.startSync(this, settingsRepo, hiderStateRepo)
