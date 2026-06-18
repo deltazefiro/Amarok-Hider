@@ -56,7 +56,7 @@ internal fun XHideSection(state: XHideSettingsState, actions: XHideActions) {
       ModuleStatusTile(status = state.status, modifier = Modifier.padding(16.dp))
 
       if (state.status is XHideStatus.Active) {
-        HorizontalDivider()
+        HorizontalDivider(Modifier.padding(horizontal = 16.dp))
         XHideSwitchRow(
           title = stringResource(R.string.enable_x_hide),
           summary = stringResource(R.string.enable_x_hide_summary),
