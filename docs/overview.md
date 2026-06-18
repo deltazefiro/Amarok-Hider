@@ -2,12 +2,13 @@
 
 ## Hiding Management
 
-**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderController.kt`, `HiderStateRepository.kt`, `SettingsRepository.kt`
+**Files:** `app/src/main/java/deltazero/amarok/core/Hider.kt`, `HiderController.kt`, `HiderStateRepository.kt`, `SettingsRepository.kt`, `ActivityRepository.kt`
 
 The DataStore-backed repositories own persisted facts. `HiderController` (`@Singleton`, Hilt-injected) owns active hider strategies, activation errors, transient processing state, and hide/unhide orchestration using coroutines. `Hider` is a thin static facade that delegates to `HiderController` for entrypoints that lack DI access.
 
 - **Persisted configuration:** `SettingsRepository.settings: StateFlow<SettingsSnapshot>` owns settings such as hider modes, XHide flags, quick-hide settings, security settings, appearance, and updates.
 - **Persisted hide model:** `HiderStateRepository` owns `managedApps`, `managedFolders`, `hiddenApps`, and `hiddenFolders`. Managed items are user configuration; hidden sets are the persisted result of successful `Hider` operations.
+- **Persisted activity (dashboard):** `ActivityRepository` (DataStore `activity`) owns `lastHiddenAt`, `lastRevealedAt`, and `revealDays` (set of `LocalDate`s on which an unhide occurred, pruned to a 92-day window). `HiderController` stamps these via `recordActivity()` after a successful `processAll/processApps/processFolders` (only when something was actually processed). Consumed by `MainViewModel` to derive the dashboard's "X min ago", days-since-reveal, last-revealed date, frequency, and reveal calendar.
 - **State:** `Hider.state: StateFlow<State>` — derived from repository-backed app/folder state plus transient processing sets. `Hider.getState()` exists for synchronous service/entrypoint reads.
 - **Unified process:** `Hider.processAll(context, Hider.Action)` drives managed app + folder processing; blocking I/O runs on `Dispatchers.IO`.
 - **Targeted operations:** `Hider.processApps()` and `Hider.processFolders()` handle explicit app/folder sets.
