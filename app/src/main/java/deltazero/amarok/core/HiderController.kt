@@ -37,6 +37,7 @@ constructor(
   @param:ApplicationContext private val applicationContext: Context,
   private val settingsRepo: SettingsRepository,
   private val hiderStateRepo: HiderStateRepository,
+  private val activityRepo: ActivityRepository,
 ) {
 
   private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -132,6 +133,8 @@ constructor(
         withContext(Dispatchers.IO) { fileHider.process(foldersToProcess, action) }
       }
 
+      recordActivity(action, appsToProcess.isNotEmpty() || foldersToProcess.isNotEmpty())
+
       Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' finish.")
       if (!settingsRepo.settings.value.disableToasts) {
         val msgRes = if (hide) R.string.hidden_toast else R.string.unhidden_toast
@@ -156,6 +159,7 @@ constructor(
       ) {
         withContext(Dispatchers.IO) { appHider.process(managedPkgNames, action) }
       }
+      recordActivity(action, managedPkgNames.isNotEmpty())
     }
   }
 
@@ -175,6 +179,17 @@ constructor(
       ) {
         withContext(Dispatchers.IO) { fileHider.process(managedPaths, action) }
       }
+      recordActivity(action, managedPaths.isNotEmpty())
+    }
+  }
+
+  // Records hide/unhide activity for the dashboard. Only stamps when something was actually
+  // processed, so a no-op toggle (already in the target state) doesn't count as a reveal.
+  private suspend fun recordActivity(action: Hider.Action, changed: Boolean) {
+    if (!changed) return
+    when (action) {
+      Hider.Action.HIDE -> activityRepo.recordHide()
+      Hider.Action.UNHIDE -> activityRepo.recordReveal()
     }
   }
 
