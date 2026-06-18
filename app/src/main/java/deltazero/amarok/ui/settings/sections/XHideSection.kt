@@ -14,7 +14,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilledIconButton
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
@@ -51,7 +52,10 @@ internal fun XHideSection(state: XHideSettingsState, actions: XHideActions) {
     color = MaterialTheme.colorScheme.onSurfaceVariant,
     modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
   )
-  ElevatedCard(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+  Card(
+    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+  ) {
     Column {
       ModuleStatusTile(status = state.status, modifier = Modifier.padding(16.dp))
 

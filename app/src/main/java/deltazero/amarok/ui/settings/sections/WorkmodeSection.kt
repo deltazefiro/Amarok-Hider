@@ -18,7 +18,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.HelpOutline
-import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilterChipDefaults
 import androidx.compose.material3.HorizontalDivider
@@ -131,7 +132,10 @@ private fun AppHiderCard(state: WorkmodeSettingsState, setAppHiderMode: (AppHide
     appHiderModes.find { it.mode == state.appHiderMode }?.descResId
       ?: R.string.apphider_none_description
 
-  ElevatedCard(modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp)) {
+  Card(
+    modifier = Modifier.fillMaxWidth().padding(horizontal = 16.dp, vertical = 4.dp),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+  ) {
     Column(modifier = Modifier.padding(16.dp)) {
       Text(
         text = stringResource(R.string.switch_app_hider),
@@ -216,7 +220,7 @@ private fun FileHiderCard(
       ?: R.string.filehider_none_description
   val fileCardAlpha = if (isHidden) 0.38f else 1f
 
-  ElevatedCard(
+  Card(
     modifier =
       Modifier.fillMaxWidth()
         .padding(horizontal = 16.dp, vertical = 4.dp)
@@ -227,7 +231,8 @@ private fun FileHiderCard(
                 .show()
             }
           else Modifier
-        )
+        ),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
   ) {
     Column(modifier = Modifier.padding(16.dp).alpha(fileCardAlpha)) {
       Text(

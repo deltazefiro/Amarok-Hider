@@ -277,10 +277,7 @@ private fun StatCard(
 ) {
   Card(
     modifier = modifier,
-    colors =
-      CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-      ),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
   ) {
     Column(modifier = Modifier.fillMaxHeight().padding(16.dp)) {
       // Header stays on one line: title keeps its width, the mode chip is pushed to the
@@ -495,10 +492,7 @@ private fun OverflowChip(count: Int) {
 private fun RevealActivityCard(data: DashboardUiState, modifier: Modifier = Modifier) {
   Card(
     modifier = modifier,
-    colors =
-      CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.5f)
-      ),
+    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
   ) {
     Column(modifier = Modifier.padding(20.dp)) {
       Text(
