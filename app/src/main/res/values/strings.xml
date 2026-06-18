@@ -8,6 +8,18 @@
     <string name="item_counts">%1$d apps, %2$d folders.</string>
     <string name="app_hiding_mode">App hiding mode</string>
     <string name="file_hiding_mode">File hiding mode</string>
+    <!-- Dashboard redesign -->
+    <string name="dashboard_currently">Currently</string>
+    <string name="dashboard_tap_to_reveal">Tap to reveal</string>
+    <string name="dashboard_tap_to_hide">Tap to hide</string>
+    <string name="dashboard_item_count">%d items</string>
+    <string name="dashboard_apps_hidden">hidden</string>
+    <string name="dashboard_folders">folders</string>
+    <string name="dashboard_reveal_activity">Reveal activity</string>
+    <string name="dashboard_days_hidden">days hidden</string>
+    <string name="dashboard_last_revealed">Last revealed</string>
+    <string name="dashboard_frequency">Frequency</string>
+    <string name="dashboard_more">More</string>
     <string name="visible_moto" translatable="false">"\"Night has fallen. Be careful.\" "</string>
     <string name="hidden_moto" translatable="false">"\"Secrets never emerge under the sun.\" "</string>
     <string name="dashboard">Dashboard</string>
