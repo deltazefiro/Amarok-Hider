@@ -47,6 +47,7 @@ constructor(
 
   private val _processingFolders = MutableStateFlow<Set<String>>(emptySet())
   private val _processingApps = MutableStateFlow<Set<String>>(emptySet())
+  private val _processing = MutableStateFlow(false)
   private val _folderStates = MutableStateFlow<Map<String, Hider.State>>(emptyMap())
   private val _appStates = MutableStateFlow<Map<String, Hider.State>>(emptyMap())
   private val _state = MutableStateFlow(Hider.State.VISIBLE)
@@ -240,7 +241,7 @@ constructor(
         hiderStateRepo.hiddenApps.value,
         _processingApps.value,
       )
-    _state.value = computeState(_folderStates.value, _appStates.value)
+    _state.value = computeState(_folderStates.value, _appStates.value, _processing.value)
 
     scope.launch {
       combine(hiderStateRepo.managedFolders, hiderStateRepo.hiddenFolders, _processingFolders) {
@@ -263,8 +264,8 @@ constructor(
     }
 
     scope.launch {
-      combine(_folderStates, _appStates) { folderStates, appStates ->
-          computeState(folderStates, appStates)
+      combine(_folderStates, _appStates, _processing) { folderStates, appStates, processing ->
+          computeState(folderStates, appStates, processing)
         }
         .collect { _state.value = it }
     }
@@ -301,7 +302,11 @@ constructor(
   private fun computeState(
     folderStates: Map<String, Hider.State>,
     appStates: Map<String, Hider.State>,
+    processing: Boolean,
   ): Hider.State {
+    // `processAll()` runs apps and folders sequentially; keep the aggregate state processing
+    // between those phases instead of briefly exposing a settled dashboard state.
+    if (processing) return Hider.State.PROCESSING
     if (
       folderStates.any { it.value == Hider.State.PROCESSING } ||
         appStates.any { it.value == Hider.State.PROCESSING }
@@ -339,6 +344,7 @@ constructor(
       return
     }
 
+    _processing.value = true
     val job =
       scope.launch {
         try {
@@ -352,7 +358,12 @@ constructor(
       }
 
     currentJob = job
-    job.invokeOnCompletion { if (currentJob === job) currentJob = null }
+    job.invokeOnCompletion {
+      if (currentJob === job) {
+        currentJob = null
+        _processing.value = false
+      }
+    }
   }
 
   private suspend fun processTargets(

@@ -55,10 +55,16 @@ constructor(
       paths.sorted().take(MAX_PREVIEWS).map { PreviewItem.Folder(folderName(it)) }
     }
 
+  private data class Counts(
+    val apps: Int,
+    val folders: Int,
+    val hiddenApps: Int,
+    val hiddenFolders: Int,
+  )
+
   private data class Core(
     val state: Hider.State,
-    val appCount: Int,
-    val folderCount: Int,
+    val counts: Counts,
     val appHiderName: String,
     val fileHiderName: String,
   )
@@ -69,15 +75,25 @@ constructor(
     val revealDays: Set<LocalDate>,
   )
 
-  private val coreFlow: Flow<Core> =
+  private val countsFlow: Flow<Counts> =
     combine(
-      Hider.state,
       hiderStateRepo.managedApps,
       hiderStateRepo.managedFolders,
-      appHiderName,
-      fileHiderName,
-    ) { state, managedApps, managedFolders, appName, fileName ->
-      Core(state, managedApps.size, managedFolders.size, appName, fileName)
+      hiderStateRepo.hiddenApps,
+      hiderStateRepo.hiddenFolders,
+    ) { managedApps, managedFolders, hiddenApps, hiddenFolders ->
+      Counts(
+        apps = managedApps.size,
+        folders = managedFolders.size,
+        hiddenApps = hiddenApps.size,
+        hiddenFolders = hiddenFolders.size,
+      )
+    }
+
+  private val coreFlow: Flow<Core> =
+    combine(Hider.state, countsFlow, appHiderName, fileHiderName) { state, counts, appName, fileName
+      ->
+      Core(state = state, counts = counts, appHiderName = appName, fileHiderName = fileName)
     }
 
   private val activityFlow: Flow<Activity> =
@@ -104,7 +120,6 @@ constructor(
   ): DashboardUiState {
     val today = LocalDate.now()
 
-    // Hero "X min ago" reflects the transition into the current state.
     val actionTs =
       if (core.state == Hider.State.HIDDEN) activity.lastHiddenAt else activity.lastRevealedAt
     val lastActionLabel = actionTs?.let(::relativeTime).orEmpty()
@@ -129,8 +144,10 @@ constructor(
 
     return DashboardUiState(
       state = core.state,
-      appCount = core.appCount,
-      folderCount = core.folderCount,
+      appCount = core.counts.apps,
+      folderCount = core.counts.folders,
+      hiddenAppCount = core.counts.hiddenApps,
+      hiddenFolderCount = core.counts.hiddenFolders,
       appHiderName = core.appHiderName,
       fileHiderName = core.fileHiderName,
       appPreviews = previews.first,

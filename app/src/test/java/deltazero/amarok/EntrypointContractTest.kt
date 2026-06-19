@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.test.core.app.ApplicationProvider
+import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.receivers.ActionReceiver
 import deltazero.amarok.receivers.DialerReceiver
 import deltazero.amarok.receivers.ScreenStatusReceiver
@@ -61,7 +62,8 @@ class EntrypointContractTest {
 
   @Test
   fun screenStatusReceiverIgnoresUnrelatedActionsWithoutSideEffects() {
-    ScreenStatusReceiver().onReceive(context, Intent("deltazero.amarok.UNRELATED_SCREEN_ACTION"))
+    ScreenStatusReceiver(SettingsRepository(context))
+      .onReceive(context, Intent("deltazero.amarok.UNRELATED_SCREEN_ACTION"))
   }
 
   @Test
