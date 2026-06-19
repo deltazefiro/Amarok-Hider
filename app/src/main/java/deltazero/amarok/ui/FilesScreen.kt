@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -141,20 +142,35 @@ fun FilesScreen(
       if (folders.isNotEmpty()) {
         val anyProcessing = processingFolders.isNotEmpty()
         val allHidden = hiddenFolders.containsAll(folders.toSet())
-        FloatingActionButton(onClick = { if (!anyProcessing) onToggleAllFolders() }) {
-          if (anyProcessing) {
-            CircularProgressIndicator(
-              modifier = Modifier.size(24.dp),
-              strokeWidth = 3.dp,
-              color = MaterialTheme.colorScheme.onPrimaryContainer,
+        ExtendedFloatingActionButton(
+          onClick = { if (!anyProcessing) onToggleAllFolders() },
+          text = {
+            Text(
+              stringResource(
+                when {
+                  anyProcessing -> R.string.processing
+                  allHidden -> R.string.unhide_files
+                  else -> R.string.hide_files
+                }
+              )
             )
-          } else {
-            Icon(
-              if (allHidden) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-              contentDescription = null,
-            )
-          }
-        }
+          },
+          icon = {
+            if (anyProcessing) {
+              CircularProgressIndicator(
+                modifier = Modifier.size(24.dp),
+                strokeWidth = 3.dp,
+                color = MaterialTheme.colorScheme.onPrimaryContainer,
+              )
+            } else {
+              Icon(
+                painter = painterResource(if (allHidden) R.drawable.ic_wolf else R.drawable.ic_paw),
+                contentDescription = null,
+                modifier = Modifier.size(24.dp),
+              )
+            }
+          },
+        )
       }
     },
   ) { padding ->

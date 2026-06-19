@@ -11,8 +11,6 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Android
 import androidx.compose.material.icons.filled.Edit
-import androidx.compose.material.icons.filled.Visibility
-import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -23,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -89,12 +88,20 @@ fun AppsScreen(
       )
     },
     floatingActionButton = {
-      val allHidden =
-        apps.isNotEmpty() && hiddenApps.containsAll(apps.map { it.packageName() }.toSet())
-      FloatingActionButton(onClick = onToggleAllApps) {
-        Icon(
-          if (allHidden) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-          contentDescription = null,
+      if (apps.isNotEmpty()) {
+        val allHidden = hiddenApps.containsAll(apps.map { it.packageName() }.toSet())
+        ExtendedFloatingActionButton(
+          onClick = onToggleAllApps,
+          text = {
+            Text(stringResource(if (allHidden) R.string.unhide_apps else R.string.hide_apps))
+          },
+          icon = {
+            Icon(
+              painter = painterResource(if (allHidden) R.drawable.ic_wolf else R.drawable.ic_paw),
+              contentDescription = null,
+              modifier = Modifier.size(24.dp),
+            )
+          },
         )
       }
     },
