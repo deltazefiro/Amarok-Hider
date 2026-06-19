@@ -37,6 +37,7 @@ fun AmarokNavigationBar(navController: NavController) {
       NavigationBarItem(
         icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
         label = { Text(stringResource(screen.labelRes)) },
+        alwaysShowLabel = false,
         selected = currentRoute == screen.route,
         onClick = {
           if (currentRoute != screen.route) {
