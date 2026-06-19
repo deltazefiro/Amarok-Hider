@@ -5,10 +5,10 @@
     <string name="hide">Hide</string>
     <string name="visible_status">Visible</string>
     <string name="hidden_status">Hidden</string>
+    <string name="partial_hidden_status">Partially hidden</string>
     <string name="item_counts">%1$d apps, %2$d folders.</string>
     <string name="app_hiding_mode">App hiding mode</string>
     <string name="file_hiding_mode">File hiding mode</string>
-    <!-- Dashboard redesign -->
     <string name="dashboard_currently">Currently</string>
     <string name="dashboard_tap_to_reveal">Tap to reveal</string>
     <string name="dashboard_tap_to_hide">Tap to hide</string>

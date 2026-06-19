@@ -34,6 +34,7 @@ import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.outlined.Folder
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExtendedFloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -85,6 +86,8 @@ data class DashboardUiState(
   val state: Hider.State = Hider.State.VISIBLE,
   val appCount: Int = 0,
   val folderCount: Int = 0,
+  val hiddenAppCount: Int = 0,
+  val hiddenFolderCount: Int = 0,
   val appHiderName: String = "",
   val fileHiderName: String = "",
   val appPreviews: List<PreviewItem> = emptyList(),
@@ -98,6 +101,25 @@ data class DashboardUiState(
   val daysInMonth: Int = 30,
 )
 
+internal enum class DashboardStatus {
+  HIDDEN,
+  PARTIALLY_HIDDEN,
+  VISIBLE,
+  PROCESSING,
+}
+
+internal fun dashboardStatus(
+  state: Hider.State,
+  hiddenItemCount: Int,
+  itemCount: Int,
+): DashboardStatus =
+  when {
+    state == Hider.State.PROCESSING -> DashboardStatus.PROCESSING
+    itemCount > 0 && hiddenItemCount >= itemCount -> DashboardStatus.HIDDEN
+    hiddenItemCount > 0 -> DashboardStatus.PARTIALLY_HIDDEN
+    else -> DashboardStatus.VISIBLE
+  }
+
 @Composable
 fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = hiltViewModel()) {
   val uiState by viewModel.uiState.collectAsState()
@@ -107,7 +129,10 @@ fun DashboardScreen(onChangeStatus: () -> Unit, viewModel: MainViewModel = hiltV
 @Composable
 fun DashboardScreen(uiState: DashboardUiState, onChangeStatus: () -> Unit) {
   val state = uiState.state
-  val isHidden = state == Hider.State.HIDDEN
+  val itemCount = uiState.appCount + uiState.folderCount
+  val hiddenItemCount = uiState.hiddenAppCount + uiState.hiddenFolderCount
+  val status = dashboardStatus(state, hiddenItemCount, itemCount)
+  val isHidden = status == DashboardStatus.HIDDEN
 
   Box(modifier = Modifier.fillMaxSize()) {
     Column(
@@ -139,8 +164,8 @@ fun DashboardScreen(uiState: DashboardUiState, onChangeStatus: () -> Unit) {
       val pad = Modifier.padding(horizontal = 16.dp)
 
       HeroStatusCard(
-        isHidden = isHidden,
-        itemCount = uiState.appCount + uiState.folderCount,
+        status = status,
+        itemCount = itemCount,
         lastActionLabel = uiState.lastActionLabel,
         modifier = pad.fillMaxWidth(),
       )
@@ -183,16 +208,33 @@ fun DashboardScreen(uiState: DashboardUiState, onChangeStatus: () -> Unit) {
       Spacer(Modifier.height(96.dp))
     }
 
-    // Hide/unhide toggle.
     ExtendedFloatingActionButton(
       onClick = { if (state != Hider.State.PROCESSING) onChangeStatus() },
-      text = { Text(stringResource(if (isHidden) R.string.unhide else R.string.hide)) },
-      icon = {
-        Icon(
-          painter = painterResource(if (isHidden) R.drawable.ic_wolf else R.drawable.ic_paw),
-          contentDescription = null,
-          modifier = Modifier.size(24.dp),
+      text = {
+        Text(
+          stringResource(
+            when {
+              state == Hider.State.PROCESSING -> R.string.processing
+              isHidden -> R.string.unhide
+              else -> R.string.hide
+            }
+          )
         )
+      },
+      icon = {
+        if (state == Hider.State.PROCESSING) {
+          CircularProgressIndicator(
+            modifier = Modifier.size(24.dp),
+            color = MaterialTheme.colorScheme.onPrimaryContainer,
+            strokeWidth = 3.dp,
+          )
+        } else {
+          Icon(
+            painter = painterResource(if (isHidden) R.drawable.ic_wolf else R.drawable.ic_paw),
+            contentDescription = null,
+            modifier = Modifier.size(24.dp),
+          )
+        }
       },
       modifier =
         Modifier.align(Alignment.BottomEnd)
@@ -204,7 +246,7 @@ fun DashboardScreen(uiState: DashboardUiState, onChangeStatus: () -> Unit) {
 
 @Composable
 private fun HeroStatusCard(
-  isHidden: Boolean,
+  status: DashboardStatus,
   itemCount: Int,
   lastActionLabel: String,
   modifier: Modifier = Modifier,
@@ -239,7 +281,7 @@ private fun HeroStatusCard(
           color = MaterialTheme.colorScheme.onPrimaryContainer.copy(alpha = 0.7f),
         )
         Text(
-          text = stringResource(if (isHidden) R.string.hidden_status else R.string.visible_status),
+          text = stringResource(status.labelRes),
           style = MaterialTheme.typography.headlineMedium,
           fontWeight = FontWeight.SemiBold,
           modifier = Modifier.padding(vertical = 2.dp),
@@ -264,6 +306,15 @@ private fun HeroStatusCard(
     }
   }
 }
+
+private val DashboardStatus.labelRes: Int
+  get() =
+    when (this) {
+      DashboardStatus.HIDDEN -> R.string.hidden_status
+      DashboardStatus.PARTIALLY_HIDDEN -> R.string.partial_hidden_status
+      DashboardStatus.VISIBLE -> R.string.visible_status
+      DashboardStatus.PROCESSING -> R.string.processing
+    }
 
 @Composable
 private fun StatCard(
@@ -626,6 +677,8 @@ private fun sampleUiState(state: Hider.State) =
     state = state,
     appCount = 14,
     folderCount = 3,
+    hiddenAppCount = if (state == Hider.State.HIDDEN) 14 else 0,
+    hiddenFolderCount = if (state == Hider.State.HIDDEN) 3 else 0,
     appHiderName = "Root",
     fileHiderName = "Obfuscate",
     appPreviews =
