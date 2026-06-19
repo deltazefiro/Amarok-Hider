@@ -71,10 +71,7 @@ constructor(
     val hidden = hiddenApps.value
     val managed = hiderStateRepo.managedApps.value
 
-    if (hidden.containsAll(managed)) {
-      Hider.processAll(context, Hider.Action.UNHIDE)
-    } else {
-      Hider.processAll(context, Hider.Action.HIDE)
-    }
+    val action = if (hidden.containsAll(managed)) Hider.Action.UNHIDE else Hider.Action.HIDE
+    Hider.processApps(context, managed, action)
   }
 }

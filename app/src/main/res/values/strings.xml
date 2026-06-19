@@ -3,6 +3,10 @@
     <string name="app_name" translatable="false">Amarok</string>
     <string name="unhide">Unhide</string>
     <string name="hide">Hide</string>
+    <string name="hide_apps">Hide apps</string>
+    <string name="unhide_apps">Unhide apps</string>
+    <string name="hide_files">Hide files</string>
+    <string name="unhide_files">Unhide files</string>
     <string name="visible_status">Visible</string>
     <string name="hidden_status">Hidden</string>
     <string name="partial_hidden_status">Partially hidden</string>

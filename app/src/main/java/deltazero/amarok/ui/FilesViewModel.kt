@@ -60,11 +60,8 @@ constructor(
     val hidden = hiddenFolders.value
     val managed = hiderStateRepo.managedFolders.value
 
-    if (hidden.containsAll(managed)) {
-      Hider.processAll(context, Hider.Action.UNHIDE)
-    } else {
-      Hider.processAll(context, Hider.Action.HIDE)
-    }
+    val action = if (hidden.containsAll(managed)) Hider.Action.UNHIDE else Hider.Action.HIDE
+    Hider.processFolders(context, managed, action)
   }
 
   fun addFolder(path: String) {
