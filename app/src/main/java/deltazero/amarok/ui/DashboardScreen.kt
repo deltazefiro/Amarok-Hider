@@ -46,6 +46,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.draw.drawBehind
@@ -90,6 +91,10 @@ data class DashboardUiState(
   val hiddenFolderCount: Int = 0,
   val appHiderName: String = "",
   val fileHiderName: String = "",
+  val appHiderEnabled: Boolean = true,
+  val fileHiderEnabled: Boolean = true,
+  val appHiderError: Boolean = false,
+  val fileHiderError: Boolean = false,
   val appPreviews: List<PreviewItem> = emptyList(),
   val folderPreviews: List<PreviewItem> = emptyList(),
   val lastActionLabel: String = "",
@@ -182,6 +187,8 @@ fun DashboardScreen(uiState: DashboardUiState, onChangeStatus: () -> Unit) {
           },
           title = stringResource(R.string.apps),
           mode = uiState.appHiderName,
+          enabled = uiState.appHiderEnabled,
+          hasError = uiState.appHiderError,
           count = uiState.appCount,
           unit = stringResource(R.string.dashboard_apps_unit),
           previews = uiState.appPreviews,
@@ -193,6 +200,8 @@ fun DashboardScreen(uiState: DashboardUiState, onChangeStatus: () -> Unit) {
           },
           title = stringResource(R.string.files),
           mode = uiState.fileHiderName,
+          enabled = uiState.fileHiderEnabled,
+          hasError = uiState.fileHiderError,
           count = uiState.folderCount,
           unit = stringResource(R.string.dashboard_folders),
           previews = uiState.folderPreviews,
@@ -321,6 +330,8 @@ private fun StatCard(
   icon: @Composable () -> Unit,
   title: String,
   mode: String,
+  enabled: Boolean,
+  hasError: Boolean,
   count: Int,
   unit: String,
   previews: List<PreviewItem>,
@@ -328,9 +339,24 @@ private fun StatCard(
 ) {
   Card(
     modifier = modifier,
-    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
+    colors =
+      CardDefaults.cardColors(
+        // An activation error tints the whole card red; otherwise it uses the neutral surface.
+        containerColor =
+          if (hasError) MaterialTheme.colorScheme.errorContainer
+          else MaterialTheme.colorScheme.surfaceContainer,
+        contentColor =
+          if (hasError) MaterialTheme.colorScheme.onErrorContainer
+          else MaterialTheme.colorScheme.onSurface,
+      ),
   ) {
-    Column(modifier = Modifier.fillMaxHeight().padding(16.dp)) {
+    // When the corresponding hider is disabled (mode NONE) the card has nothing to act on, so mute
+    // it to signal that hiding won't happen for this category. An error takes precedence over the
+    // muted look so the red stays at full strength.
+    Column(
+      modifier =
+        Modifier.fillMaxHeight().padding(16.dp).alpha(if (enabled || hasError) 1f else 0.38f)
+    ) {
       // Header stays on one line: title keeps its width, the mode chip is pushed to the
       // trailing edge and ellipsizes ("OBFUS…") when there isn't room for the full mode.
       Row(verticalAlignment = Alignment.CenterVertically) {
@@ -339,7 +365,7 @@ private fun StatCard(
         Text(text = title, style = MaterialTheme.typography.titleSmall, maxLines = 1)
         Spacer(Modifier.width(4.dp))
         Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.CenterEnd) {
-          ModeChip(mode)
+          if (hasError) ErrorChip() else ModeChip(mode)
         }
       }
 
@@ -396,6 +422,23 @@ private fun ModeChip(text: String) {
       fontWeight = FontWeight.SemiBold,
       maxLines = 1,
       overflow = TextOverflow.Ellipsis,
+      modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
+    )
+  }
+}
+
+@Composable
+private fun ErrorChip() {
+  Surface(
+    shape = CircleShape,
+    color = MaterialTheme.colorScheme.error,
+    contentColor = MaterialTheme.colorScheme.onError,
+  ) {
+    Text(
+      text = stringResource(R.string.dashboard_error).uppercase(),
+      style = MaterialTheme.typography.labelSmall,
+      fontWeight = FontWeight.SemiBold,
+      maxLines = 1,
       modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp),
     )
   }

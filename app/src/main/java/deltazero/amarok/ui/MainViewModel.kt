@@ -8,11 +8,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
 import deltazero.amarok.R
 import deltazero.amarok.apphider.AppHider
+import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.core.ActivityRepository
 import deltazero.amarok.core.Hider
 import deltazero.amarok.core.HiderStateRepository
 import deltazero.amarok.core.SettingsRepository
 import deltazero.amarok.filehider.FileHider
+import deltazero.amarok.filehider.FileHiderMode
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
@@ -39,11 +41,23 @@ constructor(
   private val activityRepo: ActivityRepository,
 ) : ViewModel() {
 
-  private val appHiderName: Flow<String> =
-    settingsRepo.settings.map { AppHider.build(context, it.appHiderMode).name }
+  private val appHiderInfo: Flow<HiderInfo> =
+    combine(settingsRepo.settings, Hider.appHiderError) { settings, error ->
+      HiderInfo(
+        name = AppHider.build(context, settings.appHiderMode).name,
+        enabled = settings.appHiderMode != AppHiderMode.NONE,
+        hasError = error != 0,
+      )
+    }
 
-  private val fileHiderName: Flow<String> =
-    settingsRepo.settings.map { FileHider.build(context, it.fileHiderMode, it).name }
+  private val fileHiderInfo: Flow<HiderInfo> =
+    combine(settingsRepo.settings, Hider.fileHiderError) { settings, error ->
+      HiderInfo(
+        name = FileHider.build(context, settings.fileHiderMode, settings).name,
+        enabled = settings.fileHiderMode != FileHiderMode.NONE,
+        hasError = error != 0,
+      )
+    }
 
   private val appPreviews: Flow<List<PreviewItem>> =
     hiderStateRepo.managedApps
@@ -62,11 +76,13 @@ constructor(
     val hiddenFolders: Int,
   )
 
+  private data class HiderInfo(val name: String, val enabled: Boolean, val hasError: Boolean)
+
   private data class Core(
     val state: Hider.State,
     val counts: Counts,
-    val appHiderName: String,
-    val fileHiderName: String,
+    val appHider: HiderInfo,
+    val fileHider: HiderInfo,
   )
 
   private data class Activity(
@@ -91,9 +107,12 @@ constructor(
     }
 
   private val coreFlow: Flow<Core> =
-    combine(Hider.state, countsFlow, appHiderName, fileHiderName) { state, counts, appName, fileName
-      ->
-      Core(state = state, counts = counts, appHiderName = appName, fileHiderName = fileName)
+    combine(Hider.state, countsFlow, appHiderInfo, fileHiderInfo) {
+      state,
+      counts,
+      appHider,
+      fileHider ->
+      Core(state = state, counts = counts, appHider = appHider, fileHider = fileHider)
     }
 
   private val activityFlow: Flow<Activity> =
@@ -148,8 +167,12 @@ constructor(
       folderCount = core.counts.folders,
       hiddenAppCount = core.counts.hiddenApps,
       hiddenFolderCount = core.counts.hiddenFolders,
-      appHiderName = core.appHiderName,
-      fileHiderName = core.fileHiderName,
+      appHiderName = core.appHider.name,
+      fileHiderName = core.fileHider.name,
+      appHiderEnabled = core.appHider.enabled,
+      fileHiderEnabled = core.fileHider.enabled,
+      appHiderError = core.appHider.hasError,
+      fileHiderError = core.fileHider.hasError,
       appPreviews = previews.first,
       folderPreviews = previews.second,
       lastActionLabel = lastActionLabel,
