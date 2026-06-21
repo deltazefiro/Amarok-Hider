@@ -20,7 +20,7 @@
     <string name="dashboard_apps_unit">apps</string>
     <string name="dashboard_folders">folders</string>
     <string name="dashboard_reveal_activity">Reveal activity</string>
-    <string name="dashboard_days_hidden">days hidden</string>
+    <string name="dashboard_days_ago">days ago</string>
     <string name="dashboard_last_revealed">Last revealed</string>
     <string name="dashboard_frequency">Frequency</string>
     <string name="dashboard_frequency_value">%1$s days / week</string>
