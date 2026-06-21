@@ -14,19 +14,27 @@ import deltazero.amarok.apphider.AppHiderMode
 import deltazero.amarok.apphider.AppHiderOptions
 import deltazero.amarok.filehider.FileHider
 import deltazero.amarok.filehider.FileHiderMode
+import java.util.Collections
+import java.util.concurrent.ConcurrentHashMap
 import javax.inject.Inject
 import javax.inject.Singleton
+import kotlin.coroutines.coroutineContext
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.async
+import kotlinx.coroutines.awaitAll
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -41,13 +49,14 @@ constructor(
 ) {
 
   private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
-  private var currentJob: Job? = null
+  private val currentJobs = Collections.newSetFromMap(ConcurrentHashMap<Job, Boolean>())
   private lateinit var appHider: AppHider
   private lateinit var fileHider: FileHider
 
   private val _processingFolders = MutableStateFlow<Set<String>>(emptySet())
   private val _processingApps = MutableStateFlow<Set<String>>(emptySet())
-  private val _processing = MutableStateFlow(false)
+  private val processingFolderCounts = mutableMapOf<String, Int>()
+  private val processingAppCounts = mutableMapOf<String, Int>()
   private val _folderStates = MutableStateFlow<Map<String, Hider.State>>(emptyMap())
   private val _appStates = MutableStateFlow<Map<String, Hider.State>>(emptyMap())
   private val _state = MutableStateFlow(Hider.State.VISIBLE)
@@ -94,47 +103,86 @@ constructor(
   fun processAll(context: Context, action: Hider.Action) {
     val appContext = context.applicationContext
     launchTrackedProcess("processAll") {
-      if (!activateAppHider(appContext)) return@launchTrackedProcess
-      if (!activateFileHider(appContext)) return@launchTrackedProcess
+      val appHider = appHider
+      val fileHider = fileHider
       val hide = action == Hider.Action.HIDE
       val managedApps = hiderStateRepo.managedApps.value
       val managedFolders = hiderStateRepo.managedFolders.value
-      val currentAppStates = _appStates.value
-      val currentFolderStates = _folderStates.value
-
-      val appsToProcess =
-        managedApps.filterTo(mutableSetOf()) { pkgName ->
-          val state = currentAppStates[pkgName] ?: Hider.State.VISIBLE
-          if (hide) state != Hider.State.HIDDEN else state == Hider.State.HIDDEN
-        }
-      val foldersToProcess =
-        managedFolders.filterTo(mutableSetOf()) { path ->
-          val state = currentFolderStates[path] ?: Hider.State.VISIBLE
-          if (hide) state != Hider.State.HIDDEN else state == Hider.State.HIDDEN
-        }
+      val cancelledJobs = cancelledJobsToJoin()
+      val premarkedApps = if (cancelledJobs.isEmpty()) emptySet() else managedApps
+      val premarkedFolders = if (cancelledJobs.isEmpty()) emptySet() else managedFolders
+      var appsToProcess = emptySet<String>()
+      var foldersToProcess = emptySet<String>()
 
       Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' start.")
-      processTargets(
-        processingFlow = _processingApps,
-        keys = appsToProcess,
-        persist = { apps ->
-          if (hide) hiderStateRepo.addHiddenApps(apps) else hiderStateRepo.removeHiddenApps(apps)
-        },
-      ) {
-        withContext(Dispatchers.IO) { appHider.process(appsToProcess, action) }
+      addProcessing(_processingApps, processingAppCounts, premarkedApps)
+      addProcessing(_processingFolders, processingFolderCounts, premarkedFolders)
+      try {
+        cancelledJobs.joinAll()
+        appsToProcess =
+          if (cancelledJobs.isEmpty()) {
+            targetsForAction(
+              managed = managedApps,
+              states = _appStates.value,
+              processing = _processingApps.value,
+              action = action,
+            )
+          } else {
+            cancelledTargetsForAction(managedApps, hiderStateRepo.hiddenApps.value, action)
+          }
+        foldersToProcess =
+          if (cancelledJobs.isEmpty()) {
+            targetsForAction(
+              managed = managedFolders,
+              states = _folderStates.value,
+              processing = _processingFolders.value,
+              action = action,
+            )
+          } else {
+            cancelledTargetsForAction(managedFolders, hiderStateRepo.hiddenFolders.value, action)
+          }
+        val changed = appsToProcess.isNotEmpty() || foldersToProcess.isNotEmpty()
+        addProcessing(_processingApps, processingAppCounts, appsToProcess - premarkedApps)
+        addProcessing(
+          _processingFolders,
+          processingFolderCounts,
+          foldersToProcess - premarkedFolders,
+        )
+        removeProcessing(_processingApps, processingAppCounts, premarkedApps - appsToProcess)
+        removeProcessing(
+          _processingFolders,
+          processingFolderCounts,
+          premarkedFolders - foldersToProcess,
+        )
+        if (!activateAppHider(appContext, appHider)) return@launchTrackedProcess
+        if (!activateFileHider(appContext, fileHider)) return@launchTrackedProcess
+        coroutineScope {
+          awaitAll(
+            async {
+              if (appsToProcess.isEmpty()) return@async
+              withContext(Dispatchers.IO) { appHider.process(appsToProcess, action) }
+              if (hide) hiderStateRepo.addHiddenApps(appsToProcess)
+              else hiderStateRepo.removeHiddenApps(appsToProcess)
+            },
+            async {
+              if (foldersToProcess.isEmpty()) return@async
+              withContext(Dispatchers.IO) { fileHider.process(foldersToProcess, action) }
+              if (hide) hiderStateRepo.addHiddenFolders(foldersToProcess)
+              else hiderStateRepo.removeHiddenFolders(foldersToProcess)
+            },
+          )
+        }
+        recordActivity(action, changed)
+      } finally {
+        removeProcessing(_processingApps, processingAppCounts, appsToProcess)
+        removeProcessing(_processingFolders, processingFolderCounts, foldersToProcess)
+        removeProcessing(_processingApps, processingAppCounts, premarkedApps - appsToProcess)
+        removeProcessing(
+          _processingFolders,
+          processingFolderCounts,
+          premarkedFolders - foldersToProcess,
+        )
       }
-      processTargets(
-        processingFlow = _processingFolders,
-        keys = foldersToProcess,
-        persist = { folders ->
-          if (hide) hiderStateRepo.addHiddenFolders(folders)
-          else hiderStateRepo.removeHiddenFolders(folders)
-        },
-      ) {
-        withContext(Dispatchers.IO) { fileHider.process(foldersToProcess, action) }
-      }
-
-      recordActivity(action, appsToProcess.isNotEmpty() || foldersToProcess.isNotEmpty())
 
       Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' finish.")
       if (!settingsRepo.settings.value.disableToasts) {
@@ -148,19 +196,28 @@ constructor(
     if (pkgNames.isEmpty()) return
     val appContext = context.applicationContext
     launchTrackedProcess("processApps") {
-      if (!activateAppHider(appContext)) return@launchTrackedProcess
-      val managedPkgNames = pkgNames.intersect(hiderStateRepo.managedApps.value)
-      processTargets(
-        processingFlow = _processingApps,
-        keys = managedPkgNames,
-        persist = { apps ->
-          if (action == Hider.Action.HIDE) hiderStateRepo.addHiddenApps(apps)
-          else hiderStateRepo.removeHiddenApps(apps)
-        },
-      ) {
-        withContext(Dispatchers.IO) { appHider.process(managedPkgNames, action) }
-      }
-      recordActivity(action, managedPkgNames.isNotEmpty())
+      val appHider = appHider
+      val appsToProcess =
+        targetsForAction(
+          managed = pkgNames.intersect(hiderStateRepo.managedApps.value),
+          states = _appStates.value,
+          processing = _processingApps.value,
+          action = action,
+        )
+      val changed =
+        processTargets(
+          processingFlow = _processingApps,
+          keys = appsToProcess,
+          persist = { apps ->
+            if (action == Hider.Action.HIDE) hiderStateRepo.addHiddenApps(apps)
+            else hiderStateRepo.removeHiddenApps(apps)
+          },
+        ) {
+          if (!activateAppHider(appContext, appHider)) return@processTargets false
+          withContext(Dispatchers.IO) { appHider.process(appsToProcess, action) }
+          true
+        }
+      recordActivity(action, changed)
     }
   }
 
@@ -168,19 +225,28 @@ constructor(
     if (paths.isEmpty()) return
     val appContext = context.applicationContext
     launchTrackedProcess("processFolders") {
-      if (!activateFileHider(appContext)) return@launchTrackedProcess
-      val managedPaths = paths.intersect(hiderStateRepo.managedFolders.value)
-      processTargets(
-        processingFlow = _processingFolders,
-        keys = managedPaths,
-        persist = { folders ->
-          if (action == Hider.Action.HIDE) hiderStateRepo.addHiddenFolders(folders)
-          else hiderStateRepo.removeHiddenFolders(folders)
-        },
-      ) {
-        withContext(Dispatchers.IO) { fileHider.process(managedPaths, action) }
-      }
-      recordActivity(action, managedPaths.isNotEmpty())
+      val fileHider = fileHider
+      val foldersToProcess =
+        targetsForAction(
+          managed = paths.intersect(hiderStateRepo.managedFolders.value),
+          states = _folderStates.value,
+          processing = _processingFolders.value,
+          action = action,
+        )
+      val changed =
+        processTargets(
+          processingFlow = _processingFolders,
+          keys = foldersToProcess,
+          persist = { folders ->
+            if (action == Hider.Action.HIDE) hiderStateRepo.addHiddenFolders(folders)
+            else hiderStateRepo.removeHiddenFolders(folders)
+          },
+        ) {
+          if (!activateFileHider(appContext, fileHider)) return@processTargets false
+          withContext(Dispatchers.IO) { fileHider.process(foldersToProcess, action) }
+          true
+        }
+      recordActivity(action, changed)
     }
   }
 
@@ -195,7 +261,7 @@ constructor(
   }
 
   fun cancelProcess() {
-    currentJob?.cancel()
+    for (job in currentJobs.toList()) job.cancel()
   }
 
   suspend fun switchAppHider(mode: AppHiderMode) {
@@ -206,8 +272,12 @@ constructor(
     settingsRepo.setFileHiderMode(mode)
   }
 
-  private suspend fun activateAppHider(context: Context, showToast: Boolean = true): Boolean {
-    val result = withContext(Dispatchers.IO) { appHider.activate() }
+  private suspend fun activateAppHider(
+    context: Context,
+    hider: AppHider = appHider,
+    showToast: Boolean = true,
+  ): Boolean {
+    val result = withContext(Dispatchers.IO) { hider.activate() }
     if (!result.success) {
       _appHiderError.value = result.msgResId
       if (showToast) showErrorToast(context, result.msgResId)
@@ -217,8 +287,12 @@ constructor(
     return true
   }
 
-  private suspend fun activateFileHider(context: Context, showToast: Boolean = true): Boolean {
-    val result = withContext(Dispatchers.IO) { fileHider.activate() }
+  private suspend fun activateFileHider(
+    context: Context,
+    hider: FileHider = fileHider,
+    showToast: Boolean = true,
+  ): Boolean {
+    val result = withContext(Dispatchers.IO) { hider.activate() }
     if (!result.success) {
       _fileHiderError.value = result.msgResId
       if (showToast) showErrorToast(context, result.msgResId)
@@ -241,7 +315,7 @@ constructor(
         hiderStateRepo.hiddenApps.value,
         _processingApps.value,
       )
-    _state.value = computeState(_folderStates.value, _appStates.value, _processing.value)
+    _state.value = computeState(_folderStates.value, _appStates.value)
 
     scope.launch {
       combine(hiderStateRepo.managedFolders, hiderStateRepo.hiddenFolders, _processingFolders) {
@@ -264,8 +338,8 @@ constructor(
     }
 
     scope.launch {
-      combine(_folderStates, _appStates, _processing) { folderStates, appStates, processing ->
-          computeState(folderStates, appStates, processing)
+      combine(_folderStates, _appStates) { folderStates, appStates ->
+          computeState(folderStates, appStates)
         }
         .collect { _state.value = it }
     }
@@ -280,8 +354,9 @@ constructor(
         .collect { config ->
           if (config == appliedConfig) return@collect
           appliedConfig = config
-          appHider = buildAppHider(context, config.mode)
-          activateAppHider(context, showToast = false)
+          val hider = buildAppHider(context, config.mode)
+          appHider = hider
+          activateAppHider(context, hider, showToast = false)
         }
     }
 
@@ -293,8 +368,9 @@ constructor(
         .collect { config ->
           if (config == appliedConfig) return@collect
           appliedConfig = config
-          fileHider = buildFileHider(context, config.mode)
-          activateFileHider(context, showToast = false)
+          val hider = buildFileHider(context, config.mode)
+          fileHider = hider
+          activateFileHider(context, hider, showToast = false)
         }
     }
   }
@@ -302,28 +378,7 @@ constructor(
   private fun computeState(
     folderStates: Map<String, Hider.State>,
     appStates: Map<String, Hider.State>,
-    processing: Boolean,
-  ): Hider.State {
-    // `processAll()` runs apps and folders sequentially; keep the aggregate state processing
-    // between those phases instead of briefly exposing a settled dashboard state.
-    if (processing) return Hider.State.PROCESSING
-    if (
-      folderStates.any { it.value == Hider.State.PROCESSING } ||
-        appStates.any { it.value == Hider.State.PROCESSING }
-    ) {
-      return Hider.State.PROCESSING
-    }
-
-    val anyHidden =
-      appStates.any { it.value == Hider.State.HIDDEN } ||
-        folderStates.any { it.value == Hider.State.HIDDEN }
-    if (!anyHidden) return Hider.State.VISIBLE
-
-    val allAppsHidden = appStates.all { it.value == Hider.State.HIDDEN }
-    val allFoldersHidden = folderStates.all { it.value == Hider.State.HIDDEN }
-
-    return if (allAppsHidden && allFoldersHidden) Hider.State.HIDDEN else Hider.State.VISIBLE
-  }
+  ): Hider.State = computeStateForTest(folderStates, appStates)
 
   private fun deriveStates(
     managed: Set<String>,
@@ -339,14 +394,8 @@ constructor(
     }
 
   private fun launchTrackedProcess(name: String, block: suspend () -> Unit) {
-    if (currentJob?.isActive == true) {
-      Log.w(TAG, "Ignoring '$name': another process is already running.")
-      return
-    }
-
-    _processing.value = true
     val job =
-      scope.launch {
+      scope.launch(start = CoroutineStart.LAZY) {
         try {
           block()
         } catch (e: CancellationException) {
@@ -357,30 +406,77 @@ constructor(
         }
       }
 
-    currentJob = job
-    job.invokeOnCompletion {
-      if (currentJob === job) {
-        currentJob = null
-        _processing.value = false
-      }
-    }
+    currentJobs += job
+    job.invokeOnCompletion { scope.launch { currentJobs -= job } }
+    job.start()
   }
+
+  private suspend fun cancelledJobsToJoin(): List<Job> {
+    val currentJob = coroutineContext[Job]
+    return currentJobs.filter { it !== currentJob && it.isCancelled }
+  }
+
+  private fun cancelledTargetsForAction(
+    managed: Set<String>,
+    hidden: Set<String>,
+    action: Hider.Action,
+  ): Set<String> = cancelledTargetsForActionForTest(managed, hidden, action)
+
+  private fun targetsForAction(
+    managed: Set<String>,
+    states: Map<String, Hider.State>,
+    processing: Set<String>,
+    action: Hider.Action,
+  ): Set<String> = targetsForActionForTest(managed, states, processing, action)
 
   private suspend fun processTargets(
     processingFlow: MutableStateFlow<Set<String>>,
     keys: Set<String>,
     persist: suspend (Set<String>) -> Unit,
-    process: suspend () -> Unit,
-  ) {
-    if (keys.isEmpty()) return
-    processingFlow.value += keys
+    process: suspend () -> Boolean,
+  ): Boolean {
+    if (keys.isEmpty()) return false
+    addProcessing(processingFlow, processingCounters(processingFlow), keys)
 
     try {
-      process()
-      persist(keys)
+      val processed = process()
+      if (processed) persist(keys)
+      return processed
     } finally {
-      processingFlow.value -= keys
+      removeProcessing(processingFlow, processingCounters(processingFlow), keys)
     }
+  }
+
+  private fun processingCounters(
+    processingFlow: MutableStateFlow<Set<String>>
+  ): MutableMap<String, Int> =
+    when (processingFlow) {
+      _processingApps -> processingAppCounts
+      _processingFolders -> processingFolderCounts
+      else -> error("Unknown processing flow")
+    }
+
+  private fun addProcessing(
+    processingFlow: MutableStateFlow<Set<String>>,
+    counts: MutableMap<String, Int>,
+    keys: Set<String>,
+  ) {
+    if (keys.isEmpty()) return
+    for (key in keys) counts[key] = (counts[key] ?: 0) + 1
+    processingFlow.value = counts.keys.toSet()
+  }
+
+  private fun removeProcessing(
+    processingFlow: MutableStateFlow<Set<String>>,
+    counts: MutableMap<String, Int>,
+    keys: Set<String>,
+  ) {
+    if (keys.isEmpty()) return
+    for (key in keys) {
+      val count = (counts[key] ?: continue) - 1
+      if (count > 0) counts[key] = count else counts.remove(key)
+    }
+    processingFlow.value = counts.keys.toSet()
   }
 
   private fun buildAppHider(context: Context, mode: AppHiderMode): AppHider {
@@ -429,7 +525,54 @@ constructor(
     }
   }
 
-  private companion object {
+  companion object {
     private const val TAG = "Hider"
+
+    internal fun computeStateForTest(
+      folderStates: Map<String, Hider.State>,
+      appStates: Map<String, Hider.State>,
+    ): Hider.State {
+      if (
+        folderStates.any { it.value == Hider.State.PROCESSING } ||
+          appStates.any { it.value == Hider.State.PROCESSING }
+      ) {
+        return Hider.State.PROCESSING
+      }
+
+      val anyHidden =
+        appStates.any { it.value == Hider.State.HIDDEN } ||
+          folderStates.any { it.value == Hider.State.HIDDEN }
+      if (!anyHidden) return Hider.State.VISIBLE
+
+      val allAppsHidden = appStates.all { it.value == Hider.State.HIDDEN }
+      val allFoldersHidden = folderStates.all { it.value == Hider.State.HIDDEN }
+
+      return if (allAppsHidden && allFoldersHidden) Hider.State.HIDDEN else Hider.State.VISIBLE
+    }
+
+    internal fun targetsForActionForTest(
+      managed: Set<String>,
+      states: Map<String, Hider.State>,
+      processing: Set<String>,
+      action: Hider.Action,
+    ): Set<String> =
+      managed.filterTo(mutableSetOf()) { key ->
+        if (key in processing) return@filterTo false
+        val state = states[key] ?: Hider.State.VISIBLE
+        when (action) {
+          Hider.Action.HIDE -> state != Hider.State.HIDDEN
+          Hider.Action.UNHIDE -> state == Hider.State.HIDDEN
+        }
+      }
+
+    internal fun cancelledTargetsForActionForTest(
+      managed: Set<String>,
+      hidden: Set<String>,
+      action: Hider.Action,
+    ): Set<String> =
+      when (action) {
+        Hider.Action.HIDE -> managed.filterTo(mutableSetOf()) { it !in hidden }
+        Hider.Action.UNHIDE -> managed
+      }
   }
 }
