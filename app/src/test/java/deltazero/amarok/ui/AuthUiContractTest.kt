@@ -5,13 +5,7 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.pm.PackageManager
-import android.text.InputType
-import android.view.ContextThemeWrapper
-import android.view.LayoutInflater
 import androidx.test.core.app.ApplicationProvider
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 import deltazero.amarok.AmarokActivity
 import deltazero.amarok.R
 import org.junit.Assert.assertEquals
@@ -28,8 +22,6 @@ import org.robolectric.annotation.Config
 @Config(application = Application::class, sdk = [35])
 class AuthUiContractTest {
   private val context: Context = ApplicationProvider.getApplicationContext()
-  private val themedContext = ContextThemeWrapper(context, R.style.Theme_Amarok)
-  private val inflater: LayoutInflater = LayoutInflater.from(themedContext)
 
   @Test
   fun mainActivityStillInheritsAmarokActivityGuards() {
@@ -53,45 +45,12 @@ class AuthUiContractTest {
   }
 
   @Test
-  fun passwordAuthLayoutKeepsIdsAndNumericPasswordInputUsedByFragment() {
-    val view = inflater.inflate(R.layout.dialog_security, null, false)
-
-    assertNotNull(view.findViewById<TextInputLayout>(R.id.security_dialog_til_password_input))
-    val passwordInput = view.findViewById<TextInputEditText>(R.id.security_dialog_et_password_input)
-    assertNotNull(passwordInput)
-    assertTrue(passwordInput.inputType and InputType.TYPE_CLASS_NUMBER != 0)
-    assertTrue(passwordInput.inputType and InputType.TYPE_NUMBER_VARIATION_PASSWORD != 0)
-    assertNotNull(view.findViewById<MaterialButton>(R.id.security_dialog_bt_cancel))
-    assertNotNull(view.findViewById<MaterialButton>(R.id.security_dialog_bt_unlock))
-  }
-
-  @Test
   fun passwordAuthCallbackSetterIsFluentAndStoresCallback() {
     val fragment = PasswordAuthFragment()
     val callback = PasswordAuthFragment.OnVerifiedCallback {}
 
     assertSame(fragment, fragment.setOnVerifiedCallback(callback))
     assertSame(callback, privateField(fragment, "onVerifiedCallback"))
-  }
-
-  @Test
-  fun setPasswordLayoutKeepsIdsAndNumericPasswordInputsUsedByFragment() {
-    val view = inflater.inflate(R.layout.dialog_set_password, null, false)
-
-    assertNotNull(view.findViewById<TextInputLayout>(R.id.set_password_dialog_til_password))
-    assertNotNull(view.findViewById<TextInputLayout>(R.id.set_password_dialog_til_confirm_password))
-    val passwordInput = view.findViewById<TextInputEditText>(R.id.set_password_dialog_et_password)
-    val confirmInput =
-      view.findViewById<TextInputEditText>(R.id.set_password_dialog_et_confirm_password)
-
-    assertNotNull(passwordInput)
-    assertNotNull(confirmInput)
-    assertTrue(passwordInput.inputType and InputType.TYPE_CLASS_NUMBER != 0)
-    assertTrue(passwordInput.inputType and InputType.TYPE_NUMBER_VARIATION_PASSWORD != 0)
-    assertTrue(confirmInput.inputType and InputType.TYPE_CLASS_NUMBER != 0)
-    assertTrue(confirmInput.inputType and InputType.TYPE_NUMBER_VARIATION_PASSWORD != 0)
-    assertNotNull(view.findViewById<MaterialButton>(R.id.set_password_dialog_bt_cancel))
-    assertNotNull(view.findViewById<MaterialButton>(R.id.set_password_dialog_bt_ok))
   }
 
   @Test

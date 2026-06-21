@@ -1,22 +1,27 @@
 package deltazero.amarok.ui
 
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Apps
+import androidx.compose.material.icons.outlined.Folder
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import deltazero.amarok.R
 
-enum class AmarokRoute(val route: String, val labelRes: Int, val iconRes: Int) {
-  DASHBOARD("dashboard", R.string.dashboard, R.drawable.ic_home),
-  APPS("apps", R.string.apps, R.drawable.ic_app),
-  FILES("files", R.string.files, R.drawable.ic_folder),
-  SETTINGS("settings", R.string.more_settings, R.drawable.ic_settings);
+enum class AmarokRoute(val route: String, val labelRes: Int, val icon: ImageVector) {
+  DASHBOARD("dashboard", R.string.dashboard, Icons.Outlined.Home),
+  APPS("apps", R.string.apps, Icons.Outlined.Apps),
+  FILES("files", R.string.files, Icons.Outlined.Folder),
+  SETTINGS("settings", R.string.more_settings, Icons.Outlined.Settings);
 
   companion object {
     val tabRoutes: Set<String> = entries.map { it.route }.toSet()
@@ -35,7 +40,7 @@ fun AmarokNavigationBar(navController: NavController) {
   NavigationBar {
     AmarokRoute.entries.forEach { screen ->
       NavigationBarItem(
-        icon = { Icon(painterResource(screen.iconRes), contentDescription = null) },
+        icon = { Icon(screen.icon, contentDescription = null) },
         label = { Text(stringResource(screen.labelRes)) },
         alwaysShowLabel = false,
         selected = currentRoute == screen.route,

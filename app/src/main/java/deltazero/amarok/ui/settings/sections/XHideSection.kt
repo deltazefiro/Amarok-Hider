@@ -14,6 +14,8 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Download
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.FilledIconButton
@@ -157,7 +159,7 @@ private fun ModuleStatusTile(status: XHideStatus, modifier: Modifier = Modifier)
     Surface(color = colors.container, shape = RoundedCornerShape(12.dp)) {
       Box(modifier = Modifier.size(44.dp), contentAlignment = Alignment.Center) {
         Icon(
-          painter = painterResource(R.drawable.domino_mask_fill0_wght400_grad0_opsz24),
+          painter = painterResource(R.drawable.ic_domino_mask),
           contentDescription = null,
           tint = colors.content,
           modifier = Modifier.size(24.dp),
@@ -187,7 +189,7 @@ private fun ModuleStatusTile(status: XHideStatus, modifier: Modifier = Modifier)
           }
         ) {
           Icon(
-            painter = painterResource(R.drawable.download_24dp),
+            imageVector = Icons.Outlined.Download,
             contentDescription = stringResource(R.string.xhide_download),
           )
         }

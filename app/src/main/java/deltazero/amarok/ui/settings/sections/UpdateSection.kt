@@ -1,6 +1,10 @@
 package deltazero.amarok.ui.settings.sections
 
 import android.content.res.Configuration
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.AltRoute
+import androidx.compose.material.icons.outlined.Autorenew
+import androidx.compose.material.icons.outlined.Update
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -23,12 +27,12 @@ internal fun UpdateSection(state: UpdateSettingsState, actions: UpdateActions) {
   ClickPreferenceItem(
     title = stringResource(R.string.check_update),
     summary = stringResource(R.string.check_update_description, state.appVersionName),
-    icon = prefIcon(R.drawable.update_black_24dp),
+    icon = prefIcon(Icons.Outlined.Update),
     onClick = actions.checkUpdate,
   )
   DropdownPreferenceItem(
     title = stringResource(R.string.update_channel),
-    icon = prefIcon(R.drawable.alt_route_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.AutoMirrored.Outlined.AltRoute),
     selectedValue = state.updateChannel,
     options =
       listOf(
@@ -40,7 +44,7 @@ internal fun UpdateSection(state: UpdateSettingsState, actions: UpdateActions) {
   SwitchPreferenceItem(
     title = stringResource(R.string.check_update_on_start),
     summary = stringResource(R.string.check_update_on_start_description),
-    icon = prefIcon(R.drawable.autorenew_black_24dp),
+    icon = prefIcon(Icons.Outlined.Autorenew),
     checked = state.autoUpdate,
     onCheckedChange = actions.setAutoUpdate,
   )

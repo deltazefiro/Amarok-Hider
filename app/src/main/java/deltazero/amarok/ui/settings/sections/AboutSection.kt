@@ -5,6 +5,11 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
 import android.widget.Toast
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.HelpOutline
+import androidx.compose.material.icons.outlined.Code
+import androidx.compose.material.icons.outlined.Feedback
+import androidx.compose.material.icons.outlined.SettingsBackupRestore
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -60,7 +65,7 @@ internal fun AboutSection(state: AboutSettingsState, actions: AboutActions) {
   SwitchPreferenceItem(
     title = stringResource(R.string.enable_analytics),
     summary = stringResource(R.string.analytics_description),
-    icon = prefIcon(R.drawable.feedback_black_24dp),
+    icon = prefIcon(Icons.Outlined.Feedback),
     checked = state.analyticsEnabled,
     enabled = state.analyticsAvailable,
     onCheckedChange = {
@@ -71,13 +76,13 @@ internal fun AboutSection(state: AboutSettingsState, actions: AboutActions) {
   ClickPreferenceItem(
     title = stringResource(R.string.force_unhide),
     summary = stringResource(R.string.force_unhide_description),
-    icon = prefIcon(R.drawable.settings_backup_restore_black_24dp),
+    icon = prefIcon(Icons.Outlined.SettingsBackupRestore),
     onClick = { showForceUnhideDialog = true },
   )
   ClickPreferenceItem(
     title = stringResource(R.string.view_github_repo),
     summary = stringResource(R.string.view_github_repo_description),
-    icon = prefIcon(R.drawable.code_black_24dp),
+    icon = prefIcon(Icons.Outlined.Code),
     onClick = {
       context.startActivity(
         Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/deltazefiro/Amarok-Hider"))
@@ -95,7 +100,7 @@ internal fun AboutSection(state: AboutSettingsState, actions: AboutActions) {
   ClickPreferenceItem(
     title = stringResource(R.string.usage),
     summary = stringResource(R.string.usage_description),
-    icon = prefIcon(R.drawable.help_outline_black_24dp),
+    icon = prefIcon(Icons.AutoMirrored.Outlined.HelpOutline),
     onClick = {
       context.startActivity(
         Intent(Intent.ACTION_VIEW, Uri.parse(context.getString(R.string.doc_url)))

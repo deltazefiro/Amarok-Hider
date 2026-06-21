@@ -5,6 +5,13 @@ import android.content.res.Configuration
 import android.net.Uri
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Contrast
+import androidx.compose.material.icons.outlined.InvertColors
+import androidx.compose.material.icons.outlined.Language
+import androidx.compose.material.icons.outlined.Palette
+import androidx.compose.material.icons.outlined.SpeakerNotesOff
+import androidx.compose.material.icons.outlined.Translate
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -29,7 +36,7 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
   SwitchPreferenceItem(
     title = stringResource(R.string.enable_dynamic_color),
     summary = stringResource(R.string.dynamic_color_description),
-    icon = prefIcon(R.drawable.palette_black_24dp),
+    icon = prefIcon(Icons.Outlined.Palette),
     checked = state.dynamicColor,
     onCheckedChange = {
       actions.setDynamicColor(it)
@@ -38,7 +45,7 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
   )
   DropdownPreferenceItem(
     title = stringResource(R.string.dark_theme),
-    icon = prefIcon(R.drawable.contrast_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.Contrast),
     selectedValue = state.darkThemeMode.toString(),
     options =
       listOf(
@@ -52,13 +59,13 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
   ClickPreferenceItem(
     title = stringResource(R.string.language),
     summary = stringResource(R.string.language_description),
-    icon = prefIcon(R.drawable.ic_language),
+    icon = prefIcon(Icons.Outlined.Language),
     onClick = actions.switchLocale,
   )
   ClickPreferenceItem(
     title = stringResource(R.string.participate_translation),
     summary = stringResource(R.string.participate_translation_description),
-    icon = prefIcon(R.drawable.translate_black_24dp),
+    icon = prefIcon(Icons.Outlined.Translate),
     onClick = {
       context.startActivity(
         Intent(Intent.ACTION_VIEW, Uri.parse("https://hosted.weblate.org/engage/amarok-hider/"))
@@ -68,7 +75,7 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
   SwitchPreferenceItem(
     title = stringResource(R.string.invert_tile_color),
     summary = stringResource(R.string.invert_tile_color_description),
-    icon = prefIcon(R.drawable.invert_colors_24dp_5f6368_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.InvertColors),
     checked = state.invertTileColor,
     onCheckedChange = {
       actions.setInvertTileColor(it)
@@ -78,7 +85,7 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
   SwitchPreferenceItem(
     title = stringResource(R.string.disable_toasts),
     summary = stringResource(R.string.disable_toasts_description),
-    icon = prefIcon(R.drawable.speaker_notes_off_24dp),
+    icon = prefIcon(Icons.Outlined.SpeakerNotesOff),
     checked = state.disableToasts,
     onCheckedChange = actions.setDisableToasts,
   )

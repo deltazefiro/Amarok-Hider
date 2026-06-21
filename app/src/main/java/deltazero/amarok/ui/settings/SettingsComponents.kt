@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -21,6 +22,9 @@ internal fun prefIcon(@DrawableRes id: Int): @Composable () -> Unit =
   @Composable {
     Icon(painterResource(id), contentDescription = null, modifier = Modifier.fillMaxSize())
   }
+
+internal fun prefIcon(imageVector: ImageVector): @Composable () -> Unit =
+  @Composable { Icon(imageVector, contentDescription = null, modifier = Modifier.fillMaxSize()) }
 
 // Category section header
 @Composable
