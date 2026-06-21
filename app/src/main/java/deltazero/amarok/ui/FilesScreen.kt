@@ -30,7 +30,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import deltazero.amarok.R
-import deltazero.amarok.core.Hider
 import deltazero.amarok.ui.theme.AmarokTheme
 import deltazero.amarok.utils.SDCardUtil
 import java.io.File
@@ -73,13 +72,7 @@ fun FilesScreen(viewModel: FilesViewModel = hiltViewModel()) {
     folders = folders,
     hiddenFolders = hiddenFolders,
     processingFolders = processingFolders,
-    onAddFolder = {
-      if (Hider.getState() == Hider.State.HIDDEN) {
-        Toast.makeText(context, R.string.setting_not_ava_when_hidden, Toast.LENGTH_SHORT).show()
-        return@FilesScreen
-      }
-      dirLauncher.launch(null)
-    },
+    onAddFolder = { dirLauncher.launch(null) },
     onToggleAllFolders = { viewModel.toggleAllFolders() },
     onToggleFolder = { path ->
       val isHidden = hiddenFolders.contains(path)

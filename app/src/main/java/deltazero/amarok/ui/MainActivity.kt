@@ -3,7 +3,6 @@ package deltazero.amarok.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.compose.animation.core.tween
@@ -72,20 +71,7 @@ class MainActivity : AmarokActivity() {
               DashboardScreen(onChangeStatus = { changeStatus() })
             }
             composable(AmarokRoute.APPS.route) {
-              AppsScreen(
-                onOpenEditor = {
-                  if (Hider.getState() == Hider.State.HIDDEN) {
-                    Toast.makeText(
-                        this@MainActivity,
-                        R.string.setting_not_ava_when_hidden,
-                        Toast.LENGTH_SHORT,
-                      )
-                      .show()
-                    return@AppsScreen
-                  }
-                  navController.navigate(AmarokRoutes.APP_PICKER)
-                }
-              )
+              AppsScreen(onOpenEditor = { navController.navigate(AmarokRoutes.APP_PICKER) })
             }
             composable(AmarokRoute.FILES.route) { FilesScreen() }
             composable(AmarokRoutes.APP_PICKER) {
