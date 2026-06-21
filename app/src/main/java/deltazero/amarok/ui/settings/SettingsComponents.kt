@@ -167,6 +167,8 @@ fun DropdownPreferenceItem(
   icon: (@Composable () -> Unit)? = null,
   selectedValue: String,
   options: List<Pair<String, String>>, // (value, label) pairs
+  // When false, the secondary line stays `summary` instead of reflecting the selected option.
+  showSelectedValue: Boolean = true,
   onValueChange: (String) -> Unit,
 ) {
   var expanded by remember { mutableStateOf(false) }
@@ -184,7 +186,9 @@ fun DropdownPreferenceItem(
     }
     Column(modifier = Modifier.weight(1f)) {
       Text(text = title, style = MaterialTheme.typography.bodyMedium)
-      val selectedLabel = options.find { it.first == selectedValue }?.second ?: summary ?: ""
+      val selectedLabel =
+        if (showSelectedValue) options.find { it.first == selectedValue }?.second ?: summary ?: ""
+        else summary ?: ""
       Text(
         text = selectedLabel,
         style = MaterialTheme.typography.bodySmall,

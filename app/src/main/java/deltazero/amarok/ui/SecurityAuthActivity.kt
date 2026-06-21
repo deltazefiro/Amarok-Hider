@@ -2,6 +2,7 @@ package deltazero.amarok.ui
 
 import android.os.Build
 import android.os.Bundle
+import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,10 @@ open class SecurityAuthActivity : AppCompatActivity() {
     }
 
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_empty)
+    // The password prompt is a BottomSheetDialogFragment rendered in its own window, and the
+    // biometric prompt is system UI; this activity is just their transient host, so its content is
+    // an empty Compose surface (the window background acts as the scrim behind the sheet).
+    setContent {}
 
     passwordAuthFragment =
       PasswordAuthFragment().setOnVerifiedCallback { isSucceeded ->

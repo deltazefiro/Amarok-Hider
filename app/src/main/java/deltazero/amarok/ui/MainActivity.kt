@@ -159,9 +159,6 @@ class MainActivity : AmarokActivity() {
                   )
                   builder.show()
                 },
-                onSwitchLocale = {
-                  deltazero.amarok.utils.SwitchLocaleUtil.switchLocale(this@MainActivity)
-                },
                 viewModel = settingsViewModel,
               )
             }
