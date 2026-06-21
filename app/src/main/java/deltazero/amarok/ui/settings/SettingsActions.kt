@@ -42,7 +42,6 @@ class QuickHideActions(
 class AppearanceActions(
   val setDynamicColor: (Boolean) -> Unit,
   val setDarkTheme: (Int) -> Unit,
-  val switchLocale: () -> Unit,
   val setInvertTileColor: (Boolean) -> Unit,
   val setDisableToasts: (Boolean) -> Unit,
 )

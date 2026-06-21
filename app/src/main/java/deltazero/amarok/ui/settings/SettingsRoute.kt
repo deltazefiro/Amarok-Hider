@@ -16,7 +16,6 @@ fun SettingsScreen(
   onRequestNotificationPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
   onRequestSystemAlertPermission: (onGranted: () -> Unit, onDenied: () -> Unit) -> Unit,
   onShowColorPicker: () -> Unit,
-  onSwitchLocale: () -> Unit,
   viewModel: SettingsViewModel = hiltViewModel(),
 ) {
   val context = LocalContext.current
@@ -67,7 +66,6 @@ fun SettingsScreen(
       AppearanceActions(
         setDynamicColor = viewModel::setDynamicColor,
         setDarkTheme = viewModel::setDarkTheme,
-        switchLocale = onSwitchLocale,
         setInvertTileColor = viewModel::setInvertTileColor,
         setDisableToasts = viewModel::setDisableToasts,
       ),

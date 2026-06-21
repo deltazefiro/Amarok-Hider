@@ -91,7 +91,6 @@ internal val previewAppearanceActions =
   AppearanceActions(
     setDynamicColor = {},
     setDarkTheme = {},
-    switchLocale = {},
     setInvertTileColor = {},
     setDisableToasts = {},
   )

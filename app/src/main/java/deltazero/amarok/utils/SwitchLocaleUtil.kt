@@ -1,64 +1,35 @@
 package deltazero.amarok.utils
 
 import android.content.Context
-import android.util.Log
-import android.view.LayoutInflater
-import android.widget.RadioButton
-import android.widget.RadioGroup
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import deltazero.amarok.R
 import java.util.Locale
 
 object SwitchLocaleUtil {
+  /** `(tag, nativeDisplayName)` pairs for the language picker, in [LangList] order. */
   @JvmStatic
-  fun switchLocale(context: Context) {
-    val radioGroupView =
-      LayoutInflater.from(context).inflate(R.layout.dialog_scrollable_button_group, null)
-    val rgRadioGroup = radioGroupView.findViewById<RadioGroup>(R.id.dialog_rg_radio_group)
-
-    // Setup buttons
-    for (i in LangList.LOCALES.indices) {
-      val radioButton = RadioButton(context)
-
-      val displayName =
-        if (LangList.LOCALES[i] == "SYSTEM") {
-          context.getString(R.string.follow_system)
-        } else {
-          val locale = Locale.forLanguageTag(LangList.LOCALES[i])
-          locale.getDisplayName(locale)
-          // displayName = String.format("%s: %s", locale.getDisplayName(locale),
-          // locale.getDisplayName());
-        }
-
-      radioButton.text = displayName
-      radioButton.id = i
-      rgRadioGroup.addView(radioButton)
+  fun localeOptions(context: Context): List<Pair<String, String>> =
+    LangList.LOCALES.map { tag ->
+      val name =
+        if (tag == "SYSTEM") context.getString(R.string.follow_system)
+        else Locale.forLanguageTag(tag).let { it.getDisplayName(it) }
+      tag to name
     }
 
-    // Apply current active locale
-    val activeLocale = AppCompatDelegate.getApplicationLocales()
-    if (activeLocale == LocaleListCompat.getEmptyLocaleList()) {
-      rgRadioGroup.check(0)
-    } else {
-      rgRadioGroup.check(LangList.LOCALES.asList().indexOf(activeLocale.toLanguageTags()))
-    }
+  /** Language tag currently applied, or `"SYSTEM"` when following the system locale. */
+  @JvmStatic
+  fun currentLocaleTag(): String {
+    val active = AppCompatDelegate.getApplicationLocales()
+    return if (active.isEmpty) "SYSTEM" else active.toLanguageTags()
+  }
 
-    // Listener and switch locale
-    rgRadioGroup.setOnCheckedChangeListener { _, checkedId ->
-      Log.d("Locales", String.format("Active locale: %s", LangList.LOCALES[checkedId]))
-      if (checkedId == 0) {
-        /* Follow system */
-        AppCompatDelegate.setApplicationLocales(LocaleListCompat.getEmptyLocaleList())
-      } else {
-        val appLocale = LocaleListCompat.forLanguageTags(LangList.LOCALES[checkedId])
-        AppCompatDelegate.setApplicationLocales(appLocale)
-      }
-    }
-
-    // Show dialog
-    MaterialAlertDialogBuilder(context).setView(radioGroupView).show()
+  @JvmStatic
+  fun applyLocale(tag: String) {
+    val locales =
+      if (tag == "SYSTEM") LocaleListCompat.getEmptyLocaleList()
+      else LocaleListCompat.forLanguageTags(tag)
+    AppCompatDelegate.setApplicationLocales(locales)
   }
 
   @JvmStatic

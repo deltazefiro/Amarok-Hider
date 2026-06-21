@@ -13,6 +13,7 @@ import androidx.compose.material.icons.outlined.Palette
 import androidx.compose.material.icons.outlined.SpeakerNotesOff
 import androidx.compose.material.icons.outlined.Translate
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -27,6 +28,7 @@ import deltazero.amarok.ui.settings.SwitchPreferenceItem
 import deltazero.amarok.ui.settings.prefIcon
 import deltazero.amarok.ui.settings.previewAppearanceActions
 import deltazero.amarok.ui.settings.previewState
+import deltazero.amarok.utils.SwitchLocaleUtil
 
 @Composable
 internal fun AppearanceSection(state: AppearanceSettingsState, actions: AppearanceActions) {
@@ -56,11 +58,14 @@ internal fun AppearanceSection(state: AppearanceSettingsState, actions: Appearan
       ),
     onValueChange = { actions.setDarkTheme(it.toInt()) },
   )
-  ClickPreferenceItem(
+  DropdownPreferenceItem(
     title = stringResource(R.string.language),
     summary = stringResource(R.string.language_description),
     icon = prefIcon(Icons.Outlined.Language),
-    onClick = actions.switchLocale,
+    selectedValue = SwitchLocaleUtil.currentLocaleTag(),
+    options = remember { SwitchLocaleUtil.localeOptions(context) },
+    showSelectedValue = false,
+    onValueChange = { SwitchLocaleUtil.applyLocale(it) },
   )
   ClickPreferenceItem(
     title = stringResource(R.string.participate_translation),
