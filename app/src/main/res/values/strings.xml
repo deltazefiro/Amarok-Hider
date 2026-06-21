@@ -56,6 +56,7 @@
     <string name="hidden_toast">Hidden</string>
     <string name="unhidden_toast">Unhidden</string>
     <string name="nothing_to_hide_toast">Nothing to hide</string>
+    <string name="dashboard_error">Error</string>
     <string name="show_debug_info">Debug info</string>
     <string name="debug_info_description">Displays information to help troubleshoot issues.</string>
     <string name="add_hide_files">Add hidden folder</string>
