@@ -557,13 +557,13 @@ private fun RevealActivityCard(data: DashboardUiState, modifier: Modifier = Modi
         Column(modifier = Modifier.weight(1f)) {
           Row(verticalAlignment = Alignment.Bottom) {
             Text(
-              text = data.daysSinceReveal?.toString() ?: "—",
+              text = data.daysSinceReveal?.toString() ?: "0",
               style = MaterialTheme.typography.headlineMedium,
               fontWeight = FontWeight.SemiBold,
             )
             Spacer(Modifier.width(6.dp))
             Text(
-              text = stringResource(R.string.dashboard_days_hidden),
+              text = stringResource(R.string.dashboard_days_ago),
               style = MaterialTheme.typography.bodyMedium,
               color = MaterialTheme.colorScheme.onSurfaceVariant,
               modifier = Modifier.padding(bottom = 6.dp),
