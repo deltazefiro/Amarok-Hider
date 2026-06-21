@@ -186,7 +186,14 @@ constructor(
 
       Log.i(TAG, "Process '${if (hide) "hide" else "unhide"}' finish.")
       if (!settingsRepo.settings.value.disableToasts) {
-        val msgRes = if (hide) R.string.hidden_toast else R.string.unhidden_toast
+        // Keyed on "nothing managed", not "nothing changed": hiding when everything is already
+        // hidden still reports the normal Hidden/Unhidden result.
+        val msgRes =
+          when {
+            managedApps.isEmpty() && managedFolders.isEmpty() -> R.string.nothing_to_hide_toast
+            hide -> R.string.hidden_toast
+            else -> R.string.unhidden_toast
+          }
         Toast.makeText(appContext, msgRes, Toast.LENGTH_SHORT).show()
       }
     }

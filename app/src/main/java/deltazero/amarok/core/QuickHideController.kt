@@ -44,6 +44,7 @@ constructor(
   @param:ApplicationContext private val appContext: Context,
   private val settingsRepo: SettingsRepository,
   private val hiderController: HiderController,
+  private val hiderStateRepo: HiderStateRepository,
 ) {
 
   private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
@@ -55,6 +56,14 @@ constructor(
 
   private val _panicButtonState = MutableStateFlow(PanicButtonState())
   val panicButtonState: StateFlow<PanicButtonState> = _panicButtonState.asStateFlow()
+
+  // Whether the user manages any apps or folders. With nothing managed there is nothing to hide, so
+  // the service must never run.
+  private val anyManaged =
+    combine(hiderStateRepo.managedApps, hiderStateRepo.managedFolders) { apps, folders ->
+        apps.isNotEmpty() || folders.isNotEmpty()
+      }
+      .distinctUntilChanged()
 
   fun init() {
     if (initialized) return
@@ -78,8 +87,9 @@ constructor(
       combine(
           settingsRepo.settings.map { it.quickHideService }.distinctUntilChanged(),
           hiderController.state,
-        ) { enabled, state ->
-          enabled && state != Hider.State.HIDDEN
+          anyManaged,
+        ) { enabled, state, anyManaged ->
+          enabled && anyManaged && state != Hider.State.HIDDEN
         }
         .debounce(DEBOUNCE_MS)
         .distinctUntilChanged()
@@ -118,7 +128,12 @@ constructor(
 
   private fun currentShouldRun(): Boolean {
     val settings = settingsRepo.settings.value
-    return settings.quickHideService && hiderController.state.value != Hider.State.HIDDEN
+    val anyManaged =
+      hiderStateRepo.managedApps.value.isNotEmpty() ||
+        hiderStateRepo.managedFolders.value.isNotEmpty()
+    return settings.quickHideService &&
+      anyManaged &&
+      hiderController.state.value != Hider.State.HIDDEN
   }
 
   private fun reconcile() {
