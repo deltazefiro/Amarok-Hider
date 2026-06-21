@@ -2,6 +2,15 @@ package deltazero.amarok.ui.settings.sections
 
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.CalendarMonth
+import androidx.compose.material.icons.outlined.CancelPresentation
+import androidx.compose.material.icons.outlined.Fingerprint
+import androidx.compose.material.icons.outlined.HideSource
+import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material.icons.outlined.LockClock
+import androidx.compose.material.icons.outlined.NoEncryption
+import androidx.compose.material.icons.outlined.ScreenSearchDesktop
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -27,7 +36,7 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
   SwitchPreferenceItem(
     title = stringResource(R.string.app_lock),
     summary = stringResource(R.string.app_lock_description),
-    icon = prefIcon(R.drawable.lock_black_24dp),
+    icon = prefIcon(Icons.Outlined.Lock),
     checked = state.hasPassword,
     onCheckedChange = { checked ->
       if (checked) {
@@ -42,7 +51,7 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
   SwitchPreferenceItem(
     title = stringResource(R.string.biometric_auth),
     summary = stringResource(R.string.biometric_auth_description),
-    icon = prefIcon(R.drawable.fingerprint_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.Fingerprint),
     checked = state.biometricAuth,
     enabled = state.hasPassword,
     onCheckedChange = actions.setBiometricAuth,
@@ -50,14 +59,14 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
   SwitchPreferenceItem(
     title = stringResource(R.string.disguise),
     summary = stringResource(R.string.disguise_description),
-    icon = prefIcon(R.drawable.calendar_month_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.CalendarMonth),
     checked = state.disguise,
     enabled = !state.hideIcon,
     onCheckedChange = actions.setDisguise,
   )
   DropdownPreferenceItem(
     title = stringResource(R.string.lock_when),
-    icon = prefIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.LockClock),
     selectedValue = state.lockTrigger.key,
     options =
       listOf(
@@ -70,14 +79,14 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
   SwitchPreferenceItem(
     title = stringResource(R.string.disable_security_when_unhidden),
     summary = stringResource(R.string.disable_security_when_unhidden_description),
-    icon = prefIcon(R.drawable.encrypted_off_24dp),
+    icon = prefIcon(Icons.Outlined.NoEncryption),
     checked = state.disableSecurityWhenUnhidden,
     onCheckedChange = actions.setDisableSecurityWhenUnhidden,
   )
   SwitchPreferenceItem(
     title = stringResource(R.string.hide_amarok_icon),
     summary = stringResource(R.string.hide_amarok_icon_description),
-    icon = prefIcon(R.drawable.hide_source_black_24dp),
+    icon = prefIcon(Icons.Outlined.HideSource),
     checked = state.hideIcon,
     onCheckedChange = { checked ->
       if (checked) {
@@ -90,7 +99,7 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
   SwitchPreferenceItem(
     title = stringResource(R.string.hide_from_recents),
     summary = stringResource(R.string.hide_from_recents_description),
-    icon = prefIcon(R.drawable.search_activity_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.ScreenSearchDesktop),
     checked = state.hideFromRecents,
     onCheckedChange = {
       actions.setHideFromRecents(it)
@@ -100,7 +109,7 @@ internal fun PrivacySection(state: PrivacySettingsState, actions: PrivacyActions
   SwitchPreferenceItem(
     title = stringResource(R.string.block_screenshots),
     summary = stringResource(R.string.block_screenshots_description),
-    icon = prefIcon(R.drawable.cancel_presentation_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.CancelPresentation),
     checked = state.blockScreenshots,
     onCheckedChange = {
       actions.setBlockScreenshots(it)

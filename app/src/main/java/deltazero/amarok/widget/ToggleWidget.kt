@@ -114,9 +114,7 @@ class ToggleWidget : AppWidgetProvider() {
         views.setViewVisibility(R.id.widget_toggle_button, View.VISIBLE)
 
         // Set the icon and background based on current state
-        val iconResource =
-          if (isHidden) R.drawable.brightness_empty_24dp_1f1f1f_fill0_wght400_grad0_opsz24
-          else R.drawable.dark_mode_24dp_ffffff_fill0_wght400_grad0_opsz24
+        val iconResource = if (isHidden) R.drawable.ic_brightness_empty else R.drawable.ic_dark_mode
         views.setImageViewResource(R.id.widget_toggle_button, iconResource)
 
         val backgroundResource =

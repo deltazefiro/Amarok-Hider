@@ -2,6 +2,12 @@ package deltazero.amarok.ui.settings.sections
 
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.Colorize
+import androidx.compose.material.icons.outlined.CrisisAlert
+import androidx.compose.material.icons.outlined.LockClock
+import androidx.compose.material.icons.outlined.Notifications
+import androidx.compose.material.icons.outlined.Timer
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -26,7 +32,7 @@ internal fun QuickHideSection(state: QuickHideSettingsState, actions: QuickHideA
   SwitchPreferenceItem(
     title = stringResource(R.string.notification),
     summary = stringResource(R.string.quick_hide_notification_description),
-    icon = prefIcon(R.drawable.notifications_black_24dp),
+    icon = prefIcon(Icons.Outlined.Notifications),
     checked = state.quickHideService,
     onCheckedChange = { checked ->
       if (checked) {
@@ -45,7 +51,7 @@ internal fun QuickHideSection(state: QuickHideSettingsState, actions: QuickHideA
   SwitchPreferenceItem(
     title = stringResource(R.string.panic_button),
     summary = stringResource(R.string.panic_button_description),
-    icon = prefIcon(R.drawable.crisis_alert_black_24dp),
+    icon = prefIcon(Icons.Outlined.CrisisAlert),
     checked = state.panicButton,
     enabled = state.quickHideService,
     onCheckedChange = { checked ->
@@ -62,14 +68,14 @@ internal fun QuickHideSection(state: QuickHideSettingsState, actions: QuickHideA
   ClickPreferenceItem(
     title = stringResource(R.string.panic_button_color),
     summary = stringResource(R.string.panic_button_color_description),
-    icon = prefIcon(R.drawable.colors_24dp_1f1f1f_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.Colorize),
     enabled = state.quickHideService && state.panicButton,
     onClick = actions.showColorPicker,
   )
   SwitchPreferenceItem(
     title = stringResource(R.string.auto_hide),
     summary = stringResource(R.string.auto_hide_description),
-    icon = prefIcon(R.drawable.lock_clock_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.LockClock),
     checked = state.autoHide,
     enabled = state.quickHideService,
     onCheckedChange = actions.setAutoHide,
@@ -77,7 +83,7 @@ internal fun QuickHideSection(state: QuickHideSettingsState, actions: QuickHideA
   SliderPreferenceItem(
     title = stringResource(R.string.auto_hide_delay),
     summary = stringResource(R.string.auto_hide_delay_description),
-    icon = prefIcon(R.drawable.timer_fill0_wght400_grad0_opsz24),
+    icon = prefIcon(Icons.Outlined.Timer),
     value = state.autoHideDelay,
     valueRange = 0f..30f,
     steps = 29,
