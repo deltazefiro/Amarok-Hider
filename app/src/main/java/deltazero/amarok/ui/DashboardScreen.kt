@@ -66,7 +66,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import deltazero.amarok.R
 import deltazero.amarok.core.Hider
 import deltazero.amarok.ui.theme.AmarokPurpleLight
