@@ -11,14 +11,17 @@ def getGitHash = { ->
     }.standardOutput.asText.get().trim()
 }
 
+def amarokVersionName = "0.10.1"
+def amarokVersionCode = 124
+
 android {
     defaultConfig {
-        applicationId "deltazero.amarok"
+        applicationId amarokVersionName.contains("-alpha") ? "deltazero.amarok.alpha" : "deltazero.amarok"
         minSdkVersion 26
         targetSdkVersion 36
         compileSdk = 37
-        versionCode 124
-        versionName "0.10.1"
+        versionCode amarokVersionCode
+        versionName amarokVersionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 

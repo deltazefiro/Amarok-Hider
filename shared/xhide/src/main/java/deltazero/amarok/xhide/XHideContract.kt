@@ -23,7 +23,4 @@ object XHideContract {
   const val KEY_HOOKS_LIVE = "hooksLive"
   const val KEY_HOOK_COUNT = "hookCount"
   const val KEY_HOOK_ERROR = "hookError"
-
-  val ALLOWED_MAIN_PACKAGES =
-    setOf("deltazero.amarok", "deltazero.amarok.app", "deltazero.amarok.foss")
 }

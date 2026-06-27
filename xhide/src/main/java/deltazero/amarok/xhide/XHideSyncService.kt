@@ -9,7 +9,6 @@ class XHideSyncService : Service() {
   private val binder =
     object : IXHideSyncService.Stub() {
       override fun getStatus(): Bundle {
-        if (!isCallerAllowed()) return Bundle()
         return XHideFrameworkStatus.toBundle().apply {
           @Suppress("DEPRECATION")
           val sentinel =
@@ -23,17 +22,10 @@ class XHideSyncService : Service() {
       }
 
       override fun pushSnapshot(snapshot: Bundle): Boolean {
-        if (!isCallerAllowed()) return false
         val parsed = XHideSnapshot.fromBundle(snapshot) ?: return false
         return XHideStateStore.write(parsed)
       }
     }
 
   override fun onBind(intent: Intent?): IBinder = binder
-
-  private fun isCallerAllowed(): Boolean {
-    val packages = packageManager.getPackagesForUid(IXHideSyncService.Stub.getCallingUid())
-    if (packages.isNullOrEmpty()) return false
-    return packages.any { it in XHideContract.ALLOWED_MAIN_PACKAGES }
-  }
 }

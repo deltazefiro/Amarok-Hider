@@ -31,7 +31,6 @@ data class XHideSnapshot(
       val protocolVersion = bundle.getInt(XHideContract.KEY_PROTOCOL_VERSION, -1)
       if (protocolVersion != XHideContract.PROTOCOL_VERSION) return null
       val mainAppPackage = bundle.getString(XHideContract.KEY_MAIN_APP_PACKAGE, "")
-      if (mainAppPackage !in XHideContract.ALLOWED_MAIN_PACKAGES) return null
       val hiddenPackages =
         bundle.getStringArrayList(XHideContract.KEY_HIDDEN_PACKAGES)?.toSet() ?: emptySet()
       return XHideSnapshot(
