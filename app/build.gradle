@@ -11,8 +11,8 @@ def getGitHash = { ->
     }.standardOutput.asText.get().trim()
 }
 
-def amarokVersionName = "0.10.1"
-def amarokVersionCode = 124
+def amarokVersionName = "1.1.0-alpha1"
+def amarokVersionCode = 300
 
 android {
     defaultConfig {
