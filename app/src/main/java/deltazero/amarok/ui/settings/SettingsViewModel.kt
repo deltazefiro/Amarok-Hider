@@ -83,7 +83,7 @@ constructor(
 
   val hasHiddenFiles: StateFlow<Boolean> =
     Hider.folderStates
-      .map { states -> states.values.any { it == Hider.State.HIDDEN } }
+      .map { states -> states.values.any { it != Hider.State.VISIBLE } }
       .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), false)
 
   fun setAppHiderMode(mode: AppHiderMode) {

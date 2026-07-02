@@ -180,12 +180,15 @@ fun FilesScreen(
         items(folders, key = { it }) { path ->
           val isHidden = hiddenFolders.contains(path)
           val isProcessing = processingFolders.contains(path)
+          // Only removable while fully visible: removing a hidden folder would strand its files,
+          // and removing one mid-process would race the in-flight operation.
+          val canRemove = !isHidden && !isProcessing
           val folderName = path.substringAfterLast(File.separator).ifEmpty { path }
 
           val dismissState =
             rememberSwipeToDismissBoxState(
               confirmValueChange = {
-                if (it == SwipeToDismissBoxValue.StartToEnd && !isHidden) {
+                if (it == SwipeToDismissBoxValue.StartToEnd && canRemove) {
                   pathToConfirmRemove = path
                 }
                 false // Don't actually dismiss; let the dialog handle removal
@@ -195,7 +198,7 @@ fun FilesScreen(
           SwipeToDismissBox(
             state = dismissState,
             enableDismissFromEndToStart = false,
-            enableDismissFromStartToEnd = !isHidden,
+            enableDismissFromStartToEnd = canRemove,
             backgroundContent = {
               val color by
                 animateColorAsState(
