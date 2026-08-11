@@ -46,3 +46,9 @@ Status precedence is fixed:
 - Access is package-name allowlisted to Amarok package variants.
 - Signature matching is intentionally not required, so official apps can interoperate with self-built or resigned XHide modules.
 - The main app never reads remote prefs and never talks to system_server hooks directly.
+
+## Build
+
+- Local debug APK: `./gradlew :xhide:assembleDebug`.
+- Push and pull-request CI builds the XHide debug APK alongside the Amarok FOSS debug APK.
+- CI publishes them as separate `xhide-debug` and `amarok-foss-debug` workflow artifacts.

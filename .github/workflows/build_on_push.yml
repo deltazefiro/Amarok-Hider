@@ -25,21 +25,27 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
           cache: 'gradle'
-      - name: Build with Gradle
+      - name: Build Amarok and XHide with Gradle
         run: |
           echo 'org.gradle.caching=true' >> gradle.properties
           echo 'org.gradle.parallel=true' >> gradle.properties
           echo 'org.gradle.vfs.watch=true' >> gradle.properties
           echo 'org.gradle.jvmargs=-Xmx2048m' >> gradle.properties
           echo 'android.native.buildOutput=verbose' >> gradle.properties
-          ./gradlew assembleFossDebug \
+          ./gradlew :app:assembleFossDebug :xhide:assembleDebug \
           -Pandroid.injected.signing.store.file="${{ github.workspace }}/debug.keystore" \
           -Pandroid.injected.signing.store.password="android" \
           -Pandroid.injected.signing.key.alias="androiddebugkey" \
           -Pandroid.injected.signing.key.password="android"
-      - name: Upload built apk
+      - name: Upload Amarok APK
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          path: |
-            ${{ github.workspace }}/app/build/outputs/apk/foss/debug/*.apk
+          name: amarok-foss-debug
+          path: ${{ github.workspace }}/app/build/outputs/apk/foss/debug/*.apk
+      - name: Upload XHide APK
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: xhide-debug
+          path: ${{ github.workspace }}/xhide/build/outputs/apk/debug/*.apk
