@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">Maak zichtbaar</string>
+    <string name="hide">Verberg</string>
+    <string name="visible_status">Zichtbaar</string>
+    <string name="hidden_status">Verborgen</string>
+    <string name="ok">Ok</string>
+    <string name="about">Over</string>
+    <string name="cancel">Annuleren</string>
+    <string name="set_hide_apps">Configureer verborgen apps</string>
+    <string name="setting_not_ava_when_hidden">Deze instelling is pas beschikbaar na het zichtbaar maken van apps</string>
+    <string name="storage_permission_request_title">Toegang tot opslag vereist</string>
+    <string name="storage_permission_request_message">Geef Amarok toestemming voor toegang van externe opslag om bestanden te verbergen.</string>
+    <string name="storage_permission_denied">Toegang tot opslag geweigerd. Bestand verbergen is niet mogelijk.</string>
+    <string name="apphider_not_ava">App verbergen niet beschikbaar. Controleer \'Meer instellingen\' → \'Selecteer mode app verbergen\'</string>
+    <string name="set_hide_files">Configureer verborgen bestanden.</string>
+    <string name="show_about">Over</string>
+    <string name="enable_analytics">Anonieme statistieken</string>
+    <string name="analytics_description">Stuur anonieme foutrapporten naar de ontwikkelaars voor analyse.</string>
+    <string name="about_description">Toont informatie over deze app.</string>
+    <string name="usage">Gebruik</string>
+    <string name="usage_description">Open help centrum.</string>
+    <string name="switch_app_hider">Modus app verbergen.</string>
+    <string name="current_mode">Huidige mode: %s</string>
+    <string name="more_settings">Meer</string>
+    <string name="switch_file_hider">Modus file verbergen</string>
+    <string name="apply_on_restart">Start de app opnieuw op om de wijzigingen toe te passen.</string>
+    <string name="hidden_toast">Verborgen</string>
+    <string name="unhidden_toast">Zichtbaar</string>
+    <string name="show_debug_info">Debug info</string>
+    <string name="debug_info_description">Informatie voor het oplossen van problemen.</string>
+    <string name="invalid_dsm_provider">DSM: Ongeldige provider. Is de DSM-provider geïnstalleerd en geactiveerd op dit apparaat?</string>
+    <string name="hide_app_failed_admin_inactive">App verbergen mislukt: DSM-provider inactief.</string>
+    <string name="add_hide_files">Verborgen map toevoegen</string>
+    <string name="folder_selector_hints">Tips voor de mappenselector:\n1. Klik op \"Deze map gebruiken\" om de map te selecteren.\n2. Selecteer altijd een bestand op het apparaat.\n(Veeg vanaf de rechterkant van het scherm om lokale bestanden te openen)</string>
+    <string name="remove_hide_path">Verwijder verborgen map?</string>
+    <string name="remove_hide_path_description">Verwijder map \'%s\' van lijst met verborgen mappen?</string>
+    <string name="confirm">Bevestig</string>
+    <string name="confirm_with_countdown">Bevestig (%1$ds)</string>
+    <string name="not_local_storage">Niet ondersteunde map</string>
+    <string name="not_local_storage_description">Zorg ervoor dat dit een lokaal bestand is en geen virtueel bestand.</string>
+    <string name="help">Help</string>
+</resources>
