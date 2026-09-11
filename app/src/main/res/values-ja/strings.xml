@@ -3,7 +3,7 @@
     <string name="unhide">表示する</string>
     <string name="hide">非表示にする</string>
     <string name="more_settings">その他の設定</string>
-    <string name="hidden_toast">非表示に戻したよ。コケコッコー!</string>
+    <string name="hidden_toast">非表示に戻しました</string>
     <string name="set_hide_apps">非表示にするアプリ</string>
     <string name="set_hide_files">非表示にするファイル</string>
     <string name="about">このアプリについて</string>
@@ -15,12 +15,12 @@
     <string name="usage">使用方法</string>
     <string name="analytics_description">匿名のクラッシュレポートを開発者に送信し、アプリの改善に協力する。</string>
     <string name="usage_description">ヘルプセンターを開く</string>
-    <string name="unhidden_toast">非表示を解除したよ。気をつけてね。</string>
+    <string name="unhidden_toast">非表示を解除しました</string>
     <string name="update">アップデート</string>
     <string name="check_update">アップデートを確認</string>
     <string name="check_update_description">現在のバージョン: %s</string>
     <string name="check_update_on_start">自動アップデート</string>
-    <string name="check_update_on_start_description">アプリ起動時に新しいバージョンを自動で確認する。</string>
+    <string name="check_update_on_start_description">起動時にアプリの更新を確認する。</string>
     <string name="view_github_repo">GitHub リポジトリ</string>
     <string name="security">セキュリティ</string>
     <string name="misc">その他</string>
@@ -95,7 +95,7 @@
     <string name="no_update_ava">最新バージョンを使用しています。</string>
     <string name="confirm">確定</string>
     <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/</string>
-    <string name="alert_permission_request_message">フローティングボタンは他のアプリに重ねて表示するための権限が必要です。設定から Amarok を許可してください。</string>
+    <string name="alert_permission_request_message">フローティングボタンは他のアプリに重ねて表示するための権限が必要です。設定からAmarokを許可してください。</string>
     <string name="alert_permission_request_title">ポップアップウィンドウを表示するために必要です</string>
     <string name="apphider_not_ava_title">アプリ非表示 無効</string>
     <string name="apphider_dsm">DSM モード</string>
@@ -165,7 +165,7 @@
     <string name="filehider_nomedia">Nomediaモード</string>
     <string name="welcome_title">ようこそ！</string>
     <string name="warning">警告</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">一部のSamsungユーザーから、ChmodFileHiderの使用によって端末が起動不能になったとの報告があります。</font> GitHubのIssue #105をご参照ください。ご利用は自己責任でお願いします。</b></string>
+    <string name="chmod_samsung_warning">一部のSamsungユーザーから、Chmodモードの使用によって端末が起動不能になったとの報告があります。詳細はGitHubのIssue #105を参照し、自己責任で使用してください。</string>
     <string name="auto_hide">自動非表示</string>
     <string name="auto_hide_description">画面がオフになると自動的に非表示になります。</string>
     <string name="auto_hide_delay">自動非表示の遅延時間</string>
