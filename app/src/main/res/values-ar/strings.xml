@@ -217,4 +217,11 @@
     <string name="hide_from_recents_description">قم بإخفاء تطبيق Amarok من قائمة التطبيقات الحديثة.</string>
     <string name="hide_amarok_icon_dialog_title">إخفاء أيقونة Amarok</string>
     <string name="hide_amarok_icon_dialog_message">سيؤدي هذا الخيار إلى إخفاء Amarok من قائمة التطبيقات. يمكنك طلب الرقم *#*#262765#*#* (حيث يُكتب الرقم 262765 على لوحة مفاتيح T9 كلمة \"amarok\") للوصول إلى Amarok مرة أخرى.</string>
+    <string name="panic_button_color">لون زر الذعر</string>
+    <string name="panic_button_color_description">تخصيص لون زر الذعر.</string>
+    <string name="dark_theme">موضوع مظلم</string>
+    <string name="dark_theme_description">حدد موضوع التطبيق</string>
+    <string name="dark_theme_follow_system">اتبع النظام</string>
+    <string name="dark_theme_light">ضوء</string>
+    <string name="dark_theme_dark">مظلم</string>
 </resources>
