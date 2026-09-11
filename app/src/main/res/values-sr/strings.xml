@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="dhizuku_not_init">Dhizuku: Услуга недоступна. Уверите се да сте инсталирали и активирали Dhizuku.</string>
-    <string name="unhidden_toast">Откривено. Будите пажљиви.</string>
+    <string name="unhidden_toast">Откривено.</string>
     <string name="performing_force_unhide">Извршавање присилног откривања. Молимо, стрпите се.</string>
     <string name="debug_info_description">Приказује информације које помажу у решавању проблема.</string>
     <string name="app_name_calendar">Календар</string>
     <string name="about_description">Приказује информације о апликацији.</string>
-    <string name="hidden_toast">Сакривено. Ку-ку-ри-ку~!</string>
+    <string name="hidden_toast">Сакривено.</string>
     <string name="obfuscate_filename_description">Чини називе фајлова нечитљивим за људе. Основна функција сакривања фајлова која се не може искључити.</string>
     <string name="quick_hide_notification_title">Приватност није сакривена</string>
     <string name="apphider_shizuku">Shizuku (Sui) режим</string>
@@ -79,7 +79,7 @@
     <string name="help">Помоћ</string>
     <string name="unlock_required">Потребно је откључавање</string>
     <string name="biometric_auth">Биометријска аутентификација</string>
-    <string name="check_update_on_start_description">Проверавање да ли постоје нове верзије Amarok-а при отварању апликације.</string>
+    <string name="check_update_on_start_description">Проверавање да ли постоје нове верзије при покретању.</string>
     <string name="invalid_path">Неважећа путања.</string>
     <string name="analytics_description">Шаљите анонимне извештаје о отказивању програмерима на анализу.</string>
     <string name="ok">ОК</string>
@@ -129,7 +129,7 @@
     <string name="participate_translation">Учествуј у превођењу</string>
     <string name="enable_analytics">Анонимна аналитика</string>
     <string name="force_unhide">Присилно откриј</string>
-    <string name="apphider_dhizuku_description">[Експериментално] Сакривање апликација помоћу Dhizuku-а. \nМодерно и побољшано решење за сакривање апликација на уређајима без root-а. Потребна је инсталација и активација апликације Dhizuku.</string>
+    <string name="apphider_dhizuku_description">Сакривање апликација помоћу Dhizuku-а. \nМодерно и побољшано решење за сакривање апликација на уређајима без root-а. Потребна је инсталација и активација апликације Dhizuku.</string>
     <string name="alert_permission_request_title">Потребна је дозвола за покретање искачућих прозора</string>
     <string name="password_length_error">Лозинка мора бити између 3 и 15 знакова.</string>
     <string name="usage_description">Отворите центар за помоћ.</string>
@@ -139,7 +139,7 @@
     <string name="password_mismatch_error">Лозинке се не подударају.</string>
     <string name="set_hide_apps">Подеси скривене апликације</string>
     <string name="check_update_description">Тренутна верзија: %s</string>
-    <string name="apphider_not_ava_title">Сакривање апликација неактивно</string>
+    <string name="apphider_not_ava_title">Услуга недоступна</string>
     <string name="disguise_description">Прерушите Amarok као апликацију календара.</string>
     <string name="security">Безбедност</string>
     <string name="hidden_status">Сакривено</string>
@@ -174,7 +174,7 @@
     <string name="filehider_not_ava_title">Сакривање фајла недоступно</string>
     <string name="filehider_chmod">Chmod режим</string>
     <string name="warning">УПОЗОРЕЊЕ</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Неки корисници Samsung уређаја су пријавили да је коришћење режима „ChmodFileHider“ довело до неуспешног покретања њихових уређаја.</font> Погледајте GitHub издање #105 за више информација. Користите на властиту одговорност.</b></string>
+    <string name="chmod_samsung_warning">&lt;b&gt;&lt;font fgcolor=\"#ff0000\"&gt;Неки корисници Samsung уређаја су пријавили да је коришћење режима „ChmodFileHider“ довело до неуспешног покретања њихових уређаја.&lt;/Погледајте GitHub издање #105 за више информација. Користите на властиту одговорност.</string>
     <string name="appearance">Изглед</string>
     <string name="auto_hide">Аутоматски сакриј</string>
     <string name="auto_hide_description">Аутоматско сакривање након што се екран искључи.</string>
@@ -204,4 +204,24 @@
     <string name="disable_only_with_xhide_description">Онемогућите само апликације и дозволите XHide-у да се искључиво бави сакривањем. Може смањити кашњење током сакривања.</string>
     <string name="hide_amarok_icon">Сакриј иконицу</string>
     <string name="hide_amarok_icon_description">Сакријте Amarok из покретача. Позовите *#*#262765#*#* да бисте отворили Amarok.</string>
+    <string name="confirm_with_countdown">Потврди (%1$ds)</string>
+    <string name="update_channel">Канал за ажурирања</string>
+    <string name="update_channel_release">Стабилна верзија</string>
+    <string name="update_channel_beta">Бета предверзија</string>
+    <string name="update_available_title">Доступно је ажурирање</string>
+    <string name="update_available_message">"Верзија %s  је сада доступна за ажурирање."</string>
+    <string name="view_on_github">Прикажи на GitHub</string>
+    <string name="checking_update">Проверава ажурирања је у току…</string>
+    <string name="update_check_failed">Провера ажурирања је неуспешна</string>
+    <string name="panic_button_color">Боја паничног дугмета</string>
+    <string name="panic_button_color_description">Прилагоди боју паничног дугмета.</string>
+    <string name="dark_theme">Тамни стил</string>
+    <string name="dark_theme_description">Одабери стил апликације</string>
+    <string name="dark_theme_follow_system">Прати подешавања система</string>
+    <string name="dark_theme_light">Светло</string>
+    <string name="dark_theme_dark">Тамно</string>
+    <string name="hide_from_recents">Сакриј из Недавно коришћених апликација</string>
+    <string name="hide_from_recents_description">Сакриј Amarok са екрана недавно коришћених апликација.</string>
+    <string name="hide_amarok_icon_dialog_title">Сакриј иконицу апликације Amarok</string>
+    <string name="hide_amarok_icon_dialog_message">Ова опција ће сакрити Amarok из покретача апликација. Можеш да укуцаш *#*#262765#*#* (262765 је исто што и реч \"Amarok\" на Т9 тастатури) да приступиш апликацији Amarok поново.</string>
 </resources>
