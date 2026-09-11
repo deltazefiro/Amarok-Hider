@@ -12,7 +12,7 @@
     <string name="processing">Przetwarzanie…</string>
     <string name="misc">Różne</string>
     <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
-    <string name="apphider_none">Wyłączono</string>
+    <string name="apphider_none">Wyłączony</string>
     <string name="more_settings">Więcej ustawień</string>
     <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
     <string name="update">Aktualizacja</string>
@@ -162,7 +162,7 @@
     <string name="close_disguise_spotlight_tip">Przytrzymaj <font fgcolor="#FCCA3E"><b>Rok</b></font> aby otworzyć aplikacje.</string>
     <string name="spotlight_do_not_show_again">Nie pokazuj ponownie</string>
     <string name="filehider_not_ava_title">Ukrywanie plików niedostępne</string>
-    <string name="filehider_none">Wyłączone</string>
+    <string name="filehider_none">Wyłączony</string>
     <string name="filehider_none_description">Wyłącz ukrywanie plików.</string>
     <string name="filehider_obfuscate_description">Zmień nazwy oraz sygnatury w nagłówkach plików. Dostęp do uprawnień Root nie jest wymagany. Może zająć chwilę.</string>
     <string name="filehider_chmod">Tryb Chmod</string>
@@ -204,4 +204,11 @@
     <string name="confirm_with_countdown">Potwierdź (%1$ds)</string>
     <string name="hide_amarok_icon_dialog_title">Ukryj ikonę aplikacji</string>
     <string name="hide_amarok_icon_dialog_message">Ukrywa aplikację na ekranie głównym. Wpisz *#*#262765#*#* (262765 odpowiada słowu \"amarok\" wpisywanemu na klawiatueze T9) aby uruchomić.</string>
+    <string name="panic_button_color">Kolor przycisku alarmowego</string>
+    <string name="panic_button_color_description">Dostosowuje kolor przycisku alarmowego.</string>
+    <string name="dark_theme">Motyw aplikacji</string>
+    <string name="dark_theme_description">Wybiera motyw aplikacji.</string>
+    <string name="dark_theme_follow_system">Systemowy</string>
+    <string name="dark_theme_light">Jasny</string>
+    <string name="dark_theme_dark">Ciemny</string>
 </resources>
