@@ -217,4 +217,11 @@
     <string name="hide_from_recents_description">Skryť Amarok z obrazovky nedávno použitých aplikácií.</string>
     <string name="hide_amarok_icon_dialog_title">Skryť ikonu Amarok</string>
     <string name="hide_amarok_icon_dialog_message">Táto voľba skryje Amarok z spúšťača telefónu. Pre opätovný prístup k Amaroku zadajte *#*#262765#*#* (262765 znamená „amarok” na klávesnici T9).</string>
+    <string name="panic_button_color">Farba panického tlačidla</string>
+    <string name="panic_button_color_description">Prispôsobte farbu panického tlačidla.</string>
+    <string name="dark_theme">Tmavá téma</string>
+    <string name="dark_theme_description">Vyberte tému aplikácie</string>
+    <string name="dark_theme_follow_system">Podľa nastavenia telefónu</string>
+    <string name="dark_theme_light">Svetlá</string>
+    <string name="dark_theme_dark">Tmavá</string>
 </resources>
