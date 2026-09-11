@@ -20,7 +20,7 @@
     <string name="more_settings">Daha fazla ayar</string>
     <string name="switch_file_hider">Dosya gizleme yöntemini değiştir</string>
     <string name="apply_on_restart">Yeni değişikliklerin etkili olabilmesi için uygulamayı yeniden başlatın.</string>
-    <string name="unhidden_toast">Gizleme kaldırıldı. Dikkatli ol.</string>
+    <string name="unhidden_toast">Gizleme kaldırıldı</string>
     <string name="show_debug_info">Hata ayıklama bilgisi</string>
     <string name="debug_info_description">Sorunları çözmeye yardımcı olacak bilgileri gösterir.</string>
     <string name="invalid_dsm_provider">DSM: Geçersiz DSM sağlayıcısı. DSM sağlayıcısını cihazınıza yükleyip etkinleştirdiniz mi\?</string>
@@ -34,7 +34,7 @@
     <string name="path_duplicated">Gizli klasörü yinele</string>
     <string name="no_apphider">Lütfen “Daha fazla ayar” kısmından uygulama gizleme yöntemi seçin.</string>
     <string name="root_not_ava">Kök (root) erişimi alınamadı.</string>
-    <string name="check_update_on_start_description">Uygulama başlatıldığında Amarok için güncellemeleri kontrol et.</string>
+    <string name="check_update_on_start_description">Açılışta yeni sürümleri kontrol et.</string>
     <string name="check_update_description">Mevcut sürüm: %s</string>
     <string name="update_ava">Yeni sürüm mevcut</string>
     <string name="update_description">Amarok %s (%d) indirilip kurulabilir.</string>
@@ -47,7 +47,7 @@
     <string name="shizuku_permission_denied">Shizuku: İzin reddedildi</string>
     <string name="shizuku_not_working">Shizuku: Servis kullanılamıyor. Shizuku/Sui cihazınızda kurulu mu?</string>
     <string name="shizuku_hidden_api_error">Uygulama gizlenemedi: IPackageManager API erişimi sağlanamadı.</string>
-    <string name="apphider_not_ava_title">Uygulama gizleme devre dışı</string>
+    <string name="apphider_not_ava_title">Servis devredışı</string>
     <string name="dsm_permission_denied">DSM: İzin reddedildi</string>
     <string name="apphider_none">Devre dışı bırakıldı</string>
     <string name="apphider_none_description">Uygulama gizlemeyi kapat.</string>
@@ -74,9 +74,9 @@
     <string name="alert_permission_denied">Diğer uygulamaların üzerinde gösterme izni reddedildi.</string>
     <string name="alert_permission_request_title">Açılır pencereler oluşturmak için izin gerekli</string>
     <string name="workmode">Çalışma yöntemi</string>
-    <string name="misc">Çeşitli</string>
+    <string name="misc">Çeşitli.</string>
     <string name="security">Güvenlik</string>
-    <string name="panic_button">Panik Butonu</string>
+    <string name="panic_button">Panik düğmesi</string>
     <string name="in_app_update_failed">Yeni sürüm mevcut ancak otomatik olarak güncellenemedi. Lütfen manuel olarak güncelleyin.</string>
     <string name="failed_to_open_doc_tree">Sistem dosya seçici açılamadı</string>
     <string name="failed_to_open_doc_tree_description">Hata! Sisteminizde varsayılan bir dosya yöneticisi yok. Lütfen \"Gizli klasör ekle\" düğmesine basılı tutun ve ardından yolu manuel olarak girin.</string>
@@ -93,7 +93,7 @@
     <string name="unhide">Gizlemeyi kaldır</string>
     <string name="about_description">Uygulama hakkında bilgi gösterir.</string>
     <string name="usage">Kullanım</string>
-    <string name="hidden_toast">Gizlendi. Arkana-yaslan-ve-rahatla~!</string>
+    <string name="hidden_toast">Gizlendi</string>
     <string name="folder_selector_hints">Klasör seçimi için ipuçları:
 \n\t 1. Klasörü seçmek için “Bu klasörü kullan”a tıklayın
 \n\t 2. Cihaz hafızasında bulunan bir dosyayı seçtiğinizden emin olun
@@ -132,12 +132,12 @@
     <string name="app_lock_description">Amarok\'a erişmek için parola girmeyi gerektir.</string>
     <string name="biometric_auth_description">Amarok\'a erişmek için mümkünse cihazın biyometrik kimlik doğrulama verilerini kullan.</string>
     <string name="dhizuku_pre_v5">Dhizuku: Desteklenmeyen Dhizuku sürümü. Lütfen Dhizuku\'yu 5 ya da daha yüksek bir sürüme güncelleyin.</string>
-    <string name="apphider_dhizuku_description">[Deneysel] Dhizuku ile uygulama gizleme. \nRoot erişimi olmayan cihazlarda uygulamaları gizlemek için modern ve geliştirilmiş bir çözüm. Dhizuku uygulamasının yüklenmesi ve aktif edilmesi gereklidir.</string>
+    <string name="apphider_dhizuku_description">[Deneysel] Dhizuku ile uygulama gizleme.\nRoot erişimi olmayan cihazlarda uygulamaları gizlemek için modern ve geliştirilmiş bir çözüm. Dhizuku uygulamasının yüklenmesi ve aktif edilmesi gereklidir.</string>
     <string name="performing_force_unhide">Görünür kılmaya zorlanıyor, lütfen bekleyiniz.</string>
     <string name="app_name_calendar">Takvim</string>
     <string name="filter">Filtre</string>
     <string name="dynamic_color_description">Dinamik renkli temayı etkinleştir.</string>
-    <string name="close_disguise_spotlight_tip">Amarok\'a erişmek için <font fgcolor="#FCCA3E"><b> Yıl sayısına</b></font> basılı tut.</string>
+    <string name="close_disguise_spotlight_tip">Amarok\'a erişmek için <font fgcolor="#FCCA3E"><b>Yıl Sayısına</b></font> basılı tut.</string>
     <string name="disguise">Amarok\'u sakla</string>
     <string name="force_unhide_confirm_msg">Her şeyi kurtarmak istediğinize emin misiniz\?
 \n
@@ -156,7 +156,7 @@
     <string name="enable_dynamic_color">Dinamik renk</string>
     <string name="block_screenshots">Ekran resimlerini engelle</string>
     <string name="warning">UYARI</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Bazı Samsung kullanıcıları ChmodFileHider kullanmanın cihazlarının önyüklemede başarısız olmasına neden olduğunu bildirdi.</font> Daha fazla bilgi için GitHub sayı #105\'e bakın. Riski size ait olmak üzere kullanın</b></string>
+    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Bazı Samsung kullanıcıları ChmodFileHider kullanmanın cihazlarının önyüklemede başarısız olmasına neden olduğunu bildirdi.</font> Daha fazla bilgi için GitHub sayı #105\'e bakın. Riski size ait olmak üzere kullanın</b>.</string>
     <string name="filehider_not_ava_title">Dosya gizleme kullanılamıyor</string>
     <string name="appearance">Görünüm</string>
     <string name="auto_hide">Otomatik gizle</string>
@@ -182,13 +182,13 @@
     <string name="xposed_inactive">Modül aktif değil. Xposed Manager\'ı kontrol ettin mi?</string>
     <string name="filehider_none">Devre dışı</string>
     <string name="filehider_none_description">Dosya gizlemeyi devre dışı bırak.</string>
-    <string name="filehider_obfuscate">Şaşırtma Modu</string>
+    <string name="filehider_obfuscate">Karartma Modu</string>
     <string name="filehider_chmod">Chmod Modu</string>
     <string name="display_root_apps">Kök erişimi (Root) ile alakalı uygulamaları göster</string>
     <string name="hide_amarok_icon">ikonu gizle</string>
     <string name="hide_amarok_icon_description">Amarok\'u başlatıcıdan gizle. Amarok\'u geri açmak için *#*#262765#*#* numarasını ara.</string>
     <string name="disable_security_when_unhidden">Gizli değilken güvenliği devre dışı bırak</string>
-    <string name="disable_security_when_unhidden_description">Gizli değilken uygulama kilidi ve saklanmayı devre dışı bırak</string>
+    <string name="disable_security_when_unhidden_description">Gizli değilken uygulama kilidi ve saklanmayı devre dışı bırak.</string>
     <string name="disable_only_with_xhide">Sadece uygulamaları devre dışı bırak</string>
     <string name="disable_only_with_xhide_description">Sadece uygulamaları devre dışı bırak ve XHide\'ın gizlemeyi özel olarak ele almasına izin ver. Gizleme sırasında gecikmeyi düşürebilir.</string>
     <string name="disable_toasts">Toast\'ları devre dışı bırak</string>
@@ -200,4 +200,24 @@
     <string name="warning_system_apps">Sistem uygulamalarını gizlemek önyükleme döngüsüne (bootloop) yol açabilir. Sistem uygulamalarını gizlerken lütfen dikkatli olun.</string>
     <string name="warning_root_apps">Amarok Kök erişimi (Root) ile alakalı uygulamaları gizlemek için tasarlanmamıştır. Root erişimi kaybına yol açabilir. \"Dr-TSNG\" ya da \"Hide-My-Applist\" kullanmayı düşünün.</string>
     <string name="dhizuku_failed_to_set_delegated_scopes">Dhizuku: `DELEGATION_PACKAGE_ACCESS` erişimi verilemedi. Lütfen Dhizuku\'yu yeniden aktifleştirmeyi deneyin.</string>
+    <string name="update_channel">Güncelleme kanalı</string>
+    <string name="update_channel_release">Kararlı sürümler</string>
+    <string name="update_channel_beta">Beta sürümler</string>
+    <string name="update_available_title">Yeni bir sürüm mevcut</string>
+    <string name="view_on_github">Github\'da görüntüle</string>
+    <string name="checking_update">Güncellemeler kontrol ediliyor…</string>
+    <string name="update_check_failed">Güncellemeler kontrol edilemedi</string>
+    <string name="dark_theme">Karanlık tema</string>
+    <string name="dark_theme_description">Uygulama temasını seçin</string>
+    <string name="dark_theme_follow_system">Sistemi Takip Et</string>
+    <string name="dark_theme_light">Aydınlık</string>
+    <string name="dark_theme_dark">Karanlık</string>
+    <string name="hide_from_recents_description">Amarok\'u son kullanılan uygulamalar ekranından gizle.</string>
+    <string name="panic_button_color">Panik butonu rengi</string>
+    <string name="panic_button_color_description">Panik butonunun rengini özelleştir.</string>
+    <string name="hide_amarok_icon_dialog_message">Bu seçenek, Amarok\'u başlatıcıdan gizleyecektir. Amarok\'a tekrar erişmek için *#*#262765#*#* tuşlayabilirsiniz (262765, T9 tuş takımında \"amarok\" kelimesini oluşturur).</string>
+    <string name="confirm_with_countdown">Onayla (%1$ds)</string>
+    <string name="update_available_message">%s sürümü artık güncellenmeye hazır.</string>
+    <string name="hide_from_recents">Son Kullanılanlardan Gizle</string>
+    <string name="hide_amarok_icon_dialog_title">Amarok simgesini gizle</string>
 </resources>

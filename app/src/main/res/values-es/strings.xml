@@ -137,9 +137,7 @@
     <string name="dhizuku_not_init">Dhizuku: Servicio no disponible. Por favor, asegúrate de haber instalado y activado Dhizuku.</string>
     <string name="apphider_dhizuku">Modo Dhizuku</string>
     <string name="apphider_dhizuku_description">Ocultar las aplicaciones con Dhizuku. \nUna solución moderna y mejorada para ocultar aplicaciones en dispositivos no rooteados. Se requiere la instalación y activación de la aplicación Dhizuku.</string>
-    <string name="force_unhide_confirm_msg">¿Intentar restaurar todo\?.
-\n
-\n<b>ADVERTENCIA:</b> Esta opción puede corromper tus archivos. Úsala solamente cuando encuentres problemas y no puedas realizar la función \"mostrar\" de manera normal.</string>
+    <string name="force_unhide_confirm_msg">¿Intentar restaurar todo?. \n \n<b>ADVERTENCIA: </b>Esta opción puede corromper tus archivos. Úsala solamente cuando encuentres problemas y no puedas realizar la función \"mostrar\" de manera normal.</string>
     <string name="force_unhide_description">Intenta restaurar todo. Usa esta opción solo cuando tengas problemas.</string>
     <string name="force_unhide">Forzar desocultar</string>
     <string name="filter">Filtrar</string>
@@ -217,4 +215,11 @@
     <string name="hide_from_recents_description">Ocultar Amarok desde la pantalla reciente de apps.</string>
     <string name="hide_amarok_icon_dialog_title">Ocultar Icono de Amarok</string>
     <string name="hide_amarok_icon_dialog_message">Esta opción ocultará Amarok desde el lanzador. Puedes marcar *#*#262765#*#* (262765 olas \"amarok\" en teclado numérico T9) para acceder otra vez a Amarok.</string>
+    <string name="panic_button_color">Color del botón de pánico</string>
+    <string name="panic_button_color_description">Personalizar el color del botón de pánico.</string>
+    <string name="dark_theme">Tema oscuro</string>
+    <string name="dark_theme_description">Seleccionar tema de app</string>
+    <string name="dark_theme_follow_system">Sigue el sistema</string>
+    <string name="dark_theme_light">Claro</string>
+    <string name="dark_theme_dark">Oscuro</string>
 </resources>

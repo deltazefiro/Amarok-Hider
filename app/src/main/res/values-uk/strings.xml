@@ -2,24 +2,24 @@
 <resources>
     <string name="visible_status">Видимий</string>
     <string name="hidden_status">Приховано</string>
-    <string name="ok">OK</string>
+    <string name="ok">Гаразд</string>
     <string name="about">Про застосунок</string>
     <string name="cancel">Скасувати</string>
     <string name="setting_not_ava_when_hidden">Це налаштування доступне лише після відображення</string>
     <string name="storage_permission_request_title">Потрібен дозвіл на зберігання</string>
     <string name="storage_permission_denied">У доступі до сховища відмовлено. Приховування файлів недоступне</string>
-    <string name="set_hide_apps">Вибрати прихованих застосунків</string>
+    <string name="set_hide_apps">Вибрати Приховані Застосунки</string>
     <string name="set_hide_files">Вибрати приховані файли</string>
     <string name="show_about">Показати «Про застосунок»</string>
     <string name="enable_analytics">Анонімна аналітика</string>
-    <string name="analytics_description">Надсилайте анонімні звіти про збої розробникам для аналізу.</string>
+    <string name="analytics_description">Надсилати анонімні звіти про збої розробникам для аналізу.</string>
     <string name="about_description">Показує інформацію про застосунок.</string>
-    <string name="switch_app_hider">Увімкнути режим приховування застосунків</string>
+    <string name="switch_app_hider">Перемкнути режим приховування застосунків</string>
     <string name="current_mode">Поточний режим: %s</string>
     <string name="apply_on_restart">Перезапустіть застосунок, щоб застосувати нові зміни.</string>
-    <string name="hidden_toast">Прихований</string>
+    <string name="hidden_toast">Приховано</string>
     <string name="unhidden_toast">Неприховані</string>
-    <string name="show_debug_info">Інформація про налагодження</string>
+    <string name="show_debug_info">Дані зневадження</string>
     <string name="invalid_dsm_provider">DSM: Недійсний постачальник DSM. Ви встановили та активували постачальника DSM на своєму пристрої\?</string>
     <string name="add_hide_files">Додати приховану папку</string>
     <string name="remove_hide_path">Видалити приховану папку\?</string>
@@ -85,16 +85,16 @@
     <string name="quick_hide_notification_content">Ваша конфіденційність не прихована. Натисніть, щоб приховати.</string>
     <string name="invalid_action">Отримано недійсний намір: %s</string>
     <string name="usage">Використання</string>
-    <string name="switch_file_hider">Увімкнути режим приховування файлів</string>
+    <string name="switch_file_hider">Перемкнути режим приховування файлів</string>
     <string name="no_apphider">Будь ласка, виберіть режим приховування застосунків у \"Додаткових налаштуваннях\".</string>
-    <string name="storage_permission_request_message">Надайте Amarok доступ до зовнішнього сховища, щоб приховати файли.</string>
+    <string name="storage_permission_request_message">Надайте Amarok доступ до зовнішнього сховища, щоб приховувати файли.</string>
     <string name="usage_description">Відкрити довідковий центр.</string>
-    <string name="apphider_not_ava">Приховування застосунків недоступне. Перевірте \"Додаткові налаштування\" → \"Увімкнути режим приховування застосунків\".</string>
+    <string name="apphider_not_ava">Приховування застосунків недоступне. Перевірте «Додаткові налаштування» → «Увімкнути режим приховування застосунків».</string>
     <string name="path_duplicated">Приховати дублювання шляхів</string>
     <string name="path_duplicated_description"><u>\'%1$s\'</u>\n\nмістить\n\n<u>\'%2$s\'</u></string>
     <string name="update_ava">Доступна нова версія</string>
     <string name="notification_permission_denied">У дозволі на сповіщення відмовлено.</string>
-    <string name="debug_info_description">Відображає інформацію, яка допоможе вирішити проблеми.</string>
+    <string name="debug_info_description">Відображає інформацію, що допоможе вирішити проблеми.</string>
     <string name="folder_selector_hints">Підказки для селектора папок:
 \n\t 1. Натисніть \"Використовувати цю папку\", щоб вибрати папку
 \n\t 2. Завжди вибирайте файл на пристрої
@@ -209,4 +209,11 @@
     <string name="confirm_with_countdown">Підтвердити (%1$ds)</string>
     <string name="hide_amarok_icon_dialog_title">Приховати значок Amarok</string>
     <string name="hide_amarok_icon_dialog_message">Ця опція приховає Amarok від панелі запуску. Ви можете набрати *#*#262765#*#* (262765 означає «amarok» на клавіатурі T9), щоб знову отримати доступ до Amarok.</string>
+    <string name="panic_button_color">Колір кнопки паніки</string>
+    <string name="panic_button_color_description">Налаштуйте колір кнопки паніки.</string>
+    <string name="dark_theme">Темна тема</string>
+    <string name="dark_theme_description">Оберіть тему застосунку</string>
+    <string name="dark_theme_follow_system">Системна</string>
+    <string name="dark_theme_light">Світла</string>
+    <string name="dark_theme_dark">Темна</string>
 </resources>

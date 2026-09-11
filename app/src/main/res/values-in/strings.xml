@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="unhidden_toast">Terlihat. Hati-hati.</string>
+    <string name="unhidden_toast">Tampak</string>
     <string name="debug_info_description">Tampilkan info untuk membantu perbaikan masalah.</string>
     <string name="about_description">Tampilan informasi aplikasi.</string>
-    <string name="hidden_toast">Tersembunyi. Kukuruyuk~!</string>
+    <string name="hidden_toast">Tersembunyi</string>
     <string name="update_ava">Versi baru tersedia</string>
     <string name="no_apphider">Silahkan pilih mode penyembunyian aplikasi di \"Pengaturan lainnya\".</string>
     <string name="not_local_storage">Direktori tidak didukung</string>
@@ -28,7 +28,7 @@
     <string name="set_hide_files">Atur File Tersembunyi</string>
     <string name="apply_on_restart">Mulai ulang aplikasi untuk menerapkan perubahan.</string>
     <string name="help">Bantuan</string>
-    <string name="check_update_on_start_description">Periksa versi Amarok baru saat membuka aplikasi.</string>
+    <string name="check_update_on_start_description">Periksa versi terbaru saat memulai.</string>
     <string name="analytics_description">Kirim laporan kerusakan sebagai anonim ke pengembang untuk analisis.</string>
     <string name="ok">Oke</string>
     <string name="setting_not_ava_when_hidden">Pengaturan ini hanya tersedia setelah tidak disembunyikan</string>
@@ -125,7 +125,7 @@
     <string name="welcome_title">Selamat datang</string>
     <string name="shizuku_not_working">Shizuku: Layanan tidak tersedia. Apakah Anda sudah menginstal Shizuku/Sui di perangkat Anda?</string>
     <string name="workmode">Mode kerja</string>
-    <string name="chmod_samsung_warning"><b><font fgcolor="#ff0000">Pengguna Samsung telah melaporkan bahwa menggunakan ChmodFileHider menyebabkan perangkat gagal boot.</font> Lihat Github issue #105 untuk informasi lebih lanjut. Risiko ditanggung sendiri.</b></string>
+    <string name="chmod_samsung_warning">Beberapa pengguna Samsung telah melaporkan bahwa menggunakan ChmodFileHider menyebabkan perangkat gagal boot. Lihat Github issue #105 untuk informasi lebih lanjut. Risiko ditanggung sendiri.</string>
     <string name="alert_permission_denied">Izin untuk ditampilkan diatas aplikasi lain ditolak.</string>
     <string name="filehider_obfuscate">Mode Pengaburan</string>
     <string name="force_unhide_description">Mencoba untuk memulihkan semuanya. Gunakan opsi ini hanya jika Anda mengalami masalah.</string>
@@ -141,7 +141,7 @@
     <string name="failed_to_open_doc_tree_description">Ups! Sistem Anda tidak memiliki pengelola berkas bawaan. Tekan lama tombol \"Tambahkan Folder Tersembunyi\" dan masukkan jalur secara manual.</string>
     <string name="participate_translation">Berpartisipasi dalam penerjemahan</string>
     <string name="force_unhide">Paksa perlihatkan</string>
-    <string name="apphider_dhizuku_description">[Eksperimental] Menyembunyikan aplikasi dengan Dhizuku.\nSolusi modern dan lebih baik untuk menyembunyikan aplikasi pada perangkat yang tidak di-root. instalasi dan aktivasi aplikasi Dhizuku diperlukan.</string>
+    <string name="apphider_dhizuku_description">Menyembunyikan aplikasi dengan Dhizuku.\nSolusi modern dan lebih baik untuk menyembunyikan aplikasi pada perangkat yang tidak di-root. instalasi dan aktivasi aplikasi Dhizuku diperlukan.</string>
     <string name="alert_permission_request_title">Izin untuk memunculkan jendela pop-up diperlukan</string>
     <string name="password_length_error">Kata sandi harus antara 3 dan 15 karakter.</string>
     <string name="filehider_not_ava_title">Penyembunyian file tidak tersedia</string>
@@ -149,7 +149,7 @@
     <string name="in_app_update_failed">Versi baru tersedia, tetapi gagal diunduh. Harap perbarui secara manual.</string>
     <string name="participate_translation_description">Bantu kami menerjemahkan Amarok ke dalam bahasamu.</string>
     <string name="password_mismatch_error">Kata sandi tidak cocok.</string>
-    <string name="apphider_not_ava_title">Penyembunyian aplikasi tidak aktif</string>
+    <string name="apphider_not_ava_title">Layanan tidak tersedia</string>
     <string name="disguise_description">Samarkan Amarok sebagai aplikasi kalender.</string>
     <string name="security">Keamanan</string>
     <string name="apphider_dsm">Mode DSM</string>
@@ -189,4 +189,26 @@
     <string name="disable_security_when_unhidden_description">Matikan penyamaran dan kunci aplikasi saat tidak tersembunyi.</string>
     <string name="disable_security_when_unhidden">Matikan keamanan saat ditampilkan</string>
     <string name="disable_only_with_xhide_description">Hanya matikan aplikasi dan biakan XHide melakukan penyembunyian exklusif. Dapat meredakan lag saat penyembunyian.</string>
+    <string name="confirm_with_countdown">Konfirmasi (%1$d)</string>
+    <string name="update_channel">Saluran pembaruan</string>
+    <string name="update_channel_release">Rilis-rilis stabil</string>
+    <string name="update_channel_beta">Pra-rilis beta</string>
+    <string name="update_available_title">Pembaruan Tersedia</string>
+    <string name="update_available_message">Versi %s tersedia untuk pembaruan.</string>
+    <string name="view_on_github">Tinjau di GitHub</string>
+    <string name="checking_update">Memeriksa pembaruan…</string>
+    <string name="update_check_failed">Gagal memerika pembaruan</string>
+    <string name="panic_button_color">Warna tombol panik</string>
+    <string name="panic_button_color_description">Ubah suaikan warna tombol panik.</string>
+    <string name="dark_theme">Tema gelap</string>
+    <string name="dark_theme_description">Pilih tema aplikasi</string>
+    <string name="dark_theme_follow_system">Ikuti Sistem</string>
+    <string name="dark_theme_light">Terang</string>
+    <string name="dark_theme_dark">Gelap</string>
+    <string name="hide_amarok_icon">Sembunyikan ikon</string>
+    <string name="hide_amarok_icon_description">Sembunyikan Amarok dari peluncur. Hubungi *#*#262765#*#* untuk membuka Amarok.</string>
+    <string name="hide_from_recents">Sembunyikan dari Baru Ini</string>
+    <string name="hide_from_recents_description">Sembunyikan Amarok dari layar aplikasi barusan dibuka.</string>
+    <string name="hide_amarok_icon_dialog_title">Sembunyikan Ikon Amarok</string>
+    <string name="hide_amarok_icon_dialog_message">Opsi ini akan menyembunyikan Amarok dari Peluncur. Hubungi *#*#262765#*#* (262765 mengeja \"amarok\" pada keypad T9) untuk kembali mengakses Amarok.</string>
 </resources>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">Dhihirisha</string>
+    <string name="hide">Ficha</string>
+    <string name="visible_status">Onekana</string>
+    <string name="hidden_status">Fichwa</string>
+    <string name="ok">Sawa</string>
+    <string name="about">Kuhusu</string>
+    <string name="cancel">Ghairi</string>
+    <string name="set_hide_apps">Weka programu zilizofichwa</string>
+    <string name="setting_not_ava_when_hidden">Mipangilio hii inapatikana tu baada ya kuonyesha</string>
+    <string name="storage_permission_request_title">Ruhusa ya hifadhi inahitajika</string>
+    <string name="storage_permission_request_message">Ruhusu Amarok kufikia hifadhi ya nje ili kuficha faili</string>
+    <string name="storage_permission_denied">Ruhusa ya hifadhi imekataliwa. Kuficha faili hakupatikani.\"</string>
+    <string name="apphider_not_ava">Kuficha programu hakupatikani. Angalia Mipangilio Zaidi → Badilisha hali ya kuficha programu.</string>
+    <string name="set_hide_files">Weka Faili Zilizofichwa</string>
+    <string name="show_about">Onyesha kuhusu</string>
+    <string name="enable_analytics">Takwimu za kisiri</string>
+    <string name="analytics_description">Tuma ripoti za ajali za kisiri kwa wasanidi programu kwa uchambuzi.</string>
+    <string name="about_description">Inaonyesha maelezo kuhusu programu.</string>
+    <string name="usage">Utumizi</string>
+    <string name="usage_description">Fungua kituo Cha msaada.</string>
+    <string name="switch_app_hider">Badilisha hali ya kuficha programu</string>
+    <string name="current_mode">Hali ya Sasa: %s</string>
+    <string name="more_settings">Mipangilio Zaidi</string>
+    <string name="switch_file_hider">Badilisha Hali ya kuficha failli</string>
+    <string name="apply_on_restart">Anzisha upya programu ili kutumia mabadiliko mapya.</string>
+    <string name="hidden_toast">Imefichwa</string>
+    <string name="unhidden_toast">Imeonyeshwa</string>
+    <string name="show_debug_info">Maelezo ya utatuzi</string>
+    <string name="debug_info_description">Inaonyesha maelezo kusaidia kutatua matatizo.</string>
+    <string name="invalid_dsm_provider">DSM: Mtoa huduma wa DSM si sahihi. Je, umeweka na kuamilisha mtoa huduma wa DSM kwenye kifaa chako?</string>
+    <string name="hide_app_failed_admin_inactive">Imeshindwa kuficha programu: Mtoa huduma wa DSM haufanyi.</string>
+</resources>

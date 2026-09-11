@@ -54,4 +54,16 @@
     <string name="password">Parole</string>
     <string name="dhizuku_permission_denied">Dhizuku: Piekļuve liegta</string>
     <string name="app_name_calendar">Kalendārs</string>
+    <string name="apphider_none">Atspējots</string>
+    <string name="processing">Apstrādā…</string>
+    <string name="doc_url">https://deltazefiro.github.io/Amarok-doc/en-US</string>
+    <string name="common_error_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html#common-errors</string>
+    <string name="hideapp_doc_url">https://deltazefiro.github.io/Amarok-doc/en-US/hideapp.html</string>
+    <string name="workmode">Darba režīms</string>
+    <string name="filehider_none">Atspējots</string>
+    <string name="dark_theme_light">Gaišs</string>
+    <string name="dark_theme_dark">Tumšs</string>
+    <string name="manually_set_path">Atlasīt pašrocīgi</string>
+    <string name="apphider_not_ava_title">Pakalpojums nepieejams</string>
+    <string name="apphider_root">Root piekļuves režīms</string>
 </resources>
