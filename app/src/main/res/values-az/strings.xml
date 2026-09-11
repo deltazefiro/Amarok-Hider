@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="unhide">Göstər</string>
+    <string name="hide">Gizlətmək</string>
+    <string name="visible_status">Görünən</string>
+    <string name="hidden_status">Gizlənmiş</string>
+    <string name="ok">Tamam</string>
+    <string name="about">Haqqında</string>
+    <string name="cancel">Ləğv et</string>
+</resources>
